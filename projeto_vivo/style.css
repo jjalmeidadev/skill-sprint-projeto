@@ -1,0 +1,20 @@
+body {
+  margin: 0;
+  overflow: hidden;
+}
+
+#startScreen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #3c414a;
+  color: white;
+}
+
+canvas {
+  display: block;
+  background-color: #3c414a;
+  border: 10px solid white;
+}
