@@ -14,8 +14,8 @@
 - <a href="https://www.linkedin.com/in/mike-buchsenspaner-445a2934b/">Mike Buchsenspaner
 - <a href="https://www.linkedin.com/in/sophia-hochman-b821a4346/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app">Sophia Hochman
 - <a href="https: //https://www.linkedin.com/in/jaime-andrade-de-almeida-0777ba2a5/">Jaime Andrade de Almeida
-- <a href="https://www.linkedin.com/in/victorbarq/">Nome do integrante 4</a> 
-- <a href="https://www.linkedin.com/in/victorbarq/">Nome do integrante 5</a>
+- <a href="https: //https://www.linkedin.com/in/anneestherlf/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" > Anne Esther L. Figueirôa 
+- <a href="https:https://www.linkedin.com/in/marcela-costa-844b42338/"> marcela costa
 - <a href="https://www.linkedin.com/in/victorbarq/">Nome do integrante 6</a> 
 - <a href="https://www.linkedin.com/in/victorbarq/">Nome do integrante 7</a>
 
