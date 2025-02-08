@@ -77,11 +77,12 @@
 *Exemplo de tabela de requisitos*
 \# | Requisito  
 --- | ---
-1 | O controle do personagem será realizado usando as teclas WASD para navegação pelas fases
-2 | O personagem perde uma vida toda vez que tocar em um inimigo ou em algum projétil inimigo
-3 | O jogo deve possuir uma tela de abertura para o jogador selecionar se quer jogar sozinho ou em dupla
-4 | ...
-
+1 | movimentação 
+2 | tela de abertura para o jogador começar o jogo 
+3 | jogabilidade de perguntas de sim ou não
+4 |  sistema de pontos
+5 | tempo para respostas
+6 | feedback
 ## 1.3. Público-alvo do Projeto (sprint 2)
 
 *Posicione aqui uma descrição justificada do público-alvo do jogo, em termos demográficos e de preferências/gostos pessoais.*
