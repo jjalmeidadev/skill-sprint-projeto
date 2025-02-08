@@ -77,8 +77,8 @@
 *Exemplo de tabela de requisitos*
 \# | Requisito  
 --- | ---
-1 | movimentação 
-2 | tela de abertura para o jogador começar o jogo 
+1 |  tela de abertura para o jogador começar o jogo 
+2 | movimentação 
 3 | jogabilidade de perguntas de sim ou não
 4 |  sistema de pontos
 5 | tempo para respostas
