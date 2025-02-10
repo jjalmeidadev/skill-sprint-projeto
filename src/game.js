@@ -15,11 +15,11 @@ canvas.height = window.innerHeight;
 
 // Carregando a imagem de fundo
 const backgroundImage = new Image();
-backgroundImage.src = 'Pallet_Town.png';
+backgroundImage.src = '../assets/Pallet_Town.png';
 
 // Carregando a spritesheet do Player
 const playerImage = new Image();
-playerImage.src = 'Player.png';
+playerImage.src = '../assets/Player.png';
 
 // Definindo o Player
 const player = {
