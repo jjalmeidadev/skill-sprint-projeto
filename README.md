@@ -17,11 +17,11 @@
 - <a href="https://www.linkedin.com/in/anneestherlf?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app">Anne Esther
 - <a href="https://www.linkedin.com/in/marcela-costa-844b42338/)"> Marcela Costa
 - <a href="https://www.linkedin.com/in/arthur-marques-5b1080346?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app)">Arthur Marques
-- <a href="https://www.linkedin.com/in/victorbarq/">Nome do integrante 7</a>
+- <a href="https://www.linkedin.com/in/victorbarq/">Lucas Ramos
 
 ## 👩‍🏫 Professores:
 ### Orientador(a) 
-- <a href="https://www.linkedin.com/in/victorbarq/">Nome do orientador</a>
+- <a href="https://www.linkedin.com/in/JuliaStateri/">Julia Stateri
 ### Instrutores
 - <a href="https://www.linkedin.com/in/victorbarq/">Nome do instrutor 1</a>
 - <a href="https://www.linkedin.com/in/victorbarq/">Nome do instrutor 2</a> 
