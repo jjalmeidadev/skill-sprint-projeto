@@ -78,11 +78,11 @@
 \# | Requisito  
 --- | ---
 1 |  tela de abertura para o jogador começar o jogo 
-2 | movimentação 
+2 | movimentação utilizando as setas
 3 | jogabilidade de perguntas de sim ou não
 4 |  sistema de pontos
 5 | tempo para respostas
-6 | feedback
+6 | feedback dado com base em suas respostas
 ## 1.3. Público-alvo do Projeto (sprint 2)
 
 *Posicione aqui uma descrição justificada do público-alvo do jogo, em termos demográficos e de preferências/gostos pessoais.*
