@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-Posicione aqui os arquivos e pastas de código-fonte do game. A cada entrega de sprint, será considerado o último commit dentro do prazo. A partir dali, toda e qualquer alteração será considerada na próxima sprint. Apague este arquivo .md ao final do módulo.
-=======
 # Inteli - Instituto de Tecnologia e Liderança 
 
 <p align="center">
@@ -9,9 +6,9 @@ Posicione aqui os arquivos e pastas de código-fonte do game. A cada entrega de 
 
 <br>
 
-# Nome do projeto
+# SkillSprint Game
 
-## Nome do grupo
+## SkillMakers
 
 ## 👨‍🎓 Integrantes:    
 - <a href="https://www.linkedin.com/in/mike-buchsenspaner-445a2934b/">Mike Buchsenspaner
