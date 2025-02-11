@@ -27,7 +27,7 @@
 - <a href="https://www.linkedin.com/in/diogo-martins-gon%C3%A7alves-de-morais-96404732/">Diogo Martins Gonçalves de Morais</a> 
 - <a href="https://www.linkedin.com/in/fabiana-martins-de-oliveira-8993b0b2/">Fabiana Martins</a> 
 - <a href="https://www.linkedin.com/in/geraldo-magela-severino-vasconcelos-22b1b220/">Geraldo Magela Severino Vasconcelos</a>
-- <a href="https://www.linkedin.com/in/victorbarq/">Nome do instrutor 5</a> 
+- <a href="https://www.linkedin.com/in/profclaudioandre/">Claudio Fernando André</a> 
 
 ## 📜 Descrição
 
