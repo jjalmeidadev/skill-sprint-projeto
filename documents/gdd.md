@@ -16,8 +16,6 @@
 - <a href="https://www.linkedin.com/in/arthur-marques-5b1080346?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app)">Arthur Marques
 - <a href="https://www.linkedin.com/in/victorbarq/">Lucas Carvalho dos Ramos
 
-
-
 ## Sumário
 
 [1. Introdução](#c1)
@@ -237,27 +235,24 @@ Figura 1: detalhe da cena da partida do herói para a missão, usando sua nave
 
 ## 4.1. Desenvolvimento preliminar do jogo (sprint 1)
 
-  1. Mapa do Escritório
-O primeiro passo foi criar o ambiente do jogo, representando um escritório.
-  2. Movimentação
-Implementação da mecânica de movimentação do personagem. O jogador pode controlar um avatar, movendo-o por todo o mapa do escritório. Para isso, foram desenvolvidas funções básicas de movimentação 
-  3. Tela Inicial
-Criada uma tela inicial onde o jogador pode começar o jogo, ajustar configurações. A interface foi simples, com opções claras para o jogador navegar.
-  4. Personagem
-O personagem principal foi desenvolvido com animações básicas, como andar. A personalização, embora planejada, não foi finalizada.
+Essa seção detalha o planejamento e a execução das sprints no desenvolvimento do Serious Game para a Vivo. O projeto segue uma abordagem iterativa e incremental (Scrum), garantindo entregas contínuas e alinhadas às necessidades do parceiro. Esse processo garante engajamento da equipe e um melhor controle da execução dos requisitos, além de garantir entrega de valor tanto para a Vivo quanto para os colaboradores que utilizarão a solução.
 
-  Dificuldades Encontradas
+Para a primeira versão do jogo (MVP) elaboramos uma tela inicial com um botão interativo "Jogar".
 
-Personalização do Personagem: A maior dificuldade na primeira versão foi a implementação da personalização do personagem. Deixaremos para o próximo sprint.
+>> imagem da tela inicial
 
-  Próximos Passos
+Além disso, desenvolvemos uma cutscene (Pixel Art) para a contextualização inicial do jogo e o cenário da primeira fase (background desenvolvido no Tiled).
 
-Criação de Outras Fases: Expansão do jogo para incluir mais fases, onde o jogador avançaria na criação do currículo, enfrentando diferentes desafios e realizando tarefas relacionadas a cada parte do processo de elaboração do currículo.
-Criação das Perguntas para o Currículo: Desenvolvimento de um sistema de perguntas que guiarão o jogador na construção do currículo
+>> imagem da cutscene
+>> foto do background
 
+Definimos a movimentação do personagem principal, cuja mecânica será através das setas do teclado. A priori, utilizamos um sprite de domínio gratuito, mas almejamos personalizá-lo nos próximos passos. No MVP desenvolvido, o jogador pode controlar o avatar, movendo-o por todo o mapa do escritório.
 
+As principais dificuldades encontradas foram: a personalização do sprite do personagem principal, o desenvolvimento técnico da primeira fase do jogo e a implementação de barreiras no mapa. Os motivos dessas dificuldades são: lacunas de conhecimento técnico e identificação de falta de familiaridade com ferramentas tecnológicas que proporcionem essas funcionalidades. Por isso, decidimos deixar essas atualizações para a próxima Sprint a fim de garantir a melhor execução e qualidade dessas funções.
 
+Os próximos passos são a criação de outras fases e a criação das perguntas para o primeira fase do jogo (momento de desenvolvimento do currículo para a entrevista de emprego). Temos o objetivo de expandir o jogo para incluir mais fases, onde o jogador avançará em diferentes desafios, realizando tarefas relacionadas a cada parte do processo de candidatura para uma vaga dentro da Vivo, como solicitado no Kick-off com o parceiro. 
 
+Por fim, com a descrição fornecida e os elementos visuais indicados, é possível compreender a fase preliminar de desenvolvimento do jogo.
 
 ## 4.2. Desenvolvimento básico do jogo (sprint 2)
 
