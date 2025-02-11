@@ -71,6 +71,8 @@
 
 ## 1.2. Requisitos do Projeto (sprints 1 e 2)
 
+ No kick-off com o parceiro, realizado em 07/02/2024, a Vivo delineou os principais aspectos para o desenvolvimento do MVP. A tabela a seguir apresenta os requisitos fundamentais para a construção da solução proposta, garantindo alinhamento com as expectativas da empresa parceira.
+
 *Posicione aqui a lista de requisitos levantados para o projeto, sejam pedidos do parceiro ou invenções do grupo. Descreva-os de forma objetiva, de modo que seja possível entender claramente como implementá-los tecnicamente.*
 
 *ATUALIZE ESTA SEÇÃO SEMPRE QUE ALGUM REQUISITO MUDAR EM SEU PROJETO*
@@ -78,12 +80,14 @@
 *Exemplo de tabela de requisitos*
 \# | Requisito  
 --- | ---
-1 |  tela de abertura para o jogador começar o jogo 
-2 | movimentação utilizando as setas
-3 | jogabilidade de perguntas de sim ou não
-4 |  sistema de pontos
-5 | tempo para respostas
-6 | feedback dado com base em suas respostas
+1 | O jogo terá uma tela de abertura, onde o jogador inicia o jogo clicando em "Jogar". 
+2 | O controle do personagem será realizado usando as setas do teclado.
+3 | A primeira fase terá um ensino gamificado e dinâmico sobre elaboração inteligente de currículo através de perguntas de sim ou não.
+4 | Todas as fases terão como objetivo motivar o usuário a realizar o Job Rotation na Vivo.
+5 | Terá sistema de pontos e acúmulo de recompensas de acordo com o desempenho do jogador em cada fase do jogo para gerar motivação.
+6 | O jogo dará feedback constante do desempenho do jogador.
+7 | O jogador deve seguir as instruções dos diálogos dos NPCs para passar de fase.
+
 ## 1.3. Público-alvo do Projeto (sprint 2)
 
 *Posicione aqui uma descrição justificada do público-alvo do jogo, em termos demográficos e de preferências/gostos pessoais.*
