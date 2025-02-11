@@ -82,13 +82,13 @@
 Tabela 1
 \# | Requisito  
 --- | ---
-1 | O jogo terá uma tela de abertura, onde o jogador inicia o jogo clicando em "Jogar". 
-2 | O controle do personagem será realizado usando as setas do teclado.
-3 | A primeira fase terá um ensino gamificado e dinâmico sobre elaboração inteligente de currículo através de perguntas de sim ou não.
-4 | Todas as fases terão como objetivo motivar o usuário a realizar o Job Rotation na Vivo.
+1 | O controle do personagem será realizado usando as setas do teclado.
+2 | O jogo terá uma tela de abertura, onde o jogador inicia o jogo clicando em "Jogar". 
+3 | O jogador deve seguir as instruções dos diálogos dos NPCs para passar de fase.
+4 | A primeira fase terá um ensino gamificado e dinâmico sobre elaboração inteligente de currículo através de perguntas de sim ou não.
 5 | Terá sistema de pontos e acúmulo de recompensas de acordo com o desempenho do jogador em cada fase do jogo para gerar motivação.
 6 | O jogo dará feedback constante do desempenho do jogador.
-7 | O jogador deve seguir as instruções dos diálogos dos NPCs para passar de fase.
+7 | Todas as fases terão como objetivo motivar o usuário a realizar o Job Rotation na Vivo.
 
 ## 1.3. Público-alvo do Projeto (sprint 2)
 
