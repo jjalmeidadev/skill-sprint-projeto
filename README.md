@@ -31,16 +31,20 @@
 
 ## 📜 Descrição
 
-	Sobre a empresa:
+	
+ Sobre a empresa:
  
 A Vivo é a marca comercial da Telefônica Brasil, empresa líder em telecomunicações no País, com 115,2 milhões de acessos (3T24) e tem como propósito “Digitalizar para Aproximar”. A Vivo é um hub digital, facilitando o acesso de seus clientes a serviços em diferentes áreas, como entretenimento, esportes, energia, segurança digital, finanças, saúde e educação. Atualmente, possui cerca de 33 mil colaboradores.
-	PROBLEMA:
+
+ PROBLEMA:
  
  A Vivo tem enfrentado dificuldades em alcançar todos os seus colaboradores com programas de desenvolvimento de carreira devido à falta de uma abordagem estruturada e interativa.
-	OBJETIVO:
+	
+ OBJETIVO:
  
  Criar um jogo  que auxilie os colaboradores a navegar pelas etapas essenciais do desenvolvimento de carreira, desde a candidatura a vagas até o planejamento de crescimento e desenvolvimento contínuo. Este projeto visa criar um serious game que auxilia os colaboradores a navegar pelas etapas essenciais do desenvolvimento de carreira, desde a candidatura a vagas até o planejamento de crescimento e desenvolvimento contínuo. 
-	solução:
+	
+ solução:
  
  a nossa solução é a criação de um jogo, que mistura a “chatice” de criar um currículo com a emoção de jogar um jogo.  esperamos   Melhorar o engajamento dos colaboradores com o desenvolvimento de carreira, aumentar a eficácia dos programas de desenvolvimento e reduzir custos associados a treinamentos tradicionais
 
