@@ -6,9 +6,9 @@
 
 <br>
 
-# Nome do projeto
+# SkillSprint Game
 
-## Nome do grupo
+## SkillMakers
 
 ## 👨‍🎓 Integrantes:    
 - <a href="https://www.linkedin.com/in/mike-buchsenspaner-445a2934b/">Mike Buchsenspaner
