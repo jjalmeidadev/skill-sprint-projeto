@@ -5,7 +5,7 @@
 
 **_Os trechos em itálico servem apenas como guia para o preenchimento da seção. Por esse motivo, não devem fazer parte da documentação final_**
 
-## SkillSprint
+## SkillMakers
 
 #### Nomes dos integrantes do grupo
 
