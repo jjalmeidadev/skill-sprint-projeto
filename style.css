@@ -9,12 +9,6 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #3c414a;
+  background-color: #0099ff;
   color: white;
-}
-
-canvas {
-  display: block;
-  background-color: #3c414a;
-  border: 10px solid white;
 }
