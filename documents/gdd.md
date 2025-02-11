@@ -231,20 +231,25 @@ Figura 1: detalhe da cena da partida do herói para a missão, usando sua nave
 
 ## 4.1. Desenvolvimento preliminar do jogo (sprint 1)
 
-1. Mapa do Escritório
+  1. Mapa do Escritório
 O primeiro passo foi criar o ambiente do jogo, representando um escritório.
-
-2. Movimentação
+  2. Movimentação
 Implementação da mecânica de movimentação do personagem. O jogador pode controlar um avatar, movendo-o por todo o mapa do escritório. Para isso, foram desenvolvidas funções básicas de movimentação 
-3. Tela Inicial
+  3. Tela Inicial
 Criada uma tela inicial onde o jogador pode começar o jogo, ajustar configurações. A interface foi simples, com opções claras para o jogador navegar.
-4. Personagem
+  4. Personagem
 O personagem principal foi desenvolvido com animações básicas, como andar. A personalização, embora planejada, não foi finalizada.
-Dificuldades Encontradas
+
+  Dificuldades Encontradas
+
 Personalização do Personagem: A maior dificuldade na primeira versão foi a implementação da personalização do personagem. Deixaremos para o próximo sprint.
-Próximos Passos
+
+  Próximos Passos
+
 Criação de Outras Fases: Expansão do jogo para incluir mais fases, onde o jogador avançaria na criação do currículo, enfrentando diferentes desafios e realizando tarefas relacionadas a cada parte do processo de elaboração do currículo.
 Criação das Perguntas para o Currículo: Desenvolvimento de um sistema de perguntas que guiarão o jogador na construção do currículo
+
+
 
 
 
