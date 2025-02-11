@@ -23,10 +23,10 @@
 ### Orientador(a) 
 - <a href="https://www.linkedin.com/in/JuliaStateri/">Julia Stateri
 ### Instrutores
-- <a href="https://www.linkedin.com/in/victorbarq/">Nome do instrutor 1</a>
-- <a href="https://www.linkedin.com/in/victorbarq/">Nome do instrutor 2</a> 
-- <a href="https://www.linkedin.com/in/victorbarq/">Nome do instrutor 3</a> 
-- <a href="https://www.linkedin.com/in/victorbarq/">Nome do instrutor 4</a>
+- <a href="https://www.linkedin.com/in/kizzyterra/">Kizzy Terra</a>
+- <a href="https://www.linkedin.com/in/diogo-martins-gon%C3%A7alves-de-morais-96404732/">Diogo Martins Gonçalves de Morais</a> 
+- <a href="https://www.linkedin.com/in/fabiana-martins-de-oliveira-8993b0b2/">Fabiana Martins</a> 
+- <a href="https://www.linkedin.com/in/geraldo-magela-severino-vasconcelos-22b1b220/">Geraldo Magela Severino Vasconcelos</a>
 - <a href="https://www.linkedin.com/in/victorbarq/">Nome do instrutor 5</a> 
 
 ## 📜 Descrição
