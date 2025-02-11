@@ -72,11 +72,7 @@
 ## 1.2. Requisitos do Projeto (sprints 1 e 2)
 
  No kick-off com o parceiro, realizado em 07/02/2024, a Vivo delineou os principais aspectos para o desenvolvimento do MVP. A tabela a seguir apresenta os requisitos fundamentais para a construção da solução proposta, garantindo alinhamento com as expectativas da empresa parceira.
-
-*Posicione aqui a lista de requisitos levantados para o projeto, sejam pedidos do parceiro ou invenções do grupo. Descreva-os de forma objetiva, de modo que seja possível entender claramente como implementá-los tecnicamente.*
-
-*ATUALIZE ESTA SEÇÃO SEMPRE QUE ALGUM REQUISITO MUDAR EM SEU PROJETO*
-
+ 
 *Exemplo de tabela de requisitos*
 \# | Requisito  
 --- | ---
