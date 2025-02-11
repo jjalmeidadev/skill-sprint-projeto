@@ -5,11 +5,16 @@
 
 **_Os trechos em itálico servem apenas como guia para o preenchimento da seção. Por esse motivo, não devem fazer parte da documentação final_**
 
-## Nome do Grupo
-
+## SkillSprint Game 
+## SkillMakers
 #### Nomes dos integrantes do grupo
-
-
+- <a href="https://www.linkedin.com/in/mike-buchsenspaner-445a2934b/">Mike Buchsenspaner
+- <a href="https://www.linkedin.com/in/sophia-hochman-b821a4346/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app">Sophia Hochman
+- <a href="https://www.linkedin.com/in/jaime-andrade-de-almeida-0777ba2a5/">Jaime Andrade de Almeida
+- <a href="https://www.linkedin.com/in/anneestherlf?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app">Anne Esther Lins Figueirôa
+- <a href="https://www.linkedin.com/in/marcela-costa-844b42338/)"> Marcela Amorim da Costa
+- <a href="https://www.linkedin.com/in/arthur-marques-5b1080346?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app)">Arthur Marques
+- <a href="https://www.linkedin.com/in/victorbarq/">Lucas Carvalho dos Ramos
 
 ## Sumário
 
@@ -70,19 +75,19 @@
 
 ## 1.2. Requisitos do Projeto (sprints 1 e 2)
 
-*Posicione aqui a lista de requisitos levantados para o projeto, sejam pedidos do parceiro ou invenções do grupo. Descreva-os de forma objetiva, de modo que seja possível entender claramente como implementá-los tecnicamente.*
-
-*ATUALIZE ESTA SEÇÃO SEMPRE QUE ALGUM REQUISITO MUDAR EM SEU PROJETO*
-
-*Exemplo de tabela de requisitos*
+ No kick-off com o parceiro, realizado em 07/02/2024, a Vivo delineou os principais aspectos para o desenvolvimento do MVP. A Tabela 1 a seguir apresenta os requisitos fundamentais para a construção da solução proposta, garantindo alinhamento com as expectativas da empresa parceira.
+ 
+Tabela 1
 \# | Requisito  
 --- | ---
-1 |  tela de abertura para o jogador começar o jogo 
-2 | movimentação utilizando as setas
-3 | jogabilidade de perguntas de sim ou não
-4 |  sistema de pontos
-5 | tempo para respostas
-6 | feedback dado com base em suas respostas
+R01 | O controle do personagem será realizado usando as setas do teclado.
+R02 | O jogo terá uma tela de abertura, onde o jogador inicia o jogo clicando em "Jogar". 
+R03 | O jogador deve seguir as instruções dos diálogos dos NPCs para passar de fase.
+R04 | A primeira fase terá um ensino dinâmico sobre elaboração inteligente de currículo através de perguntas de sim ou não.
+R05 | Terá sistema de pontos e acúmulo de recompensas de acordo com o desempenho do jogador em cada fase do jogo para gerar motivação.
+R06 | O jogo dará feedback constante do desempenho do jogador.
+R07 | Todas as fases terão como objetivo motivar o usuário a realizar o Job Rotation na Vivo.
+
 ## 1.3. Público-alvo do Projeto (sprint 2)
 
 *Posicione aqui uma descrição justificada do público-alvo do jogo, em termos demográficos e de preferências/gostos pessoais.*
@@ -230,7 +235,24 @@ Figura 1: detalhe da cena da partida do herói para a missão, usando sua nave
 
 ## 4.1. Desenvolvimento preliminar do jogo (sprint 1)
 
-*Descreva e ilustre aqui o desenvolvimento da sua primeira versão do jogo, explicando brevemente o que foi entregue em termos de código e jogo. Utilize prints de tela para ilustrar. Indique as eventuais dificuldades e próximos passos.*
+Essa seção detalha o planejamento e a execução das sprints no desenvolvimento do Serious Game para a Vivo. O projeto segue uma abordagem iterativa e incremental (Scrum), garantindo entregas contínuas e alinhadas às necessidades do parceiro. Esse processo garante engajamento da equipe e um melhor controle da execução dos requisitos, além de garantir entrega de valor tanto para a Vivo quanto para os colaboradores que utilizarão a solução.
+
+Para a primeira versão do jogo (MVP) elaboramos uma tela inicial com um botão interativo "Jogar".
+
+>> imagem da tela inicial
+
+Além disso, desenvolvemos uma cutscene (Pixel Art) para a contextualização inicial do jogo e o cenário da primeira fase (background desenvolvido no Tiled).
+
+>> imagem da cutscene
+>> foto do background
+
+Definimos a movimentação do personagem principal, cuja mecânica será através das setas do teclado. A priori, utilizamos um sprite de domínio gratuito, mas almejamos personalizá-lo nos próximos passos. No MVP desenvolvido, o jogador pode controlar o avatar, movendo-o por todo o mapa do escritório.
+
+As principais dificuldades encontradas foram: a personalização do sprite do personagem principal, o desenvolvimento técnico da primeira fase do jogo e a implementação de barreiras no mapa. Os motivos dessas dificuldades são: lacunas de conhecimento técnico e identificação de falta de familiaridade com ferramentas tecnológicas que proporcionem essas funcionalidades. Por isso, decidimos deixar essas atualizações para a próxima Sprint a fim de garantir a melhor execução e qualidade dessas funções.
+
+Os próximos passos são a criação de outras fases e a criação das perguntas para o primeira fase do jogo (momento de desenvolvimento do currículo para a entrevista de emprego). Temos o objetivo de expandir o jogo para incluir mais fases, onde o jogador avançará em diferentes desafios, realizando tarefas relacionadas a cada parte do processo de candidatura para uma vaga dentro da Vivo, como solicitado no Kick-off com o parceiro. 
+
+Por fim, com a descrição fornecida e os elementos visuais indicados, é possível compreender a fase preliminar de desenvolvimento do jogo.
 
 ## 4.2. Desenvolvimento básico do jogo (sprint 2)
 
