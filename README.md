@@ -6,7 +6,7 @@
 
 <br>
 
-# SkillSprint Game
+# Skill Sprint Game
 
 ## SkillMakers
 
