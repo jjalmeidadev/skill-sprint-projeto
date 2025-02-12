@@ -31,26 +31,8 @@
 
 ## 📜 Descrição
 
-	
- Sobre a empresa:
- 
-A Vivo é a marca comercial da Telefônica Brasil, empresa líder em telecomunicações no País, com 115,2 milhões de acessos (3T24) e tem como propósito “Digitalizar para Aproximar”. A Vivo é um hub digital, facilitando o acesso de seus clientes a serviços em diferentes áreas, como entretenimento, esportes, energia, segurança digital, finanças, saúde e educação. Atualmente, possui cerca de 33 mil colaboradores.
-
- PROBLEMA:
- 
- A Vivo tem enfrentado dificuldades em alcançar todos os seus colaboradores com programas de desenvolvimento de carreira devido à falta de uma abordagem estruturada e interativa.
-	
- OBJETIVO:
- 
- Criar um jogo  que auxilie os colaboradores a navegar pelas etapas essenciais do desenvolvimento de carreira, desde a candidatura a vagas até o planejamento de crescimento e desenvolvimento contínuo. Este projeto visa criar um serious game que auxilia os colaboradores a navegar pelas etapas essenciais do desenvolvimento de carreira, desde a candidatura a vagas até o planejamento de crescimento e desenvolvimento contínuo. 
-	
- solução:
- 
- a nossa solução é a criação de um jogo, que mistura a “chatice” de criar um currículo com a emoção de jogar um jogo.  esperamos   Melhorar o engajamento dos colaboradores com o desenvolvimento de carreira, aumentar a eficácia dos programas de desenvolvimento e reduzir custos associados a treinamentos tradicionais
-
-
-*Inclua o link para o jogo aqui*
-
+A Vivo tem enfrentado dificuldades em alcançar todos os seus colaboradores com programas de desenvolvimento de carreira devido à falta de uma abordagem estruturada e interativa. SkillSprint é um serious game desenvolvido para tornar o desenvolvimento de carreira na empresa mais acessível, interativo e envolvente. Através de desafios dinâmicos, os colaboradores exploram diferentes etapas do crescimento profissional, desde a candidatura a vagas até o planejamento contínuo de desenvolvimento. O jogo incentiva a prática do job rotation, permitindo que os colaboradores conheçam novas áreas e ampliem suas habilidades, promovendo um aprendizado contínuo e um maior alinhamento com os valores e oportunidades dentro da empresa. Com essa abordagem imersiva, buscamos transformar um processo tradicionalmente burocrático em uma experiência envolvente, aumentando a adesão aos programas de capacitação, fortalecendo a cultura de mobilidade interna e impulsionando um crescimento profissional constante. Esperamos melhorar o engajamento dos colaboradores com o desenvolvimento de carreira, aumentar a eficácia dos programas de desenvolvimento e reduzir custos associados a treinamentos tradicionais.
+Acesse o jogo <a href="https://inteli-college.github.io/2025-1A-T18-IN01-G03/src/index.html/">aqui</a>.
 
 ## 📁 Estrutura de pastas
 
