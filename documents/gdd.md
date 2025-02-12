@@ -81,8 +81,8 @@ Tabela 1
 \# | Requisito  
 --- | ---
 R01 | O controle do personagem será realizado usando as setas do teclado.
-R02 | O jogo iniciará com uma cut scene, onde será contado o contexto do jogo.
-R03 | O jogo terá uma tela de abertura, onde o jogador inicia clicando em "Jogar". 
+R02 | O jogo terá uma tela de abertura, onde o jogador inicia clicando em "Jogar". 
+R03 | O jogo iniciará com uma cutscene, onde serão ilustrados o contexto e a ambientação inicial do jogo.
 R04 | O jogador deve seguir as instruções dos diálogos dos NPCs para passar de fase.
 R05 | A primeira tela de jogabilidade será um escritório onde o jogador realizará suas primeiras interações no jogo.
 R06 | A primeira fase terá um ensino dinâmico sobre elaboração inteligente de currículo através de perguntas de sim ou não.
@@ -248,9 +248,9 @@ Além disso, desenvolvemos uma cutscene (Pixel Art) para a contextualização in
 >> imagem da cutscene
 >> foto do background
 
-Definimos a movimentação do personagem principal, cuja mecânica será através das setas do teclado. A priori, utilizamos um sprite de domínio gratuito, mas almejamos personalizá-lo nos próximos passos. No MVP desenvolvido, o jogador pode controlar o avatar, movendo-o por todo o mapa do escritório.
+Definimos a movimentação do personagem principal, cuja mecânica será através das setas do teclado. A priori, utilizamos um spritesheet de domínio gratuito, mas almejamos personalizá-lo nos próximos passos. No MVP desenvolvido, o jogador pode controlar o avatar, movendo-o por todo o mapa do escritório.
 
-As principais dificuldades encontradas foram: a personalização do sprite do personagem principal, o desenvolvimento técnico da primeira fase do jogo e a implementação de barreiras no mapa. Os motivos dessas dificuldades são: lacunas de conhecimento técnico e identificação de falta de familiaridade com ferramentas tecnológicas que proporcionem essas funcionalidades. Por isso, decidimos deixar essas atualizações para a próxima Sprint a fim de garantir a melhor execução e qualidade dessas funções.
+As principais dificuldades encontradas foram: a personalização do spritesheet do personagem principal, o desenvolvimento técnico da primeira fase do jogo e a implementação de barreiras no mapa. Os motivos dessas dificuldades são: lacunas de conhecimento técnico e identificação de falta de familiaridade com ferramentas tecnológicas que proporcionem essas funcionalidades. Por isso, decidimos deixar essas atualizações para a próxima Sprint a fim de garantir a melhor execução e qualidade dessas funções.
 
 Os próximos passos são a criação de outras fases e a criação das perguntas para o primeira fase do jogo (momento de desenvolvimento do currículo para a entrevista de emprego). Temos o objetivo de expandir o jogo para incluir mais fases, onde o jogador avançará em diferentes desafios, realizando tarefas relacionadas a cada parte do processo de candidatura para uma vaga dentro da Vivo, como solicitado no Kick-off com o parceiro. 
 
