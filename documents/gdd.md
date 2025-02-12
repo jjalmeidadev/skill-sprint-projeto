@@ -85,10 +85,8 @@ R02 | O jogo terá uma tela de abertura, onde o jogador inicia clicando em "Joga
 R03 | O jogo iniciará com uma cutscene, onde serão ilustrados o contexto e a ambientação inicial do jogo.
 R04 | O jogador deve seguir as instruções dos diálogos dos NPCs para passar de fase.
 R05 | A primeira tela de jogabilidade será um escritório onde o jogador realizará suas primeiras interações no jogo.
-R06 | A primeira fase terá um ensino dinâmico sobre elaboração inteligente de currículo através de perguntas de sim ou não.
-R07 | Terá sistema de pontos e acúmulo de recompensas de acordo com o desempenho do jogador em cada fase do jogo para gerar motivação.
-R08 | O jogo dará feedback constante do desempenho do jogador.
-R09 | Todas as fases terão como objetivo motivar o usuário a realizar o Job Rotation na Vivo.
+R06 | A primeira fase terá um ensino dinâmico sobre elaboração de currículo.
+R07 | Todas as fases terão como objetivo motivar o usuário a realizar o Job Rotation na Vivo.
 
 ## 1.3. Público-alvo do Projeto (sprint 2)
 
