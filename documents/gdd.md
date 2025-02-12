@@ -244,7 +244,8 @@ Para a primeira versão do jogo (MVP) elaboramos uma tela inicial com um botão 
 Além disso, desenvolvemos uma cutscene (Pixel Art) para a contextualização inicial do jogo e o cenário da primeira fase (background desenvolvido no Tiled).
 
 >> imagem da cutscene
->> foto do background
+
+![Image](https://github.com/user-attachments/assets/9313ccf8-1659-4512-9d6f-0786efb2f97f)
 
 Definimos a movimentação do personagem principal, cuja mecânica será através das setas do teclado. A priori, utilizamos um spritesheet de domínio gratuito, mas almejamos personalizá-lo nos próximos passos. No MVP desenvolvido, o jogador pode controlar o avatar, movendo-o por todo o mapa do escritório.
 
