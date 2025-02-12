@@ -81,12 +81,14 @@ Tabela 1
 \# | Requisito  
 --- | ---
 R01 | O controle do personagem será realizado usando as setas do teclado.
-R02 | O jogo terá uma tela de abertura, onde o jogador inicia o jogo clicando em "Jogar". 
-R03 | O jogador deve seguir as instruções dos diálogos dos NPCs para passar de fase.
-R04 | A primeira fase terá um ensino dinâmico sobre elaboração inteligente de currículo através de perguntas de sim ou não.
-R05 | Terá sistema de pontos e acúmulo de recompensas de acordo com o desempenho do jogador em cada fase do jogo para gerar motivação.
-R06 | O jogo dará feedback constante do desempenho do jogador.
-R07 | Todas as fases terão como objetivo motivar o usuário a realizar o Job Rotation na Vivo.
+R02 | O jogo iniciará com uma cut scene, onde será contado o contexto do jogo.
+R03 | O jogo terá uma tela de abertura, onde o jogador inicia clicando em "Jogar". 
+R04 | O jogador deve seguir as instruções dos diálogos dos NPCs para passar de fase.
+R05 | A primeira tela de jogabilidade será um escritório onde o jogador realizará suas primeiras interações no jogo.
+R06 | A primeira fase terá um ensino dinâmico sobre elaboração inteligente de currículo através de perguntas de sim ou não.
+R07 | Terá sistema de pontos e acúmulo de recompensas de acordo com o desempenho do jogador em cada fase do jogo para gerar motivação.
+R08 | O jogo dará feedback constante do desempenho do jogador.
+R09 | Todas as fases terão como objetivo motivar o usuário a realizar o Job Rotation na Vivo.
 
 ## 1.3. Público-alvo do Projeto (sprint 2)
 
