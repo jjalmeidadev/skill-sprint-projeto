@@ -235,9 +235,9 @@ Figura 1: detalhe da cena da partida do herói para a missão, usando sua nave
 
 # <a name="c4"></a>4. Desenvolvimento do Jogo
 
-## 4.1. Desenvolvimento preliminar do jogo (sprint 1)
-
 Essa seção detalha o planejamento e a execução das sprints no desenvolvimento do Serious Game para a Vivo. O projeto segue uma abordagem iterativa e incremental (Scrum), garantindo entregas contínuas e alinhadas às necessidades do parceiro. Esse processo garante engajamento da equipe e um melhor controle da execução dos requisitos, além de garantir entrega de valor tanto para a Vivo quanto para os colaboradores que utilizarão a solução.
+
+## 4.1. Desenvolvimento preliminar do jogo (sprint 1)
 
 Para a primeira versão do jogo (MVP) elaboramos uma tela inicial com um botão interativo "Jogar".
 
