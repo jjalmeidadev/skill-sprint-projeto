@@ -1,8 +1,35 @@
 const startScreen = document.getElementById('startScreen');
 const startButton = document.getElementById('startButton');
+const videoContainer = document.createElement('div');
+const videoElement = document.createElement('video');
+
+videoElement.src = 'assets/cutsceneVivo.mp4';
+videoElement.controls = false;
+videoElement.autoplay = false;
+videoElement.style.width = '100%';
+videoElement.style.height = '100%';
+videoElement.style.position = 'absolute';
+videoElement.style.top = '0';
+videoElement.style.left = '0';
+
+videoContainer.style.position = 'fixed';
+videoContainer.style.width = '100%';
+videoContainer.style.height = '100%';
+videoContainer.style.top = '0';
+videoContainer.style.left = '0';
+videoContainer.style.zIndex = '1000';
+videoContainer.style.display = 'none';
+videoContainer.appendChild(videoElement);
+document.body.appendChild(videoContainer);
 
 startButton.addEventListener('click', () => {
   startScreen.style.display = 'none';
+  videoContainer.style.display = 'block';
+  videoElement.play();
+});
+
+videoElement.addEventListener('ended', () => {
+  videoContainer.style.display = 'none';
   startGame();
 });
 
