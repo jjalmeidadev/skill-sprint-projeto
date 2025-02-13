@@ -243,7 +243,7 @@ Para a primeira versão do jogo (MVP) elaboramos uma tela inicial com um botão 
 
 Além disso, desenvolvemos uma cutscene em Pixel Art para apresentar o contexto e a ambientação inicial do jogo (R03). Essa introdução visa situar o jogador antes do início da jogabilidade. 
 
->> imagem da cutscene
+![Image](https://github.com/user-attachments/assets/ad075642-151c-46b8-87cb-915dba6b7849)
 
 A primeira fase foi estruturada com um cenário de escritório (R05), onde o jogador pode explorar o ambiente e, em planos futuros, poderá interagir com elementos disponíveis. As interações com NPCs e a execução de tarefas orientadas pelo jogo (R04) serão aprofundadas nas próximas etapas do desenvolvimento, conforme planejado. Para a movimentação do personagem, definimos a mecânica de controle utilizando as setas do teclado (R01), permitindo que o jogador navegue livremente pelo mapa. Para isso, utilizamos um spritesheet de domínio gratuito, com planos de personalização em futuras atualizações.
 
