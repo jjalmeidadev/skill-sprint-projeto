@@ -239,8 +239,7 @@ Essa seção detalha o planejamento e a execução das sprints no desenvolviment
 
 Para a primeira versão do jogo (MVP) elaboramos uma tela inicial com um botão interativo "Jogar" (R02), permitindo que o jogador inicie a experiência ao clicar no botão.
 
-[>> imagem da tela inicial](https://github.com/Inteli-College/2025-1A-T18-IN01-G03/issues/3#issue-2851659800)
-
+![Image](https://github.com/user-attachments/assets/a8f980bb-04ef-4156-b8bb-ef3e7489e02d)
 Além disso, desenvolvemos uma cutscene em Pixel Art para apresentar o contexto e a ambientação inicial do jogo (R03). Essa introdução visa situar o jogador antes do início da jogabilidade. 
 
 ![Image](https://github.com/user-attachments/assets/ad075642-151c-46b8-87cb-915dba6b7849)
