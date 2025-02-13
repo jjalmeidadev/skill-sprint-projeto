@@ -237,21 +237,20 @@ Essa seção detalha o planejamento e a execução das sprints no desenvolviment
 
 ## 4.1. Desenvolvimento preliminar do jogo (sprint 1)
 
-Para a primeira versão do jogo (MVP) elaboramos uma tela inicial com um botão interativo "Jogar".
+Para a primeira versão do jogo (MVP) elaboramos uma tela inicial com um botão interativo "Jogar" (R02), permitindo que o jogador inicie a experiência ao clicar no botão.
 
->> imagem da tela inicial
+![Image](https://github.com/user-attachments/assets/0996cf85-6f8d-4d1c-b206-5c5c2080b520)
+Além disso, desenvolvemos uma cutscene em Pixel Art para apresentar o contexto e a ambientação inicial do jogo (R03). Essa introdução visa situar o jogador antes do início da jogabilidade. 
 
-Além disso, desenvolvemos uma cutscene (Pixel Art) para a contextualização inicial do jogo e o cenário da primeira fase (background desenvolvido no Tiled).
+![Image](https://github.com/user-attachments/assets/ad075642-151c-46b8-87cb-915dba6b7849)
 
->> imagem da cutscene
+A primeira fase foi estruturada com um cenário de escritório (R05), onde o jogador pode explorar o ambiente e, em planos futuros, poderá interagir com elementos disponíveis. As interações com NPCs e a execução de tarefas orientadas pelo jogo (R04) serão aprofundadas nas próximas etapas do desenvolvimento, conforme planejado. Para a movimentação do personagem, definimos a mecânica de controle utilizando as setas do teclado (R01), permitindo que o jogador navegue livremente pelo mapa. Para isso, utilizamos um spritesheet de domínio gratuito, com planos de personalização em futuras atualizações.
 
 ![Image](https://github.com/user-attachments/assets/9313ccf8-1659-4512-9d6f-0786efb2f97f)
 
-Definimos a movimentação do personagem principal, cuja mecânica será através das setas do teclado. A priori, utilizamos um spritesheet de domínio gratuito, mas almejamos personalizá-lo nos próximos passos. No MVP desenvolvido, o jogador pode controlar o avatar, movendo-o por todo o mapa do escritório.
+As principais dificuldades encontradas foram: a personalização do spritesheet do personagem principal, o desenvolvimento técnico da primeira fase do jogo e a implementação de barreiras no mapa. Os motivos dessas dificuldades são: lacunas de conhecimento técnico e identificação de falta de familiaridade com ferramentas tecnológicas que proporcionem essas funcionalidades. Por isso, decidimos postergar essas melhorias para a próxima Sprint, garantindo uma melhor execução dessas funções.
 
-As principais dificuldades encontradas foram: a personalização do spritesheet do personagem principal, o desenvolvimento técnico da primeira fase do jogo e a implementação de barreiras no mapa. Os motivos dessas dificuldades são: lacunas de conhecimento técnico e identificação de falta de familiaridade com ferramentas tecnológicas que proporcionem essas funcionalidades. Por isso, decidimos deixar essas atualizações para a próxima Sprint a fim de garantir a melhor execução e qualidade dessas funções.
-
-Os próximos passos são a criação de outras fases e a criação das perguntas para o primeira fase do jogo (momento de desenvolvimento do currículo para a entrevista de emprego). Temos o objetivo de expandir o jogo para incluir mais fases, onde o jogador avançará em diferentes desafios, realizando tarefas relacionadas a cada parte do processo de candidatura para uma vaga dentro da Vivo, como solicitado no Kick-off com o parceiro. 
+Os próximos passos incluem a criação de novas fases e o desenvolvimento de dinâmicas para a primeira fase, focadas no processo de elaboração do currículo para uma entrevista de emprego (R06). Com isso, buscamos manter o alinhamento com o objetivo central do jogo, que é motivar os colaboradores a realizarem o Job Rotation na Vivo (R07), como foi solicitado no Kick-off com o parceiro.
 
 Por fim, com a descrição fornecida e os elementos visuais indicados, é possível compreender a fase preliminar de desenvolvimento do jogo.
 
