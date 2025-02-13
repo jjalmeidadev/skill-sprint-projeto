@@ -6,7 +6,7 @@
 
 <br>
 
-# SkillSprint Game
+# Skill Sprint Game
 
 ## SkillMakers
 
@@ -31,26 +31,8 @@
 
 ## 📜 Descrição
 
-	
- Sobre a empresa:
- 
-A Vivo é a marca comercial da Telefônica Brasil, empresa líder em telecomunicações no País, com 115,2 milhões de acessos (3T24) e tem como propósito “Digitalizar para Aproximar”. A Vivo é um hub digital, facilitando o acesso de seus clientes a serviços em diferentes áreas, como entretenimento, esportes, energia, segurança digital, finanças, saúde e educação. Atualmente, possui cerca de 33 mil colaboradores.
-
- PROBLEMA:
- 
- A Vivo tem enfrentado dificuldades em alcançar todos os seus colaboradores com programas de desenvolvimento de carreira devido à falta de uma abordagem estruturada e interativa.
-	
- OBJETIVO:
- 
- Criar um jogo  que auxilie os colaboradores a navegar pelas etapas essenciais do desenvolvimento de carreira, desde a candidatura a vagas até o planejamento de crescimento e desenvolvimento contínuo. Este projeto visa criar um serious game que auxilia os colaboradores a navegar pelas etapas essenciais do desenvolvimento de carreira, desde a candidatura a vagas até o planejamento de crescimento e desenvolvimento contínuo. 
-	
- solução:
- 
- a nossa solução é a criação de um jogo, que mistura a “chatice” de criar um currículo com a emoção de jogar um jogo.  esperamos   Melhorar o engajamento dos colaboradores com o desenvolvimento de carreira, aumentar a eficácia dos programas de desenvolvimento e reduzir custos associados a treinamentos tradicionais
-
-
-*Inclua o link para o jogo aqui*
-
+A Vivo tem enfrentado dificuldades em alcançar todos os seus colaboradores com programas de desenvolvimento de carreira devido à falta de uma abordagem estruturada e interativa. SkillSprint é um serious game desenvolvido para tornar o desenvolvimento de carreira na empresa mais acessível, interativo e envolvente. Através de desafios dinâmicos, os colaboradores exploram diferentes etapas do crescimento profissional, desde a candidatura a vagas até o planejamento contínuo de desenvolvimento. O jogo incentiva a prática do job rotation, permitindo que os colaboradores conheçam novas áreas e ampliem suas habilidades, promovendo um aprendizado contínuo e um maior alinhamento com os valores e oportunidades dentro da empresa. Com essa abordagem imersiva, buscamos transformar um processo tradicionalmente burocrático em uma experiência envolvente, aumentando a adesão aos programas de capacitação, fortalecendo a cultura de mobilidade interna e impulsionando um crescimento profissional constante. Esperamos melhorar o engajamento dos colaboradores com o desenvolvimento de carreira, aumentar a eficácia dos programas de desenvolvimento e reduzir custos associados a treinamentos tradicionais.
+Acesse o jogo <a href="https://inteli-college.github.io/2025-1A-T18-IN01-G03/src/index.html/">aqui</a>.
 
 ## 📁 Estrutura de pastas
 
@@ -84,7 +66,7 @@ Dentre os arquivos e pastas presentes na raiz do projeto, definem-se:
 
 ## 📋 Licença/License
 
-<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"><p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><a property="dct:title" rel="cc:attributionURL" href="https://github.com/Intelihub/Template_M1">MODELO GIT INTELI</a> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://github.com/Intelihub/Template_M1">Inteli, Nome do integrante 1, Nome do integrante 2, Nome do integrante 3, Nome do integrante 4, Nome do integrante 5, Nome do integrante 6, Nome do integrante 7</a> is licensed under <a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">Attribution 4.0 International</a>.</p>
+<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"><p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><a property="dct:title" rel="cc:attributionURL" href="https://github.com/Intelihub/Template_M1">SkillSprint</a> by <a href="https://www.linkedin.com/in/mike-buchsenspaner-445a2934b/">Mike Buchsenspaner, <a href="https://www.linkedin.com/in/sophia-hochman-b821a4346/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app">Sophia Hochman, <a href="https://www.linkedin.com/in/jaime-andrade-de-almeida-0777ba2a5/">Jaime Andrade de Almeida, <a href="https://www.linkedin.com/in/anneestherlf?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app">Anne Esther Lins Figueirôa, <a href="https://www.linkedin.com/in/marcela-costa-844b42338/)"> Marcela Amorim da Costa, <a href="https://www.linkedin.com/in/arthur-marques-5b1080346?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app)">Arthur Marques, <a href="https://www.linkedin.com/in/victorbarq/">Lucas Carvalho dos Ramos </a> is licensed under <a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">Attribution 4.0 International</a>.</p>
 
 
 >>>>>>> bcaee4855c78d65ee94a42c6b57ba49b4e9d22e0

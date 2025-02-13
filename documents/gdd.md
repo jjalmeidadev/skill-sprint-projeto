@@ -81,14 +81,12 @@ Tabela 1
 \# | Requisito  
 --- | ---
 R01 | O controle do personagem será realizado usando as setas do teclado.
-R02 | O jogo iniciará com uma cut scene, onde será contado o contexto do jogo.
-R03 | O jogo terá uma tela de abertura, onde o jogador inicia clicando em "Jogar". 
+R02 | O jogo terá uma tela de abertura, onde o jogador inicia clicando em "Jogar". 
+R03 | O jogo iniciará com uma cutscene, onde serão ilustrados o contexto e a ambientação inicial do jogo.
 R04 | O jogador deve seguir as instruções dos diálogos dos NPCs para passar de fase.
 R05 | A primeira tela de jogabilidade será um escritório onde o jogador realizará suas primeiras interações no jogo.
-R06 | A primeira fase terá um ensino dinâmico sobre elaboração inteligente de currículo através de perguntas de sim ou não.
-R07 | Terá sistema de pontos e acúmulo de recompensas de acordo com o desempenho do jogador em cada fase do jogo para gerar motivação.
-R08 | O jogo dará feedback constante do desempenho do jogador.
-R09 | Todas as fases terão como objetivo motivar o usuário a realizar o Job Rotation na Vivo.
+R06 | A primeira fase terá um ensino dinâmico sobre elaboração de currículo.
+R07 | Todas as fases terão como objetivo motivar o usuário a realizar o Job Rotation na Vivo.
 
 ## 1.3. Público-alvo do Projeto (sprint 2)
 
@@ -235,24 +233,24 @@ Figura 1: detalhe da cena da partida do herói para a missão, usando sua nave
 
 # <a name="c4"></a>4. Desenvolvimento do Jogo
 
-## 4.1. Desenvolvimento preliminar do jogo (sprint 1)
-
 Essa seção detalha o planejamento e a execução das sprints no desenvolvimento do Serious Game para a Vivo. O projeto segue uma abordagem iterativa e incremental (Scrum), garantindo entregas contínuas e alinhadas às necessidades do parceiro. Esse processo garante engajamento da equipe e um melhor controle da execução dos requisitos, além de garantir entrega de valor tanto para a Vivo quanto para os colaboradores que utilizarão a solução.
 
-Para a primeira versão do jogo (MVP) elaboramos uma tela inicial com um botão interativo "Jogar".
+## 4.1. Desenvolvimento preliminar do jogo (sprint 1)
 
->> imagem da tela inicial
+Para a primeira versão do jogo (MVP) elaboramos uma tela inicial com um botão interativo "Jogar" (R02), permitindo que o jogador inicie a experiência ao clicar no botão.
 
-Além disso, desenvolvemos uma cutscene (Pixel Art) para a contextualização inicial do jogo e o cenário da primeira fase (background desenvolvido no Tiled).
+![Image](https://github.com/user-attachments/assets/0996cf85-6f8d-4d1c-b206-5c5c2080b520)
+Além disso, desenvolvemos uma cutscene em Pixel Art para apresentar o contexto e a ambientação inicial do jogo (R03). Essa introdução visa situar o jogador antes do início da jogabilidade. 
 
->> imagem da cutscene
->> foto do background
+![Image](https://github.com/user-attachments/assets/ad075642-151c-46b8-87cb-915dba6b7849)
 
-Definimos a movimentação do personagem principal, cuja mecânica será através das setas do teclado. A priori, utilizamos um sprite de domínio gratuito, mas almejamos personalizá-lo nos próximos passos. No MVP desenvolvido, o jogador pode controlar o avatar, movendo-o por todo o mapa do escritório.
+A primeira fase foi estruturada com um cenário de escritório (R05), onde o jogador pode explorar o ambiente e, em planos futuros, poderá interagir com elementos disponíveis. As interações com NPCs e a execução de tarefas orientadas pelo jogo (R04) serão aprofundadas nas próximas etapas do desenvolvimento, conforme planejado. Para a movimentação do personagem, definimos a mecânica de controle utilizando as setas do teclado (R01), permitindo que o jogador navegue livremente pelo mapa. Para isso, utilizamos um spritesheet de domínio gratuito, com planos de personalização em futuras atualizações.
 
-As principais dificuldades encontradas foram: a personalização do sprite do personagem principal, o desenvolvimento técnico da primeira fase do jogo e a implementação de barreiras no mapa. Os motivos dessas dificuldades são: lacunas de conhecimento técnico e identificação de falta de familiaridade com ferramentas tecnológicas que proporcionem essas funcionalidades. Por isso, decidimos deixar essas atualizações para a próxima Sprint a fim de garantir a melhor execução e qualidade dessas funções.
+![Image](https://github.com/user-attachments/assets/9313ccf8-1659-4512-9d6f-0786efb2f97f)
 
-Os próximos passos são a criação de outras fases e a criação das perguntas para o primeira fase do jogo (momento de desenvolvimento do currículo para a entrevista de emprego). Temos o objetivo de expandir o jogo para incluir mais fases, onde o jogador avançará em diferentes desafios, realizando tarefas relacionadas a cada parte do processo de candidatura para uma vaga dentro da Vivo, como solicitado no Kick-off com o parceiro. 
+As principais dificuldades encontradas foram: a personalização do spritesheet do personagem principal, o desenvolvimento técnico da primeira fase do jogo e a implementação de barreiras no mapa. Os motivos dessas dificuldades são: lacunas de conhecimento técnico e identificação de falta de familiaridade com ferramentas tecnológicas que proporcionem essas funcionalidades. Por isso, decidimos postergar essas melhorias para a próxima Sprint, garantindo uma melhor execução dessas funções.
+
+Os próximos passos incluem a criação de novas fases e o desenvolvimento de dinâmicas para a primeira fase, focadas no processo de elaboração do currículo para uma entrevista de emprego (R06). Com isso, buscamos manter o alinhamento com o objetivo central do jogo, que é motivar os colaboradores a realizarem o Job Rotation na Vivo (R07), como foi solicitado no Kick-off com o parceiro.
 
 Por fim, com a descrição fornecida e os elementos visuais indicados, é possível compreender a fase preliminar de desenvolvimento do jogo.
 

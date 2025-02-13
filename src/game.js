@@ -42,7 +42,7 @@ function startGame() {
       default: 'arcade',
       arcade: {
         gravity: { y: 0 },
-        debug: false
+        debug: false,
       }
     },
     scene: {
@@ -52,12 +52,12 @@ function startGame() {
     }
   };
 
-  const game = new Phaser.Game(config);
+  var game = new Phaser.Game(config);
 
   function preload() {
     // Carrega uma imagem de fundo de alta qualidade
-    this.load.image('background', 'assets/mapaJogoVivo.png');
-    this.load.spritesheet('player', 'assets/Player.png', { frameWidth: 32, frameHeight: 32 });
+    this.load.image('background', '../assets/mapaJogoVivo.png');
+    this.load.spritesheet('player', '../assets/Player.png', { frameWidth: 32, frameHeight: 32 });
   }
 
   function create() {
