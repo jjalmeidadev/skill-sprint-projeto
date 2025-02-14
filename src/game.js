@@ -3,7 +3,7 @@ const startButton = document.getElementById('startButton');
 const videoContainer = document.createElement('div');
 const videoElement = document.createElement('video');
 
-videoElement.src = 'assets/cutsceneVivo.mp4';
+videoElement.src = '../assets/cutsceneVivo.mp4';
 videoElement.controls = false;
 videoElement.autoplay = false;
 videoElement.style.width = '100%';
