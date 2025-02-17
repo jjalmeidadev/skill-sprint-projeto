@@ -146,6 +146,14 @@ R07 | Todas as fases terão como objetivo motivar o usuário a realizar o Job Ro
 
 ### 3.2.3. Diversidade e Representatividade dos Personagens
 
+No momento inicial de desenvolvimento do jogo, planejamos implementar um só personagem a fim de testarmos suas funcionalidades em si, as quais julgamos ser essenciais para nosso progresso. Quando melhor encaminhados, possuímos o objetivo de abranger a todas as etnias e características que compõem os grupos da população brasileira e, por consequência, a VIVO como negócio. Esta meta inclui representar populações numerosas e minorizadas de origens afro-descendentes (55,5% dos brasileiros), amarelas (0,4%) e indígenas (0,8%), além de de diferentes faixas etárias, gêneros (mulheres compõem 51,5%) e condições de saúde (surdez, cegos, membros amputados e formas de paralisia, por exemplo) sendo na customização de players (com traços e cosméticos) ou na composição de NPCs que façam parte das interações ao longo da jornada do "colaborador" nas fases.
+Este plano se alinha com o foco da VIVO em formar um coletivo de colaboradores diversos, de maneira à fornecer oportunidades aos mais variados grupos em aspectos como desenvolvimento corporativo e atuação na sociedade através de seus amplos setores. Portanto, configura um fator essencial a ser trabalhado a fim de retratar a composição da empresa em um jogo.
+O impacto proveniente de tal atenção ao design seria o de possibilitar o sentimento de pertencimento que os profissionais da VIVO teriam com a gameplay com uma representatividade tão ampla e precisamente pensada.
+
+Dados retirados do IBGE e UFRN em 17/02/2025.
+
+
+
 Considerando as personagens do game, analise se estas estão alinhadas ao público-alvo do jogo (seção 1.3), e compare-as dentro da realidade da sociedade brasileira. Por fim, discorra sobre qual é o impacto esperado da escolha dessas personagens.
 
 ## 3.3. Mundo do jogo (sprints 2 e 3)
