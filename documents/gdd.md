@@ -85,10 +85,13 @@ R02 | O jogo terá uma tela de abertura, onde o jogador inicia clicando em "Joga
 R03 | O jogo iniciará com uma cutscene, onde serão ilustrados o contexto e a ambientação inicial do jogo.
 R04 | O jogador deve seguir as instruções dos diálogos dos NPCs para passar de fase.
 R05 | A primeira tela de jogabilidade será um escritório onde o jogador realizará suas primeiras interações no jogo.
-R06 | A primeira fase terá um ensino dinâmico sobre elaboração de currículo.
+R06 | A primeira fase terá um ensino dinâmico sobre elaboração de currículo em um computador.
 R07 | Todas as fases terão como objetivo motivar o usuário a realizar o Job Rotation na Vivo.
 R08 | O jogo terá um Game Design Document completo e detalhado. 
 R09 | As características dos personagens devem refletir o valor de diversidade da Vivo e trazer representatividade para o jogo.
+R010| O jogador terá, como ferramenta de gameplay, um assistente que lhe fornecerá dicas.
+R011| O código do jogo deverá ser segmentado de maneira à priorizar a organização e didática.
+
 
 ## 1.3. Público-alvo do Projeto (sprint 2)
 
