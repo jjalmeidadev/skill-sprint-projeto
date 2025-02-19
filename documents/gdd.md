@@ -224,6 +224,10 @@ Figura 1: detalhe da cena da partida do herói para a missão, usando sua nave
 
 *Posicione aqui seu "storyboard de programação" - o diagrama de cenas do jogo. Indique, por exemplo, como o jogo começa, quais opções o jogador tem, como ele avança nas fases, quais as condições de 'game over', como o jogo reinicia. Seu diagrama deve representar as classes, atributos e métodos usados no jogo.*
 
+**Esquema inicial do Diagrama de Fases do jogo.**
+
+<img src="../assets/mapamental.JPG">
+
 ## 3.6. Regras do jogo (sprint 3)
 
 *Descreva aqui as regras do seu jogo: objetivos/desafios, meios para se conseguir alcançar*
