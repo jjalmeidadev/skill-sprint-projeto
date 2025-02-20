@@ -305,8 +305,8 @@ https://github.com/user-attachments/assets/02da8c15-872d-4bfe-abff-99dad7f1b1b4
 *Exemplo de tabela*
 \# | pré-condição | descrição do teste | pós-condição 
 --- | --- | --- | --- 
-1 | posicionar o jogo na tela de abertura | iniciar o jogo desde seu início | o jogo deve iniciar da fase 1
-2 | posicionar o personagem em local seguro de inimigos | aguardar o tempo passar até o final da contagem | o personagem deve perder uma vida e reiniciar a fase
+1 | O personagem deve estar próximo a um computador interativo |Pressionar a tecla "E"	 | A tela do computador deve abrir no jogo
+2 | O jogo está rodando e o personagem pode se mover | Pressionar a seta | O personagem deve se mover
 3 | ...
 
 ## 5.2. Testes de jogabilidade (playtests) (sprint 4)
