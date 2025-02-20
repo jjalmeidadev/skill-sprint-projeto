@@ -274,9 +274,14 @@ Por fim, com a descrição fornecida e os elementos visuais indicados, é possí
 ## 4.2. Desenvolvimento básico do jogo (sprint 2)
 
 Foi entrege:
+
 Uma cutscente;
+
 Uma movimentação pelas setas;
+
 Interação com tela do computador para transitar entre cenas 
+
+Aqui está um video que ilustra isso:
 https://github.com/user-attachments/assets/02da8c15-872d-4bfe-abff-99dad7f1b1b4
 
 ## 4.3. Desenvolvimento intermediário do jogo (sprint 3)
