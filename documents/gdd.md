@@ -277,7 +277,7 @@ Foi entrege:
 
 Uma cutscente;
 
-Uma movimentação pelas setas;
+Uma movimentação pelas setas, com uma animação do personagem quando ele anda;
 
 Interação com tela do computador para transitar entre cenas 
 
