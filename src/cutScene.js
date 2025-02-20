@@ -23,7 +23,7 @@ class cutScene extends Phaser.Scene {
 
       this.input.on('pointerdown', () => {
 		this.scene.stop('cutScene'),
-		this.scene.start('officeScene')
+		this.scene.start('tutorialScene')
 		})
     }
   }

@@ -2,26 +2,26 @@ class tutorialScene extends Phaser.Scene {
     constructor() {
         super({ key: 'tutorialScene' });
 
-        //lista das falas do vivinho(tutorial)
-        this.dialogLines = [
+        // Lista das falas do Vivinho (tutorial)
+        this.introducao = [
             "Olá! Qual é o seu nome?",
             "Vivinho: Olá, Fulano! Bem-vindo à Vivo! Somos a maior empresa de telecomunicações do Brasil! Parabéns por fazer parte do nosso time!",
-            "Vivinho: Eu tenho uma importante missão: apresentar para você o plano de carreira interno da Vivo. Me diga, você conhece o plano de carreira da Vivo?",
-            "Evite obstáculos e colete pontos pelo caminho!",
-            "Está pronto? Então vamos lá!"
-        ];
-        
+            "Vivinho: Eu tenho uma importante missão: apresentar para você o plano de carreira interno da Vivo. Me diga, você conhece o plano de carreira da Vivo?"
+        ];    
 
-        this.perguntaLine = [
-            "Vivinho: UAU! Que bom que você já sabe. Agora, quero aproveitar para te explicar uma coisa muito importante na sua jornada a partir de agora, o termo JOB ROTATION.",
-            "Vivinho: Sem problemas! Vou te explicar um conceito importante: o JOB ROTATION.",
+        this.perguntaCondicional = [
+            "Vivinho: UAU! Que bom que você já sabe. Agora, quero te explicar uma coisa muito importante na sua jornada a partir de agora, o termo JOB ROTATION.",
+            "Vivinho: Sem problemas! Vou te explicar um conceito importante: o JOB ROTATION. Para isso vamos continuar a nossa conversa."
         ];
-        this.finalLines = [
+
+        this.finalizacao = [
             "Vivinho: Observe esse esquema. Note que um jovem estagiário pode evoluir para… (mostrar esquema do desenvolvimento de carreira). Vamos mergulhar nisso nos próximos níveis!"
         ];
 
         this.currentLine = 0; // Índice da fala atual
-        this.playerName = ""; //nome do jogador
+        this.playerName = ""; // Nome do jogador
+        this.opcaoSelecionada = false; // Indica se uma opção foi escolhida
+        this.exibirImagem = false; // Indica se a imagem sobreposta deve aparecer
     }
 
     preload() {
@@ -29,6 +29,7 @@ class tutorialScene extends Phaser.Scene {
         this.load.image('vivinho', '../assets/vivinho.png');
         this.load.image('botaoSim', '../assets/botao_sim.png');
         this.load.image('botaoNao', '../assets/botao_nao.png');
+        this.load.image('jobRotation', '../assets/job_rotation.png'); 
     }
 
     create() {
@@ -38,7 +39,13 @@ class tutorialScene extends Phaser.Scene {
         this.createDialogBox();
         this.showDialog(); // Exibe a primeira fala
 
-        // Adiciona interação para avançar o diálogo ao pressionar ESPAÇO
+        // Criar a imagem sobreposta, mas deixá-la invisível
+        this.sobreposicao = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2 - 100, 'jobRotation');
+        this.sobreposicao.setOrigin(0.5);
+        this.sobreposicao.setScale(1); // Ajuste conforme necessário
+        this.sobreposicao.setAlpha(0); // Deixa a imagem invisível
+
+        // Adiciona interação para avançar o diálogo ao pressionar ENTER
         this.input.keyboard.on('keydown-ENTER', () => this.nextDialog());
     }
 
@@ -65,39 +72,45 @@ class tutorialScene extends Phaser.Scene {
         });
 
         // Criar campo de entrada (input) para o nome do jogador
-        this.nameInput = document.createElement('input');
-        this.nameInput.type = 'text';
-        this.nameInput.placeholder = 'Digite seu nome...';
-        this.nameInput.style.position = 'absolute';
-        this.nameInput.style.width = '200px';
-        this.nameInput.style.height = '30px';
-        this.nameInput.style.fontSize = '18px';
-        this.nameInput.style.background = '#fff';
-        this.nameInput.style.border = '2px solid #ff9e0d';
-        this.nameInput.style.borderRadius = '5px';
-        this.nameInput.style.textAlign = 'center';
+        this.nome = document.createElement('input');
+        this.nome.type = 'text';
+        this.nome.placeholder = 'Digite seu nome...';
+        this.nome.style.position = 'absolute';
+        this.nome.style.width = '200px';
+        this.nome.style.height = '30px';
+        this.nome.style.fontSize = '18px';
+        this.nome.style.background = '#fff';
+        this.nome.style.border = '2px solid #ff9e0d';
+        this.nome.style.borderRadius = '5px';
+        this.nome.style.textAlign = 'center';
+        this.nome.style.display = 'none';
 
-        document.body.appendChild(this.nameInput);
+        document.body.appendChild(this.nome);
     }
 
     showDialog() {
-        if(this.currentLine == 0) {
-            this.nameInput.style.left = `${this.cameras.main.width / 2 - 100}px`;
-            this.nameInput.style.top = `${this.cameras.main.height - 100}px`;
-        } 
+        if (this.currentLine === 0) {
+            this.nome.style.display = 'block';
+            this.nome.style.left = `${this.cameras.main.width / 2 - 100}px`;
+            this.nome.style.top = `${this.cameras.main.height - 100}px`;
+        } else {
+            this.nome.style.display = 'none';
+        }
+
         if (this.currentLine === 1 && this.playerName) {
             this.dialogText.setText(`Prazer em te conhecer, ${this.playerName}! Eu sou o Vivinho!`);
-        } else if (this.currentLine == 2) {
-            //exibi a pergunta e mostra os botões
-            this.dialogText.setText(this.dialogLines[this.currentLine]);
+        } else if (this.currentLine === 2) {
+            this.dialogText.setText(this.introducao[this.currentLine]);
             this.createChoiceButtons();
-        }
-        else {
-            this.dialogText.setText(this.dialogLines[this.currentLine]);
+            this.opcaoSelecionada = false; // Resetar para impedir avanço sem escolha
+        } else {
+            this.dialogText.setText(this.introducao[this.currentLine]);
         }
     }
 
     createChoiceButtons() {
+        if (this.botaoSim || this.botaoNao) return;
+
         this.botaoSim = this.add.image(700, 700, 'botaoSim').setScale(0.6).setInteractive();
         this.botaoNao = this.add.image(850, 698, 'botaoNao').setScale(0.65).setInteractive();
 
@@ -106,39 +119,54 @@ class tutorialScene extends Phaser.Scene {
     }
 
     chooseOption(optionIndex) {
-        //remove os botoes da tela
-        this.botaoSim.destroy();
-        this.botaoNao.destroy();
+        if (this.botaoSim) this.botaoSim.destroy();
+        if (this.botaoNao) this.botaoNao.destroy();
 
-        //define a nova fala de acordo com a escolha
-        this.dialogText.setText(this.perguntaLines[optionIndex]);
+        this.botaoSim = null;
+        this.botaoNao = null;
 
-        //apos a fala seguir para a proxima parte
-        this.time.delayedCall(3000, () => {
-            this.dialogText.setText(this.finalLines[0]);
-            this.time.delayedCall(300, () => {
-                this.scene.start('officeScene');
-            });
-        });
+        this.opcaoSelecionada = true;
+
+        this.dialogText.setText(this.perguntaCondicional[optionIndex]);
+
+        // Próxima vez que apertar ENTER, mostrará a imagem sobreposta
+        this.exibirImagem = true;
     }
 
     nextDialog() {
-        if (this.currentLine === 0 && this.nameInput.value.trim() === "") {
-            return; // Impede de avançar se o nome estiver vazio
+        if (this.currentLine === 0 && this.nome.value.trim() === "") {
+            return;
         }
 
         if (this.currentLine === 0) {
-            this.playerName = this.nameInput.value.trim(); // Salva o nome do jogador
-            this.nameInput.style.display = 'none'; // Esconde o campo de input
+            this.playerName = this.nome.value.trim();
+            this.nome.style.display = 'none';
         }
-        this.currentLine++; // Avança para a próxima fala
 
-        if (this.currentLine < this.dialogLines.length) {
-            this.showDialog(); // Exibe a nova fala
-        } else {
-            // Se as falas acabarem, inicia a próxima cena do jogo
-            this.scene.start('GameScene'); 
+        if (this.currentLine === 2 && !this.opcaoSelecionada) {
+            return;
+        }
+
+        // Se a imagem precisa ser mostrada, exibe e aguarda ENTER novamente
+        if (this.exibirImagem) {
+            this.dialogText.setText(this.finalizacao[0]);
+            this.sobreposicao.setAlpha(1); // Torna a imagem visível
+            this.exibirImagem = false; // Para não mostrar novamente
+            return;
+        }
+
+        // Se a imagem já foi mostrada, agora pode mudar para a próxima cena
+        if (this.sobreposicao.alpha === 1) {
+            this.scene.start('officeScene');
+            return;
+        }
+
+        this.currentLine++;
+
+        if (this.currentLine < this.introducao.length) {
+            this.showDialog();
         }
     }
 }
+
 
