@@ -273,7 +273,11 @@ Por fim, com a descrição fornecida e os elementos visuais indicados, é possí
 
 ## 4.2. Desenvolvimento básico do jogo (sprint 2)
 
-*Descreva e ilustre aqui o desenvolvimento da versão básica do jogo, explicando brevemente o que foi entregue em termos de código e jogo. Utilize prints de tela para ilustrar. Indique as eventuais dificuldades e próximos passos.*
+Foi entrege:
+Uma cutscente;
+Uma movimentação pelas setas;
+Interação com tela do computador para transitar entre cenas 
+https://github.com/user-attachments/assets/02da8c15-872d-4bfe-abff-99dad7f1b1b4
 
 ## 4.3. Desenvolvimento intermediário do jogo (sprint 3)
 
