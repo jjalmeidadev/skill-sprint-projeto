@@ -1,6 +1,7 @@
 const startScreen = document.getElementById('startScreen');
 const startButton = document.getElementById('startButton');
 const videoContainer = document.createElement('div');
+
 const videoElement = document.createElement('video');
 
 videoElement.src = '../assets/cutsceneVivo.mp4';
@@ -55,24 +56,38 @@ function startGame() {
   var game = new Phaser.Game(config);
 
   function preload() {
-    // Carrega uma imagem de fundo de alta qualidade
-    this.load.image('background', '../assets/mapaJogoVivo.png');
+    this.load.image('background1', '../assets/mapaJogoVivo.png');
+    this.load.image('background2', '../assets/Frame 1.png');
+    this.load.image('indicator', '../assets/Exclamação.png');
     this.load.spritesheet('player', '../assets/Player.png', { frameWidth: 32, frameHeight: 32 });
   }
 
   function create() {
-    // Ajusta o background para cobrir toda a tela com alta qualidade
-    this.background = this.add.image(0, 0, 'background').setOrigin(0, 0);
+    this.currentBackground = 'background1';
+    this.background = this.add.image(0, 0, this.currentBackground).setOrigin(0, 0);
     this.background.setDisplaySize(window.innerWidth, window.innerHeight);
 
-    // Adiciona o player
+    this.background2 = this.add.image(0, 0, 'background2');
+    this.background2.setOrigin(0.5, 0.5);
+    this.background2.setDisplaySize(window.innerWidth, window.innerHeight);
+    this.background2.setVisible(false);
+    this.background2.setPosition(window.innerWidth / 2, window.innerHeight / 2);
+
     this.player = this.physics.add.sprite(400, 300, 'player');
-    this.player.setScale(4); // Aumenta a proporção do player em 3x
-    this.player.setCollideWorldBounds(true); // Impede que o player saia da tela
+    this.player.setScale(4);
+    this.player.setCollideWorldBounds(true);
 
-    // Configura as teclas de controle
+    this.indicator = this.add.image(387, 487, 'indicator');
+    this.indicator.setScale(0.3);
+    this.indicatorActive = true;
+
     this.cursors = this.input.keyboard.createCursorKeys();
-
+    this.keyE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.E);
+    
+    this.coordText = this.add.text(10, 10, 'X: 0, Y: 0', { font: '16px Arial', fill: '#ffffff' });
+    
+    this.canMove = true;
+    
     // Animações do player
     this.anims.create({
       key: 'walk_down',
@@ -104,31 +119,54 @@ function startGame() {
   }
 
   function update() {
-    // Reseta a velocidade do player
-    this.player.setVelocity(0);
+    if (this.canMove) {
+      this.player.setVelocity(0);
+      const baseSpeed = 200;
+      const speedMultiplier = 2;
+      const playerSpeed = baseSpeed * speedMultiplier;
 
-    // Define a velocidade base do player
-    const baseSpeed = 200;
-    const speedMultiplier = 2;
-    const playerSpeed = baseSpeed * speedMultiplier;
-
-    // Controle de movimento e animação
-    if (this.cursors.left.isDown) {
-      this.player.setVelocityX(-playerSpeed);
-      this.player.anims.play('walk_left', true);
-      this.player.setFlipX(true); // Espelha o sprite para a esquerda
-    } else if (this.cursors.right.isDown) {
-      this.player.setVelocityX(playerSpeed);
-      this.player.anims.play('walk_right', true);
-      this.player.setFlipX(false); // Não espelha o sprite para a direita
-    } else if (this.cursors.up.isDown) {
-      this.player.setVelocityY(-playerSpeed);
-      this.player.anims.play('walk_up', true);
-    } else if (this.cursors.down.isDown) {
-      this.player.setVelocityY(playerSpeed);
-      this.player.anims.play('walk_down', true);
-    } else {
-      this.player.anims.stop();
+      if (this.cursors.left.isDown) {
+        this.player.setVelocityX(-playerSpeed);
+        this.player.anims.play('walk_left', true);
+        this.player.setFlipX(true);
+      } else if (this.cursors.right.isDown) {
+        this.player.setVelocityX(playerSpeed);
+        this.player.anims.play('walk_right', true);
+        this.player.setFlipX(false);
+      } else if (this.cursors.up.isDown) {
+        this.player.setVelocityY(-playerSpeed);
+        this.player.anims.play('walk_up', true);
+      } else if (this.cursors.down.isDown) {
+        this.player.setVelocityY(playerSpeed);
+        this.player.anims.play('walk_down', true);
+      } else {
+        this.player.anims.stop();
+      }
     }
+
+    if (Phaser.Input.Keyboard.JustDown(this.keyE)) {
+      if (this.currentBackground === 'background1' &&
+          Math.abs(this.player.x - 360) <= 50 &&
+          Math.abs(this.player.y - 480) <= 50) {
+        this.currentBackground = 'background2';
+        this.player.setVisible(false);
+        this.canMove = false;
+        this.background.setVisible(false);
+        this.background2.setVisible(true);
+      } else if (this.currentBackground === 'background2') {
+        this.currentBackground = 'background1';
+        this.player.setVisible(true);
+        this.canMove = true;
+        this.background.setVisible(true);
+        this.background2.setVisible(false);
+      }
+    }
+    
+    if (this.indicatorActive && Math.abs(this.player.x - 387) <= 30 && Math.abs(this.player.y - 487) <= 30) {
+      this.indicator.setVisible(false);
+      this.indicatorActive = false;
+    }
+    
+    this.coordText.setText(`X: ${Math.round(this.player.x)}, Y: ${Math.round(this.player.y)}`);
   }
 }
