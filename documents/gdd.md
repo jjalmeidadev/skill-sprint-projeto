@@ -101,27 +101,92 @@ R11| O código do jogo deverá ser segmentado de maneira à priorizar a organiza
 
 ## 2.1. Objetivos do Jogo (sprint 2)
 
-*Descreva o que o jogador deve cumprir para avançar ou concluir o jogo*
+O principal objetivo do **Skill Sprint** é proporcionar aos colaboradores da Vivo uma experiência interativa e estruturada para o desenvolvimento de carreira, superando desafios relacionados à falta de engajamento e acessibilidade nos programas tradicionais.
+
+No jogo, os participantes percorrem diferentes etapas do crescimento profissional, desde a candidatura a novas oportunidades até o planejamento contínuo de desenvolvimento, promovendo a cultura de mobilidade interna e aprendizado contínuo.
+
+Por meio de desafios dinâmicos e da prática do **job rotation**, os jogadores exploram novas áreas dentro da empresa, ampliando suas habilidades e alinhando-se aos valores e oportunidades da Vivo. Com essa abordagem gamificada, o **Skill Sprint** transforma o desenvolvimento de carreira em uma jornada envolvente e acessível, aumentando a adesão aos programas de capacitação e otimizando os recursos investidos em treinamentos tradicionais.
+
+Para avançar e concluir o jogo, o jogador deve:
+- Aprender os comandos de movimentação (setas do teclado) e interação com objetos e personagens (tecla “E”);
+- Interagir e seguir as instruções fornecidas pelos personagens (até o presente momento de desenvolvimento existem 3 NPCs: Vivinho, Vivita e o líder);
+- Finalizar as tarefas de cada fase do jogo, aprendendo sobre as oportunidades existentes em cada Vice-Presidência.
+
+Os objetivos de cada fase do jogo são:
+
+##### Fase 1: Criação do Currículo no Escritório da Vivo
+- **Objetivo da fase:** Ensinar a criar um currículo atrativo e eficaz.
+- **Aprendizado:** Construção e otimização de currículo.
+- **Conteúdos:** Dicas de layout, palavras-chave, adaptação para ATS (Applicant Tracking System), destaque de conquistas.
+- **Desafio (objetivo do jogador):** Cumprir a introdução ao jogo com Vivinho, seguir instruções da recepcionista (Vivita), criar o currículo no computador através das perguntas do mini-game e entregá-lo ao líder.
+
+##### Fase 2: Entrevista de Processo Seletivo na Vice-Presidência de Pessoas
+- **Objetivo:** Preparar os jogadores para dinâmicas de entrevistas.
+- **Aprendizado:** Desenvolvimento de habilidades para entrevistas.
+- **Conteúdos:** Dicas de entrevistas, exemplos de perguntas e simulação de entrevista.
+- **Desafios (objetivo do jogador):** Resolver case, simulação de entrevista com feedback.
+
+##### Fase 3: Resolução de Case na Vice-Presidência de Negócios
+- **Objetivo:** Preparar os jogadores para resolução de cases.
+- **Aprendizado:** Desenvolvimento de habilidades para resolução de cases.
+- **Conteúdos:** Estratégias para resolver cases.
+- **Desafios (objetivo do jogador):** Resolver um case relacionado ao setor de Negócios na Vivo.
+
+##### Fase 4: Planejamento e desenvolvimento de carreira na Vice-Presidência de Estratégia, Novos Negócios e Inteligência Artificial
+- **Objetivo:** Ensinar a estruturar um plano de carreira.
+- **Aprendizado:** Planejamento de carreira e metas de desenvolvimento.
+- **Conteúdos:** Estratégias para resolver cases, dicas de entrevistas, exemplos de perguntas e boas práticas.
+- **Desafios (objetivo do jogador):** Criar plano de desenvolvimento, feedback fictício.
+
+##### Fase 5: Jantar com gestores na Vice-Presidência de Relações Institucionais
+- **Objetivo:** Orientar sobre feedbacks e acompanhamento de desempenho.
+- **Aprendizado:** Importância do feedback e conversas com gestores.
+- **Conteúdos:** Práticas para feedback, ciclo de desempenho, comunicação com liderança.
+- **Desafios (objetivo do jogador):** Simulação de conversa com o gestor, resolver dilemas de desempenho.
+
+##### Fase 6: Upskilling e Reskilling na Vice-Presidência de Tecnologia da Informação
+- **Objetivo:** Incentivar o aprendizado contínuo.
+- **Aprendizado:** Desenvolvimento de novas habilidades para adaptação ao mercado.
+- **Conteúdos:** Diferença entre upskilling e reskilling, ferramentas de desenvolvimento.
+- **Desafios:** Identificar skills relevantes, criar plano de aprendizado.
 
 ## 2.2. Características do Jogo (sprint 2)
 
+O jogo **Skill Sprint** se passa em um ambiente virtual que simula a jornada de desenvolvimento de carreira dentro da Vivo. Por ser um **serious game**, seu principal objetivo é utilizar a mecânica e a dinâmica dos jogos para promover aprendizado, treinamento ou conscientização em um contexto fora do entretenimento tradicional. Esses jogos são projetados para alcançar um objetivo educativo, como o desenvolvimento de habilidades, a simulação de situações reais, ou a transmissão de informações importantes de uma maneira envolvente e interativa. Enquanto os jogos tradicionais têm como foco a diversão e o entretenimento, os **serious games** buscam impactar positivamente a formação de uma pessoa ou de uma comunidade.
+
+Dessa forma, o **Skill Sprint** desempenha o papel de um “jogo sério”, de cunho didático, de forma inspiradora e dinâmica. O personagem principal está no prédio empresarial da Vivo e é convidado a conhecer as Vice-Presidências da empresa após submeter seu currículo na sala do líder (1ª fase). O jogador explora diferentes setores e desafios do processo de candidatura para processos internos, como o momento de feedback com gestores, por exemplo, passando por processos de recrutamento, desenvolvimento profissional e aprendizado contínuo. Cada fase do jogo reflete um aspecto essencial desse processo, proporcionando uma experiência imersiva.
+
+Os jogadores enfrentam desafios interativos que representam situações reais do mercado de trabalho, incluindo a criação de currículo, participação em entrevistas, resolução de cases e planejamento de carreira. O jogo utiliza elementos de **RPG** para permitir a evolução do personagem, incentivando a progressão baseada no aprendizado e na tomada de decisões estratégicas.
+
+A narrativa envolvente conduz os jogadores por um caminho estruturado de desenvolvimento profissional, utilizando **NPCs** carismáticos como guias e mentores. O enredo dinâmico reforça a importância da mobilidade interna e do aprendizado contínuo, destacando o papel da Vivo no crescimento de seus colaboradores.
+
+O jogo promove o desenvolvimento de competências essenciais para o crescimento na carreira, como habilidades de comunicação, resolução de problemas e planejamento estratégico. Além disso, a progressão do jogador reflete sua evolução no domínio dessas competências, tornando o aprendizado prático e recompensador.
+
 ### 2.2.1. Gênero do Jogo (sprint 2)
 
-*simulação, RPG, corrida, estratégia, esportes, ação, aventura etc.*  
+O **Skill Sprint** combina elementos de **RPG**, simulação e estratégia para oferecer uma experiência interativa de aprendizado. O jogador assume o papel de um profissional em ascensão dentro da Vivo, navegando pelos desafios do mercado de trabalho de forma dinâmica.
+
+**RPG** (Role-Playing Game, ou "Jogo de Interpretação de Papéis", em português) é um tipo de jogo onde os jogadores assumem o papel de personagens fictícios em um mundo imaginário. O objetivo principal é interpretar e viver uma narrativa ou história por meio das ações e decisões desses personagens, dentro de um conjunto de regras estabelecido. Por isso, um elemento essencial do nosso jogo são os **NPCs**, (Non-Player-Characters – personagens que não são controlados por nenhum jogador, mas sim pelo sistema do jogo) personagens interativos que informam e guiam sobre as missões no jogo.
 
 ### 2.2.2. Plataforma do Jogo (sprint 2)
 
-*quanto ao dispositivo: desktop, smartphones, tablets, TV etc.*
-
-*quanto ao sistema: navegadores compatíveis*
+O jogo será acessível através de navegadores compatíveis (testados: Chrome), permitindo que os colaboradores da Vivo possam jogá-lo em desktops. Essa escolha garante acessibilidade no ambiente corporativo. Futuramente, planejamos adaptá-lo para dispositivos móveis, permitindo, assim, que os jogadores participem da experiência em diferentes momentos do seu dia.
 
 ### 2.2.3. Número de jogadores (sprint 2)
 
-*1 jogador, 2 jogadores versus, 2 jogadores cooperação, multiplayer etc.*
+O **Skill Sprint** é um jogo **single-player**, projetado para oferecer uma experiência individual de aprendizado e desenvolvimento. Esse formato garante que cada jogador possa avançar no seu próprio ritmo, maximizando a absorção do conteúdo e a aplicação prática dos conhecimentos adquiridos.
 
 ### 2.2.4. Títulos semelhantes e inspirações (sprint 2)
 
-*Liste e descreva títulos semelhantes e jogos que inspiram e são usados como referência do projeto*
+O desenvolvimento do **Skill Sprint** foi inspirado por títulos que combinam aprendizado e dinâmica de maneira eficaz. Algumas das principais referências incluem:
+
+- **Pokémon**: A mecânica de evolução dos personagens e a exploração de diferentes mundos em Pokémon inspirou a estrutura de progressão de carreira no **Skill Sprint**. Assim como em Pokémon, os jogadores avançam ao completar desafios e aprimorar suas habilidades;
+  
+- **Stardew Valley**: A interação com **NPCs** e o desenvolvimento de atividades dentro de um ambiente dinâmico e imersivo, como visto em **Stardew Valley**, influenciaram a abordagem do **Skill Sprint** em termos de interação com personagens e tarefas dentro de cada fase do jogo;
+
+- **Undertale**: A forma como o jogo permite que o jogador afete profundamente o enredo e as relações com os personagens, dependendo de suas escolhas, influenciou a forma como os **NPCs** do **Skill Sprint** guiam e interagem com o jogador. Em **Undertale**, as interações com personagens não são apenas funcionais, mas emocionais, criando uma conexão mais profunda com o jogador — um aspecto que buscamos trazer para o **Skill Sprint** em suas interações e progressão dentro da jornada de desenvolvimento de carreira.
+
+Esses títulos ajudaram a moldar a estrutura do **Skill Sprint**, oferecendo um equilíbrio entre aprendizado, progressão de personagem e interatividade dentro de um cenário empresarial simulado.
 
 ### 2.2.5. Tempo estimado de jogo (sprint 5)
 
