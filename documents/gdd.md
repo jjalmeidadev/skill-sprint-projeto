@@ -186,6 +186,8 @@ O desenvolvimento do **Skill Sprint** foi inspirado por títulos que combinam ap
 
 - **Undertale** [9]: A forma como o jogo permite que o jogador afete profundamente o enredo e as relações com os personagens, dependendo de suas escolhas, influenciou a forma como os **NPCs** do **Skill Sprint** guiam e interagem com o jogador. Em **Undertale**, as interações com personagens não são apenas funcionais, mas emocionais, criando uma conexão mais profunda com o jogador — um aspecto que buscamos trazer para o **Skill Sprint** em suas interações e progressão dentro da jornada de desenvolvimento de carreira.
 
+- **Meta Tower Game** [10]:  O Meta Tower Game foi uma grande inspiração para o Skill Sprint, especialmente em relação à estrutura de fases e à abordagem educacional. No Meta Tower Game, os colaboradores da Meta exploram uma torre com seis andares, cada um representando uma etapa da jornada de contratação de fornecedores. Essa estrutura de fases temáticas, onde cada andar corresponde a um desafio específico, inspirou a organização do Skill Sprint em fases que representam diferentes aspectos do desenvolvimento de carreira na Vivo.
+
 Esses títulos ajudaram a moldar a estrutura do **Skill Sprint**, oferecendo um equilíbrio entre aprendizado, progressão de personagem e interatividade dentro de um cenário empresarial simulado.
 
 ### 2.2.5. Tempo estimado de jogo (sprint 5)
@@ -424,6 +426,8 @@ _Incluir as principais referências de seu projeto, para que seu parceiro possa 
 [8] Stardew Valley. <https://www.stardewvalley.net/>. Acesso em 21 fev. 2025.
 
 [9] Undertale. <https://undertale.com/>. Acesso em 21 fev. 2025.
+
+[10] Meta Tower Game. <https://github.com/InteliProjects/2024-T0014-IN01-G02/tree/main>. Acesso em 21 fev. 2025.
 
 LUCK, Heloisa. Liderança em gestão escolar. 4. ed. Petrópolis: Vozes, 2010. <br>
 SOBRENOME, Nome. Título do livro: subtítulo do livro. Edição. Cidade de publicação: Nome da editora, Ano de publicação. <br>
