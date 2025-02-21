@@ -307,7 +307,7 @@ https://github.com/user-attachments/assets/02da8c15-872d-4bfe-abff-99dad7f1b1b4
 --- | --- | --- | --- 
 1 | O personagem deve estar próximo a um computador interativo |Pressionar a tecla "E"	 | A tela do computador deve abrir no jogo
 2 | O jogo está rodando e o personagem pode se mover | Pressionar a seta | O personagem deve se mover
-3 | ...
+3 | O jogo está na tela inicial|Clicar no botão "Começar o jogo" |O jogo deve iniciar e levar o jogador para a primeira fase
 
 ## 5.2. Testes de jogabilidade (playtests) (sprint 4)
 
