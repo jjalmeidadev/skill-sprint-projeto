@@ -89,8 +89,8 @@ R06 | A primeira fase terá um ensino dinâmico sobre elaboração de currículo
 R07 | Todas as fases terão como objetivo motivar o usuário a realizar o Job Rotation na Vivo.
 R08 | O jogo terá um Game Design Document completo e detalhado. 
 R09 | As características dos personagens devem refletir o valor de diversidade da Vivo e trazer representatividade para o jogo.
-R010| O jogador terá, como ferramenta de gameplay, um assistente que lhe fornecerá dicas.
-R011| O código do jogo deverá ser segmentado de maneira à priorizar a organização e didática.
+R10| O jogador terá, como ferramenta de gameplay, um assistente que lhe fornecerá dicas.
+R11| O código do jogo deverá ser segmentado de maneira à priorizar a organização e didática.
 
 
 ## 1.3. Público-alvo do Projeto (sprint 2)
