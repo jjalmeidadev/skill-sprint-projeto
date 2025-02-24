@@ -9,6 +9,7 @@ class officeScene extends Phaser.Scene {
 		this.load.image('background2', '../assets/Frame 1.png');
 		this.load.spritesheet('player', '../assets/Player.png', { frameWidth: 32, frameHeight: 32 });
 		this.load.image('indicator', '../assets/Exclamação.png');
+		this.load.image('computador', '../assets/computador.png');
     }
     
     create() {
@@ -34,6 +35,9 @@ class officeScene extends Phaser.Scene {
 
 		this.coordText = this.add.text(10, 10, 'X: 0, Y: 0', { font: '16px Arial', fill: '#ffffff' });
     	this.canMove = true;
+
+		this.computador = this.add.image(510, 580, 'computador').setScale(0.09);
+		this.computador.setFlipX(true);
 
     // Animações do player
     this.anims.create({
