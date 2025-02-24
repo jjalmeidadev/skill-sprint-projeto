@@ -95,7 +95,7 @@ R11| O código do jogo deverá ser segmentado de maneira à priorizar a organiza
 
 ## 1.3. Público-alvo do Projeto (sprint 2)
 
-*Posicione aqui uma descrição justificada do público-alvo do jogo, em termos demográficos e de preferências/gostos pessoais.*
+O jogo é destinado a colaboradores da Vivo que desejam impulsionar sua carreira e buscar novas oportunidades dentro da própria empresa. Em termos demográficos, o público-alvo abrange profissionais geralmente entre 25 e 45 anos, com experiência acumulada e formação diversificada — desde cursos técnicos até graduações e pós-graduações
 
 # <a name="c2"></a>2. Visão Geral do Jogo (sprint 2)
 
