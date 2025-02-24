@@ -1,0 +1,165 @@
+class officeScene extends Phaser.Scene {
+    constructor() {
+        super({ key: 'officeScene' });
+        this.currentBackground = 'background'; // Estado inicial
+        this.canMove = true; // Controla se o jogador pode se mover
+    }
+
+    preload() {
+        this.load.image('background', '../assets/mapaJogoVivo.png');
+        this.load.spritesheet('player', '../assets/Player.png', { frameWidth: 32, frameHeight: 32 });
+        this.load.image('telaComputador', '../assets/tela_computador.png');
+        this.load.image('computador', '../assets/computador.png');
+        this.load.image('indicator', '../assets/Exclamação.png');
+    }
+
+    create() {
+        this.background = this.add.image(0, 0, 'background').setOrigin(0, 0);
+        this.background.setDisplaySize(window.innerWidth, window.innerHeight);
+
+        // Criar tela do computador mas deixá-la invisível no início
+        this.telaComputador = this.add.image(0, 0, 'telaComputador').setOrigin(0, 0);
+        this.telaComputador.setDisplaySize(window.innerWidth, window.innerHeight);
+        this.telaComputador.setVisible(false);
+
+        // Criar indicador de exclamação sobre o computador
+        this.indicator = this.add.image(510, 550, 'indicator').setScale(0.3);
+        this.indicatorActive = true;
+
+        // Criar o computador como um botão interativo
+        this.computador = this.add.image(510, 580, 'computador').setScale(0.09).setInteractive();
+        this.computador.setFlipX(true);
+
+        // Criar jogador
+        this.player = this.physics.add.sprite(1350, 730, 'player');
+        this.player.setScale(4);
+        this.player.setCollideWorldBounds(true);
+
+        // Adicionar limites para o mundo do jogo
+        this.physics.world.setBounds(0, 0, window.innerWidth, window.innerHeight);
+
+        // Configuração do teclado
+        this.teclado = this.input.keyboard.createCursorKeys();
+        this.keyE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.E);
+
+        // Criar texto para coordenadas (debug)
+        this.coordText = this.add.text(20, 20, '', { fontSize: '16px', fill: '#ffffff' });
+
+        // Animações do player
+        this.anims.create({
+            key: 'walk_down',
+            frames: this.anims.generateFrameNumbers('player', { start: 0, end: 5 }),
+            frameRate: 10,
+            repeat: -1
+        });
+
+        this.anims.create({
+            key: 'walk_right',
+            frames: this.anims.generateFrameNumbers('player', { start: 6, end: 11 }),
+            frameRate: 10,
+            repeat: -1
+        });
+
+        this.anims.create({
+            key: 'walk_up',
+            frames: this.anims.generateFrameNumbers('player', { start: 12, end: 17 }),
+            frameRate: 10,
+            repeat: -1
+        });
+
+        this.anims.create({
+            key: 'walk_left',
+            frames: this.anims.generateFrameNumbers('player', { start: 6, end: 11 }),
+            frameRate: 10,
+            repeat: -1
+        });
+
+        // Tornar o computador interativo
+        this.computador.on('pointerover', () => {
+            this.computador.setTint(0xaaaaaa);
+        });
+
+        this.computador.on('pointerout', () => {
+            this.computador.clearTint();
+        });
+
+        this.computador.on('pointerdown', () => {
+            this.toggleComputador();
+        });
+    }
+
+    update() {
+        let velocidade = 150;
+        let movendo = false;
+
+        // Movimentação do player
+        if (this.teclado.left.isDown) {
+            this.player.setVelocityX(-velocidade);
+            this.player.anims.play('walk_left', true);
+            this.player.setFlipX(true);
+            movendo = true;
+        } 
+        else if (this.teclado.right.isDown) {
+            this.player.setVelocityX(velocidade);
+            this.player.anims.play('walk_right', true);
+            this.player.setFlipX(false);
+            movendo = true;
+        } 
+        else {
+            this.player.setVelocityX(0);
+        }
+
+        if (this.teclado.up.isDown) {
+            this.player.setVelocityY(-velocidade);
+            this.player.anims.play('walk_up', true);
+            movendo = true;
+        } 
+        else if (this.teclado.down.isDown) {
+            this.player.setVelocityY(velocidade);
+            this.player.anims.play('walk_down', true);
+            movendo = true;
+        } 
+        else {
+            this.player.setVelocityY(0);
+        }
+
+        if (!movendo) {
+            this.player.anims.stop();
+        }
+
+        // Verifica se a tecla E foi pressionada e o jogador está perto do computador
+        if (Phaser.Input.Keyboard.JustDown(this.keyE)) {
+            if (Math.abs(this.player.x - 510) <= 50 && Math.abs(this.player.y - 580) <= 50) {
+                this.toggleComputador();
+            }
+        }
+
+        // Esconder o indicador quando o jogador se aproximar do computador
+        if (this.indicatorActive && Math.abs(this.player.x - 510) <= 30 && Math.abs(this.player.y - 580) <= 30) {
+            this.indicator.setVisible(false);
+            this.indicatorActive = false;
+        }
+
+        // Atualizar coordenadas na tela
+        this.coordText.setText(`X: ${Math.round(this.player.x)}, Y: ${Math.round(this.player.y)}`);
+    }
+
+    toggleComputador() {
+        if (this.currentBackground === 'background') {
+            this.currentBackground = 'telaComputador';
+            this.canMove = false;
+            this.player.setVelocity(0); // Para o movimento do jogador
+            this.player.setVisible(false); // Esconder jogador
+            this.background.setVisible(false);
+            this.telaComputador.setVisible(true);
+			this.computador.setVisible(false);
+        } else {
+            this.currentBackground = 'background';
+            this.canMove = true;
+            this.player.setVisible(true);
+            this.background.setVisible(true);
+            this.telaComputador.setVisible(false);
+        }
+    }
+}
+
