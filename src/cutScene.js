@@ -22,8 +22,8 @@ class cutScene extends Phaser.Scene {
       });*/
 
       this.input.on('pointerdown', () => {
-		this.scene.stop('cutScene'),
-		this.scene.start('tutorialScene')
+		  this.scene.stop('cutScene'),
+		  this.scene.start('tutorialScene')
 		})
     }
   }
