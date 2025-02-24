@@ -208,13 +208,13 @@ Esses títulos ajudaram a moldar a estrutura do **Skill Sprint**, oferecendo um 
 
 ### 3.2.1. Controláveis
 
-*Descreva os personagens controláveis pelo jogador. Mencione nome, objetivos, características, habilidades, diferenciais etc. Utilize figuras (character art, sprite sheets etc.) para ilustrá-los. Caso utilize material de terceiros em licença Creative Commons, não deixe de citar os autores/fontes.* 
-
-*Caso não existam personagens (ex. jogo Tetris), mencione os motivos de não existirem e como o jogador pode interpretar tal fato.*
+O **Skill Sprint** conta com um jogador principal chamado **Skrill** que será controlado pelo colaborador da Vivo pelas teclas WASD e utilizará a tecla E pra interagir com objetos/personagens durante a jornada do jogo. Existe também o Vivinho que é um personagem que tem como objetivo guiar o usuário durante as fases e ensiná-lo a realizar os cases e ajudá-lo no jogo. A Vivita é uma NPC que ai ficar na recepção e orientar o coladorador a realizar a primeira tarefa do jogo, criar um currículo, ela será responável por introduzir o usuário ao jogo e dizer para ele qual o primeiro passo a ser dado para começar a jornada de Job Rotation. Todos os NPCs vão ser desenhados com o intuito de trazer diversidade para o jogo, eles vão representar grupos étinicos, a comunidade LGBTQIA+ e também pessoas com necessidades especiasis. 
 
 ### 3.2.2. Non-Playable Characters (NPC)
 
-*\<opcional\> Se existirem coadjuvantes ou vilões, aqui é o local para descrevê-los e ilustrá-los. Utilize listas ou tabelas para organizar esta seção. Caso utilize material de terceiros em licença Creative Commons, não deixe de citar os autores/fontes. Caso não existam NPCs, remova esta seção.*
+- Vivinho é um personagem que tem como objetivo guiar o usuário durante as fases e ensiná-lo a realizar os cases e ajudá-lo no jogo. 
+- Vivita é uma NPC que ai ficar na recepção e orientar o coladorador a realizar a primeira tarefa do jogo, criar um currículo, ela será responável por introduzir o usuário ao jogo e dizer para ele qual o primeiro passo a ser dado para começar a jornada de Job Rotation.
+- Todos os NPCs vão ser desenhados com o intuito de trazer diversidade para o jogo, eles vão representar grupos étinicos, a comunidade LGBTQIA+ e também pessoas com necessidades especiasis.
 
 ### 3.2.3. Diversidade e Representatividade dos Personagens
 
@@ -232,7 +232,13 @@ Considerando as personagens do game, analise se estas estão alinhadas ao públi
 
 ### 3.3.1. Locações Principais e/ou Mapas (sprints 2 e 3)
 
-*Descreva o ambiente do jogo, em que locais ele ocorre. Ilustre com imagens. Se houverem mapas, posicione-os aqui, descrevendo as áreas em acordo com o enredo. Se houverem fases, descreva-as também em acordo com o enredo (pode ser um jogo de uma fase só). Utilize listas ou tabelas para organizar esta seção. Caso utilize material de terceiros em licença Creative Commons, não deixe de citar os autores/fontes.*
+O jogo conta com 6 fases, cada fase tem um mapa diferente
+ 1° Recepção: Fase inicial que contém uma recepcionista (Vivita), uma sala de computadores em que o usuário irá realizar a criação do currículo e a sala do líder onde o coladorador vai entregar o currículo criado para o líder e assim ele será encaminhado para o elevador aonde ele terá acesso as outras fases.
+ 2° VP de Pessoas: Um mapa temático da VP de Pessoas que tem como objetivo desenvolver as habilidades dos colaboradores para dinâmicas de entrevistas com conteúdos como perguntas e simulações.
+ 3° VP de Negócios: Um mapa temático da VP de Negócios que tem como objetivo desenvolver as habilidades dos colaboradores para a resolução dos cases desafiando o jogador a resolver um casa no setor de Negócios.
+ 4° VP de Estratégia: Um mapa temático da VP de Estratégia que tem como objetivo ensinar os colaboradores a estruturar um plano de carreira aplicando as habilidades desenvolvidas na VP de Negócios.
+ 5° VP de Relações Institucionais: Um mapa em que ocorre um jantar com os líderes das VPs em que será simulado uma conversa com o objetivo de resolver dilemas de desempenho.
+ 6° VP de Tecnologia: Um mapa com a temática da VP de Tecnologia e tem como objetivo ensinar a diferença entre upskilling e reskilling dentro da Vivo incentivando o colaborador ao aprendizado contínuo.
 
 ### 3.3.2. Navegação pelo mundo (sprints 2 e 3)
 
