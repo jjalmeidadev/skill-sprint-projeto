@@ -98,13 +98,13 @@ class officeScene extends Phaser.Scene {
             this.player.anims.play('walk_left', true);
             this.player.setFlipX(true);
             movendo = true;
-        } 
+        }
         else if (this.teclado.right.isDown) {
             this.player.setVelocityX(velocidade);
             this.player.anims.play('walk_right', true);
             this.player.setFlipX(false);
             movendo = true;
-        } 
+        }
         else {
             this.player.setVelocityX(0);
         }
@@ -113,12 +113,12 @@ class officeScene extends Phaser.Scene {
             this.player.setVelocityY(-velocidade);
             this.player.anims.play('walk_up', true);
             movendo = true;
-        } 
+        }
         else if (this.teclado.down.isDown) {
             this.player.setVelocityY(velocidade);
             this.player.anims.play('walk_down', true);
             movendo = true;
-        } 
+        }
         else {
             this.player.setVelocityY(0);
         }
@@ -130,7 +130,7 @@ class officeScene extends Phaser.Scene {
         // Verifica se a tecla E foi pressionada e o jogador está perto do computador
         if (Phaser.Input.Keyboard.JustDown(this.keyE)) {
             if (Math.abs(this.player.x - 387) <= 50 && Math.abs(this.player.y - 487) <= 50) {
-                this.toggleComputador();
+                this.scene.start('curriculoScene');
             }
         }
 
@@ -144,22 +144,5 @@ class officeScene extends Phaser.Scene {
         this.coordText.setText(`X: ${Math.round(this.player.x)}, Y: ${Math.round(this.player.y)}`);
     }
 
-    toggleComputador() {
-        if (this.currentBackground === 'background') {
-            this.currentBackground = 'telaComputador';
-            this.canMove = false;
-            this.player.setVelocity(0); // Para o movimento do jogador
-            this.player.setVisible(false); // Esconder jogador
-            this.background.setVisible(false);
-            this.telaComputador.setVisible(true);
-			this.computador.setVisible(false);
-        } else {
-            this.currentBackground = 'background';
-            this.canMove = true;
-            this.player.setVisible(true);
-            this.background.setVisible(true);
-            this.telaComputador.setVisible(false);
-        }
-    }
 }
 
