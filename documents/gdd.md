@@ -242,6 +242,14 @@ O jogo conta com 6 fases, cada fase tem um mapa diferente
 
 ### 3.3.2. Navegação pelo mundo (sprints 2 e 3)
 
+O Skrill é o personagem principal que é guiado pelo usuário se locomovendo pelas teclas WASD, cada fase depende da outra para ser desbloqueada, ou seja, o colaborador só poderá avançar para o próximo mapa depois de concluir as tasks do anteior.
+ - 1° Recepção: mapa inicial em que o jogador vai aparecer, dentro desse mapa existe a Sala do Líder que só poderá ser acessada depois que o colaborador criar o currículo.
+ - 2° VP de Pessoas: depois de falar com o Líder a sala da VP de Pessoas vai ser desbloqueada e o colaborador vai realizar a primeira case
+ - 3° VP de Negócios: ao finalizar a case da fase anterior o jogador avança para a VP de Negócios e realiza mais uma case, dessa vez sobre negócios.
+ - 4° VP de Estratégia: a fase é liberada após a resolução da case anterior e durante a fase o colaborador irá fazer o planejamento da carreira dentro da Vivo
+ - 5° VP de Relações: depois de criar o planejamento o jogador irá ter um jantar com os VPs dentro da VP de Relações e terá uma conversa para comentar o feedback do colaborador durante a jornada dentro do jogo
+ - 6° VP de Tecnologia: quando o feedback for finalizado, a última fase será uma aula de difereciação entre upskilling e reskilling, e depois disso o jogo se encerra
+
 *Descreva como os personagens se movem no mundo criado e as relações entre as locações – como as áreas/fases são acessadas ou desbloqueadas, o que é necessário para serem acessadas etc. Utilize listas ou tabelas para organizar esta seção.*
 
 ### 3.3.3. Condições climáticas e temporais (sprints 2 e 3)
