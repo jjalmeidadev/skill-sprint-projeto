@@ -80,10 +80,10 @@
 Tabela 1
 \# | Requisito  
 --- | ---
-R01 | O controle do personagem será realizado usando as setas do teclado.
+R01 | O controle do personagem será realizado usando as teclas "W", "A", "S" e "D" do teclado e "E" para interações gerais.
 R02 | O jogo terá uma tela de abertura, onde o jogador inicia clicando em "Jogar". 
 R03 | O jogo iniciará com uma cutscene, onde serão ilustrados o contexto e a ambientação inicial do jogo.
-R04 | O jogador deve seguir as instruções dos diálogos dos NPCs para passar de fase.
+R04 | O jogador deve seguir as instruções dos diálogos dos NPCs para passar de fase, apertando a tecla "Enter" para avançar nas falas.
 R05 | A primeira tela de jogabilidade será um escritório onde o jogador realizará suas primeiras interações no jogo.
 R06 | A primeira fase terá um ensino dinâmico sobre elaboração de currículo em um computador.
 R07 | Todas as fases terão como objetivo motivar o usuário a realizar o Job Rotation na Vivo.
