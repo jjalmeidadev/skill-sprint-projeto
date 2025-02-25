@@ -21,6 +21,3 @@ class curriculoScene extends Phaser.Scene {
 
     }
 }
-
-
-
