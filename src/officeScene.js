@@ -105,6 +105,7 @@ class officeScene extends Phaser.Scene {
             movendo = true;
         } 
         else if (this.teclado.right.isDown) {
+>>>>>>> 9bd0b59d4b2d321e7e4479602ebf80ebd102aadc
             this.player.setVelocityX(velocidade);
             this.player.anims.play('walk_right', true);
             this.player.setFlipX(false); // Manter normal para direita
@@ -120,6 +121,7 @@ class officeScene extends Phaser.Scene {
             movendo = true;
         } 
         else if (this.teclado.down.isDown) {
+>>>>>>> 9bd0b59d4b2d321e7e4479602ebf80ebd102aadc
             this.player.setVelocityY(velocidade);
             this.player.anims.play('walk_down', true);
             movendo = true;
@@ -133,6 +135,7 @@ class officeScene extends Phaser.Scene {
         }
 
         // Verifica se a tecla E foi pressionada e o jogador está perto do computador
+<<<<<<< Updated upstream
         if (Phaser.Input.Keyboard.JustDown(this.keyE)) {
             if (Math.abs(this.player.x - 387) <= 50 && Math.abs(this.player.y - 487) <= 50) {
                 this.toggleComputador();
