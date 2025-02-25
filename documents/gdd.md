@@ -208,13 +208,18 @@ Esses títulos ajudaram a moldar a estrutura do **Skill Sprint**, oferecendo um 
 
 ### 3.2.1. Controláveis
 
-O **Skill Sprint** conta com um jogador principal chamado **Skrill** que será controlado pelo colaborador da Vivo pelas teclas WASD e utilizará a tecla E pra interagir com objetos/personagens durante a jornada do jogo. Existe também o Vivinho que é um personagem que tem como objetivo guiar o usuário durante as fases e ensiná-lo a realizar os cases e ajudá-lo no jogo. A Vivita é uma NPC que ai ficar na recepção e orientar o coladorador a realizar a primeira tarefa do jogo, criar um currículo, ela será responável por introduzir o usuário ao jogo e dizer para ele qual o primeiro passo a ser dado para começar a jornada de Job Rotation. Todos os NPCs vão ser desenhados com o intuito de trazer diversidade para o jogo, eles vão representar grupos étinicos, a comunidade LGBTQIA+ e também pessoas com necessidades especiasis. 
+O **Skill Sprint** conta com um jogador principal chamado **Skrill** que será controlado pelo colaborador da Vivo pelas teclas WASD e utilizará a tecla E pra interagir com objetos/personagens durante a jornada do jogo. Existe também o Vivinho que é um personagem que tem como objetivo guiar o usuário durante as fases e ensiná-lo a realizar os cases e ajudá-lo no jogo. A Vivita é uma NPC que ai ficar na recepção e orientar o coladorador a realizar a primeira tarefa do jogo, criar um currículo, ela será responável por introduzir o usuário ao jogo e dizer para ele qual o primeiro passo a ser dado para começar a jornada de Job Rotation. Todos os NPCs vão ser desenhados com o intuito de trazer diversidade para o jogo, eles vão representar grupos étinicos, a comunidade LGBTQIA+ e também pessoas com necessidades especiasis.
+
+![skrill](assets/skrill.png)
 
 ### 3.2.2. Non-Playable Characters (NPC)
 
-- Vivinho é um personagem que tem como objetivo guiar o usuário durante as fases e ensiná-lo a realizar os cases e ajudá-lo no jogo. 
+- Vivinho é um personagem que tem como objetivo guiar o usuário durante as fases e ensiná-lo a realizar os cases e ajudá-lo no jogo.
 - Vivita é uma NPC que ai ficar na recepção e orientar o coladorador a realizar a primeira tarefa do jogo, criar um currículo, ela será responável por introduzir o usuário ao jogo e dizer para ele qual o primeiro passo a ser dado para começar a jornada de Job Rotation.
 - Todos os NPCs vão ser desenhados com o intuito de trazer diversidade para o jogo, eles vão representar grupos étinicos, a comunidade LGBTQIA+ e também pessoas com necessidades especiasis.
+
+  ![vivinho](assets/vivinho.png)
+  ![vivita](assets/vivita.png)
 
 ### 3.2.3. Diversidade e Representatividade dos Personagens
 
