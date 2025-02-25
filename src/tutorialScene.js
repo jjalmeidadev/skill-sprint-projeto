@@ -111,11 +111,14 @@ class tutorialScene extends Phaser.Scene {
     createChoiceButtons() {
         if (this.botaoSim || this.botaoNao) return;
 
-        this.botaoSim = this.add.image(700, 700, 'botaoSim').setScale(0.6).setInteractive();
-        this.botaoNao = this.add.image(850, 698, 'botaoNao').setScale(0.65).setInteractive();
+        this.botaoSim = this.add.image(520, 510, 'botaoSim').setScale(0.6).setInteractive();
+        this.botaoNao = this.add.image(690, 510, 'botaoNao').setScale(0.65).setInteractive();
 
         this.botaoSim.on('pointerdown', () => this.chooseOption(0));
         this.botaoNao.on('pointerdown', () => this.chooseOption(1));
+
+        this.botaoSim.bringToTop();
+        this.botaoNao.bringToTop();
     }
 
     chooseOption(optionIndex) {

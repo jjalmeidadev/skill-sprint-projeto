@@ -23,11 +23,11 @@ class officeScene extends Phaser.Scene {
         this.telaComputador.setVisible(false);
 
         // Criar indicador de exclamação sobre o computador
-        this.indicator = this.add.image(510, 550, 'indicator').setScale(0.3);
+        this.indicator = this.add.image(387, 487, 'indicator').setScale(0.3);
         this.indicatorActive = true;
 
         // Criar o computador como um botão interativo
-        this.computador = this.add.image(510, 580, 'computador').setScale(0.09).setInteractive();
+        this.computador = this.add.image(429, 487, 'computador').setScale(0.09).setInteractive();
         this.computador.setFlipX(true);
 
         // Criar jogador
@@ -129,13 +129,13 @@ class officeScene extends Phaser.Scene {
 
         // Verifica se a tecla E foi pressionada e o jogador está perto do computador
         if (Phaser.Input.Keyboard.JustDown(this.keyE)) {
-            if (Math.abs(this.player.x - 510) <= 50 && Math.abs(this.player.y - 580) <= 50) {
+            if (Math.abs(this.player.x - 387) <= 50 && Math.abs(this.player.y - 487) <= 50) {
                 this.toggleComputador();
             }
         }
 
         // Esconder o indicador quando o jogador se aproximar do computador
-        if (this.indicatorActive && Math.abs(this.player.x - 510) <= 30 && Math.abs(this.player.y - 580) <= 30) {
+        if (this.indicatorActive && Math.abs(this.player.x - 387) <= 30 && Math.abs(this.player.y - 487) <= 30) {
             this.indicator.setVisible(false);
             this.indicatorActive = false;
         }
