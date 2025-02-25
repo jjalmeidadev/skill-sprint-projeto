@@ -233,12 +233,12 @@ Considerando as personagens do game, analise se estas estão alinhadas ao públi
 ### 3.3.1. Locações Principais e/ou Mapas (sprints 2 e 3)
 
 O jogo conta com 6 fases, cada fase tem um mapa diferente
- 1° Recepção: Fase inicial que contém uma recepcionista (Vivita), uma sala de computadores em que o usuário irá realizar a criação do currículo e a sala do líder onde o coladorador vai entregar o currículo criado para o líder e assim ele será encaminhado para o elevador aonde ele terá acesso as outras fases.
- 2° VP de Pessoas: Um mapa temático da VP de Pessoas que tem como objetivo desenvolver as habilidades dos colaboradores para dinâmicas de entrevistas com conteúdos como perguntas e simulações.
- 3° VP de Negócios: Um mapa temático da VP de Negócios que tem como objetivo desenvolver as habilidades dos colaboradores para a resolução dos cases desafiando o jogador a resolver um casa no setor de Negócios.
- 4° VP de Estratégia: Um mapa temático da VP de Estratégia que tem como objetivo ensinar os colaboradores a estruturar um plano de carreira aplicando as habilidades desenvolvidas na VP de Negócios.
- 5° VP de Relações Institucionais: Um mapa em que ocorre um jantar com os líderes das VPs em que será simulado uma conversa com o objetivo de resolver dilemas de desempenho.
- 6° VP de Tecnologia: Um mapa com a temática da VP de Tecnologia e tem como objetivo ensinar a diferença entre upskilling e reskilling dentro da Vivo incentivando o colaborador ao aprendizado contínuo.
+ - 1° Recepção: Fase inicial que contém uma recepcionista (Vivita), uma sala de computadores em que o usuário irá realizar a criação do currículo e a sala do líder onde o coladorador vai entregar o currículo criado para o líder e assim ele será encaminhado para o elevador aonde ele terá acesso as outras fases.
+ - 2° VP de Pessoas: Um mapa temático da VP de Pessoas que tem como objetivo desenvolver as habilidades dos colaboradores para dinâmicas de entrevistas com conteúdos como perguntas e simulações.
+ - 3° VP de Negócios: Um mapa temático da VP de Negócios que tem como objetivo desenvolver as habilidades dos colaboradores para a resolução dos cases desafiando o jogador a resolver um casa no setor de Negócios.
+ - 4° VP de Estratégia: Um mapa temático da VP de Estratégia que tem como objetivo ensinar os colaboradores a estruturar um plano de carreira aplicando as habilidades desenvolvidas na VP de Negócios.
+ - 5° VP de Relações Institucionais: Um mapa em que ocorre um jantar com os líderes das VPs em que será simulado uma conversa com o objetivo de resolver dilemas de desempenho.
+ - 6° VP de Tecnologia: Um mapa com a temática da VP de Tecnologia e tem como objetivo ensinar a diferença entre upskilling e reskilling dentro da Vivo incentivando o colaborador ao aprendizado contínuo.
 
 ### 3.3.2. Navegação pelo mundo (sprints 2 e 3)
 
