@@ -38,9 +38,14 @@ class officeScene extends Phaser.Scene {
         // Adicionar limites para o mundo do jogo
         this.physics.world.setBounds(0, 0, window.innerWidth, window.innerHeight);
 
-        // Configuração do teclado
-        this.teclado = this.input.keyboard.createCursorKeys();
-        this.keyE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.E);
+        // Configuração do teclado (WASD + E para interação)
+        this.teclas = this.input.keyboard.addKeys({
+            up: Phaser.Input.Keyboard.KeyCodes.W,
+            down: Phaser.Input.Keyboard.KeyCodes.S,
+            left: Phaser.Input.Keyboard.KeyCodes.A,
+            right: Phaser.Input.Keyboard.KeyCodes.D,
+            interagir: Phaser.Input.Keyboard.KeyCodes.E
+        });
 
         // Criar texto para coordenadas (debug)
         this.coordText = this.add.text(20, 20, '', { fontSize: '16px', fill: '#ffffff' });
@@ -84,7 +89,7 @@ class officeScene extends Phaser.Scene {
         });
 
         this.computador.on('pointerdown', () => {
-            this.toggleComputador();
+            this.scene.start('curriculoScene');
         });
     }
 
@@ -92,33 +97,33 @@ class officeScene extends Phaser.Scene {
         let velocidade = 150;
         let movendo = false;
 
-        // Movimentação do player
-        if (this.teclado.left.isDown) {
+        // Movimentação do player com WASD
+        if (this.teclas.left.isDown) {
             this.player.setVelocityX(-velocidade);
             this.player.anims.play('walk_left', true);
-            this.player.setFlipX(true);
+            this.player.setFlipX(true); // Virar para a esquerda
             movendo = true;
-        }
-        else if (this.teclado.right.isDown) {
+        } 
+        else if (this.teclas.right.isDown) {
             this.player.setVelocityX(velocidade);
             this.player.anims.play('walk_right', true);
-            this.player.setFlipX(false);
+            this.player.setFlipX(false); // Manter normal para direita
             movendo = true;
-        }
+        } 
         else {
             this.player.setVelocityX(0);
         }
 
-        if (this.teclado.up.isDown) {
+        if (this.teclas.up.isDown) {
             this.player.setVelocityY(-velocidade);
             this.player.anims.play('walk_up', true);
             movendo = true;
-        }
-        else if (this.teclado.down.isDown) {
+        } 
+        else if (this.teclas.down.isDown) {
             this.player.setVelocityY(velocidade);
             this.player.anims.play('walk_down', true);
             movendo = true;
-        }
+        } 
         else {
             this.player.setVelocityY(0);
         }
@@ -128,7 +133,7 @@ class officeScene extends Phaser.Scene {
         }
 
         // Verifica se a tecla E foi pressionada e o jogador está perto do computador
-        if (Phaser.Input.Keyboard.JustDown(this.keyE)) {
+        if (Phaser.Input.Keyboard.JustDown(this.teclas.interagir)) {
             if (Math.abs(this.player.x - 387) <= 50 && Math.abs(this.player.y - 487) <= 50) {
                 this.scene.start('curriculoScene');
             }
@@ -143,5 +148,6 @@ class officeScene extends Phaser.Scene {
         // Atualizar coordenadas na tela
         this.coordText.setText(`X: ${Math.round(this.player.x)}, Y: ${Math.round(this.player.y)}`);
     }
-
 }
+
+
