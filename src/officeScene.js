@@ -38,9 +38,14 @@ class officeScene extends Phaser.Scene {
         // Adicionar limites para o mundo do jogo
         this.physics.world.setBounds(0, 0, window.innerWidth, window.innerHeight);
 
-        // Configuração do teclado
-        this.teclado = this.input.keyboard.createCursorKeys();
-        this.keyE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.E);
+        // Configuração do teclado (substituindo setas por WASD)
+        this.teclas = this.input.keyboard.addKeys({
+            up: Phaser.Input.Keyboard.KeyCodes.W,
+            down: Phaser.Input.Keyboard.KeyCodes.S,
+            left: Phaser.Input.Keyboard.KeyCodes.A,
+            right: Phaser.Input.Keyboard.KeyCodes.D,
+            interagir: Phaser.Input.Keyboard.KeyCodes.E
+        });
 
         // Criar texto para coordenadas (debug)
         this.coordText = this.add.text(20, 20, '', { fontSize: '16px', fill: '#ffffff' });
@@ -92,33 +97,43 @@ class officeScene extends Phaser.Scene {
         let velocidade = 150;
         let movendo = false;
 
-        // Movimentação do player
-        if (this.teclado.left.isDown) {
+        // Movimentação do player com WASD
+        if (this.teclas.left.isDown) {
             this.player.setVelocityX(-velocidade);
             this.player.anims.play('walk_left', true);
-            this.player.setFlipX(true);
+            this.player.setFlipX(true); // Virar o personagem para a esquerda
             movendo = true;
+<<<<<<< HEAD
         } 
+        else if (this.teclas.right.isDown) {
+=======
+        }
         else if (this.teclado.right.isDown) {
+>>>>>>> 9bd0b59d4b2d321e7e4479602ebf80ebd102aadc
             this.player.setVelocityX(velocidade);
             this.player.anims.play('walk_right', true);
-            this.player.setFlipX(false);
+            this.player.setFlipX(false); // Manter normal para direita
             movendo = true;
-        } 
+        }
         else {
             this.player.setVelocityX(0);
         }
 
-        if (this.teclado.up.isDown) {
+        if (this.teclas.up.isDown) {
             this.player.setVelocityY(-velocidade);
             this.player.anims.play('walk_up', true);
             movendo = true;
+<<<<<<< HEAD
         } 
+        else if (this.teclas.down.isDown) {
+=======
+        }
         else if (this.teclado.down.isDown) {
+>>>>>>> 9bd0b59d4b2d321e7e4479602ebf80ebd102aadc
             this.player.setVelocityY(velocidade);
             this.player.anims.play('walk_down', true);
             movendo = true;
-        } 
+        }
         else {
             this.player.setVelocityY(0);
         }
@@ -128,9 +143,18 @@ class officeScene extends Phaser.Scene {
         }
 
         // Verifica se a tecla E foi pressionada e o jogador está perto do computador
+<<<<<<< Updated upstream
         if (Phaser.Input.Keyboard.JustDown(this.keyE)) {
             if (Math.abs(this.player.x - 387) <= 50 && Math.abs(this.player.y - 487) <= 50) {
+<<<<<<< HEAD
+=======
+        if (Phaser.Input.Keyboard.JustDown(this.teclas.interagir)) {
+            if (Math.abs(this.player.x - 510) <= 50 && Math.abs(this.player.y - 580) <= 50) {
+>>>>>>> Stashed changes
                 this.toggleComputador();
+=======
+                this.scene.start('curriculoScene');
+>>>>>>> 9bd0b59d4b2d321e7e4479602ebf80ebd102aadc
             }
         }
 
@@ -144,6 +168,7 @@ class officeScene extends Phaser.Scene {
         this.coordText.setText(`X: ${Math.round(this.player.x)}, Y: ${Math.round(this.player.y)}`);
     }
 
+<<<<<<< HEAD
     toggleComputador() {
         if (this.currentBackground === 'background') {
             this.currentBackground = 'telaComputador';
@@ -152,14 +177,18 @@ class officeScene extends Phaser.Scene {
             this.player.setVisible(false); // Esconder jogador
             this.background.setVisible(false);
             this.telaComputador.setVisible(true);
-			this.computador.setVisible(false);
+            this.computador.setVisible(false);
         } else {
             this.currentBackground = 'background';
             this.canMove = true;
             this.player.setVisible(true);
             this.background.setVisible(true);
             this.telaComputador.setVisible(false);
+            this.computador.setVisible(true);
         }
     }
+=======
+>>>>>>> 9bd0b59d4b2d321e7e4479602ebf80ebd102aadc
 }
+
 
