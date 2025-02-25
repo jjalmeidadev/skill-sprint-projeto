@@ -103,11 +103,7 @@ class officeScene extends Phaser.Scene {
             this.player.anims.play('walk_left', true);
             this.player.setFlipX(true); // Virar o personagem para a esquerda
             movendo = true;
-<<<<<<< HEAD
         } 
-        else if (this.teclas.right.isDown) {
-=======
-        }
         else if (this.teclado.right.isDown) {
 >>>>>>> 9bd0b59d4b2d321e7e4479602ebf80ebd102aadc
             this.player.setVelocityX(velocidade);
@@ -123,11 +119,7 @@ class officeScene extends Phaser.Scene {
             this.player.setVelocityY(-velocidade);
             this.player.anims.play('walk_up', true);
             movendo = true;
-<<<<<<< HEAD
         } 
-        else if (this.teclas.down.isDown) {
-=======
-        }
         else if (this.teclado.down.isDown) {
 >>>>>>> 9bd0b59d4b2d321e7e4479602ebf80ebd102aadc
             this.player.setVelocityY(velocidade);
@@ -146,15 +138,7 @@ class officeScene extends Phaser.Scene {
 <<<<<<< Updated upstream
         if (Phaser.Input.Keyboard.JustDown(this.keyE)) {
             if (Math.abs(this.player.x - 387) <= 50 && Math.abs(this.player.y - 487) <= 50) {
-<<<<<<< HEAD
-=======
-        if (Phaser.Input.Keyboard.JustDown(this.teclas.interagir)) {
-            if (Math.abs(this.player.x - 510) <= 50 && Math.abs(this.player.y - 580) <= 50) {
->>>>>>> Stashed changes
                 this.toggleComputador();
-=======
-                this.scene.start('curriculoScene');
->>>>>>> 9bd0b59d4b2d321e7e4479602ebf80ebd102aadc
             }
         }
 
@@ -168,7 +152,6 @@ class officeScene extends Phaser.Scene {
         this.coordText.setText(`X: ${Math.round(this.player.x)}, Y: ${Math.round(this.player.y)}`);
     }
 
-<<<<<<< HEAD
     toggleComputador() {
         if (this.currentBackground === 'background') {
             this.currentBackground = 'telaComputador';
@@ -177,18 +160,15 @@ class officeScene extends Phaser.Scene {
             this.player.setVisible(false); // Esconder jogador
             this.background.setVisible(false);
             this.telaComputador.setVisible(true);
-            this.computador.setVisible(false);
+			this.computador.setVisible(false);
         } else {
             this.currentBackground = 'background';
             this.canMove = true;
             this.player.setVisible(true);
             this.background.setVisible(true);
             this.telaComputador.setVisible(false);
-            this.computador.setVisible(true);
         }
     }
-=======
->>>>>>> 9bd0b59d4b2d321e7e4479602ebf80ebd102aadc
 }
 
 
