@@ -1,4 +1,4 @@
-class officeScene extends Phaser.Scene {
+class OfficeScene extends Phaser.Scene {
     constructor() {
         super({ key: 'officeScene' });
         this.currentBackground = 'background'; // Estado inicial

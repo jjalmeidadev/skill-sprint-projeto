@@ -1,4 +1,4 @@
-class curriculoScene extends Phaser.Scene {
+class CurriculoScene extends Phaser.Scene {
     constructor() {
         super({ key: 'curriculoScene' });
         this.currentBackground = 'background'; // Definir o estado inicial

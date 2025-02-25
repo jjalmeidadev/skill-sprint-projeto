@@ -1,4 +1,4 @@
-class initialScene extends Phaser.Scene {
+class InitialScene extends Phaser.Scene {
 	constructor() {
 		super({ key: 'initialScene '});
 	}
