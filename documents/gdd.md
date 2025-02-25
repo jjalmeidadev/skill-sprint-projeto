@@ -210,7 +210,7 @@ Esses títulos ajudaram a moldar a estrutura do **Skill Sprint**, oferecendo um 
 
 O **Skill Sprint** conta com um jogador principal chamado **Skrill** que será controlado pelo colaborador da Vivo pelas teclas WASD e utilizará a tecla E pra interagir com objetos/personagens durante a jornada do jogo. Existe também o Vivinho que é um personagem que tem como objetivo guiar o usuário durante as fases e ensiná-lo a realizar os cases e ajudá-lo no jogo. A Vivita é uma NPC que ai ficar na recepção e orientar o coladorador a realizar a primeira tarefa do jogo, criar um currículo, ela será responável por introduzir o usuário ao jogo e dizer para ele qual o primeiro passo a ser dado para começar a jornada de Job Rotation. Todos os NPCs vão ser desenhados com o intuito de trazer diversidade para o jogo, eles vão representar grupos étinicos, a comunidade LGBTQIA+ e também pessoas com necessidades especiasis.
 
-![skrill](assets/skrill.png)
+<img src="https://github.com/user-attachments/assets/34d6588a-ba21-490a-a5b2-a8f3d7ba48a4" width="300"/>
 
 ### 3.2.2. Non-Playable Characters (NPC)
 
@@ -218,8 +218,8 @@ O **Skill Sprint** conta com um jogador principal chamado **Skrill** que será c
 - Vivita é uma NPC que ai ficar na recepção e orientar o coladorador a realizar a primeira tarefa do jogo, criar um currículo, ela será responável por introduzir o usuário ao jogo e dizer para ele qual o primeiro passo a ser dado para começar a jornada de Job Rotation.
 - Todos os NPCs vão ser desenhados com o intuito de trazer diversidade para o jogo, eles vão representar grupos étinicos, a comunidade LGBTQIA+ e também pessoas com necessidades especiasis.
 
-  ![vivinho](assets/vivinho.png)
-  ![vivita](assets/vivita.png)
+  ![Image](https://github.com/user-attachments/assets/50594d55-2807-4a2d-8dd0-89d618be81c5)
+  <img src="https://github.com/user-attachments/assets/d1ada40a-0ed9-4092-b54a-d63624349d15" width="300"/>
 
 ### 3.2.3. Diversidade e Representatividade dos Personagens
 
