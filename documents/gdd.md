@@ -239,6 +239,7 @@ Considerando as personagens do game, analise se estas estão alinhadas ao públi
 
 O jogo conta com 6 fases, cada fase tem um mapa diferente
  - 1° Recepção: Fase inicial que contém uma recepcionista (Vivita), uma sala de computadores em que o usuário irá realizar a criação do currículo e a sala do líder onde o coladorador vai entregar o currículo criado para o líder e assim ele será encaminhado para o elevador aonde ele terá acesso as outras fases.
+   ![Image](https://github.com/user-attachments/assets/9313ccf8-1659-4512-9d6f-0786efb2f97f)
  - 2° VP de Pessoas: Um mapa temático da VP de Pessoas que tem como objetivo desenvolver as habilidades dos colaboradores para dinâmicas de entrevistas com conteúdos como perguntas e simulações.
  - 3° VP de Negócios: Um mapa temático da VP de Negócios que tem como objetivo desenvolver as habilidades dos colaboradores para a resolução dos cases desafiando o jogador a resolver um casa no setor de Negócios.
  - 4° VP de Estratégia: Um mapa temático da VP de Estratégia que tem como objetivo ensinar os colaboradores a estruturar um plano de carreira aplicando as habilidades desenvolvidas na VP de Negócios.
@@ -264,6 +265,17 @@ O Skrill é o personagem principal que é guiado pelo usuário se locomovendo pe
 *Caso seja relevante, descreva como o tempo passa, se ele é um fator limitante ao jogo (ex. contagem de tempo para terminar uma fase)*
 
 ### 3.3.4. Concept Art (sprint 2)
+![concept1](https://github.com/user-attachments/assets/16844f63-7d26-41a3-8559-4d1e53c3bb60)  
+Figura 1: mapa da recepção aonde o usuário nasce, conversa com a vivita, cria o currículo e fala com o líder.  
+  
+
+![concept2](https://github.com/user-attachments/assets/29ac5130-a9f9-4595-8f09-cf91d5e3c078)  
+Figura 2: mapa da VP de Pessoas aonde o jogador realiza um case voltado para a dinâmica de entrevistas dentro da Vivo.  
+
+
+![concept5](https://github.com/user-attachments/assets/0092f346-8b51-4506-b02a-bb43f19570d7)  
+Figura 5: uma mesa de jantar com as VPs da Vivo aonde o colaborador vai receber o feedback da jornada dele.  
+
 
 *Inclua imagens de Concept Art do jogo que ainda não foram demonstradas em outras seções deste documento. Para cada imagem, coloque legendas, como no exemplo abaixo.*
 
