@@ -61,14 +61,12 @@ Alto. A base de clientes da indústria de telecomunicações é diversificada, i
 
 #### 5. Rivalidade entre Concorrentes Existentes:
 Alta. As principais concorrentes da Vivo são Claro, TIM, e operadoras regionais, como Algar e Brisanet, que oferecem serviços de internet de alta qualidade. A rivalidade no setor é alta, com as operadoras competindo principalmente por preço, qualidade de serviço e inovação tecnológica. A crescente demanda por convergência de serviços (telefonia, internet e TV) e a implementação do 5G intensificam ainda mais a competição, levando as operadoras a investir constantemente em infraestrutura e em ofertas diferenciadas para se manterem competitivas no mercado altamente dinâmico e saturado.
-![SWOT](https://github.com/user-attachments/assets/5d960390-b6ab-4ffc-a930-d2a29dda43d2)
-
 ![5 FORÇAS](https://github.com/user-attachments/assets/336a1a10-0e58-4e68-a42a-e48d542db44b)
 
 
 ### 1.1.2. Análise SWOT (sprint 2)
-
-*Posicione aqui a análise SWOT relacionada ao parceiro de projeto. Utilize a análise SWOT para fazer uma análise ambiental do parceiro no âmbito estratégico. Leve em consideração o contexto da indústria, concorrência e as características do ambiente interno (forças e fraquezas) e externo (oportunidades e ameaças) do parceiro.*
+A Vivo, líder de mercado no Brasil, destaca-se pela forte presença em telefonia móvel, internet fixa (fibra óptica) e inovação com 5G. Sua dependência de grandes investimentos em infraestrutura e a intensa concorrência de operadoras como Claro e TIM representam fraquezas. Entretanto, as oportunidades incluem a expansão do 5G, IoT e a integração com fintechs, além de soluções digitais para empresas. As ameaças vêm da saturação do mercado móvel e de mudanças regulatórias. A Vivo precisa manter sua liderança diante de uma concorrência crescente e exigente.
+![SWOT](https://github.com/user-attachments/assets/5d960390-b6ab-4ffc-a930-d2a29dda43d2)
 
 ### 1.1.3. Missão / Visão / Valores (sprint 2)
 
