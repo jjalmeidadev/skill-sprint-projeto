@@ -61,18 +61,36 @@ Alto. A base de clientes da indústria de telecomunicações é diversificada, i
 
 #### 5. Rivalidade entre Concorrentes Existentes:
 Alta. As principais concorrentes da Vivo são Claro, TIM, e operadoras regionais, como Algar e Brisanet, que oferecem serviços de internet de alta qualidade. A rivalidade no setor é alta, com as operadoras competindo principalmente por preço, qualidade de serviço e inovação tecnológica. A crescente demanda por convergência de serviços (telefonia, internet e TV) e a implementação do 5G intensificam ainda mais a competição, levando as operadoras a investir constantemente em infraestrutura e em ofertas diferenciadas para se manterem competitivas no mercado altamente dinâmico e saturado.
+
+
 ![5 FORÇAS](https://github.com/user-attachments/assets/336a1a10-0e58-4e68-a42a-e48d542db44b)
-fonte:gráfico 5 forças de porter(produzido pelo autor) 
+fonte: gráfico 5 forças de porter(produzido pelo autor) 
 
 
 
 ### 1.1.2. Análise SWOT (sprint 2)
 A Vivo, líder de mercado no Brasil, destaca-se pela forte presença em telefonia móvel, internet fixa (fibra óptica) e inovação com 5G. Sua dependência de grandes investimentos em infraestrutura e a intensa concorrência de operadoras como Claro e TIM representam fraquezas. Entretanto, as oportunidades incluem a expansão do 5G, IoT e a integração com fintechs, além de soluções digitais para empresas. As ameaças vêm da saturação do mercado móvel e de mudanças regulatórias. A Vivo precisa manter sua liderança diante de uma concorrência crescente e exigente.
+
+
 ![SWOT](https://github.com/user-attachments/assets/5d960390-b6ab-4ffc-a930-d2a29dda43d2)
+fonte: gráfico análise SWOT (produzido pelo autor) 
+
 
 ### 1.1.3. Missão / Visão / Valores (sprint 2)
 
-*Posicione aqui a Missão, Visão e Valores do seu projeto.*
+#### Missão:
+A missão da Vivo é “digitalizar para aproximar". E isso porque eles visam que as oportunidades que o mundo digital oferece sejam universais, contribuindo como uma força positiva para a transformação das empresas e da sociedade.
+
+#### Visão:
+A Vivo acredita que a revolução tecnológica deve ser parte da vida de todas e todos, e não um privilégio de poucos. Promovendo que as oportunidades que o mundo digital oferece sejam universais, contribuindo como uma força positiva para a transformação individual, das empresas e da sociedade.
+
+#### Valores:
+Integridade: Agir com honestidade e ética em todas as ações.
+Compromisso: Cumprir promessas e agir de forma responsável.
+Inovação: Buscar constantemente novas soluções e tecnologias.
+Responsabilidade Social: Contribuir para o desenvolvimento social e ambiental.
+Excelência: Buscar a qualidade em produtos, serviços e atendimento.
+
 
 ### 1.1.4. Proposta de Valor (sprint 4)
 
