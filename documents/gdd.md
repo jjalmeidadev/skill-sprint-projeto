@@ -300,23 +300,37 @@ O Skrill é o personagem principal que é guiado pelo usuário se locomovendo pe
 *Caso seja relevante, descreva como o tempo passa, se ele é um fator limitante ao jogo (ex. contagem de tempo para terminar uma fase)*
 
 ### 3.3.4. Concept Art (sprint 2)
-![concept1](https://github.com/user-attachments/assets/16844f63-7d26-41a3-8559-4d1e53c3bb60)  
+Concept art é uma ilustração usada para visualizar ideias, cenários, personagens e objetos. Ela serve para ajudar a a produção final do que está sendo desenvolvido. Na produção do nosso jogo nós utilizamos a concept art para esboçarmos as cenas do Sprint Skill como uma ideia inicial, podendo ser aprimorada ao longo do desenvolvimento.  
+Na criação das concepts nós pensamos em customizar as fases de acordo com as Vice-Presidencias da Vivo pensando em fazer um ambiente que envolva o colaborador e ele possa se sentir imerso no jogo. Com isso, desenhamos os nossos mapas voltados para o desafio que o usuário vai ter que realizar em cada etapa para poder desenvolver as habilidades propostas no jogo que vão ajudá-lo e incentivá-lo a realizar e entender a Job Rotation dentro da Vivo.
+
+
+![conceptRecepcao](https://github.com/user-attachments/assets/16844f63-7d26-41a3-8559-4d1e53c3bb60)  
 Figura 1: mapa da recepção aonde o usuário nasce, conversa com a vivita, cria o currículo e fala com o líder.  
-  
 
-![concept2](https://github.com/user-attachments/assets/29ac5130-a9f9-4595-8f09-cf91d5e3c078)  
-Figura 2: mapa da VP de Pessoas aonde o jogador realiza um case voltado para a dinâmica de entrevistas dentro da Vivo.  
+![conceptCurriculo](https://github.com/user-attachments/assets/8f9eea0b-78f7-47fa-b4e2-a06ef6b64347)
+Figura 2: tela aonde o usuário vai criar o currículo após falar com a Vivita
 
+![salaLider](https://github.com/user-attachments/assets/ccfba3a5-06d7-4712-88c4-4e5c17bbcf96)
+Figura 3: mapa da sala do líder aonde o usuário vai poder entrar depois de fazer e o currículo e nessa sala vai entregar o currículo para o líder
 
-![concept5](https://github.com/user-attachments/assets/0092f346-8b51-4506-b02a-bb43f19570d7)  
-Figura 5: uma mesa de jantar com as VPs da Vivo aonde o colaborador vai receber o feedback da jornada dele.  
+![conceptElevador](https://github.com/user-attachments/assets/bbef2db1-d93e-46b4-b963-df6272c6f82a)
+Figura 4: mapa do elevador aonde o usuário vai entrar depois de entregar o currículo e o elevador vai levá-lo para as VPs(cada andar uma VP) 
 
+![conceptVPPessoas](https://github.com/user-attachments/assets/8ee23ad0-2aef-4434-afaf-9556e5ce62e1)
+Figura 5: fase da VP de Pessoas aonde o colaborador vai simular uma entrevista
 
-*Inclua imagens de Concept Art do jogo que ainda não foram demonstradas em outras seções deste documento. Para cada imagem, coloque legendas, como no exemplo abaixo.*
+![conceptVPNegocios](https://github.com/user-attachments/assets/374019be-4ad6-47bf-8925-9645e638995e)
+Figura 6: fase da VP de Negócios personalizada nos temas B2B e B2C com um case em cada área
 
-<img src="../assets/concept1.jpg">
+![conceptVPEstrategia](https://github.com/user-attachments/assets/80a7b560-411e-4ce1-91ba-c7be7e025af0)
+Figura 7: fase da VP de Estrategia com um minigame sobre planejamento de carreira
 
-Figura 1: detalhe da cena da partida do herói para a missão, usando sua nave
+![conceptVPRelacoes](https://github.com/user-attachments/assets/d2312978-bfa4-4aec-9647-24f86fb7b6d3)
+Figura 8: fase da VP de Relações aonde vai acontecer um jantar com todos os VPs da Vivo voltado para resolver dialetos de desempenho
+
+![conceptVPTecnologia](https://github.com/user-attachments/assets/8b9b8a4f-b446-4103-98f2-fd6ff500a6e5)
+Figura 9: fase da VP de Tenologia aonde o usuário vai aprender sobre upskilling e reskilling e depois a jornada se encerra  
+
 
 ### 3.3.5. Trilha sonora (sprint 3)
 
