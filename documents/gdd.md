@@ -43,11 +43,28 @@
 
 ### 1.1.1. Contexto da indústria (sprint 2)
 
-*Posicione aqui o texto que explica o contexto da indústria/mercado do qual o parceiro de projeto faz parte. Contextualize o segmento de atuação do parceiro (pode ser indústria, comércio ou serviço). Caracterize as atividades executadas pelo negócio do parceiro e a abrangência de suas atividades (âmbito internacional, nacional ou regional).*
+A Vivo é uma empresa de telecomunicações e tecnologia no Brasil que oferece telefonia móvel e fixa, internet, TV por assinatura e serviços digitais. Fazendo parte do grupo “Telefónica”, investe em fibra óptica e 5G. Seus principais concorrentes são Claro, TIM e operadoras regionais. O setor é altamente competitivo, com foco em inovação, IoT (internet das coisas), inteligência artificial e Open Finance. A Vivo se destaca pela liderança no pós-pago e maior base de fibra óptica, enfrentando o desafio de manter sua posição frente à concorrência e à evolução tecnológica.
 
 #### 1.1.1.1. Modelo de 5 Forças de Porter (sprint 2)
 
-*Posicione aqui o modelo de 5 Forças de Porter para sustentar o contexto da indústria.*
+#### 1. Ameaça de Novos Entrantes
+Relativamente baixa. A indústria de telecomunicações enfrenta barreiras significativas para novos entrantes, como altos custos de infraestrutura, exigências regulatórias complexas e grandes investimentos em tecnologia, como 5G. As operadoras líderes, como Vivo, Claro e TIM, já possuem bases sólidas de clientes e um forte posicionamento no mercado. No entanto, pequenos provedores de internet (ISPs) regionais e operadoras focadas em nichos podem oferecer soluções mais acessíveis e personalizadas, impactando a participação das grandes operadoras em segmentos específicos, como dados e conectividade empresarial. Isso pode criar uma concorrência regionalizada e reduzir o domínio das grandes empresas.
+
+#### 2. Ameaça de Produtos ou Serviços Substitutos:
+Moderada/alta. Produtos e serviços substitutos, como internet via satélite, Wi-Fi comunitário, plataformas de streaming e soluções móveis inovadoras, estão se tornando alternativas à telefonia fixa e TV por assinatura. Além disso, serviços de VoIP (tecnologia que permite a realização de chamadas de voz por meio da internet), como WhatsApp e Skype, substituem chamadas telefônicas tradicionais. A ameaça de substitutos é moderada, pois, embora essas alternativas digitais cresçam, a infraestrutura das operadoras tradicionais e a demanda por serviços de alta velocidade, como fibra óptica, garantem que as grandes operadoras permaneçam competitivas. Assim, apesar da inovação, as operadoras ainda têm uma vantagem significativa em muitos segmentos de mercado.
+ 
+#### 3. Poder de Barganha dos Fornecedores:
+Moderado. Os principais fornecedores da indústria de telecomunicações incluem empresas de equipamentos de rede, como Huawei e Ericsson, fornecedores de infraestrutura como fibra óptica, e empresas de conteúdo digital, como Netflix e Amazon. O poder de barganha dos fornecedores é moderado, pois as operadoras têm alternativas para a construção de suas redes. No entanto, a necessidade de tecnologias avançadas, como 5G, e a concentração de alguns fornecedores no mercado global aumentam sua influência. Isso é especialmente relevante nas negociações para fornecimento de equipamentos e licenciamento de tecnologia, onde os fornecedores têm maior poder devido à especialização e escassez.
+
+#### 4. Poder de Barganha dos Clientes: 
+Alto. A base de clientes da indústria de telecomunicações é diversificada, incluindo consumidores residenciais (usuários de telefonia, internet e TV) e empresas (que demandam soluções de conectividade, cloud computing e segurança cibernética). O poder de barganha dos clientes é alto, devido à saturação do mercado e à ampla oferta de pacotes das operadoras concorrentes. A facilidade de troca de operadora, aliada à crescente competitividade em preços, serviços e atendimento ao cliente, coloca pressão sobre as operadoras para oferecer condições melhores e fidelizar seus consumidores, tornando o mercado mais dinâmico e com maior exigência de qualidade.
+
+#### 5. Rivalidade entre Concorrentes Existentes:
+Alta. As principais concorrentes da Vivo são Claro, TIM, e operadoras regionais, como Algar e Brisanet, que oferecem serviços de internet de alta qualidade. A rivalidade no setor é alta, com as operadoras competindo principalmente por preço, qualidade de serviço e inovação tecnológica. A crescente demanda por convergência de serviços (telefonia, internet e TV) e a implementação do 5G intensificam ainda mais a competição, levando as operadoras a investir constantemente em infraestrutura e em ofertas diferenciadas para se manterem competitivas no mercado altamente dinâmico e saturado.
+![SWOT](https://github.com/user-attachments/assets/5d960390-b6ab-4ffc-a930-d2a29dda43d2)
+
+![5 FORÇAS](https://github.com/user-attachments/assets/336a1a10-0e58-4e68-a42a-e48d542db44b)
+
 
 ### 1.1.2. Análise SWOT (sprint 2)
 
