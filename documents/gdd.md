@@ -62,6 +62,8 @@ Alto. A base de clientes da indústria de telecomunicações é diversificada, i
 #### 5. Rivalidade entre Concorrentes Existentes:
 Alta. As principais concorrentes da Vivo são Claro, TIM, e operadoras regionais, como Algar e Brisanet, que oferecem serviços de internet de alta qualidade. A rivalidade no setor é alta, com as operadoras competindo principalmente por preço, qualidade de serviço e inovação tecnológica. A crescente demanda por convergência de serviços (telefonia, internet e TV) e a implementação do 5G intensificam ainda mais a competição, levando as operadoras a investir constantemente em infraestrutura e em ofertas diferenciadas para se manterem competitivas no mercado altamente dinâmico e saturado.
 ![5 FORÇAS](https://github.com/user-attachments/assets/336a1a10-0e58-4e68-a42a-e48d542db44b)
+fonte:gráfico 5 forças de porter(produzido pelo autor) 
+
 
 
 ### 1.1.2. Análise SWOT (sprint 2)
