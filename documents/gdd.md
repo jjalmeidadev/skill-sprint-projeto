@@ -298,15 +298,9 @@ O jogo conta com 6 fases, cada fase tem um mapa diferente
 
 ### 3.3.2. Navegação pelo mundo (sprints 2 e 3)
 
+O personagem irá navegar pelo mundo começando pela recepção nela ele irá interagir com a Vivita que guiará ele para a criação do currículo, para realizar essa tarefa o usuário irá clicar com a tecla E no computador e jogar um minigame para criar o currículo. Após isso ele irá se dirigir para a sala do Líder aonde vai acontecer a entrega do currículo criado e logo em seguida o colaborador se locomove para o elevador selecionando o andar 1 que irá direcioná-lo para a VP de Pessoas. Nessa VP o usuário realiza uma entrevista e em seguida retorna ao elevador para avançar de fase. No 2° andar temos a VP de Négocios aonde o colaborador irá resolver um problema no cloud da B2B e precisará coletar 5 chips na B2C. Seguindo adiante ele retorna ao elevador para subir mais um andar que será a VP de Estratégia, e nesse mapa o colaborador irá fazer o seu planejamento de carreira dentro da Vivo através de um minigame. Ao retornar para o elevador avaçamos para o 4°, a VP de Relações aonde acontecerá um jantar com todos os VPs da Vivo para comentar o feedback do colaborador durante a jornada. Por último, ao entrar no elevador pelo e ir para a VP de Tecnologia(5° andar) o jogador irá se deparar com um mapa aonde ele aprenderá a diferença entre upskilling e reskilling e ao final dessa fase o jogo se encerra. 
 O Skrill é o personagem principal que é guiado pelo usuário se locomovendo pelas teclas WASD, cada fase depende da outra para ser desbloqueada, ou seja, o colaborador só poderá avançar para o próximo mapa depois de concluir as tasks do anteior.
- - 1° Recepção: mapa inicial em que o jogador vai aparecer, dentro desse mapa existe a Sala do Líder que só poderá ser acessada depois que o colaborador criar o currículo.
- - 2° VP de Pessoas: depois de falar com o Líder a sala da VP de Pessoas vai ser desbloqueada e o colaborador vai realizar a primeira case
- - 3° VP de Negócios: ao finalizar a case da fase anterior o jogador avança para a VP de Negócios e realiza mais uma case, dessa vez sobre negócios.
- - 4° VP de Estratégia: a fase é liberada após a resolução da case anterior e durante a fase o colaborador irá fazer o planejamento da carreira dentro da Vivo
- - 5° VP de Relações: depois de criar o planejamento o jogador irá ter um jantar com os VPs dentro da VP de Relações e terá uma conversa para comentar o feedback do colaborador durante a jornada dentro do jogo
- - 6° VP de Tecnologia: quando o feedback for finalizado, a última fase será uma aula de difereciação entre upskilling e reskilling, e depois disso o jogo se encerra
 
-*Descreva como os personagens se movem no mundo criado e as relações entre as locações – como as áreas/fases são acessadas ou desbloqueadas, o que é necessário para serem acessadas etc. Utilize listas ou tabelas para organizar esta seção.*
 
 ### 3.3.3. Condições climáticas e temporais (sprints 2 e 3)
 
