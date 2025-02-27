@@ -17,14 +17,14 @@ class CutScene extends Phaser.Scene {
       this.video.play(false);
   
       // Quando o vídeo terminar, inicia a próxima cena do jogo
-      /*this.video.on('complete', () => {
-        this.scene.start('startScene'); // Troca para a cena principal do jogo
-      });*/
+      this.video.on('complete', () => {
+        this.scene.start('tutorialScene'); // Troca para a cena principal do jogo
+      });
 
-      this.input.on('pointerdown', () => {
+      /*this.input.on('pointerdown', () => {
 		  this.scene.stop('cutScene'),
-		  this.scene.start('tutorialScene')
-		})
+		  this.scene.start('tutorialScene')*/
+		
     }
   }
  
