@@ -64,7 +64,7 @@ Alta. As principais concorrentes da Vivo são Claro, TIM, e operadoras regionais
 
 
 ![5 FORÇAS](https://github.com/user-attachments/assets/336a1a10-0e58-4e68-a42a-e48d542db44b)
-fonte: gráfico 5 forças de porter(produzido pelo autor) 
+Fonte: Gráfico 5 forças de porter (produzido pelo autor) 
 
 
 
@@ -73,7 +73,7 @@ A Vivo, líder de mercado no Brasil, destaca-se pela forte presença em telefoni
 
 
 ![SWOT](https://github.com/user-attachments/assets/5d960390-b6ab-4ffc-a930-d2a29dda43d2)
-fonte: gráfico análise SWOT (produzido pelo autor) 
+Fonte: Gráfico análise SWOT (produzido pelo autor) 
 
 
 ### 1.1.3. Missão / Visão / Valores (sprint 2)
@@ -184,6 +184,8 @@ Os objetivos de cada fase do jogo são:
 - **Aprendizado:** Desenvolvimento de novas habilidades para adaptação ao mercado.
 - **Conteúdos:** Diferença entre upskilling e reskilling, ferramentas de desenvolvimento.
 - **Desafios:** Identificar skills relevantes, criar plano de aprendizado.
+
+Diante do exposto, entende-se que o jogo é estruturado de forma a contemplar o requisito sete (R07), voltado para o estímulo da rotação de carreira no ambiente corporativo da Vivo. Todas as fases possuem o objetivo de instruir, em forma de serious game, as boas práticas de uma aplicação de qualidade em um processo seletivo interno empresarial. O objetivo geral é motivar o jogador a realizar o job rotation após entender claramente o passo-a-passo para esse processo jogando Skill Sprint.
 
 ## 2.2. Características do Jogo (sprint 2)
 
