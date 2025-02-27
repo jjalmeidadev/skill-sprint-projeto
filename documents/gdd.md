@@ -237,9 +237,22 @@ Esses títulos ajudaram a moldar a estrutura do **Skill Sprint**, oferecendo um 
 
 ## 3.1. Enredo do Jogo (sprints 2 e 3)
 
-*Descreva o enredo/história do jogo, criando contexto para os personagens (seção 3.2) e o mundo do jogo (seção 3.3). Uma boa história costuma ter um arco narrativo de contexto, conflito e resolução. Utilize etapas sequenciais para descrever esta história.* 
 
-*Caso seu jogo não possua enredo/história (ex. jogo Tetris), mencione os motivos de não existir e como o jogador pode se contextualizar com o ambiente do jogo.*
+
+ Você controla Skrill, um avatar que trabalha na Vivo há dois anos. Desde o início, você sempre teve interesse em crescer profissionalmente e explorar novas áreas dentro da empresa, mas nunca soube exatamente por onde começar. A empresa oferece diversos programas de desenvolvimento, mas muitos colaboradores, como você, encontram dificuldades para acessar todas as oportunidades disponíveis.
+
+Com a crescente necessidade de inovação e adaptação no mercado, a Vivo decidiu lançar um novo programa interno: o Skill Sprint, um jogo interativo que simula os desafios do crescimento profissional dentro da empresa. Nosso objetivo? Ajudar os colaboradores a desenvolverem novas habilidades, explorarem diferentes áreas e se prepararem para oportunidades internas de forma prática e envolvente.
+
+Apesar das oportunidades dentro da Vivo, muitos colaboradores ainda enfrentam barreiras para avançar em suas carreiras. Alguns não sabem por onde começar, outros sentem insegurança para se candidatar a novas vagas ou acreditam que não têm as habilidades necessárias para mudar de área.
+
+Além disso, a rotina corrida do dia a dia dificulta a participação em treinamentos tradicionais, tornando o desenvolvimento profissional algo secundário para muitos. Sem uma abordagem mais dinâmica e acessível, a mobilidade interna vira um desafio e muitos talentos acabam estagnados.
+
+Mas agora, com o Skill Sprint, você tem a chance de mudar essa realidade. O jogo apresenta um caminho estruturado para explorar diferentes áreas, aprimorar habilidades e se preparar para novas oportunidades de crescimento.
+
+Ao concluir o Skill Sprint, você se torna um colaborador mais preparado para assumir novos desafios dentro da Vivo. Você ganha reconhecimento, recebe novas oportunidades e pode até mesmo conquistar uma posição em outra área que antes parecia inacessível.
+
+O Skill Sprint transforma o desenvolvimento de carreira em uma experiência interativa e prática. Ao simular desafios reais e permitir que os colaboradores testem suas habilidades em um ambiente seguro e gamificado, o jogo torna o aprendizado mais acessível e motivador.
+
 
 ## 3.2. Personagens (sprints 2 e 3)
 
