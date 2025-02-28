@@ -153,11 +153,11 @@ O principal objetivo do Skill Sprint é proporcionar aos colaboradores da Vivo u
 
 No jogo, os participantes percorrem diferentes etapas do crescimento profissional, desde a candidatura a novas oportunidades até o planejamento contínuo de desenvolvimento, promovendo a cultura de mobilidade interna e aprendizado contínuo.
 
-Por meio de desafios dinâmicos e da prática do **job rotation** [14], os jogadores exploram novas áreas dentro da empresa, ampliando suas habilidades e alinhando-se aos valores e oportunidades da Vivo. Com essa abordagem gamificada, o Skill Sprint transforma o desenvolvimento de carreira em uma jornada envolvente e acessível, aumentando a adesão aos programas de capacitação e otimizando os recursos investidos em treinamentos tradicionais.
+Por meio de desafios dinâmicos e da prática do **job rotation** [15], os jogadores exploram novas áreas dentro da empresa, ampliando suas habilidades e alinhando-se aos valores e oportunidades da Vivo. Com essa abordagem gamificada, o Skill Sprint transforma o desenvolvimento de carreira em uma jornada envolvente e acessível, aumentando a adesão aos programas de capacitação e otimizando os recursos investidos em treinamentos tradicionais.
 
 Para avançar e concluir o jogo, o jogador deve:
 - Aprender os comandos de movimentação (teclas "A", "W", "S" e "D" do teclado) e interação com elementos (tecla “E”);
-- Interagir e seguir as instruções fornecidas pelos personagens (até o presente momento de ideação existem 3 NPCs [15]: Vivinho, Vivita e o líder);
+- Interagir e seguir as instruções fornecidas pelos personagens (até o presente momento de ideação existem 3 NPCs [16]: Vivinho, Vivita e o líder);
 - Finalizar as tarefas de cada fase do jogo, aprendendo sobre as oportunidades existentes em cada Vice-Presidência.
 
 Os objetivos de cada fase do jogo são:
@@ -165,7 +165,7 @@ Os objetivos de cada fase do jogo são:
 ##### Fase 1: Criação do Currículo no Escritório da Vivo
 - **Objetivo da fase:** Ensinar a criar um currículo atrativo e eficaz.
 - **Aprendizado:** Construção e otimização de currículo.
-- **Conteúdos:** Dicas de layout, palavras-chave, adaptação para ATS [16] (Applicant Tracking System), destaque de conquistas.
+- **Conteúdos:** Dicas de layout, palavras-chave, adaptação para ATS [17] (Applicant Tracking System), destaque de conquistas.
 - **Desafio (objetivo do jogador):** Cumprir a introdução ao jogo com Vivinho, seguir instruções da recepcionista (Vivita), criar o currículo no computador através das perguntas do mini game e entregá-lo à líder.
 
 ##### Fase 2: Entrevista de Processo Seletivo na Vice-Presidência de Pessoas
@@ -192,7 +192,7 @@ Os objetivos de cada fase do jogo são:
 - **Conteúdos:** Práticas para feedback, ciclo de desempenho, comunicação com liderança.
 - **Desafios (objetivo do jogador):** Simulação de conversa com o gestor, resolver dilemas de desempenho.
 
-##### Fase 6: Upskilling e Reskilling [17] na Vice-Presidência de Tecnologia da Informação
+##### Fase 6: Upskilling e Reskilling [18] na Vice-Presidência de Tecnologia da Informação
 - **Objetivo:** Incentivar o aprendizado contínuo.
 - **Aprendizado:** Desenvolvimento de novas habilidades para adaptação ao mercado.
 - **Conteúdos:** Diferença entre upskilling e reskilling, ferramentas de desenvolvimento.
@@ -202,11 +202,11 @@ Diante do exposto, entende-se que o jogo é estruturado de forma a contemplar o 
 
 ## 2.2. Características do Jogo (sprint 2)
 
-O jogo Skill Sprint se passa em um ambiente virtual que simula a jornada de desenvolvimento de carreira dentro da Vivo. Por ser um serious game [18], seu principal objetivo é utilizar a mecânica e a dinâmica dos jogos para promover aprendizado, treinamento ou conscientização em um contexto fora do entretenimento tradicional. Esses jogos são projetados para alcançar um objetivo educativo, como o desenvolvimento de habilidades, a simulação de situações reais, ou a transmissão de informações importantes de uma maneira envolvente e interativa. Enquanto os jogos tradicionais têm como foco a diversão e o entretenimento, os serious games buscam impactar positivamente a formação de uma pessoa ou de uma comunidade.
+O jogo Skill Sprint se passa em um ambiente virtual que simula a jornada de desenvolvimento de carreira dentro da Vivo. Por ser um serious game [19], seu principal objetivo é utilizar a mecânica e a dinâmica dos jogos para promover aprendizado, treinamento ou conscientização em um contexto fora do entretenimento tradicional. Esses jogos são projetados para alcançar um objetivo educativo, como o desenvolvimento de habilidades, a simulação de situações reais, ou a transmissão de informações importantes de uma maneira envolvente e interativa. Enquanto os jogos tradicionais têm como foco a diversão e o entretenimento, os serious games buscam impactar positivamente a formação de uma pessoa ou de uma comunidade.
 
 Dessa forma, o Skill Sprint desempenha o papel de um “jogo sério”, de cunho didático, de forma inspiradora e dinâmica. O personagem principal está no prédio empresarial da Vivo e é convidado a conhecer as Vice-Presidências da empresa após submeter seu currículo na sala do líder (1ª fase). O jogador explora diferentes setores e desafios do processo de candidatura para processos internos, como o momento de feedback com gestores, por exemplo, passando por processos de recrutamento, desenvolvimento profissional e aprendizado contínuo. Cada fase do jogo reflete um aspecto essencial desse processo, proporcionando uma experiência imersiva.
 
-Os jogadores enfrentam desafios interativos que representam situações reais do mercado de trabalho, incluindo a criação de currículo, participação em entrevistas, resolução de cases e planejamento de carreira. O jogo utiliza elementos de RPG [19] para permitir a evolução do personagem, incentivando a progressão baseada no aprendizado e na tomada de decisões estratégicas.
+Os jogadores enfrentam desafios interativos que representam situações reais do mercado de trabalho, incluindo a criação de currículo, participação em entrevistas, resolução de cases e planejamento de carreira. O jogo utiliza elementos de RPG [20] para permitir a evolução do personagem, incentivando a progressão baseada no aprendizado e na tomada de decisões estratégicas.
 
 A narrativa envolvente conduz os jogadores por um caminho estruturado de desenvolvimento profissional, utilizando NPCs carismáticos como guias e mentores. O enredo dinâmico reforça a importância da mobilidade interna e do aprendizado contínuo, destacando o papel da Vivo no crescimento de seus colaboradores.
 
@@ -230,13 +230,13 @@ O Skill Sprint é um jogo single-player, projetado para oferecer uma experiênci
 
 O desenvolvimento do Skill Sprint foi inspirado por títulos que combinam aprendizado e dinâmica de maneira eficaz. Algumas das principais referências incluem:
 
-- Pokémon [20]: A mecânica de evolução dos personagens e a exploração de diferentes mundos em Pokémon inspirou a estrutura de progressão de carreira no **Skill Sprint**. Assim como em Pokémon, os jogadores avançam ao completar desafios e aprimorar suas habilidades;
+- Pokémon [21]: A mecânica de evolução dos personagens e a exploração de diferentes mundos em Pokémon inspirou a estrutura de progressão de carreira no **Skill Sprint**. Assim como em Pokémon, os jogadores avançam ao completar desafios e aprimorar suas habilidades;
   
-- Stardew Valley [21]: A interação com NPCs e o desenvolvimento de atividades dentro de um ambiente dinâmico e imersivo, como visto em Stardew Valley, influenciaram a abordagem do Skill Sprint em termos de interação com personagens e tarefas dentro de cada fase do jogo;
+- Stardew Valley [22]: A interação com NPCs e o desenvolvimento de atividades dentro de um ambiente dinâmico e imersivo, como visto em Stardew Valley, influenciaram a abordagem do Skill Sprint em termos de interação com personagens e tarefas dentro de cada fase do jogo;
 
-- Undertale [22]: A forma como o jogo permite que o jogador afete profundamente o enredo e as relações com os personagens, dependendo de suas escolhas, influenciou a forma como os NPCs do Skill Sprint guiam e interagem com o jogador. Em Undertale, as interações com personagens não são apenas funcionais, mas emocionais, criando uma conexão mais profunda com o jogador — um aspecto que buscamos trazer para o Skill Sprint em suas interações e progressão dentro da jornada de desenvolvimento de carreira.
+- Undertale [23]: A forma como o jogo permite que o jogador afete profundamente o enredo e as relações com os personagens, dependendo de suas escolhas, influenciou a forma como os NPCs do Skill Sprint guiam e interagem com o jogador. Em Undertale, as interações com personagens não são apenas funcionais, mas emocionais, criando uma conexão mais profunda com o jogador — um aspecto que buscamos trazer para o Skill Sprint em suas interações e progressão dentro da jornada de desenvolvimento de carreira.
 
-- Meta Tower Game [23]:  O Meta Tower Game foi uma inspiração para o Skill Sprint, especialmente em relação à estrutura de fases e à abordagem educacional. No Meta Tower Game, os colaboradores da Meta exploram uma torre com seis andares, cada um representando uma etapa da jornada de contratação de fornecedores. Essa estrutura de fases temáticas, onde cada andar corresponde a um desafio específico, inspirou a organização do Skill Sprint em fases que representam diferentes aspectos do desenvolvimento de carreira na Vivo.
+- Meta Tower Game [24]:  O Meta Tower Game foi uma inspiração para o Skill Sprint, especialmente em relação à estrutura de fases e à abordagem educacional. No Meta Tower Game, os colaboradores da Meta exploram uma torre com seis andares, cada um representando uma etapa da jornada de contratação de fornecedores. Essa estrutura de fases temáticas, onde cada andar corresponde a um desafio específico, inspirou a organização do Skill Sprint em fases que representam diferentes aspectos do desenvolvimento de carreira na Vivo.
 
 Esses títulos ajudaram a moldar a estrutura do Skill Sprint, oferecendo um equilíbrio entre aprendizado, progressão de personagem e interatividade dentro de um cenário empresarial simulado.
 
@@ -282,7 +282,7 @@ Até o presente momento de desenvolvimento, idealizamos 2 NPCs: o Vivinho, a Viv
  
 - Vivita é uma NPC que fica na recepção e orienta o usuário a realizar a primeira tarefa do jogo, que é criar um currículo. Ela será responável por introduzir o usuário e dizer para ele qual o primeiro passo a ser dado para começar a jornada de Job Rotation.
 
-- A líder é a chefe que recebe o currículo de Skrill (personagem principal) e fornece o primeiro feedback ao jogador. Escolhemos uma mulher na liderança, porque evidenciamos que apenas 38% dos cargos de liderança no Brasil são representados por mulheres. [23]
+- A líder é a chefe que recebe o currículo de Skrill (personagem principal) e fornece o primeiro feedback ao jogador. Escolhemos uma mulher na liderança, porque evidenciamos que apenas 38% dos cargos de liderança no Brasil são representados por mulheres. [25]
   
 - Todos os NPCs vão ser desenhados com o intuito de trazer diversidade para o jogo, representando diferentes grupos étnicos, a comunidade LGBTQIA+ e pessoas com necessidades especiais.
 
@@ -296,7 +296,7 @@ Imagem 2: Vivita (elaborado pelo autor)
 
 ### 3.2.3. Diversidade e Representatividade dos Personagens
 
-No momento inicial de desenvolvimento do jogo, planejamos implementar um só personagem a fim de testarmos suas funcionalidades em si, as quais julgamos ser essenciais para nosso progresso. Quando melhor encaminhados, possuímos o objetivo de abranger a todas as etnias e características que compõem os grupos da população brasileira e, por consequência, a Vivo como negócio. Esta meta inclui representar populações numerosas e minorizadas de origens afro-descendentes (55,5% dos brasileiros) [24], amarelas (0,4%) e indígenas (0,8%), além de diferentes faixas etárias, gêneros (mulheres compõem 51,5%) [25] e condições de saúde (surdez, cegos, membros amputados e formas de paralisia, por exemplo). A representação da diversidade será realizada na customização de players (com traços e cosméticos) e/ou na composição de NPCs que farão parte das interações ao longo da jornada do colaborador nas fases.
+No momento inicial de desenvolvimento do jogo, planejamos implementar um só personagem a fim de testarmos suas funcionalidades em si, as quais julgamos ser essenciais para nosso progresso. Quando melhor encaminhados, possuímos o objetivo de abranger a todas as etnias e características que compõem os grupos da população brasileira e, por consequência, a Vivo como negócio. Esta meta inclui representar populações numerosas e minorizadas de origens afro-descendentes (55,5% dos brasileiros) [26], amarelas (0,4%) e indígenas (0,8%), além de diferentes faixas etárias, gêneros (mulheres compõem 51,5%) [27] e condições de saúde (surdez, cegos, membros amputados e formas de paralisia, por exemplo). A representação da diversidade será realizada na customização de players (com traços e cosméticos) e/ou na composição de NPCs que farão parte das interações ao longo da jornada do colaborador nas fases.
 
 Este plano se alinha com o foco da Vivo em formar um coletivo de colaboradores diversos, de maneira à fornecer oportunidades aos mais variados grupos em aspectos como desenvolvimento corporativo e atuação na sociedade através de seus amplos setores. Portanto, configura um fator essencial a ser trabalhado a fim de retratar a composição da empresa em um jogo.
 
@@ -543,25 +543,55 @@ _Incluir as principais referências de seu projeto, para que seu parceiro possa 
 
 [2] Vivo lidera crescimento na telefonia móvel até novembro de 2024. Disponível em: <https://teletime.com.br/14/01/2025/vivo-lidera-crescimento-na-telefonia-movel-ate-novembro-de-2024/>. Acesso em: 27 fev. 2025.
 
-[1] Job rotation: o que é, vantagens, desvantagens e como implementar. Disponível em: <https://gptw.com.br/conteudo/artigos/job-rotation/>. Acesso em: 21 fev. 2025.
+[3] Claro. Disponível em: <https://www.claro.com.br/produtosclaro/novo_produtos/?gad_source=1&gclid=CjwKCAiAt4C-BhBcEiwA8Kp0CXwujlEcZbfNdlOeYqgojxpEIIcAM3DCmBKFdrpoJPVWrhxKCLSwXRoCIFMQAvD_BwE&gclsrc=aw.ds>. Acesso em: 27 fev. 2025.
 
-[2] Personagem não jogável. <https://pt.wikipedia.org/wiki/Personagem_n%C3%A3o_jog%C3%A1vel.> Acesso em: 21 fev. 2025.
+[4] Tim. Disponível em: <https://www.tim.com.br/rj>. Acesso em: 27 fev. 2025.
 
-[3] Entenda o que é ATS e sua importância para o recrutamento moderno. <https://blog-forbusiness.vagas.com.br/o-que-e-ats/>. Acesso em: 21 fev. 2025.
+[5] Oi. Disponível em: <https://www.oi.com.br/>. Acesso em: 27 fev. 2025.
 
-[4] Upskilling E Reskilling: O Que É E Principais Diferenças. <https://blog-forbusiness.vagas.com.br/reskilling-upskilling/#:~:text=O%20upskilling%20tem%20o%20foco,coloc%C3%A1%2Dlo%20em%20outro%20posto>. Acesso em 21 fev. 2025.
+[6] Algar telecom. Disponível em: <https://www.google.com/aclk?sa=l&ai=DChcSEwjPkdzOoOWLAxXmJkQIHY9GBZUYABAAGgJkeg&co=1&gclid=CjwKCAiAt4C-BhBcEiwA8Kp0CfyaTeFHi9xwHD0TlJXEjJtpA2sqM4ZvLARNP6QCiyFcJeArGHfMtxoCUFkQAvD_BwE&sig=AOD64_1RITdImFfjbBfdxSXlj0FsaglCpA&q&adurl&ved=2ahUKEwiz-tLOoOWLAxXrFbkGHdHEByUQ0Qx6BAgJEAE>. Acesso em 27 fev. 2025.
 
-[5] O que são Serious Games: como desenvolver um serious game para suas necessidades de negócios em 6 passos. <https://www.startupmundi.com/o-que-sao-serious-games-com-desenvolver-um-serious-game-em-6-passos>. Acesso em 21 fev. 2025.
+[7] Sky. Disponível em: <https://www.sky.com.br/>. Acesso em 27 fev. 2025.
 
-[6] Role-playing game. <https://pt.wikipedia.org/wiki/Role-playing_game.> Acesso em 21 fev. 2025.
+[8] O que é OTT? (Over-the-top)? <https://www.appsflyer.com/pt/glossary/ott-over-the-top/#:~:text=OTT%20(over%2Dthe%2Dtop)%20%C3%A9%20um%20m%C3%A9todo%20de,r%C3%A1dio%20ou%20caixas%20de%20cabo.>. Acesso em 27 fev. 2025.
 
-[7] Pokemon World Online. <https://pt.wikipedia.org/wiki/Role-playing_game.> Acesso em 21. fev 2025.
+[9] 5 forças de Porter. Disponível em: <https://www.portal-administracao.com/2016/06/16/as-5-forcas-de-porter/>. Acesso em: 27 fev. 2025.
 
-[8] Stardew Valley. <https://www.stardewvalley.net/>. Acesso em 21 fev. 2025.
+[10] Site sobre ISPs - pequenos provedores de internet. Disponível em: <https://www.teleco.com.br/tutoriais/tutorialisps/pagina_1.asp>. Acesso em: 27 fev. 2025.
 
-[9] Undertale. <https://undertale.com/>. Acesso em 21 fev. 2025.
+[11] Sobre serviços de VoIP. Disponível em: <https://www.tecmundo.com.br/voip>. Acesso em: 27 fev. 2025.
 
-[10] Meta Tower Game. <https://github.com/InteliProjects/2024-T0014-IN01-G02/tree/main>. Acesso em 21 fev. 2025.
+[12] Análise SWOT. Disponível em: <https://www.administradores.com.br/artigos/marketing/analise-swot-o-que-e-e-como-fazer/143336/>. Acesso em: 27 fev. 2025.
+
+[13] Missão da Vivo. Disponível em: <https://www.vivo.com.br/para-voce>. Acesso em: 27 fev. 2025.
+
+[14] Visão da Vivo. Disponível em: <https://www.vivo.com.br/para-voc>e. Acesso em: 27 fev. 2025.
+
+[15] Job rotation: o que é, vantagens, desvantagens e como implementar. Disponível em: <https://gptw.com.br/conteudo/artigos/job-rotation/>. Acesso em: 21 fev. 2025.
+
+[16] Personagem não jogável. <https://pt.wikipedia.org/wiki/Personagem_n%C3%A3o_jog%C3%A1vel.> Acesso em: 21 fev. 2025.
+
+[17] Entenda o que é ATS e sua importância para o recrutamento moderno. <https://blog-forbusiness.vagas.com.br/o-que-e-ats/>. Acesso em: 21 fev. 2025.
+
+[18] Upskilling E Reskilling: O Que É E Principais Diferenças. <https://blog-forbusiness.vagas.com.br/reskilling-upskilling/#:~:text=O%20upskilling%20tem%20o%20foco,coloc%C3%A1%2Dlo%20em%20outro%20posto>. Acesso em 21 fev. 2025.
+
+[19] O que são Serious Games: como desenvolver um serious game para suas necessidades de negócios em 6 passos. <https://www.startupmundi.com/o-que-sao-serious-games-com-desenvolver-um-serious-game-em-6-passos>. Acesso em 21 fev. 2025.
+
+[20] Role-playing game. <https://pt.wikipedia.org/wiki/Role-playing_game.> Acesso em 21 fev. 2025.
+
+[21] Pokemon World Online. <https://pt.wikipedia.org/wiki/Role-playing_game.> Acesso em 21. fev 2025.
+
+[22] Stardew Valley. <https://www.stardewvalley.net/>. Acesso em 21 fev. 2025.
+
+[23] Undertale. <https://undertale.com/>. Acesso em 21 fev. 2025.
+
+[24] Meta Tower Game. <https://github.com/InteliProjects/2024-T0014-IN01-G02/tree/main>. Acesso em 21 fev. 2025.
+
+[25] Mulheres ocupam 38% dos cargos de liderança no Brasil e são mais bem avaliadas pelo time. Disponível em: <https://forbes.com.br/forbes-mulher/2024/03/mulheres-ocupam-38-dos-cargos-de-lideranca-no-brasil-e-sao-mais-bem-avaliadas-pelo-time/>. Acesso em: 21 fev. 2025.
+
+[26] Cor ou raça. Disponível em: <https://www.ibge.gov.br/estatisticas/sociais/populacao/25844-desigualdades-sociais-por-cor-ou-raca.html>. Acesso em: 21 fev. 2025.
+
+[27] Indicadores sociais das mulheres no Brasil. Disponível em: <https://educa.ibge.gov.br/jovens/materias-especiais/21241-indicadores-sociais-das-mulheres-no-brasil.html>. Acesso em: 21 fev. 2025.
 
 LUCK, Heloisa. Liderança em gestão escolar. 4. ed. Petrópolis: Vozes, 2010. <br>
 SOBRENOME, Nome. Título do livro: subtítulo do livro. Edição. Cidade de publicação: Nome da editora, Ano de publicação. <br>
