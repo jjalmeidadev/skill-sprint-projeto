@@ -44,13 +44,13 @@ class OfficeScene extends Phaser.Scene {
 
         // Verifica se a tecla E foi pressionada e o jogador está perto do computador
         if (Phaser.Input.Keyboard.JustDown(this.teclas.interagir)) {
-            if (Math.abs(this.player.x - 387) <= 50 && Math.abs(this.player.y - 487) <= 50) {
-                this.scene.start('curriculoScene');
+            if (Math.abs(this.player.x - (this.computador.x)) <= 50 && Math.abs(this.player.y - (this.computador.y)) <= 50) {
+                this.showComputerScreen();
             }
         }
 
         // Esconder o indicador quando o jogador se aproximar do computador
-        if (this.indicatorActive && Math.abs(this.player.x - 387) <= 30 && Math.abs(this.player.y - 487) <= 30) {
+        if (this.indicatorActive && Math.abs(this.player.x - (this.computador.x)) <= 30 && Math.abs(this.player.y - (this.computador.y)) <= 30) {
             this.indicator.setVisible(false);
             this.indicatorActive = false;
         }
@@ -148,12 +148,16 @@ class OfficeScene extends Phaser.Scene {
     }
 
     addComputerAndIndicator() {
+        // Definir as posições do computador e do indicador
+        const x = 429;
+        const y = 487;
+
         // Criar indicador de exclamação sobre o computador
-        this.indicator = this.add.image(387, 487, 'indicator').setScale(0.3);
+        this.indicator = this.add.image(x + 70, y + 80, 'indicator').setScale(0.3);
         this.indicatorActive = true;
 
-        // Criar o computador como um botão interativo
-        this.computador = this.add.image(429, 487, 'computador').setScale(0.09).setInteractive();
+        // Criar o computador na posição original
+        this.computador = this.add.image(x + 70, y + 95, 'computador').setScale(0.09).setInteractive();
         this.computador.setFlipX(true);
 
         // Tornar o computador interativo
@@ -165,9 +169,17 @@ class OfficeScene extends Phaser.Scene {
             this.computador.clearTint();
         });
 
+        // Adicionar evento de clique no computador
         this.computador.on('pointerdown', () => {
-            this.scene.start('curriculoScene');
+            this.showComputerScreen();
         });
+    }
+
+    showComputerScreen() {
+        // Mostrar a tela do computador
+        this.telaComputador.setVisible(true);
+        this.player.setVisible(false);
+        this.computador.setVisible(false);
     }
 }
 
