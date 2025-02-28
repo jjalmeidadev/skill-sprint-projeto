@@ -1,5 +1,6 @@
 class OfficeScene extends Phaser.Scene {
     constructor() {
+        // Chama o construtor da classe Phaser.Scene com a chave 'officeScene'
         super({ key: 'officeScene' });
         this.currentBackground = 'background'; // Estado inicial
         this.canMove = true; // Controla se o jogador pode se mover
