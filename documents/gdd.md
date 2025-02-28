@@ -43,15 +43,21 @@
 
 ### 1.1.1. Contexto da indústria (sprint 2)
 
-A Vivo é uma empresa de telecomunicações e tecnologia no Brasil que oferece telefonia móvel e fixa, internet, TV por assinatura e serviços digitais. Fazendo parte do grupo “Telefónica”, investe em fibra óptica e 5G. Seus principais concorrentes são Claro, TIM e operadoras regionais. O setor é altamente competitivo, com foco em inovação, IoT (internet das coisas), inteligência artificial e Open Finance. A Vivo se destaca pela liderança no pós-pago e maior base de fibra óptica, enfrentando o desafio de manter sua posição frente à concorrência e à evolução tecnológica.
+A Vivo é uma empresa de telecomunicações e tecnologia no Brasil que oferece telefonia móvel e fixa, internet, TV por assinatura e serviços digitais. Fazendo parte do grupo “Telefônica”, investe em fibra óptica e 5G. Seus principais concorrentes são Claro, TIM e operadoras regionais. O setor é altamente competitivo, com foco em inovação, IoT (internet das coisas), inteligência artificial e Open Finance [1]. A Vivo se destaca pela liderança no pós-pago e maior base de fibra óptica, enfrentando o desafio de manter sua posição frente à concorrência e à evolução tecnológica.
+
+Os principais players da indústria de telecomunicações no Brasil são empresas que competem diretamente no mercado. Esses players incluem a Vivo (líder em número de clientes [2]; possui diferencial de portfólio diversificado de serviços), a Claro [3] (segunda maior operadora do Brasil; possui como diferencial o foco em pacotes combinados de telefonia, internet e TV), a TIM [4] (terceira maior operadora; possui preços competitivos), a Oi [5], Algar Telecom [6] e Sky [7] (entre outros regionais). A Vivo também possui concorrentes indiretos de streaming e over-the-top (OTT) [8], plataformas como Netflix, Amazon Prime e YouTube competem indiretamente no segmento de entretenimento, impactando a demanda por serviços de TV por assinatura.
+
+As tendências do mercado são a expansão do 5G (garante maior velocidade e conectividade), convergência de serviços (pacotes combinados com diferentes serviços de comunicação), digitalização e IoT, principalmente para empresas. Esses players e tendências mostram um mercado altamente competitivo, onde a Vivo se mantém como líder, mas precisa continuar inovando para enfrentar a concorrência direta e indireta. 
 
 #### 1.1.1.1. Modelo de 5 Forças de Porter (sprint 2)
 
+O modelo das 5 Forças de Porter [9], desenvolvido por Michael E. Porter, é uma ferramenta estratégica utilizada para analisar a competitividade de um setor. Ele avalia cinco forças que moldam a concorrência: 1) rivalidade entre concorrentes, 2) ameaça de novos entrantes, 3) poder de barganha dos fornecedores, 4) poder de barganha dos clientes e 5) ameaça de produtos substitutos. No caso da Vivo, líder do setor de telecomunicações no Brasil, a aplicação desse modelo é essencial para identificar oportunidades de crescimento e ameaças que podem impactar a sustentabilidade do negócio.
+
 #### 1. Ameaça de Novos Entrantes
-Relativamente baixa. A indústria de telecomunicações enfrenta barreiras significativas para novos entrantes, como altos custos de infraestrutura, exigências regulatórias complexas e grandes investimentos em tecnologia, como 5G. As operadoras líderes, como Vivo, Claro e TIM, já possuem bases sólidas de clientes e um forte posicionamento no mercado. No entanto, pequenos provedores de internet (ISPs) regionais e operadoras focadas em nichos podem oferecer soluções mais acessíveis e personalizadas, impactando a participação das grandes operadoras em segmentos específicos, como dados e conectividade empresarial. Isso pode criar uma concorrência regionalizada e reduzir o domínio das grandes empresas.
+Relativamente baixa. A indústria de telecomunicações enfrenta barreiras significativas para novos entrantes, como altos custos de infraestrutura, exigências regulatórias complexas e grandes investimentos em tecnologia, como 5G. As operadoras líderes, como Vivo, Claro e TIM, já possuem bases sólidas de clientes e um forte posicionamento no mercado. No entanto, pequenos provedores de internet (ISPs) [10] regionais e operadoras focadas em nichos podem oferecer soluções mais acessíveis e personalizadas, impactando a participação das grandes operadoras em segmentos específicos, como dados e conectividade empresarial. Isso pode criar uma concorrência regionalizada e reduzir o domínio das grandes empresas.
 
 #### 2. Ameaça de Produtos ou Serviços Substitutos:
-Moderada/alta. Produtos e serviços substitutos, como internet via satélite, Wi-Fi comunitário, plataformas de streaming e soluções móveis inovadoras, estão se tornando alternativas à telefonia fixa e TV por assinatura. Além disso, serviços de VoIP (tecnologia que permite a realização de chamadas de voz por meio da internet), como WhatsApp e Skype, substituem chamadas telefônicas tradicionais. A ameaça de substitutos é moderada, pois, embora essas alternativas digitais cresçam, a infraestrutura das operadoras tradicionais e a demanda por serviços de alta velocidade, como fibra óptica, garantem que as grandes operadoras permaneçam competitivas. Assim, apesar da inovação, as operadoras ainda têm uma vantagem significativa em muitos segmentos de mercado.
+Moderada/alta. Produtos e serviços substitutos, como internet via satélite, Wi-Fi comunitário, plataformas de streaming e soluções móveis inovadoras, estão se tornando alternativas à telefonia fixa e TV por assinatura. Além disso, serviços de VoIP [11] (tecnologia que permite a realização de chamadas de voz por meio da internet), como WhatsApp e Skype, substituem chamadas telefônicas tradicionais. A ameaça de substitutos é moderada, pois, embora essas alternativas digitais cresçam, a infraestrutura das operadoras tradicionais e a demanda por serviços de alta velocidade, como fibra óptica, garantem que as grandes operadoras permaneçam competitivas. Assim, apesar da inovação, as operadoras ainda têm uma vantagem significativa em muitos segmentos de mercado.
  
 #### 3. Poder de Barganha dos Fornecedores:
 Moderado. Os principais fornecedores da indústria de telecomunicações incluem empresas de equipamentos de rede, como Huawei e Ericsson, fornecedores de infraestrutura como fibra óptica, e empresas de conteúdo digital, como Netflix e Amazon. O poder de barganha dos fornecedores é moderado, pois as operadoras têm alternativas para a construção de suas redes. No entanto, a necessidade de tecnologias avançadas, como 5G, e a concentração de alguns fornecedores no mercado global aumentam sua influência. Isso é especialmente relevante nas negociações para fornecimento de equipamentos e licenciamento de tecnologia, onde os fornecedores têm maior poder devido à especialização e escassez.
@@ -62,27 +68,30 @@ Alto. A base de clientes da indústria de telecomunicações é diversificada, i
 #### 5. Rivalidade entre Concorrentes Existentes:
 Alta. As principais concorrentes da Vivo são Claro, TIM, e operadoras regionais, como Algar e Brisanet, que oferecem serviços de internet de alta qualidade. A rivalidade no setor é alta, com as operadoras competindo principalmente por preço, qualidade de serviço e inovação tecnológica. A crescente demanda por convergência de serviços (telefonia, internet e TV) e a implementação do 5G intensificam ainda mais a competição, levando as operadoras a investir constantemente em infraestrutura e em ofertas diferenciadas para se manterem competitivas no mercado altamente dinâmico e saturado.
 
+A análise pode ser observada na imagem a seguir:
 
 ![5 FORÇAS](https://github.com/user-attachments/assets/336a1a10-0e58-4e68-a42a-e48d542db44b)
 Fonte: Gráfico 5 forças de porter (produzido pelo autor) 
 
 
-
 ### 1.1.2. Análise SWOT (sprint 2)
-A Vivo, líder de mercado no Brasil, destaca-se pela forte presença em telefonia móvel, internet fixa (fibra óptica) e inovação com 5G. Sua dependência de grandes investimentos em infraestrutura e a intensa concorrência de operadoras como Claro e TIM representam fraquezas. Entretanto, as oportunidades incluem a expansão do 5G, IoT e a integração com fintechs, além de soluções digitais para empresas. As ameaças vêm da saturação do mercado móvel e de mudanças regulatórias. A Vivo precisa manter sua liderança diante de uma concorrência crescente e exigente.
 
+A análise SWOT [12] é uma ferramenta estratégica usada para avaliar os pontos fortes, fracos, oportunidades e ameaças de uma organização. Ela permite identificar fatores internos e externos que podem influenciar o desempenho da empresa, ajudando na tomada de decisões e no planejamento estratégico. Essa análise proporciona uma visão clara do cenário em que a organização está inserida.
+
+A Vivo, líder de mercado no Brasil, destaca-se pela forte presença em telefonia móvel, internet fixa (fibra óptica) e inovação com 5G. Sua dependência de grandes investimentos em infraestrutura e a intensa concorrência de operadoras como Claro e TIM representam fraquezas. Entretanto, as oportunidades incluem a expansão do 5G, IoT e a integração com fintechs, além de soluções digitais para empresas. As ameaças vêm da saturação do mercado móvel e de mudanças regulatórias. A Vivo precisa manter sua liderança diante de uma concorrência crescente e exigente, como é apresentado no esquema abaixo.
 
 ![SWOT](https://github.com/user-attachments/assets/5d960390-b6ab-4ffc-a930-d2a29dda43d2)
-Fonte: Gráfico análise SWOT (produzido pelo autor) 
-
+Fonte: Análise SWOT (produzido pelo autor) 
 
 ### 1.1.3. Missão / Visão / Valores (sprint 2)
 
+Missão, visão e valores são elementos essenciais para guiar a estratégia e as ações de uma organização. A missão define o propósito e os objetivos principais, a visão descreve onde a empresa deseja chegar no futuro, e os valores representam os princípios que orientam o comportamento e as decisões. Juntos, esses elementos formam a base para o sucesso e a sustentabilidade organizacional da Vivo.
+
 #### Missão:
-A missão da Vivo é “digitalizar para aproximar". E isso porque eles visam que as oportunidades que o mundo digital oferece sejam universais, contribuindo como uma força positiva para a transformação das empresas e da sociedade.
+A missão da Vivo é “digitalizar para aproximar" [13]. Agir com transparência e consolidar uma relação de confiança com todas as partes interessadas e com os diferentes perfis de público e tornar a empresa cada vez mais responsável.
 
 #### Visão:
-A Vivo acredita que a revolução tecnológica deve ser parte da vida de todas e todos, e não um privilégio de poucos. Promovendo que as oportunidades que o mundo digital oferece sejam universais, contribuindo como uma força positiva para a transformação individual, das empresas e da sociedade.
+A Vivo acredita que a revolução tecnológica deve ser parte da vida de todas e todos [14], e não um privilégio de poucos. A empresa almeja que as oportunidades que o mundo digital oferece sejam universais, contribuindo como uma força positiva para a transformação individual, das empresas e da sociedade.
 
 #### Valores:
 Integridade: Agir com honestidade e ética em todas as ações.
@@ -91,6 +100,9 @@ Inovação: Buscar constantemente novas soluções e tecnologias.
 Responsabilidade Social: Contribuir para o desenvolvimento social e ambiental.
 Excelência: Buscar a qualidade em produtos, serviços e atendimento.
 
+Atualmente, a Vivo conta com o Plano de Negócios responsável, que é distribuído por pilares de atuação: experiência do cliente, ética e transparência, responsabilidade corporativa, gestão ambiental e mudanças climáticas, sustentabilidade para a cadeia de valor, diversidade e talentos.
+
+Com isso, esses são os princípios que guiam as tomadas de decisões e estratégias da Vivo.
 
 ### 1.1.4. Proposta de Valor (sprint 4)
 
@@ -110,7 +122,7 @@ Excelência: Buscar a qualidade em produtos, serviços e atendimento.
 
 ## 1.2. Requisitos do Projeto (sprints 1 e 2)
 
- No kick-off com o parceiro, realizado em 07/02/2024, a Vivo delineou os principais aspectos para o desenvolvimento do MVP. A Tabela 1 a seguir apresenta os requisitos fundamentais para a construção da solução proposta, garantindo alinhamento com as expectativas da empresa parceira.
+No kick-off com o parceiro, realizado em 07/02/2024, a Vivo delineou os principais aspectos para o desenvolvimento do MVP. A Tabela 1 a seguir apresenta os requisitos fundamentais para a construção da solução proposta, garantindo alinhamento com as expectativas da empresa parceira.
  
 Tabela 1
 \# | Requisito  
@@ -130,21 +142,22 @@ R11| O código do jogo deverá ser segmentado de maneira à priorizar a organiza
 
 ## 1.3. Público-alvo do Projeto (sprint 2)
 
-O jogo é destinado a colaboradores da Vivo que desejam impulsionar sua carreira e buscar novas oportunidades dentro da própria empresa. Em termos demográficos, o público-alvo abrange profissionais geralmente entre 25 e 45 anos, com experiência acumulada e formação diversificada — desde cursos técnicos até graduações e pós-graduações
+O jogo é destinado a colaboradores da Vivo que desejam impulsionar sua carreira e buscar novas oportunidades dentro da própria empresa. Em termos demográficos, o público-alvo abrange profissionais geralmente entre 25 e 45 anos, com experiência acumulada e formação diversificada — desde cursos técnicos até graduações e pós-graduações. Além disso, a empresa cultiva um ambiente inclusivo com foco em diversos grupos, como gênero, raça, LGBTI+, PCD (Pessoas com Deficiência) e pessoas com mais de 50 anos, onde 
+ 45% dos colaboradores são mulheres e 42,9% dos colaboradores são negros (fonte: Material Onboarding Executivo; Vivo, Inteli; fev/2025).
 
 # <a name="c2"></a>2. Visão Geral do Jogo (sprint 2)
 
 ## 2.1. Objetivos do Jogo (sprint 2)
 
-O principal objetivo do **Skill Sprint** é proporcionar aos colaboradores da Vivo uma experiência interativa e estruturada para o desenvolvimento de carreira, superando desafios relacionados à falta de engajamento e acessibilidade nos programas tradicionais.
+O principal objetivo do Skill Sprint é proporcionar aos colaboradores da Vivo uma experiência interativa e estruturada para o desenvolvimento de carreira, superando desafios relacionados à falta de engajamento e acessibilidade nos programas tradicionais.
 
 No jogo, os participantes percorrem diferentes etapas do crescimento profissional, desde a candidatura a novas oportunidades até o planejamento contínuo de desenvolvimento, promovendo a cultura de mobilidade interna e aprendizado contínuo.
 
-Por meio de desafios dinâmicos e da prática do **job rotation** [1], os jogadores exploram novas áreas dentro da empresa, ampliando suas habilidades e alinhando-se aos valores e oportunidades da Vivo. Com essa abordagem gamificada, o **Skill Sprint** transforma o desenvolvimento de carreira em uma jornada envolvente e acessível, aumentando a adesão aos programas de capacitação e otimizando os recursos investidos em treinamentos tradicionais.
+Por meio de desafios dinâmicos e da prática do **job rotation** [14], os jogadores exploram novas áreas dentro da empresa, ampliando suas habilidades e alinhando-se aos valores e oportunidades da Vivo. Com essa abordagem gamificada, o Skill Sprint transforma o desenvolvimento de carreira em uma jornada envolvente e acessível, aumentando a adesão aos programas de capacitação e otimizando os recursos investidos em treinamentos tradicionais.
 
 Para avançar e concluir o jogo, o jogador deve:
-- Aprender os comandos de movimentação (setas do teclado) e interação com objetos e personagens (tecla “E”);
-- Interagir e seguir as instruções fornecidas pelos personagens (até o presente momento de desenvolvimento existem 3 NPCs [2]: Vivinho, Vivita e o líder);
+- Aprender os comandos de movimentação (teclas "A", "W", "S" e "D" do teclado) e interação com elementos (tecla “E”);
+- Interagir e seguir as instruções fornecidas pelos personagens (até o presente momento de ideação existem 3 NPCs [15]: Vivinho, Vivita e o líder);
 - Finalizar as tarefas de cada fase do jogo, aprendendo sobre as oportunidades existentes em cada Vice-Presidência.
 
 Os objetivos de cada fase do jogo são:
@@ -152,8 +165,8 @@ Os objetivos de cada fase do jogo são:
 ##### Fase 1: Criação do Currículo no Escritório da Vivo
 - **Objetivo da fase:** Ensinar a criar um currículo atrativo e eficaz.
 - **Aprendizado:** Construção e otimização de currículo.
-- **Conteúdos:** Dicas de layout, palavras-chave, adaptação para ATS [3] (Applicant Tracking System), destaque de conquistas.
-- **Desafio (objetivo do jogador):** Cumprir a introdução ao jogo com Vivinho, seguir instruções da recepcionista (Vivita), criar o currículo no computador através das perguntas do mini-game e entregá-lo ao líder.
+- **Conteúdos:** Dicas de layout, palavras-chave, adaptação para ATS [16] (Applicant Tracking System), destaque de conquistas.
+- **Desafio (objetivo do jogador):** Cumprir a introdução ao jogo com Vivinho, seguir instruções da recepcionista (Vivita), criar o currículo no computador através das perguntas do mini game e entregá-lo à líder.
 
 ##### Fase 2: Entrevista de Processo Seletivo na Vice-Presidência de Pessoas
 - **Objetivo:** Preparar os jogadores para dinâmicas de entrevistas.
@@ -179,7 +192,7 @@ Os objetivos de cada fase do jogo são:
 - **Conteúdos:** Práticas para feedback, ciclo de desempenho, comunicação com liderança.
 - **Desafios (objetivo do jogador):** Simulação de conversa com o gestor, resolver dilemas de desempenho.
 
-##### Fase 6: Upskilling e Reskilling [4] na Vice-Presidência de Tecnologia da Informação
+##### Fase 6: Upskilling e Reskilling [17] na Vice-Presidência de Tecnologia da Informação
 - **Objetivo:** Incentivar o aprendizado contínuo.
 - **Aprendizado:** Desenvolvimento de novas habilidades para adaptação ao mercado.
 - **Conteúdos:** Diferença entre upskilling e reskilling, ferramentas de desenvolvimento.
@@ -189,43 +202,43 @@ Diante do exposto, entende-se que o jogo é estruturado de forma a contemplar o 
 
 ## 2.2. Características do Jogo (sprint 2)
 
-O jogo **Skill Sprint** se passa em um ambiente virtual que simula a jornada de desenvolvimento de carreira dentro da Vivo. Por ser um **serious game** [5], seu principal objetivo é utilizar a mecânica e a dinâmica dos jogos para promover aprendizado, treinamento ou conscientização em um contexto fora do entretenimento tradicional. Esses jogos são projetados para alcançar um objetivo educativo, como o desenvolvimento de habilidades, a simulação de situações reais, ou a transmissão de informações importantes de uma maneira envolvente e interativa. Enquanto os jogos tradicionais têm como foco a diversão e o entretenimento, os **serious games** buscam impactar positivamente a formação de uma pessoa ou de uma comunidade.
+O jogo Skill Sprint se passa em um ambiente virtual que simula a jornada de desenvolvimento de carreira dentro da Vivo. Por ser um serious game [18], seu principal objetivo é utilizar a mecânica e a dinâmica dos jogos para promover aprendizado, treinamento ou conscientização em um contexto fora do entretenimento tradicional. Esses jogos são projetados para alcançar um objetivo educativo, como o desenvolvimento de habilidades, a simulação de situações reais, ou a transmissão de informações importantes de uma maneira envolvente e interativa. Enquanto os jogos tradicionais têm como foco a diversão e o entretenimento, os serious games buscam impactar positivamente a formação de uma pessoa ou de uma comunidade.
 
-Dessa forma, o **Skill Sprint** desempenha o papel de um “jogo sério”, de cunho didático, de forma inspiradora e dinâmica. O personagem principal está no prédio empresarial da Vivo e é convidado a conhecer as Vice-Presidências da empresa após submeter seu currículo na sala do líder (1ª fase). O jogador explora diferentes setores e desafios do processo de candidatura para processos internos, como o momento de feedback com gestores, por exemplo, passando por processos de recrutamento, desenvolvimento profissional e aprendizado contínuo. Cada fase do jogo reflete um aspecto essencial desse processo, proporcionando uma experiência imersiva.
+Dessa forma, o Skill Sprint desempenha o papel de um “jogo sério”, de cunho didático, de forma inspiradora e dinâmica. O personagem principal está no prédio empresarial da Vivo e é convidado a conhecer as Vice-Presidências da empresa após submeter seu currículo na sala do líder (1ª fase). O jogador explora diferentes setores e desafios do processo de candidatura para processos internos, como o momento de feedback com gestores, por exemplo, passando por processos de recrutamento, desenvolvimento profissional e aprendizado contínuo. Cada fase do jogo reflete um aspecto essencial desse processo, proporcionando uma experiência imersiva.
 
-Os jogadores enfrentam desafios interativos que representam situações reais do mercado de trabalho, incluindo a criação de currículo, participação em entrevistas, resolução de cases e planejamento de carreira. O jogo utiliza elementos de **RPG** [6] para permitir a evolução do personagem, incentivando a progressão baseada no aprendizado e na tomada de decisões estratégicas.
+Os jogadores enfrentam desafios interativos que representam situações reais do mercado de trabalho, incluindo a criação de currículo, participação em entrevistas, resolução de cases e planejamento de carreira. O jogo utiliza elementos de RPG [19] para permitir a evolução do personagem, incentivando a progressão baseada no aprendizado e na tomada de decisões estratégicas.
 
-A narrativa envolvente conduz os jogadores por um caminho estruturado de desenvolvimento profissional, utilizando **NPCs** carismáticos como guias e mentores. O enredo dinâmico reforça a importância da mobilidade interna e do aprendizado contínuo, destacando o papel da Vivo no crescimento de seus colaboradores.
+A narrativa envolvente conduz os jogadores por um caminho estruturado de desenvolvimento profissional, utilizando NPCs carismáticos como guias e mentores. O enredo dinâmico reforça a importância da mobilidade interna e do aprendizado contínuo, destacando o papel da Vivo no crescimento de seus colaboradores.
 
 O jogo promove o desenvolvimento de competências essenciais para o crescimento na carreira, como habilidades de comunicação, resolução de problemas e planejamento estratégico. Além disso, a progressão do jogador reflete sua evolução no domínio dessas competências, tornando o aprendizado prático e recompensador.
 
 ### 2.2.1. Gênero do Jogo (sprint 2)
 
-O **Skill Sprint** combina elementos de **RPG** [6], simulação e estratégia para oferecer uma experiência interativa de aprendizado. O jogador assume o papel de um profissional em ascensão dentro da Vivo, navegando pelos desafios do mercado de trabalho de forma dinâmica.
+O Skill Sprint combina elementos de RPG, simulação e estratégia para oferecer uma experiência interativa de aprendizado. O jogador assume o papel de um profissional em ascensão dentro da Vivo, navegando pelos desafios do mercado de trabalho de forma dinâmica.
 
-**RPG** (Role-Playing Game, ou "Jogo de Interpretação de Papéis", em português) é um tipo de jogo onde os jogadores assumem o papel de personagens fictícios em um mundo imaginário. O objetivo principal é interpretar e viver uma narrativa ou história por meio das ações e decisões desses personagens, dentro de um conjunto de regras estabelecido. Por isso, um elemento essencial do nosso jogo são os **NPCs** [2], (Non-Player-Characters – personagens que não são controlados por nenhum jogador, mas sim pelo sistema do jogo) personagens interativos que informam e guiam sobre as missões no jogo.
+RPG (Role-Playing Game, ou "Jogo de Interpretação de Papéis", em português) é um tipo de jogo onde os jogadores assumem o papel de personagens fictícios em um mundo imaginário. O objetivo principal é interpretar e viver uma narrativa ou história por meio das ações e decisões desses personagens, dentro de um conjunto de regras estabelecido. Por isso, um elemento essencial do nosso jogo são os NPCs, (Non-Player-Characters – personagens que não são controlados por nenhum jogador, mas sim pelo sistema do jogo) personagens interativos que informam e guiam sobre as missões no jogo.
 
 ### 2.2.2. Plataforma do Jogo (sprint 2)
 
-O jogo será acessível através de navegadores compatíveis (testados: Chrome), permitindo que os colaboradores da Vivo possam jogá-lo em desktops. Essa escolha garante acessibilidade no ambiente corporativo. Futuramente, planejamos adaptá-lo para dispositivos móveis, permitindo, assim, que os jogadores participem da experiência em diferentes momentos do seu dia.
+A jogabilidade será acessível através de navegadores compatíveis (até o momento testamos: Chrome), permitindo que os colaboradores da Vivo possam jogá-lo em desktop. Essa escolha garante acessibilidade no ambiente corporativo. Futuramente, planejamos adaptá-lo para dispositivos móveis, permitindo, assim, que os jogadores participem da experiência em diferentes momentos do seu dia.
 
 ### 2.2.3. Número de jogadores (sprint 2)
 
-O **Skill Sprint** é um jogo **single-player**, projetado para oferecer uma experiência individual de aprendizado e desenvolvimento. Esse formato garante que cada jogador possa avançar no seu próprio ritmo, maximizando a absorção do conteúdo e a aplicação prática dos conhecimentos adquiridos.
+O Skill Sprint é um jogo single-player, projetado para oferecer uma experiência individual de aprendizado e desenvolvimento. Esse formato garante que cada jogador possa avançar no seu próprio ritmo, maximizando a absorção do conteúdo e a aplicação prática dos conhecimentos adquiridos.
 
 ### 2.2.4. Títulos semelhantes e inspirações (sprint 2)
 
-O desenvolvimento do **Skill Sprint** foi inspirado por títulos que combinam aprendizado e dinâmica de maneira eficaz. Algumas das principais referências incluem:
+O desenvolvimento do Skill Sprint foi inspirado por títulos que combinam aprendizado e dinâmica de maneira eficaz. Algumas das principais referências incluem:
 
-- **Pokémon** [7]: A mecânica de evolução dos personagens e a exploração de diferentes mundos em Pokémon inspirou a estrutura de progressão de carreira no **Skill Sprint**. Assim como em Pokémon, os jogadores avançam ao completar desafios e aprimorar suas habilidades;
+- Pokémon [20]: A mecânica de evolução dos personagens e a exploração de diferentes mundos em Pokémon inspirou a estrutura de progressão de carreira no **Skill Sprint**. Assim como em Pokémon, os jogadores avançam ao completar desafios e aprimorar suas habilidades;
   
-- **Stardew Valley** [8]: A interação com **NPCs** e o desenvolvimento de atividades dentro de um ambiente dinâmico e imersivo, como visto em **Stardew Valley**, influenciaram a abordagem do **Skill Sprint** em termos de interação com personagens e tarefas dentro de cada fase do jogo;
+- Stardew Valley [21]: A interação com NPCs e o desenvolvimento de atividades dentro de um ambiente dinâmico e imersivo, como visto em Stardew Valley, influenciaram a abordagem do Skill Sprint em termos de interação com personagens e tarefas dentro de cada fase do jogo;
 
-- **Undertale** [9]: A forma como o jogo permite que o jogador afete profundamente o enredo e as relações com os personagens, dependendo de suas escolhas, influenciou a forma como os **NPCs** do **Skill Sprint** guiam e interagem com o jogador. Em **Undertale**, as interações com personagens não são apenas funcionais, mas emocionais, criando uma conexão mais profunda com o jogador — um aspecto que buscamos trazer para o **Skill Sprint** em suas interações e progressão dentro da jornada de desenvolvimento de carreira.
+- Undertale [22]: A forma como o jogo permite que o jogador afete profundamente o enredo e as relações com os personagens, dependendo de suas escolhas, influenciou a forma como os NPCs do Skill Sprint guiam e interagem com o jogador. Em Undertale, as interações com personagens não são apenas funcionais, mas emocionais, criando uma conexão mais profunda com o jogador — um aspecto que buscamos trazer para o Skill Sprint em suas interações e progressão dentro da jornada de desenvolvimento de carreira.
 
-- **Meta Tower Game** [10]:  O Meta Tower Game foi uma grande inspiração para o Skill Sprint, especialmente em relação à estrutura de fases e à abordagem educacional. No Meta Tower Game, os colaboradores da Meta exploram uma torre com seis andares, cada um representando uma etapa da jornada de contratação de fornecedores. Essa estrutura de fases temáticas, onde cada andar corresponde a um desafio específico, inspirou a organização do Skill Sprint em fases que representam diferentes aspectos do desenvolvimento de carreira na Vivo.
+- Meta Tower Game [23]:  O Meta Tower Game foi uma inspiração para o Skill Sprint, especialmente em relação à estrutura de fases e à abordagem educacional. No Meta Tower Game, os colaboradores da Meta exploram uma torre com seis andares, cada um representando uma etapa da jornada de contratação de fornecedores. Essa estrutura de fases temáticas, onde cada andar corresponde a um desafio específico, inspirou a organização do Skill Sprint em fases que representam diferentes aspectos do desenvolvimento de carreira na Vivo.
 
-Esses títulos ajudaram a moldar a estrutura do **Skill Sprint**, oferecendo um equilíbrio entre aprendizado, progressão de personagem e interatividade dentro de um cenário empresarial simulado.
+Esses títulos ajudaram a moldar a estrutura do Skill Sprint, oferecendo um equilíbrio entre aprendizado, progressão de personagem e interatividade dentro de um cenário empresarial simulado.
 
 ### 2.2.5. Tempo estimado de jogo (sprint 5)
 
@@ -237,58 +250,69 @@ Esses títulos ajudaram a moldar a estrutura do **Skill Sprint**, oferecendo um 
 
 ## 3.1. Enredo do Jogo (sprints 2 e 3)
 
+O jogador controla Skrill, um avatar que trabalha na Vivo há dois anos. Desde o início, Skrill sempre teve interesse em crescer profissionalmente e explorar novas áreas dentro da empresa, mas nunca soube exatamente por onde começar. A empresa oferece diversos programas de desenvolvimento, mas muitos colaboradores, como Skrill, encontram dificuldades para acessar todas as oportunidades disponíveis.
 
-
- Você controla Skrill, um avatar que trabalha na Vivo há dois anos. Desde o início, você sempre teve interesse em crescer profissionalmente e explorar novas áreas dentro da empresa, mas nunca soube exatamente por onde começar. A empresa oferece diversos programas de desenvolvimento, mas muitos colaboradores, como você, encontram dificuldades para acessar todas as oportunidades disponíveis.
-
-Com a crescente necessidade de inovação e adaptação no mercado, a Vivo decidiu lançar um novo programa interno: o Skill Sprint, um jogo interativo que simula os desafios do crescimento profissional dentro da empresa. Nosso objetivo? Ajudar os colaboradores a desenvolverem novas habilidades, explorarem diferentes áreas e se prepararem para oportunidades internas de forma prática e envolvente.
+Com a crescente necessidade de inovação e adaptação no mercado, a Vivo decidiu lançar um novo programa interno: o Skill Sprint, um jogo interativo que simula os desafios do crescimento profissional dentro da empresa. Nosso objetivo é ajudar os colaboradores a desenvolverem novas habilidades, explorarem diferentes áreas e se prepararem para oportunidades internas de forma prática e envolvente.
 
 Apesar das oportunidades dentro da Vivo, muitos colaboradores ainda enfrentam barreiras para avançar em suas carreiras. Alguns não sabem por onde começar, outros sentem insegurança para se candidatar a novas vagas ou acreditam que não têm as habilidades necessárias para mudar de área.
 
 Além disso, a rotina corrida do dia a dia dificulta a participação em treinamentos tradicionais, tornando o desenvolvimento profissional algo secundário para muitos. Sem uma abordagem mais dinâmica e acessível, a mobilidade interna vira um desafio e muitos talentos acabam estagnados.
 
-Mas agora, com o Skill Sprint, você tem a chance de mudar essa realidade. O jogo apresenta um caminho estruturado para explorar diferentes áreas, aprimorar habilidades e se preparar para novas oportunidades de crescimento.
+Mas agora, com o Skill Sprint, Skrill tem a chance de mudar essa realidade. O jogo apresenta um caminho estruturado para explorar diferentes áreas, aprimorar habilidades e se preparar para novas oportunidades de crescimento.
 
-Ao concluir o Skill Sprint, você se torna um colaborador mais preparado para assumir novos desafios dentro da Vivo. Você ganha reconhecimento, recebe novas oportunidades e pode até mesmo conquistar uma posição em outra área que antes parecia inacessível.
+Ao concluir o Skill Sprint, Skrill se torna um colaborador preparado para assumir novos desafios dentro da Vivo. Ele ganha reconhecimento, recebe novas oportunidades e pode até mesmo conquistar uma posição em outra área que antes parecia inacessível.
 
-O Skill Sprint transforma o desenvolvimento de carreira em uma experiência interativa e prática. Ao simular desafios reais e permitir que os colaboradores testem suas habilidades em um ambiente seguro e gamificado, o jogo torna o aprendizado mais acessível e motivador.
-
+O Skill Sprint transforma o desenvolvimento de carreira em uma experiência interativa e prática. Ao simular desafios reais e permitir que os colaboradores testem suas habilidades em um ambiente seguro e dinâmico, o jogo torna o aprendizado mais acessível e motivador através da jogabilidade em níveis. Exploramos as etapas de um processo seletivo interno em cada fase: na primeira, a elaboração do currículo, na segunda, uma entrevista, na terceira, uma resolução de case, na quarta, planejamento e desenvolvimento de carreira, na quinta, feedback e, na última, aprimoramento de habilidades (reskilling e upskilling).
 
 ## 3.2. Personagens (sprints 2 e 3)
 
 ### 3.2.1. Controláveis
 
-O **Skill Sprint** conta com um jogador principal chamado **Skrill** que será controlado pelo colaborador da Vivo pelas teclas WASD e utilizará a tecla E pra interagir com objetos/personagens durante a jornada do jogo. Existe também o Vivinho que é um personagem que tem como objetivo guiar o usuário durante as fases e ensiná-lo a realizar os cases e ajudá-lo no jogo. A Vivita é uma NPC que ai ficar na recepção e orientar o coladorador a realizar a primeira tarefa do jogo, criar um currículo, ela será responável por introduzir o usuário ao jogo e dizer para ele qual o primeiro passo a ser dado para começar a jornada de Job Rotation. Todos os NPCs vão ser desenhados com o intuito de trazer diversidade para o jogo, eles vão representar grupos étinicos, a comunidade LGBTQIA+ e também pessoas com necessidades especiasis.
+O **Skill Sprint** conta com um jogador principal chamado **Skrill** que será controlado pelo colaborador da Vivo pelas teclas WASD e utilizará a tecla E pra interagir com objetos/personagens durante a jornada do jogo. Existe também o Vivinho que é um personagem que tem como objetivo guiar o usuário durante as fases e ensiná-lo a realizar os cases e ajudá-lo. A Vivita é uma NPC que fica na recepção e orienta o colaborador a realizar a primeira tarefa, que é criar um currículo. Ela será responsável por introduzir o usuário e informar qual o primeiro passo a ser dado para começar a jornada de Job Rotation. Todos os NPCs serão desenhados com o intuito de trazer diversidade, remetento aos valores da Vivo. Planejamos representar diferentes grupos étnicos, a comunidade LGBTQIA+, pessoas negras, mulheres em cargos de liderança e também pessoas com necessidades especiais.
 
 <img src="https://github.com/user-attachments/assets/34d6588a-ba21-490a-a5b2-a8f3d7ba48a4" width="300"/>
 
+Fonte: Skrill, jogador principal (elaborado pelo autor)
+
 ### 3.2.2. Non-Playable Characters (NPC)
 
-- Vivinho é um personagem que tem como objetivo guiar o usuário durante as fases e ensiná-lo a realizar os cases e ajudá-lo no jogo.
-- Vivita é uma NPC que ai ficar na recepção e orientar o coladorador a realizar a primeira tarefa do jogo, criar um currículo, ela será responável por introduzir o usuário ao jogo e dizer para ele qual o primeiro passo a ser dado para começar a jornada de Job Rotation.
-- Todos os NPCs vão ser desenhados com o intuito de trazer diversidade para o jogo, eles vão representar grupos étinicos, a comunidade LGBTQIA+ e também pessoas com necessidades especiasis.
+Até o presente momento de desenvolvimento, idealizamos 2 NPCs: o Vivinho, a Vivita e a líder.
 
-  ![Image](https://github.com/user-attachments/assets/50594d55-2807-4a2d-8dd0-89d618be81c5)
-  <img src="https://github.com/user-attachments/assets/d1ada40a-0ed9-4092-b54a-d63624349d15" width="300"/>
+- Vivinho é um personagem que tem como objetivo guiar o usuário durante as fases e ensiná-lo a concluir as fases do jogo através de caixas de diálogo e instruções.
+ 
+- Vivita é uma NPC que fica na recepção e orienta o usuário a realizar a primeira tarefa do jogo, que é criar um currículo. Ela será responável por introduzir o usuário e dizer para ele qual o primeiro passo a ser dado para começar a jornada de Job Rotation.
+
+- A líder é a chefe que recebe o currículo de Skrill (personagem principal) e fornece o primeiro feedback ao jogador. Escolhemos uma mulher na liderança, porque evidenciamos que apenas 38% dos cargos de liderança no Brasil são representados por mulheres. [23]
+  
+- Todos os NPCs vão ser desenhados com o intuito de trazer diversidade para o jogo, representando diferentes grupos étnicos, a comunidade LGBTQIA+ e pessoas com necessidades especiais.
+
+![Image](https://github.com/user-attachments/assets/50594d55-2807-4a2d-8dd0-89d618be81c5)
+
+Imagem 1: Vivinho (Vivo)
+
+<img src="https://github.com/user-attachments/assets/d1ada40a-0ed9-4092-b54a-d63624349d15" width="300"/>
+
+Imagem 2: Vivita (elaborado pelo autor)
 
 ### 3.2.3. Diversidade e Representatividade dos Personagens
 
-No momento inicial de desenvolvimento do jogo, planejamos implementar um só personagem a fim de testarmos suas funcionalidades em si, as quais julgamos ser essenciais para nosso progresso. Quando melhor encaminhados, possuímos o objetivo de abranger a todas as etnias e características que compõem os grupos da população brasileira e, por consequência, a VIVO como negócio. Esta meta inclui representar populações numerosas e minorizadas de origens afro-descendentes (55,5% dos brasileiros), amarelas (0,4%) e indígenas (0,8%), além de de diferentes faixas etárias, gêneros (mulheres compõem 51,5%) e condições de saúde (surdez, cegos, membros amputados e formas de paralisia, por exemplo) sendo na customização de players (com traços e cosméticos) ou na composição de NPCs que façam parte das interações ao longo da jornada do "colaborador" nas fases.
-Este plano se alinha com o foco da VIVO em formar um coletivo de colaboradores diversos, de maneira à fornecer oportunidades aos mais variados grupos em aspectos como desenvolvimento corporativo e atuação na sociedade através de seus amplos setores. Portanto, configura um fator essencial a ser trabalhado a fim de retratar a composição da empresa em um jogo.
-O impacto proveniente de tal atenção ao design seria o de possibilitar o sentimento de pertencimento que os profissionais da VIVO teriam com a gameplay com uma representatividade tão ampla e precisamente pensada.
+No momento inicial de desenvolvimento do jogo, planejamos implementar um só personagem a fim de testarmos suas funcionalidades em si, as quais julgamos ser essenciais para nosso progresso. Quando melhor encaminhados, possuímos o objetivo de abranger a todas as etnias e características que compõem os grupos da população brasileira e, por consequência, a Vivo como negócio. Esta meta inclui representar populações numerosas e minorizadas de origens afro-descendentes (55,5% dos brasileiros) [24], amarelas (0,4%) e indígenas (0,8%), além de diferentes faixas etárias, gêneros (mulheres compõem 51,5%) [25] e condições de saúde (surdez, cegos, membros amputados e formas de paralisia, por exemplo). A representação da diversidade será realizada na customização de players (com traços e cosméticos) e/ou na composição de NPCs que farão parte das interações ao longo da jornada do colaborador nas fases.
 
-Dados retirados do IBGE e UFRN em 17/02/2025.
+Este plano se alinha com o foco da Vivo em formar um coletivo de colaboradores diversos, de maneira à fornecer oportunidades aos mais variados grupos em aspectos como desenvolvimento corporativo e atuação na sociedade através de seus amplos setores. Portanto, configura um fator essencial a ser trabalhado a fim de retratar a composição da empresa em um jogo.
 
 
+<img width="474" alt="Captura de tela 2025-02-27 205332" src="https://github.com/user-attachments/assets/027ffa1e-1ea7-4f6b-a7d4-dafd86bf7e82" />
 
-Considerando as personagens do game, analise se estas estão alinhadas ao público-alvo do jogo (seção 1.3), e compare-as dentro da realidade da sociedade brasileira. Por fim, discorra sobre qual é o impacto esperado da escolha dessas personagens.
+Fonte: Dados de diversidade na Vivo. Material Onboarding Executivo - Vivo, Inteli (fev/2025).
+
+O impacto proveniente de tal atenção ao design será o de possibilitar o sentimento de pertencimento para os profissionais da Vivo com a gameplay. Isso permite que diferentes grupos se sintam reconhecidos, o que pode aumentar o engajamento e a identificação dos jogadores com o jogo. Além disso, contribui para a quebra de estereótipos e a construção de um ambiente mais acolhedor, respeitoso e enriquecedor, tanto para os usuários quanto para a indústria de jogos como um todo.
 
 ## 3.3. Mundo do jogo (sprints 2 e 3)
 
 ### 3.3.1. Locações Principais e/ou Mapas (sprints 2 e 3)
 
 O jogo conta com 6 fases, cada fase tem um mapa diferente
- - 1° Recepção: Fase inicial que contém uma recepcionista (Vivita), uma sala de computadores em que o usuário irá realizar a criação do currículo e a sala do líder onde o coladorador vai entregar o currículo criado para o líder e assim ele será encaminhado para o elevador aonde ele terá acesso as outras fases.
+ - 1° Recepção: Fase inicial que contém uma recepcionista (Vivita), uma sala de computadores em que o usuário irá realizar a criação do currículo e a sala do líder onde o coladorador vai entregar o currículo criado para a líder e assim ele será encaminhado para o elevador aonde ele terá acesso as outras fases.
    ![Image](https://github.com/user-attachments/assets/9313ccf8-1659-4512-9d6f-0786efb2f97f)
  - 2° VP de Pessoas: Um mapa temático da VP de Pessoas que tem como objetivo desenvolver as habilidades dos colaboradores para dinâmicas de entrevistas com conteúdos como perguntas e simulações.
  - 3° VP de Negócios: Um mapa temático da VP de Negócios que tem como objetivo desenvolver as habilidades dos colaboradores para a resolução dos cases desafiando o jogador a resolver um casa no setor de Negócios.
@@ -498,7 +522,11 @@ O que poderia melhorar no jogo? | A responsividade do personagem aos controles, 
 
 _Incluir as principais referências de seu projeto, para que seu parceiro possa consultar caso ele se interessar em aprofundar. Um exemplo de referência de livro e de site:_<br>
 
-[1]Job rotation: o que é, vantagens, desvantagens e como implementar. Disponível em: <https://gptw.com.br/conteudo/artigos/job-rotation/>. Acesso em: 21 fev. 2025.
+[1] Para a Vivo, o desafio atual é manter os investimentos no setor. Disponível em: <https://www.telesintese.com.br/para-a-vivo-o-desafio-atual-e-manter-os-investimentos-no-setor/>. Acesso em: 27 fev. 2025.
+
+[2] Vivo lidera crescimento na telefonia móvel até novembro de 2024. Disponível em: <https://teletime.com.br/14/01/2025/vivo-lidera-crescimento-na-telefonia-movel-ate-novembro-de-2024/>. Acesso em: 27 fev. 2025.
+
+[1] Job rotation: o que é, vantagens, desvantagens e como implementar. Disponível em: <https://gptw.com.br/conteudo/artigos/job-rotation/>. Acesso em: 21 fev. 2025.
 
 [2] Personagem não jogável. <https://pt.wikipedia.org/wiki/Personagem_n%C3%A3o_jog%C3%A1vel.> Acesso em: 21 fev. 2025.
 
