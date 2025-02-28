@@ -120,9 +120,6 @@ class TutorialScene extends Phaser.Scene {
 
         this.botaoSim.on('pointerdown', () => this.chooseOption(0));
         this.botaoNao.on('pointerdown', () => this.chooseOption(1));
-
-        this.botaoSim.bringToTop();
-        this.botaoNao.bringToTop();
     }
 
     chooseOption(optionIndex) {
@@ -175,5 +172,3 @@ class TutorialScene extends Phaser.Scene {
         }
     }
 }
-
-
