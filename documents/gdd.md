@@ -497,6 +497,8 @@ Por fim, com a descrição fornecida e os elementos visuais indicados, é possí
 
 *Descreva nesta seção os casos de teste comuns que podem ser executados a qualquer momento para testar o funcionamento e integração das partes do jogo. Utilize tabelas para facilitar a organização.*
 
+Os casos de teste descritos a seguir foram elaborados para avaliar os diferentes aspectos do jogo, desde a mecânica até a interação do jogador com os elementos do cenário. O objetivo é garantir que todas as funcionalidades implementadas no Skill Sprint estejam funcionando corretamente e integradas de forma eficaz.
+
 *Exemplo de tabela*
 \# | pré-condição | descrição do teste | pós-condição 
 --- | --- | --- | --- 
