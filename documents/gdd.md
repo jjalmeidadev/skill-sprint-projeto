@@ -420,9 +420,19 @@ Figura 9: fase da VP de Tecnologia, onde o usuário irá aprender sobre upskilli
 
 *Posicione aqui seu "storyboard de programação" - o diagrama de cenas do jogo. Indique, por exemplo, como o jogo começa, quais opções o jogador tem, como ele avança nas fases, quais as condições de 'game over', como o jogo reinicia. Seu diagrama deve representar as classes, atributos e métodos usados no jogo.*
 
-**Esquema inicial do Diagrama de Fases do jogo.**
+Com base no nosso concept, criamos o diagrama de cenas para visualizar e demonstrar como as fases do jogo funcionarão. O jogo inicia em uma tela inicial com o botão "Jogar" e leva o personagem para o primeiro mapa (a recepção), depois disso, a próxima tela é a da criação do currículo e, ao finalizar essa tarefa, ele retorna para o escritório. Assim, a sala da líder é liberada e, nessa fase, ocorre a entrega do currículo. 
+
+O próximo passo vai ser utilizar o elevador para ir para os próximos níveis. Cada andar do elevador remete a um nível e o usuário é obrigado a passar por todos os níveis. Em cada fase terá um case/mini game voltado para aquela Vice-Presidência (diretorias da Vivo). Algumas das condições de game over ocorrem nos mini games, ao falhar no teste e, caso isso aconteça, o jogo reinicia até passar de fase. No último andar, ao realizar a última tarefa, a jornada do usuário se encerra, finalizando o jogo. 
+
+O Gameflow de Skill Print pode ser observado a seguir:
+
+![Tela inicial  Clicando em “Jogar” iniciamos o jogo](https://github.com/user-attachments/assets/8bf2ffa7-a74b-4e48-a9f4-1e49e6532d37)
+
+Imagem 2: Diagrama de cenas (produzido pelo autor). Link de acesso: <https://www.canva.com/design/DAGgOn0t4k4/6R0GeJh2uACsr9gV2cqqVw/edit?utm_content=DAGgOn0t4k4&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton>
 
 <img src="../assets/mapamental.JPG">
+
+Imagem 2: Rascunho do esquema inicial do Diagrama de Fases do jogo (produzido pelo autor)
 
 ## 3.6. Regras do jogo (sprint 3)
 
