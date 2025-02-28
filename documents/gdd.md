@@ -422,7 +422,7 @@ Figura 9: fase da VP de Tecnologia, onde o usuário irá aprender sobre upskilli
 
 Com base no nosso concept, criamos o diagrama de cenas para visualizar e demonstrar como as fases do jogo funcionarão. O jogo inicia em uma tela inicial com o botão "Jogar" e leva o personagem para o primeiro mapa (a recepção), depois disso, a próxima tela é a da criação do currículo e, ao finalizar essa tarefa, ele retorna para o escritório. Assim, a sala da líder é liberada e, nessa fase, ocorre a entrega do currículo. 
 
-O próximo passo vai ser utilizar o elevador para ir para os próximos níveis. Cada andar do elevador remete a um nível e o usuário é obrigado a passar por todos os níveis. Em cada fase terá um case/mini game voltado para aquela Vice-Presidência (diretorias da Vivo). Algumas das condições de game over ocorrem nos mini games, ao falhar no teste e, caso isso aconteça, o jogo reinicia até passar de fase. No último andar, ao realizar a última tarefa, a jornada do usuário se encerra, finalizando o jogo. 
+O próximo passo vai ser utilizar o elevador para ir para os próximos níveis. Cada andar do elevador remete a um nível e o usuário é obrigado a efetuar apenas a primeira fase. Após completar o envio do currículo, é possível navegar entre as fases do jogo e escolher o conteúdo que o jogador quer explorar. Em cada fase terá um case/mini game voltado para aquela Vice-Presidência (diretorias da Vivo). Algumas das condições de game over ocorrem nos mini games, ao falhar no teste e, caso isso aconteça, o jogo reinicia até passar de fase. No último andar, ao realizar a última tarefa, a jornada do usuário se encerra, finalizando o jogo. 
 
 O Gameflow de Skill Print pode ser observado a seguir:
 
@@ -463,6 +463,7 @@ Essa seção detalha o planejamento e a execução das sprints no desenvolviment
 Para a primeira versão do jogo (MVP) elaboramos uma tela inicial com um botão interativo "Jogar" (R02), permitindo que o jogador inicie a experiência ao clicar no botão.
 
 ![Image](https://github.com/user-attachments/assets/0996cf85-6f8d-4d1c-b206-5c5c2080b520)
+
 Além disso, desenvolvemos uma cutscene em Pixel Art para apresentar o contexto e a ambientação inicial do jogo (R03). Essa introdução visa situar o jogador antes do início da jogabilidade. 
 
 ![Image](https://github.com/user-attachments/assets/ad075642-151c-46b8-87cb-915dba6b7849)
