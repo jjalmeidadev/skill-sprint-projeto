@@ -311,20 +311,28 @@ O impacto proveniente de tal atenção ao design será o de possibilitar o senti
 
 ### 3.3.1. Locações Principais e/ou Mapas (sprints 2 e 3)
 
-O jogo conta com 6 fases, cada fase tem um mapa diferente
- - 1° Recepção: Fase inicial que contém uma recepcionista (Vivita), uma sala de computadores em que o usuário irá realizar a criação do currículo e a sala do líder onde o coladorador vai entregar o currículo criado para a líder e assim ele será encaminhado para o elevador aonde ele terá acesso as outras fases.
+O jogo conta com 6 fases. Cada fase ensina sobre uma etapa de candidatura em processos seletivos internos na Vivo. Além disso, a tela de "níveis" é um elevador, pois cada andar do prédio empresarial (cenário do jogo) representa uma fase diferente.
+
+
+ - 1° Nível: Recepção. Fase inicial que contém uma recepcionista (Vivita), uma sala de computadores em que o usuário irá realizar a criação do currículo. Na sala da líder, o coladorador vai entregar o currículo criado. Assim, ele será encaminhado para o elevador onde terá acesso às outras fases.
+ - 
    ![Image](https://github.com/user-attachments/assets/9313ccf8-1659-4512-9d6f-0786efb2f97f)
- - 2° VP de Pessoas: Um mapa temático da VP de Pessoas que tem como objetivo desenvolver as habilidades dos colaboradores para dinâmicas de entrevistas com conteúdos como perguntas e simulações.
- - 3° VP de Negócios: Um mapa temático da VP de Negócios que tem como objetivo desenvolver as habilidades dos colaboradores para a resolução dos cases desafiando o jogador a resolver um casa no setor de Negócios.
- - 4° VP de Estratégia: Um mapa temático da VP de Estratégia que tem como objetivo ensinar os colaboradores a estruturar um plano de carreira aplicando as habilidades desenvolvidas na VP de Negócios.
- - 5° VP de Relações Institucionais: Um mapa em que ocorre um jantar com os líderes das VPs em que será simulado uma conversa com o objetivo de resolver dilemas de desempenho.
- - 6° VP de Tecnologia: Um mapa com a temática da VP de Tecnologia e tem como objetivo ensinar a diferença entre upskilling e reskilling dentro da Vivo incentivando o colaborador ao aprendizado contínuo.
+
+ Fonte: Fase 1 (elaborado pelos autores)
+ 
+ - 2° Nível: VP de Pessoas. Um mapa temático da VP de Pessoas que tem como objetivo desenvolver as habilidades dos colaboradores para dinâmicas de entrevistas com conteúdos como perguntas e simulações.
+
+ - 3° Nível: VP de Negócios. Um mapa temático da VP de Negócios que tem como objetivo desenvolver as habilidades dos colaboradores para a resolução dos cases desafiando o jogador a resolver um case no setor da Vivo.
+
+ - 4° Nível: VP de Estratégia. Um mapa temático da VP de Estratégia que tem como objetivo ensinar os colaboradores a estruturar um plano de carreira aplicando as habilidades desenvolvidas na VP de Negócios.
+
+ - 5° Nível: VP de Relações Institucionais. Um mapa em que ocorre um jantar com os líderes das VPs em que será simulado uma conversa com o objetivo de resolver dilemas de desempenho e fornecer feedback.
+
+ - 6° Nível: VP de Tecnologia. Um mapa com a temática da VP de Tecnologia que tem como objetivo ensinar a diferença entre upskilling e reskilling dentro da Vivo, incentivando o colaborador ao aprendizado contínuo.
 
 ### 3.3.2. Navegação pelo mundo (sprints 2 e 3)
 
-O personagem irá navegar pelo mundo começando pela recepção nela ele irá interagir com a Vivita que guiará ele para a criação do currículo, para realizar essa tarefa o usuário irá clicar com a tecla E no computador e jogar um minigame para criar o currículo. Após isso ele irá se dirigir para a sala do Líder aonde vai acontecer a entrega do currículo criado e logo em seguida o colaborador se locomove para o elevador selecionando o andar 1 que irá direcioná-lo para a VP de Pessoas. Nessa VP o usuário realiza uma entrevista e em seguida retorna ao elevador para avançar de fase. No 2° andar temos a VP de Négocios aonde o colaborador irá resolver um problema no cloud da B2B e precisará coletar 5 chips na B2C. Seguindo adiante ele retorna ao elevador para subir mais um andar que será a VP de Estratégia, e nesse mapa o colaborador irá fazer o seu planejamento de carreira dentro da Vivo através de um minigame. Ao retornar para o elevador avaçamos para o 4°, a VP de Relações aonde acontecerá um jantar com todos os VPs da Vivo para comentar o feedback do colaborador durante a jornada. Por último, ao entrar no elevador pelo e ir para a VP de Tecnologia(5° andar) o jogador irá se deparar com um mapa aonde ele aprenderá a diferença entre upskilling e reskilling e ao final dessa fase o jogo se encerra. 
-O Skrill é o personagem principal que é guiado pelo usuário se locomovendo pelas teclas WASD, cada fase depende da outra para ser desbloqueada, ou seja, o colaborador só poderá avançar para o próximo mapa depois de concluir as tasks do anteior.
-
+O personagem irá navegar pelo mundo começando pela recepção. Nela, ele irá interagir com a Vivita que o guiará para a criação do currículo. Para realizar essa tarefa, o usuário deverá apertar a tecla E perto do computador e jogar um minigame para criar um currículo. Após isso, irá se dirigir para a sala do Líder onde acontecerá a entrega do currículo. Logo em seguida, o jogador deve se locomover para o elevador selecionando e selecionar o primeiro nível (andar 1) que irá direcioná-lo para o escritório da Vice-Presidência de Pessoas. Nessa VP, o usuário realiza uma entrevista e em seguida retorna ao elevador para avançar de fase. No 2° andar, temos a VP de Négocios, onde o colaborador irá resolver um case. Seguindo adiante, ele retorna ao elevador para subir mais um andar que será a VP de Estratégia. Nesse mapa, o colaborador irá fazer o seu planejamento de carreira dentro da Vivo através de um mini game. Ao retornar para o elevador, avaçamos para o 4° andar, que é a VP de Relações, onde acontecerá um jantar com todos os gerentes da Vivo para fornecer o feedback do colaborador durante a jornada. Por último, ao entrar no elevador para a VP de Tecnologia (5° andar), o usuário irá se deparar com um cenário onde aprenderá a diferença entre upskilling e reskilling (aprimoramento de habilidades). Cada fase depende da outra para ser desbloqueada, ou seja, o colaborador só poderá avançar para o próximo mapa depois de concluir as tasks do anterior.
 
 ### 3.3.3. Condições climáticas e temporais (sprints 2 e 3)
 
@@ -333,36 +341,44 @@ O Skrill é o personagem principal que é guiado pelo usuário se locomovendo pe
 *Caso seja relevante, descreva como o tempo passa, se ele é um fator limitante ao jogo (ex. contagem de tempo para terminar uma fase)*
 
 ### 3.3.4. Concept Art (sprint 2)
-Concept art é uma ilustração usada para visualizar ideias, cenários, personagens e objetos. Ela serve para ajudar a a produção final do que está sendo desenvolvido. Na produção do nosso jogo nós utilizamos a concept art para esboçarmos as cenas do Sprint Skill como uma ideia inicial, podendo ser aprimorada ao longo do desenvolvimento.  
-Na criação das concepts nós pensamos em customizar as fases de acordo com as Vice-Presidencias da Vivo pensando em fazer um ambiente que envolva o colaborador e ele possa se sentir imerso no jogo. Com isso, desenhamos os nossos mapas voltados para o desafio que o usuário vai ter que realizar em cada etapa para poder desenvolver as habilidades propostas no jogo que vão ajudá-lo e incentivá-lo a realizar e entender a Job Rotation dentro da Vivo.
-
+Concept art é uma ilustração usada para visualizar ideias, cenários, personagens e objetos. Ela serve para ajudar a a produção final do que está sendo desenvolvido. Na produção do nosso jogo,  utilizamos a concept art para esboçarmos as cenas do Sprint Skill como uma ideia inicial, podendo ser aprimorada ao longo do desenvolvimento.  
+Pensamos em customizar as fases de acordo com elementos que remetam às Vice-Presidências da Vivo, pensando em fazer um ambiente que envolva o colaborador e ele possa se sentir imerso no jogo. De forma que, ao entrar no nível, por meio do environmental storytelling, ele possa compreender em que diretoria se encontra. Com isso, desenhamos os nossos mapas voltados para o desafio que o usuário vai ter que realizar em cada etapa para poder desenvolver as habilidades propostas no jogo, que vão ajudá-lo e incentivá-lo a realizar a Job Rotation dentro da Vivo.
 
 ![conceptRecepcao](https://github.com/user-attachments/assets/16844f63-7d26-41a3-8559-4d1e53c3bb60)  
-Figura 1: mapa da recepção aonde o usuário nasce, conversa com a vivita, cria o currículo e fala com o líder.  
+
+Figura 1: mapa da recepção aonde o usuário nasce, conversa com a Vivita, cria o currículo e fala com a líder.  
 
 ![conceptCurriculo](https://github.com/user-attachments/assets/8f9eea0b-78f7-47fa-b4e2-a06ef6b64347)
-Figura 2: tela aonde o usuário vai criar o currículo após falar com a Vivita
+
+Figura 2: tela onde o usuário criará o currículo após falar com a Vivita.
 
 ![salaLider](https://github.com/user-attachments/assets/ccfba3a5-06d7-4712-88c4-4e5c17bbcf96)
-Figura 3: mapa da sala do líder aonde o usuário vai poder entrar depois de fazer e o currículo e nessa sala vai entregar o currículo para o líder
+
+Figura 3: mapa da sala da líder, onde o usuário poderá entrar após fazer o currículo e entregá-lo para a líder.
 
 ![conceptElevador](https://github.com/user-attachments/assets/bbef2db1-d93e-46b4-b963-df6272c6f82a)
-Figura 4: mapa do elevador aonde o usuário vai entrar depois de entregar o currículo e o elevador vai levá-lo para as VPs(cada andar uma VP) 
+
+Figura 4: mapa do elevador, onde o usuário utilizará para navegar entre os níveis do jogo.
 
 ![conceptVPPessoas](https://github.com/user-attachments/assets/8ee23ad0-2aef-4434-afaf-9556e5ce62e1)
-Figura 5: fase da VP de Pessoas aonde o colaborador vai simular uma entrevista
+
+Figura 5: fase da VP de Pessoas, onde o colaborador experienciará a simulação de uma entrevista (mini game).
 
 ![conceptVPNegocios](https://github.com/user-attachments/assets/374019be-4ad6-47bf-8925-9645e638995e)
-Figura 6: fase da VP de Negócios personalizada nos temas B2B e B2C com um case em cada área
+
+Figura 6: fase da VP de Negócios, personalizada nos temas B2B e B2C com um case em cada área.
 
 ![conceptVPEstrategia](https://github.com/user-attachments/assets/80a7b560-411e-4ce1-91ba-c7be7e025af0)
-Figura 7: fase da VP de Estrategia com um minigame sobre planejamento de carreira
+
+Figura 7: fase da VP de Estratégia com um minigame sobre planejamento de carreira.
 
 ![conceptVPRelacoes](https://github.com/user-attachments/assets/d2312978-bfa4-4aec-9647-24f86fb7b6d3)
-Figura 8: fase da VP de Relações aonde vai acontecer um jantar com todos os VPs da Vivo voltado para resolver dialetos de desempenho
+
+Figura 8: fase da VP de Relações, onde acontecerá um jantar com todos os gerentes da Vivo, voltado para resolver dialetos de desempenho (feedback).
 
 ![conceptVPTecnologia](https://github.com/user-attachments/assets/8b9b8a4f-b446-4103-98f2-fd6ff500a6e5)
-Figura 9: fase da VP de Tenologia aonde o usuário vai aprender sobre upskilling e reskilling e depois a jornada se encerra  
+
+Figura 9: fase da VP de Tecnologia, onde o usuário irá aprender sobre upskilling e reskilling (aprimoramento de habilidades).  
 
 
 ### 3.3.5. Trilha sonora (sprint 3)
@@ -453,16 +469,15 @@ Por fim, com a descrição fornecida e os elementos visuais indicados, é possí
 
 ## 4.2. Desenvolvimento básico do jogo (sprint 2)
 
-Foi entrege:
+Durante o desenvolvimento básico do jogo, elaboramos a interação com o computador na sala do escritório para que pudéssemos iniciar o mini game da criação do currículo. Além disso, desenvolvemos o cenário da sala da líder, elaboramos as perguntas condicionais do mini game da primeira fase e aprimoramos os designs gráficos do nosso jogo através do rascunha de concept arts de todos os níveis. Também idealizamos o jogo de forma integral, portanto, nessa fase do desenvolvimento temos uma ideia clara do que esperamos desenvolver nas próximas sprints.
 
-Uma cutscente;
+As interações com NPCs e a execução de tarefas orientadas pelo jogo (R04) serão aprofundadas nas próximas etapas do desenvolvimento. Na sprint 2, decidimos alterar as teclas de movimentação de personagem para WASD, tendo em vista a utilização da tecla E para interação com elementos no mapa, o que garante uma melhor usabilidade. Personalizamos nosso personagem principal e temos como objetivo finalizar o design de seu sprite sheet, para que ele possa ser implementado de forma dinâmica no jogo.
 
-Uma movimentação pelas setas, com uma animação do personagem quando ele anda;
+As principais dificuldades permanecem semelhantes às da sprint 1, com exceção da personalização do personagem principal. Tivemos obstáculos no desenvolvimento técnico da implementação de barreiras no mapa, por isso planejamos passá-lo para próximas sprints. O motivo dessa dificuldade é: lacunas de conhecimento técnico e identificação de falta de familiaridade com ferramentas tecnológicas que proporcionem essas funcionalidades. Por isso, decidimos desenvolver tais partes complexas conforme o conteúdo de computação for avançando e formos obtendo a experiência integral do framework Phaser.
 
-Interação com tela do computador para transitar entre cenas 
+Os próximos passos incluem o desenvolvimento técnico das próximas fases e finalização do mini game da primeira fase. Com isso, buscamos manter o alinhamento com o objetivo central do jogo, que é motivar os colaboradores a realizarem o Job Rotation na Vivo (R07), como foi solicitado no Kick-off com o parceiro.
 
-Aqui está um video que ilustra isso:
-https://github.com/user-attachments/assets/02da8c15-872d-4bfe-abff-99dad7f1b1b4
+Por fim, com a descrição fornecida e os elementos visuais indicados, é possível compreender a fase básica de desenvolvimento do jogo.
 
 ## 4.3. Desenvolvimento intermediário do jogo (sprint 3)
 
