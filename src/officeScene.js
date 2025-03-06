@@ -13,6 +13,7 @@ class OfficeScene extends Phaser.Scene {
         this.load.image('telaComputador', '../assets/tela_computador.png');
         this.load.image('computador', '../assets/computador.png');
         this.load.image('indicator', '../assets/Exclamação.png');
+        this.load.image('quadrado', '../assets/quadrado.png');
     }
 
     create() {
@@ -37,6 +38,10 @@ class OfficeScene extends Phaser.Scene {
 
         // Criar texto para coordenadas (debug)
         this.coordText = this.add.text(20, 20, '', { fontSize: '16px', fill: '#ffffff' });
+
+        //const colisao1 = this.physics.add.staticImage(43, 280, 'quadrado').setScale(0.5).setVisible(true);
+
+        //this.physics.add.collider(this.player, colisao1);
     }
 
     update() {
