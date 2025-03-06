@@ -449,6 +449,12 @@ Imagem 2: Rascunho do esquema inicial do Diagrama de Fases do jogo (produzido pe
 
 *Descreva aqui as formas de controle e interação que o jogador tem sobre o jogo: quais os comandos disponíveis, quais combinações de comandos, e quais as ações consequentes desses comandos. Utilize listas ou tabelas para organizar esta seção.*
 
+Os comandos disponíveis ao jogador, levando em conta que habita um ambiente 2D para a web, são:
+- Click de mouse ou touchpad para entrar no jogo, acessar créditos e configurações, além de pular a cutscene e selecionar botões.
+- Movimentação básica entre os eixos X e Y através das teclas WASD, que podem ser combinadas para movimentos diagonais.
+- Tecla ENTER para a interação com diálogos.
+- Tecla E para interação com objetos (computador onde se produz o currículo, por exemplo).
+
 *Ex. Em um jogo de plataforma 2D para desktop, o jogador pode usar as teclas WASD para mecânicas de andar, mirar para cima, agachar, e as teclas JKL para atacar, correr, arremesar etc.*
 
 *Ex. Em um jogo de puzzle para celular, o jogador pode tocar e arrastar sobre uma peça para movê-la sobre o tabuleiro, ou fazer um toque simples para rotacioná-la*
