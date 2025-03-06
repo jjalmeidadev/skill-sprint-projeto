@@ -18,7 +18,7 @@ class TutorialScene extends Phaser.Scene {
 
         // Lista das falas de finalização do tutorial
         this.finalizacao = [
-            "Vivinho: Observe esse esquema. Note que um jovem estagiário pode evoluir para… (mostrar esquema do desenvolvimento de carreira). Vamos mergulhar nisso nos próximos níveis!"
+            "Vivinho: Observe esse esquema. Note que um jovem estagiário pode evoluir para diversos cargos e realizar o job rotation na Vivo. Vamos mergulhar nisso nos próximos níveis!"
         ];
 
         this.currentLine = 0; // Índice da fala atual
@@ -33,7 +33,7 @@ class TutorialScene extends Phaser.Scene {
         this.load.image('vivinho', '../assets/vivinho.png');
         this.load.image('botaoSim', '../assets/botao_sim.png');
         this.load.image('botaoNao', '../assets/botao_nao.png');
-        this.load.image('jobRotation', '../assets/job_rotation.png'); 
+        this.load.image('jobRotation', '../assets/jobRotationVivo.png'); 
     }
 
     create() {
@@ -48,7 +48,7 @@ class TutorialScene extends Phaser.Scene {
         // Cria a imagem sobreposta, mas deixá-la invisível
         this.sobreposicao = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2 - 100, 'jobRotation');
         this.sobreposicao.setOrigin(0.5);
-        this.sobreposicao.setScale(1); // Ajuste conforme necessário
+        this.sobreposicao.setScale(0.5); // Ajuste conforme necessário
         this.sobreposicao.setAlpha(0); // Deixa a imagem invisível
 
         // Adiciona interação para avançar o diálogo ao pressionar ENTER
