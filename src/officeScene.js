@@ -207,8 +207,8 @@ class OfficeScene extends Phaser.Scene {
 
     addComputerAndIndicator() {
         // Definir as posições do computador e do indicador
-        const x = 429;
-        const y = 487;
+        const x = 340;
+        const y = 367;
 
         // Criar indicador de exclamação sobre o computador
         this.indicator = this.add.image(x + 70, y + 80, 'indicator').setScale(0.3);
