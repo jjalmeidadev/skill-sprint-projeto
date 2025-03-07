@@ -87,6 +87,9 @@ class QuizVpPessoas extends Phaser.Scene {
     }
 
     create() {
+        //Transição
+        this.cameras.main.fadeIn(1000);
+
         // Definindo uma imagem de fundo
         this.add.image(0, 0, 'fundoQuiz').setOrigin(0, 0).setDisplaySize(this.sys.game.config.width, this.sys.game.config.height);
 
