@@ -238,5 +238,3 @@ class OfficeScene extends Phaser.Scene {
     this.scene.switch('curriculoScene');
   }
 }
-
-
