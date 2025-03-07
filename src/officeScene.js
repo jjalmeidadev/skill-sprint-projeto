@@ -235,9 +235,7 @@ class OfficeScene extends Phaser.Scene {
 
   showComputerScreen() {
     // Mostrar a tela do computador
-    this.telaComputador.setVisible(true);
-    this.player.setVisible(false);
-    this.computador.setVisible(false);
+    this.scene.switch('curriculoScene');
   }
 }
 
