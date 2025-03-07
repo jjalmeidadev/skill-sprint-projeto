@@ -43,6 +43,7 @@ class CurriculoScene extends Phaser.Scene {
         this.load.image('primeiraTela', '../assets/primeiraTela.png');
         //Carrega imagens dos botões
         this.load.image('botao01', '../assets/botao_vp_pessoas.png');
+        this.load.font('FontePadrao', 'fonts/PixelifySans-VariableFont_wght.ttf'); // Fonte do jogo
     }
 
     create() {
@@ -64,10 +65,13 @@ class CurriculoScene extends Phaser.Scene {
         });
     }
 
+
     update() {
 
     }
+
 }
+
 
 // Cena do Quiz da Vice-Presidência de Pessoas
 class QuizVpPessoas extends Phaser.Scene {
@@ -79,6 +83,7 @@ class QuizVpPessoas extends Phaser.Scene {
     preload() {
         // Carrega a imagem de fundo
         this.load.image('fundoQuiz', '../assets/TelaQuiz.png');
+        this.load.font('FontePadrao', 'fonts/PixelifySans-VariableFont_wght.ttf'); // Fonte do jogo
     }
 
     create() {
@@ -92,7 +97,7 @@ class QuizVpPessoas extends Phaser.Scene {
     criarBarraProgresso() {
         // Barra de progresso
         this.barraProgresso = this.add.rectangle(100, 50, 0, 20, 0x00ff00).setOrigin(0, 0.5);
-        this.textoProgresso = this.add.text(300, 50, `Progresso: ${progresso}%`, { fontSize: '24px', fill: '#000000' }); // Texto preto
+        this.textoProgresso = this.add.text(300, 50, `Progresso: ${progresso}%`, { fontSize: '24px', fill: '#000000', fontFamily: 'FontePadrao'}); // Texto preto
     }
 
     atualizarBarraProgresso() {
@@ -116,12 +121,12 @@ class QuizVpPessoas extends Phaser.Scene {
         const pergunta = perguntas[perguntaAtual];
 
         // Exibindo pergunta
-        const textoPergunta = this.add.text(100, 150, pergunta.pergunta, { fontSize: '32px', fill: '#000000' }); // Texto preto
+        const textoPergunta = this.add.text(100, 150, pergunta.pergunta, { fontSize: '32px', fill: '#000000', fontFamily:'FontePadrao' }); // Texto preto
         this.textosPergunta.push(textoPergunta); // Armazena a referência
 
         // Exibindo alternativas
         pergunta.alternativas.forEach((alternativa, index) => {
-            const textoAlternativa = this.add.text(100, 200 + (index * 50), `${index + 1}. ${alternativa}`, { fontSize: '24px', fill: '#000000' }) // Texto preto
+            const textoAlternativa = this.add.text(100, 200 + (index * 50), `${index + 1}. ${alternativa}`, { fontSize: '24px', fill: '#000000', fontFamily: 'FontePadrao'}) // Texto preto
                 .setInteractive()
                 .on('pointerdown', () => this.verificarResposta(index));
             this.textosPergunta.push(textoAlternativa); // Armazena a referência
@@ -148,7 +153,7 @@ class QuizVpPessoas extends Phaser.Scene {
     }
 
     update() {
-    
+
     }
 }
 
@@ -160,9 +165,9 @@ class GameOverSceneCurriculo extends Phaser.Scene {
 
     create() {
         // Adicionando texto
-        this.add.text(300, 250, 'Game Over!', { fontSize: '48px', fill: '#ff0000' });
+        this.add.text(300, 250, 'Game Over!', { fontSize: '48px', fill: '#ff0000', fontFamily: 'FontePadrao'});
         // Texto interativo para reiniciar o quiz 
-        const botaoReiniciar = this.add.text(300, 350, 'Reiniciar Quiz', { fontSize: '32px', fill: '#fff' })
+        const botaoReiniciar = this.add.text(300, 350, 'Reiniciar Quiz', { fontSize: '32px', fill: '#fff', fontFamily: 'FontePadrao'})
             .setInteractive()
             .on('pointerdown', () => {
                 perguntaAtual = 0;
@@ -179,8 +184,8 @@ class CongratulationsSceneCurriculo extends Phaser.Scene {
     }
 
     create() {
-        this.add.text(250, 250, 'Parabéns! Você venceu!', { fontSize: '48px', fill: '#00ff00' });
-        const botaoVoltar = this.add.text(300, 350, 'Voltar para o Escritório', { fontSize: '32px', fill: '#fff' })
+        this.add.text(250, 250, 'Parabéns! Você venceu!', { fontSize: '48px', fill: '#00ff00', fontFamily: 'FontePadrao'});
+        const botaoVoltar = this.add.text(300, 350, 'Voltar para o Escritório', { fontSize: '32px', fill: '#fff', fontFamily: 'FontePadrao'})
             .setInteractive()
             .on('pointerdown', () => {
                 this.scene.switch('officeScene');
