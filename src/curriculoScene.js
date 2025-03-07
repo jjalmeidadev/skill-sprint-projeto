@@ -69,6 +69,7 @@ class CurriculoScene extends Phaser.Scene {
     }
 }
 
+// Cena do Quiz da Vice-Presidência de Pessoas
 class QuizVpPessoas extends Phaser.Scene {
     constructor() {
         super({ key: 'QuizVpPessoas' });
@@ -77,14 +78,12 @@ class QuizVpPessoas extends Phaser.Scene {
 
     preload() {
         // Carrega a imagem de fundo
-        this.load.image('fundoQuiz', 'caminho/para/sua/imagem.png');
+        this.load.image('fundoQuiz', '../assets/TelaQuiz.png');
     }
 
     create() {
-        // Define uma cor de fundo ou adiciona uma imagem de fundo
-        this.cameras.main.setBackgroundColor('#ffffff'); // Cor de fundo branca
-        // Ou use uma imagem de fundo:
-        // this.add.image(0, 0, 'fundoQuiz').setOrigin(0, 0).setDisplaySize(this.sys.game.config.width, this.sys.game.config.height);
+        // Definindo uma imagem de fundo
+        this.add.image(0, 0, 'fundoQuiz').setOrigin(0, 0).setDisplaySize(this.sys.game.config.width, this.sys.game.config.height);
 
         this.criarBarraProgresso();
         this.mostrarPergunta();
@@ -97,6 +96,7 @@ class QuizVpPessoas extends Phaser.Scene {
     }
 
     atualizarBarraProgresso() {
+        // Atualizando a barra de progresso do quiz
         const larguraMaxima = 500;
         const novaLargura = (progresso / 100) * larguraMaxima;
         this.barraProgresso.width = novaLargura;
@@ -104,7 +104,7 @@ class QuizVpPessoas extends Phaser.Scene {
     }
 
     limparTextos() {
-        // Remove apenas os textos da pergunta e alternativas
+        // Remove apenas os textos da pergunta e alternativas (para não ficarem sobrepostos na tela)
         this.textosPergunta.forEach(texto => texto.destroy());
         this.textosPergunta = []; // Limpa o array
     }
@@ -115,11 +115,11 @@ class QuizVpPessoas extends Phaser.Scene {
 
         const pergunta = perguntas[perguntaAtual];
 
-        // Exibir a pergunta
+        // Exibindo pergunta
         const textoPergunta = this.add.text(100, 150, pergunta.pergunta, { fontSize: '32px', fill: '#000000' }); // Texto preto
         this.textosPergunta.push(textoPergunta); // Armazena a referência
 
-        // Exibir alternativas
+        // Exibindo alternativas
         pergunta.alternativas.forEach((alternativa, index) => {
             const textoAlternativa = this.add.text(100, 200 + (index * 50), `${index + 1}. ${alternativa}`, { fontSize: '24px', fill: '#000000' }) // Texto preto
                 .setInteractive()
@@ -128,6 +128,7 @@ class QuizVpPessoas extends Phaser.Scene {
         });
     }
 
+    // Estrutura de condição sobre a resposta das perguntas
     verificarResposta(resposta) {
         const pergunta = perguntas[perguntaAtual];
 
@@ -151,13 +152,16 @@ class QuizVpPessoas extends Phaser.Scene {
     }
 }
 
+// Cena caso o jogador erre uma pergunta do quiz 
 class GameOverSceneCurriculo extends Phaser.Scene {
     constructor() {
         super({ key: 'GameOverSceneCurriculo' });
     }
 
     create() {
+        // Adicionando texto
         this.add.text(300, 250, 'Game Over!', { fontSize: '48px', fill: '#ff0000' });
+        // Texto interativo para reiniciar o quiz 
         const botaoReiniciar = this.add.text(300, 350, 'Reiniciar Quiz', { fontSize: '32px', fill: '#fff' })
             .setInteractive()
             .on('pointerdown', () => {
@@ -168,6 +172,7 @@ class GameOverSceneCurriculo extends Phaser.Scene {
     }
 }
 
+// Cena de parabéns ao chegar ao final do quiz
 class CongratulationsSceneCurriculo extends Phaser.Scene {
     constructor() {
         super({ key: 'CongratulationsSceneCurriculo' });
@@ -179,7 +184,7 @@ class CongratulationsSceneCurriculo extends Phaser.Scene {
             .setInteractive()
             .on('pointerdown', () => {
                 this.scene.switch('officeScene');
-                // Aqui você pode adicionar a lógica para voltar ao menu principal ou outra cena
+                // Voltando para a cena principal
             });
     }
 }
