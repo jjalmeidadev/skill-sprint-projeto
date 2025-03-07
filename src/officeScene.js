@@ -13,9 +13,9 @@ class OfficeScene extends Phaser.Scene {
         this.load.image('telaComputador', '../assets/tela_computador.png');
         this.load.image('computador', '../assets/computador.png');
         this.load.image('indicator', '../assets/Exclamação.png');
-        this.load.image('botaoElevOffice', '/assets/botaocimaelevador.png');
-        this.load.image('bgElevOffice', '/assets/bgelevadoroffice.png');
-        this.load.image('painelelev', '/assets/painelelevador.png');
+        this.load.image('botaoElevOffice', '../assets/botaocimaelevador.png');
+        this.load.image('bgElevOffice', '../assets/bgelevadoroffice.png');
+        this.load.image('painelelev', '../assets/painelelevador.png');
     }
 
     create() {
