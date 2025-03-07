@@ -439,11 +439,11 @@ Imagem 2: Rascunho do esquema inicial do Diagrama de Fases do jogo (produzido pe
 
 ## 3.6. Regras do jogo (sprint 3)
 
-*Descreva aqui as regras do seu jogo: objetivos/desafios, meios para se conseguir alcançar*
+*A ideia principal do nosso jogo é representar diferentes cenários do vasto ecossistema da empresa Vivo. Cada cenário simboliza um cargo ou função dentro da companhia, pelos quais o(a) protagonista — um(a) recém-contratado(a) — passará por meio da proposta de "job rotation". Durante essa jornada, ele(a) descobrirá as principais características de cada função apresentada em cada nível, com o objetivo de expandir seu conhecimento.*
 
-*Ex. O jogador deve pilotar o carro e conseguir terminar a corrida dentro de um minuto sem bater em nenhum obstáculo.*
+*Após a cutscene, o jogador iniciará sua experiência na recepção da empresa. Sua primeira tarefa será escolher o nome pelo qual deseja ser chamado ao longo da progressão do jogo.*
 
-*Ex. O jogador deve concluir a fase dentro do tempo, para obter uma estrela. Se além disso ele coletar todas as moedas, ganha mais uma estrela. E se além disso ele coletar os três medalhões espalhados, ganha mais uma estrela, totalizando três. Ao final do jogo, obtendo três estrelas em todas as fases, desbloqueia o mundo secreto.*  
+*À medida que avança nas missões, o jogador deverá completar minigames para adquirir o conhecimento necessário para dar continuidade às tarefas ou até mesmo desbloquear novas missões.*
 
 ## 3.7. Mecânicas do jogo (sprint 3)
 
