@@ -91,7 +91,7 @@ class TutorialScene extends Phaser.Scene {
         this.nome.style.borderRadius = '5px';
         this.nome.style.textAlign = 'center';
         this.nome.style.display = 'none';
-        this.nome.fontFamily = 'FontePadrao';
+        this.nome.style.fontFamily = 'FontePadrao';
 
         document.body.appendChild(this.nome);
     }
