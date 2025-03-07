@@ -48,7 +48,7 @@ class TutorialScene extends Phaser.Scene {
         // Cria a imagem sobreposta, mas deixá-la invisível
         this.sobreposicao = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2 - 100, 'jobRotation');
         this.sobreposicao.setOrigin(0.5);
-        this.sobreposicao.setScale(0.5); // Ajuste conforme necessário
+        this.sobreposicao.setScale(0.35); // Ajuste conforme necessário
         this.sobreposicao.setAlpha(0); // Deixa a imagem invisível
 
         // Adiciona interação para avançar o diálogo ao pressionar ENTER
