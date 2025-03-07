@@ -1,9 +1,9 @@
 // Dados do Quiz
 const perguntas = [
     {
-        pergunta: "Qual é a capital do Brasil?",
-        alternativas: ["São Paulo", "Rio de Janeiro", "Brasília", "Belo Horizonte"],
-        correta: 2 // Índice da alternativa correta
+        pergunta: "O setor de Pessoas da Vivo valoriza currículos bem organizados e fáceis de ler. Qual das seguintes práticas melhora a estrutura do seu currículo?",
+        alternativas: ["Usar parágrafos longos para descrever cada experiência.", "Utilizar marcadores para destacar conquistas e habilidades.", " Incluir informações detalhadas sobre sua vida pessoal.", "Adicionar todas as experiências desde o primeiro emprego, sem priorizar as mais recentes."],
+        correta: 1 // Índice da alternativa correta
     },
     {
         pergunta: "Quem escreveu 'Dom Quixote'?",
@@ -121,12 +121,12 @@ class QuizVpPessoas extends Phaser.Scene {
         const pergunta = perguntas[perguntaAtual];
 
         // Exibindo pergunta
-        const textoPergunta = this.add.text(100, 150, pergunta.pergunta, { fontSize: '32px', fill: '#000000', fontFamily:'FontePadrao' }); // Texto preto
+        const textoPergunta = this.add.text(150, 120, pergunta.pergunta, { fontSize: '24px', fill: '#000000', fontFamily:'FontePadrao', wordWrap: { width: 700 } }); // Texto preto
         this.textosPergunta.push(textoPergunta); // Armazena a referência
 
         // Exibindo alternativas
         pergunta.alternativas.forEach((alternativa, index) => {
-            const textoAlternativa = this.add.text(100, 200 + (index * 50), `${index + 1}. ${alternativa}`, { fontSize: '24px', fill: '#000000', fontFamily: 'FontePadrao'}) // Texto preto
+            const textoAlternativa = this.add.text(150, 200 + (index * 50), `${index + 1}. ${alternativa}`, { fontSize: '24px', fill: '#000000', fontFamily: 'FontePadrao', wordWrap: { width: 600 }}) // Texto preto
                 .setInteractive()
                 .on('pointerdown', () => this.verificarResposta(index));
             this.textosPergunta.push(textoAlternativa); // Armazena a referência
@@ -165,7 +165,8 @@ class GameOverSceneCurriculo extends Phaser.Scene {
 
     create() {
         // Adicionando texto
-        this.add.text(300, 250, 'Game Over!', { fontSize: '48px', fill: '#ff0000', fontFamily: 'FontePadrao'});
+        this.add.text(300, 250, 'Que pena...', { fontSize: '48px', fill: '#ff0000', fontFamily: 'FontePadrao'});
+        this.add.text(300, 250, 'Você errou... tente de novo! Nunca é tarde para melhorar o currículo!', { fontSize: '48px', fill: '#ff0000', fontFamily: 'FontePadrao'});
         // Texto interativo para reiniciar o quiz 
         const botaoReiniciar = this.add.text(300, 350, 'Reiniciar Quiz', { fontSize: '32px', fill: '#fff', fontFamily: 'FontePadrao'})
             .setInteractive()
@@ -184,7 +185,6 @@ class CongratulationsSceneCurriculo extends Phaser.Scene {
     }
 
     create() {
-        this.add.text(250, 250, 'Parabéns! Você venceu!', { fontSize: '48px', fill: '#00ff00', fontFamily: 'FontePadrao'});
         const botaoVoltar = this.add.text(300, 350, 'Voltar para o Escritório', { fontSize: '32px', fill: '#fff', fontFamily: 'FontePadrao'})
             .setInteractive()
             .on('pointerdown', () => {
