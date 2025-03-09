@@ -81,8 +81,7 @@ class QuizVpPessoas extends Phaser.Scene {
     }
 
     preload() {
-        // Carrega a imagem de fundo
-        this.load.image('fundoQuiz', '../assets/TelaQuiz.png');
+        // Carrega a fonte do quiz
         this.load.font('FontePadrao', 'fonts/PixelifySans-VariableFont_wght.ttf'); // Fonte do jogo
     }
 
@@ -90,8 +89,8 @@ class QuizVpPessoas extends Phaser.Scene {
         //Transição
         this.cameras.main.fadeIn(1000);
 
-        // Definindo uma imagem de fundo
-        this.add.image(0, 0, 'fundoQuiz').setOrigin(0, 0).setDisplaySize(this.sys.game.config.width, this.sys.game.config.height);
+        // Definir a cor de fundo para cinza (em hexadecimal)
+        this.cameras.main.setBackgroundColor('#D9D9D9');
 
         this.criarBarraProgresso();
         this.mostrarPergunta();
@@ -99,8 +98,9 @@ class QuizVpPessoas extends Phaser.Scene {
 
     criarBarraProgresso() {
         // Barra de progresso
-        this.barraProgresso = this.add.rectangle(100, 50, 0, 20, 0x00ff00).setOrigin(0, 0.5);
-        this.textoProgresso = this.add.text(300, 50, `Progresso: ${progresso}%`, { fontSize: '24px', fill: '#000000', fontFamily: 'FontePadrao'}); // Texto preto
+        this.barraProgresso = this.add.rectangle(100, 50, 0, 20, 0x800080).setOrigin(0, 0.5);
+        this.textoProgresso = this.add.text(920, 50, `Progresso: ${progresso}%`, { fontSize: '24px', fill: '#000000', fontFamily: 'FontePadrao' }); // Texto preto
+
     }
 
     atualizarBarraProgresso() {
@@ -124,12 +124,12 @@ class QuizVpPessoas extends Phaser.Scene {
         const pergunta = perguntas[perguntaAtual];
 
         // Exibindo pergunta
-        const textoPergunta = this.add.text(150, 120, pergunta.pergunta, { fontSize: '24px', fill: '#B600B9', fontFamily:'FontePadrao', wordWrap: { width: 1000 } }); // Texto preto
+        const textoPergunta = this.add.text(150, 150, pergunta.pergunta, { fontSize: '24px', fill: '#B600B9', fontFamily: 'FontePadrao', wordWrap: { width: 1000 } }); // Texto preto
         this.textosPergunta.push(textoPergunta); // Armazena a referência
 
         // Exibindo alternativas
         pergunta.alternativas.forEach((alternativa, index) => {
-            const textoAlternativa = this.add.text(150, 200 + (index * 50), `${index + 1}. ${alternativa}`, { fontSize: '24px', fill: '#000000', fontFamily: 'FontePadrao', wordWrap: { width: 1000 }}) // Texto preto
+            const textoAlternativa = this.add.text(150, 230 + (index * 50), `${index + 1}. ${alternativa}`, { fontSize: '24px', fill: '#000000', fontFamily: 'FontePadrao', wordWrap: { width: 1000 } }) // Texto preto
                 .setInteractive()
                 .on('pointerdown', () => this.verificarResposta(index));
             this.textosPergunta.push(textoAlternativa); // Armazena a referência
@@ -148,7 +148,7 @@ class QuizVpPessoas extends Phaser.Scene {
                 this.atualizarBarraProgresso();
                 this.mostrarPergunta(); // Exibe a próxima pergunta
             } else {
-                this.scene.start('CongratulationsSceneCurriculo'); // Todas as perguntas foram respondidas corretamente
+                this.scene.start('CongratulationsSceneCurriculoVpPessoas'); // Todas as perguntas foram respondidas corretamente
             }
         } else {
             this.scene.start('GameOverSceneCurriculo'); // Resposta incorreta
@@ -160,18 +160,28 @@ class QuizVpPessoas extends Phaser.Scene {
     }
 }
 
-// Cena caso o jogador erre uma pergunta do quiz 
 class GameOverSceneCurriculo extends Phaser.Scene {
     constructor() {
         super({ key: 'GameOverSceneCurriculo' });
     }
 
+    preload() {
+        // Carregando imagem de fundo 
+        this.load.image('fundoGameOver', '../assets/gameover_curriculo.png');
+    }
+
     create() {
-        // Adicionando texto
-        this.add.text(300, 250, 'Que pena...', { fontSize: '48px', fill: '#ff0000', fontFamily: 'FontePadrao'});
-        this.add.text(300, 250, 'Você errou... tente de novo! Nunca é tarde para melhorar o currículo!', { fontSize: '48px', fill: '#ff0000', fontFamily: 'FontePadrao'});
-        // Texto interativo para reiniciar o quiz 
-        const botaoReiniciar = this.add.text(300, 350, 'Reiniciar Quiz', { fontSize: '32px', fill: '#fff', fontFamily: 'FontePadrao'})
+        // Adicionar a imagem de fundo
+        this.add.image(0, 0, 'fundoGameOver')
+            .setOrigin(0, 0)
+            .setDisplaySize(this.sys.game.config.width, this.sys.game.config.height);
+
+        // Texto interativo para reiniciar o quiz
+        const botaoReiniciar = this.add.text(300, 350, 'Clique aqui para reiniciar o quiz', {
+            fontSize: '20px',
+            fill: '#000',
+            fontFamily: 'FontePadrao'
+        })
             .setInteractive()
             .on('pointerdown', () => {
                 perguntaAtual = 0;
@@ -182,13 +192,20 @@ class GameOverSceneCurriculo extends Phaser.Scene {
 }
 
 // Cena de parabéns ao chegar ao final do quiz
-class CongratulationsSceneCurriculo extends Phaser.Scene {
+class CongratulationsSceneCurriculoVpPessoas extends Phaser.Scene {
     constructor() {
-        super({ key: 'CongratulationsSceneCurriculo' });
+        super({ key: 'CongratulationsSceneCurriculoVpPessoas' });
+    }
+
+    preload() {
+        // Carregando imagem de fundo
+        this.load.image('fundoCongratulationsVpPessoas', '../assets/parabens_cv_vpdepessoas.png');
     }
 
     create() {
-        const botaoVoltar = this.add.text(300, 350, 'Voltar para o Escritório', { fontSize: '32px', fill: '#fff', fontFamily: 'FontePadrao'})
+        // Definindo uma imagem de fundo
+        this.add.image(0, 0, 'fundoCongratulationsVpPessoas').setOrigin(0, 0).setDisplaySize(this.sys.game.config.width, this.sys.game.config.height);
+        const botaoVoltar = this.add.text(300, 350, 'Clique aqui para voltar para o Escritório', { fontSize: '20px', fill: '#000', fontFamily: 'FontePadrao' })
             .setInteractive()
             .on('pointerdown', () => {
                 this.scene.switch('officeScene');
