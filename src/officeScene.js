@@ -19,7 +19,7 @@ class OfficeScene extends Phaser.Scene {
   }
 
   create() {
-
+    this.cameras.main.fadeIn(1000); // Transição suave
     // Obtém as dimensões da tela
     const screenWidth = this.sys.game.config.width;
     const screenHeight = this.sys.game.config.height;
@@ -66,8 +66,8 @@ class OfficeScene extends Phaser.Scene {
     // Esconder o indicador quando o jogador se aproximar do computador
     if (
       this.indicatorActive &&
-      Math.abs(this.player.x - this.computador.x) <= 30 &&
-      Math.abs(this.player.y - this.computador.y) <= 30
+      Math.abs(this.player.x - this.indicator.x) <= 30 &&
+      Math.abs(this.player.y - this.indicator.y) <= 30
     ) {
       this.indicator.setVisible(false);
       this.indicatorActive = false;
@@ -211,7 +211,7 @@ class OfficeScene extends Phaser.Scene {
     const y = 367;
 
     // Criar indicador de exclamação sobre o computador
-    this.indicator = this.add.image(x + 70, y + 80, 'indicator').setScale(0.3);
+    this.indicator = this.add.image(x + 16, y + 96, 'indicator').setScale(0.3);
     this.indicatorActive = true;
 
     // Criar o computador na posição original
