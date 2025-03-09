@@ -66,8 +66,8 @@ class OfficeScene extends Phaser.Scene {
     // Esconder o indicador quando o jogador se aproximar do computador
     if (
       this.indicatorActive &&
-      Math.abs(this.player.x - this.computador.x) <= 30 &&
-      Math.abs(this.player.y - this.computador.y) <= 30
+      Math.abs(this.player.x - this.indicator.x) <= 30 &&
+      Math.abs(this.player.y - this.indicator.y) <= 30
     ) {
       this.indicator.setVisible(false);
       this.indicatorActive = false;
