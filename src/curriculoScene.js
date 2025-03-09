@@ -1,29 +1,29 @@
 // Dados do Quiz
 const perguntas = [
     {
-        pergunta: "O setor de Pessoas da Vivo valoriza currículos bem organizados e fáceis de ler. Qual das seguintes práticas melhora a estrutura do seu currículo?",
+        pergunta: "O setor de Pessoas da Vivo valoriza currículos bem organizados e fáceis de ler. Qual das seguintes práticas melhora a estrutura do seu currículo? (Clique na alternativa correta)",
         alternativas: ["Usar parágrafos longos para descrever cada experiência.", "Utilizar marcadores para destacar conquistas e habilidades.", " Incluir informações detalhadas sobre sua vida pessoal.", "Adicionar todas as experiências desde o primeiro emprego, sem priorizar as mais recentes."],
         correta: 1 // Índice da alternativa correta
     },
     {
-        pergunta: "Quem escreveu 'Dom Quixote'?",
-        alternativas: ["Miguel de Cervantes", "Machado de Assis", "William Shakespeare", "Gabriel García Márquez"],
-        correta: 0
-    },
-    {
-        pergunta: "Qual é o maior planeta do sistema solar?",
-        alternativas: ["Terra", "Júpiter", "Saturno", "Marte"],
+        pergunta: "Qual a importância de destacar soft skills no currículo? (Clique na alternativa correta)",
+        alternativas: ["São irrelevantes, apenas habilidades técnicas importam.", "Demonstram como o candidato se adapta e interage no ambiente de trabalho.", "Devem ser listadas de forma genérica, sem exemplos práticos.", "Devem substituir as experiências profissionais."],
         correta: 1
     },
     {
-        pergunta: "Quantos elementos tem a tabela periódica?",
-        alternativas: ["118", "92", "150", "100"],
+        pergunta: "Como adaptar o currículo para ser aprovado por um sistema ATS (Applicant Tracking System)? (Clique na alternativa correta)",
+        alternativas: ["Usando palavras-chave da descrição da vaga.", "Criando um design altamente visual e colorido.", "Usando apenas tópicos genéricos sobre experiências.", "Evitando títulos claros para as seções."],
         correta: 0
     },
     {
-        pergunta: "Qual é o símbolo químico do ouro?",
-        alternativas: ["Au", "Ag", "Fe", "Cu"],
-        correta: 0
+        pergunta: "O que é essencial para um currículo ser bem avaliado por um recrutador? (Clique na alternativa correta)",
+        alternativas: ["Um layout sofisticado e cheio de imagens.", "Listar apenas experiências, sem detalhar conquistas.", "Destacar resultados e competências alinhadas à vaga.", "Usar um texto longo e detalhado para cada experiência."],
+        correta: 2
+    },
+    {
+        pergunta: "Qual erro pode prejudicar um candidato ao enviar um currículo? (Clique na alternativa correta)",
+        alternativas: ["Usar um e-mail profissional no contato.", "Adaptar o currículo para cada vaga.", "Excluir informações de contato.", "Deixar informações desatualizadas ou incorretas."],
+        correta: 2
     }
 ];
 
@@ -124,12 +124,12 @@ class QuizVpPessoas extends Phaser.Scene {
         const pergunta = perguntas[perguntaAtual];
 
         // Exibindo pergunta
-        const textoPergunta = this.add.text(150, 120, pergunta.pergunta, { fontSize: '24px', fill: '#000000', fontFamily:'FontePadrao', wordWrap: { width: 700 } }); // Texto preto
+        const textoPergunta = this.add.text(150, 120, pergunta.pergunta, { fontSize: '24px', fill: '#B600B9', fontFamily:'FontePadrao', wordWrap: { width: 1000 } }); // Texto preto
         this.textosPergunta.push(textoPergunta); // Armazena a referência
 
         // Exibindo alternativas
         pergunta.alternativas.forEach((alternativa, index) => {
-            const textoAlternativa = this.add.text(150, 200 + (index * 50), `${index + 1}. ${alternativa}`, { fontSize: '24px', fill: '#000000', fontFamily: 'FontePadrao', wordWrap: { width: 600 }}) // Texto preto
+            const textoAlternativa = this.add.text(150, 200 + (index * 50), `${index + 1}. ${alternativa}`, { fontSize: '24px', fill: '#000000', fontFamily: 'FontePadrao', wordWrap: { width: 1000 }}) // Texto preto
                 .setInteractive()
                 .on('pointerdown', () => this.verificarResposta(index));
             this.textosPergunta.push(textoAlternativa); // Armazena a referência
