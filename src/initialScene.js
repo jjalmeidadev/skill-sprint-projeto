@@ -14,6 +14,7 @@ class InitialScene extends Phaser.Scene {
     }
 
     create() {
+        this.cameras.main.fadeIn(1000); // Transição suave
         // Adiciona a imagem de fundo 'telaInicial' e ajusta seu tamanho para preencher a tela
         this.add.image(0, 0, 'telaInicial').setOrigin(0, 0).setDisplaySize(window.innerWidth, window.innerHeight);
 

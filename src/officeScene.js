@@ -19,7 +19,7 @@ class OfficeScene extends Phaser.Scene {
   }
 
   create() {
-
+    this.cameras.main.fadeIn(1000); // Transição suave
     // Obtém as dimensões da tela
     const screenWidth = this.sys.game.config.width;
     const screenHeight = this.sys.game.config.height;

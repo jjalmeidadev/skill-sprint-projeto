@@ -192,6 +192,7 @@ class CongratulationsSceneCurriculo extends Phaser.Scene {
             .setInteractive()
             .on('pointerdown', () => {
                 this.scene.switch('officeScene');
+                this.cameras.main.fadeIn(1000);
                 // Voltando para a cena principal
             });
     }
