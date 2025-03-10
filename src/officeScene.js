@@ -8,23 +8,17 @@ class OfficeScene extends Phaser.Scene {
 
     preload() {
         // Carrega as imagens e spritesheets necessárias para a cena
-        this.load.image('background', '../assets/mapaJogoVivo.png');
+        //this.load.image('background', '../assets/mapaJogoVivo.png');
         this.load.spritesheet('player', '../assets/Player.png', { frameWidth: 32, frameHeight: 32 });
         this.load.image('telaComputador', '../assets/tela_computador.png');
         this.load.image('computador', '../assets/computador.png');
         this.load.image('indicator', '../assets/Exclamação.png');
         this.load.image('quadrado', '../assets/quadrado.png');
 
-        this.load.image('barreiraEscritorioDireitaPortaLider', '../assets/barreirasEscritorio/barreiraEscritorioDireitaPortaLider.png');    
-        this.load.image('barreiraEscritorioElevadorDireita', '../assets/barreirasEscritorio/barreiraEscritorioElevadorDireita.png');
-        this.load.image('barreiraEscritorioElevadorEsquerda', '../assets/barreirasEscritorio/barreiraEscritorioElevadorEsquerda.png');
-        this.load.image('barreiraEscritorioEsquerdaPortaLider', '../assets/barreirasEscritorio/barreiraEscritorioEsquerdaPortaLider.png');
-        this.load.image('barreiraEscritorioInferiorLider', '../assets/barreirasEscritorio/barreiraEscritorioInferiorLider.png');
-        this.load.image('barreiraEscritorioParedeLider', '../assets/barreirasEscritorio/barreiraEscritorioParedeLider.png');
-        this.load.image('barreiraEscritorioSalaDireita', '../assets/barreirasEscritorio/barreiraEscritorioSalaDireita.png');
-        this.load.image('barreiraEscritorioSalaEsquerda', '../assets/barreirasEscritorio/barreiraEscritorioSalaEsquerda.png');
-        this.load.image('barreiraEscritorioSalaInferior', '../assets/barreirasEscritorio/barreiraEscritorioSalaInferior.png');
-        this.load.image('barreiraEscritorioSalaMeio', '../assets/barreirasEscritorio/barreiraEscritorioSalaMeio.png');
+        this.load.tilemapTiledJSON('escritorio', '../assets/mapaJogoVivo/mapaJogoVivo.json');
+        this.load.image('decoracao', '../assets/mapaJogoVivo/decoracao.png');
+        this.load.image('paredes', '../assets/mapaJogoVivo/paredes.png');
+        this.load.image('personalizado_vivo', '../assets/mapaJogoVivo/personalizado_vivo.png');
     }
 
     create() {
@@ -50,28 +44,20 @@ class OfficeScene extends Phaser.Scene {
         // Criar texto para coordenadas (debug)
         this.coordText = this.add.text(20, 20, '', { fontSize: '16px', fill: '#ffffff' });
 
-        const colisao1 = this.physics.add.staticImage(larguraJogo - 980, alturaJogo - 450, 'barreiraEscritorioDireitaPortaLider').setScale(1).setVisible(true);
-        const colisao2 = this.physics.add.staticImage(larguraJogo - 30, alturaJogo - 730, 'barreiraEscritorioElevadorDireita').setScale(1).setVisible(true);
-        const colisao3 = this.physics.add.staticImage(larguraJogo - 500, alturaJogo - 1200, 'barreiraEscritorioElevadorEsquerda').setScale(1).setVisible(true);
-        const colisao4 = this.physics.add.staticImage(larguraJogo - 500, alturaJogo - 1200, 'barreiraEscritorioEsquerdaPortaLider').setScale(1).setVisible(true);
-        const colisao5 = this.physics.add.staticImage(larguraJogo - 500, alturaJogo - 1200, 'barreiraEscritorioInferiorLider').setScale(1).setVisible(true);
-        const colisao6 = this.physics.add.staticImage(larguraJogo - 500, alturaJogo - 1200, 'barreiraEscritorioParedeLider').setScale(1).setVisible(true);
-        const colisao7 = this.physics.add.staticImage(larguraJogo - 500, alturaJogo - 1200, 'barreiraEscritorioSalaDireita').setScale(1).setVisible(true);
-        const colisao8 = this.physics.add.staticImage(larguraJogo - 500, alturaJogo - 1200, 'barreiraEscritorioSalaEsquerda').setScale(1).setVisible(true);
-        const colisao9 = this.physics.add.staticImage(larguraJogo - 500, alturaJogo - 1200, 'barreiraEscritorioSalaInferior').setScale(1).setVisible(true);
-        const colisao10 = this.physics.add.staticImage(larguraJogo - 500, alturaJogo - 1200, 'barreiraEscritorioSalaMeio').setScale(1).setVisible(true);
+        const map = this.make.tilemap({ key: "escritorio", tileWidth: 25, tileHeight: 20});
 
+        const tileset1 = map.addTilesetImage("decoracao");
+        const tileset2 = map.addTilesetImage("paredes");
+        const tileset3 = map.addTilesetImage("peresonalizado_vivo");
 
-        this.physics.add.collider(this.player, colisao1);
-        this.physics.add.collider(this.player, colisao2);
-        this.physics.add.collider(this.player, colisao3);
-        this.physics.add.collider(this.player, colisao4);
-        this.physics.add.collider(this.player, colisao5);
-        this.physics.add.collider(this.player, colisao6);
-        this.physics.add.collider(this.player, colisao7);
-        this.physics.add.collider(this.player, colisao8);
-        this.physics.add.collider(this.player, colisao9);
-        this.physics.add.collider(this.player, colisao10);
+        //const layer1 = map.createLayer("chao", tileset1, 0, 0);
+        const layer2 = map.createLayer("chao", tileset2, 0, 0);
+        const layer3 = map.createLayer("tapetes", tileset1, 0, 0);
+        const layer4 = map.createLayer("paredes", tileset2, 0, 0);
+        const layer5 = map.createLayer("detalhesParede", tileset2, 0, 0);
+        const layer6 = map.createLayer("decoracao", tileset1, 0, 0);
+        const layer7 = map.createLayer("plantas", tileset1, 0, 0);
+        const layer8 = map.createLayer("portas", tileset1, 0, 0);
     }
 
     update() {
