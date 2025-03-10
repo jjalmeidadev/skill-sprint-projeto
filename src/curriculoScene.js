@@ -8,7 +8,7 @@ class CurriculoScene extends Phaser.Scene {
 
     preload() {
         // Carrega a imagem necessária para a cena do currículo
-        this.load.image('primeiraTela', '../assets/primeiraTela.png');
+        this.load.image('primeiraTela', 'assets/assetsBackground/primeiraTela.png');
     }
 
     create() {

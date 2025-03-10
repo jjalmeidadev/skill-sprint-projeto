@@ -29,11 +29,11 @@ class TutorialScene extends Phaser.Scene {
 
     preload() {
         // Carrega as imagens necessárias para a cena do tutorial
-        this.load.image('background', '../assets/mapaJogoVivo.png');
-        this.load.image('vivinho', '../assets/vivinho.png');
-        this.load.image('botaoSim', '../assets/botao_sim.png');
-        this.load.image('botaoNao', '../assets/botao_nao.png');
-        this.load.image('jobRotation', '../assets/jobRotationVivo.png'); 
+        this.load.image('background', 'assets/assetsBackground/mapaJogoVivo.png');
+        this.load.image('vivinho', 'assets/randow/vivinho.png');
+        this.load.image('botaoSim', 'assets/assets_botões/botao_sim.png');
+        this.load.image('botaoNao', 'assets/assets_botões/botao_nao.png');
+        this.load.image('jobRotation', 'assets/randow/jobRotationVivo.png'); 
     }
 
     create() {

@@ -6,7 +6,7 @@ class CutScene extends Phaser.Scene {
 
     preload() {
         // Carrega o vídeo da cutscene
-        this.load.video('cutScene', '../assets/cutsceneVivo.mp4');
+        this.load.video('cutScene', 'assets/audio/cutsceneVivo.mp4');
     }
 
     create() {

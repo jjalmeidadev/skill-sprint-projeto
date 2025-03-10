@@ -8,11 +8,11 @@ class OfficeScene extends Phaser.Scene {
 
     preload() {
         // Carrega as imagens e spritesheets necessárias para a cena
-        this.load.image('background', '../assets/mapaJogoVivo.png');
-        this.load.spritesheet('player', '../assets/Player.png', { frameWidth: 32, frameHeight: 32 });
-        this.load.image('telaComputador', '../assets/tela_computador.png');
-        this.load.image('computador', '../assets/computador.png');
-        this.load.image('indicator', '../assets/Exclamação.png');
+        this.load.image('background', 'assets/assetsBackground/mapaJogoVivo.png');
+        this.load.spritesheet('player', 'assets/personagens/Player.png', { frameWidth: 32, frameHeight: 32 });
+        this.load.image('telaComputador', 'assets/assetsBackground/tela_computador.png');
+        this.load.image('computador', 'assets/assetsBackground/tela_computador.png');
+        this.load.image('indicator', 'assets/assets_objetos/Exclamação.png');
     }
 
     create() {
