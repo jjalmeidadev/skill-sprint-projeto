@@ -524,7 +524,7 @@ Os casos de teste descritos a seguir foram elaborados para avaliar os diferentes
 --- | --- | --- | --- 
 1 | O personagem deve estar próximo a um computador interativo |Pressionar a tecla "E"	 | A tela do computador deve abrir no jogo
 2 | O jogo está rodando e o personagem pode se mover | Pressionar a seta | O personagem deve se mover
-3 | O jogo está na tela inicial|Clicar no botão "Começar o jogo" |O jogo deve iniciar e levar o jogador para a cutscene
+3 | O jogo está na tela inicial|Clicar no botão "Jogar" |O jogo deve iniciar e levar o jogador para a cutscene
 
 ## 5.2. Testes de jogabilidade (playtests) (sprint 4)
 
