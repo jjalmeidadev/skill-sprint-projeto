@@ -443,7 +443,7 @@ Imagem 2: Rascunho do esquema inicial do Diagrama de Fases do jogo (produzido pe
 
 *A proposta central do jogo é retratar diferentes cenários dentro do amplo ecossistema da empresa Vivo, onde cada ambiente representa um cargo ou função específica. O(a) protagonista, que acaba de ingressar na companhia, passará por essas experiências por meio do conceito de **"job rotation"**, explorando e aprendendo sobre cada função conforme avança nos desafios.*
 
-***Jornada do Jogador**
+**Jornada do Jogador**
 
 *A jornada do jogador seguirá os seguintes passos:*
 
