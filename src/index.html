@@ -2,24 +2,27 @@
 <html lang="pt-br">
 
 <head>
-  <!-- Declaração do tipo de documento e idioma -->
-  <meta charset="UTF-8" /> <!-- Define o conjunto de caracteres como UTF-8 -->
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Configura a viewport para dispositivos móveis -->
-  <title>teste</title> <!-- Título da página exibido na aba do navegador -->
-  <link rel="icon" href="../assets/favicon-32x32.png" type="image/x-icon" /> <!-- Adiciona o favicon -->
+  <title>teste</title>
+  <link rel="icon" href="../assets/favicon-32x32.png" type="image/x-icon" />
 </head>
 
 <body>
-  <!-- Inclusão dos scripts do jogo -->
-  <script src="phaser.js"></script> <!-- Carrega a biblioteca Phaser, necessária para criar o jogo -->
+  <!-- Inclusão dos scripts do jogo na ordem correta -->
+  <script src="phaser.js"></script> <!-- Carrega a biblioteca Phaser -->
+  
+  <!-- Carregamento das cenas em ordem lógica -->
   <script src="initialScene.js"></script> <!-- Cena inicial do jogo -->
   <script src="cutScene.js"></script> <!-- Cena de corte (cutscene) do jogo -->
-  <script src="tutorialScene.js"></script> <!-- Cena do tutorial do jogo -->
+  <script src="gameplayTutorialScene.js"></script> <!-- Cena do tutorial de jogabilidade -->
+  <script src="tutorialScene.js"></script> <!-- Cena do tutorial do jogo (ajustada) -->
   <script src="officeScene.js"></script> <!-- Cena do escritório (office) do jogo -->
+  <script src="elevadorScene.js"></script> <!-- Arquivo que gerencia o elevador do jogo -->
   <script src="curriculoScene.js"></script> <!-- Cena relacionada ao currículo do jogo -->
+  
+  <!-- O arquivo principal deve ser carregado por último -->
   <script src="game.js"></script> <!-- Arquivo principal que inicializa o jogo e gerencia as cenas -->
-  <script src="elevador.js"></script><!-- Arquivo que gerencia o elevador do jogo -->
 </body>
 
 </html>
