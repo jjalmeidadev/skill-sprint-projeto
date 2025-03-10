@@ -14,7 +14,10 @@ const config = {
             debug: false, // Desativa o modo de depuração da física
         }
     },
-    scene: [InitialScene, CutScene, TutorialScene, OfficeScene, CurriculoScene, QuizVpPessoas, GameOverSceneCurriculo, CongratulationsSceneCurriculoVpPessoas] // Lista das cenas do jogo
+    scene: [InitialScene, CutScene, TutorialScene, OfficeScene,
+        CurriculoScene, QuizVpPessoas, GameOverSceneCurriculo,
+        CongratulationsSceneCurriculoVpPessoas, QuizVpEstrategia,
+        CongratulationsSceneCurriculoVpEstrategia, GameOverSceneCurriculoEstrategia] // Lista das cenas do jogo
 };
 
 // Criação de uma nova instância do jogo Phaser com a configuração especificada
