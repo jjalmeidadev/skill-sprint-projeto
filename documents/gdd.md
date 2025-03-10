@@ -437,13 +437,25 @@ Imagem 2: Diagrama de cenas (produzido pelo autor). Link de acesso: <https://www
 
 Imagem 2: Rascunho do esquema inicial do Diagrama de Fases do jogo (produzido pelo autor)
 
-## 3.6. Regras do jogo (sprint 3)
+## 3.6. Regras do Jogo (Sprint 3)
 
-*A ideia principal do nosso jogo é representar diferentes cenários do vasto ecossistema da empresa Vivo. Cada cenário simboliza um cargo ou função dentro da companhia, pelos quais o(a) protagonista — um(a) recém-contratado(a) — passará por meio da proposta de "job rotation". Durante essa jornada, ele(a) descobrirá as principais características de cada função apresentada em cada nível, com o objetivo de expandir seu conhecimento.*
+*Neste segmento, serão apresentadas as diretrizes que o personagem precisará seguir para avançar nas etapas do jogo, comumente chamadas de *"primary quests"* ou missões principais. Essas normas são essenciais para garantir que o jogador compreenda os desafios propostos e consiga progredir de maneira estruturada dentro da narrativa.*
 
-*Após a cutscene, o jogador iniciará sua experiência na recepção da empresa. Sua primeira tarefa será escolher o nome pelo qual deseja ser chamado ao longo da progressão do jogo.*
+*A proposta central do jogo é retratar diferentes cenários dentro do amplo ecossistema da empresa Vivo, onde cada ambiente representa um cargo ou função específica. O(a) protagonista, que acaba de ingressar na companhia, passará por essas experiências por meio do conceito de **"job rotation"**, explorando e aprendendo sobre cada função conforme avança nos desafios.*
 
-*À medida que avança nas missões, o jogador deverá completar minigames para adquirir o conhecimento necessário para dar continuidade às tarefas ou até mesmo desbloquear novas missões.*
+**Jornada do Jogador**
+
+*A jornada do jogador seguirá os seguintes passos:*
+
+1. **Chegada à empresa** – *Após a cena introdutória, o jogador inicia sua experiência na recepção.*
+2. **Escolha do nome** – *Antes de avançar, ele deverá definir o nome pelo qual será identificado ao longo do jogo.*
+3. **Missões e desafios** – *O progresso ocorrerá por meio do cumprimento das tarefas, que envolvem a realização de minijogos.*  
+4. **Aquisição de conhecimento** – *Cada missão completada permitirá ao jogador obter informações essenciais para avançar.*
+5. **Desbloqueio de novas fases** – *O sucesso nos minijogos do **andar** em que se encontra desbloqueia a próxima fase, ampliando a experiência e incentivando a evolução dentro do jogo.*
+6. **Movimentação entre as fases** – *O jogador usará o elevador da empresa para se deslocar entre as fases.*
+
+*Essa estrutura proporciona uma experiência imersiva e educativa, garantindo que o jogador compreenda e explore os diferentes papéis dentro da empresa de forma dinâmica e interativa.*
+
 
 ## 3.7. Mecânicas do jogo (sprint 3)
 
