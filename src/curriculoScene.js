@@ -83,11 +83,16 @@ class QuizVpPessoas extends Phaser.Scene {
     preload() {
         // Carrega a fonte do quiz
         this.load.font('FontePadrao', 'fonts/PixelifySans-VariableFont_wght.ttf'); // Fonte do jogo
-    }
+         // Carregando imagem de fundo 
+         this.load.image('TelaQuiz', '../assets/TelaQuiz.png');
+        }    
 
     create() {
         //Transição
         this.cameras.main.fadeIn(1000);
+
+        // Adicionar a imagem de fundo
+        this.add.image(0, 0, 'TelaQuiz').setOrigin(0, 0);
 
         // Definir a cor de fundo para cinza (em hexadecimal)
         this.cameras.main.setBackgroundColor('#D9D9D9');
