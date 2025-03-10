@@ -1,6 +1,9 @@
 class GameplayTutorialScene extends Phaser.Scene {
     constructor() {
-        super({ key: 'gameplayTutorialScene' });
+        super({ 
+            key: 'gameplayTutorialScene',
+            backgroundColor: '#61088d' // Cor de fundo definida aqui no objeto de configuração
+        });
     }
 
     preload() {
@@ -9,10 +12,15 @@ class GameplayTutorialScene extends Phaser.Scene {
     }
 
     create() {
+        // Definir a cor de fundo diretamente no método create
+        this.cameras.main.setBackgroundColor('#61088d');
+        
         this.cameras.main.fadeIn(1000); // Efeito de transição para a cena
 
         const { width, height } = this.scale; // Obter dimensões da tela
         const tutorialImg = this.add.image(width / 2, height / 2, 'introducao').setOrigin(0.5); // Posicionamento da imagem
+
+        // Resto do código permanece o mesmo...
 
         // Ajuste de escala para manter as proporções corretas
         const scaleX = width / tutorialImg.width;
