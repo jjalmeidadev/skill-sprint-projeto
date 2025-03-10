@@ -253,7 +253,7 @@ class QuizVpPessoas extends Phaser.Scene {
 
         // Exibindo alternativas
         const startY = 200;
-        const spacing = 100;
+        const spacing = 50;
 
         pergunta.alternativas.forEach((alternativa, index) => {
             // Container da alternativa (retângulo)
@@ -261,7 +261,7 @@ class QuizVpPessoas extends Phaser.Scene {
                 this.sys.game.config.width / 2,
                 startY + (index * spacing),
                 this.sys.game.config.width - 200,
-                80,
+                50,
                 0xEAE8E8
             ).setStrokeStyle(2, 0x444444)
                 .setInteractive();
@@ -521,7 +521,7 @@ class CongratulationsSceneCurriculoVpPessoas extends Phaser.Scene {
 
                     // Fade out e iniciar o quiz
                     this.cameras.main.fadeOut(500, 0, 0, 0, () => {
-                        this.scene.start('officeScene');
+                        this.scene.switch('officeScene');
                     });
                 }
             });
@@ -553,48 +553,6 @@ class CongratulationsSceneCurriculoVpPessoas extends Phaser.Scene {
         const scale = Math.max(scaleX, scaleY);
 
         image.setScale(scale);
-    }
-
-    // Create particle effects
-    criarParticulas() {
-        // Create emitters for celebratory particles
-        const particles = this.add.particles('particle');
-
-        // Left side emitter
-        const emitter1 = particles.createEmitter({
-            x: 100,
-            y: 300,
-            speed: { min: 200, max: 400 },
-            angle: { min: 250, max: 290 },
-            scale: { start: 1, end: 0 },
-            blendMode: 'ADD',
-            lifespan: 1000,
-            gravityY: 300
-        });
-
-
-        // Right side emitter
-        const emitter2 = particles.createEmitter({
-            x: this.sys.game.config.width - 100,
-            y: 300,
-            speed: { min: 200, max: 400 },
-            angle: { min: 250, max: 290 },
-            scale: { start: 1, end: 0 },
-            blendMode: 'ADD',
-            lifespan: 1000,
-            gravityY: 300
-        });
-
-
-        // Burst effect
-        this.time.addEvent({
-            delay: 1000,
-            loop: true,
-            callback: () => {
-                emitter1.explode(10);
-                emitter2.explode(10);
-            }
-        });
     }
 
 }
