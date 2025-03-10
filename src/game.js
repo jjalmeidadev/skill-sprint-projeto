@@ -14,6 +14,7 @@ const config = {
             debug: false, // Desativa o modo de depuração da física
         }
     },
+
     scene: [InitialScene, CutScene, TutorialScene, OfficeScene,
         CurriculoScene, QuizVpPessoas, GameOverSceneCurriculo,
         CongratulationsSceneCurriculoVpPessoas, QuizVpEstrategia,
