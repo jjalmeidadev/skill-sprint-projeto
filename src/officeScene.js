@@ -8,7 +8,6 @@ class OfficeScene extends Phaser.Scene {
 
   preload() {
     // Carrega as imagens e spritesheets necessárias para a cena
-    this.load.image('background', '../assets/mapaJogoVivo.png');
     this.load.spritesheet('player', '../assets/Player.png', { frameWidth: 32, frameHeight: 32 });
     this.load.image('telaComputador', '../assets/tela_computador.png');
     this.load.image('computador', '../assets/computador.png');
@@ -16,25 +15,15 @@ class OfficeScene extends Phaser.Scene {
     this.load.image('botaoElevOffice', '../assets/botaocimaelevador.png');
     this.load.image('bgElevOffice', '../assets/bgelevadoroffice.png');
     this.load.image('painelelev', '../assets/painelelevador.png');
+
+    this.load.tilemapTiledJSON('escritorio', '../assets/mapaJogoVivo/mapaJogoVivo.json');
+    this.load.image('decoracao', '../assets/mapaJogoVivo/decoracao.png');
+    this.load.image('paredes', '../assets/mapaJogoVivo/paredes.png');
+    this.load.image('personalizado_vivo', '../assets/mapaJogoVivo/personalizado_vivo.png');
   }
 
   create() {
     this.cameras.main.fadeIn(1000); // Transição suave
-    // Obtém as dimensões da tela
-    const screenWidth = this.sys.game.config.width;
-    const screenHeight = this.sys.game.config.height;
-    // Adiciona a imagem de fundo e ajusta seu tamanho para preencher a tela
-    this.background = this.add.image(0, 0, 'background').setOrigin(0, 0);
-    this.background.setDisplaySize(window.innerWidth, window.innerHeight);
-
-
-    // Cria a tela do computador, o computador e o indicador de exclamação
-    this.createComputerScreen();
-    this.addComputerAndIndicator();
-    this.createPlayer();
-    this.createPlayerAnimations();
-    this.createButtonCima();
-
 
     // Configuração do teclado (WASD + E para interação)
     this.teclas = this.input.keyboard.addKeys({
@@ -45,8 +34,43 @@ class OfficeScene extends Phaser.Scene {
       interagir: Phaser.Input.Keyboard.KeyCodes.E
     });
 
-    // Criar texto para coordenadas (debug)
-    this.coordText = this.add.text(20, 20, '', { fontSize: '16px', fill: '#ffffff' });
+    const map = this.make.tilemap({ key: "escritorio", tileWidth: 25, tileHeight: 20});
+
+    const tileset1 = map.addTilesetImage("decoracao");
+    const tileset2 = map.addTilesetImage("paredes");
+    const tileset3 = map.addTilesetImage("personalizado_vivo");
+
+    const layer1 = map.createLayer("chao", tileset2, width - 1270, 0).setScale(2.5);
+    const layer2 = map.createLayer("chaoLider", tileset1, width - 1270, 0).setScale(2.5);
+    const layer3 = map.createLayer("tapetes", tileset3, width - 1270, 0).setScale(2.5);
+    const layer4 = map.createLayer("tapeteLider", tileset1, width - 1270, 0).setScale(2.5);
+    const layer5 = map.createLayer("paredes", tileset2, width - 1270, 0).setScale(2.5);
+    const layer6 = map.createLayer("detalhesParede", tileset2, width - 1270, 0).setScale(2.5);
+    const layer7 = map.createLayer("decoracao", tileset1, width - 1270, 0).setScale(2.5);
+    const layer8 = map.createLayer("plantas", tileset1, width - 1270, 0).setScale(2.5);
+    const layer9 = map.createLayer("portas", tileset1, width - 1270, 0).setScale(2.5);
+
+    layer1.setCollisionByProperty({ collider: true});
+    layer2.setCollisionByProperty({ collider: true});
+    layer3.setCollisionByProperty({ collider: true});
+    layer4.setCollisionByProperty({ collider: true});
+    layer5.setCollisionByProperty({ collider: true});
+    layer6.setCollisionByProperty({ collider: true});
+    layer7.setCollisionByProperty({ collider: true});
+    layer8.setCollisionByProperty({ collider: true});
+    layer9.setCollisionByProperty({ collider: true});
+    
+    // Cria a tela do computador, o computador e o indicador de exclamação
+    this.createComputerScreen();
+    this.addComputerAndIndicator();
+    this.createPlayer();
+    this.createPlayerAnimations();
+    this.createButtonCima();
+
+    this.physics.add.collider(this.player, layer5);
+    //this.physics.add.collider(this.player, layer6);
+    this.physics.add.collider(this.player, layer7);
+    this.physics.add.collider(this.player, layer8);
   }
 
   update() {
@@ -135,8 +159,8 @@ class OfficeScene extends Phaser.Scene {
 
   createPlayer() {
     // Criar jogador
-    this.player = this.physics.add.sprite(1350, 730, 'player');
-    this.player.setScale(4);
+    this.player = this.physics.add.sprite(width - 700, height - 300, 'player');
+    this.player.setScale(2.5);
     this.player.setCollideWorldBounds(true);
 
     // Adicionar limites para o mundo do jogo
@@ -205,16 +229,12 @@ class OfficeScene extends Phaser.Scene {
   }
 
   addComputerAndIndicator() {
-    // Definir as posições do computador e do indicador
-    const x = 340;
-    const y = 367;
-
     // Criar indicador de exclamação sobre o computador
-    this.indicator = this.add.image(x + 16, y + 96, 'indicator').setScale(0.3);
+    this.indicator = this.add.image(width - 970, height - 150, 'indicator').setScale(0.3);
     this.indicatorActive = true;
 
     // Criar o computador na posição original
-    this.computador = this.add.image(x + 70, y + 95, 'computador').setScale(0.09).setInteractive();
+    this.computador = this.add.image(width - 970, height - 95, 'computador').setScale(0.09).setInteractive();
     this.computador.setFlipX(true);
 
     // Tornar o computador interativo
