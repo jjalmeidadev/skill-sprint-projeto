@@ -7,6 +7,7 @@ const config = {
   scale: {
     mode: Phaser.Scale.FIT, //Ajustar para caber na tela sem distorcer
   },
+  pixelArt: true,
   autoCenter: Phaser.Scale.CENTER, // Centralizar a tela de jogo
   physics: {
     default: "arcade", // Define o sistema de física padrão como 'arcade'
