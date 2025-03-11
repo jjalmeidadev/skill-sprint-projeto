@@ -15,7 +15,7 @@ class InitialScene extends Phaser.Scene {
 
     create() {
         // Adiciona a imagem de fundo 'telaInicial' e ajusta seu tamanho para preencher a tela
-        this.add.image(0, 0, 'telaInicial').setOrigin(0, 0).setDisplaySize(window.innerWidth, window.innerHeight);
+        this.add.image(width/2, height/2, 'telaInicial');
 
         // Cria os botões na tela inicial
         this.createButtonJogar();
@@ -25,9 +25,9 @@ class InitialScene extends Phaser.Scene {
 
     createButtonJogar() {
         // Adiciona o botão 'Jogar' na posição especificada
-        const botaoJogar = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2 + 50, 'botaoJogar');
+        const botaoJogar = this.add.image(width / 2, (height / 2) + 50, 'botaoJogar');
         botaoJogar.setInteractive(); // Torna o botão interativo (clicável)
-        botaoJogar.setScale(1.5); // Ajusta o tamanho do botão
+        botaoJogar.setScale(1); // Ajusta o tamanho do botão
         botaoJogar.on('pointerdown', () => {
             // Define a ação ao clicar no botão: para a cena atual e inicia a cena 'cutScene'
             this.scene.stop('initialScene');
@@ -38,9 +38,9 @@ class InitialScene extends Phaser.Scene {
 
     createButtonCreditos() {
         // Adiciona o botão 'Créditos' na posição especificada
-        const botaoCreditos = this.add.image(this.cameras.main.width / 3.5, this.cameras.main.height / 1.3, 'botaoCreditos');
+        const botaoCreditos = this.add.image(width / 3.5, height / 1.3, 'botaoCreditos');
         botaoCreditos.setInteractive(); // Torna o botão interativo (clicável)
-        botaoCreditos.setScale(1.7); // Ajusta o tamanho do botão
+        botaoCreditos.setScale(1.2); // Ajusta o tamanho do botão
         botaoCreditos.on('pointerdown', () => {
             // Define a ação ao clicar no botão: para a cena atual e inicia a cena 'cutScene'
             this.scene.stop('initialScene');
@@ -50,9 +50,9 @@ class InitialScene extends Phaser.Scene {
 
     createButtonAjustes() {
         // Adiciona o botão 'Ajustes' na posição especificada
-        const botaoAjustes = this.add.image(this.cameras.main.width / 1.45, this.cameras.main.height / 1.34, 'botaoAjustes');
+        const botaoAjustes = this.add.image(width / 1.45, height / 1.34, 'botaoAjustes');
         botaoAjustes.setInteractive(); // Torna o botão interativo (clicável)
-        botaoAjustes.setScale(1.9); // Ajusta o tamanho do botão
+        botaoAjustes.setScale(1.4); // Ajusta o tamanho do botão
         botaoAjustes.on('pointerdown', () => {
             // Define a ação ao clicar no botão: para a cena atual e inicia a cena 'cutScene'
             this.scene.stop('initialScene');

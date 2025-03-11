@@ -48,16 +48,24 @@ class OfficeScene extends Phaser.Scene {
 
         const tileset1 = map.addTilesetImage("decoracao");
         const tileset2 = map.addTilesetImage("paredes");
-        const tileset3 = map.addTilesetImage("peresonalizado_vivo");
+        const tileset3 = map.addTilesetImage("personalizado_vivo");
+        const colisaoLayer1 = map.createLayer("colisao", tileset1);
+        const colisaoLayer2 = map.createLayer("colisao", tileset2);
+        const colisaoLayer3 = map.createLayer("colisao", tileset3);
 
-        //const layer1 = map.createLayer("chao", tileset1, 0, 0);
-        const layer2 = map.createLayer("chao", tileset2, 0, 0);
-        const layer3 = map.createLayer("tapetes", tileset1, 0, 0);
-        const layer4 = map.createLayer("paredes", tileset2, 0, 0);
-        const layer5 = map.createLayer("detalhesParede", tileset2, 0, 0);
-        const layer6 = map.createLayer("decoracao", tileset1, 0, 0);
-        const layer7 = map.createLayer("plantas", tileset1, 0, 0);
-        const layer8 = map.createLayer("portas", tileset1, 0, 0);
+        const layer1 = map.createLayer("chao", tileset2, 0, 0);
+        const layer2 = map.createLayer("chaoLider", tileset1, 0, 0);
+        const layer3 = map.createLayer("tapetes", tileset3, 0, 0);
+        const layer4 = map.createLayer("tapeteLider", tileset1, 0, 0);
+        const layer5 = map.createLayer("paredes", tileset2, 0, 0);
+        const layer6 = map.createLayer("detalhesParede", tileset2, 0, 0);
+        const layer7 = map.createLayer("decoracao", tileset1, 0, 0);
+        const layer8 = map.createLayer("plantas", tileset1, 0, 0);
+        const layer9 = map.createLayer("portas", tileset1, 0, 0);
+
+        //colisaoLayer1.setCollisionByProperty({ collider: true});
+        //colisaoLayer2.setCollisionByProperty({ collider: true});
+        //colisaoLayer3.setCollisionByProperty({ collider: true});
     }
 
     update() {
