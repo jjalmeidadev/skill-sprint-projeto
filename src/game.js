@@ -23,6 +23,7 @@ const config = {
     OfficeScene,
     CurriculoScene,
     ElevadorScene, 
+    GameplayTutorialScene,
   ], // Lista das cenas do jogo
 };
 
