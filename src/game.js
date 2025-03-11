@@ -22,8 +22,14 @@ const config = {
     TutorialScene,
     OfficeScene,
     CurriculoScene,
+    QuizVpPessoas,
+    GameOverSceneCurriculo,
+    CongratulationsSceneCurriculoVpPessoas,
+    QuizVpEstrategia,
+    GameOverSceneCurriculoEstrategia,
+    CongratulationsSceneCurriculoVpEstrategia,
     ElevadorScene, 
-    GameplayTutorialScene,
+    GameplayTutorialScene
   ], // Lista das cenas do jogo
 };
 
