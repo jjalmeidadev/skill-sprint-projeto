@@ -35,6 +35,9 @@ const config = {
       QuizVpRelacoes,
       GameOverSceneCurriculoRelacoes,
       CongratulationsSceneCurriculoVpRelacoes,
+      QuizVpTecnologia,
+      GameOverSceneCurriculoTecnologia,
+      CongratulationsSceneCurriculoVpTecnologia,
       ElevadorScene, 
       GameplayTutorialScene
     ], // Lista das cenas do jogo
