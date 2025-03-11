@@ -437,13 +437,25 @@ Imagem 2: Diagrama de cenas (produzido pelo autor). Link de acesso: <https://www
 
 Imagem 2: Rascunho do esquema inicial do Diagrama de Fases do jogo (produzido pelo autor)
 
-## 3.6. Regras do jogo (sprint 3)
+## 3.6. Regras do Jogo (Sprint 3)
 
-*Descreva aqui as regras do seu jogo: objetivos/desafios, meios para se conseguir alcançar*
+*Neste segmento, serão apresentadas as diretrizes que o personagem precisará seguir para avançar nas etapas do jogo, comumente chamadas de *"primary quests"* ou missões principais. Essas normas são essenciais para garantir que o jogador compreenda os desafios propostos e consiga progredir de maneira estruturada dentro da narrativa.*
 
-*Ex. O jogador deve pilotar o carro e conseguir terminar a corrida dentro de um minuto sem bater em nenhum obstáculo.*
+*A proposta central do jogo é retratar diferentes cenários dentro do amplo ecossistema da empresa Vivo, onde cada ambiente representa um cargo ou função específica. O(a) protagonista, que acaba de ingressar na companhia, passará por essas experiências por meio do conceito de **"job rotation"**, explorando e aprendendo sobre cada função conforme avança nos desafios.*
 
-*Ex. O jogador deve concluir a fase dentro do tempo, para obter uma estrela. Se além disso ele coletar todas as moedas, ganha mais uma estrela. E se além disso ele coletar os três medalhões espalhados, ganha mais uma estrela, totalizando três. Ao final do jogo, obtendo três estrelas em todas as fases, desbloqueia o mundo secreto.*  
+**Jornada do Jogador**
+
+*A jornada do jogador seguirá os seguintes passos:*
+
+1. **Chegada à empresa** – *Após a cena introdutória, o jogador inicia sua experiência na recepção.*
+2. **Escolha do nome** – *Antes de avançar, ele deverá definir o nome pelo qual será identificado ao longo do jogo.*
+3. **Missões e desafios** – *O progresso ocorrerá por meio do cumprimento das tarefas, que envolvem a realização de minijogos.*  
+4. **Aquisição de conhecimento** – *Cada missão completada permitirá ao jogador obter informações essenciais para avançar.*
+5. **Desbloqueio de novas fases** – *O sucesso nos minijogos do **andar** em que se encontra desbloqueia a próxima fase, ampliando a experiência e incentivando a evolução dentro do jogo.*
+6. **Movimentação entre as fases** – *O jogador usará o elevador da empresa para se deslocar entre as fases.*
+
+*Essa estrutura proporciona uma experiência imersiva e educativa, garantindo que o jogador compreenda e explore os diferentes papéis dentro da empresa de forma dinâmica e interativa.*
+
 
 ## 3.7. Mecânicas do jogo (sprint 3)
 
@@ -524,7 +536,7 @@ Os casos de teste descritos a seguir foram elaborados para avaliar os diferentes
 --- | --- | --- | --- 
 1 | O personagem deve estar próximo a um computador interativo |Pressionar a tecla "E"	 | A tela do computador deve abrir no jogo
 2 | O jogo está rodando e o personagem pode se mover | Pressionar a seta | O personagem deve se mover
-3 | O jogo está na tela inicial|Clicar no botão "Começar o jogo" |O jogo deve iniciar e levar o jogador para a cutscene
+3 | O jogo está na tela inicial|Clicar no botão "Jogar" |O jogo deve iniciar e levar o jogador para a cutscene
 
 ## 5.2. Testes de jogabilidade (playtests) (sprint 4)
 

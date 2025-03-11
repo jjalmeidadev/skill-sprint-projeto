@@ -34,6 +34,7 @@ class TutorialScene extends Phaser.Scene {
         this.load.image('botaoSim', '../assets/botao_sim.png');
         this.load.image('botaoNao', '../assets/botao_nao.png');
         this.load.image('jobRotation', '../assets/jobRotationVivo.png'); 
+        this.load.font('FontePadrao', 'fonts/PixelifySans-VariableFont_wght.ttf'); // Fonte do jogo
     }
 
     create() {
@@ -73,7 +74,7 @@ class TutorialScene extends Phaser.Scene {
         this.dialogText = this.add.text(x + 150, y + 30, '', {
             fontSize: '20px',
             color: '#ffffff',
-            fontFamily: 'Arial',
+            fontFamily: 'FontePadrao',
             wordWrap: { width: 600 }
         });
 
@@ -90,6 +91,7 @@ class TutorialScene extends Phaser.Scene {
         this.nome.style.borderRadius = '5px';
         this.nome.style.textAlign = 'center';
         this.nome.style.display = 'none';
+        this.nome.style.fontFamily = 'FontePadrao';
 
         document.body.appendChild(this.nome);
     }
