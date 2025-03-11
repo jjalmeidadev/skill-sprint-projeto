@@ -1050,7 +1050,7 @@ class CongratulationsSceneCurriculoVpEstrategia extends Phaser.Scene {
         this.cameras.main.fadeIn(1000, 0, 0, 0);
 
         // Imagem de fundo sem distorção
-        const fundo = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, 'fundoCongratulationsVpPessoas');
+        const fundo = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, 'fundoCongratulationsVpEstrategia');
         this.scaleBackgroundImage(fundo);
 
         // Botão de texto para voltar

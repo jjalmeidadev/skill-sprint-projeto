@@ -15,7 +15,7 @@ const config = {
         }
     },
 
-    scene: [InitialScene, CutScene, TutorialScene, OfficeScene,
+    scene: [InitialScene, CutScene, TutorialScene, GameplayTutorialScene, OfficeScene,
         CurriculoScene, QuizVpPessoas, GameOverSceneCurriculo,
         CongratulationsSceneCurriculoVpPessoas, QuizVpEstrategia,
         CongratulationsSceneCurriculoVpEstrategia, GameOverSceneCurriculoEstrategia] // Lista das cenas do jogo
