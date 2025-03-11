@@ -32,6 +32,9 @@ const config = {
       QuizVpNegocios,
       GameOverSceneCurriculoNegocios,
       CongratulationsSceneCurriculoVpNegocios,
+      QuizVpRelacoes,
+      GameOverSceneCurriculoRelacoes,
+      CongratulationsSceneCurriculoVpRelacoes,
       ElevadorScene, 
       GameplayTutorialScene
     ], // Lista das cenas do jogo
