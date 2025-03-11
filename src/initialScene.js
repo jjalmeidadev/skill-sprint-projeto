@@ -15,7 +15,7 @@ class InitialScene extends Phaser.Scene {
 
     create() {
         // Adiciona a imagem de fundo 'telaInicial' e ajusta seu tamanho para preencher a tela
-        this.add.image(width/2, height/2, 'telaInicial');
+        this.add.image(width/2, height/2, 'telaInicial').setScale(1.8);
 
         // Cria os botões na tela inicial
         this.createButtonJogar();

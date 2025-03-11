@@ -3,7 +3,8 @@ const config = {
     type: Phaser.AUTO, // Tipo de renderização (AUTO permite que o Phaser escolha entre WebGL e Canvas)
     width: width, // Largura do jogo igual à largura da janela do navegador
     height: height, // Altura do jogo igual à altura da janela do navegador
-    //scale: { mode: Phaser.Scale.FIT },
+    pixelArt: true,
+    scale: { autoCenter: Phaser.Scale.CENTER_BOTH },
     physics: {
         default: 'arcade', // Define o sistema de física padrão como 'arcade'
         arcade: {

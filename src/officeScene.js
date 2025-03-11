@@ -2,7 +2,6 @@ class OfficeScene extends Phaser.Scene {
     constructor() {
         // Chama o construtor da classe Phaser.Scene com a chave 'officeScene'
         super({ key: 'officeScene' });
-        this.currentBackground = 'background'; // Estado inicial
         this.canMove = true; // Controla se o jogador pode se mover
     }
 
@@ -13,7 +12,6 @@ class OfficeScene extends Phaser.Scene {
         this.load.image('telaComputador', '../assets/tela_computador.png');
         this.load.image('computador', '../assets/computador.png');
         this.load.image('indicator', '../assets/Exclamação.png');
-        this.load.image('quadrado', '../assets/quadrado.png');
 
         this.load.tilemapTiledJSON('escritorio', '../assets/mapaJogoVivo/mapaJogoVivo.json');
         this.load.image('decoracao', '../assets/mapaJogoVivo/decoracao.png');
@@ -22,16 +20,6 @@ class OfficeScene extends Phaser.Scene {
     }
 
     create() {
-        // Adiciona a imagem de fundo e ajusta seu tamanho para preencher a tela
-        this.background = this.add.image(0, 0, 'background').setOrigin(0, 0);
-        this.background.setDisplaySize(window.innerWidth, window.innerHeight);
-
-        // Cria a tela do computador, o computador e o indicador de exclamação
-        this.createComputerScreen();
-        this.addComputerAndIndicator();
-        this.createPlayer();
-        this.createPlayerAnimations();
-
         // Configuração do teclado (WASD + E para interação)
         this.teclas = this.input.keyboard.addKeys({
             up: Phaser.Input.Keyboard.KeyCodes.W,
@@ -49,23 +37,41 @@ class OfficeScene extends Phaser.Scene {
         const tileset1 = map.addTilesetImage("decoracao");
         const tileset2 = map.addTilesetImage("paredes");
         const tileset3 = map.addTilesetImage("personalizado_vivo");
-        const colisaoLayer1 = map.createLayer("colisao", tileset1);
-        const colisaoLayer2 = map.createLayer("colisao", tileset2);
-        const colisaoLayer3 = map.createLayer("colisao", tileset3);
 
-        const layer1 = map.createLayer("chao", tileset2, 0, 0);
-        const layer2 = map.createLayer("chaoLider", tileset1, 0, 0);
-        const layer3 = map.createLayer("tapetes", tileset3, 0, 0);
-        const layer4 = map.createLayer("tapeteLider", tileset1, 0, 0);
-        const layer5 = map.createLayer("paredes", tileset2, 0, 0);
-        const layer6 = map.createLayer("detalhesParede", tileset2, 0, 0);
-        const layer7 = map.createLayer("decoracao", tileset1, 0, 0);
-        const layer8 = map.createLayer("plantas", tileset1, 0, 0);
-        const layer9 = map.createLayer("portas", tileset1, 0, 0);
 
-        //colisaoLayer1.setCollisionByProperty({ collider: true});
-        //colisaoLayer2.setCollisionByProperty({ collider: true});
-        //colisaoLayer3.setCollisionByProperty({ collider: true});
+        const layer1 = map.createLayer("chao", tileset2, width - 1270, 0).setScale(2.5);
+        const layer2 = map.createLayer("chaoLider", tileset1, width - 1270, 0).setScale(2.5);
+        const layer3 = map.createLayer("tapetes", tileset3, width - 1270, 0).setScale(2.5);
+        const layer4 = map.createLayer("tapeteLider", tileset1, width - 1270, 0).setScale(2.5);
+        const layer5 = map.createLayer("paredes", tileset2, width - 1270, 0).setScale(2.5);
+        const layer6 = map.createLayer("detalhesParede", tileset2, width - 1270, 0).setScale(2.5);
+        const layer7 = map.createLayer("decoracao", tileset1, width - 1270, 0).setScale(2.5);
+        const layer8 = map.createLayer("plantas", tileset1, width - 1270, 0).setScale(2.5);
+        const layer9 = map.createLayer("portas", tileset1, width - 1270, 0).setScale(2.5);
+
+        layer1.setCollisionByProperty({ collider: true});
+        layer2.setCollisionByProperty({ collider: true});
+        layer3.setCollisionByProperty({ collider: true});
+        layer4.setCollisionByProperty({ collider: true});
+        layer5.setCollisionByProperty({ collider: true});
+        layer6.setCollisionByProperty({ collider: true});
+        layer7.setCollisionByProperty({ collider: true});
+        layer8.setCollisionByProperty({ collider: true});
+        layer9.setCollisionByProperty({ collider: true});
+
+       
+
+
+        // Cria a tela do computador, o computador e o indicador de exclamação
+        this.createComputerScreen();
+        this.addComputerAndIndicator();
+        this.createPlayer();
+        this.createPlayerAnimations();
+
+        this.physics.add.collider(this.player, layer5);
+        this.physics.add.collider(this.player, layer6);
+        this.physics.add.collider(this.player, layer7);
+        this.physics.add.collider(this.player, layer8);
     }
 
     update() {
