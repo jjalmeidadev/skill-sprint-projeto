@@ -250,7 +250,7 @@ class CurriculoScene extends Phaser.Scene {
         // Ajusta a escala para cobrir a tela mantendo a proporção
         this.scaleBackgroundImage(fundo);
 
-        // Botão interativo com animação
+        // Botão interativo com animação (fase Pessoas)
         const botaoVpPessoas = this.add.image(
             400, 300,
             'botao01'
@@ -276,7 +276,7 @@ class CurriculoScene extends Phaser.Scene {
             });
         });
 
-        // Botão interativo com animação
+        // Botão interativo com animação (fase Estratégia)
         const botaoVpEstrategia = this.add.image(
             650, 300,
             'botao02'
@@ -297,6 +297,32 @@ class CurriculoScene extends Phaser.Scene {
                     // Fade out na câmera
                     this.cameras.main.fadeOut(500, 0, 0, 0, () => {
                         this.scene.start('QuizVpEstrategia');
+                    });
+                }
+            });
+        });
+
+        // Botão interativo com animação (fase Negócios)
+        const botaoVpNegocios = this.add.image(
+            900, 300,
+            'botao03'
+        ).setInteractive();
+
+        botaoVpNegocios.on('pointerout', () => {
+            botaoVpNegocios.setScale(1);
+        });
+
+        // Efeito de piscar ao clicar
+        botaoVpNegocios.on('pointerdown', () => {
+            this.tweens.add({
+                targets: botaoVpNegocios,
+                alpha: 0.6,
+                duration: 100,
+                yoyo: true,
+                onComplete: () => {
+                    // Fade out na câmera
+                    this.cameras.main.fadeOut(500, 0, 0, 0, () => {
+                        this.scene.start('QuizVpNegocios');
                     });
                 }
             });
@@ -1108,9 +1134,6 @@ class CongratulationsSceneCurriculoVpEstrategia extends Phaser.Scene {
             }
         ).setOrigin(0.5);
     }
-
-
-
     // Complete the scaleBackgroundImage method
     scaleBackgroundImage(image) {
         // Centraliza a imagem
@@ -1126,5 +1149,403 @@ class CongratulationsSceneCurriculoVpEstrategia extends Phaser.Scene {
 
 }
 
+// Classe para a cena do Quiz de Negócios
+class QuizVpNegocios extends Phaser.Scene {
+    constructor() {
+        super({ key: 'QuizVpNegocios' });
+        this.textosPergunta = []; // Armazena os textos da pergunta e alternativas
+        this.botoesAlternativas = []; // Armazena os botões das alternativas
+    }
 
+    preload() {
+        // Carrega os recursos para o quiz
+        this.load.font('FontePadrao', 'fonts/PixelifySans-VariableFont_wght.ttf');
+        this.load.image('TelaQuiz', '../assets/TelaQuiz.png');
+    }
 
+    create() {
+        // Transição suave
+        this.cameras.main.fadeIn(1000);
+
+        // Adicionar a imagem de fundo sem distorção
+        const fundo = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, 'TelaQuiz');
+        this.scaleBackgroundImage(fundo);
+
+        // Criar elementos de interface
+        this.criarBarraProgresso();
+        this.criarContadorPergunta();
+        this.mostrarPergunta();
+    }
+
+    scaleBackgroundImage(image) {
+        // Centraliza a imagem
+        image.setOrigin(0.5);
+
+        // Mantém a proporção e cobre a tela
+        const scaleX = this.cameras.main.width / image.width;
+        const scaleY = this.cameras.main.height / image.height;
+        const scale = Math.max(scaleX, scaleY);
+
+        image.setScale(scale);
+    }
+
+    criarContadorPergunta() {
+        // Mostrar número da pergunta atual/total
+        this.textoPerguntaNumero = this.add.text(
+            this.sys.game.config.width - 150,
+            50,
+            `Pergunta ${perguntaAtual + 1}/${perguntasNegocios.length}`,
+            { fontSize: '20px', fill: '#000', fontFamily: 'FontePadrao' }
+        ).setOrigin(0.5);
+    }
+
+    criarBarraProgresso() {
+        // Container para a barra de progresso
+        const progressBarContainer = this.add.rectangle(100, 50, 300, 24, 0xDDDDDD)
+            .setOrigin(0, 0.5)
+            .setStrokeStyle(2, 0x000000);
+
+        // Barra de progresso roxa    
+        this.barraProgresso = this.add.rectangle(102, 50, 0, 20, 0xB600B9)
+            .setOrigin(0, 0.5);
+
+        // Texto de progresso    
+        this.textoProgresso = this.add.text(
+            420,
+            50,
+            `${progresso}%`,
+            { fontSize: '20px', fill: '#000', fontFamily: 'FontePadrao', fontWeight: 'bold' }
+        ).setOrigin(0, 0.5);
+    }
+
+    atualizarBarraProgresso() {
+        // Atualizando a barra de progresso do quiz
+        const larguraMaxima = 296;
+        const novaLargura = (progresso / 100) * larguraMaxima;
+
+        // Animar a barra de progresso
+        this.tweens.add({
+            targets: this.barraProgresso,
+            width: novaLargura,
+            duration: 500,
+            ease: 'Power2'
+        });
+
+        this.textoProgresso.setText(`${progresso}%`);
+    }
+
+    limparElementos() {
+        // Remove os textos da pergunta e alternativas
+        this.textosPergunta.forEach(texto => texto.destroy());
+        this.textosPergunta = [];
+
+        // Remove os botões das alternativas
+        this.botoesAlternativas.forEach(botao => botao.destroy());
+        this.botoesAlternativas = [];
+    }
+
+    mostrarPergunta() {
+        // Limpa os elementos antigos
+        this.limparElementos();
+
+        // Atualiza o contador de perguntas
+        this.textoPerguntaNumero.setText(`Pergunta ${perguntaAtual + 1}/${perguntasNegocios.length}`);
+
+        const pergunta = perguntasNegocios[perguntaAtual];
+
+        // Exibindo a pergunta
+        const textoPergunta = this.add.text(
+            this.sys.game.config.width / 2,
+            100,
+            pergunta.pergunta,
+            {
+                fontSize: '22px',
+                fill: '#B600B9',
+                fontFamily: 'FontePadrao',
+                fontWeight: 'bold',
+                wordWrap: { width: this.sys.game.config.width - 150 },
+                align: 'center'
+            }
+        ).setOrigin(0.5);
+
+        this.textosPergunta.push(textoPergunta);
+
+        // Exibindo alternativas
+        const startY = 200;
+        const spacing = 50;
+
+        pergunta.alternativas.forEach((alternativa, index) => {
+            // Container da alternativa (retângulo)
+            const botaoContainer = this.add.rectangle(
+                this.sys.game.config.width / 2,
+                startY + (index * spacing),
+                this.sys.game.config.width - 200,
+                50,
+                0xEAE8E8
+            ).setStrokeStyle(2, 0x444444)
+                .setInteractive();
+
+            // Efeitos de hover
+            botaoContainer.on('pointerover', () => {
+                botaoContainer.fillColor = 0xDDDDDD;
+                botaoContainer.setScale(1.02);
+            });
+
+            botaoContainer.on('pointerout', () => {
+                botaoContainer.fillColor = 0xEAE8E8;
+                botaoContainer.setScale(1);
+            });
+
+            // Evento de clique
+            botaoContainer.on('pointerdown', () => {
+                this.verificarResposta(index, botaoContainer);
+            });
+
+            // Texto da alternativa
+            const textoAlternativa = this.add.text(
+                this.sys.game.config.width / 2,
+                startY + (index * spacing),
+                `${index + 1}. ${alternativa}`,
+                {
+                    fontSize: '18px',
+                    fill: '#000',
+                    fontFamily: 'FontePadrao',
+                    wordWrap: { width: this.sys.game.config.width - 220 }
+                }
+            ).setOrigin(0.5);
+
+            this.textosPergunta.push(textoAlternativa);
+            this.botoesAlternativas.push(botaoContainer);
+        });
+    }
+
+    verificarResposta(resposta, botaoClicado) {
+        // Desativar interação com todos os botões
+        this.botoesAlternativas.forEach(botao => {
+            botao.disableInteractive();
+        });
+
+        const pergunta = perguntasNegocios[perguntaAtual];
+
+        if (resposta === pergunta.correta) {
+            // Resposta correta
+            botaoClicado.fillColor = 0x88FF88; // Verde claro
+
+            // Atualizar pontuação e progresso
+            pontuacao += 100; // Pontuação fixa por resposta correta
+            progresso += 20;
+
+            // Esperar um momento antes de seguir
+            this.time.delayedCall(1500, () => {
+                perguntaAtual++;
+                this.atualizarBarraProgresso();
+
+                if (perguntaAtual < perguntasNegocios.length) {
+                    // Próxima pergunta com transição
+                    this.cameras.main.fadeOut(300, 0, 0, 0, () => {
+                        this.cameras.main.fadeIn(300);
+                        this.mostrarPergunta();
+                    });
+                } else {
+                    // Quiz completo
+                    this.scene.start('CongratulationsSceneCurriculoVpNegocios', { pontuacao: pontuacao });
+                }
+            });
+        } else {
+            // Resposta incorreta
+            botaoClicado.fillColor = 0xFF8888; // Vermelho claro
+
+            // Destacar alternativa correta
+            this.botoesAlternativas[pergunta.correta].fillColor = 0x88FF88; // Verde claro
+
+            // Esperar um momento e mostrar tela de game over
+            this.time.delayedCall(1500, () => {
+                this.scene.start('GameOverSceneCurriculoNegocios', { motivo: 'errou' });
+            });
+        }
+    }
+}
+
+// Classe para a cena de Game Over de Negócios
+class GameOverSceneCurriculoNegocios extends Phaser.Scene {
+    constructor() {
+        super({ key: 'GameOverSceneCurriculoNegocios' });
+    }
+
+    init(data) {
+        this.motivoGameOver = data.motivo || 'errou';
+    }
+
+    preload() {
+        // Carregando recursos
+        this.load.image('fundoGameOver', '../assets/gameover_curriculo.png');
+    }
+
+    create() {
+        // Transição de entrada
+        this.cameras.main.fadeIn(1000, 0, 0, 0);
+
+        // Imagem de fundo sem distorção
+        const fundo = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, 'fundoGameOver');
+        this.scaleBackgroundImage(fundo);
+
+        // Botão de texto para reiniciar
+        const botaoReiniciar = this.add.rectangle(
+            this.sys.game.config.width / 2,
+            510,
+            250,
+            60,
+            0xB600B9
+        ).setStrokeStyle(2, 0x880088)
+            .setInteractive();
+
+        // Efeitos do botão
+        botaoReiniciar.on('pointerover', () => {
+            botaoReiniciar.fillColor = 0xC30DC7;
+            botaoReiniciar.setScale(1.05);
+        });
+
+        botaoReiniciar.on('pointerout', () => {
+            botaoReiniciar.fillColor = 0xB600B9;
+            botaoReiniciar.setScale(1);
+        });
+
+        // Evento de clique
+        botaoReiniciar.on('pointerdown', () => {
+            // Efeito de click
+            this.tweens.add({
+                targets: botaoReiniciar,
+                scale: 0.95,
+                duration: 100,
+                yoyo: true,
+                onComplete: () => {
+                    // Reiniciar variáveis
+                    perguntaAtual = 0;
+                    progresso = 0;
+                    pontuacao = 0;
+
+                    // Fade out e iniciar o quiz
+                    this.cameras.main.fadeOut(500, 0, 0, 0, () => {
+                        this.scene.start('QuizVpNegocios');
+                    });
+                }
+            });
+        });
+
+        // Texto do botão
+        this.add.text(
+            this.sys.game.config.width / 2,
+            510,
+            'TENTAR NOVAMENTE',
+            {
+                fontSize: '22px',
+                fill: '#FFF',
+                fontFamily: 'FontePadrao'
+            }
+        ).setOrigin(0.5);
+    }
+
+    scaleBackgroundImage(image) {
+        // Centraliza a imagem
+        image.setOrigin(0.5);
+
+        // Mantém a proporção e cobre a tela
+        const scaleX = this.cameras.main.width / image.width;
+        const scaleY = this.cameras.main.height / image.height;
+        const scale = Math.max(scaleX, scaleY);
+        image.setScale(scale);
+    }
+}
+
+// Classe para a cena de parabéns de Negócios
+class CongratulationsSceneCurriculoVpNegocios extends Phaser.Scene {
+    constructor() {
+        super({ key: 'CongratulationsSceneCurriculoVpNegocios' });
+    }
+
+    init(data) {
+        this.pontuacaoFinal = data.pontuacao || 0;
+    }
+
+    preload() {
+        // Carregando recursos
+        this.load.image('fundoCongratulationsVpNegocios', '../assets/parabens_cv_vpdenegocios.png');
+    }
+
+    create() {
+        // Transição de entrada com efeito
+        this.cameras.main.fadeIn(1000, 0, 0, 0);
+
+        // Imagem de fundo sem distorção
+        const fundo = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, 'fundoCongratulationsVpNegocios');
+        this.scaleBackgroundImage(fundo);
+
+        // Botão de texto para voltar
+        const botaoVoltar = this.add.rectangle(
+            this.sys.game.config.width / 2,
+            510,
+            250,
+            60,
+            0xB600B9
+        ).setStrokeStyle(2, 0x880088)
+            .setInteractive();
+
+        // Efeitos do botão
+        botaoVoltar.on('pointerover', () => {
+            botaoVoltar.fillColor = 0xC30DC7;
+            botaoVoltar.setScale(1.05);
+        });
+
+        botaoVoltar.on('pointerout', () => {
+            botaoVoltar.fillColor = 0xB600B9;
+            botaoVoltar.setScale(1);
+        });
+
+        // Evento de clique
+        botaoVoltar.on('pointerdown', () => {
+            // Efeito de click
+            this.tweens.add({
+                targets: botaoVoltar,
+                scale: 0.95,
+                duration: 100,
+                yoyo: true,
+                onComplete: () => {
+                    // Reiniciar variáveis
+                    perguntaAtual = 0;
+                    progresso = 0;
+                    pontuacao = 0;
+
+                    // Fade out e iniciar o quiz
+                    this.cameras.main.fadeOut(500, 0, 0, 0, () => {
+                        this.scene.switch('officeScene');
+                    });
+                }
+            });
+        });
+
+        // Texto do botão
+        this.add.text(
+            this.sys.game.config.width / 2,
+            510,
+            'VOLTAR AO ESCRITÓRIO',
+            {
+                fontSize: '22px',
+                fill: '#FFF',
+                fontFamily: 'FontePadrao'
+            }
+        ).setOrigin(0.5);
+    }
+    // Complete the scaleBackgroundImage method
+    scaleBackgroundImage(image) {
+        // Centraliza a imagem
+        image.setOrigin(0.5);
+
+        // Mantém a proporção e cobre a tela
+        const scaleX = this.cameras.main.width / image.width;
+        const scaleY = this.cameras.main.height / image.height;
+        const scale = Math.max(scaleX, scaleY);
+
+        image.setScale(scale);
+    }
+
+}
