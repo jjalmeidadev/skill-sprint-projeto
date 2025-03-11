@@ -199,9 +199,8 @@ class OfficeScene extends Phaser.Scene {
     this.physics.add.existing(this.proximidade, true);
 
     botaoCima.on("pointerdown", () => {
-      // Define a ação ao clicar no botão: para a cena atual e inicia a cena 'cutScene'
       this.scene.stop("officeScene");
-      this.scene.start("elevadorScene");
+      this.scene.start('elevadorScene');
     });
   }
 

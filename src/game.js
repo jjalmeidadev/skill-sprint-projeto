@@ -1,20 +1,29 @@
+
 // Configuração do jogo Phaser
 const config = {
-    type: Phaser.AUTO, // Tipo de renderização (AUTO permite que o Phaser escolha entre WebGL e Canvas)
-    width: window.innerWidth, // Largura do jogo igual à largura da janela do navegador
-    height: window.innerHeight, // Altura do jogo igual à altura da janela do navegador
-    scale: {
-        mode: Phaser.Scale.FIT //Ajustar para caber na tela sem distorcer
-    },
-    autoCenter: Phaser.Scale.CENTER, // Centralizar a tela de jogo
-    physics: {
-        default: 'arcade', // Define o sistema de física padrão como 'arcade'
-        arcade: {
-            gravity: { y: 0 }, // Define a gravidade no eixo Y como 0 (sem gravidade)
-            debug: false, // Desativa o modo de depuração da física
-        }
-    },
-    scene: [InitialScene, CutScene, TutorialScene, OfficeScene, CurriculoScene] // Lista das cenas do jogo
+  type: Phaser.AUTO, // Tipo de renderização (AUTO permite que o Phaser escolha entre WebGL e Canvas)
+  width: window.innerWidth, // Largura do jogo igual à largura da janela do navegador
+  height: window.innerHeight, // Altura do jogo igual à altura da janela do navegador
+  scale: {
+    mode: Phaser.Scale.FIT, //Ajustar para caber na tela sem distorcer
+  },
+  autoCenter: Phaser.Scale.CENTER, // Centralizar a tela de jogo
+  physics: {
+    default: "arcade", // Define o sistema de física padrão como 'arcade'
+    arcade: {
+      gravity: { y: 0 }, // Define a gravidade no eixo Y como 0 (sem gravidade)
+      debug: false, // Desativa o modo de depuração da física
+      },
+    
+  },
+  scene: [
+    InitialScene,
+    CutScene,
+    TutorialScene,
+    OfficeScene,
+    CurriculoScene,
+    ElevadorScene, 
+  ], // Lista das cenas do jogo
 };
 
 // Criação de uma nova instância do jogo Phaser com a configuração especificada
