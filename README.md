@@ -48,7 +48,7 @@ Dentre os arquivos e pastas presentes na raiz do projeto, definem-se:
 
 ## 🔧 Como executar o código
 
-Este jogo foi desenvolvido com o Phaser, uma biblioteca JavaScript voltada especificamente para criação de jogos web.  
+Skill Sprint foi desenvolvido com o Phaser, uma biblioteca JavaScript voltada especificamente para criação de jogos web.  
 
 Para executar seu respectivo código, siga o passo a passo abaixo:
 
