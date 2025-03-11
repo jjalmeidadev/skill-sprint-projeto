@@ -8,7 +8,7 @@ class TutorialScene extends Phaser.Scene {
             "Olá! Qual é o seu nome?",
             "Vivinho: Olá, Fulano! Bem-vindo à Vivo! Somos a maior empresa de telecomunicações do Brasil! Parabéns por fazer parte do nosso time!",
             "Vivinho: Eu tenho uma importante missão: apresentar para você o plano de carreira interno da Vivo. Me diga, você conhece o plano de carreira da Vivo?"
-        ];    
+        ];
 
         // Lista das falas condicionais baseadas na resposta do jogador
         this.perguntaCondicional = [
@@ -33,7 +33,7 @@ class TutorialScene extends Phaser.Scene {
         this.load.image('vivinho', '../assets/vivinho.png');
         this.load.image('botaoSim', '../assets/botao_sim.png');
         this.load.image('botaoNao', '../assets/botao_nao.png');
-        this.load.image('jobRotation', '../assets/jobRotationVivo.png'); 
+        this.load.image('jobRotation', '../assets/jobRotationVivo.png');
         this.load.font('FontePadrao', 'fonts/PixelifySans-VariableFont_wght.ttf'); // Fonte do jogo
     }
 
@@ -41,7 +41,7 @@ class TutorialScene extends Phaser.Scene {
         // Adiciona a imagem de fundo e ajusta seu tamanho para preencher a tela
         this.background = this.add.image(0, 0, 'background').setOrigin(0, 0);
         this.background.setDisplaySize(this.cameras.main.width, this.cameras.main.height);
-        
+
         // Cria a caixa de diálogo e exibe a primeira fala
         this.createDialogBox();
         this.showDialog();
