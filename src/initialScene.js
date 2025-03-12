@@ -45,7 +45,7 @@ class InitialScene extends Phaser.Scene {
         botaoCreditos.on('pointerdown', () => {
             // Define a ação ao clicar no botão: para a cena atual e inicia a cena 'cutScene'
             this.scene.stop('initialScene');
-            this.scene.start('cutScene');
+            this.scene.start('creditosScene');
         });
     }
 
