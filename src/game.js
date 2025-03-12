@@ -2,10 +2,16 @@
 // Configuração do jogo Phaser
 const config = {
     type: Phaser.AUTO, // Tipo de renderização (AUTO permite que o Phaser escolha entre WebGL e Canvas)
-    width: window.innerWidth, // Largura do jogo igual à largura da janela do navegador
-    height: window.innerHeight, // Altura do jogo igual à altura da janela do navegador
-    scale: {
-      mode: Phaser.Scale.FIT, //Ajustar para caber na tela sem distorcer
+    width: width, // Largura do jogo igual à largura da janela do navegador
+    height: height, // Altura do jogo igual à altura da janela do navegador
+    pixelArt: true,
+    scale: { autoCenter: Phaser.Scale.CENTER_BOTH },
+    physics: {
+        default: 'arcade', // Define o sistema de física padrão como 'arcade'
+        arcade: {
+            gravity: { y: 0 }, // Define a gravidade no eixo Y como 0 (sem gravidade)
+            debug: false, // Desativa o modo de depuração da física
+        }
     },
     pixelArt: true,
     autoCenter: Phaser.Scale.CENTER, // Centralizar a tela de jogo
@@ -22,6 +28,7 @@ const config = {
       CutScene,
       TutorialScene,
       OfficeScene,
+
       CurriculoScene,
       QuizVpPessoas,
       GameOverSceneCurriculo,
@@ -38,6 +45,7 @@ const config = {
       QuizVpTecnologia,
       GameOverSceneCurriculoTecnologia,
       CongratulationsSceneCurriculoVpTecnologia,
+      
       ElevadorScene, 
       GameplayTutorialScene
     ], // Lista das cenas do jogo
