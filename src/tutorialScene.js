@@ -83,8 +83,8 @@ class TutorialScene extends Phaser.Scene {
     }
 
     createDialogBox() {
-        const dialogWidth = 800;
-        const dialogHeight = 150;
+        const dialogWidth = width/2;
+        const dialogHeight = height/5;
         const x = this.cameras.main.width / 2 - dialogWidth / 2;
         const y = this.cameras.main.height - dialogHeight - 50;
 
@@ -123,11 +123,14 @@ class TutorialScene extends Phaser.Scene {
     }
 
     showDialog() {
+        const x = width / 2 - 200;
+        const y = height - 280;
+
         if (this.currentLine === 0) {
             // Exibe o campo de entrada para o nome do jogador
             this.nome.style.display = 'block';
-            this.nome.style.left = `${width / 2 - 100}px`;
-            this.nome.style.top = `${height - 100}px`;
+            this.nome.style.left = `${x}px`;
+            this.nome.style.top = `${y}px`;
         } else {
             // Esconde o campo de entrada para o nome do jogador
             this.nome.style.display = 'none';

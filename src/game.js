@@ -5,7 +5,12 @@ const config = {
     width: width, // Largura do jogo igual à largura da janela do navegador
     height: height, // Altura do jogo igual à altura da janela do navegador
     pixelArt: true,
-    scale: { autoCenter: Phaser.Scale.CENTER_BOTH },
+    scale: {
+      mode: Phaser.Scale.FIT,  // Mantém a proporção e ajusta o jogo à tela sem cortar
+      width: width, // Mantém a largura fixa
+      height: height, // Mantém a altura fixa
+      parent: 'game-container'  // Define um contêiner HTML específico
+    },
     physics: {
         default: 'arcade', // Define o sistema de física padrão como 'arcade'
         arcade: {
@@ -13,16 +18,7 @@ const config = {
             debug: false, // Desativa o modo de depuração da física
         }
     },
-    pixelArt: true,
-    autoCenter: Phaser.Scale.CENTER, // Centralizar a tela de jogo
-    physics: {
-      default: "arcade", // Define o sistema de física padrão como 'arcade'
-      arcade: {
-        gravity: { y: 0 }, // Define a gravidade no eixo Y como 0 (sem gravidade)
-        debug: false, // Desativa o modo de depuração da física
-        },
-      
-    },
+    
     scene: [
       InitialScene,
       CreditosScene,
