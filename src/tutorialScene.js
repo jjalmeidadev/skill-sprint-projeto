@@ -83,8 +83,8 @@ class TutorialScene extends Phaser.Scene {
     }
 
     createDialogBox() {
-        const dialogWidth = 800;
-        const dialogHeight = 150;
+        const dialogWidth = width/2;
+        const dialogHeight = height/5;
         const x = this.cameras.main.width / 2 - dialogWidth / 2;
         const y = this.cameras.main.height - dialogHeight - 50;
 
