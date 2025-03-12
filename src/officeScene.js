@@ -12,7 +12,7 @@ class OfficeScene extends Phaser.Scene {
     this.load.spritesheet('player', '../assets/Player.png', { frameWidth: 32, frameHeight: 32 });
     this.load.image('telaComputador', '../assets/tela_computador.png');
     this.load.image('computador', '../assets/computador.png');
-    this.load.image('indicator', '../assets/Exclamação.png');
+    this.load.spritesheet('indicator', '../assets/spriteexclamação.png',{ frameWidth:254, frameHeight: 291 });
     this.load.image('botaoElevOffice', '../assets/botaocimaelevador.png');
     this.load.image('bgElevOffice', '../assets/bgelevadoroffice.png');
     this.load.image('painelelev', '../assets/painelelevador.png');
@@ -27,8 +27,17 @@ class OfficeScene extends Phaser.Scene {
     this.background = this.add.image(0, 0, 'background').setOrigin(0, 0);
     this.background.setDisplaySize(window.innerWidth, window.innerHeight);
 
+    //cria a animação
+    this.anims.create({
+      key: 'exclamando',
+      frames: this.anims.generateFrameNumbers('indicator', { start: 0, end: 1 }),
+      //velocidade da animação
+      frameRate: 3,
+      repeat: -1
+    });
 
-    // Cria a tela do computador, o computador e o indicador de exclamação
+
+    // Cria a tela do computador, o computador e o indicator de exclamação
     this.createComputerScreen();
     this.addComputerAndIndicator();
     this.createPlayer();
@@ -63,7 +72,7 @@ class OfficeScene extends Phaser.Scene {
       }
     }
 
-    // Esconder o indicador quando o jogador se aproximar do computador
+    // Esconder o indicator quando o jogador se aproximar do computador
     if (
       this.indicatorActive &&
       Math.abs(this.player.x - this.indicator.x) <= 30 &&
@@ -210,8 +219,9 @@ class OfficeScene extends Phaser.Scene {
     const x = 340;
     const y = 367;
 
-    // Criar indicador de exclamação sobre o computador
-    this.indicator = this.add.image(x + 16, y + 96, 'indicator').setScale(0.3);
+    // Criar indicator de exclamação sobre o computador
+    this.indicator = this.add.sprite(x + 70, y + 50, 'indicator').setScale(0.2);
+    this.indicator.play('exclamando'); // Inicia a animação
     this.indicatorActive = true;
 
     // Criar o computador na posição original

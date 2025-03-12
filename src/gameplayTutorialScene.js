@@ -20,7 +20,6 @@ class GameplayTutorialScene extends Phaser.Scene {
         const { width, height } = this.scale; // Obter dimensões da tela
         const tutorialImg = this.add.image(width / 2, height / 2, 'introducao').setOrigin(0.5); // Posicionamento da imagem
 
-        // Resto do código permanece o mesmo...
 
         // Ajuste de escala para manter as proporções corretas
         const scaleX = width / tutorialImg.width;
@@ -32,7 +31,7 @@ class GameplayTutorialScene extends Phaser.Scene {
         const startNextScene = () => {
             this.cameras.main.fadeOut(1000); // Efeito de transição para sair da cena
             this.cameras.main.once('camerafadeoutcomplete', () => {
-                this.scene.start('officeScene'); // Troca para a cena principal do jogo
+                this.scene.start('officeScene'); // Troca para a cena da recepção
             });
         };
 
