@@ -63,8 +63,6 @@ class OfficeScene extends Phaser.Scene {
         layer8.setCollisionByProperty({ collider: true});
         layer9.setCollisionByProperty({ collider: true});
 
-       
-
 
         // Cria a tela do computador, o computador e o indicador de exclamação
         this.createComputerScreen();
@@ -77,9 +75,12 @@ class OfficeScene extends Phaser.Scene {
         //this.physics.add.collider(this.player, layer6);
         this.physics.add.collider(this.player, layer7);
         this.physics.add.collider(this.player, layer8);
+        
+        // Adicionar limites para o mundo do jogo
+        this.physics.world.setBounds(0, 0, window.innerWidth, window.innerHeight);
 
         // Criar texto para coordenadas (debug)
-        // this.coordText = this.add.text(20, 20, '', { fontSize: '16px', fill: '#ffffff' });
+        this.coordText = this.add.text(20, 20, '', { fontSize: '16px', fill: '#ffffff' });
     }
 
   update() {
@@ -168,12 +169,11 @@ class OfficeScene extends Phaser.Scene {
 
   createPlayer() {
     // Criar jogador
-    this.player = this.physics.add.sprite(width - 700, height - 300, 'player');
+    this.player = this.physics.add.sprite(width - 405, height - 100, 'player');
     this.player.setScale(2.5);
     this.player.setCollideWorldBounds(true);
 
-    // Adicionar limites para o mundo do jogo
-    this.physics.world.setBounds(0, 0, window.innerWidth, window.innerHeight);
+    
   }
 
   createPlayerAnimations() {
@@ -243,7 +243,7 @@ class OfficeScene extends Phaser.Scene {
         this.indicatorActive = true;
 
         // Criar o computador na posição original
-        this.computador = this.add.image(x + 70, y + 95, 'computador').setScale(0.09).setInteractive();
+        this.computador = this.add.image(width - 1020, height - 150, 'computador').setScale(0.09).setInteractive();
         this.computador.setFlipX(true);
 
     // Tornar o computador interativo

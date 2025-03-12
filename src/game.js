@@ -28,6 +28,7 @@ const config = {
       CutScene,
       TutorialScene,
       OfficeScene,
+
       CurriculoScene,
       QuizVpPessoas,
       GameOverSceneCurriculo,
@@ -44,6 +45,7 @@ const config = {
       QuizVpTecnologia,
       GameOverSceneCurriculoTecnologia,
       CongratulationsSceneCurriculoVpTecnologia,
+      
       ElevadorScene, 
       GameplayTutorialScene
     ], // Lista das cenas do jogo
