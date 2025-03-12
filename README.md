@@ -79,16 +79,15 @@ Para executar seu respectivo código, siga o passo a passo abaixo:
 
 ## 🗃 Histórico de lançamentos
 
-* 0.5.0 - XX/XX/2024
+* 0.5.0 - XX/XX/2025
     * 
-* 0.4.0 - XX/XX/2024
+* 0.4.0 - XX/XX/2025
     * 
-* 0.3.0 - XX/XX/2024
+* 0.3.0 - 14/03/2025: 
     * 
-* 0.2.0 - XX/XX/2024
-    * 
-* 0.1.0 - XX/XX/2024
-    *
+* 0.2.0 - 28/02/2025: Durante o desenvolvimento básico, implementamos a interação com o computador para iniciar o mini game de criação de currículo (R06), criamos o cenário da sala da líder, elaboramos perguntas condicionais e aprimoramos os designs gráficos com concept arts e personagens principais. Alteramos as teclas de movimentação para WASD (R01) e personalizamos o personagem principal, enquanto as interações com NPCs (R04) e barreiras no mapa serão abordadas nas próximas sprints, alinhadas ao objetivo de motivar o Job Rotation na Vivo (R07).
+
+* 0.1.0 - 14/02/2025: Para a primeira versão do jogo (MVP), desenvolvemos uma tela inicial com um botão "Jogar" (R02), uma cutscene em Pixel Art para contextualização (R03) e uma fase exploratória em um cenário de escritório (R05), com movimentação via setas do teclado (R01). As próximas etapas incluem a personalização do spritesheet, interações com NPCs (R04), dinâmicas de elaboração de currículo (R06) e alinhamento com o objetivo de motivar o Job Rotation na Vivo (R07).
 
 ## 📋 Licença/License
 
