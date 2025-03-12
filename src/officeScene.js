@@ -29,9 +29,6 @@ class OfficeScene extends Phaser.Scene {
             interagir: Phaser.Input.Keyboard.KeyCodes.E
         });
 
-        // Criar texto para coordenadas (debug)
-        this.coordText = this.add.text(20, 20, '', { fontSize: '16px', fill: '#ffffff' });
-
         const map = this.make.tilemap({ key: "escritorio", tileWidth: 25, tileHeight: 20});
 
         const tileset1 = map.addTilesetImage("decoracao");
@@ -91,8 +88,6 @@ class OfficeScene extends Phaser.Scene {
             this.indicatorActive = false;
         }
 
-        // Atualizar coordenadas na tela
-        this.coordText.setText(`X: ${Math.round(this.player.x)}, Y: ${Math.round(this.player.y)}`);
     }
 
     movePlayer() {
@@ -185,11 +180,11 @@ class OfficeScene extends Phaser.Scene {
 
     addComputerAndIndicator() {
         // Criar indicador de exclamação sobre o computador
-        this.indicator = this.add.image(width - 970, height - 150, 'indicator').setScale(0.3);
+        this.indicator = this.add.image(width - 1020, height - 150, 'indicator').setScale(0.3);
         this.indicatorActive = true;
 
         // Criar o computador na posição original
-        this.computador = this.add.image(width - 970, height - 95, 'computador').setScale(0.09).setInteractive();
+        this.computador = this.add.image(width - 1030, height - 100, 'computador').setScale(0.09).setInteractive();
         this.computador.setFlipX(true);
 
         // Tornar o computador interativo
