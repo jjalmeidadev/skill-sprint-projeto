@@ -460,7 +460,7 @@ Essa estrutura proporciona uma experiência imersiva e educativa, garantindo que
 *Descreva aqui as formas de controle e interação que o jogador tem sobre o jogo: quais os comandos disponíveis, quais combinações de comandos, e quais as ações consequentes desses comandos. Utilize listas ou tabelas para organizar esta seção.*
 
 Os comandos disponíveis ao jogador, levando em conta que habita um ambiente 2D para a web, são:
-Tabela 2
+
 \# | Mecânicas
 --- | ---
 01 | Click de mouse ou touchpad para entrar no jogo, acessar créditos e configurações, além de pular a cutscene e selecionar botões.
