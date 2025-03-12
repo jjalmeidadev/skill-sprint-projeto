@@ -2,7 +2,7 @@ class OfficeScene extends Phaser.Scene {
     constructor() {
         // Chama o construtor da classe Phaser.Scene com a chave 'officeScene'
         super({ key: 'officeScene' });
-        this.currentBackground = 'background'; // Estado inicial
+       // this.currentBackground = 'background'; // Estado inicial
         this.canMove = true; // Controla se o jogador pode se mover
     }
 
@@ -30,8 +30,8 @@ class OfficeScene extends Phaser.Scene {
     const screenWidth = this.sys.game.config.width;
     const screenHeight = this.sys.game.config.height;
     // Adiciona a imagem de fundo e ajusta seu tamanho para preencher a tela
-    this.background = this.add.image(0, 0, 'background').setOrigin(0, 0);
-    this.background.setDisplaySize(window.innerWidth, window.innerHeight);
+   // this.background = this.add.image(0, 0, 'background').setOrigin(0, 0);
+   // this.background.setDisplaySize(window.innerWidth, window.innerHeight);
 
     //cria a animação
     this.anims.create({
