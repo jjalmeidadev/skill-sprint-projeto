@@ -67,15 +67,15 @@ class OfficeScene extends Phaser.Scene {
         const tileset3 = map.addTilesetImage("personalizado_vivo");
 
 
-        const layer1 = map.createLayer("chao", tileset2, width - 1270, 0).setScale(2.5);
-        const layer2 = map.createLayer("chaoLider", tileset1, width - 1270, 0).setScale(2.5);
-        const layer3 = map.createLayer("tapetes", tileset3, width - 1270, 0).setScale(2.5);
-        const layer4 = map.createLayer("tapeteLider", tileset1, width - 1270, 0).setScale(2.5);
-        const layer5 = map.createLayer("paredes", tileset2, width - 1270, 0).setScale(2.5);
-        const layer6 = map.createLayer("detalhesParede", tileset2, width - 1270, 0).setScale(2.5);
-        const layer7 = map.createLayer("decoracao", tileset1, width - 1270, 0).setScale(2.5);
-        const layer8 = map.createLayer("plantas", tileset1, width - 1270, 0).setScale(2.5);
-        const layer9 = map.createLayer("portas", tileset1, width - 1270, 0).setScale(2.5);
+        const layer1 = map.createLayer("chao", tileset2, 0, 0).setScale(2.5);
+        const layer2 = map.createLayer("chaoLider", tileset1, 0, 0).setScale(2.5);
+        const layer3 = map.createLayer("tapetes", tileset3, 0, 0).setScale(2.5);
+        const layer4 = map.createLayer("tapeteLider", tileset1, 0, 0).setScale(2.5);
+        const layer5 = map.createLayer("paredes", tileset2, 0, 0).setScale(2.5);
+        const layer6 = map.createLayer("detalhesParede", tileset2, 0, 0).setScale(2.5);
+        const layer7 = map.createLayer("decoracao", tileset1, 0, 0).setScale(2.5);
+        const layer8 = map.createLayer("plantas", tileset1, 0, 0).setScale(2.5);
+        const layer9 = map.createLayer("portas", tileset1, 0, 0).setScale(2.5);
 
         layer1.setCollisionByProperty({ collider: true});
         layer2.setCollisionByProperty({ collider: true});
