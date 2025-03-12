@@ -5,7 +5,12 @@ const config = {
     width: width, // Largura do jogo igual à largura da janela do navegador
     height: height, // Altura do jogo igual à altura da janela do navegador
     pixelArt: true,
-    scale: { autoCenter: Phaser.Scale.CENTER_BOTH },
+    scale: {
+      mode: Phaser.Scale.FIT,  // Mantém a proporção e ajusta o jogo à tela sem cortar
+      width: 1500, // Mantém a largura fixa
+      height: 753, // Mantém a altura fixa
+      parent: 'game-container'  // Define um contêiner HTML específico
+    },
     physics: {
         default: 'arcade', // Define o sistema de física padrão como 'arcade'
         arcade: {
