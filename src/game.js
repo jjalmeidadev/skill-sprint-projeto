@@ -7,8 +7,8 @@ const config = {
     pixelArt: true,
     scale: {
       mode: Phaser.Scale.FIT,  // Mantém a proporção e ajusta o jogo à tela sem cortar
-      width: 1500, // Mantém a largura fixa
-      height: 753, // Mantém a altura fixa
+      width: width, // Mantém a largura fixa
+      height: height, // Mantém a altura fixa
       parent: 'game-container'  // Define um contêiner HTML específico
     },
     physics: {
