@@ -25,6 +25,7 @@ const config = {
     },
     scene: [
       InitialScene,
+      CreditosScene,
       CutScene,
       TutorialScene,
       OfficeScene,
