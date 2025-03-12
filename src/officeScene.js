@@ -172,8 +172,6 @@ class OfficeScene extends Phaser.Scene {
     this.player = this.physics.add.sprite(width - 405, height - 100, 'player');
     this.player.setScale(2.5);
     this.player.setCollideWorldBounds(true);
-
-    
   }
 
   createPlayerAnimations() {
@@ -243,7 +241,7 @@ class OfficeScene extends Phaser.Scene {
         this.indicatorActive = true;
 
         // Criar o computador na posição original
-        this.computador = this.add.image(width - 1020, height - 150, 'computador').setScale(0.09).setInteractive();
+        this.computador = this.add.image(width - 1020, height - 100, 'computador').setScale(0.09).setInteractive();
         this.computador.setFlipX(true);
 
     // Tornar o computador interativo
