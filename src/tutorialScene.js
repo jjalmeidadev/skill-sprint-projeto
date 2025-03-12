@@ -8,7 +8,7 @@ class TutorialScene extends Phaser.Scene {
             "Olá! Qual é o seu nome?",
             "Vivinho: Olá, Fulano! Bem-vindo à Vivo! Somos a maior empresa de telecomunicações do Brasil! Parabéns por fazer parte do nosso time!",
             "Vivinho: Eu tenho uma importante missão: apresentar para você o plano de carreira interno da Vivo. Me diga, você conhece o plano de carreira da Vivo?"
-        ];    
+        ];
 
         // Lista das falas condicionais baseadas na resposta do jogador
         this.perguntaCondicional = [
@@ -33,14 +33,15 @@ class TutorialScene extends Phaser.Scene {
         this.load.image('vivinho', '../assets/vivinho.png');
         this.load.image('botaoSim', '../assets/botao_sim.png');
         this.load.image('botaoNao', '../assets/botao_nao.png');
-        this.load.image('jobRotation', '../assets/jobRotationVivo.png'); 
+        this.load.image('jobRotation', '../assets/jobRotationVivo.png');
+        this.load.font('FontePadrao', 'fonts/PixelifySans-VariableFont_wght.ttf'); // Fonte do jogo
     }
 
     create() {
         // Adiciona a imagem de fundo e ajusta seu tamanho para preencher a tela
         this.background = this.add.image(0, 0, 'background').setOrigin(0, 0);
         this.background.setDisplaySize(this.cameras.main.width, this.cameras.main.height);
-        
+
         // Cria a caixa de diálogo e exibe a primeira fala
         this.createDialogBox();
         this.showDialog();
@@ -48,7 +49,7 @@ class TutorialScene extends Phaser.Scene {
         // Cria a imagem sobreposta, mas deixá-la invisível
         this.sobreposicao = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2 - 100, 'jobRotation');
         this.sobreposicao.setOrigin(0.5);
-        this.sobreposicao.setScale(0.5); // Ajuste conforme necessário
+        this.sobreposicao.setScale(0.35); // Ajuste conforme necessário
         this.sobreposicao.setAlpha(0); // Deixa a imagem invisível
 
         // Adiciona interação para avançar o diálogo ao pressionar ENTER
@@ -73,7 +74,7 @@ class TutorialScene extends Phaser.Scene {
         this.dialogText = this.add.text(x + 150, y + 30, '', {
             fontSize: '20px',
             color: '#ffffff',
-            fontFamily: 'Arial',
+            fontFamily: 'FontePadrao',
             wordWrap: { width: 600 }
         });
 
@@ -90,6 +91,7 @@ class TutorialScene extends Phaser.Scene {
         this.nome.style.borderRadius = '5px';
         this.nome.style.textAlign = 'center';
         this.nome.style.display = 'none';
+        this.nome.style.fontFamily = 'FontePadrao';
 
         document.body.appendChild(this.nome);
     }
