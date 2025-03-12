@@ -13,16 +13,7 @@ const config = {
             debug: false, // Desativa o modo de depuração da física
         }
     },
-    pixelArt: true,
-    autoCenter: Phaser.Scale.CENTER, // Centralizar a tela de jogo
-    physics: {
-      default: "arcade", // Define o sistema de física padrão como 'arcade'
-      arcade: {
-        gravity: { y: 0 }, // Define a gravidade no eixo Y como 0 (sem gravidade)
-        debug: false, // Desativa o modo de depuração da física
-        },
-      
-    },
+    
     scene: [
       InitialScene,
       CreditosScene,
