@@ -8,7 +8,7 @@ class TutorialScene extends Phaser.Scene {
             "Olá! Qual é o seu nome?",
             "Vivinho: Olá, Fulano! Bem-vindo à Vivo! Somos a maior empresa de telecomunicações do Brasil! Parabéns por fazer parte do nosso time!",
             "Vivinho: Eu tenho uma importante missão: apresentar para você o plano de carreira interno da Vivo. Me diga, você conhece o plano de carreira da Vivo?"
-        ];    
+        ];
 
         // Lista das falas condicionais baseadas na resposta do jogador
         this.perguntaCondicional = [
@@ -29,27 +29,53 @@ class TutorialScene extends Phaser.Scene {
 
     preload() {
         // Carrega as imagens necessárias para a cena do tutorial
-        this.load.image('background', '../assets/mapaJogoVivo.png');
         this.load.image('vivinho', '../assets/vivinho.png');
         this.load.image('botaoSim', '../assets/botao_sim.png');
         this.load.image('botaoNao', '../assets/botao_nao.png');
-        this.load.image('jobRotation', '../assets/jobRotationVivo.png'); 
+        this.load.image('jobRotation', '../assets/jobRotationVivo.png');
         this.load.font('FontePadrao', 'fonts/PixelifySans-VariableFont_wght.ttf'); // Fonte do jogo
+
+        this.load.tilemapTiledJSON('escritorio', '../assets/mapaJogoVivo/mapaJogoVivo.json');
+        this.load.image('decoracao', '../assets/mapaJogoVivo/decoracao.png');
+        this.load.image('paredes', '../assets/mapaJogoVivo/paredes.png');
+        this.load.image('personalizado_vivo', '../assets/mapaJogoVivo/personalizado_vivo.png');
     }
 
     create() {
-        // Adiciona a imagem de fundo e ajusta seu tamanho para preencher a tela
-        this.background = this.add.image(0, 0, 'background').setOrigin(0, 0);
-        this.background.setDisplaySize(this.cameras.main.width, this.cameras.main.height);
-        
+        const map = this.make.tilemap({ key: "escritorio", tileWidth: 25, tileHeight: 20});
+
+        const tileset1 = map.addTilesetImage("decoracao");
+        const tileset2 = map.addTilesetImage("paredes");
+        const tileset3 = map.addTilesetImage("personalizado_vivo");
+
+        const layer1 = map.createLayer("chao", tileset2, width - 1270, 0).setScale(2.5);
+        const layer2 = map.createLayer("chaoLider", tileset1, width - 1270, 0).setScale(2.5);
+        const layer3 = map.createLayer("tapetes", tileset3, width - 1270, 0).setScale(2.5);
+        const layer4 = map.createLayer("tapeteLider", tileset1, width - 1270, 0).setScale(2.5);
+        const layer5 = map.createLayer("paredes", tileset2, width - 1270, 0).setScale(2.5);
+        const layer6 = map.createLayer("detalhesParede", tileset2, width - 1270, 0).setScale(2.5);
+        const layer7 = map.createLayer("decoracao", tileset1, width - 1270, 0).setScale(2.5);
+        const layer8 = map.createLayer("plantas", tileset1, width - 1270, 0).setScale(2.5);
+        const layer9 = map.createLayer("portas", tileset1, width - 1270, 0).setScale(2.5);
+
+        layer1.setCollisionByProperty({ collider: true});
+        layer2.setCollisionByProperty({ collider: true});
+        layer3.setCollisionByProperty({ collider: true});
+        layer4.setCollisionByProperty({ collider: true});
+        layer5.setCollisionByProperty({ collider: true});
+        layer6.setCollisionByProperty({ collider: true});
+        layer7.setCollisionByProperty({ collider: true});
+        layer8.setCollisionByProperty({ collider: true});
+        layer9.setCollisionByProperty({ collider: true});
+
         // Cria a caixa de diálogo e exibe a primeira fala
         this.createDialogBox();
         this.showDialog();
 
         // Cria a imagem sobreposta, mas deixá-la invisível
-        this.sobreposicao = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2 - 100, 'jobRotation');
+        this.sobreposicao = this.add.image(width / 2, height / 2 - 100, 'jobRotation');
         this.sobreposicao.setOrigin(0.5);
-        this.sobreposicao.setScale(0.35); // Ajuste conforme necessário
+        this.sobreposicao.setScale(0.5); // Ajuste conforme necessário
         this.sobreposicao.setAlpha(0); // Deixa a imagem invisível
 
         // Adiciona interação para avançar o diálogo ao pressionar ENTER
@@ -100,8 +126,8 @@ class TutorialScene extends Phaser.Scene {
         if (this.currentLine === 0) {
             // Exibe o campo de entrada para o nome do jogador
             this.nome.style.display = 'block';
-            this.nome.style.left = `${this.cameras.main.width / 2 - 100}px`;
-            this.nome.style.top = `${this.cameras.main.height - 100}px`;
+            this.nome.style.left = `${width / 2 - 100}px`;
+            this.nome.style.top = `${height - 100}px`;
         } else {
             // Esconde o campo de entrada para o nome do jogador
             this.nome.style.display = 'none';
@@ -125,8 +151,8 @@ class TutorialScene extends Phaser.Scene {
         if (this.botaoSim || this.botaoNao) return;
 
         // Define as posições dos botões
-        const x = this.cameras.main.width / 2 - 100;
-        const y = this.cameras.main.height - 200;
+        const x = width / 2 - 100;
+        const y = height - 200;
 
         // Cria o botão 'Sim'
         this.botaoSim = this.add.image(x, y + 125, 'botaoSim').setScale(0.6).setInteractive();

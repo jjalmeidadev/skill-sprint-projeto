@@ -48,8 +48,34 @@ Dentre os arquivos e pastas presentes na raiz do projeto, definem-se:
 
 ## 🔧 Como executar o código
 
-*Acrescentar as informações necessárias sobre pré-requisitos (IDEs, serviços etc.) e instalação básica do projeto, descrevendo eventuais versões utilizadas. Colocar um passo a passo de como o leitor pode baixar o código e executar o jogo a partir de sua máquina ou seu repositório.*
+Skill Sprint foi desenvolvido com o Phaser, uma biblioteca JavaScript voltada especificamente para criação de jogos web.  
 
+Para executar seu respectivo código, siga o passo a passo abaixo:
+
+### Pré-Requisitos:
+
+- **IDE**: Escolha uma IDE para desenvolvimento web. Recomendamos o [Visual Studio Code.](https://code.visualstudio.com/download)
+
+- **Navegador**: Tenha um navegador web instalado, como Google Chrome, Mozilla Firefox, ou Microsoft Edge para visualizar e testar o jogo.
+
+- **Git**: Instale o [Git](https://git-scm.com/downloads) para poder guardar o projeto na sua máquina.
+
+### Instalação Básica do Projeto:
+
+- Clone o repositório do jogo digitando o comando abaixo no seu terminal (cmd):
+
+```git clone https://github.com/Inteli-College/2025-1A-T18-IN01-G03.git```
+
+- Navegue para o diretório do projeto digitando o comando abaixo no terminal ou prompt de comando:
+
+```cd 2025-1A-T18-IN01-G03```
+
+- Abra a sua IDE e carregue o projeto (pasta) no ambiente de desenvolvimento.
+
+### Visualize no Navegador:
+
+- Abra o arquivo HTML principal (index.html localizado na pasta "src" do repositório) no seu navegador para testar o jogo.
+- Ou visualize nosso jogo através do deploy do GitHub Pages clicando [aqui.](https://inteli-college.github.io/2025-1A-T18-IN01-G03/src/index.html)
 
 ## 🗃 Histórico de lançamentos
 

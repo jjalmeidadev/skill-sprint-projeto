@@ -1,18 +1,24 @@
 class OfficeScene extends Phaser.Scene {
-  constructor() {
-    // Chama o construtor da classe Phaser.Scene com a chave 'officeScene'
-    super({ key: 'officeScene' });
-    this.currentBackground = 'background'; // Estado inicial
-    this.canMove = true; // Controla se o jogador pode se mover
-  }
+    constructor() {
+        // Chama o construtor da classe Phaser.Scene com a chave 'officeScene'
+        super({ key: 'officeScene' });
+        this.currentBackground = 'background'; // Estado inicial
+        this.canMove = true; // Controla se o jogador pode se mover
+    }
 
   preload() {
     // Carrega as imagens e spritesheets necessárias para a cena
-    this.load.image('background', '../assets/mapaJogoVivo.png');
+
     this.load.spritesheet('player', '../assets/Player.png', { frameWidth: 32, frameHeight: 32 });
     this.load.image('telaComputador', '../assets/tela_computador.png');
     this.load.image('computador', '../assets/computador.png');
     this.load.spritesheet('indicator', '../assets/spriteexclamação.png',{ frameWidth:254, frameHeight: 291 });
+
+    this.load.tilemapTiledJSON('escritorio', '../assets/mapaJogoVivo/mapaJogoVivo.json');
+    this.load.image('decoracao', '../assets/mapaJogoVivo/decoracao.png');
+    this.load.image('paredes', '../assets/mapaJogoVivo/paredes.png');
+    this.load.image('personalizado_vivo', '../assets/mapaJogoVivo/personalizado_vivo.png');
+
     this.load.image('botaoElevOffice', '../assets/botaocimaelevador.png');
     this.load.image('bgElevOffice', '../assets/bgelevadoroffice.png');
     this.load.image('painelelev', '../assets/painelelevador.png');
@@ -45,18 +51,61 @@ class OfficeScene extends Phaser.Scene {
     this.createButtonCima();
 
 
-    // Configuração do teclado (WASD + E para interação)
-    this.teclas = this.input.keyboard.addKeys({
-      up: Phaser.Input.Keyboard.KeyCodes.W,
-      down: Phaser.Input.Keyboard.KeyCodes.S,
-      left: Phaser.Input.Keyboard.KeyCodes.A,
-      right: Phaser.Input.Keyboard.KeyCodes.D,
-      interagir: Phaser.Input.Keyboard.KeyCodes.E
-    });
+        // Configuração do teclado (WASD + E para interação)
+        this.teclas = this.input.keyboard.addKeys({
+            up: Phaser.Input.Keyboard.KeyCodes.W,
+            down: Phaser.Input.Keyboard.KeyCodes.S,
+            left: Phaser.Input.Keyboard.KeyCodes.A,
+            right: Phaser.Input.Keyboard.KeyCodes.D,
+            interagir: Phaser.Input.Keyboard.KeyCodes.E
+        });
 
-    // Criar texto para coordenadas (debug)
-    this.coordText = this.add.text(20, 20, '', { fontSize: '16px', fill: '#ffffff' });
-  }
+        const map = this.make.tilemap({ key: "escritorio", tileWidth: 25, tileHeight: 20});
+
+        const tileset1 = map.addTilesetImage("decoracao");
+        const tileset2 = map.addTilesetImage("paredes");
+        const tileset3 = map.addTilesetImage("personalizado_vivo");
+
+
+        const layer1 = map.createLayer("chao", tileset2, width - 1270, 0).setScale(2.5);
+        const layer2 = map.createLayer("chaoLider", tileset1, width - 1270, 0).setScale(2.5);
+        const layer3 = map.createLayer("tapetes", tileset3, width - 1270, 0).setScale(2.5);
+        const layer4 = map.createLayer("tapeteLider", tileset1, width - 1270, 0).setScale(2.5);
+        const layer5 = map.createLayer("paredes", tileset2, width - 1270, 0).setScale(2.5);
+        const layer6 = map.createLayer("detalhesParede", tileset2, width - 1270, 0).setScale(2.5);
+        const layer7 = map.createLayer("decoracao", tileset1, width - 1270, 0).setScale(2.5);
+        const layer8 = map.createLayer("plantas", tileset1, width - 1270, 0).setScale(2.5);
+        const layer9 = map.createLayer("portas", tileset1, width - 1270, 0).setScale(2.5);
+
+        layer1.setCollisionByProperty({ collider: true});
+        layer2.setCollisionByProperty({ collider: true});
+        layer3.setCollisionByProperty({ collider: true});
+        layer4.setCollisionByProperty({ collider: true});
+        layer5.setCollisionByProperty({ collider: true});
+        layer6.setCollisionByProperty({ collider: true});
+        layer7.setCollisionByProperty({ collider: true});
+        layer8.setCollisionByProperty({ collider: true});
+        layer9.setCollisionByProperty({ collider: true});
+
+
+        // Cria a tela do computador, o computador e o indicador de exclamação
+        this.createComputerScreen();
+        this.addComputerAndIndicator();
+        this.createPlayer();
+        this.createPlayerAnimations();
+        this.createButtonCima();
+
+        this.physics.add.collider(this.player, layer5);
+        //this.physics.add.collider(this.player, layer6);
+        this.physics.add.collider(this.player, layer7);
+        this.physics.add.collider(this.player, layer8);
+        
+        // Adicionar limites para o mundo do jogo
+        this.physics.world.setBounds(0, 0, window.innerWidth, window.innerHeight);
+
+        // Criar texto para coordenadas (debug)
+        this.coordText = this.add.text(20, 20, '', { fontSize: '16px', fill: '#ffffff' });
+    }
 
   update() {
     // Atualiza a posição do jogador a cada frame
@@ -144,12 +193,9 @@ class OfficeScene extends Phaser.Scene {
 
   createPlayer() {
     // Criar jogador
-    this.player = this.physics.add.sprite(1350, 730, 'player');
-    this.player.setScale(4);
+    this.player = this.physics.add.sprite(width - 405, height - 100, 'player');
+    this.player.setScale(2.5);
     this.player.setCollideWorldBounds(true);
-
-    // Adicionar limites para o mundo do jogo
-    this.physics.world.setBounds(0, 0, window.innerWidth, window.innerHeight);
   }
 
   createPlayerAnimations() {
@@ -208,9 +254,8 @@ class OfficeScene extends Phaser.Scene {
     this.physics.add.existing(this.proximidade, true);
 
     botaoCima.on("pointerdown", () => {
-      // Define a ação ao clicar no botão: para a cena atual e inicia a cena 'cutScene'
       this.scene.stop("officeScene");
-      this.scene.start("elevadorScene");
+      this.scene.start('elevadorScene');
     });
   }
 
@@ -224,9 +269,9 @@ class OfficeScene extends Phaser.Scene {
     this.indicator.play('exclamando'); // Inicia a animação
     this.indicatorActive = true;
 
-    // Criar o computador na posição original
-    this.computador = this.add.image(x + 70, y + 95, 'computador').setScale(0.09).setInteractive();
-    this.computador.setFlipX(true);
+        // Criar o computador na posição original
+        this.computador = this.add.image(width - 1020, height - 100, 'computador').setScale(0.09).setInteractive();
+        this.computador.setFlipX(true);
 
     // Tornar o computador interativo
     this.computador.on('pointerover', () => {
