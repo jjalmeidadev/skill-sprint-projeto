@@ -335,7 +335,7 @@ class CurriculoScene extends Phaser.Scene {
 
         // Botão interativo com animação (fase Estratégia)
         const botaoVpEstrategia = this.add.image(
-            width - 755, height - 370,
+            width - 780, height - 370,
             'botao02'
         ).setInteractive();
 
@@ -387,7 +387,7 @@ class CurriculoScene extends Phaser.Scene {
 
         // Botão interativo com animação (fase Relações)
         const botaoVpRelacoes = this.add.image(
-            width - 1020, height - 270,
+            510, height - 270,
             'botao04'
         ).setInteractive();
 
@@ -413,7 +413,7 @@ class CurriculoScene extends Phaser.Scene {
 
         // Botão interativo com animação (fase Tecnologia)
         const botaoVpTecnologia = this.add.image(
-            width - 755, height - 270,
+            760, height - 270,
             'botao05'
         ).setInteractive();
 
