@@ -12,7 +12,7 @@ class OfficeScene extends Phaser.Scene {
     this.load.spritesheet('player', '../assets/Player.png', { frameWidth: 32, frameHeight: 32 });
     this.load.image('telaComputador', '../assets/tela_computador.png');
     this.load.image('computador', '../assets/computador.png');
-    this.load.image('indicator', '../assets/Exclamação.png');
+    this.load.spritesheet('indicator', '../assets/spriteexclamação.png',{ frameWidth:254, frameHeight: 291 });
 
     this.load.image('botaoElevOffice', '../assets/botaocimaelevador.png');
     this.load.image('bgElevOffice', '../assets/bgelevadoroffice.png');
