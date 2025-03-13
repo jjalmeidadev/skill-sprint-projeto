@@ -558,11 +558,27 @@ Abaixo, estão as principais telas desenvolvidas nesta sprint:
   <sup>Fonte: produzido pelos autores. Tela de tutorial explicando os comandos básicos do jogo. </sup>
 </div>
 
-Minigame de Currículo
-Minigame de criação do currículo, onde o jogador responde perguntas para montar seu perfil profissional.
+<div align="center">
+  <sub>Minigame para Construção do Currículo</sub><br>
+  <img src="../assets/gdd_curriculo.png" width="900px" 
+  alt="Minigame Currículo"><br>
+  <sup>Fonte: produzido pelos autores. Minigame de criação do currículo, onde o jogador responde perguntas para montar seu perfil profissional. </sup>
+</div>
 
-Sala do Elevador
-Design da sala do elevador, que servirá como ponto de transição entre as fases.
+<div align="center">
+  <sub>Sala do Elevador</sub><br>
+  <img src="../assets/bgelevadorvar1.jpg" width="900px" 
+  alt="Sala do Elevador"><br>
+  <sup>Fonte: produzido pelos autores. Design da sala do elevador, que servirá como ponto de transição entre as fases. </sup>
+</div>
+
+<div align="center">
+  <sub>Recepção com NPC Vivita</sub><br>
+  <img src="../assets/Captura de tela 2025-03-13 204547.png" width="900px" 
+  alt="Recepção com NPC Vivita"><br>
+  <sup>Fonte: produzido pelos autores. Sala da recepção (1ª fase) com NPC interagível. </sup>
+</div>
+
 
 Esses avanços representam um passo importante em direção ao MVP final, e estamos confiantes de que as próximas sprints trarão ainda mais melhorias e refinamentos para o Skill Sprint.
 
