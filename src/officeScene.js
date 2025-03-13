@@ -288,39 +288,41 @@ class OfficeScene extends Phaser.Scene {
       // Verifica se o jogador está próximo da Vivita
       if (
         Math.abs(this.player.x - vivita.x) <= 50 &&
-        Math.abs(this.player.y - vivita.y) <= 50
+        Math.abs(this.player.y - vivita.y) <= 50 &&
+        !this.vivitaInteracted // Verifica se a interação já ocorreu
       ) {
         // Chama a função de interação com a vivita
         this.showVivitaInteraction();
+        this.vivitaInteracted = true; // Marca que a interação ocorreu
       }
     });
-    }
+  }
 
-    showVivitaInteraction() {
-      this.exclamation.setVisible(false); // Deixa a exclamação da vivita invisível
+  showVivitaInteraction() {
+    this.exclamation.setVisible(false); // Deixa a exclamação da vivita invisível
 
-      // Lista com as falas da vivita
-      var speechVivita = ['Olá! Você deve ser Fulano, né?', 
-                          'Fiquei sabendo que você quer mudar de carreira na Vivo.',
-                          'Vou te explicar o primeiro passo.', 
-                          'Primeiro, você precisa criar o seu currículo.',
-                          'Vá até o computador no escritório.',
-                          'Preencha seu currículo e depois entregue-o na sala do líder.',
-                          'Boa sorte!'];
+    // Lista com as falas da vivita
+    var speechVivita = ['Olá! Você deve ser Fulano, né?', 
+                        'Fiquei sabendo que você quer mudar de carreira na Vivo.',
+                        'Vou te explicar o primeiro passo.', 
+                        'Primeiro, você precisa criar o seu currículo.',
+                        'Vá até o computador no escritório.',
+                        'Preencha seu currículo e depois entregue-o na sala do líder.',
+                        'Boa sorte!'];
 
-      // Adiciona o balão da fala da vivita                    
-      const balaoTexto = this.add.image(width/1.55, height/4.8, 'balaoTexto');
+    // Adiciona o balão da fala da vivita                    
+    const balaoTexto = this.add.image(width/1.55, height/4.8, 'balaoTexto');
 
-      // Adiciona uma caixa de texto dentro do balão de texto
-      const text = this.add.text(width/1.68, height/7, speechVivita[0], {
+    // Adiciona uma caixa de texto dentro do balão de texto
+    const text = this.add.text(width/1.68, height/7, speechVivita[0], {
       fontSize: '16px',
       fill: '#000000',
       wordWrap: { width: balaoTexto.width - 20 }
-      });
+    });
 
-      // Lógica para alternar entre as falas
-      let currentSpeechIndex = 0;
-      this.input.keyboard.on('keydown-ENTER', () => { // As falas avançam apertando a tecla ENTER
+    // Lógica para alternar entre as falas
+    let currentSpeechIndex = 0;
+    this.input.keyboard.on('keydown-ENTER', () => { // As falas avançam apertando a tecla ENTER
       currentSpeechIndex++; // Soma 1 cada fez que uma fala passa
       if (currentSpeechIndex < speechVivita.length) { // Se a fala que está mostrando no momento estiver em uma posição menor do que o tamanho da lista, avança
         text.setText(speechVivita[currentSpeechIndex]); // Mostra a fala de acordo com a posição na lista
@@ -330,7 +332,7 @@ class OfficeScene extends Phaser.Scene {
 
         this.addIndicatorAndComputer(); // Chama a função que adiciona a exclamação no computador
       }
-      });
-    }
+    });
+  }
   }
 
