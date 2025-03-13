@@ -1,9 +1,10 @@
 <!doctype html>
-<html lang="en">  <!-- Declaração do tipo de documento e idioma -->
+<html lang="pt-br"> <!-- Declaração do tipo de documento e idioma -->
 
 <head>
   <meta charset="UTF-8" /> <!-- Define o conjunto de caracteres como UTF-8 -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"><!-- Configura a viewport para dispositivos móveis --> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Configura a viewport para dispositivos móveis -->
   <title>teste</title> <!-- Título da página exibido na aba do navegador -->
   <link rel="icon" href="../assets/favicon-32x32.png" type="image/x-icon" /> <!-- Adiciona o favicon -->
 </head>
@@ -17,11 +18,13 @@
   </script>
 
   <style>
-    body {
+    /* Definindo uma cor de fundo para o html  */
+    html {
+      background-color: rgb(47, 5, 47);
+      /* Centralizando o body */
       display: flex;
       justify-content: center;
       text-align: center;
-      vertical-align: center;
     }
   </style>
   <!-- Inclusão dos scripts do jogo -->
@@ -35,7 +38,7 @@
   <script src="elevadorScene.js"></script> <!-- Arquivo que gerencia o elevador do jogo -->
   <script src="curriculoScene.js"></script> <!-- Cena relacionada ao currículo do jogo -->
   <!-- <script src="gameplayTutorialScene.js"></script> Cena principal do jogo -->
-  
+
   <!-- O arquivo principal deve ser carregado por último -->
   <script src="game.js"></script> <!-- Arquivo principal que inicializa o jogo e gerencia as cenas -->
 </body>

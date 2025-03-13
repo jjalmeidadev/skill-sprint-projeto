@@ -1,27 +1,27 @@
 class OfficeScene extends Phaser.Scene {
-    constructor() {
-        // Chama o construtor da classe Phaser.Scene com a chave 'officeScene'
-        super({ key: 'officeScene' });
-       // this.currentBackground = 'background'; // Estado inicial
-        this.canMove = true; // Controla se o jogador pode se mover
-    }
+  constructor() {
+    // Chama o construtor da classe Phaser.Scene com a chave 'officeScene'
+    super({ key: 'officeScene' });
+   // this.currentBackground = 'background'; // Estado inicial
+    this.canMove = true; // Controla se o jogador pode se mover
+  }
 
   preload() {
     // Carrega as imagens e spritesheets necessárias para a cena
-
+    this.load.image('background', '../assets/mapaJogoVivo.png');
     this.load.spritesheet('player', '../assets/Player.png', { frameWidth: 32, frameHeight: 32 });
     this.load.image('telaComputador', '../assets/tela_computador.png');
     this.load.image('computador', '../assets/computador.png');
-    this.load.spritesheet('indicator', '../assets/spriteexclamação.png',{ frameWidth:254, frameHeight: 291 });
+    this.load.image('indicator', '../assets/Exclamação.png');
+
+    this.load.image('botaoElevOffice', '../assets/botaocimaelevador.png');
+    this.load.image('bgElevOffice', '../assets/bgelevadoroffice.png');
+    this.load.image('painelelev', '../assets/painelelevador.png');
 
     this.load.tilemapTiledJSON('escritorio', '../assets/mapaJogoVivo/mapaJogoVivo.json');
     this.load.image('decoracao', '../assets/mapaJogoVivo/decoracao.png');
     this.load.image('paredes', '../assets/mapaJogoVivo/paredes.png');
     this.load.image('personalizado_vivo', '../assets/mapaJogoVivo/personalizado_vivo.png');
-
-    this.load.image('botaoElevOffice', '../assets/botaocimaelevador.png');
-    this.load.image('bgElevOffice', '../assets/bgelevadoroffice.png');
-    this.load.image('painelelev', '../assets/painelelevador.png');
 
     this.load.image('vivita', '../assets/vivita.png');
     this.load.image('balaoTexto', '../assets/balaoTexto.png');
@@ -45,7 +45,7 @@ class OfficeScene extends Phaser.Scene {
             down: Phaser.Input.Keyboard.KeyCodes.S,
             left: Phaser.Input.Keyboard.KeyCodes.A,
             right: Phaser.Input.Keyboard.KeyCodes.D,
-            interagir: Phaser.Input.Keyboard.KeyCodes.E
+            interagir: Phaser.Input.Keyboard.KeyCodes.E,
         });
 
         const map = this.make.tilemap({ key: "escritorio", tileWidth: 25, tileHeight: 20});
@@ -93,7 +93,10 @@ class OfficeScene extends Phaser.Scene {
         this.physics.world.setBounds(0, 0, window.innerWidth, window.innerHeight);
 
         // Criar texto para coordenadas (debug)
-        this.coordText = this.add.text(20, 20, '', { fontSize: '16px', fill: '#ffffff' });
+        this.coordText = this.add.text(20, 20, "", {
+      fontSize: "16px",
+      fill: "#ffffff",
+    });
     }
 
   update() {
@@ -137,31 +140,27 @@ class OfficeScene extends Phaser.Scene {
     // Movimentação do player com WASD
     if (this.teclas.left.isDown) {
       this.player.setVelocityX(-velocidade);
-      this.player.anims.play('walk_left', true);
+      this.player.anims.play("walk_left", true);
       this.player.setFlipX(true); // Virar para a esquerda
       movendo = true;
-    }
-    else if (this.teclas.right.isDown) {
+    } else if (this.teclas.right.isDown) {
       this.player.setVelocityX(velocidade);
-      this.player.anims.play('walk_right', true);
+      this.player.anims.play("walk_right", true);
       this.player.setFlipX(false); // Manter normal para direita
       movendo = true;
-    }
-    else {
+    } else {
       this.player.setVelocityX(0);
     }
 
     if (this.teclas.up.isDown) {
       this.player.setVelocityY(-velocidade);
-      this.player.anims.play('walk_up', true);
+      this.player.anims.play("walk_up", true);
       movendo = true;
-    }
-    else if (this.teclas.down.isDown) {
+    } else if (this.teclas.down.isDown) {
       this.player.setVelocityY(velocidade);
-      this.player.anims.play('walk_down', true);
+      this.player.anims.play("walk_down", true);
       movendo = true;
-    }
-    else {
+    } else {
       this.player.setVelocityY(0);
     }
 
@@ -174,37 +173,37 @@ class OfficeScene extends Phaser.Scene {
     // Criar jogador
     this.player = this.physics.add.sprite(width - 405, height - 100, 'player');
     this.player.setScale(2.5);
-    this.player.setCollideWorldBounds(true);
+    //this.player.setCollideWorldBounds(true);
   }
 
   createPlayerAnimations() {
     // Animações do player
     this.anims.create({
-      key: 'walk_down',
-      frames: this.anims.generateFrameNumbers('player', { start: 0, end: 5 }),
+      key: "walk_down",
+      frames: this.anims.generateFrameNumbers("player", { start: 0, end: 5 }),
       frameRate: 10,
-      repeat: -1
+      repeat: -1,
     });
 
     this.anims.create({
-      key: 'walk_right',
-      frames: this.anims.generateFrameNumbers('player', { start: 6, end: 11 }),
+      key: "walk_right",
+      frames: this.anims.generateFrameNumbers("player", { start: 6, end: 11 }),
       frameRate: 10,
-      repeat: -1
+      repeat: -1,
     });
 
     this.anims.create({
-      key: 'walk_up',
-      frames: this.anims.generateFrameNumbers('player', { start: 12, end: 17 }),
+      key: "walk_up",
+      frames: this.anims.generateFrameNumbers("player", { start: 12, end: 17 }),
       frameRate: 10,
-      repeat: -1
+      repeat: -1,
     });
 
     this.anims.create({
-      key: 'walk_left',
-      frames: this.anims.generateFrameNumbers('player', { start: 6, end: 11 }),
+      key: "walk_left",
+      frames: this.anims.generateFrameNumbers("player", { start: 6, end: 11 }),
       frameRate: 10,
-      repeat: -1
+      repeat: -1,
     });
   }
 
@@ -249,16 +248,16 @@ class OfficeScene extends Phaser.Scene {
     this.computador.setFlipX(true);
 
     // Tornar o computador interativo
-    this.computador.on('pointerover', () => {
+    this.computador.on("pointerover", () => {
       this.computador.setTint(0xaaaaaa);
     });
 
-    this.computador.on('pointerout', () => {
+    this.computador.on("pointerout", () => {
       this.computador.clearTint();
     });
 
     // Adicionar evento de clique no computador
-    this.computador.on('pointerdown', () => {
+    this.computador.on("pointerdown", () => {
       this.showComputerScreen();
     });
   }
