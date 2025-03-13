@@ -605,6 +605,11 @@ Os casos de teste descritos a seguir foram elaborados para avaliar os diferentes
 2 | O jogo está rodando e o personagem pode se mover | Pressionar a seta | O personagem deve se mover
 3 | O jogo está na tela inicial|Clicar no botão "Jogar" |O jogo deve iniciar e levar o jogador para a cutscene
 4 |A tela do quiz está aberta	|	Selecionar uma das alternativas|A alternativa escolhida deve mudar de cor (verde se correta, vermelha se errada)
+5 |O jogo está na tela inicial|Clicar no botão "Créditos"|Aparecera uma tela mostrando o grupo responsavel pelo projeto
+6 |A cutscene se encerra|O jogo termina de carregar|Aparece o tutorial
+7 |O jogo foi iniciado|Aguardar a tela de nome aparecer|A caixa de texto para digitar o nome está visível
+8 |A caixa de texto está visível|Digitar um nome e confirmar|O nome digitado deve ser armazenado e utilizado no jogo
+9 |O jogador está próximo do NPC|Pressionar a tecla "E"|Um diálogo deve aparecer na tela iniciando a interação com o NPC|
 
 Através desses testes, foi possível identificar pontos de melhoria, ajustar comportamentos inesperados e assegurar que a experiência do jogador seja fluida e intuitiva.
 
