@@ -1190,8 +1190,8 @@ class CongratulationsSceneCurriculoVpEstrategia extends Phaser.Scene {
 
         // Botão de texto para voltar
         const botaoVoltar = this.add.rectangle(
-            width / 2,
-            height - 210,
+            this.sys.game.config.width / 2,
+            510,
             250,
             60,
             0xB600B9
@@ -1233,8 +1233,8 @@ class CongratulationsSceneCurriculoVpEstrategia extends Phaser.Scene {
 
         // Texto do botão
         this.add.text(
-            width / 2,
-            height - 210,
+            this.sys.game.config.width / 2,
+            510,
             'VOLTAR AO ESCRITÓRIO',
             {
                 fontSize: '22px',
@@ -1992,8 +1992,8 @@ class CongratulationsSceneCurriculoVpRelacoes extends Phaser.Scene {
 
         // Botão de texto para voltar
         const botaoVoltar = this.add.rectangle(
-            width / 2,
-            height - 210,
+            this.sys.game.config.width / 2,
+            510,
             250,
             60,
             0xB600B9
@@ -2035,8 +2035,8 @@ class CongratulationsSceneCurriculoVpRelacoes extends Phaser.Scene {
 
         // Texto do botão
         this.add.text(
-            width / 2,
-            height - 210,
+            this.sys.game.config.width / 2,
+            510,
             'VOLTAR AO ESCRITÓRIO',
             {
                 fontSize: '22px',
@@ -2393,8 +2393,8 @@ class CongratulationsSceneCurriculoVpTecnologia extends Phaser.Scene {
 
         // Botão de texto para voltar
         const botaoVoltar = this.add.rectangle(
-            width / 2,
-            height - 210,
+            this.sys.game.config.width / 2,
+            510,
             250,
             60,
             0xB600B9
@@ -2436,8 +2436,8 @@ class CongratulationsSceneCurriculoVpTecnologia extends Phaser.Scene {
 
         // Texto do botão
         this.add.text(
-            width / 2,
-            height - 210,
+            this.sys.game.config.width / 2,
+            510,
             'VOLTAR AO ESCRITÓRIO',
             {
                 fontSize: '22px',
