@@ -16,26 +16,18 @@ class OfficeScene extends Phaser.Scene {
     this.load.image('botaoElevOffice', '../assets/botaocimaelevador.png');
     this.load.image('bgElevOffice', '../assets/bgelevadoroffice.png');
     this.load.image('painelelev', '../assets/painelelevador.png');
+
     this.load.tilemapTiledJSON('escritorio', '../assets/mapaJogoVivo/mapaJogoVivo.json');
     this.load.image('decoracao', '../assets/mapaJogoVivo/decoracao.png');
     this.load.image('paredes', '../assets/mapaJogoVivo/paredes.png');
     this.load.image('personalizado_vivo', '../assets/mapaJogoVivo/personalizado_vivo.png');
+
+    this.load.image('vivita', '../assets/vivita.png');
+    this.load.image('balaoTexto', '../assets/balaoTexto.png');
   }
 
   create() {
     this.cameras.main.fadeIn(1000); // Transição suave
-
-    //cria a animação
-    this.anims.create({
-      key: "exclamando",
-      frames: this.anims.generateFrameNumbers("indicator", {
-        start: 0,
-        end: 1,
-      }),
-      //velocidade da animação
-      frameRate: 3,
-      repeat: -1,
-    });
 
     //cria a animação
     this.anims.create({
@@ -46,23 +38,23 @@ class OfficeScene extends Phaser.Scene {
       repeat: -1
     });
 
-      // Configuração do teclado (WASD + E para interação)
-      this.teclas = this.input.keyboard.addKeys({
-          up: Phaser.Input.Keyboard.KeyCodes.W,
-          down: Phaser.Input.Keyboard.KeyCodes.S,
-          left: Phaser.Input.Keyboard.KeyCodes.A,
-          right: Phaser.Input.Keyboard.KeyCodes.D,
-          interagir: Phaser.Input.Keyboard.KeyCodes.E,
-      });
+    // Configuração do teclado (WASD + E para interação)
+    this.teclas = this.input.keyboard.addKeys({
+        up: Phaser.Input.Keyboard.KeyCodes.W,
+        down: Phaser.Input.Keyboard.KeyCodes.S,
+        left: Phaser.Input.Keyboard.KeyCodes.A,
+        right: Phaser.Input.Keyboard.KeyCodes.D,
+        interagir: Phaser.Input.Keyboard.KeyCodes.E,
+    });
 
-      // Cria o tilemap e as camadas
-      const map = this.make.tilemap({ key: "escritorio", tileWidth: 25, tileHeight: 20});
+    // Cria o tilemap e as camadas
+    const map = this.make.tilemap({ key: "escritorio", tileWidth: 25, tileHeight: 20});
 
-      const tileset1 = map.addTilesetImage("decoracao");
-      const tileset2 = map.addTilesetImage("paredes");
-      const tileset3 = map.addTilesetImage("personalizado_vivo");
+    const tileset1 = map.addTilesetImage("decoracao");
+    const tileset2 = map.addTilesetImage("paredes");
+    const tileset3 = map.addTilesetImage("personalizado_vivo");
 
-    const offsetX = this.screenWidth - 1270;
+    const offsetX = width - 1270;
     const layer1 = map.createLayer("chao", tileset2, offsetX, 0).setScale(2.5);
     const layer2 = map.createLayer("chaoLider", tileset1, offsetX, 0).setScale(2.5);
     const layer3 = map.createLayer("tapetes", tileset3, offsetX, 0).setScale(2.5);
@@ -85,16 +77,15 @@ class OfficeScene extends Phaser.Scene {
     layer9.setCollisionByProperty({ collider: true });
 
 
-        // Cria a tela do computador, o computador e o indicador de exclamação
-        this.addVivita();
-        this.createComputer();
-        this.createPlayer();
-        this.createPlayerAnimations();
-        this.createButtonCima();
+    // Cria a tela do computador, o computador e o indicador de exclamação
+    this.addVivita();
+    this.createComputer();
+    this.createPlayer();
+    this.createPlayerAnimations();
+    this.createButtonCima();
 
     // Configura colisões entre o jogador e algumas camadas selecionadas
     this.physics.add.collider(this.player, layer5);
-    // this.physics.add.collider(this.player, layer6);
     this.physics.add.collider(this.player, layer7);
     this.physics.add.collider(this.player, layer8);
 
@@ -256,15 +247,15 @@ class OfficeScene extends Phaser.Scene {
     this.computador.setFlipX(true);
   }
   
-  addComputerAndIndicator() {
+  addIndicatorAndComputer() {
     // Criar indicator de exclamação sobre o computador
-    this.indicator = this.add.sprite(width - 1020, height - 120, 'indicator').setScale(0.2);
+    this.indicator = this.add.sprite(width - 1020, height - 150, 'indicator').setScale(0.2);
     this.indicator.play('exclamando'); // Inicia a animação
     this.indicatorActive = true;
 
-        // Criar o computador na posição original
-        this.computador = this.add.image(width - 1020, height - 100, 'computador').setScale(0.09).setInteractive();
-        this.computador.setFlipX(true);
+    // Criar o computador na posição original
+    this.computador = this.add.image(width - 1020, height - 100, 'computador').setScale(0.09).setInteractive();
+    this.computador.setFlipX(true);
 
     // Muda a cor do computador ao passar o mouse
     this.computador.on("pointerover", () => {
