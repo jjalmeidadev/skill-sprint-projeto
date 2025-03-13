@@ -123,8 +123,8 @@ class TutorialScene extends Phaser.Scene {
     }
 
     showDialog() {
-        const x = width / 2 - 200;
-        const y = height - 280;
+        const x = width / 2 - 100;
+        const y = height/1.2;
 
         if (this.currentLine === 0) {
             // Exibe o campo de entrada para o nome do jogador
