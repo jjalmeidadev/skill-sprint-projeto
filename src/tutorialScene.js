@@ -13,7 +13,10 @@ class TutorialScene extends Phaser.Scene {
         // Lista das falas condicionais baseadas na resposta do jogador
         this.perguntaCondicional = [
             "Vivinho: UAU! Que bom que você já sabe. Agora, quero te explicar uma coisa muito importante na sua jornada a partir de agora, o termo JOB ROTATION.",
-            "Vivinho: Sem problemas! Vou te explicar um conceito importante: o JOB ROTATION. Para isso vamos continuar a nossa conversa."
+            "Vivinho: Na Vivo, o termo JOB ROTATION se refere a uma estratégia de desenvolvimento profissional em que os colaboradores têm a oportunidade de atuar temporariamente em diferentes áreas da empresa.",
+            "Vivinho: O principal objetivo desse programa é ampliar a visão sistêmica do negócio, desenvolver novas habilidades e preparar os funcionários para futuras posições de liderança.",
+            "Vivinho: Por isso, irei te guiar para ser um líder na Vivo!"
+
         ];
 
         // Lista das falas de finalização do tutorial
@@ -172,55 +175,79 @@ class TutorialScene extends Phaser.Scene {
         // Destroi os botões após a escolha
         if (this.botaoSim) this.botaoSim.destroy();
         if (this.botaoNao) this.botaoNao.destroy();
-
+    
         this.botaoSim = null;
         this.botaoNao = null;
-
+    
         this.opcaoSelecionada = true; // Indica que uma opção foi escolhida
-
-        // Exibe a fala condicional baseada na escolha do jogador
-        this.dialogText.setText(this.perguntaCondicional[optionIndex]);
-
-        // Próxima vez que apertar ENTER, mostrará a imagem sobreposta
-        this.exibirImagem = true;
+    
+        if (optionIndex === 1) { // Se escolheu "Não"
+            this.currentCondicionalLine = 1; // Começa na primeira fala condicional
+            this.dialogText.setText(this.perguntaCondicional[this.currentCondicionalLine]); // Exibe a primeira fala
+        } else { // Se escolheu "Sim"
+            this.currentCondicionalLine = -1; // Evita o loop de diálogo condicional
+            this.dialogText.setText(this.perguntaCondicional[0]); // Mostra apenas a fala de índice 0
+            this.simSelecionado = true; // Marca que "Sim" foi escolhido
+            this.exibirImagem = false; // A imagem ainda não aparece, precisa de ENTER primeiro
+        }
     }
-
+    
     nextDialog() {
         if (this.currentLine === 0 && this.nome.value.trim() === "") {
-            // Se o nome não foi preenchido, não avança
-            return;
+            return; // Se o nome não foi preenchido, não avança
         }
-
+    
         if (this.currentLine === 0) {
-            // Salva o nome do jogador e esconde o campo de entrada
             playerName = this.nome.value.trim();
             this.nome.style.display = 'none';
         }
-
+    
         if (this.currentLine === 2 && !this.opcaoSelecionada) {
-            // Se uma opção não foi escolhida, não avança
+            return; // Se nenhuma opção foi selecionada, não avança
+        }
+    
+        // **Novo fluxo para "Sim"**: Primeiro ENTER exibe a imagem, segundo ENTER muda de cena
+        if (this.simSelecionado) {
+            if (!this.exibirImagem) {
+                this.dialogText.setText(this.finalizacao[0]); // Exibe fala final antes da troca de cena
+                this.sobreposicao.setAlpha(1); // Exibe a imagem sobreposta
+                this.exibirImagem = true; // Marca que a imagem foi exibida
+                return;
+            }
+            this.scene.start('officeScene'); // Segundo ENTER leva para a próxima cena
             return;
         }
-
-        // Se a imagem precisa ser mostrada, exibe e aguarda ENTER novamente
-        if (this.exibirImagem) {
+    
+        // Se o jogador escolheu "Não" e ainda há falas na lista condicional
+        if (this.opcaoSelecionada && this.currentCondicionalLine >= 0 && this.currentCondicionalLine < this.perguntaCondicional.length - 1) {
+            this.currentCondicionalLine++;
+            this.dialogText.setText(this.perguntaCondicional[this.currentCondicionalLine]);
+            return;
+        }
+    
+        // Se a última fala condicional foi exibida, mostra a imagem sobreposta
+        if (this.opcaoSelecionada && this.currentCondicionalLine === this.perguntaCondicional.length - 1) {
             this.dialogText.setText(this.finalizacao[0]);
-            this.sobreposicao.setAlpha(1); // Torna a imagem visível
-            this.exibirImagem = false; // Para não mostrar novamente
+            this.sobreposicao.setAlpha(1); // Exibe a imagem
+            this.exibirImagem = true;
+            this.currentCondicionalLine++; // Permite avanço após a imagem
             return;
         }
-
-        // Se a imagem já foi mostrada, agora pode mudar para a próxima cena
-        if (this.sobreposicao.alpha === 1) {
+    
+        // Se a imagem já foi mostrada e ENTER for pressionado novamente, troca de cena
+        if (this.exibirImagem && this.sobreposicao.alpha === 1) {
             this.scene.start('officeScene');
             return;
         }
-
-        this.currentLine++; // Avança para a próxima linha de diálogo
-
+    
+        // Avança o diálogo normal
+        this.currentLine++;
         if (this.currentLine < this.introducao.length) {
-            // Exibe a próxima fala
             this.showDialog();
         }
     }
+    
+    
+    
+    
 }
