@@ -275,7 +275,9 @@ class OfficeScene extends Phaser.Scene {
     // Mostrar a tela do computador
     this.indicator.destroy();
     this.scene.switch("curriculoScene");
+    this.salaLider();
   }
+
   addVivita() {
     // Adiciona a vivita no jogo
     var vivita = this.add.image(width/1.75, height/3.2, 'vivita').setScale(0.09);
@@ -340,6 +342,18 @@ class OfficeScene extends Phaser.Scene {
 
         this.addIndicatorAndComputer(); // Chama a função que adiciona a exclamação no computador
       }
+    });
+  }
+   
+  salaLider() {
+    // Adiciona a sprite da exclamação
+    this.exclamation = this.add.sprite(width - 1200, height - 500, 'indicator').setScale(0.2);
+    this.exclamation.play('exclamando'); // Inicia a animação
+    this.indicatorActive = true;
+
+    // Adiciona um overlap entre o player e a exclamation
+    this.physics.add.overlap(this.player, this.exclamation, () => {
+        this.scene.switch('salaLiderScene'); // Troca para a cena do escritório
     });
   }
 }
