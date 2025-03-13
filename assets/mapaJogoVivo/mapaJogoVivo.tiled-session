@@ -1,0 +1,47 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "C:/Users/Inteli/Downloads/mapaJogoVivo.tmx",
+    "expandedProjectPaths": [
+    ],
+    "file.lastUsedOpenFilter": "Todos os Ficheiros (*)",
+    "fileStates": {
+        "C:/Users/Inteli/Downloads/mapaJogoVivo.tmx": {
+            "scale": 2.49671875,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 192.05206833969586,
+                "y": 119.95744414544089
+            }
+        },
+        "C:/Users/Inteli/Downloads/mapaJogoVivo.tmx#Interiors_free_16x16": {
+            "scaleInDock": 1
+        },
+        "C:/Users/Inteli/Downloads/mapaJogoVivo.tmx#Room_Builder_free_16x16": {
+            "scaleInDock": 1
+        },
+        "C:/Users/Inteli/Downloads/mapaJogoVivo.tmx#pixil-frame-0 (3)": {
+            "scaleInDock": 1
+        }
+    },
+    "last.imagePath": "C:/Users/Inteli/Documents/mapaJogoVivo",
+    "map.lastUsedFormat": "json",
+    "map.tileHeight": 16,
+    "map.tileWidth": 16,
+    "map.width": 25,
+    "openFiles": [
+        "C:/Users/Inteli/Downloads/mapaJogoVivo.tmx"
+    ],
+    "project": "mapaJogoVivo.tiled-project",
+    "property.type": "bool",
+    "recentFiles": [
+        "C:/Users/Inteli/Downloads/mapaJogoVivo.tmx"
+    ],
+    "tileset.embedInMap": true,
+    "tileset.tileSize": {
+        "height": 16,
+        "width": 16
+    }
+}

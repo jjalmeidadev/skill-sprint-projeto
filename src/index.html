@@ -1,27 +1,43 @@
 <!doctype html>
-<html lang="pt-br">
+<html lang="en"> <!-- Declaração do tipo de documento e idioma -->
 
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8" /> <!-- Define o conjunto de caracteres como UTF-8 -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>teste</title>
-  <link rel="icon" href="../assets/favicon-32x32.png" type="image/x-icon" />
+  <!-- Configura a viewport para dispositivos móveis -->
+  <title>teste</title> <!-- Título da página exibido na aba do navegador -->
+  <link rel="icon" href="../assets/favicon-32x32.png" type="image/x-icon" /> <!-- Adiciona o favicon -->
 </head>
 
 <body>
-  <!-- Inclusão dos scripts do jogo na ordem correta -->
-  <script src="phaser.js"></script> <!-- Carrega a biblioteca Phaser -->
-  
-  <!-- Carregamento das cenas em ordem lógica -->
+  <script>
+    // Define as variáveis de largura e altura do jogo
+    var width = 1520;
+    var height = 753;
+  </script>
+
+  <style>
+    /* Definindo uma cor de fundo para o html  */
+    html {
+      background-color: rgb(47, 5, 47);
+      /* Centralizando o body */
+      display: flex;
+      justify-content: center;
+      text-align: center;
+    }
+  </style>
+  <!-- Inclusão dos scripts do jogo -->
+  <script src="phaser.js"></script> <!-- Carrega a biblioteca Phaser, necessária para criar o jogo -->
   <script src="initialScene.js"></script> <!-- Cena inicial do jogo -->
+  <script src="creditosScene.js"></script>
   <script src="cutScene.js"></script> <!-- Cena de corte (cutscene) do jogo -->
   <script src="gameplayTutorialScene.js"></script> <!-- Cena do tutorial de jogabilidade -->
   <script src="tutorialScene.js"></script> <!-- Cena do tutorial do jogo (ajustada) -->
   <script src="officeScene.js"></script> <!-- Cena do escritório (office) do jogo -->
   <script src="elevadorScene.js"></script> <!-- Arquivo que gerencia o elevador do jogo -->
   <script src="curriculoScene.js"></script> <!-- Cena relacionada ao currículo do jogo -->
-  <script src="gameplayTutorialScene.js"></script> <!-- Cena principal do jogo -->
-  
+  <!-- <script src="gameplayTutorialScene.js"></script> Cena principal do jogo -->
+
   <!-- O arquivo principal deve ser carregado por último -->
   <script src="game.js"></script> <!-- Arquivo principal que inicializa o jogo e gerencia as cenas -->
 </body>

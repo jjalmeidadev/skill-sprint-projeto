@@ -439,22 +439,20 @@ Imagem 2: Rascunho do esquema inicial do Diagrama de Fases do jogo (produzido pe
 
 ## 3.6. Regras do Jogo (Sprint 3)
 
-*Neste segmento, serão apresentadas as diretrizes que o personagem precisará seguir para avançar nas etapas do jogo, comumente chamadas de *"primary quests"* ou missões principais. Essas normas são essenciais para garantir que o jogador compreenda os desafios propostos e consiga progredir de maneira estruturada dentro da narrativa.*
+Neste segmento, serão apresentadas as diretrizes que o personagem precisará seguir para avançar nas etapas do jogo, comumente chamadas de *"primary quests"* ou missões principais. Essas normas são essenciais para garantir que o jogador compreenda os desafios propostos e consiga progredir de maneira estruturada dentro da narrativa.
 
-*A proposta central do jogo é retratar diferentes cenários dentro do amplo ecossistema da empresa Vivo, onde cada ambiente representa um cargo ou função específica. O(a) protagonista, que acaba de ingressar na companhia, passará por essas experiências por meio do conceito de **"job rotation"**, explorando e aprendendo sobre cada função conforme avança nos desafios.*
+A proposta central do jogo é retratar diferentes cenários dentro do amplo ecossistema da empresa Vivo, onde cada ambiente representa um cargo ou função específica. O(a) protagonista, que acaba de ingressar na companhia, passará por essas experiências por meio do conceito de **"job rotation"**, explorando e aprendendo sobre cada função conforme avança nos desafios.
 
-**Jornada do Jogador**
+**A jornada do jogador seguirá os seguintes passos:**
 
-*A jornada do jogador seguirá os seguintes passos:*
+1. **Chegada à empresa** – Após a cena introdutória (cutscene), o jogador inicia sua experiência na recepção;
+2. **Escolha do nome** – Antes de avançar, ele deverá definir o nome pelo qual será identificado ao longo do jogo;
+3. **Missões e desafios** – O progresso ocorrerá por meio do cumprimento das tarefas, que envolvem a realização de minijogos;
+4. **Aquisição de conhecimento** – Cada missão completada permitirá ao jogador obter informações essenciais para avançar;
+5. **Desbloqueio de novas fases** – O sucesso nos minijogos do **andar** em que se encontra desbloqueia a próxima fase, ampliando a experiência e incentivando a evolução dentro do jogo;
+6. **Movimentação entre as fases** – O jogador usará o elevador da empresa para se deslocar entre as fases e deverá interagir com NPCs para progredir em suas missões.
 
-1. **Chegada à empresa** – *Após a cena introdutória, o jogador inicia sua experiência na recepção.*
-2. **Escolha do nome** – *Antes de avançar, ele deverá definir o nome pelo qual será identificado ao longo do jogo.*
-3. **Missões e desafios** – *O progresso ocorrerá por meio do cumprimento das tarefas, que envolvem a realização de minijogos.*  
-4. **Aquisição de conhecimento** – *Cada missão completada permitirá ao jogador obter informações essenciais para avançar.*
-5. **Desbloqueio de novas fases** – *O sucesso nos minijogos do **andar** em que se encontra desbloqueia a próxima fase, ampliando a experiência e incentivando a evolução dentro do jogo.*
-6. **Movimentação entre as fases** – *O jogador usará o elevador da empresa para se deslocar entre as fases.*
-
-*Essa estrutura proporciona uma experiência imersiva e educativa, garantindo que o jogador compreenda e explore os diferentes papéis dentro da empresa de forma dinâmica e interativa.*
+Essa estrutura proporciona uma experiência imersiva e educativa, garantindo que o jogador compreenda e explore os diferentes papéis dentro da empresa de forma dinâmica e interativa.
 
 
 ## 3.7. Mecânicas do jogo (sprint 3)
@@ -462,10 +460,13 @@ Imagem 2: Rascunho do esquema inicial do Diagrama de Fases do jogo (produzido pe
 *Descreva aqui as formas de controle e interação que o jogador tem sobre o jogo: quais os comandos disponíveis, quais combinações de comandos, e quais as ações consequentes desses comandos. Utilize listas ou tabelas para organizar esta seção.*
 
 Os comandos disponíveis ao jogador, levando em conta que habita um ambiente 2D para a web, são:
-- Click de mouse ou touchpad para entrar no jogo, acessar créditos e configurações, além de pular a cutscene e selecionar botões.
-- Movimentação básica entre os eixos X e Y através das teclas WASD, que podem ser combinadas para movimentos diagonais.
-- Tecla ENTER para a interação com diálogos.
-- Tecla E para interação com objetos (computador onde se produz o currículo, por exemplo).
+
+\# | Mecânicas
+--- | ---
+01 | Click de mouse ou touchpad para entrar no jogo, acessar créditos e configurações, além de pular a cutscene e selecionar botões.
+02 | Movimentação básica entre os eixos X e Y através das teclas WASD, que podem ser combinadas para movimentos diagonais.
+03 | Tecla ENTER para a interação com diálogos.
+04 | Tecla E para interação com objetos (computador onde se produz o currículo, por exemplo).
 
 *Ex. Em um jogo de plataforma 2D para desktop, o jogador pode usar as teclas WASD para mecânicas de andar, mirar para cima, agachar, e as teclas JKL para atacar, correr, arremesar etc.*
 
@@ -537,7 +538,7 @@ Os casos de teste descritos a seguir foram elaborados para avaliar os diferentes
 1 | O personagem deve estar próximo a um computador interativo |Pressionar a tecla "E"	 | A tela do computador deve abrir no jogo
 2 | O jogo está rodando e o personagem pode se mover | Pressionar a seta | O personagem deve se mover
 3 | O jogo está na tela inicial|Clicar no botão "Jogar" |O jogo deve iniciar e levar o jogador para a cutscene
-
+4 |A tela do quiz está aberta	|	Selecionar uma das alternativas|A alternativa escolhida deve mudar de cor (verde se correta, vermelha se errada)
 ## 5.2. Testes de jogabilidade (playtests) (sprint 4)
 
 ### 5.2.1 Registros de testes
