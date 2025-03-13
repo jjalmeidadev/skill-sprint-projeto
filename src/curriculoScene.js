@@ -298,9 +298,6 @@ class CurriculoScene extends Phaser.Scene {
     }
 
     create() {
-        var width = 1520;
-        var height = 753;
-
         // Imagem de fundo sem distorção
         const fundo = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, 'primeiraTela');
 
@@ -309,7 +306,7 @@ class CurriculoScene extends Phaser.Scene {
 
         // Botão interativo com animação (fase Pessoas)
         const botaoVpPessoas = this.add.image(
-            width - 1020, height - 370,
+            400, 300,
             'botao01'
         ).setInteractive();
 
@@ -335,7 +332,7 @@ class CurriculoScene extends Phaser.Scene {
 
         // Botão interativo com animação (fase Estratégia)
         const botaoVpEstrategia = this.add.image(
-            width - 780, height - 370,
+            650, 300,
             'botao02'
         ).setInteractive();
 
@@ -361,7 +358,7 @@ class CurriculoScene extends Phaser.Scene {
 
         // Botão interativo com animação (fase Negócios)
         const botaoVpNegocios = this.add.image(
-            width - 500, height - 370,
+            900, 300,
             'botao03'
         ).setInteractive();
 
@@ -387,7 +384,7 @@ class CurriculoScene extends Phaser.Scene {
 
         // Botão interativo com animação (fase Relações)
         const botaoVpRelacoes = this.add.image(
-            510, height - 270,
+            510, 380,
             'botao04'
         ).setInteractive();
 
@@ -413,7 +410,7 @@ class CurriculoScene extends Phaser.Scene {
 
         // Botão interativo com animação (fase Tecnologia)
         const botaoVpTecnologia = this.add.image(
-            760, height - 270,
+            760, 380,
             'botao05'
         ).setInteractive();
 
