@@ -22,16 +22,13 @@ class OfficeScene extends Phaser.Scene {
     this.load.image('botaoElevOffice', '../assets/botaocimaelevador.png');
     this.load.image('bgElevOffice', '../assets/bgelevadoroffice.png');
     this.load.image('painelelev', '../assets/painelelevador.png');
+
+    this.load.image('vivita', '../assets/vivita.png');
+    this.load.image('balaoTexto', '../assets/balaoTexto.png');
   }
 
   create() {
     this.cameras.main.fadeIn(1000); // Transição suave
-    // Obtém as dimensões da tela
-    const screenWidth = this.sys.game.config.width;
-    const screenHeight = this.sys.game.config.height;
-    // Adiciona a imagem de fundo e ajusta seu tamanho para preencher a tela
-   // this.background = this.add.image(0, 0, 'background').setOrigin(0, 0);
-   // this.background.setDisplaySize(window.innerWidth, window.innerHeight);
 
     //cria a animação
     this.anims.create({
@@ -41,15 +38,6 @@ class OfficeScene extends Phaser.Scene {
       frameRate: 3,
       repeat: -1
     });
-
-
-    // Cria a tela do computador, o computador e o indicator de exclamação
-    this.createComputerScreen();
-    this.addComputerAndIndicator();
-    this.createPlayer();
-    this.createPlayerAnimations();
-    this.createButtonCima();
-
 
         // Configuração do teclado (WASD + E para interação)
         this.teclas = this.input.keyboard.addKeys({
@@ -89,8 +77,9 @@ class OfficeScene extends Phaser.Scene {
 
 
         // Cria a tela do computador, o computador e o indicador de exclamação
-        this.createComputerScreen();
-        this.addComputerAndIndicator();
+        this.addVivita();
+        this.createComputer();
+        //this.addIndicatorAndComputer();
         this.createPlayer();
         this.createPlayerAnimations();
         this.createButtonCima();
@@ -122,14 +111,14 @@ class OfficeScene extends Phaser.Scene {
     }
 
     // Esconder o indicator quando o jogador se aproximar do computador
-    if (
+    /*if (
       this.indicatorActive &&
       Math.abs(this.player.x - this.indicator.x) <= 30 &&
       Math.abs(this.player.y - this.indicator.y) <= 30
     ) {
       this.indicator.setVisible(false);
       this.indicatorActive = false;
-    }
+    }*/
 
     // Atualizar coordenadas na tela
     this.coordText.setText(
@@ -229,49 +218,45 @@ class OfficeScene extends Phaser.Scene {
     });
   }
 
-  createComputerScreen() {
-    // Criar tela do computador mas deixá-la invisível no início
-    this.telaComputador = this.add.image(0, 0, 'telaComputador').setOrigin(0, 0);
-    this.telaComputador.setDisplaySize(window.innerWidth, window.innerHeight);
-    this.telaComputador.setVisible(false);
-  }
-
   createButtonCima() {
-    // Adiciona o botão 'Cima' na posição especificada
-    this.bgelevoffice = this.add.image(0, 0, "bgElevOffice").setOrigin(0, 0);
-    this.bgelevoffice.setDisplaySize(window.innerWidth, window.innerHeight);
-    this.painelelev = this.add.image(510, 90, "painelelev").setOrigin(0, 0);
-    this.bgelevoffice.setVisible(false);
-    this.painelelev.setVisible(false);
-    // Adiciona o botão 'Ajustes' na posição especificada
-    const botaoCima = (this.botaoCima = this.add.image(680, 200, "botaoElevOffice"));
-    this.botaoCima.setInteractive(); // Torna o botão interativo (clicável)
-    this.botaoCima.setScale(1); // Ajusta o tamanho do botão
-    this.botaoCima.setVisible(false);
+      // Adiciona o botão 'Cima' na posição especificada
+      this.bgelevoffice = this.add.image(0, 0, "bgElevOffice").setOrigin(0, 0);
+      this.bgelevoffice.setDisplaySize(window.innerWidth, window.innerHeight);
+      this.painelelev = this.add.image(510, 90, "painelelev").setOrigin(0, 0);
+      this.bgelevoffice.setVisible(false);
+      this.painelelev.setVisible(false);
 
-    // Adiciona um objeto invisível para verificar a proximidade
-    this.proximidade = this.add.rectangle(1250, 40, 10, 10, 0xff0000, 0);
-    this.physics.add.existing(this.proximidade, true);
+      // Adiciona o botão 'Ajustes' na posição especificada
+      const botaoCima = (this.botaoCima = this.add.image(680, 200, "botaoElevOffice"));
+      this.botaoCima.setInteractive(); // Torna o botão interativo (clicável)
+      this.botaoCima.setScale(1); // Ajusta o tamanho do botão
+      this.botaoCima.setVisible(false);
 
-    botaoCima.on("pointerdown", () => {
-      this.scene.stop("officeScene");
-      this.scene.start('elevadorScene');
-    });
+      // Adiciona um objeto invisível para verificar a proximidade
+      this.proximidade = this.add.rectangle(1250, 40, 10, 10, 0xff0000, 0);
+      this.physics.add.existing(this.proximidade, true);
+
+      botaoCima.on("pointerdown", () => {
+        this.scene.stop("officeScene");
+        this.scene.start('elevadorScene');
+      });
+    }
+
+  createComputer() {
+    // Criar tela do computador mas deixá-la invisível no início
+    this.computador = this.add.image(width - 1020, height - 100, 'computador').setScale(0.09);
+    this.computador.setFlipX(true);
   }
 
-  addComputerAndIndicator() {
-    // Definir as posições do computador e do indicador
-    //const x = 340;
-    //const y = 367;
-
+  addIndicatorAndComputer() {
     // Criar indicator de exclamação sobre o computador
-    this.indicator = this.add.sprite(width - 1020, height - 120, 'indicator').setScale(0.2);
+    this.indicator = this.add.sprite(width - 1020, height - 150, 'indicator').setScale(0.2);
     this.indicator.play('exclamando'); // Inicia a animação
     this.indicatorActive = true;
 
-        // Criar o computador na posição original
-        this.computador = this.add.image(width - 1020, height - 100, 'computador').setScale(0.09).setInteractive();
-        this.computador.setFlipX(true);
+    // Criar o computador na posição original
+    this.computador = this.add.image(width - 1020, height - 100, 'computador').setScale(0.09).setInteractive();
+    this.computador.setFlipX(true);
 
     // Tornar o computador interativo
     this.computador.on('pointerover', () => {
@@ -292,4 +277,60 @@ class OfficeScene extends Phaser.Scene {
     // Mostrar a tela do computador
     this.scene.switch('curriculoScene');
   }
-}
+
+  addVivita() {
+    var vivita = this.add.image(width/1.75, height/3.2, 'vivita').setScale(0.09);
+
+    this.exclamation = this.add.sprite(width/1.75, height/4.6, 'indicator').setScale(0.2);
+    this.exclamation.play('exclamando'); // Inicia a animação
+    this.indicatorActive = true;
+
+    vivita.setInteractive();
+    vivita.on('pointerdown', () => {
+      this.showVivitaInteraction();
+    });
+
+    this.input.keyboard.on('keydown-E', () => {
+      if (
+      Math.abs(this.player.x - vivita.x) <= 50 &&
+      Math.abs(this.player.y - vivita.y) <= 50
+      ) {
+      this.showVivitaInteraction();
+      }
+    });
+    }
+
+    showVivitaInteraction() {
+      this.exclamation.setVisible(false);
+
+      var speechVivita = ['Ola! Eu sou a vivita e vou te ajudar na criação do seu currículo', 
+                          'Para isso você deve ir até o computador no escritório.', 
+                          'Nele você irá jogar um minigame para testar os conhecimentos.','Vamos nessa!'];
+
+      // Lógica para interação com a Vivita
+      console.log("Interagiu com a Vivita!");
+      const balaoTexto = this.add.image(width/1.55, height/4.8, 'balaoTexto');
+
+      // Adiciona uma caixa de texto dentro do balão de texto
+      const text = this.add.text(width/1.68, height/7, speechVivita[0], {
+      fontSize: '16px',
+      fill: '#000000',
+      wordWrap: { width: balaoTexto.width - 20 }
+      });
+
+      // Lógica para alternar entre as falas
+      let currentSpeechIndex = 0;
+      this.input.keyboard.on('keydown-ENTER', () => {
+      currentSpeechIndex++;
+      if (currentSpeechIndex < speechVivita.length) {
+        text.setText(speechVivita[currentSpeechIndex]);
+      } else {
+        balaoTexto.setVisible(false);
+        text.setVisible(false);
+
+        this.addIndicatorAndComputer();
+      }
+      });
+    }
+  }
+
