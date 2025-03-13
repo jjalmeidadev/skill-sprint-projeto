@@ -303,9 +303,13 @@ class OfficeScene extends Phaser.Scene {
     showVivitaInteraction() {
       this.exclamation.setVisible(false);
 
-      var speechVivita = ['Ola! Eu sou a vivita e vou te ajudar na criação do seu currículo', 
-                          'Para isso você deve ir até o computador no escritório.', 
-                          'Nele você irá jogar um minigame para testar os conhecimentos.','Vamos nessa!'];
+      var speechVivita = ['Olá! Você deve ser Fulano, né?', 
+                          'Fiquei sabendo que você quer mudar de carreira na Vivo.',
+                          'Vou te explicar o primeiro passo.', 
+                          'Primeiro, você precisa criar o seu currículo.',
+                          'Vá até o computador no escritório.',
+                          'Preencha seu currículo e depois entregue-o na sala do líder.',
+                          'Boa sorte!'];
 
       // Lógica para interação com a Vivita
       console.log("Interagiu com a Vivita!");

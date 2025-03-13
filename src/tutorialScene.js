@@ -22,7 +22,7 @@ class TutorialScene extends Phaser.Scene {
         ];
 
         this.currentLine = 0; // Índice da fala atual
-        this.playerName = ""; // Nome do jogador
+        //this.playerName = ""; // Nome do jogador
         this.opcaoSelecionada = false; // Indica se uma opção foi escolhida
         this.exibirImagem = false; // Indica se a imagem sobreposta deve aparecer
     }
@@ -136,9 +136,9 @@ class TutorialScene extends Phaser.Scene {
             this.nome.style.display = 'none';
         }
 
-        if (this.currentLine === 1 && this.playerName) {
+        if (this.currentLine === 1 && playerName) {
             // Exibe a fala de boas-vindas com o nome do jogador
-            this.dialogText.setText(`Prazer em te conhecer, ${this.playerName}! Eu sou o Vivinho!`);
+            this.dialogText.setText(`Prazer em te conhecer, ${playerName}! Eu sou o Vivinho!`);
         } else if (this.currentLine === 2) {
             // Exibe a fala e cria os botões de escolha
             this.dialogText.setText(this.introducao[this.currentLine]);
@@ -193,7 +193,7 @@ class TutorialScene extends Phaser.Scene {
 
         if (this.currentLine === 0) {
             // Salva o nome do jogador e esconde o campo de entrada
-            this.playerName = this.nome.value.trim();
+            playerName = this.nome.value.trim();
             this.nome.style.display = 'none';
         }
 
