@@ -335,7 +335,7 @@ class CurriculoScene extends Phaser.Scene {
 
         // Botão interativo com animação (fase Estratégia)
         const botaoVpEstrategia = this.add.image(
-            width - 780, height - 370,
+            width - 755, height - 370,
             'botao02'
         ).setInteractive();
 
@@ -387,7 +387,7 @@ class CurriculoScene extends Phaser.Scene {
 
         // Botão interativo com animação (fase Relações)
         const botaoVpRelacoes = this.add.image(
-            510, height - 270,
+            width - 1020, height - 270,
             'botao04'
         ).setInteractive();
 
@@ -413,7 +413,7 @@ class CurriculoScene extends Phaser.Scene {
 
         // Botão interativo com animação (fase Tecnologia)
         const botaoVpTecnologia = this.add.image(
-            760, height - 270,
+            width - 755, height - 270,
             'botao05'
         ).setInteractive();
 
@@ -1190,8 +1190,8 @@ class CongratulationsSceneCurriculoVpEstrategia extends Phaser.Scene {
 
         // Botão de texto para voltar
         const botaoVoltar = this.add.rectangle(
-            this.sys.game.config.width / 2,
-            510,
+            width / 2,
+            height - 210,
             250,
             60,
             0xB600B9
@@ -1233,8 +1233,8 @@ class CongratulationsSceneCurriculoVpEstrategia extends Phaser.Scene {
 
         // Texto do botão
         this.add.text(
-            this.sys.game.config.width / 2,
-            510,
+            width / 2,
+            height - 210,
             'VOLTAR AO ESCRITÓRIO',
             {
                 fontSize: '22px',
@@ -1992,8 +1992,8 @@ class CongratulationsSceneCurriculoVpRelacoes extends Phaser.Scene {
 
         // Botão de texto para voltar
         const botaoVoltar = this.add.rectangle(
-            this.sys.game.config.width / 2,
-            510,
+            width / 2,
+            height - 210,
             250,
             60,
             0xB600B9
@@ -2035,8 +2035,8 @@ class CongratulationsSceneCurriculoVpRelacoes extends Phaser.Scene {
 
         // Texto do botão
         this.add.text(
-            this.sys.game.config.width / 2,
-            510,
+            width / 2,
+            height - 210,
             'VOLTAR AO ESCRITÓRIO',
             {
                 fontSize: '22px',
@@ -2393,8 +2393,8 @@ class CongratulationsSceneCurriculoVpTecnologia extends Phaser.Scene {
 
         // Botão de texto para voltar
         const botaoVoltar = this.add.rectangle(
-            this.sys.game.config.width / 2,
-            510,
+            width / 2,
+            height - 210,
             250,
             60,
             0xB600B9
@@ -2436,8 +2436,8 @@ class CongratulationsSceneCurriculoVpTecnologia extends Phaser.Scene {
 
         // Texto do botão
         this.add.text(
-            this.sys.game.config.width / 2,
-            510,
+            width / 2,
+            height - 210,
             'VOLTAR AO ESCRITÓRIO',
             {
                 fontSize: '22px',
