@@ -594,7 +594,7 @@ Os casos de teste descritos a seguir foram elaborados para avaliar os diferentes
 7 |O jogo foi iniciado|Aguardar a tela de nome aparecer|A caixa de texto para digitar o nome está visível
 8 |A caixa de texto está visível|Digitar um nome e confirmar|O nome digitado deve ser armazenado e utilizado no jogo
 9 |O jogador está próximo do NPC|Pressionar a tecla "E"|Um diálogo deve aparecer na tela iniciando a interação com o NPC|
-    Através desses testes, foi possível identificar pontos de melhoria, ajustar comportamentos inesperados e assegurar que a experiência do jogador seja fluida e intuitiva.
+Através desses testes, foi possível identificar pontos de melhoria, ajustar comportamentos inesperados e assegurar que a experiência do jogador seja fluida e intuitiva.
 
 No futuro, planejamos expandir os casos de teste para cobrir novas funcionalidades e fases, garantindo que o Skill Sprint continue evoluindo e oferecendo uma experiência cada vez mais envolvente e alinhada com os objetivos de aprendizado e desenvolvimento profissional propostos.
 
