@@ -5,6 +5,7 @@ const config = {
     width: width, // Largura do jogo igual à largura da janela do navegador
     height: height, // Altura do jogo igual à altura da janela do navegador
     pixelArt: true,
+    backgroundColor: 0x2f052f,
     scale: {
       mode: Phaser.Scale.FIT,  // Mantém a proporção e ajusta o jogo à tela sem cortar
       width: width, // Mantém a largura fixa

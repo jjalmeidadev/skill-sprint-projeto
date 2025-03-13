@@ -43,14 +43,6 @@ class OfficeScene extends Phaser.Scene {
     });
 
 
-    // Cria a tela do computador, o computador e o indicator de exclamação
-    this.createComputerScreen();
-    this.addComputerAndIndicator();
-    this.createPlayer();
-    this.createPlayerAnimations();
-    this.createButtonCima();
-
-
         // Configuração do teclado (WASD + E para interação)
         this.teclas = this.input.keyboard.addKeys({
             up: Phaser.Input.Keyboard.KeyCodes.W,
@@ -195,7 +187,7 @@ class OfficeScene extends Phaser.Scene {
     // Criar jogador
     this.player = this.physics.add.sprite(width - 405, height - 100, 'player');
     this.player.setScale(2.5);
-    this.player.setCollideWorldBounds(true);
+    //this.player.setCollideWorldBounds(true);
   }
 
   createPlayerAnimations() {
@@ -258,6 +250,7 @@ class OfficeScene extends Phaser.Scene {
       this.scene.start('elevadorScene');
     });
   }
+
 
   addComputerAndIndicator() {
     // Definir as posições do computador e do indicador
