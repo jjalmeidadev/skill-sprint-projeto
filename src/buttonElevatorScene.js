@@ -13,7 +13,7 @@ class buttonElevatorScene extends Phaser.Scene {
     create() {
         // Adiciona o fundo e o painel do elevador
         this.bgelevoffice = this.add.image(width / 2, height / 2, "bgElevOffice");
-        this.painelelev = this.add.image(width / 2, height / 2, "elev");
+        this.painelelev = this.add.image(width / 2, height / 2, "displayelev");
 
         // Adiciona o botão e configura para ser interativo
         this.buttonUP = this.add.image(width / 2, height / 2 + 100, "buttonElevOffice"); 
