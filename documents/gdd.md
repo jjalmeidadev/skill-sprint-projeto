@@ -414,18 +414,26 @@ Pensamos em customizar as fases de acordo com elementos que remetam às Vice-Pre
   <sup>Fonte: produzido pelos autores.</sup>
 </div>
 
+<div align="center">
+  <sub>Fase da VP de Estratégia com um minigame sobre planejamento de carreira</sub><br>
+  <img src="https://github.com/user-attachments/assets/80a7b560-411e-4ce1-91ba-c7be7e025af0" width="900px" 
+  alt="VP Estratégia"><br>
+  <sup>Fonte: produzido pelos autores.</sup>
+</div>
 
-![conceptVPEstrategia](https://github.com/user-attachments/assets/80a7b560-411e-4ce1-91ba-c7be7e025af0)
+<div align="center">
+  <sub>Fase da VP de Relações, onde acontecerá um jantar com todos os gerentes da Vivo, voltado para resolver dialetos de desempenho (feedback)</sub><br>
+  <img src="https://github.com/user-attachments/assets/d2312978-bfa4-4aec-9647-24f86fb7b6d3" width="900px" 
+  alt="VP Relações"><br>
+  <sup>Fonte: produzido pelos autores.</sup>
+</div>
 
-Figura 7: fase da VP de Estratégia com um minigame sobre planejamento de carreira.
-
-![conceptVPRelacoes](https://github.com/user-attachments/assets/d2312978-bfa4-4aec-9647-24f86fb7b6d3)
-
-Figura 8: fase da VP de Relações, onde acontecerá um jantar com todos os gerentes da Vivo, voltado para resolver dialetos de desempenho (feedback).
-
-![conceptVPTecnologia](https://github.com/user-attachments/assets/8b9b8a4f-b446-4103-98f2-fd6ff500a6e5)
-
-Figura 9: fase da VP de Tecnologia, onde o usuário irá aprender sobre upskilling e reskilling (aprimoramento de habilidades).  
+<div align="center">
+  <sub>Fase da VP de Tecnologia, onde o usuário irá aprender sobre upskilling e reskilling (aprimoramento de habilidades)</sub><br>
+  <img src="https://github.com/user-attachments/assets/8b9b8a4f-b446-4103-98f2-fd6ff500a6e5" width="900px" 
+  alt="VP Tecnologia"><br>
+  <sup>Fonte: produzido pelos autores.</sup>
+</div> 
 
 ### 3.3.5. Trilha sonora (sprint 4)
 
