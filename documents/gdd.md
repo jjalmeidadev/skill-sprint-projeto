@@ -537,6 +537,10 @@ Na sprint planning, definimos uma série de metas para esta etapa, das quais des
 
 **Design da Sala do Elevador:** Criamos o ambiente do elevador, que servirá como ponto de transição entre as fases. Esse espaço foi projetado para ser intuitivo e funcional, permitindo que o jogador navegue entre os diferentes andares que representam as Vice-Presidências da Vivo.
 
+**Sala da Líder:** Criamos a cena da sala da líder, onde o jogador entregará seu currículo para feedback. No momento, planejamos implementar a líder (NPC) na próxima sprint. No entrega dessa sprint, colocamos a Vivita como NPC.
+
+**HUDs**: Heads-Up Displays (em português, "Mostradores de Dados no Campo de Visão"), são sistemas de exibição de informações que permitem ao usuário visualizar dados sem precisar desviar o olhar de sua linha de visão principal. Nós implementamos alguns no nosso mapa, em especial na tela da recepção. Planejamos explorar mais essa funcionalidade para fornecer um maior poder de tomada de decisão, engajando o jogador a sempre entender o que ele está fazendo e o que ele precisará fazer no jogo (as missões). Nessa sprint 3, o HUD que desenvolvemos foi uma exclamação vermelha. Ela sinaliza os objetos interagíveis e as próximas missões do jogador.
+
 **Regras e Mecânicas no GDD:** Preenchemos as seções do Game Design Document (GDD) relacionadas às regras e mecânicas do jogo. Essa documentação foi essencial para aprimorar nosso entendimento sobre o design do jogo e garantir que a experiência do jogador esteja alinhada com os objetivos propostos.
 
 **Atualização do Readme:** O repositório do projeto foi atualizado com um tutorial de acesso ao jogo e um histórico de versões. Essas informações são fundamentais para facilitar o uso do código aberto e permitir que outros desenvolvedores contribuam ou entendam o progresso do projeto.
@@ -562,7 +566,7 @@ Abaixo, estão as principais telas desenvolvidas nesta sprint:
   <sub>Minigame para Construção do Currículo</sub><br>
   <img src="../assets/gdd_curriculo.png" width="900px" 
   alt="Minigame Currículo"><br>
-  <sup>Fonte: produzido pelos autores. Minigame de criação do currículo, onde o jogador responde perguntas para montar seu perfil profissional. </sup>
+  <sup>Fonte: produzido pelos autores. Minigame (localizado na cena do escritório) de criação do currículo, onde o jogador responde perguntas para montar seu perfil profissional. </sup>
 </div>
 
 <div align="center">
@@ -576,9 +580,22 @@ Abaixo, estão as principais telas desenvolvidas nesta sprint:
   <sub>Recepção com NPC Vivita</sub><br>
   <img src="../assets/Captura de tela 2025-03-13 204547.png" width="900px" 
   alt="Recepção com NPC Vivita"><br>
-  <sup>Fonte: produzido pelos autores. Sala da recepção (1ª fase) com NPC interagível. </sup>
+  <sup>Fonte: produzido pelos autores. Sala da recepção (1ª fase) com NPC interagível. É possível enxergar nossa HUD acima da Vivita. </sup>
 </div>
 
+<div align="center">
+  <sub>Zoom na HUD desenvolvida</sub><br>
+  <img src="../assets/hud.png" width="900px" 
+  alt="HUD"><br>
+  <sup>Fonte: produzido pelos autores. HUD indicando que o jogador deve interagir com o NPC. </sup>
+</div>
+
+<div align="center">
+  <sub>Sala da Líder</sub><br>
+  <img src="../assets/lider.png" width="900px" 
+  alt="Sala da Líder"><br>
+  <sup>Fonte: produzido pelos autores. Sala de entrega do currículo produzido através do minigame da recepção. </sup>
+</div>
 
 Esses avanços representam um passo importante em direção ao MVP final, e estamos confiantes de que as próximas sprints trarão ainda mais melhorias e refinamentos para o Skill Sprint.
 
