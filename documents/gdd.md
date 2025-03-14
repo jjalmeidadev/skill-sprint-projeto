@@ -67,8 +67,12 @@ Alta. As principais concorrentes da Vivo são Claro, TIM, e operadoras regionais
 
 A análise pode ser observada na imagem a seguir:
 
-![5 FORÇAS](https://github.com/user-attachments/assets/336a1a10-0e58-4e68-a42a-e48d542db44b)
-Fonte: Gráfico 5 forças de porter (produzido pelo autor) 
+<div align="Gráfico 5 forças de Porter">
+  <sub>Gráfico 5 forças de Porter</sub><br>
+  <img src="https://github.com/user-attachments/assets/336a1a10-0e58-4e68-a42a-e48d542db44b" width="900px" 
+  alt="Gráfico 5 forças de Porter"><br>
+  <sup>Fonte: profuzido pelo autor.</sup>
+</div>
 
 
 ### 1.1.2. Análise SWOT (sprint 2)
@@ -77,8 +81,12 @@ A análise SWOT [12] é uma ferramenta estratégica usada para avaliar os pontos
 
 A Vivo, líder de mercado no Brasil, destaca-se pela forte presença em telefonia móvel, internet fixa (fibra óptica) e inovação com 5G. Sua dependência de grandes investimentos em infraestrutura e a intensa concorrência de operadoras como Claro e TIM representam fraquezas. Entretanto, as oportunidades incluem a expansão do 5G, IoT e a integração com fintechs, além de soluções digitais para empresas. As ameaças vêm da saturação do mercado móvel e de mudanças regulatórias. A Vivo precisa manter sua liderança diante de uma concorrência crescente e exigente, como é apresentado no esquema abaixo.
 
-![SWOT](https://github.com/user-attachments/assets/5d960390-b6ab-4ffc-a930-d2a29dda43d2)
-Fonte: Análise SWOT (produzido pelo autor) 
+<div align="Análise SWOT">
+  <sub>Gráfico 5 forças de Porter</sub><br>
+  <img src="https://github.com/user-attachments/assets/5d960390-b6ab-4ffc-a930-d2a29dda43d2" width="900px" 
+  alt="Gráfico Análise SWOT"><br>
+  <sup>Fonte: profuzido pelo autor.</sup>
+</div>
 
 ### 1.1.3. Missão / Visão / Valores (sprint 2)
 
@@ -274,9 +282,13 @@ Nesta seção, vamos explorar os personagens que habitam o universo do nosso jog
 
 O **Skill Sprint** conta com um jogador principal chamado **Skrill** que será controlado pelo colaborador da Vivo pelas teclas WASD e utilizará a tecla E pra interagir com objetos/personagens durante a jornada do jogo. Existe também o Vivinho, que é um personagem com o como objetivo de guiar o usuário durante as fases e ensiná-lo a realizar os cases. A Vivita é uma NPC que fica na recepção e orienta o colaborador a realizar a primeira tarefa, que é criar um currículo. Ela será responsável por introduzir o usuário e informar qual o primeiro passo a ser dado para começar a jornada de Job Rotation. Todos os NPCs serão desenhados com o intuito de trazer diversidade, remetento aos valores da Vivo. Planejamos representar diferentes grupos étnicos, a comunidade LGBTQIA+, pessoas negras, mulheres em cargos de liderança e também pessoas com necessidades especiais.
 
-<img src="https://github.com/user-attachments/assets/34d6588a-ba21-490a-a5b2-a8f3d7ba48a4" width="300"/>
+<div align="center">
+  <sub>Skrill, jogador principal</sub><br>
+  <img src="caminho" width="900px" 
+  alt="Skrill, jogador principal"><br>
+  <sup>Fonte: produzido pelos autores.</sup>
+</div>
 
-Fonte: Skrill, jogador principal (elaborado pelo autor)
 
 ### 3.2.2. Non-Playable Characters (NPC)
 
@@ -290,13 +302,19 @@ Até o presente momento de desenvolvimento, idealizamos 2 NPCs: o Vivinho, a Viv
   
 - Todos os NPCs serão desenhados com o intuito de trazer diversidade para o jogo, representando diferentes grupos étnicos, a comunidade LGBTQIA+ e pessoas com necessidades especiais.
 
-![Image](https://github.com/user-attachments/assets/50594d55-2807-4a2d-8dd0-89d618be81c5)
+<div align="center">
+  <sub>Vivinho</sub><br>
+  <img src="https://github.com/user-attachments/assets/50594d55-2807-4a2d-8dd0-89d618be81c5" width="900px" 
+  alt="Vivinho"><br>
+  <sup>Fonte: produzido pelos autores.</sup>
+</div>
 
-Imagem 1: Vivinho (Vivo)
-
-<img src="https://github.com/user-attachments/assets/d1ada40a-0ed9-4092-b54a-d63624349d15" width="300"/>
-
-Imagem 2: Vivita (elaborado pelo autor)
+<div align="center">
+  <sub>Vivita</sub><br>
+  <img src="https://github.com/user-attachments/assets/d1ada40a-0ed9-4092-b54a-d63624349d15" width="900px" 
+  alt="Vivita"><br>
+  <sup>Fonte: produzido pelos autores.</sup>
+</div>
 
 ### 3.2.3. Diversidade e Representatividade dos Personagens
 
@@ -304,9 +322,12 @@ No momento inicial de desenvolvimento do jogo, planejamos implementar um só per
 
 Este plano se alinha com o foco da Vivo em formar um coletivo de colaboradores diversos, de maneira à fornecer oportunidades aos mais variados grupos em aspectos como desenvolvimento corporativo e atuação na sociedade através de seus amplos setores. Portanto, configura um fator essencial a ser trabalhado a fim de retratar a composição da empresa em um jogo.
 
-<img width="474" alt="Captura de tela 2025-02-27 205332" src="https://github.com/user-attachments/assets/027ffa1e-1ea7-4f6b-a7d4-dafd86bf7e82" />
-
-Fonte: Dados de diversidade na Vivo. Material Onboarding Executivo - Vivo, Inteli (fev/2025).
+<div align="center">
+  <sub>Dados de diversidade na Vivo</sub><br>
+  <img src="https://github.com/user-attachments/assets/027ffa1e-1ea7-4f6b-a7d4-dafd86bf7e82" width="900px" 
+  alt="Dados de diversidade na Vivo"><br>
+  <sup>Fonte: Material Onboarding Executivo - Vivo, Inteli (fev/2025).</sup>
+</div>
 
 O impacto proveniente de tal atenção ao design será o de possibilitar o sentimento de pertencimento para os profissionais da Vivo com a gameplay. Isso permite que diferentes grupos se sintam reconhecidos, o que pode aumentar o engajamento e a identificação dos jogadores com o jogo. Além disso, contribui para a quebra de estereótipos e a construção de um ambiente mais acolhedor, respeitoso e enriquecedor, tanto para os usuários quanto para a indústria de jogos como um todo.
 
@@ -320,10 +341,13 @@ O jogo conta com 6 fases. Cada fase ensina sobre uma etapa de candidatura em pro
 
 
  - 1° Nível: Recepção. Fase inicial que contém uma recepcionista (Vivita), uma sala de computadores em que o usuário irá realizar a criação do currículo. Na sala da líder, o coladorador vai entregar o currículo criado. Assim, ele será encaminhado para o elevador onde terá acesso às outras fases.
- - 
-   ![Image](https://github.com/user-attachments/assets/9313ccf8-1659-4512-9d6f-0786efb2f97f)
 
- Fonte: Fase 1 (elaborado pelos autores)
+<div align="center">
+  <sub>Recepção - Fase 1 do jogo</sub><br>
+  <img src="https://github.com/user-attachments/assets/9313ccf8-1659-4512-9d6f-0786efb2f97f" width="900px" 
+  alt="Dados de diversidade na Vivo"><br>
+  <sup>Fonte: elaborado pelos autores.</sup>
+</div>
  
  - 2° Nível: VP de Pessoas. Um mapa temático da VP de Pessoas que tem como objetivo desenvolver as habilidades dos colaboradores para dinâmicas de entrevistas com conteúdos como perguntas e simulações.
 
@@ -341,25 +365,33 @@ O personagem irá navegar pelo mundo começando pela recepção. Nela, ele irá 
 
 ### 3.3.3. Condições climáticas e temporais (sprints 2 e 3)
 
-*\<opcional\> Descreva diferentes condições de clima que podem afetar o mundo e as fases, se aplicável*
-
-*Caso seja relevante, descreva como o tempo passa, se ele é um fator limitante ao jogo (ex. contagem de tempo para terminar uma fase)*
+Não se aplica. O jogo não inclui mecânicas ou sistemas relacionados a mudanças climáticas (como chuva, neve, tempestades) ou variações temporais (como ciclos de dia e noite). O foco do design está em ser um **serious game** de ensino sobre **job rotation** na Vivo e em gerar a facilitação de entendimento sobre o processo seletivo da empresa. A adição de elementos climáticos ou temporais não contribuiria para a experiência central que buscamos oferecer ao jogador.
 
 ### 3.3.4. Concept Art (sprint 2)
+
 Concept art é uma ilustração usada para visualizar ideias, cenários, personagens e objetos. Ela serve para ajudar a a produção final do que está sendo desenvolvido. Na produção do nosso jogo,  utilizamos a concept art para esboçarmos as cenas do Sprint Skill como uma ideia inicial, podendo ser aprimorada ao longo do desenvolvimento.  
 Pensamos em customizar as fases de acordo com elementos que remetam às Vice-Presidências da Vivo, pensando em fazer um ambiente que envolva o colaborador e ele possa se sentir imerso no jogo. De forma que, ao entrar no nível, por meio do environmental storytelling, ele possa compreender em que diretoria se encontra. Com isso, desenhamos os nossos mapas voltados para o desafio que o usuário vai ter que realizar em cada etapa para poder desenvolver as habilidades propostas no jogo, que vão ajudá-lo e incentivá-lo a realizar a Job Rotation dentro da Vivo.
 
-![conceptRecepcao](https://github.com/user-attachments/assets/16844f63-7d26-41a3-8559-4d1e53c3bb60)  
+<div align="center">
+  <sub>Concept Art da Recepção, onde o usuário nasce, conversa com a Vivita, cria o currículo e fala com a líder</sub><br>
+  <img src="https://github.com/user-attachments/assets/16844f63-7d26-41a3-8559-4d1e53c3bb60" width="900px" 
+  alt="Concept Art Recepção"><br>
+  <sup>Fonte: produzido pelos autores.</sup>
+</div>
 
-Figura 1: mapa da recepção onde o usuário nasce, conversa com a Vivita, cria o currículo e fala com a líder.  
+<div align="center">
+  <sub>Tela onde o usuário criará o currículo após falar com a Vivita.</sub><br>
+  <img src="https://github.com/user-attachments/assets/16844f63-7d26-41a3-8559-4d1e53c3bb60" width="900px" 
+  alt="Tela onde o usuário criará o currículo após falar com a Vivita."><br>
+  <sup>Fonte: produzido pelos autores.</sup>
+</div>
 
-![conceptCurriculo](https://github.com/user-attachments/assets/8f9eea0b-78f7-47fa-b4e2-a06ef6b64347)
-
-Figura 2: tela onde o usuário criará o currículo após falar com a Vivita.
-
-![salaLider](https://github.com/user-attachments/assets/ccfba3a5-06d7-4712-88c4-4e5c17bbcf96)
-
-Figura 3: mapa da sala da líder, onde o usuário poderá entrar após fazer o currículo e entregá-lo para a líder.
+<div align="center">
+  <sub>Mapa da sala da líder, onde o usuário poderá entrar após fazer seu currículo</sub><br>
+  <img src="https://github.com/user-attachments/assets/ccfba3a5-06d7-4712-88c4-4e5c17bbcf96" width="900px" 
+  alt="Tela onde o usuário entregará o currículo."><br>
+  <sup>Fonte: produzido pelos autores.</sup>
+</div>
 
 ![conceptElevador](https://github.com/user-attachments/assets/bbef2db1-d93e-46b4-b963-df6272c6f82a)
 
