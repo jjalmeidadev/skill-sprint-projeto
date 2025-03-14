@@ -243,16 +243,18 @@ class OfficeScene extends Phaser.Scene {
       this.scene.switch('buttonElevatorScene'); // Troca para a cena do escritório
     });
   }
+
+  createComputer() {
+    // Criar o computador na posição original
+    this.computador = this.add.image(width - 1020, height - 100, 'computador').setScale(0.09).setInteractive();
+    this.computador.setFlipX(true);
+  }
     
 
-  addComputerAndIndicator() {
-    // Cria o indicador (exclamação) acima do computador e inicia sua animação
-    this.indicator = this.add.sprite(
-      this.screenWidth - 1020,
-      this.screenHeight - 120,
-      'indicator'
-    ).setScale(0.2);
-    this.indicator.play('exclamando');
+  addIndicatorAndComputer() {
+    // Adiciona a sprite da exclamação
+    this.indicator = this.add.sprite(width - 1020, height - 150, 'indicator').setScale(0.2);
+    this.indicator.play('exclamando'); // Inicia a animação
     this.indicatorActive = true;
 
     // Criar o computador na posição original
