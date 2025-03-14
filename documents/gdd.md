@@ -3,10 +3,8 @@
 
 # GDD - Game Design Document - Módulo 1 - Inteli
 
-**_Os trechos em itálico servem apenas como guia para o preenchimento da seção. Por esse motivo, não devem fazer parte da documentação final_**
-
-## SkillSprint Game 
-## SkillMakers
+## *SkillSprint Game* 
+## *SkillMakers*
 #### Nomes dos integrantes do grupo
 - <a href="https://www.linkedin.com/in/mike-buchsenspaner-445a2934b/">Mike Buchsenspaner
 - <a href="https://www.linkedin.com/in/sophia-hochman-b821a4346/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app">Sophia Hochman
@@ -36,7 +34,6 @@
 
 <br>
 
-
 # <a name="c1"></a>1. Introdução (sprints 1 a 4)
 
 ## 1.1. Plano Estratégico do Projeto
@@ -45,7 +42,7 @@
 
 A Vivo é uma empresa de telecomunicações e tecnologia no Brasil que oferece telefonia móvel e fixa, internet, TV por assinatura e serviços digitais. Fazendo parte do grupo “Telefônica”, investe em fibra óptica e 5G. Seus principais concorrentes são Claro, TIM e operadoras regionais. O setor é altamente competitivo, com foco em inovação, IoT (internet das coisas), inteligência artificial e Open Finance [1]. A Vivo se destaca pela liderança no pós-pago e maior base de fibra óptica, enfrentando o desafio de manter sua posição frente à concorrência e à evolução tecnológica.
 
-Os principais players da indústria de telecomunicações no Brasil são empresas que competem diretamente no mercado. Esses players incluem a Vivo (líder em número de clientes [2]; possui diferencial de portfólio diversificado de serviços), a Claro [3] (segunda maior operadora do Brasil; possui como diferencial o foco em pacotes combinados de telefonia, internet e TV), a TIM [4] (terceira maior operadora; possui preços competitivos), a Oi [5], Algar Telecom [6] e Sky [7] (entre outros regionais). A Vivo também possui concorrentes indiretos de streaming e over-the-top (OTT) [8], plataformas como Netflix, Amazon Prime e YouTube competem indiretamente no segmento de entretenimento, impactando a demanda por serviços de TV por assinatura.
+Os principais *players* da indústria de telecomunicações no Brasil são empresas que competem diretamente no mercado. Esses *players* incluem a Vivo (líder em número de clientes [2]; possui diferencial de portfólio diversificado de serviços), a Claro [3] (segunda maior operadora do Brasil; possui como diferencial o foco em pacotes combinados de telefonia, internet e TV), a TIM [4] (terceira maior operadora; possui preços competitivos), a Oi [5], Algar Telecom [6] e Sky [7] (entre outros regionais). A Vivo também possui concorrentes indiretos de *streaming* e *over-the-top* (OTT) [8], plataformas como Netflix, Amazon Prime e YouTube competem indiretamente no segmento de entretenimento, impactando a demanda por serviços de TV por assinatura.
 
 As tendências do mercado são a expansão do 5G (garante maior velocidade e conectividade), convergência de serviços (pacotes combinados com diferentes serviços de comunicação), digitalização e IoT, principalmente para empresas. Esses players e tendências mostram um mercado altamente competitivo, onde a Vivo se mantém como líder, mas precisa continuar inovando para enfrentar a concorrência direta e indireta. 
 
@@ -122,7 +119,7 @@ Com isso, esses são os princípios que guiam as tomadas de decisões e estraté
 
 ## 1.2. Requisitos do Projeto (sprints 1 e 2)
 
-No kick-off com o parceiro, realizado em 07/02/2024, a Vivo delineou os principais aspectos para o desenvolvimento do MVP. A Tabela 1 a seguir apresenta os requisitos fundamentais para a construção da solução proposta, garantindo alinhamento com as expectativas da empresa parceira.
+No *kick-off* com o parceiro, realizado em 07/02/2024, a Vivo delineou os principais aspectos para o desenvolvimento do MVP. A Tabela 1 a seguir apresenta os requisitos fundamentais para a construção da solução proposta, garantindo alinhamento com as expectativas da empresa parceira.
  
 Tabela 1
 \# | Requisito  
@@ -156,7 +153,7 @@ O principal objetivo do Skill Sprint é proporcionar aos colaboradores da Vivo u
 
 No jogo, os participantes percorrem diferentes etapas do crescimento profissional, desde a candidatura a novas oportunidades até o planejamento contínuo de desenvolvimento, promovendo a cultura de mobilidade interna e aprendizado contínuo.
 
-Por meio de desafios dinâmicos e da prática do **job rotation** [15], os jogadores exploram novas áreas dentro da empresa, ampliando suas habilidades e alinhando-se aos valores e oportunidades da Vivo. Com essa abordagem gamificada, o Skill Sprint transforma o desenvolvimento de carreira em uma jornada envolvente e acessível, aumentando a adesão aos programas de capacitação e otimizando os recursos investidos em treinamentos tradicionais.
+Por meio de desafios dinâmicos e da prática do *job rotation* [15], os jogadores exploram novas áreas dentro da empresa, ampliando suas habilidades e alinhando-se aos valores e oportunidades da Vivo. Com essa abordagem gamificada, o Skill Sprint transforma o desenvolvimento de carreira em uma jornada envolvente e acessível, aumentando a adesão aos programas de capacitação e otimizando os recursos investidos em treinamentos tradicionais.
 
 Para avançar e concluir o jogo, o jogador deve:
 - Aprender os comandos de movimentação (teclas "A", "W", "S" e "D" do teclado) e interação com elementos (tecla “E”);
@@ -168,7 +165,7 @@ Os objetivos de cada fase do jogo são:
 ##### Fase 1: Criação do Currículo no Escritório da Vivo
 - **Objetivo da fase:** Ensinar a criar um currículo atrativo e eficaz.
 - **Aprendizado:** Construção e otimização de currículo.
-- **Conteúdos:** Dicas de layout, palavras-chave, adaptação para ATS [17] (Applicant Tracking System), destaque de conquistas.
+- **Conteúdos:** Dicas de layout, palavras-chave, adaptação para ATS [17] (*Applicant Tracking System*), destaque de conquistas.
 - **Desafio (objetivo do jogador):** Cumprir a introdução ao jogo com Vivinho, seguir instruções da recepcionista (Vivita), criar o currículo no computador através das perguntas do mini game e entregá-lo à líder.
 
 ##### Fase 2: Entrevista de Processo Seletivo na Vice-Presidência de Pessoas
@@ -199,7 +196,7 @@ Os objetivos de cada fase do jogo são:
 - **Objetivo:** Incentivar o aprendizado contínuo.
 - **Aprendizado:** Desenvolvimento de novas habilidades para adaptação ao mercado.
 - **Conteúdos:** Diferença entre upskilling e reskilling, ferramentas de desenvolvimento.
-- **Desafios:** Identificar skills relevantes, criar plano de aprendizado.
+- **Desafios:** Identificar *skills* relevantes, criar plano de aprendizado.
 
 Diante do exposto, entende-se que o jogo é estruturado de forma a contemplar o requisito sete (R07), voltado para o estímulo da rotação de carreira no ambiente corporativo da Vivo. Todas as fases possuem o objetivo de instruir, em forma de serious game, as boas práticas de uma aplicação de qualidade em um processo seletivo interno empresarial. O objetivo geral é motivar o jogador a realizar o job rotation após entender claramente o passo-a-passo para esse processo jogando Skill Sprint.
 
@@ -251,6 +248,8 @@ Esses títulos ajudaram a moldar a estrutura do Skill Sprint, oferecendo um equi
 
 # <a name="c3"></a>3. Game Design (sprints 2 e 3)
 
+Nesta seção do Game Design Document (GDD), exploraremos os pilares fundamentais que definem a jogabilidade, a mecânica, a progressão e a interação do jogador com o mundo que estamos construindo. Aqui, detalharemos as escolhas de design que orientam a experiência do usuário, desde os conceitos básicos até os sistemas complexos que sustentam o jogo. Nosso objetivo é garantir que cada elemento esteja alinhado com a visão criativa do projeto, ao mesmo tempo em que oferece diversão, desafio e imersão para o público-alvo. 
+
 ## 3.1. Enredo do Jogo (sprints 2 e 3)
 
 O jogador controla Skrill, um avatar que trabalha na Vivo há dois anos. Desde o início, Skrill sempre teve interesse em crescer profissionalmente e explorar novas áreas dentro da empresa, mas nunca soube exatamente por onde começar. A empresa oferece diversos programas de desenvolvimento, mas muitos colaboradores, como Skrill, encontram dificuldades para acessar todas as oportunidades disponíveis.
@@ -269,9 +268,11 @@ O Skill Sprint transforma o desenvolvimento de carreira em uma experiência inte
 
 ## 3.2. Personagens (sprints 2 e 3)
 
+Nesta seção, vamos explorar os personagens que habitam o universo do nosso jogo. Aqui, detalharemos suas principais características e funções dentro da jogabilidade. Cada personagem foi cuidadosamente concebido para contribuir com a imersão, o engajamento emocional e a progressão do jogador. 
+
 ### 3.2.1. Controláveis
 
-O **Skill Sprint** conta com um jogador principal chamado **Skrill** que será controlado pelo colaborador da Vivo pelas teclas WASD e utilizará a tecla E pra interagir com objetos/personagens durante a jornada do jogo. Existe também o Vivinho que é um personagem que tem como objetivo guiar o usuário durante as fases e ensiná-lo a realizar os cases e ajudá-lo. A Vivita é uma NPC que fica na recepção e orienta o colaborador a realizar a primeira tarefa, que é criar um currículo. Ela será responsável por introduzir o usuário e informar qual o primeiro passo a ser dado para começar a jornada de Job Rotation. Todos os NPCs serão desenhados com o intuito de trazer diversidade, remetento aos valores da Vivo. Planejamos representar diferentes grupos étnicos, a comunidade LGBTQIA+, pessoas negras, mulheres em cargos de liderança e também pessoas com necessidades especiais.
+O **Skill Sprint** conta com um jogador principal chamado **Skrill** que será controlado pelo colaborador da Vivo pelas teclas WASD e utilizará a tecla E pra interagir com objetos/personagens durante a jornada do jogo. Existe também o Vivinho, que é um personagem com o como objetivo de guiar o usuário durante as fases e ensiná-lo a realizar os cases. A Vivita é uma NPC que fica na recepção e orienta o colaborador a realizar a primeira tarefa, que é criar um currículo. Ela será responsável por introduzir o usuário e informar qual o primeiro passo a ser dado para começar a jornada de Job Rotation. Todos os NPCs serão desenhados com o intuito de trazer diversidade, remetento aos valores da Vivo. Planejamos representar diferentes grupos étnicos, a comunidade LGBTQIA+, pessoas negras, mulheres em cargos de liderança e também pessoas com necessidades especiais.
 
 <img src="https://github.com/user-attachments/assets/34d6588a-ba21-490a-a5b2-a8f3d7ba48a4" width="300"/>
 
@@ -287,7 +288,7 @@ Até o presente momento de desenvolvimento, idealizamos 2 NPCs: o Vivinho, a Viv
 
 - A líder é a chefe que recebe o currículo de Skrill (personagem principal) e fornece o primeiro feedback ao jogador. Escolhemos uma mulher na liderança, porque evidenciamos que apenas 38% dos cargos de liderança no Brasil são representados por mulheres. [25]
   
-- Todos os NPCs vão ser desenhados com o intuito de trazer diversidade para o jogo, representando diferentes grupos étnicos, a comunidade LGBTQIA+ e pessoas com necessidades especiais.
+- Todos os NPCs serão desenhados com o intuito de trazer diversidade para o jogo, representando diferentes grupos étnicos, a comunidade LGBTQIA+ e pessoas com necessidades especiais.
 
 ![Image](https://github.com/user-attachments/assets/50594d55-2807-4a2d-8dd0-89d618be81c5)
 
@@ -303,7 +304,6 @@ No momento inicial de desenvolvimento do jogo, planejamos implementar um só per
 
 Este plano se alinha com o foco da Vivo em formar um coletivo de colaboradores diversos, de maneira à fornecer oportunidades aos mais variados grupos em aspectos como desenvolvimento corporativo e atuação na sociedade através de seus amplos setores. Portanto, configura um fator essencial a ser trabalhado a fim de retratar a composição da empresa em um jogo.
 
-
 <img width="474" alt="Captura de tela 2025-02-27 205332" src="https://github.com/user-attachments/assets/027ffa1e-1ea7-4f6b-a7d4-dafd86bf7e82" />
 
 Fonte: Dados de diversidade na Vivo. Material Onboarding Executivo - Vivo, Inteli (fev/2025).
@@ -311,6 +311,8 @@ Fonte: Dados de diversidade na Vivo. Material Onboarding Executivo - Vivo, Intel
 O impacto proveniente de tal atenção ao design será o de possibilitar o sentimento de pertencimento para os profissionais da Vivo com a gameplay. Isso permite que diferentes grupos se sintam reconhecidos, o que pode aumentar o engajamento e a identificação dos jogadores com o jogo. Além disso, contribui para a quebra de estereótipos e a construção de um ambiente mais acolhedor, respeitoso e enriquecedor, tanto para os usuários quanto para a indústria de jogos como um todo.
 
 ## 3.3. Mundo do jogo (sprints 2 e 3)
+
+Nesta seção, exploraremos os cenários que compõem o universo do Skill Sprint, detalhando como cada elemento foi cuidadosamente projetado para refletir a jornada de desenvolvimento profissional dentro da Vivo. Desde a recepção da empresa até os diferentes andares que representam as Vice-Presidências, cada espaço foi pensado para transmitir a essência do ambiente corporativo e proporcionar uma experiência autêntica e significativa. Aqui, descreveremos as locações principais, a navegação pelo mundo e como o concept art ajudou a dar vida a esse universo. Vamos explorar como o mundo do jogo foi construído para apoiar a narrativa, a jogabilidade e os objetivos de aprendizado do jogador.
 
 ### 3.3.1. Locações Principais e/ou Mapas (sprints 2 e 3)
 
@@ -335,7 +337,7 @@ O jogo conta com 6 fases. Cada fase ensina sobre uma etapa de candidatura em pro
 
 ### 3.3.2. Navegação pelo mundo (sprints 2 e 3)
 
-O personagem irá navegar pelo mundo começando pela recepção. Nela, ele irá interagir com a Vivita que o guiará para a criação do currículo. Para realizar essa tarefa, o usuário deverá apertar a tecla E perto do computador e jogar um minigame para criar um currículo. Após isso, irá se dirigir para a sala do Líder onde acontecerá a entrega do currículo. Logo em seguida, o jogador deve se locomover para o elevador selecionando e selecionar o primeiro nível (andar 1) que irá direcioná-lo para o escritório da Vice-Presidência de Pessoas. Nessa VP, o usuário realiza uma entrevista e em seguida retorna ao elevador para avançar de fase. No 2° andar, temos a VP de Négocios, onde o colaborador irá resolver um case. Seguindo adiante, ele retorna ao elevador para subir mais um andar que será a VP de Estratégia. Nesse mapa, o colaborador irá fazer o seu planejamento de carreira dentro da Vivo através de um mini game. Ao retornar para o elevador, avaçamos para o 4° andar, que é a VP de Relações, onde acontecerá um jantar com todos os gerentes da Vivo para fornecer o feedback do colaborador durante a jornada. Por último, ao entrar no elevador para a VP de Tecnologia (5° andar), o usuário irá se deparar com um cenário onde aprenderá a diferença entre upskilling e reskilling (aprimoramento de habilidades). Cada fase depende da outra para ser desbloqueada, ou seja, o colaborador só poderá avançar para o próximo mapa depois de concluir as tasks do anterior.
+O personagem irá navegar pelo mundo começando pela recepção. Nela, ele irá interagir com a Vivita que o guiará para a criação do currículo. Para realizar essa tarefa, o usuário deverá apertar a tecla E perto do computador e jogar um minigame para criar um currículo. Após isso, irá se dirigir para a sala do Líder onde acontecerá a entrega do currículo. Logo em seguida, o jogador deve se locomover para o elevador selecionando e selecionar o primeiro nível (andar 1) que irá direcioná-lo para o escritório da Vice-Presidência de Pessoas. Nessa VP, o usuário realiza uma entrevista e em seguida retorna ao elevador para avançar de fase. No 2° andar, temos a VP de Négocios, onde o colaborador irá resolver um case. Seguindo adiante, ele retorna ao elevador para subir mais um andar que será a VP de Estratégia. Nesse mapa, o colaborador irá fazer o seu planejamento de carreira dentro da Vivo através de um mini game. Ao retornar para o elevador, avaçamos para o 4° andar, que é a VP de Relações, onde acontecerá um jantar com todos os gerentes da Vivo para fornecer o feedback do colaborador durante a jornada. Por último, ao entrar no elevador para a VP de Tecnologia (5° andar), o usuário irá se deparar com um cenário onde aprenderá a diferença entre upskilling e reskilling (aprimoramento de habilidades). 
 
 ### 3.3.3. Condições climáticas e temporais (sprints 2 e 3)
 
@@ -349,7 +351,7 @@ Pensamos em customizar as fases de acordo com elementos que remetam às Vice-Pre
 
 ![conceptRecepcao](https://github.com/user-attachments/assets/16844f63-7d26-41a3-8559-4d1e53c3bb60)  
 
-Figura 1: mapa da recepção aonde o usuário nasce, conversa com a Vivita, cria o currículo e fala com a líder.  
+Figura 1: mapa da recepção onde o usuário nasce, conversa com a Vivita, cria o currículo e fala com a líder.  
 
 ![conceptCurriculo](https://github.com/user-attachments/assets/8f9eea0b-78f7-47fa-b4e2-a06ef6b64347)
 
@@ -383,8 +385,7 @@ Figura 8: fase da VP de Relações, onde acontecerá um jantar com todos os gere
 
 Figura 9: fase da VP de Tecnologia, onde o usuário irá aprender sobre upskilling e reskilling (aprimoramento de habilidades).  
 
-
-### 3.3.5. Trilha sonora (sprint 3)
+### 3.3.5. Trilha sonora (sprint 4)
 
 *Descreva a trilha sonora do jogo, indicando quais músicas serão utilizadas no mundo e nas fases. Utilize listas ou tabelas para organizar esta seção. Caso utilize material de terceiros em licença Creative Commons, não deixe de citar os autores/fontes.*
 
@@ -421,9 +422,7 @@ Figura 9: fase da VP de Tecnologia, onde o usuário irá aprender sobre upskilli
 
 ## 3.5. Gameflow (Diagrama de cenas) (sprint 2)
 
-*Posicione aqui seu "storyboard de programação" - o diagrama de cenas do jogo. Indique, por exemplo, como o jogo começa, quais opções o jogador tem, como ele avança nas fases, quais as condições de 'game over', como o jogo reinicia. Seu diagrama deve representar as classes, atributos e métodos usados no jogo.*
-
-Com base no nosso concept, criamos o diagrama de cenas para visualizar e demonstrar como as fases do jogo funcionarão. O jogo inicia em uma tela inicial com o botão "Jogar" e leva o personagem para o primeiro mapa (a recepção), depois disso, a próxima tela é a da criação do currículo e, ao finalizar essa tarefa, ele retorna para o escritório. Assim, a sala da líder é liberada e, nessa fase, ocorre a entrega do currículo. 
+Com base na nossa Concept Art, criamos o diagrama de cenas para visualizar e demonstrar como as fases do jogo funcionarão. O jogo inicia em uma tela inicial com o botão "Jogar" e leva o personagem para o primeiro mapa (a recepção), depois disso, a próxima tela é a da criação do currículo e, ao finalizar essa tarefa, ele retorna para o escritório. Assim, a sala da líder é liberada e, nessa fase, ocorre a entrega do currículo. 
 
 O próximo passo vai ser utilizar o elevador para ir para os próximos níveis. Cada andar do elevador remete a um nível e o usuário é obrigado a efetuar apenas a primeira fase. Após completar o envio do currículo, é possível navegar entre as fases do jogo e escolher o conteúdo que o jogador quer explorar. Em cada fase terá um case/mini game voltado para aquela Vice-Presidência (diretorias da Vivo). Algumas das condições de game over ocorrem nos mini games, ao falhar no teste e, caso isso aconteça, o jogo reinicia até passar de fase. No último andar, ao realizar a última tarefa, a jornada do usuário se encerra, finalizando o jogo. 
 
@@ -432,6 +431,14 @@ O Gameflow de Skill Print pode ser observado a seguir:
 ![Tela inicial  Clicando em “Jogar” iniciamos o jogo](https://github.com/user-attachments/assets/8bf2ffa7-a74b-4e48-a9f4-1e49e6532d37)
 
 Imagem 2: Diagrama de cenas (produzido pelo autor). Link de acesso: <https://www.canva.com/design/DAGgOn0t4k4/6R0GeJh2uACsr9gV2cqqVw/edit?utm_content=DAGgOn0t4k4&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton>
+
+Além do Gameflow desenvolvido no Canva, o rascunho do diagrama de cenas foi desenvolvido para visualizar e organizar a estrutura inicial do jogo, especialmente a primeira fase, que serve como ponto de partida para a experiência do jogador. Esse diagrama foi criado para mapear o fluxo de interações, desde a tela inicial até a conclusão das tarefas na fase de criação do currículo. Ele demonstra como o jogador navega pelo ambiente.
+
+Inicialmente, o diagrama mostrava uma sequência linear, onde o jogador começava na tela inicial, passava por uma cutscene introdutória e era direcionado diretamente para o escritório, onde realizava a criação do currículo. No entanto, durante o desenvolvimento, percebemos que essa estrutura poderia ser aprimorada para oferecer uma experiência mais fluida e envolvente. Algumas alterações foram feitas, como a inclusão de uma interação inicial com a recepcionista (Vivita) antes de acessar o computador, para contextualizar melhor a missão e guiar o jogador de forma mais clara.
+
+Além disso, o rascunho inicial não incluía a sala da líder como um espaço separado, mas, após testes e feedbacks, decidimos adicionar essa etapa para dar mais peso à entrega do currículo e proporcionar um momento de feedback imediato ao jogador. Essas mudanças foram essenciais para garantir que a primeira fase fosse intuitiva, educativa e alinhada com os objetivos do jogo.
+
+O diagrama de cenas, portanto, evoluiu de uma estrutura simples para uma mais detalhada e interativa, refletindo as necessidades identificadas durante o processo de desenvolvimento. Ele serviu como um guia visual para a equipe, ajudando a alinhar expectativas e garantir que todas as mecânicas e narrativas estivessem integradas de forma coesa.
 
 <img src="../assets/mapamental.JPG">
 
@@ -454,12 +461,9 @@ A proposta central do jogo é retratar diferentes cenários dentro do amplo ecos
 
 Essa estrutura proporciona uma experiência imersiva e educativa, garantindo que o jogador compreenda e explore os diferentes papéis dentro da empresa de forma dinâmica e interativa.
 
-
 ## 3.7. Mecânicas do jogo (sprint 3)
 
-*Descreva aqui as formas de controle e interação que o jogador tem sobre o jogo: quais os comandos disponíveis, quais combinações de comandos, e quais as ações consequentes desses comandos. Utilize listas ou tabelas para organizar esta seção.*
-
-Os comandos disponíveis ao jogador, levando em conta que habita um ambiente 2D para a web, são:
+As mecânicas do jogo são os elementos que permitem ao jogador interagir com o mundo virtual, realizar ações e progredir na narrativa. No Skill Sprint, as mecânicas foram projetadas para serem intuitivas e acessíveis, garantindo uma experiência fluida e envolvente. Os comandos disponíveis ao jogador, levando em conta que habita um ambiente 2D para a web, são:
 
 \# | Mecânicas
 --- | ---
@@ -468,11 +472,17 @@ Os comandos disponíveis ao jogador, levando em conta que habita um ambiente 2D 
 03 | Tecla ENTER para a interação com diálogos.
 04 | Tecla E para interação com objetos (computador onde se produz o currículo, por exemplo).
 
-*Ex. Em um jogo de plataforma 2D para desktop, o jogador pode usar as teclas WASD para mecânicas de andar, mirar para cima, agachar, e as teclas JKL para atacar, correr, arremesar etc.*
+**Exemplos de Aplicação:**
+Movimentação e Exploração: O jogador utiliza as teclas WASD para explorar o escritório, aproximar-se de NPCs e acessar áreas específicas, como a sala da líder ou o elevador.
+Interação com NPCs: Ao se aproximar de um personagem, o jogador pressiona a tecla E para iniciar uma conversa e ENTER para avançar nos diálogos, recebendo instruções ou dicas para completar as missões.
+Uso de Objetos: Em determinados momentos, como na criação do currículo, o jogador interage com o computador pressionando a tecla E, o que abre um minigame ou interface específica para realizar a tarefa.
 
-*Ex. Em um jogo de puzzle para celular, o jogador pode tocar e arrastar sobre uma peça para movê-la sobre o tabuleiro, ou fazer um toque simples para rotacioná-la*
+**Considerações sobre Design:**
+As mecânicas foram projetadas para serem simples, mas eficazes, garantindo que jogadores de diferentes níveis de experiência possam se adaptar rapidamente. A combinação de movimentação fluida, interações intuitivas e feedback visual claro contribui para uma experiência de jogo agradável e acessível. Além disso, a escolha de comandos básicos e amplamente conhecidos (como WASD e ENTER) reduz a curva de aprendizado, permitindo que o jogador foque na narrativa e nos desafios propostos.
 
-## 3.8. Implementação Matemática de Animação/Movimento (sprint 3)
+Essas mecânicas são a base da jogabilidade do Skill Sprint, garantindo que o jogador tenha controle total sobre suas ações enquanto explora o mundo do jogo e avança em sua jornada de desenvolvimento profissional.
+
+## 3.8. Implementação Matemática de Animação/Movimento (sprint 4)
 
 *Descreva aqui a função que implementa a movimentação/animação de personagens ou elementos gráficos no seu jogo. Sua função deve se basear em alguma formulação matemática (e.g. fórmula de aceleração). A explicação do funcionamento desta função deve conter notação matemática formal de fórmulas/equações. Se necessário, crie subseções para sua descrição.*
 
@@ -514,7 +524,80 @@ Por fim, com a descrição fornecida e os elementos visuais indicados, é possí
 
 ## 4.3. Desenvolvimento intermediário do jogo (sprint 3)
 
-*Descreva e ilustre aqui o desenvolvimento da versão intermediária do jogo, explicando brevemente o que foi entregue em termos de código e jogo. Utilize prints de tela para ilustrar. Indique as eventuais dificuldades e próximos passos.*
+
+Durante a sprint 3, enfrentamos desafios significativos devido ao curto prazo de desenvolvimento (apenas 7 dias úteis). No entanto, conseguimos progredir de forma consistente e alcançar resultados que aproximam a primeira fase do jogo do nosso objetivo final. Apesar das limitações de tempo, priorizamos tarefas essenciais para garantir que o jogo estivesse mais alinhado com a visão que queremos transmitir ao jogador.
+
+Na sprint planning, definimos uma série de metas para esta etapa, das quais destacamos:
+
+**Tela de Tutorial:** Desenvolvemos uma tela inicial que explica os comandos básicos do jogo, como movimentação (WASD) e interação com objetos (Tecla E). Isso foi crucial para garantir que os jogadores entendam como navegar e interagir com o ambiente desde o início.
+
+**Finalização do Minigame da Primeira Fase:** Concluímos o minigame de criação do currículo, que é o foco da primeira fase. Agora, o jogador pode interagir com o computador e responder perguntas personalizadas de acordo com a Vice-Presidência escolhida de forma alinhada com os objetivos de aprendizado do jogo.
+
+**Implementação da Vivita (Primeira NPC):** A Vivita, a recepcionista que guia o jogador na primeira fase, foi implementada no mapa. Ela fornece instruções iniciais e contextualiza a missão de criação do currículo, tornando a experiência mais imersiva e orientada.
+
+**Design da Sala do Elevador:** Criamos o ambiente do elevador, que servirá como ponto de transição entre as fases. Esse espaço foi projetado para ser intuitivo e funcional, permitindo que o jogador navegue entre os diferentes andares que representam as Vice-Presidências da Vivo.
+
+**Sala da Líder:** Criamos a cena da sala da líder, onde o jogador entregará seu currículo para feedback. No momento, planejamos implementar a líder (NPC) na próxima sprint. No entrega dessa sprint, colocamos a Vivita como NPC.
+
+**HUDs**: Heads-Up Displays (em português, "Mostradores de Dados no Campo de Visão"), são sistemas de exibição de informações que permitem ao usuário visualizar dados sem precisar desviar o olhar de sua linha de visão principal. Nós implementamos alguns no nosso mapa, em especial na tela da recepção. Planejamos explorar mais essa funcionalidade para fornecer um maior poder de tomada de decisão, engajando o jogador a sempre entender o que ele está fazendo e o que ele precisará fazer no jogo (as missões). Nessa sprint 3, o HUD que desenvolvemos foi uma exclamação vermelha. Ela sinaliza os objetos interagíveis e as próximas missões do jogador.
+
+**Regras e Mecânicas no GDD:** Preenchemos as seções do Game Design Document (GDD) relacionadas às regras e mecânicas do jogo. Essa documentação foi essencial para aprimorar nosso entendimento sobre o design do jogo e garantir que a experiência do jogador esteja alinhada com os objetivos propostos.
+
+**Atualização do Readme:** O repositório do projeto foi atualizado com um tutorial de acesso ao jogo e um histórico de versões. Essas informações são fundamentais para facilitar o uso do código aberto e permitir que outros desenvolvedores contribuam ou entendam o progresso do projeto.
+
+**Padronização de Commits e Priorização de Tarefas:** Implementamos regras de commit, onde cada membro da equipe descreve claramente as alterações realizadas. Além disso, adotamos o diagrama de matriz-esforço no nosso Kanban, que foi instrumental para priorizar tarefas e garantir que os esforços da equipe fossem direcionados para as atividades mais críticas durante a sprint curta.
+
+Apesar de algumas cenas ainda não estarem totalmente conectadas, os frutos desta sprint foram satisfatórios. A interface do jogo evoluiu significativamente, e agora temos uma base sólida que já parece jogável. A primeira fase está mais próxima da visão final, com elementos como a Vivita, o minigame de currículo e o elevador já implementados.
+
+Para a próxima sprint, nosso foco será integrar completamente as cenas e finalizar o gameflow oficial, garantindo que todas as fases estejam conectadas de forma coesa. Planejamos agilizar o desenvolvimento da programação reutilizando elementos já criados no código. Além disso, planejamos expandir as mecânicas de interação e aprimorar a experiência do jogador com novos desafios e conteúdos educativos.
+
+Superamos parcialmente um desafio mencionado na sprint 1 e 2, relacionado ao conhecimento técnico dos membros. Nesta semana, tornou-se claro que um aprendizado está, de fato, sendo consolidado pelos integrantes. Por isso, o desenvolvimento tecnológico foi facilitado, apesar de notarmos que precisamos balancear as tarefas para que todos tenham o mesmo nível de programação.
+
+Abaixo, estão as principais telas desenvolvidas nesta sprint:
+
+<div align="center">
+  <sub>Tela de tutorial</sub><br>
+  <img src="../assets/instrucao.png" width="900px" 
+  alt="Tela de tutorial"><br>
+  <sup>Fonte: produzido pelos autores. Tela de tutorial explicando os comandos básicos do jogo. </sup>
+</div>
+
+<div align="center">
+  <sub>Minigame para Construção do Currículo</sub><br>
+  <img src="../assets/gdd_curriculo.png" width="900px" 
+  alt="Minigame Currículo"><br>
+  <sup>Fonte: produzido pelos autores. Minigame (localizado na cena do escritório) de criação do currículo, onde o jogador responde perguntas para montar seu perfil profissional. </sup>
+</div>
+
+<div align="center">
+  <sub>Sala do Elevador</sub><br>
+  <img src="../assets/bgelevadorvar1.jpg" width="900px" 
+  alt="Sala do Elevador"><br>
+  <sup>Fonte: produzido pelos autores. Design da sala do elevador, que servirá como ponto de transição entre as fases. </sup>
+</div>
+
+<div align="center">
+  <sub>Recepção com NPC Vivita</sub><br>
+  <img src="../assets/Captura de tela 2025-03-13 204547.png" width="900px" 
+  alt="Recepção com NPC Vivita"><br>
+  <sup>Fonte: produzido pelos autores. Sala da recepção (1ª fase) com NPC interagível. É possível enxergar nossa HUD acima da Vivita. </sup>
+</div>
+
+<div align="center">
+  <sub>Zoom na HUD desenvolvida</sub><br>
+  <img src="../assets/hud.png" width="900px" 
+  alt="HUD"><br>
+  <sup>Fonte: produzido pelos autores. HUD indicando que o jogador deve interagir com o NPC. </sup>
+</div>
+
+<div align="center">
+  <sub>Sala da Líder</sub><br>
+  <img src="../assets/lider.png" width="900px" 
+  alt="Sala da Líder"><br>
+  <sup>Fonte: produzido pelos autores. Sala de entrega do currículo produzido através do minigame da recepção. </sup>
+</div>
+
+Esses avanços representam um passo importante em direção ao MVP final, e estamos confiantes de que as próximas sprints trarão ainda mais melhorias e refinamentos para o Skill Sprint.
 
 ## 4.4. Desenvolvimento final do MVP (sprint 4)
 
@@ -536,9 +619,19 @@ Os casos de teste descritos a seguir foram elaborados para avaliar os diferentes
 \# | pré-condição | descrição do teste | pós-condição 
 --- | --- | --- | --- 
 1 | O personagem deve estar próximo a um computador interativo |Pressionar a tecla "E"	 | A tela do computador deve abrir no jogo
-2 | O jogo está rodando e o personagem pode se mover | Pressionar a seta | O personagem deve se mover
+2 | O jogo está rodando e o personagem pode se mover | Pressionar as teclas WASD | O personagem deve se mover
 3 | O jogo está na tela inicial|Clicar no botão "Jogar" |O jogo deve iniciar e levar o jogador para a cutscene
 4 |A tela do quiz está aberta	|	Selecionar uma das alternativas|A alternativa escolhida deve mudar de cor (verde se correta, vermelha se errada)
+5 |O jogo está na tela inicial|Clicar no botão "Créditos"|Aparecerá uma tela mostrando o grupo responsável pelo projeto
+6 |A cutscene se encerra|O jogo termina de carregar|Aparece o tutorial
+7 |O jogo foi iniciado|Aguardar a tela de nome aparecer|A caixa de texto para digitar o nome está visível
+8 |A caixa de texto está visível|Digitar um nome e confirmar|O nome digitado deve ser armazenado e utilizado no jogo
+9 |O jogador está próximo do NPC|Pressionar a tecla "E"|Um diálogo deve aparecer na tela iniciando a interação com o NPC|
+
+Através desses testes, foi possível identificar pontos de melhoria, ajustar comportamentos inesperados e assegurar que a experiência do jogador seja fluida e intuitiva.
+
+No futuro, planejamos expandir os casos de teste para cobrir novas funcionalidades, melhorar o design do nosso jogo (padronizar de acordo com a paleta de cores) e realizar a refatoração do código (reutilizar elementos e torná-lo mais oganizado e inteligente). Dessa forma, garantiremos que o Skill Sprint continue evoluindo e oferecendo uma experiência cada vez mais envolvente e alinhada com os objetivos de aprendizado e desenvolvimento profissional propostos.
+
 ## 5.2. Testes de jogabilidade (playtests) (sprint 4)
 
 ### 5.2.1 Registros de testes
