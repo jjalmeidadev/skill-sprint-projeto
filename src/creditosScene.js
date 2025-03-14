@@ -5,13 +5,13 @@ class CreditosScene extends Phaser.Scene {
 
     preload() {
         // Carrega as imagens para a tela creditos
-        this.load.image('fundoCreditos', '../assets/fundoCreditos.png');
-        this.load.image('seta', '../assets/seta.png');
+        this.load.image('backgroundCreditos', '../assets/fundoCreditos.png');
+        this.load.image('arrow', '../assets/seta.png');
     }
 
     create() {
         // Adiciona a imagem de fundo
-        this.add.image(width/2, height/2, 'fundoCreditos');
+        this.add.image(width/2, height/2, 'backgroundCreditos');
         
         // Chama a função que cria a seta
         this.createSeta();
@@ -19,10 +19,10 @@ class CreditosScene extends Phaser.Scene {
 
     createSeta() {
         // Adiciona o botão 'Seta' na posição especificada
-        const seta = this.add.image(width - 1300, height - 700, 'seta');
-        seta.setInteractive(); // Torna o botão interativo (clicável)
-        seta.setScale(1); // Ajusta o tamanho do botão
-        seta.on('pointerdown', () => {
+        const arrow = this.add.image(width - 1300, height - 700, 'arrow');
+        arrow.setInteractive(); // Torna o botão interativo (clicável)
+        arrow.setScale(1); // Ajusta o tamanho do botão
+        arrow.on('pointerdown', () => {
             // Quando clica na seta, volta para tela inicial
             this.scene.stop('creditosScene');
             this.scene.start('initialScene');
