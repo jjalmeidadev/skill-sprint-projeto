@@ -45,6 +45,7 @@ const config = {
       GameOverSceneCurriculoTecnologia,
       CongratulationsSceneCurriculoVpTecnologia,
       
+      buttonElevatorScene,
       ElevadorScene, 
       GameplayTutorialScene
     ], // Lista das cenas do jogo

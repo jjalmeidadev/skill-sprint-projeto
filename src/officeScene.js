@@ -81,7 +81,6 @@ class OfficeScene extends Phaser.Scene {
     this.createComputer();
     this.createPlayer();
     this.createPlayerAnimations();
-    this.createButtonCima();
 
     // Configura colisões entre o jogador e algumas camadas selecionadas
     this.physics.add.collider(this.player, layer5);
@@ -129,19 +128,6 @@ class OfficeScene extends Phaser.Scene {
       }
     }
 
-    // Verifica a proximidade do jogador com o objeto invisível para exibir o botão
-    if (
-      Math.abs(this.player.x - this.proximidade.x) <= 50 &&
-      Math.abs(this.player.y - this.proximidade.y) <= 50
-    ) {
-      this.botaoCima.setVisible(true);
-      this.bgelevoffice.setVisible(true);
-      this.painelelev.setVisible(true);
-    } else {
-      this.botaoCima.setVisible(false);
-      this.bgelevoffice.setVisible(false);
-      this.painelelev.setVisible(false);
-    }
   }
 
   movePlayer() {
@@ -218,6 +204,21 @@ class OfficeScene extends Phaser.Scene {
   }
 
   createButtonCima() {
+    // Adiciona a sprite da exclamação
+    this.exclamacao = this.physics.add.sprite(width - 435, height - 700, 'indicator').setScale(0.2);
+    this.exclamacao.setImmovable(true);
+    this.exclamacao.play('exclamando'); // Inicia a animação
+    this.indicatorActive = true;
+
+    // Adiciona um overlap entre o player e a exclamation
+    this.physics.add.overlap(this.player, this.exclamacao , () => {
+      this.scene.switch('buttonElevatorScene'); // Troca para a cena do escritório
+  });
+  }
+
+  createFirtsButtonElevator() {
+    console.log("overlap!");
+
     // Adiciona o botão 'Cima' na posição especificada
     this.bgelevoffice = this.add.image(0, 0, "bgElevOffice").setOrigin(0, 0);
     this.bgelevoffice.setDisplaySize(window.innerWidth, window.innerHeight);
@@ -231,7 +232,7 @@ class OfficeScene extends Phaser.Scene {
     this.botaoCima.setVisible(false);
 
     // Adiciona um objeto invisível para verificar a proximidade
-    this.proximidade = this.add.rectangle(1250, 40, 10, 10, 0xff0000, 0);
+    this.proximidade = this.add.rectangle(width - 400, height - 750, 10, 10, 0xff0000, 0);
     this.physics.add.existing(this.proximidade, true);
 
     botaoCima.on("pointerdown", () => {
@@ -356,6 +357,7 @@ class OfficeScene extends Phaser.Scene {
       if (Math.abs(this.player.x - this.exclamation.x) <= 50 && Math.abs(this.player.y - this.exclamation.y) <= 50) {
         this.exclamation.setVisible(false);
         this.scene.switch('salaLiderScene'); // Troca para a cena do escritório
+        this.createButtonCima();
       }
     });
   }
