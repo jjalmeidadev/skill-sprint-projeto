@@ -226,18 +226,18 @@ class OfficeScene extends Phaser.Scene {
     // Cria a imagem de fundo do elevador e o painel
     this.bgelevoffice = this.add.image(0, 0, "bgElevOffice").setOrigin(0, 0);
     this.bgelevoffice.setDisplaySize(this.screenWidth, this.screenHeight);
-    this.painelelev = this.add.image(510, 90, "painelelev").setOrigin(0, 0);
+    this.painelelev = this.add.image(this.screenWidth - 910, this.screenHeight - 600, "painelelev").setOrigin(0, 0);
     this.bgelevoffice.setVisible(false);
     this.painelelev.setVisible(false);
 
     // Cria o botão do elevador e o torna interativo
-    this.botaoCima = this.add.image(680, 200, "botaoElevOffice");
+    this.botaoCima = this.add.image(this.screenWidth - 746, this.screenHeight - 500, "botaoElevOffice");
     this.botaoCima.setInteractive();
     this.botaoCima.setScale(1);
     this.botaoCima.setVisible(false);
 
     // Cria um retângulo invisível para detectar a proximidade do jogador
-    this.proximidade = this.add.rectangle(1250, 40, 10, 10, 0xff0000, 0);
+    this.proximidade = this.add.rectangle(this.screenWidth - 430, this.screenHeight - 700, 70, 70, 0xff0000, 0);
     this.physics.add.existing(this.proximidade, true);
 
     // Ao clicar no botão, troca para a cena do elevador
