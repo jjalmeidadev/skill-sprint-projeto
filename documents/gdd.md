@@ -488,7 +488,8 @@ O Gameflow de Skill Print pode ser observado a seguir:
   <sup>Fonte: produzido pelos autores. </sup>
 </div> 
 
-Link de acesso: <https://www.canva.com/design/DAGgOn0t4k4/6R0GeJh2uACsr9gV2cqqVw/edit?utm_content=DAGgOn0t4k4&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton>
+Link de acesso: <![DIAGRAMA DE CENAS](https://github.com/user-attachments/assets/4b2fce2c-855c-428a-9d29-99ded6a93e76)
+>
 
 Além do *Gameflow* desenvolvido no Canva, o rascunho do diagrama de cenas foi desenvolvido para visualizar e organizar a estrutura inicial do jogo, especialmente a primeira fase, que serve como ponto de partida para a experiência do jogador. Esse diagrama foi criado para mapear o fluxo de interações, desde a tela inicial até a conclusão das tarefas na fase de criação do currículo. Ele demonstra como o jogador navega pelo ambiente.
 
