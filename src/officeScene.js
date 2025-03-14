@@ -7,7 +7,6 @@ class OfficeScene extends Phaser.Scene {
 
   preload() {
     // Carrega imagens e spritesheets necessárias para a cena
-    this.load.image('background', '../assets/mapaJogoVivo.png');
     this.load.spritesheet('player', '../assets/Player.png', { frameWidth: 32, frameHeight: 32 });
     this.load.image('telaComputador', '../assets/tela_computador.png');
     this.load.image('computador', '../assets/computador.png');
@@ -347,13 +346,17 @@ class OfficeScene extends Phaser.Scene {
    
   salaLider() {
     // Adiciona a sprite da exclamação
-    this.exclamation = this.add.sprite(width - 1200, height - 500, 'indicator').setScale(0.2);
+    this.exclamation = this.physics.add.sprite(width - 1200, height - 500, 'indicator').setScale(0.2);
     this.exclamation.play('exclamando'); // Inicia a animação
     this.indicatorActive = true;
 
-    // Adiciona um overlap entre o player e a exclamation
-    this.physics.add.overlap(this.player, this.exclamation, () => {
+    // Adiciona um evento para a tecla 'E'
+    this.input.keyboard.on('keydown-E', () => {
+      // Verifica se o jogador está próximo da exclamação
+      if (Math.abs(this.player.x - this.exclamation.x) <= 50 && Math.abs(this.player.y - this.exclamation.y) <= 50) {
+        this.exclamation.setVisible(false);
         this.scene.switch('salaLiderScene'); // Troca para a cena do escritório
+      }
     });
   }
 }

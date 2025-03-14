@@ -197,10 +197,11 @@ class SalaLider extends Phaser.Scene {
                             'Vá até o elevador para conhecer as áreas internas da vivo!'];
     
         // Adiciona o balão da fala da vivita                    
-        const balaoTexto = this.add.image(width - 470, height - 420, 'balaoTexto');
+        const balaoTexto = this.add.image(width - 730, height - 420, 'balaoTexto');
+        balaoTexto.setFlipX(true);
     
         // Adiciona uma caixa de texto dentro do balão de texto
-        const text = this.add.text(width - 550, height - 480, speechVivita[0], {
+        const text = this.add.text(width - 815, height - 480, speechVivita[0], {
           fontSize: '16px',
           fill: '#000000',
           wordWrap: { width: balaoTexto.width - 20 }
