@@ -470,7 +470,7 @@ O próximo passo vai ser utilizar o elevador para ir para os próximos níveis. 
 
 O Gameflow de Skill Print pode ser observado a seguir:
 
-![Tela inicial  Clicando em “Jogar” iniciamos o jogo](https://github.com/user-attachments/assets/8bf2ffa7-a74b-4e48-a9f4-1e49e6532d37)
+![Image](https://github.com/user-attachments/assets/6fc88e0a-6c23-46ef-a95c-a2ac7efc7c84)
 
 Imagem 2: Diagrama de cenas (produzido pelo autor). Link de acesso: <https://www.canva.com/design/DAGgOn0t4k4/6R0GeJh2uACsr9gV2cqqVw/edit?utm_content=DAGgOn0t4k4&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton>
 
