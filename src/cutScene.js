@@ -27,6 +27,7 @@ class CutScene extends Phaser.Scene {
         this.video.on('complete', () => {
             this.scene.start('gameplayTutorialScene'); // Troca para a cena 'tutorialScene'
         });
+        
         // //Código comentado que permite pular a cutscene ao clicar na tela
         // this.input.on('pointerdown', () => {
         //     this.scene.stop('cutScene'),

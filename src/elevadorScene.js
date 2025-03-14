@@ -11,10 +11,8 @@ class ElevadorScene extends Phaser.Scene {
     this.load.image("backgroundelev", "../assets/bgelevadorvar1.jpg");
     this.load.image("backgroundelev2", "../assets/bgelevadorvar2.jpg");
     this.load.image("backgroundelev3", "../assets/bgelevadorvar3.jpg");
-    this.load.spritesheet("player", "../assets/Player.png", {
-      frameWidth: 32,
-      frameHeight: 32,
-    });
+    this.load.spritesheet("player", "../assets/Player.png", {frameWidth: 32, frameHeight: 32,});
+    
     this.load.image("painelinelev", "../assets/painelinelev.png");
     this.load.image("botaoestrategias", "../assets/botaoestrategias.png");
     this.load.image("botaooffice", "../assets/botaooffice.png");

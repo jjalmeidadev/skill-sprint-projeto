@@ -12,10 +12,7 @@ class OfficeScene extends Phaser.Scene {
     this.load.image('computador', '../assets/computador.png');
     this.load.spritesheet('indicator', '../assets/spriteexclamação.png',{ frameWidth:254, frameHeight: 291 });
 
-    this.load.image('botaoElevOffice', '../assets/botaocimaelevador.png');
-    this.load.image('bgElevOffice', '../assets/bgelevadoroffice.png');
-    this.load.image('painelelev', '../assets/painelelevador.png');
-
+    // Carrega o mapa do tiled
     this.load.tilemapTiledJSON('escritorio', '../assets/mapaJogoVivo/mapaJogoVivo.json');
     this.load.image('decoracao', '../assets/mapaJogoVivo/decoracao.png');
     this.load.image('paredes', '../assets/mapaJogoVivo/paredes.png');
@@ -46,13 +43,15 @@ class OfficeScene extends Phaser.Scene {
         interagir: Phaser.Input.Keyboard.KeyCodes.E,
     });
 
-    // Cria o tilemap e as camadas
+    // Cria o mapa do tiled
     const map = this.make.tilemap({ key: "escritorio", tileWidth: 25, tileHeight: 20});
 
+    // Crias os assets usados para fazer o mapa
     const tileset1 = map.addTilesetImage("decoracao");
     const tileset2 = map.addTilesetImage("paredes");
     const tileset3 = map.addTilesetImage("personalizado_vivo");
 
+    // Cria as camadas
     const offsetX = width - 1270;
     const layer1 = map.createLayer("chao", tileset2, offsetX, 0).setScale(2.5);
     const layer2 = map.createLayer("chaoLider", tileset1, offsetX, 0).setScale(2.5);
@@ -131,38 +130,38 @@ class OfficeScene extends Phaser.Scene {
   }
 
   movePlayer() {
-    const velocidade = 150;
-    let movendo = false;
+    const velocidade = 150; // Define a velocidade de movimento do jogador
+    let movendo = false; // Variável para verificar se o jogador está se movendo
 
     // Movimentação do jogador utilizando as teclas WASD
     if (this.teclas.left.isDown) {
-      this.player.setVelocityX(-velocidade);
-      this.player.anims.play("walk_left", true);
+      this.player.setVelocityX(-velocidade); // Move o jogador para a esquerda
+      this.player.anims.play("walk_left", true); // Toca a animação de andar para a esquerda
       this.player.setFlipX(true); // Vira o sprite para a esquerda
-      movendo = true;
+      movendo = true; // Define que o jogador está se movendo
     } else if (this.teclas.right.isDown) {
-      this.player.setVelocityX(velocidade);
-      this.player.anims.play("walk_right", true);
+      this.player.setVelocityX(velocidade); // Move o jogador para a direita
+      this.player.anims.play("walk_right", true); // Toca a animação de andar para a direita
       this.player.setFlipX(false); // Mantém o sprite para a direita
-      movendo = true;
+      movendo = true; // Define que o jogador está se movendo
     } else {
-      this.player.setVelocityX(0);
+      this.player.setVelocityX(0); // Para o movimento horizontal do jogador
     }
 
     if (this.teclas.up.isDown) {
-      this.player.setVelocityY(-velocidade);
-      this.player.anims.play("walk_up", true);
-      movendo = true;
+      this.player.setVelocityY(-velocidade); // Move o jogador para cima
+      this.player.anims.play("walk_up", true); // Toca a animação de andar para cima
+      movendo = true; // Define que o jogador está se movendo
     } else if (this.teclas.down.isDown) {
-      this.player.setVelocityY(velocidade);
-      this.player.anims.play("walk_down", true);
-      movendo = true;
+      this.player.setVelocityY(velocidade); // Move o jogador para baixo
+      this.player.anims.play("walk_down", true); // Toca a animação de andar para baixo
+      movendo = true; // Define que o jogador está se movendo
     } else {
-      this.player.setVelocityY(0);
+      this.player.setVelocityY(0); // Para o movimento vertical do jogador
     }
 
     if (!movendo) {
-      this.player.anims.stop();
+      this.player.anims.stop(); // Para a animação se o jogador não estiver se movendo
     }
   }
 
@@ -173,33 +172,36 @@ class OfficeScene extends Phaser.Scene {
   }
 
   createPlayerAnimations() {
-    // Define as animações do jogador
+    // Define a animação de andar para baixo
     this.anims.create({
-      key: "walk_down",
-      frames: this.anims.generateFrameNumbers("player", { start: 0, end: 5 }),
-      frameRate: 10,
-      repeat: -1,
+      key: "walk_down", // Chave da animação
+      frames: this.anims.generateFrameNumbers("player", { start: 0, end: 5 }), // Frames da animação
+      frameRate: 10, // Taxa de quadros por segundo
+      repeat: -1, // Repetir indefinidamente
     });
 
+    // Define a animação de andar para a direita
     this.anims.create({
-      key: "walk_right",
-      frames: this.anims.generateFrameNumbers("player", { start: 6, end: 11 }),
-      frameRate: 10,
-      repeat: -1,
+      key: "walk_right", // Chave da animação
+      frames: this.anims.generateFrameNumbers("player", { start: 6, end: 11 }), // Frames da animação
+      frameRate: 10, // Taxa de quadros por segundo
+      repeat: -1, // Repetir indefinidamente
     });
 
+    // Define a animação de andar para cima
     this.anims.create({
-      key: "walk_up",
-      frames: this.anims.generateFrameNumbers("player", { start: 12, end: 17 }),
-      frameRate: 10,
-      repeat: -1,
+      key: "walk_up", // Chave da animação
+      frames: this.anims.generateFrameNumbers("player", { start: 12, end: 17 }), // Frames da animação
+      frameRate: 10, // Taxa de quadros por segundo
+      repeat: -1, // Repetir indefinidamente
     });
 
+    // Define a animação de andar para a esquerda
     this.anims.create({
-      key: "walk_left",
-      frames: this.anims.generateFrameNumbers("player", { start: 6, end: 11 }),
-      frameRate: 10,
-      repeat: -1,
+      key: "walk_left", // Chave da animação
+      frames: this.anims.generateFrameNumbers("player", { start: 6, end: 11 }), // Frames da animação
+      frameRate: 10, // Taxa de quadros por segundo
+      repeat: -1, // Repetir indefinidamente
     });
   }
 
@@ -214,31 +216,6 @@ class OfficeScene extends Phaser.Scene {
     this.physics.add.overlap(this.player, this.exclamacao , () => {
       this.scene.switch('buttonElevatorScene'); // Troca para a cena do escritório
   });
-  }
-
-  createFirtsButtonElevator() {
-    console.log("overlap!");
-
-    // Adiciona o botão 'Cima' na posição especificada
-    this.bgelevoffice = this.add.image(0, 0, "bgElevOffice").setOrigin(0, 0);
-    this.bgelevoffice.setDisplaySize(window.innerWidth, window.innerHeight);
-    this.painelelev = this.add.image(510, 90, "painelelev").setOrigin(0, 0);
-    this.bgelevoffice.setVisible(false);
-    this.painelelev.setVisible(false);
-    // Adiciona o botão 'Ajustes' na posição especificada
-    const botaoCima = (this.botaoCima = this.add.image(680, 200, "botaoElevOffice"));
-    this.botaoCima.setInteractive(); // Torna o botão interativo (clicável)
-    this.botaoCima.setScale(1); // Ajusta o tamanho do botão
-    this.botaoCima.setVisible(false);
-
-    // Adiciona um objeto invisível para verificar a proximidade
-    this.proximidade = this.add.rectangle(width - 400, height - 750, 10, 10, 0xff0000, 0);
-    this.physics.add.existing(this.proximidade, true);
-
-    botaoCima.on("pointerdown", () => {
-      this.scene.stop("officeScene");
-      this.scene.start("elevadorScene");
-    });
   }
 
   createComputer() {
@@ -274,8 +251,8 @@ class OfficeScene extends Phaser.Scene {
   showComputerScreen() {
     // Mostrar a tela do computador
     this.indicator.destroy();
-    this.scene.switch("curriculoScene");
-    this.salaLider();
+    this.scene.switch("curriculoScene"); // Muda para a cena do curriculo
+    this.salaLider(); // Chama a função que cria a sala do lider
   }
 
   addVivita() {
@@ -356,8 +333,8 @@ class OfficeScene extends Phaser.Scene {
       // Verifica se o jogador está próximo da exclamação
       if (Math.abs(this.player.x - this.exclamation.x) <= 50 && Math.abs(this.player.y - this.exclamation.y) <= 50) {
         this.exclamation.setVisible(false);
-        this.scene.switch('salaLiderScene'); // Troca para a cena do escritório
-        this.createButtonCima();
+        this.scene.switch('salaLiderScene'); // Troca para a cena da sala do lider
+        this.createButtonCima(); // Chama a função que cria o botão do elevador
       }
     });
   }

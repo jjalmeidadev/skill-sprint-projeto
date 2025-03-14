@@ -45,12 +45,15 @@ class TutorialScene extends Phaser.Scene {
     }
 
     create() {
+        // Cria o mapa do tiled
         const map = this.make.tilemap({ key: "escritorio", tileWidth: 25, tileHeight: 20});
 
+        // Coloca os assets usados para criar o mapa
         const tileset1 = map.addTilesetImage("decoracao");
         const tileset2 = map.addTilesetImage("paredes");
         const tileset3 = map.addTilesetImage("personalizado_vivo");
 
+        // Cria as camadas
         const layer1 = map.createLayer("chao", tileset2, width - 1270, 0).setScale(2.5);
         const layer2 = map.createLayer("chaoLider", tileset1, width - 1270, 0).setScale(2.5);
         const layer3 = map.createLayer("tapetes", tileset3, width - 1270, 0).setScale(2.5);
@@ -61,6 +64,7 @@ class TutorialScene extends Phaser.Scene {
         const layer8 = map.createLayer("plantas", tileset1, width - 1270, 0).setScale(2.5);
         const layer9 = map.createLayer("portas", tileset1, width - 1270, 0).setScale(2.5);
 
+        // Deixa o collider criado no tiled como true para fazer a colisão
         layer1.setCollisionByProperty({ collider: true});
         layer2.setCollisionByProperty({ collider: true});
         layer3.setCollisionByProperty({ collider: true});
@@ -246,8 +250,4 @@ class TutorialScene extends Phaser.Scene {
             this.showDialog();
         }
     }
-    
-    
-    
-    
 }
