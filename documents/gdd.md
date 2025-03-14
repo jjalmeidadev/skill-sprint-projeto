@@ -394,42 +394,42 @@ Pensamos em customizar as fases de acordo com elementos que remetam às Vice-Pre
 </div>
 
 <div align="center">
-  <sub>Mapa do elevador, onde o usuário utilizará para navegar entre os níveis do jogo</sub><br>
+  <sub>Concept Art do mapa do elevador, onde o usuário utilizará para navegar entre os níveis do jogo</sub><br>
   <img src="https://github.com/user-attachments/assets/bbef2db1-d93e-46b4-b963-df6272c6f82a" width="900px" 
   alt="Tela onde o usuário navegará pelos níveis do jogo"><br>
   <sup>Fonte: produzido pelos autores.</sup>
 </div>
 
 <div align="center">
-  <sub>Fase da VP de Pessoas, onde o colaborador experienciará a simulação de uma entrevista (minigame)</sub><br>
+  <sub>Concept Art da fase da VP de Pessoas, onde o colaborador experienciará a simulação de uma entrevista (minigame)</sub><br>
   <img src="https://github.com/user-attachments/assets/8ee23ad0-2aef-4434-afaf-9556e5ce62e1" width="900px" 
   alt="VP Pessoas"><br>
   <sup>Fonte: produzido pelos autores.</sup>
 </div>
 
 <div align="center">
-  <sub>Fase da VP de Negócios, personalizada nos temas B2B e B2C com um case em cada área</sub><br>
+  <sub>Concept Art da fase da VP de Negócios, personalizada nos temas B2B e B2C com um case em cada área</sub><br>
   <img src="https://github.com/user-attachments/assets/374019be-4ad6-47bf-8925-9645e638995e" width="900px" 
   alt="VP Negócios"><br>
   <sup>Fonte: produzido pelos autores.</sup>
 </div>
 
 <div align="center">
-  <sub>Fase da VP de Estratégia com um minigame sobre planejamento de carreira</sub><br>
+  <sub>Concept Art da fase da VP de Estratégia com um minigame sobre planejamento de carreira</sub><br>
   <img src="https://github.com/user-attachments/assets/80a7b560-411e-4ce1-91ba-c7be7e025af0" width="900px" 
   alt="VP Estratégia"><br>
   <sup>Fonte: produzido pelos autores.</sup>
 </div>
 
 <div align="center">
-  <sub>Fase da VP de Relações, onde acontecerá um jantar com todos os gerentes da Vivo, voltado para resolver dialetos de desempenho (feedback)</sub><br>
+  <sub>Concept Art da fase da VP de Relações, onde acontecerá um jantar com todos os gerentes da Vivo, voltado para resolver dialetos de desempenho (feedback)</sub><br>
   <img src="https://github.com/user-attachments/assets/d2312978-bfa4-4aec-9647-24f86fb7b6d3" width="900px" 
   alt="VP Relações"><br>
   <sup>Fonte: produzido pelos autores.</sup>
 </div>
 
 <div align="center">
-  <sub>Fase da VP de Tecnologia, onde o usuário irá aprender sobre upskilling e reskilling (aprimoramento de habilidades)</sub><br>
+  <sub>Concept Art da fase da VP de Tecnologia, onde o usuário irá aprender sobre upskilling e reskilling (aprimoramento de habilidades)</sub><br>
   <img src="https://github.com/user-attachments/assets/8b9b8a4f-b446-4103-98f2-fd6ff500a6e5" width="900px" 
   alt="VP Tecnologia"><br>
   <sup>Fonte: produzido pelos autores.</sup>
@@ -478,9 +478,14 @@ O próximo passo vai ser utilizar o elevador para ir para os próximos níveis. 
 
 O Gameflow de Skill Print pode ser observado a seguir:
 
-![Image](https://github.com/user-attachments/assets/6fc88e0a-6c23-46ef-a95c-a2ac7efc7c84)
+<div align="center">
+  <sub>Diagrama de Cenas</sub><br>
+  <img src="https://github.com/user-attachments/assets/8b9b8a4f-b446-4103-98f2-fd6ff500a6e5" width="900px" 
+  alt="Diagrama de cenas"><br>
+  <sup>Fonte: produzido pelos autores. </sup>
+</div> 
 
-Imagem 2: Diagrama de cenas (produzido pelo autor). Link de acesso: <https://www.canva.com/design/DAGgOn0t4k4/6R0GeJh2uACsr9gV2cqqVw/edit?utm_content=DAGgOn0t4k4&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton>
+Link de acesso: <https://www.canva.com/design/DAGgOn0t4k4/6R0GeJh2uACsr9gV2cqqVw/edit?utm_content=DAGgOn0t4k4&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton>
 
 Além do Gameflow desenvolvido no Canva, o rascunho do diagrama de cenas foi desenvolvido para visualizar e organizar a estrutura inicial do jogo, especialmente a primeira fase, que serve como ponto de partida para a experiência do jogador. Esse diagrama foi criado para mapear o fluxo de interações, desde a tela inicial até a conclusão das tarefas na fase de criação do currículo. Ele demonstra como o jogador navega pelo ambiente.
 
@@ -488,17 +493,20 @@ Inicialmente, o diagrama mostrava uma sequência linear, onde o jogador começav
 
 Além disso, o rascunho inicial não incluía a sala da líder como um espaço separado, mas, após testes e feedbacks, decidimos adicionar essa etapa para dar mais peso à entrega do currículo e proporcionar um momento de feedback imediato ao jogador. Essas mudanças foram essenciais para garantir que a primeira fase fosse intuitiva, educativa e alinhada com os objetivos do jogo.
 
+<div align="center">
+  <sub>Rascunho do esquema inicial do Diagrama de Fases do jogo</sub><br>
+  <img src="../assets/mapamental.JPG" width="900px" 
+  alt="Diagrama de cenas"><br>
+  <sup>Fonte: produzido pelos autores. </sup>
+</div> 
+
 O diagrama de cenas, portanto, evoluiu de uma estrutura simples para uma mais detalhada e interativa, refletindo as necessidades identificadas durante o processo de desenvolvimento. Ele serviu como um guia visual para a equipe, ajudando a alinhar expectativas e garantir que todas as mecânicas e narrativas estivessem integradas de forma coesa.
-
-<img src="../assets/mapamental.JPG">
-
-Imagem 2: Rascunho do esquema inicial do Diagrama de Fases do jogo (produzido pelo autor)
 
 ## 3.6. Regras do Jogo (Sprint 3)
 
 Neste segmento, serão apresentadas as diretrizes que o personagem precisará seguir para avançar nas etapas do jogo, comumente chamadas de *"primary quests"* ou missões principais. Essas normas são essenciais para garantir que o jogador compreenda os desafios propostos e consiga progredir de maneira estruturada dentro da narrativa.
 
-A proposta central do jogo é retratar diferentes cenários dentro do amplo ecossistema da empresa Vivo, onde cada ambiente representa um cargo ou função específica. O(a) protagonista, que acaba de ingressar na companhia, passará por essas experiências por meio do conceito de **"job rotation"**, explorando e aprendendo sobre cada função conforme avança nos desafios.
+A proposta central do jogo é retratar diferentes cenários dentro do amplo ecossistema da empresa Vivo, onde cada ambiente representa um cargo ou função específica. O(a) protagonista, que acaba de ingressar na companhia, passará por essas experiências por meio do conceito de *"job rotation"*, explorando e aprendendo sobre cada função conforme avança nos desafios.
 
 **A jornada do jogador seguirá os seguintes passos:**
 
@@ -544,15 +552,30 @@ Essa seção detalha o planejamento e a execução das sprints no desenvolviment
 
 Para a primeira versão do jogo (MVP) elaboramos uma tela inicial com um botão interativo "Jogar" (R02), permitindo que o jogador inicie a experiência ao clicar no botão.
 
-![Image](https://github.com/user-attachments/assets/0996cf85-6f8d-4d1c-b206-5c5c2080b520)
+<div align="center">
+  <sub>Tela inicial</sub><br>
+  <img src="https://github.com/user-attachments/assets/0996cf85-6f8d-4d1c-b206-5c5c2080b520" width="900px" 
+  alt="Tela inicial"><br>
+  <sup>Fonte: produzido pelos autores. </sup>
+</div> 
 
-Além disso, desenvolvemos uma cutscene em Pixel Art para apresentar o contexto e a ambientação inicial do jogo (R03). Essa introdução visa situar o jogador antes do início da jogabilidade. 
+Além disso, desenvolvemos uma *cutscene* em *Pixel Art* para apresentar o contexto e a ambientação inicial do jogo (R03). Essa introdução visa situar o jogador antes do início da jogabilidade. 
 
-![Image](https://github.com/user-attachments/assets/ad075642-151c-46b8-87cb-915dba6b7849)
+<div align="center">
+  <sub>Cutscene</sub><br>
+  <img src="https://github.com/user-attachments/assets/ad075642-151c-46b8-87cb-915dba6b7849" width="900px" 
+  alt="Cutscene"><br>
+  <sup>Fonte: produzido pelos autores. </sup>
+</div> 
 
 A primeira fase foi estruturada com um cenário de escritório (R05), onde o jogador pode explorar o ambiente e, em planos futuros, poderá interagir com elementos disponíveis. As interações com NPCs e a execução de tarefas orientadas pelo jogo (R04) serão aprofundadas nas próximas etapas do desenvolvimento, conforme planejado. Para a movimentação do personagem, definimos a mecânica de controle utilizando as setas do teclado (R01), permitindo que o jogador navegue livremente pelo mapa. Para isso, utilizamos um spritesheet de domínio gratuito, com planos de personalização em futuras atualizações.
 
-![Image](https://github.com/user-attachments/assets/9313ccf8-1659-4512-9d6f-0786efb2f97f)
+<div align="center">
+  <sub>Mapa da primeira fase do jogo (recepção)</sub><br>
+  <img src="https://github.com/user-attachments/assets/9313ccf8-1659-4512-9d6f-0786efb2f97f" width="900px" 
+  alt="Recepção"><br>
+  <sup>Fonte: produzido pelos autores. </sup>
+</div> 
 
 As principais dificuldades encontradas foram: a personalização do spritesheet do personagem principal, o desenvolvimento técnico da primeira fase do jogo e a implementação de barreiras no mapa. Os motivos dessas dificuldades são: lacunas de conhecimento técnico e identificação de falta de familiaridade com ferramentas tecnológicas que proporcionem essas funcionalidades. Por isso, decidimos postergar essas melhorias para a próxima Sprint, garantindo uma melhor execução dessas funções.
 
