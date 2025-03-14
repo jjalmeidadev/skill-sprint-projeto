@@ -207,27 +207,52 @@ class OfficeScene extends Phaser.Scene {
 
   createButtonCima() {
     // Adiciona a sprite da exclamação
-    this.exclamacao = this.physics.add.sprite(width - 435, height - 700, 'indicator').setScale(0.2);
+    this.exclamacao = this.physics.add
+      .sprite(width - 435, height - 700, "indicator")
+      .setScale(0.2);
     this.exclamacao.setImmovable(true);
-    this.exclamacao.play('exclamando'); // Inicia a animação
+    this.exclamacao.play("exclamando"); // Inicia a animação
     this.indicatorActive = true;
 
-    // Adiciona um overlap entre o player e a exclamation
-    this.physics.add.overlap(this.player, this.exclamacao , () => {
-      this.scene.switch('buttonElevatorScene'); // Troca para a cena do escritório
-  });
-  }
+    // Cria a imagem de fundo do elevador e o painel
+    this.bgelevoffice = this.add.image(0, 0, "bgElevOffice").setOrigin(0, 0);
+    this.bgelevoffice.setDisplaySize(this.screenWidth, this.screenHeight);
+    this.painelelev = this.add
+      .image(this.screenWidth - 910, this.screenHeight - 600, "painelelev")
+      .setOrigin(0, 0);
+    this.bgelevoffice.setVisible(false);
+    this.painelelev.setVisible(false);
 
-  createComputer() {
-    // Criar tela do computador mas deixá-la invisível no início
-    this.computador = this.add.image(width - 1020, height - 100, 'computador').setScale(0.09);
-    this.computador.setFlipX(true);
+    // Cria o botão do elevador e o torna interativo
+    this.botaoCima = this.add.image(680, 200, "botaoElevOffice");
+    this.botaoCima.setInteractive();
+    this.botaoCima.setScale(1);
+    this.botaoCima.setVisible(false);
+
+    // Cria um retângulo invisível para detectar a proximidade do jogador
+    this.proximidade = this.add.rectangle(1250, 40, 10, 10, 0xff0000, 0);
+    this.physics.add.existing(this.proximidade, true);
+
+    // Ao clicar no botão, troca para a cena do elevador
+    this.botaoCima.on("pointerdown", () => {
+      this.scene.stop("officeScene");
+      this.scene.start("elevadorScene");
+    });
+    // Adiciona um overlap entre o player e a exclamation
+    this.physics.add.overlap(this.player, this.exclamacao, () => {
+      this.scene.switch('buttonElevatorScene'); // Troca para a cena do escritório
+    });
   }
-  
-  addIndicatorAndComputer() {
-    // Criar indicator de exclamação sobre o computador
-    this.indicator = this.add.sprite(width - 1020, height - 150, 'indicator').setScale(0.2);
-    this.indicator.play('exclamando'); // Inicia a animação
+    
+
+  addComputerAndIndicator() {
+    // Cria o indicador (exclamação) acima do computador e inicia sua animação
+    this.indicator = this.add.sprite(
+      this.screenWidth - 1020,
+      this.screenHeight - 120,
+      'indicator'
+    ).setScale(0.2);
+    this.indicator.play('exclamando');
     this.indicatorActive = true;
 
     // Criar o computador na posição original
