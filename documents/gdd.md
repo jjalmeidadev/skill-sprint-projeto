@@ -450,25 +450,29 @@ Pensamos em customizar as fases de acordo com elementos que remetam às Vice-Pre
 
 ### 3.4.1. Inventário
 
-*\<opcional\> Caso seu jogo utilize itens ou poderes para os personagens obterem, descreva-os aqui, indicando títulos, imagens, meios de obtenção e funções no jogo. Utilize listas ou tabelas para organizar esta seção. Caso utilize material de terceiros em licença Creative Commons, não deixe de citar os autores/fontes.* 
+<!-- *\<opcional\> Caso seu jogo utilize itens ou poderes para os personagens obterem, descreva-os aqui, indicando títulos, imagens, meios de obtenção e funções no jogo. Utilize listas ou tabelas para organizar esta seção. Caso utilize material de terceiros em licença Creative Commons, não deixe de citar os autores/fontes.* 
 
 *Exemplo de tabela*
 \# | item |  | como obter | função | efeito sonoro
 --- | --- | --- | --- | --- | ---
 1 | moeda | <img src="../assets/coin.png"> | há muitas espalhadas em todas as fases | acumula dinheiro para comprar outros itens | som de moeda
 2 | madeira | <img src="../assets/wood.png"> | há muitas espalhadas em todas as fases | acumula madeira para construir casas | som de madeiras
-3 | ... 
+3 | ...  -->
+
+Não se aplica ao jogo. O jogo não inclui sistemas de inventário (como coleta de itens, poderes ou recursos). O design do jogo é focado em atuar como um *serious game* sobre os processos seletivos internos da Vivo, e a inclusão de itens não é necessária para a experiência que buscamos proporcionar ao jogador até o momento. As emoções e o estímulo ao jogo acontecem através dos *minigames* das fases, onde o principal objetivo do colaborador é completá-las corretamente. Por isso, optamos por não adicionar missões de coleta de itens (isso geraria uma sobrecarga de missões e funcionalidades desnecessárias para a finalidade do *serious game* SkillSprint, gerando um possível desfoque no desenvolvimento atual do projeto).
 
 ### 3.4.2. Bestiário
 
-*\<opcional\> Caso seu jogo tenha inimigos, descreva-os aqui, indicando nomes, imagens, momentos de aparição, funções e impactos no jogo. Utilize listas ou tabelas para organizar esta seção. Caso utilize material de terceiros em licença Creative Commons, não deixe de citar os autores/fontes.* 
+<!-- *\<opcional\> Caso seu jogo tenha inimigos, descreva-os aqui, indicando nomes, imagens, momentos de aparição, funções e impactos no jogo. Utilize listas ou tabelas para organizar esta seção. Caso utilize material de terceiros em licença Creative Commons, não deixe de citar os autores/fontes.* 
 
 *Exemplo de tabela*
 \# | inimigo |  | ocorrências | função | impacto | efeito sonoro
 --- | --- | --- | --- | --- | --- | ---
 1 | robô terrestre | <img src="../assets/inimigo2.PNG"> |  a partir da fase 1 | ataca o personagem vindo pelo chão em sua direção, com velocidade constante, atirando parafusos | se encostar no inimigo ou no parafuso arremessado, o personagem perde 1 ponto de vida | sons de tiros e engrenagens girando
 2 | robô voador | <img src="../assets/inimigo1.PNG"> | a partir da fase 2 | ataca o personagem vindo pelo ar, fazendo movimento em 'V' quando se aproxima | se encostar, o personagem perde 3 pontos de vida | som de hélice
-3 | ... 
+3 | ...  -->
+
+Não se aplica ao jogo. O jogo não inclui inimigos, criaturas ou qualquer tipo de antagonista que precise ser catalogado em um bestiário. A experiência do jogador é focada em completar os *minigames* em cada fase das Vice-Presidências da Vivo através da interação com NPCs do jogo. A presença de inimigos não é necessária para alcançar os objetivos de design propostos. O jogo foi projetado para oferecer uma experiência imersiva e educativa, sem a necessidade de combate ou interação com inimigos. A ausência de um bestiário permite que o jogador se concentre em resolver *puzzles*, explorar o ambiente e interagir com a história.
 
 ## 3.5. Gameflow (Diagrama de cenas) (sprint 2)
 
