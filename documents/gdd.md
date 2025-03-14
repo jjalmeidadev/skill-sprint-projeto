@@ -284,7 +284,7 @@ O **Skill Sprint** conta com um jogador principal chamado **Skrill** que será c
 
 <div align="center">
   <sub>Skrill, jogador principal</sub><br>
-  <img src="caminho" width="900px" 
+  <img src="../assets/skrill.png" width="450px" 
   alt="Skrill, jogador principal"><br>
   <sup>Fonte: produzido pelos autores.</sup>
 </div>
@@ -304,14 +304,14 @@ Até o presente momento de desenvolvimento, idealizamos 2 NPCs: o Vivinho, a Viv
 
 <div align="center">
   <sub>Vivinho</sub><br>
-  <img src="https://github.com/user-attachments/assets/50594d55-2807-4a2d-8dd0-89d618be81c5" width="900px" 
+  <img src="https://github.com/user-attachments/assets/50594d55-2807-4a2d-8dd0-89d618be81c5" width="450px" 
   alt="Vivinho"><br>
   <sup>Fonte: produzido pelos autores.</sup>
 </div>
 
 <div align="center">
   <sub>Vivita</sub><br>
-  <img src="https://github.com/user-attachments/assets/d1ada40a-0ed9-4092-b54a-d63624349d15" width="900px" 
+  <img src="https://github.com/user-attachments/assets/d1ada40a-0ed9-4092-b54a-d63624349d15" width="450px" 
   alt="Vivita"><br>
   <sup>Fonte: produzido pelos autores.</sup>
 </div>
@@ -345,7 +345,7 @@ O jogo conta com 6 fases. Cada fase ensina sobre uma etapa de candidatura em pro
 <div align="center">
   <sub>Recepção - Fase 1 do jogo</sub><br>
   <img src="https://github.com/user-attachments/assets/9313ccf8-1659-4512-9d6f-0786efb2f97f" width="900px" 
-  alt="Dados de diversidade na Vivo"><br>
+  alt="Recepção"><br>
   <sup>Fonte: elaborado pelos autores.</sup>
 </div>
  
@@ -381,7 +381,7 @@ Pensamos em customizar as fases de acordo com elementos que remetam às Vice-Pre
 
 <div align="center">
   <sub>Tela onde o usuário criará o currículo após falar com a Vivita.</sub><br>
-  <img src="https://github.com/user-attachments/assets/16844f63-7d26-41a3-8559-4d1e53c3bb60" width="900px" 
+  <img src="https://github.com/user-attachments/assets/8f9eea0b-78f7-47fa-b4e2-a06ef6b64347" width="900px" 
   alt="Tela onde o usuário criará o currículo após falar com a Vivita."><br>
   <sup>Fonte: produzido pelos autores.</sup>
 </div>
@@ -393,17 +393,27 @@ Pensamos em customizar as fases de acordo com elementos que remetam às Vice-Pre
   <sup>Fonte: produzido pelos autores.</sup>
 </div>
 
-![conceptElevador](https://github.com/user-attachments/assets/bbef2db1-d93e-46b4-b963-df6272c6f82a)
+<div align="center">
+  <sub>Mapa do elevador, onde o usuário utilizará para navegar entre os níveis do jogo</sub><br>
+  <img src="https://github.com/user-attachments/assets/bbef2db1-d93e-46b4-b963-df6272c6f82a" width="900px" 
+  alt="Tela onde o usuário navegará pelos níveis do jogo"><br>
+  <sup>Fonte: produzido pelos autores.</sup>
+</div>
 
-Figura 4: mapa do elevador, onde o usuário utilizará para navegar entre os níveis do jogo.
+<div align="center">
+  <sub>Fase da VP de Pessoas, onde o colaborador experienciará a simulação de uma entrevista (minigame)</sub><br>
+  <img src="https://github.com/user-attachments/assets/8ee23ad0-2aef-4434-afaf-9556e5ce62e1" width="900px" 
+  alt="VP Pessoas"><br>
+  <sup>Fonte: produzido pelos autores.</sup>
+</div>
 
-![conceptVPPessoas](https://github.com/user-attachments/assets/8ee23ad0-2aef-4434-afaf-9556e5ce62e1)
+<div align="center">
+  <sub>Fase da VP de Negócios, personalizada nos temas B2B e B2C com um case em cada área</sub><br>
+  <img src="https://github.com/user-attachments/assets/374019be-4ad6-47bf-8925-9645e638995e" width="900px" 
+  alt="VP Negócios"><br>
+  <sup>Fonte: produzido pelos autores.</sup>
+</div>
 
-Figura 5: fase da VP de Pessoas, onde o colaborador experienciará a simulação de uma entrevista (mini game).
-
-![conceptVPNegocios](https://github.com/user-attachments/assets/374019be-4ad6-47bf-8925-9645e638995e)
-
-Figura 6: fase da VP de Negócios, personalizada nos temas B2B e B2C com um case em cada área.
 
 ![conceptVPEstrategia](https://github.com/user-attachments/assets/80a7b560-411e-4ce1-91ba-c7be7e025af0)
 
