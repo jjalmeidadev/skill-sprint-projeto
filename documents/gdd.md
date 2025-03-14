@@ -3,8 +3,8 @@
 
 # GDD - Game Design Document - Módulo 1 - Inteli
 
-## SkillSprint Game 
-## SkillMakers
+## *SkillSprint Game* 
+## *SkillMakers*
 #### Nomes dos integrantes do grupo
 - <a href="https://www.linkedin.com/in/mike-buchsenspaner-445a2934b/">Mike Buchsenspaner
 - <a href="https://www.linkedin.com/in/sophia-hochman-b821a4346/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app">Sophia Hochman
@@ -42,7 +42,7 @@
 
 A Vivo é uma empresa de telecomunicações e tecnologia no Brasil que oferece telefonia móvel e fixa, internet, TV por assinatura e serviços digitais. Fazendo parte do grupo “Telefônica”, investe em fibra óptica e 5G. Seus principais concorrentes são Claro, TIM e operadoras regionais. O setor é altamente competitivo, com foco em inovação, IoT (internet das coisas), inteligência artificial e Open Finance [1]. A Vivo se destaca pela liderança no pós-pago e maior base de fibra óptica, enfrentando o desafio de manter sua posição frente à concorrência e à evolução tecnológica.
 
-Os principais players da indústria de telecomunicações no Brasil são empresas que competem diretamente no mercado. Esses players incluem a Vivo (líder em número de clientes [2]; possui diferencial de portfólio diversificado de serviços), a Claro [3] (segunda maior operadora do Brasil; possui como diferencial o foco em pacotes combinados de telefonia, internet e TV), a TIM [4] (terceira maior operadora; possui preços competitivos), a Oi [5], Algar Telecom [6] e Sky [7] (entre outros regionais). A Vivo também possui concorrentes indiretos de streaming e over-the-top (OTT) [8], plataformas como Netflix, Amazon Prime e YouTube competem indiretamente no segmento de entretenimento, impactando a demanda por serviços de TV por assinatura.
+Os principais *players* da indústria de telecomunicações no Brasil são empresas que competem diretamente no mercado. Esses *players* incluem a Vivo (líder em número de clientes [2]; possui diferencial de portfólio diversificado de serviços), a Claro [3] (segunda maior operadora do Brasil; possui como diferencial o foco em pacotes combinados de telefonia, internet e TV), a TIM [4] (terceira maior operadora; possui preços competitivos), a Oi [5], Algar Telecom [6] e Sky [7] (entre outros regionais). A Vivo também possui concorrentes indiretos de *streaming* e *over-the-top* (OTT) [8], plataformas como Netflix, Amazon Prime e YouTube competem indiretamente no segmento de entretenimento, impactando a demanda por serviços de TV por assinatura.
 
 As tendências do mercado são a expansão do 5G (garante maior velocidade e conectividade), convergência de serviços (pacotes combinados com diferentes serviços de comunicação), digitalização e IoT, principalmente para empresas. Esses players e tendências mostram um mercado altamente competitivo, onde a Vivo se mantém como líder, mas precisa continuar inovando para enfrentar a concorrência direta e indireta. 
 
@@ -119,7 +119,7 @@ Com isso, esses são os princípios que guiam as tomadas de decisões e estraté
 
 ## 1.2. Requisitos do Projeto (sprints 1 e 2)
 
-No kick-off com o parceiro, realizado em 07/02/2024, a Vivo delineou os principais aspectos para o desenvolvimento do MVP. A Tabela 1 a seguir apresenta os requisitos fundamentais para a construção da solução proposta, garantindo alinhamento com as expectativas da empresa parceira.
+No *kick-off* com o parceiro, realizado em 07/02/2024, a Vivo delineou os principais aspectos para o desenvolvimento do MVP. A Tabela 1 a seguir apresenta os requisitos fundamentais para a construção da solução proposta, garantindo alinhamento com as expectativas da empresa parceira.
  
 Tabela 1
 \# | Requisito  
@@ -153,7 +153,7 @@ O principal objetivo do Skill Sprint é proporcionar aos colaboradores da Vivo u
 
 No jogo, os participantes percorrem diferentes etapas do crescimento profissional, desde a candidatura a novas oportunidades até o planejamento contínuo de desenvolvimento, promovendo a cultura de mobilidade interna e aprendizado contínuo.
 
-Por meio de desafios dinâmicos e da prática do **job rotation** [15], os jogadores exploram novas áreas dentro da empresa, ampliando suas habilidades e alinhando-se aos valores e oportunidades da Vivo. Com essa abordagem gamificada, o Skill Sprint transforma o desenvolvimento de carreira em uma jornada envolvente e acessível, aumentando a adesão aos programas de capacitação e otimizando os recursos investidos em treinamentos tradicionais.
+Por meio de desafios dinâmicos e da prática do *job rotation* [15], os jogadores exploram novas áreas dentro da empresa, ampliando suas habilidades e alinhando-se aos valores e oportunidades da Vivo. Com essa abordagem gamificada, o Skill Sprint transforma o desenvolvimento de carreira em uma jornada envolvente e acessível, aumentando a adesão aos programas de capacitação e otimizando os recursos investidos em treinamentos tradicionais.
 
 Para avançar e concluir o jogo, o jogador deve:
 - Aprender os comandos de movimentação (teclas "A", "W", "S" e "D" do teclado) e interação com elementos (tecla “E”);
@@ -165,7 +165,7 @@ Os objetivos de cada fase do jogo são:
 ##### Fase 1: Criação do Currículo no Escritório da Vivo
 - **Objetivo da fase:** Ensinar a criar um currículo atrativo e eficaz.
 - **Aprendizado:** Construção e otimização de currículo.
-- **Conteúdos:** Dicas de layout, palavras-chave, adaptação para ATS [17] (Applicant Tracking System), destaque de conquistas.
+- **Conteúdos:** Dicas de layout, palavras-chave, adaptação para ATS [17] (*Applicant Tracking System*), destaque de conquistas.
 - **Desafio (objetivo do jogador):** Cumprir a introdução ao jogo com Vivinho, seguir instruções da recepcionista (Vivita), criar o currículo no computador através das perguntas do mini game e entregá-lo à líder.
 
 ##### Fase 2: Entrevista de Processo Seletivo na Vice-Presidência de Pessoas
@@ -196,7 +196,7 @@ Os objetivos de cada fase do jogo são:
 - **Objetivo:** Incentivar o aprendizado contínuo.
 - **Aprendizado:** Desenvolvimento de novas habilidades para adaptação ao mercado.
 - **Conteúdos:** Diferença entre upskilling e reskilling, ferramentas de desenvolvimento.
-- **Desafios:** Identificar skills relevantes, criar plano de aprendizado.
+- **Desafios:** Identificar *skills* relevantes, criar plano de aprendizado.
 
 Diante do exposto, entende-se que o jogo é estruturado de forma a contemplar o requisito sete (R07), voltado para o estímulo da rotação de carreira no ambiente corporativo da Vivo. Todas as fases possuem o objetivo de instruir, em forma de serious game, as boas práticas de uma aplicação de qualidade em um processo seletivo interno empresarial. O objetivo geral é motivar o jogador a realizar o job rotation após entender claramente o passo-a-passo para esse processo jogando Skill Sprint.
 
