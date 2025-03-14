@@ -622,7 +622,7 @@ Os casos de teste descritos a seguir foram elaborados para avaliar os diferentes
 2 | O jogo está rodando e o personagem pode se mover | Pressionar as teclas WASD | O personagem deve se mover
 3 | O jogo está na tela inicial|Clicar no botão "Jogar" |O jogo deve iniciar e levar o jogador para a cutscene
 4 |A tela do quiz está aberta	|	Selecionar uma das alternativas|A alternativa escolhida deve mudar de cor (verde se correta, vermelha se errada)
-5 |O jogo está na tela inicial|Clicar no botão "Créditos"|Aparecera uma tela mostrando o grupo responsavel pelo projeto
+5 |O jogo está na tela inicial|Clicar no botão "Créditos"|Aparecerá uma tela mostrando o grupo responsável pelo projeto
 6 |A cutscene se encerra|O jogo termina de carregar|Aparece o tutorial
 7 |O jogo foi iniciado|Aguardar a tela de nome aparecer|A caixa de texto para digitar o nome está visível
 8 |A caixa de texto está visível|Digitar um nome e confirmar|O nome digitado deve ser armazenado e utilizado no jogo
@@ -630,7 +630,7 @@ Os casos de teste descritos a seguir foram elaborados para avaliar os diferentes
 
 Através desses testes, foi possível identificar pontos de melhoria, ajustar comportamentos inesperados e assegurar que a experiência do jogador seja fluida e intuitiva.
 
-No futuro, planejamos expandir os casos de teste para cobrir novas funcionalidades e fases, garantindo que o Skill Sprint continue evoluindo e oferecendo uma experiência cada vez mais envolvente e alinhada com os objetivos de aprendizado e desenvolvimento profissional propostos.
+No futuro, planejamos expandir os casos de teste para cobrir novas funcionalidades, melhorar o design do nosso jogo (padronizar de acordo com a paleta de cores) e realizar a refatoração do código (reutilizar elementos e torná-lo mais oganizado e inteligente). Dessa forma, garantiremos que o Skill Sprint continue evoluindo e oferecendo uma experiência cada vez mais envolvente e alinhada com os objetivos de aprendizado e desenvolvimento profissional propostos.
 
 ## 5.2. Testes de jogabilidade (playtests) (sprint 4)
 
