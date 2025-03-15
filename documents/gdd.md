@@ -487,7 +487,7 @@ O Gameflow de Skill Print pode ser observado a seguir:
 ![Image](https://github.com/user-attachments/assets/393b8899-1bc1-4ede-88e8-e4a5a0b202c8)
 
 
-Link de acesso:file:///C:/Users/Inteli/Downloads/DIAGRAMA%20DE%20CENAS.pdf
+Link de acesso:  (file:///C:/Users/Inteli/Downloads/DIAGRAMA%20DE%20CENAS.pdf)
 
 
 
