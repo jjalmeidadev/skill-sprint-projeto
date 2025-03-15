@@ -483,7 +483,8 @@ O Gameflow de Skill Print pode ser observado a seguir:
 
 <div align="center">
   <sub>Diagrama de Cenas</sub><br>
- ![Image](https://github.com/user-attachments/assets/7a42460a-d9e6-4677-84d4-fc5e42b4c0ae)
+ 
+link: ![Image](https://github.com/user-attachments/assets/7a42460a-d9e6-4677-84d4-fc5e42b4c0ae)
   <sup>Fonte: produzido pelos autores. </sup>
 </div> 
 
