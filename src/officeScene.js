@@ -34,6 +34,11 @@ class OfficeScene extends Phaser.Scene {
       repeat: -1
     });
 
+    // Se o jogador já voltou da salaLiderScene, cria o botão do elevador
+    if (this.returnedFromSalaLider) {
+      this.createButtonCima();
+  }
+
     // Configuração do teclado (WASD + E para interação)
     this.teclas = this.input.keyboard.addKeys({
         up: Phaser.Input.Keyboard.KeyCodes.W,
@@ -207,9 +212,7 @@ class OfficeScene extends Phaser.Scene {
 
   createButtonCima() {
     // Adiciona a sprite da exclamação
-    this.exclamacao = this.physics.add
-      .sprite(width - 435, height - 700, "indicator")
-      .setScale(0.2);
+    this.exclamacao = this.physics.add.sprite(width - 435, height - 700, "indicator").setScale(0.2);
     this.exclamacao.setImmovable(true);
     this.exclamacao.play("exclamando"); // Inicia a animação
     this.indicatorActive = true;
@@ -343,14 +346,13 @@ class OfficeScene extends Phaser.Scene {
       } else {
         balaoTexto.setVisible(false); // Deixa o balão da fala da vivita invisível
         text.setVisible(false); // Deixa as falas invisíveis
-
+        this.input.keyboard.off('keydown-ENTER'); //Impede que o usuario aperte ENTER apos o dialogo acabar
         this.addIndicatorAndComputer(); // Chama a função que adiciona a exclamação no computador
       }
     });
   }
    
   salaLider() {
-    // Adiciona a sprite da exclamação
     this.exclamation = this.physics.add.sprite(width - 1200, height - 500, 'indicator').setScale(0.2);
     this.exclamation.play('exclamando'); // Inicia a animação
     this.indicatorActive = true;

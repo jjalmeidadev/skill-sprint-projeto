@@ -5,10 +5,10 @@ class SalaLider extends Phaser.Scene {
     preload() {
         // Carrega a sprite do jogador e da exclamação
         this.load.spritesheet('player', '../assets/Player.png', { frameWidth: 32, frameHeight: 32 });
-        this.load.spritesheet('indicator', '../assets/spriteexclamação.png',{ frameWidth:254, frameHeight: 291 });
+        this.load.spritesheet('indicator', '../assets/spriteexclamação.png',{ frameWidth: 254, frameHeight: 291 });
+        this.load.spritesheet('leader', '../assets/lider_spritesheet.png',{frameWidth: 16, frameHeight: 16});
 
-        // Carrega a vivita e o balão de texto
-        this.load.image('vivita', '../assets/vivita.png');
+        // Carrega o balão de texto
         this.load.image('balaoTexto', '../assets/balaoTexto.png');
 
         // Carrega o mapa da sala do líder
@@ -63,7 +63,7 @@ class SalaLider extends Phaser.Scene {
         layer6.setCollisionByProperty({ collider: true });
 
 
-        
+        this.createLeaderAnimations();
         this.addLeader();
         this.createPlayer();
         this.createPlayerAnimations();
@@ -72,7 +72,7 @@ class SalaLider extends Phaser.Scene {
         this.physics.add.collider(this.player, layer3);
         this.physics.add.collider(this.player, layer4);
         this.physics.add.collider(this.player, layer5);
-        //this.physics.add.collider(this.player, this.vivita);
+        this.physics.add.collider(this.player, this.leader);
     }
 
     update() {
@@ -153,43 +153,55 @@ class SalaLider extends Phaser.Scene {
         });
       }
 
+      createLeaderAnimations() {
+        this.anims.create({
+          key: "drink",
+          frames: this.anims.generateFrameNumbers("leader", {start: 16, end: 19}),
+          frameRate: 4,
+          repeat: -1,
+        });
+      }
+
       addLeader() {
-        // Adiciona a vivita no jogo
-        this.vivita = this.physics.add.sprite(width - 600, height - 300, 'vivita').setScale(0.18);
-        this.vivita.setImmovable(true);
-        this.vivita.setFlipX(true); // Vira a vivita para a esquerda
+        //Adiciona a líder no jogo
+        this.leader = this.physics.add.sprite(width - 600, height - 300, 'leader');
+        this.leader.setScale(5.5);
+        this.leader.setFlipX(true);
+        this.leader.setImmovable(true);
+        this.leader.anims.play('drink');
+
     
         // Adiciona a sprite da exclamação
         this.exclamation = this.add.sprite(width - 600, height - 400, 'indicator').setScale(0.3);
         this.exclamation.play('exclamando'); // Inicia a animação
         this.indicatorActive = true;
     
-        // Torna a vivita interativa
-        this.vivita.setInteractive();
-        this.vivita.on('pointerdown', () => {
-          this.showVivitaInteraction(); // Chama a função de interação com a vivita
+        // Torna a leader interativa
+        this.leader.setInteractive();
+        this.leader.on('pointerdown', () => {
+          this.showLeaderInteraction(); // Chama a função de interação com a leader
         });
     
         // Adiciona um evento para a tecla 'E'
         this.input.keyboard.on('keydown-E', () => {
-          // Verifica se o jogador está próximo da Vivita
+          // Verifica se o jogador está próximo da leader
           if (
-            Math.abs(this.player.x - this.vivita.x) <= 50 &&
-            Math.abs(this.player.y - this.vivita.y) <= 50 &&
-            !this.vivitaInteracted // Verifica se a interação já ocorreu
+            Math.abs(this.player.x - this.leader.x) <= 150 &&
+            Math.abs(this.player.y - this.leader.y) <= 150 &&
+            !this.leaderInteracted // Verifica se a interação já ocorreu
           ) {
-            // Chama a função de interação com a vivita
-            this.showVivitaInteraction();
-            this.vivitaInteracted = true; // Marca que a interação ocorreu
+            // Chama a função de interação com a leader
+            this.showLeaderInteraction();
+            this.leaderInteracted = true; // Marca que a interação ocorreu
           }
         });
       }
 
-      showVivitaInteraction() {
+      showLeaderInteraction() {
         this.exclamation.setVisible(false); // Deixa a exclamação da vivita invisível
     
         // Lista com as falas da vivita
-        var speechVivita = ['Olá, Fulano! Tudo bem?', 
+        var speechLeader = ['Olá, Fulano! Tudo bem?', 
                             'Ah, então quer dizer que você quer migrar para uma nova VP? Que alegria!',
                             'Vou analisar seu currículo.',
                             'Vamos ver...', 
@@ -201,7 +213,7 @@ class SalaLider extends Phaser.Scene {
         balaoTexto.setFlipX(true);
     
         // Adiciona uma caixa de texto dentro do balão de texto
-        const text = this.add.text(width - 815, height - 480, speechVivita[0], {
+        const text = this.add.text(width - 815, height - 480, speechLeader[0], {
           fontSize: '16px',
           fill: '#000000',
           wordWrap: { width: balaoTexto.width - 20 }
@@ -211,12 +223,12 @@ class SalaLider extends Phaser.Scene {
         let currentSpeechIndex = 0;
         this.input.keyboard.on('keydown-ENTER', () => { // As falas avançam apertando a tecla ENTER
           currentSpeechIndex++; // Soma 1 cada fez que uma fala passa
-          if (currentSpeechIndex < speechVivita.length) { // Se a fala que está mostrando no momento estiver em uma posição menor do que o tamanho da lista, avança
-            text.setText(speechVivita[currentSpeechIndex]); // Mostra a fala de acordo com a posição na lista
+          if (currentSpeechIndex < speechLeader.length) { // Se a fala que está mostrando no momento estiver em uma posição menor do que o tamanho da lista, avança
+            text.setText(speechLeader[currentSpeechIndex]); // Mostra a fala de acordo com a posição na lista
           } else {
             balaoTexto.setVisible(false); // Deixa o balão da fala da vivita invisível
             text.setVisible(false); // Deixa as falas invisíveis
-    
+            this.input.keyboard.off('keydown-ENTER'); //Impede que o usuario aperte ENTER apos o dialogo acabar
             this.backToOffice(); // Chama a função que adiciona a exclamação no computador
           }
         });
