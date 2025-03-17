@@ -29,10 +29,10 @@ class CutScene extends Phaser.Scene {
         });
         
         // //Código comentado que permite pular a cutscene ao clicar na tela
-        // this.input.on('pointerdown', () => {
-        //     this.scene.stop('cutScene'),
-        //     this.scene.start('tutorialScene');
-        // });
+         this.input.on('pointerdown', () => {
+            this.scene.stop('cutScene'),
+             this.scene.start('tutorialScene');
+         });
     }
 }
 

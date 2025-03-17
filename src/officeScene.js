@@ -23,6 +23,11 @@ class OfficeScene extends Phaser.Scene {
   }
 
   create() {
+
+//skip elevador
+   // this.scene.start("elevadorScene");
+    //return;
+
     this.cameras.main.fadeIn(1000); // Transição suave
 
     //cria a animação
@@ -210,28 +215,24 @@ class OfficeScene extends Phaser.Scene {
     this.exclamacao = this.physics.add
       .sprite(width - 435, height - 700, "indicator")
       .setScale(0.2);
-    this.exclamacao.setImmovable(true);
     this.exclamacao.play("exclamando"); // Inicia a animação
     this.indicatorActive = true;
 
     // Cria a imagem de fundo do elevador e o painel
     this.bgelevoffice = this.add.image(0, 0, "bgElevOffice").setOrigin(0, 0);
-    this.bgelevoffice.setDisplaySize(this.screenWidth, this.screenHeight);
+    this.bgelevoffice.setDisplaySize(width, height);
     this.painelelev = this.add
-      .image(this.screenWidth - 910, this.screenHeight - 600, "painelelev")
+      .image(width - 910, height - 600, "painelelev")
       .setOrigin(0, 0);
     this.bgelevoffice.setVisible(false);
     this.painelelev.setVisible(false);
 
     // Cria o botão do elevador e o torna interativo
-    this.botaoCima = this.add.image(680, 200, "botaoElevOffice");
+    this.botaoCima = this.add.image(width - 680, height - 400, "botaoElevOffice");
+    this.botaoCima.setPosition(width - 680, height - 400);
     this.botaoCima.setInteractive();
     this.botaoCima.setScale(1);
     this.botaoCima.setVisible(false);
-
-    // Cria um retângulo invisível para detectar a proximidade do jogador
-    this.proximidade = this.add.rectangle(1250, 40, 10, 10, 0xff0000, 0);
-    this.physics.add.existing(this.proximidade, true);
 
     // Ao clicar no botão, troca para a cena do elevador
     this.botaoCima.on("pointerdown", () => {
@@ -243,6 +244,8 @@ class OfficeScene extends Phaser.Scene {
       this.scene.switch('buttonElevatorScene'); // Troca para a cena do escritório
     });
   }
+
+
 
   createComputer() {
     // Criar o computador na posição original
@@ -366,3 +369,4 @@ class OfficeScene extends Phaser.Scene {
     });
   }
 }
+
