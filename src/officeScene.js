@@ -34,11 +34,6 @@ class OfficeScene extends Phaser.Scene {
       repeat: -1
     });
 
-    // Se o jogador já voltou da salaLiderScene, cria o botão do elevador
-    if (this.returnedFromSalaLider) {
-      this.createButtonCima();
-  }
-
     // Configuração do teclado (WASD + E para interação)
     this.teclas = this.input.keyboard.addKeys({
         up: Phaser.Input.Keyboard.KeyCodes.W,
@@ -132,6 +127,10 @@ class OfficeScene extends Phaser.Scene {
       }
     }
 
+    // Se o jogador já voltou da salaLiderScene, cria o botão do elevador
+    if (this.returnedFromSalaLider && this.blockLoop === 0) {
+      this.createButtonCima();
+    }
   }
 
   movePlayer() {
@@ -211,6 +210,9 @@ class OfficeScene extends Phaser.Scene {
   }
 
   createButtonCima() {
+    //Constante para evitar a criação repetida
+    this.blockLoop = 1;
+
     // Adiciona a sprite da exclamação
     this.exclamacao = this.physics.add.sprite(width - 435, height - 700, "indicator").setScale(0.2);
     this.exclamacao.setImmovable(true);
@@ -219,10 +221,8 @@ class OfficeScene extends Phaser.Scene {
 
     // Cria a imagem de fundo do elevador e o painel
     this.bgelevoffice = this.add.image(0, 0, "bgElevOffice").setOrigin(0, 0);
-    this.bgelevoffice.setDisplaySize(this.screenWidth, this.screenHeight);
-    this.painelelev = this.add
-      .image(this.screenWidth - 910, this.screenHeight - 600, "painelelev")
-      .setOrigin(0, 0);
+    this.bgelevoffice.setDisplaySize(width, height);
+    this.painelelev = this.add.image(width - 910, height - 600, "painelelev").setOrigin(0, 0);
     this.bgelevoffice.setVisible(false);
     this.painelelev.setVisible(false);
 
@@ -353,18 +353,24 @@ class OfficeScene extends Phaser.Scene {
   }
    
   salaLider() {
+    if (this.inTransition) return; // Evita múltiplas ativações do overlap
+
+    // Adiciona a exclamação na porta da sala da líder
     this.exclamation = this.physics.add.sprite(width - 1200, height - 500, 'indicator').setScale(0.2);
     this.exclamation.play('exclamando'); // Inicia a animação
     this.indicatorActive = true;
 
-    // Adiciona um evento para a tecla 'E'
-    this.input.keyboard.on('keydown-E', () => {
-      // Verifica se o jogador está próximo da exclamação
-      if (Math.abs(this.player.x - this.exclamation.x) <= 50 && Math.abs(this.player.y - this.exclamation.y) <= 50) {
-        this.exclamation.setVisible(false);
-        this.scene.switch('salaLiderScene'); // Troca para a cena da sala do lider
-        this.createButtonCima(); // Chama a função que cria o botão do elevador
-      }
+    // Adiciona um overlap entre a exclamação e o player
+    this.physics.add.overlap(this.player, this.exclamation, () => {
+        if (!this.inTransition) { 
+            this.inTransition = true;
+            this.returnedFromSalaLider = true; // Marca que o jogador já foi para salaLiderScene
+            this.blockLoop = 0;
+            this.exclamation.setVisible(false);
+            this.scene.switch('salaLiderScene'); // Troca para a cena do líder
+        }
     });
+
+
   }
 }
