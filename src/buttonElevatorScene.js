@@ -16,7 +16,7 @@ class buttonElevatorScene extends Phaser.Scene {
         this.painelelev = this.add.image(width / 2, height / 2, "displayelev");
 
         // Adiciona o botão e configura para ser interativo
-        this.buttonUP = this.add.image(width / 2, height / 2 + 100, "buttonElevOffice"); 
+        this.buttonUP = this.add.image(width /2, height - 470, "buttonElevOffice"); 
         this.buttonUP.setInteractive(); // Torna o botão interativo (clicável)
         this.buttonUP.setScale(1); // Ajusta o tamanho do botão
 
