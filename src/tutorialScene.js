@@ -5,7 +5,7 @@ class TutorialScene extends Phaser.Scene {
 
         // Lista das falas do Vivinho (tutorial)
         this.introducao = [
-            "Olá! Digite o seu nome abaixo:",
+            "Olá! Qual é o seu nome?",
             "Vivinho: Olá, Fulano! Bem-vindo à Vivo! Somos a maior empresa de telecomunicações do Brasil! Parabéns por fazer parte do nosso time!",
             "Vivinho: Eu tenho uma importante missão: apresentar para você o plano de carreira interno da Vivo. Me diga, você conhece o plano de carreira da Vivo?"
         ];
@@ -47,9 +47,9 @@ class TutorialScene extends Phaser.Scene {
     create() {
         // Transição de entrada
         this.cameras.main.fadeIn(1000, 0, 0, 0);
-        
+
         // Cria o mapa do tiled
-        const map = this.make.tilemap({ key: "escritorio", tileWidth: 25, tileHeight: 20});
+        const map = this.make.tilemap({ key: "escritorio", tileWidth: 25, tileHeight: 20 });
 
         // Coloca os assets usados para criar o mapa
         const tileset1 = map.addTilesetImage("decoracao");
@@ -68,15 +68,15 @@ class TutorialScene extends Phaser.Scene {
         const layer9 = map.createLayer("portas", tileset1, width - 1270, 0).setScale(2.5);
 
         // Deixa o collider criado no tiled como true para fazer a colisão
-        layer1.setCollisionByProperty({ collider: true});
-        layer2.setCollisionByProperty({ collider: true});
-        layer3.setCollisionByProperty({ collider: true});
-        layer4.setCollisionByProperty({ collider: true});
-        layer5.setCollisionByProperty({ collider: true});
-        layer6.setCollisionByProperty({ collider: true});
-        layer7.setCollisionByProperty({ collider: true});
-        layer8.setCollisionByProperty({ collider: true});
-        layer9.setCollisionByProperty({ collider: true});
+        layer1.setCollisionByProperty({ collider: true });
+        layer2.setCollisionByProperty({ collider: true });
+        layer3.setCollisionByProperty({ collider: true });
+        layer4.setCollisionByProperty({ collider: true });
+        layer5.setCollisionByProperty({ collider: true });
+        layer6.setCollisionByProperty({ collider: true });
+        layer7.setCollisionByProperty({ collider: true });
+        layer8.setCollisionByProperty({ collider: true });
+        layer9.setCollisionByProperty({ collider: true });
 
         // Cria a caixa de diálogo e exibe a primeira fala
         this.createDialogBox();
@@ -88,15 +88,34 @@ class TutorialScene extends Phaser.Scene {
         this.sobreposicao.setScale(0.5); // Ajuste conforme necessário
         this.sobreposicao.setAlpha(0); // Deixa a imagem invisível
 
-        // Adicionando input de texto
-        this.textEntry = this.add.text(width - 800, height - 100, '', { font: '32px FontePadrao', fill: '#000000' });
+        // Adicionando um retângulo arredondado como fundo para o input
+        this.inputBackground = this.add.graphics();
+        this.inputBackground.fillStyle(0xffffff); // Fundo branco
+        this.inputBackground.fillRoundedRect(width - 1000, height - 130, 500, 50, 10); // Retângulo arredondado
+        this.inputBackground.lineStyle(2, 0xffff00, 1); // Bordas amarelas
+        this.inputBackground.strokeRoundedRect(width - 1000, height - 130, 500, 50, 10); // Aplicar bordas ao retângulo
 
+        // Placeholder
+        const placeholderText = this.add.text(width - 990, height - 130, 'Digite seu nome aqui...', { font: '25px FontePadrao', fill: '#000000' }); // Placeholder cinza escuro
+
+        // Adicionando input de texto
+        this.textEntry = this.add.text(width - 990, height - 130, '', { font: '25px FontePadrao', fill: '#000000' }); // Texto branco
+
+
+        // Evento de teclado para capturar a entrada de texto
         this.input.keyboard.on('keydown', event => {
             if (event.keyCode === 8 && this.textEntry.text.length > 0) {
                 this.textEntry.text = this.textEntry.text.substr(0, this.textEntry.text.length - 1);
             }
             else if (event.keyCode === 32 || (event.keyCode >= 48 && event.keyCode <= 90)) {
                 this.textEntry.text += event.key;
+            }
+
+            // Remover o placeholder quando o usuário começar a digitar
+            if (this.textEntry.text.length > 0) {
+                placeholderText.setVisible(false);
+            } else {
+                placeholderText.setVisible(true);
             }
         });
 
@@ -105,8 +124,8 @@ class TutorialScene extends Phaser.Scene {
     }
 
     createDialogBox() {
-        const dialogWidth = width/2;
-        const dialogHeight = height/5;
+        const dialogWidth = width / 2;
+        const dialogHeight = height / 5;
         const x = this.cameras.main.width / 2 - dialogWidth / 2;
         const y = this.cameras.main.height - dialogHeight - 50;
 
@@ -146,7 +165,7 @@ class TutorialScene extends Phaser.Scene {
 
     showDialog() {
         const x = width / 2 - 100;
-        const y = height/1.2;
+        const y = height / 1.2;
 
         // if (this.currentLine === 0) {
         //     // Exibe o campo de entrada para o nome do jogador
@@ -194,12 +213,12 @@ class TutorialScene extends Phaser.Scene {
         // Destroi os botões após a escolha
         if (this.botaoSim) this.botaoSim.destroy();
         if (this.botaoNao) this.botaoNao.destroy();
-    
+
         this.botaoSim = null;
         this.botaoNao = null;
-    
+
         this.opcaoSelecionada = true; // Indica que uma opção foi escolhida
-    
+
         if (optionIndex === 1) { // Se escolheu "Não"
             this.currentCondicionalLine = 1; // Começa na primeira fala condicional
             this.dialogText.setText(this.perguntaCondicional[this.currentCondicionalLine]); // Exibe a primeira fala
@@ -210,21 +229,22 @@ class TutorialScene extends Phaser.Scene {
             this.exibirImagem = false; // A imagem ainda não aparece, precisa de ENTER primeiro
         }
     }
-    
+
     nextDialog() {
         if (this.currentLine === 0 && this.textEntry.text.trim() === "") {
             return; // Se o nome não foi preenchido, não avança
         }
-    
+
         if (this.currentLine === 0) {
             playerName = this.textEntry.text.trim();
             this.textEntry.setVisible(false);
+            this.inputBackground.setVisible(false);
         }
-    
+
         if (this.currentLine === 2 && !this.opcaoSelecionada) {
             return; // Se nenhuma opção foi selecionada, não avança
         }
-    
+
         // **Novo fluxo para "Sim"**: Primeiro ENTER exibe a imagem, segundo ENTER muda de cena
         if (this.simSelecionado) {
             if (!this.exibirImagem) {
@@ -236,14 +256,14 @@ class TutorialScene extends Phaser.Scene {
             this.scene.start('officeScene'); // Segundo ENTER leva para a próxima cena
             return;
         }
-    
+
         // Se o jogador escolheu "Não" e ainda há falas na lista condicional
         if (this.opcaoSelecionada && this.currentCondicionalLine >= 0 && this.currentCondicionalLine < this.perguntaCondicional.length - 1) {
             this.currentCondicionalLine++;
             this.dialogText.setText(this.perguntaCondicional[this.currentCondicionalLine]);
             return;
         }
-    
+
         // Se a última fala condicional foi exibida, mostra a imagem sobreposta
         if (this.opcaoSelecionada && this.currentCondicionalLine === this.perguntaCondicional.length - 1) {
             this.dialogText.setText(this.finalizacao[0]);
@@ -252,13 +272,13 @@ class TutorialScene extends Phaser.Scene {
             this.currentCondicionalLine++; // Permite avanço após a imagem
             return;
         }
-    
+
         // Se a imagem já foi mostrada e ENTER for pressionado novamente, troca de cena
         if (this.exibirImagem && this.sobreposicao.alpha === 1) {
             this.scene.start('officeScene');
             return;
         }
-    
+
         // Avança o diálogo normal
         this.currentLine++;
         if (this.currentLine < this.introducao.length) {
