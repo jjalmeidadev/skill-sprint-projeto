@@ -108,13 +108,7 @@ class OfficeScene extends Phaser.Scene {
     // Texto para depuração, exibindo as coordenadas do jogador
     this.coordText = this.add.text(20, 20, "", {fontSize: "16px", fill: "#ffffff"});
 
-    onShutdown() {
-      // Salva o tempo atual da música e a para quando a cena é pausada ou encerrada
-      if (this.officeMusic && this.officeMusic.isPlaying) {
-        OfficeScene.lastMusicTime = this.officeMusic.seek;
-        this.officeMusic.stop();
-      }
-    }
+    this.onShutdown();
 
     // Cria a animação do indicador (apenas uma instância)
     this.anims.create({
@@ -133,6 +127,14 @@ class OfficeScene extends Phaser.Scene {
       interagir: Phaser.Input.Keyboard.KeyCodes.E,
     });
   }
+
+    onShutdown() {
+      // Salva o tempo atual da música e a para quando a cena é pausada ou encerrada
+      if (this.officeMusic && this.officeMusic.isPlaying) {
+        OfficeScene.lastMusicTime = this.officeMusic.seek;
+        this.officeMusic.stop();
+      }
+    }
 
   update() {
     this.movePlayer();
