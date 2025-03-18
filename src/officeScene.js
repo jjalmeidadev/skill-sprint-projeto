@@ -2,7 +2,6 @@ class OfficeScene extends Phaser.Scene {
   constructor() {
     // Chama o construtor da classe Phaser.Scene com a chave 'officeScene'
     super({ key: 'officeScene' });
-    // this.currentBackground = 'background'; // Estado inicial
     this.canMove = true; // Controla se o jogador pode se mover
   }
 
@@ -30,12 +29,6 @@ class OfficeScene extends Phaser.Scene {
     //return;
 
     this.cameras.main.fadeIn(1000); // Transição suave
-    // Obtém as dimensões da tela
-    const screenWidth = this.sys.game.config.width;
-    const screenHeight = this.sys.game.config.height;
-    // Adiciona a imagem de fundo e ajusta seu tamanho para preencher a tela
-    // this.background = this.add.image(0, 0, 'background').setOrigin(0, 0);
-    // this.background.setDisplaySize(window.innerWidth, window.innerHeight);
 
     //cria a animação
     this.anims.create({
@@ -61,17 +54,19 @@ class OfficeScene extends Phaser.Scene {
     const tileset2 = map.addTilesetImage("paredes");
     const tileset3 = map.addTilesetImage("personalizado_vivo");
 
+    //Cria as camadas
+    const offsetX = width - 1270;
+    const layer1 = map.createLayer("chao", tileset2, offsetX, 0).setScale(2.5);
+    const layer2 = map.createLayer("chaoLider", tileset1, offsetX, 0).setScale(2.5);
+    const layer3 = map.createLayer("tapetes", tileset3, offsetX, 0).setScale(2.5);
+    const layer4 = map.createLayer("tapeteLider", tileset1, offsetX, 0).setScale(2.5);
+    const layer5 = map.createLayer("paredes", tileset2, offsetX, 0).setScale(2.5);
+    const layer6 = map.createLayer("detalhesParede", tileset2, offsetX, 0).setScale(2.5);
+    const layer7 = map.createLayer("decoracao", tileset1, offsetX, 0).setScale(2.5);
+    const layer8 = map.createLayer("plantas", tileset1, offsetX, 0).setScale(2.5);
+    const layer9 = map.createLayer("portas", tileset1, offsetX, 0).setScale(2.5);
 
-    const layer1 = map.createLayer("chao", tileset2, width - 1270, 0).setScale(2.5);
-    const layer2 = map.createLayer("chaoLider", tileset1, width - 1270, 0).setScale(2.5);
-    const layer3 = map.createLayer("tapetes", tileset3, width - 1270, 0).setScale(2.5);
-    const layer4 = map.createLayer("tapeteLider", tileset1, width - 1270, 0).setScale(2.5);
-    const layer5 = map.createLayer("paredes", tileset2, width - 1270, 0).setScale(2.5);
-    const layer6 = map.createLayer("detalhesParede", tileset2, width - 1270, 0).setScale(2.5);
-    const layer7 = map.createLayer("decoracao", tileset1, width - 1270, 0).setScale(2.5);
-    const layer8 = map.createLayer("plantas", tileset1, width - 1270, 0).setScale(2.5);
-    const layer9 = map.createLayer("portas", tileset1, width - 1270, 0).setScale(2.5);
-
+    //Ativa as colisões com base na propriedade 'collider' para todas as camadas
     layer1.setCollisionByProperty({ collider: true });
     layer2.setCollisionByProperty({ collider: true });
     layer3.setCollisionByProperty({ collider: true });
@@ -84,21 +79,38 @@ class OfficeScene extends Phaser.Scene {
 
 
     // Cria a tela do computador, o computador e o indicador de exclamação
-    this.createComputerScreen();
-    this.addComputerAndIndicator();
+    this.addVivita();
+    this.createComputer();
     this.createPlayer();
     this.createPlayerAnimations();
-    this.createButtonCima();
 
     this.physics.add.collider(this.player, layer5);
-    //this.physics.add.collider(this.player, layer6);
     this.physics.add.collider(this.player, layer7);
     this.physics.add.collider(this.player, layer8);
 
     // Adicionar limites para o mundo do jogo
-    this.physics.world.setBounds(0, 0, window.innerWidth, window.innerHeight);
+    this.physics.world.setBounds(0, 0, this.screenWidth, this.screenHeight);
+
     // Criar texto para coordenadas (debug)
     this.coordText = this.add.text(20, 20, '', { fontSize: '16px', fill: '#ffffff' });
+
+    //cria a animação
+    this.anims.create({
+      key: 'exclamando',
+      frames: this.anims.generateFrameNumbers('indicator', { start: 0, end: 1 }),
+      //velocidade da animação
+      frameRate: 3,
+      repeat: -1
+    });
+
+    // Configuração do teclado (WASD + E para interação)
+    this.teclas = this.input.keyboard.addKeys({
+      up: Phaser.Input.Keyboard.KeyCodes.W,
+      down: Phaser.Input.Keyboard.KeyCodes.S,
+      left: Phaser.Input.Keyboard.KeyCodes.A,
+      right: Phaser.Input.Keyboard.KeyCodes.D,
+      interagir: Phaser.Input.Keyboard.KeyCodes.E
+    });
   }
 
   update() {
@@ -247,9 +259,6 @@ class OfficeScene extends Phaser.Scene {
     this.indicator.play('exclamando'); // Inicia a animação
     this.indicatorActive = true;
 
-    // Criar o computador na posição original
-    this.computador = this.add.image(width - 1020, height - 100, 'computador').setScale(0.09).setInteractive();
-    this.computador.setFlipX(true);
     // Criar o computador na posição original
     this.computador = this.add.image(width - 1020, height - 100, 'computador').setScale(0.09).setInteractive();
     this.computador.setFlipX(true);
