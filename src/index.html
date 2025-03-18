@@ -10,10 +10,11 @@
 </head>
 
 <body>
-  <script>
-    // Define as variáveis de largura e altura do jogo
-    var width = 1520;
-    var height = 753;
+  <script> 
+        // Define as variáveis de largura e altura do jogo
+        var width = 1520;
+        var height = 753;
+        var playerName = "";
   </script>
 
   <style>
@@ -29,14 +30,15 @@
   <!-- Inclusão dos scripts do jogo -->
   <script src="phaser.js"></script> <!-- Carrega a biblioteca Phaser, necessária para criar o jogo -->
   <script src="initialScene.js"></script> <!-- Cena inicial do jogo -->
-  <script src="creditosScene.js"></script>
+  <script src="creditosScene.js"></script> <!-- Cena creditos do jogo-->
   <script src="cutScene.js"></script> <!-- Cena de corte (cutscene) do jogo -->
   <script src="gameplayTutorialScene.js"></script> <!-- Cena do tutorial de jogabilidade -->
   <script src="tutorialScene.js"></script> <!-- Cena do tutorial do jogo (ajustada) -->
   <script src="officeScene.js"></script> <!-- Cena do escritório (office) do jogo -->
   <script src="elevadorScene.js"></script> <!-- Arquivo que gerencia o elevador do jogo -->
   <script src="curriculoScene.js"></script> <!-- Cena relacionada ao currículo do jogo -->
-  <!-- <script src="gameplayTutorialScene.js"></script> Cena principal do jogo -->
+  <script src="salaLiderScene.js"></script> <!-- Cena da sala da Lider -->
+  <script src="buttonElevatorScene.js"></script> <!-- Cena do botão inicial do elevador -->
 
   <!-- O arquivo principal deve ser carregado por último -->
   <script src="game.js"></script> <!-- Arquivo principal que inicializa o jogo e gerencia as cenas -->

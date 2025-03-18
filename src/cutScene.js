@@ -11,10 +11,10 @@ class CutScene extends Phaser.Scene {
 
     create() {
         // Adiciona o vídeo à cena, centralizando-o na tela
-        this.video = this.add.video(width / 2, height / 2, 'cutScene').setOrigin(0.5);
+        this.cutScene = this.add.video(width / 2, height / 2, 'cutScene').setOrigin(0.5);
         
         // Define a escala do vídeo para 50% do tamanho original
-        this.video.setScale(0.5);
+        this.cutScene.setScale(0.5);
 
         // Chama o método para reproduzir a cutscene
         this.playCutScene();
@@ -22,16 +22,17 @@ class CutScene extends Phaser.Scene {
 
     playCutScene() {
         // Reproduz o vídeo da cutscene
-        this.video.play(false);
+        this.cutScene.play(false);
         // Quando o vídeo terminar, inicia a próxima cena do jogo
-        this.video.on('complete', () => {
+        this.cutScene.on('complete', () => {
             this.scene.start('gameplayTutorialScene'); // Troca para a cena 'tutorialScene'
         });
-        //Código comentado que permite pular a cutscene ao clicar na tela
-        this.input.on('pointerdown', () => {
+        
+        // //Código comentado que permite pular a cutscene ao clicar na tela
+         this.input.on('pointerdown', () => {
             this.scene.stop('cutScene'),
-            this.scene.start('tutorialScene');
-        });
+             this.scene.start('tutorialScene');
+         });
     }
 }
 
