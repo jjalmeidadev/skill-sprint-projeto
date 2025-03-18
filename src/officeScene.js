@@ -26,9 +26,6 @@ class OfficeScene extends Phaser.Scene {
   }
 
   create() {
-    const width = this.scale.width;
-    const height = this.scale.height;
-
     // Transição suave
     this.cameras.main.fadeIn(1000);
 
@@ -107,28 +104,9 @@ class OfficeScene extends Phaser.Scene {
 
     // Texto para depuração, exibindo as coordenadas do jogador
     this.coordText = this.add.text(20, 20, "", {fontSize: "16px", fill: "#ffffff"});
-
-    this.onShutdown();
-
-    // Cria a animação do indicador (apenas uma instância)
-    this.anims.create({
-      key: "exclamando",
-      frames: this.anims.generateFrameNumbers("indicator", { start: 0, end: 1 }),
-      frameRate: 3,
-      repeat: -1,
-    });
-
-    // Configura os controles do teclado (WASD + E para interação)
-    this.teclas = this.input.keyboard.addKeys({
-      up: Phaser.Input.Keyboard.KeyCodes.W,
-      down: Phaser.Input.Keyboard.KeyCodes.S,
-      left: Phaser.Input.Keyboard.KeyCodes.A,
-      right: Phaser.Input.Keyboard.KeyCodes.D,
-      interagir: Phaser.Input.Keyboard.KeyCodes.E,
-    });
   }
 
-    onShutdown() {
+  onShutdown() {
       // Salva o tempo atual da música e a para quando a cena é pausada ou encerrada
       if (this.officeMusic && this.officeMusic.isPlaying) {
         OfficeScene.lastMusicTime = this.officeMusic.seek;
@@ -224,8 +202,6 @@ class OfficeScene extends Phaser.Scene {
 
   createButtonCima() {
     this.blockLoop = 1;
-    const width = this.scale.width;
-    const height = this.scale.height;
 
     this.exclamacao = this.physics.add.sprite(width - 435, height - 700, "indicator").setScale(0.2);
     this.exclamacao.setImmovable(true);
@@ -264,9 +240,6 @@ class OfficeScene extends Phaser.Scene {
   }
 
   addIndicatorAndComputer() {
-    const width = this.scale.width;
-    const height = this.scale.height;
-
     this.indicator = this.add.sprite(width - 1020, height - 150, 'indicator').setScale(0.2);
     this.indicator.play('exclamando');
     this.indicatorActive = true;
