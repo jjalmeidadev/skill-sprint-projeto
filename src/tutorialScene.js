@@ -5,7 +5,7 @@ class TutorialScene extends Phaser.Scene {
 
         // Lista das falas do Vivinho (tutorial)
         this.introducao = [
-            "Olá! Qual é o seu nome?",
+            "Olá! Digite o seu nome abaixo:",
             "Vivinho: Olá, Fulano! Bem-vindo à Vivo! Somos a maior empresa de telecomunicações do Brasil! Parabéns por fazer parte do nosso time!",
             "Vivinho: Eu tenho uma importante missão: apresentar para você o plano de carreira interno da Vivo. Me diga, você conhece o plano de carreira da Vivo?"
         ];
@@ -45,6 +45,9 @@ class TutorialScene extends Phaser.Scene {
     }
 
     create() {
+        // Transição de entrada
+        this.cameras.main.fadeIn(1000, 0, 0, 0);
+        
         // Cria o mapa do tiled
         const map = this.make.tilemap({ key: "escritorio", tileWidth: 25, tileHeight: 20});
 
@@ -85,6 +88,18 @@ class TutorialScene extends Phaser.Scene {
         this.sobreposicao.setScale(0.5); // Ajuste conforme necessário
         this.sobreposicao.setAlpha(0); // Deixa a imagem invisível
 
+        // Adicionando input de texto
+        this.textEntry = this.add.text(width - 800, height - 100, '', { font: '32px FontePadrao', fill: '#000000' });
+
+        this.input.keyboard.on('keydown', event => {
+            if (event.keyCode === 8 && this.textEntry.text.length > 0) {
+                this.textEntry.text = this.textEntry.text.substr(0, this.textEntry.text.length - 1);
+            }
+            else if (event.keyCode === 32 || (event.keyCode >= 48 && event.keyCode <= 90)) {
+                this.textEntry.text += event.key;
+            }
+        });
+
         // Adiciona interação para avançar o diálogo ao pressionar ENTER
         this.input.keyboard.on('keydown-ENTER', () => this.nextDialog());
     }
@@ -106,42 +121,42 @@ class TutorialScene extends Phaser.Scene {
         // Cria o texto da fala
         this.dialogText = this.add.text(x + 150, y + 30, '', {
             fontSize: '20px',
-            color: '#ffffff',
+            color: '#000000',
             fontFamily: 'FontePadrao',
             wordWrap: { width: 600 }
         });
 
-        // Cria campo de entrada (input) para o nome do jogador
-        this.nome = document.createElement('input');
-        this.nome.type = 'text';
-        this.nome.placeholder = 'Digite seu nome...';
-        this.nome.style.position = 'absolute';
-        this.nome.style.width = '200px';
-        this.nome.style.height = '30px';
-        this.nome.style.fontSize = '18px';
-        this.nome.style.background = '#fff';
-        this.nome.style.border = '2px solid #ff9e0d';
-        this.nome.style.borderRadius = '5px';
-        this.nome.style.textAlign = 'center';
-        this.nome.style.display = 'none';
-        this.nome.style.fontFamily = 'FontePadrao';
+        // // Cria campo de entrada (input) para o nome do jogador
+        // this.nome = document.createElement('input');
+        // this.nome.type = 'text';
+        // this.nome.placeholder = 'Digite seu nome...';
+        // this.nome.style.position = 'absolute';
+        // this.nome.style.width = '200px';
+        // this.nome.style.height = '30px';
+        // this.nome.style.fontSize = '18px';
+        // this.nome.style.background = '#fff';
+        // this.nome.style.border = '2px solid #ff9e0d';
+        // this.nome.style.borderRadius = '5px';
+        // this.nome.style.textAlign = 'center';
+        // this.nome.style.display = 'none';
+        // this.nome.style.fontFamily = 'FontePadrao';
 
-        document.body.appendChild(this.nome);
+        // document.body.appendChild(this.nome);
     }
 
     showDialog() {
         const x = width / 2 - 100;
         const y = height/1.2;
 
-        if (this.currentLine === 0) {
-            // Exibe o campo de entrada para o nome do jogador
-            this.nome.style.display = 'block';
-            this.nome.style.left = `${width-1000}px`;
-            this.nome.style.top = `${height - 300}px`;
-        } else {
-            // Esconde o campo de entrada para o nome do jogador
-            this.nome.style.display = 'none';
-        }
+        // if (this.currentLine === 0) {
+        //     // Exibe o campo de entrada para o nome do jogador
+        //     this.nome.style.display = 'block';
+        //     this.nome.style.left = `${width-1000}px`;
+        //     this.nome.style.top = `${height - 300}px`;
+        // } else {
+        //     // Esconde o campo de entrada para o nome do jogador
+        //     this.nome.style.display = 'none';
+        // }
 
         if (this.currentLine === 1 && playerName) {
             // Exibe a fala de boas-vindas com o nome do jogador
@@ -197,13 +212,13 @@ class TutorialScene extends Phaser.Scene {
     }
     
     nextDialog() {
-        if (this.currentLine === 0 && this.nome.value.trim() === "") {
+        if (this.currentLine === 0 && this.textEntry.text.trim() === "") {
             return; // Se o nome não foi preenchido, não avança
         }
     
         if (this.currentLine === 0) {
-            playerName = this.nome.value.trim();
-            this.nome.style.display = 'none';
+            playerName = this.textEntry.text.trim();
+            this.textEntry.setVisible(false);
         }
     
         if (this.currentLine === 2 && !this.opcaoSelecionada) {
