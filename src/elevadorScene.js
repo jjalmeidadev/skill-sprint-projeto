@@ -26,51 +26,58 @@ class ElevadorScene extends Phaser.Scene {
 
     // Carrega o áudio específico para o elevador
     this.load.audio('elevatorAudio', '../assets/Local Forecast - Elevator [ ezmp3.co ].mp3');
+    
+    // Se o sprite 'indicator' não estiver sendo carregado em outra cena, descomente a linha abaixo:
+    // this.load.spritesheet("indicator", "../assets/spriteexclamação.png", { frameWidth: 254, frameHeight: 291 });
   }
 
   create() {
+    const width = this.scale.width;
+    const height = this.scale.height;
+
+    // Registra os eventos para pausar o áudio sempre que a cena for interrompida
+    this.events.on('shutdown', this.shutdown, this);
+    this.events.on('pause', this.shutdown, this);
+
     // Inicia o áudio do elevador em loop
     this.elevatorSound = this.sound.add('elevatorAudio', {
-      loop: true,  // Configura para tocar em loop
-      volume: 0.5  // Define o volume da música
+      loop: true,
+      volume: 0.5
     });
     this.elevatorSound.play();
 
-    // Cria a animação para o indicador
-    this.anims.create({
-      key: "exclamando",
-      frames: this.anims.generateFrameNumbers("indicator", {
-        start: 0,
-        end: 1,
-      }),
-      frameRate: 3,
-      repeat: -1,
-    });
+    // Cria a animação para o indicador (caso ainda não exista)
+    if (!this.anims.exists("exclamando")) {
+      this.anims.create({
+        key: "exclamando",
+        frames: this.anims.generateFrameNumbers("indicator", { start: 0, end: 1 }),
+        frameRate: 3,
+        repeat: -1,
+      });
+    }
 
     this.cameras.main.fadeIn(1000); // Efeito de transição para a cena
 
-    // Seleciona aleatoriamente uma das imagens de fundo carregadas
-    const backgrounds = [
-      "backgroundelev",
-      "backgroundelev2",
-      "backgroundelev3",
-    ];
+    // Seleciona aleatoriamente uma das imagens de fundo
+    const backgrounds = ["backgroundelev", "backgroundelev2", "backgroundelev3"];
     const randomBackground = Phaser.Math.RND.pick(backgrounds);
-
-    // Adiciona a imagem de fundo e ajusta seu tamanho para preencher a tela
     this.background = this.add.image(0, 0, randomBackground).setOrigin(0, 0);
     this.background.setDisplaySize(width, height);
+
+    // Cria a sprite do indicador ("exclamando")
+    this.indicator = this.add.sprite(width - 955, height - 660, "indicator").setScale(0.3);
+    this.indicator.play("exclamando");
+    this.indicatorActive = true;
 
     // Criação dos elementos da cena
     this.createPlayer();
     this.createPlayerAnimations();
-    this.createButtonOffice();
-    this.createButtonPessoas();
-    this.createButtonEstrategias();
-    this.createButtonNegocios();
-    this.createButtonTech();
-    this.createButtonRelacoes();
-    // this.createButtonCima(); // Commented out as the method is not defined
+    this.createButtonOffice(width, height);
+    this.createButtonPessoas(width, height);
+    this.createButtonEstrategias(width, height);
+    this.createButtonNegocios(width, height);
+    this.createButtonTech(width, height);
+    this.createButtonRelacoes(width, height);
 
     // Configuração do teclado (WASD para movimentação)
     this.teclas = this.input.keyboard.addKeys({
@@ -79,12 +86,17 @@ class ElevadorScene extends Phaser.Scene {
       left: Phaser.Input.Keyboard.KeyCodes.A,
       right: Phaser.Input.Keyboard.KeyCodes.D,
     });
+
+    // Define os limites do mundo do jogo
+    this.physics.world.setBounds(0, 0, width, height);
   }
 
   update() {
-    // Atualiza a posição do jogador a cada frame
+    // Atualiza a posição do jogador
     this.movePlayer();
 
+    const width = this.scale.width;
+    const height = this.scale.height;
     const closeToButtons =
       Math.abs(this.player.x - this.proximidade.x) <= 50 &&
       Math.abs(this.player.y - this.proximidade.y) <= 50;
@@ -94,7 +106,6 @@ class ElevadorScene extends Phaser.Scene {
         this.indicator.setVisible(false); // Esconde o indicador apenas na primeira vez
         this.painelinelevShown = true; // Marca que o painel já foi mostrado pelo menos uma vez
       }
-
       // Exibe o painel e os botões quando perto
       this.painelinelev.setVisible(true);
       this.botaoofficeel.setVisible(true);
@@ -112,8 +123,6 @@ class ElevadorScene extends Phaser.Scene {
       this.botaonegocios.setVisible(false);
       this.botaotech.setVisible(false);
       this.botaorelacoes.setVisible(false);
-
-      // O indicador só reaparece se o painel nunca tiver sido mostrado
       if (!this.painelinelevShown) {
         this.indicator.setVisible(true);
       }
@@ -121,26 +130,25 @@ class ElevadorScene extends Phaser.Scene {
   }
   
   shutdown() {
-    // Para o áudio quando a cena for encerrada
-    if (this.elevatorSound) {
+    // Interrompe o áudio do elevador ao encerrar ou pausar a cena
+    if (this.elevatorSound && this.elevatorSound.isPlaying) {
       this.elevatorSound.stop();
     }
   }
 
   movePlayer() {
-    let velocidade = 150;
+    const velocidade = 150;
     let movendo = false;
 
-    // Movimentação do player com WASD
     if (this.teclas.left.isDown) {
       this.player.setVelocityX(-velocidade);
       this.player.anims.play("walk_left", true);
-      this.player.setFlipX(true); // Virar para a esquerda
+      this.player.setFlipX(true);
       movendo = true;
     } else if (this.teclas.right.isDown) {
       this.player.setVelocityX(velocidade);
       this.player.anims.play("walk_right", true);
-      this.player.setFlipX(false); // Manter normal para direita
+      this.player.setFlipX(false);
       movendo = true;
     } else {
       this.player.setVelocityX(0);
@@ -164,38 +172,34 @@ class ElevadorScene extends Phaser.Scene {
   }
 
   createPlayer() {
-    // Cria o jogador
+    const width = this.scale.width;
+    const height = this.scale.height;
+    // Cria o jogador e define os limites do mundo
     this.player = this.physics.add.sprite(680, 120, "player");
     this.player.setScale(4);
     this.player.setCollideWorldBounds(true);
-
-    // Define os limites do mundo do jogo
     this.physics.world.setBounds(0, 0, width, height);
   }
 
   createPlayerAnimations() {
-    // Animações do jogador
     this.anims.create({
       key: "walk_down",
       frames: this.anims.generateFrameNumbers("player", { start: 0, end: 5 }),
       frameRate: 10,
       repeat: -1,
     });
-
     this.anims.create({
       key: "walk_right",
       frames: this.anims.generateFrameNumbers("player", { start: 6, end: 11 }),
       frameRate: 10,
       repeat: -1,
     });
-
     this.anims.create({
       key: "walk_up",
       frames: this.anims.generateFrameNumbers("player", { start: 12, end: 17 }),
       frameRate: 10,
       repeat: -1,
     });
-
     this.anims.create({
       key: "walk_left",
       frames: this.anims.generateFrameNumbers("player", { start: 6, end: 11 }),
@@ -204,110 +208,93 @@ class ElevadorScene extends Phaser.Scene {
     });
   }
 
-  createButtonOffice() {
-    // Adiciona o botão e o painel
-    this.botaoofficeel = this.add.image(0, 0, "botaooffice").setOrigin(0, 0);
-    this.botaoofficeel.setVisible(false);
+  createButtonOffice(width, height) {
+    // Cria o painel e a área de proximidade
     this.painelinelev = this.add.image(0, 0, "painelinelev").setOrigin(0, 0);
     this.painelinelev.setDisplaySize(width, height);
     this.painelinelev.setVisible(false);
 
-    // Adiciona a sprite da exclamação
-    this.indicator = this.add.sprite(width - 955, height - 660, "indicator").setScale(0.3);
-    this.indicator.play('exclamando'); // Inicia a animação
-    this.indicatorActive = true;
+    this.proximidade = this.add.rectangle(width - 955, height - 650, 105, 70, 0xff0000, 0);
+    this.physics.add.existing(this.proximidade, true);
 
-    // Adiciona o botão interativo
+    // Cria o botão para a OfficeScene
     this.botaoofficeel = this.add.image(width - 905, height - 160, "botaooffice");
     this.botaoofficeel.setInteractive();
     this.botaoofficeel.setScale(1.2, 1.15);
     this.botaoofficeel.setVisible(false);
 
-    // Adiciona um objeto invisível para verificar a proximidade
-    this.proximidade = this.add.rectangle(width - 955, height - 650, 105, 70, 0xff0000, 0);
-    this.physics.add.existing(this.proximidade, true);
-
     this.botaoofficeel.on("pointerdown", () => {
+      this.shutdown();
       this.scene.stop("elevadorScene");
       this.scene.start("officeScene");
     });
   }
 
-  createButtonPessoas() {
+  createButtonPessoas(width, height) {
     // Botão Pessoas
-    this.botaopessoas = this.add.image(0, 0, "botaopessoas").setOrigin(0, 0);
-    this.botaopessoas.setVisible(false);
-
     this.botaopessoas = this.add.image(width - 620, height - 160, "botaopessoas");
     this.botaopessoas.setInteractive();
     this.botaopessoas.setScale(1.2, 1.15);
     this.botaopessoas.setVisible(false);
 
     this.botaopessoas.on("pointerdown", () => {
+      this.shutdown();
       this.scene.stop("elevadorScene");
       this.scene.start("officeScene");
     });
   }
 
-  createButtonEstrategias() {
+  createButtonEstrategias(width, height) {
     // Botão Estratégias
-    this.botaoestrategias = this.add.image(0, 0, "botaoestrategias").setOrigin(0, 0);
-    this.botaoestrategias.setVisible(false);
-
     this.botaoestrategias = this.add.image(width - 620, height - 392, "botaoestrategias");
     this.botaoestrategias.setInteractive();
     this.botaoestrategias.setScale(1.2, 1.15);
     this.botaoestrategias.setVisible(false);
 
     this.botaoestrategias.on("pointerdown", () => {
+      this.shutdown();
       this.scene.stop("elevadorScene");
       this.scene.start("estrategiasScene");
     });
   }
 
-  createButtonNegocios() {
+  createButtonNegocios(width, height) {
     // Botão Negócios
-    this.botaonegocios = this.add.image(0, 0, "botaonegocios").setOrigin(0, 0);
-    this.botaonegocios.setVisible(false);
-
     this.botaonegocios = this.add.image(width - 910, height - 393, "botaonegocios");
     this.botaonegocios.setInteractive();
     this.botaonegocios.setScale(1.2, 1.15);
     this.botaonegocios.setVisible(false);
 
     this.botaonegocios.on("pointerdown", () => {
+      this.shutdown();
       this.scene.stop("elevadorScene");
       this.scene.start("negociosScene");
     });
   }
 
-  createButtonTech() {
+  createButtonTech(width, height) {
     // Botão Tech
-    this.botaotech = this.add.image(0, 0, "botaotech").setOrigin(0, 0);
-    this.botaotech.setVisible(false);
-
     this.botaotech = this.add.image(width - 906, height - 602, "botaotech");
     this.botaotech.setInteractive();
     this.botaotech.setScale(1.2, 1.15);
     this.botaotech.setVisible(false);
 
     this.botaotech.on("pointerdown", () => {
+      this.shutdown();
       this.scene.stop("elevadorScene");
       this.scene.start("techScene");
     });
   }
 
-  createButtonRelacoes() {
+  createButtonRelacoes(width, height) {
     // Botão Relações
-    this.botaorelacoes = this.add.image(0, 0, "botaorelacoes").setOrigin(0, 0);
-    this.botaorelacoes.setVisible(false);
-
     this.botaorelacoes = this.add.image(width - 610, height - 605, "botaorelacoes");
     this.botaorelacoes.setInteractive();
     this.botaorelacoes.setScale(1.2, 1.15);
     this.botaorelacoes.setVisible(false);
 
     this.botaorelacoes.on("pointerdown", () => {
+      this.shutdown();
       this.scene.stop("elevadorScene");
       this.scene.start("relacoesScene");
     });
