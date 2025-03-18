@@ -1,4 +1,3 @@
-
 class ElevadorScene extends Phaser.Scene {
   constructor() {
     // Chama o construtor da classe Phaser.Scene com a chave 'elevadorScene'
@@ -7,13 +6,15 @@ class ElevadorScene extends Phaser.Scene {
     this.painelinelevShown = false;
   }
 
-
   preload() {
     // Carrega as imagens e spritesheets necessárias para a cena
     this.load.image("backgroundelev", "../assets/bgelevadorvar1.jpg");
     this.load.image("backgroundelev2", "../assets/bgelevadorvar2.jpg");
     this.load.image("backgroundelev3", "../assets/bgelevadorvar3.jpg");
-    this.load.spritesheet("player", "../assets/Player.png", { frameWidth: 32, frameHeight: 32, });
+    this.load.spritesheet("player", "../assets/Player.png", { 
+      frameWidth: 32, 
+      frameHeight: 32,
+    });
     
     this.load.image("painelinelev", "../assets/painelinelev.png");
     this.load.image("botaoestrategias", "../assets/botaoestrategias.png");
@@ -22,17 +23,26 @@ class ElevadorScene extends Phaser.Scene {
     this.load.image("botaopessoas", "../assets/botaopessoas.png");
     this.load.image("botaotech", "../assets/botaotech.png");
     this.load.image("botaorelacoes", "../assets/botaorelacoes.png");
+
+    // Carrega o áudio específico para o elevador
+    this.load.audio('elevatorAudio', '../assets/Local Forecast - Elevator [ ezmp3.co ].mp3');
   }
 
   create() {
-    //cria a animação
+    // Inicia o áudio do elevador em loop
+    this.elevatorSound = this.sound.add('elevatorAudio', {
+      loop: true,  // Configura para tocar em loop
+      volume: 0.5  // Define o volume da música
+    });
+    this.elevatorSound.play();
+
+    // Cria a animação para o indicador
     this.anims.create({
       key: "exclamando",
       frames: this.anims.generateFrameNumbers("indicator", {
         start: 0,
         end: 1,
       }),
-      //velocidade da animação
       frameRate: 3,
       repeat: -1,
     });
@@ -51,6 +61,7 @@ class ElevadorScene extends Phaser.Scene {
     this.background = this.add.image(0, 0, randomBackground).setOrigin(0, 0);
     this.background.setDisplaySize(width, height);
 
+    // Criação dos elementos da cena
     this.createPlayer();
     this.createPlayerAnimations();
     this.createButtonOffice();
@@ -61,7 +72,7 @@ class ElevadorScene extends Phaser.Scene {
     this.createButtonRelacoes();
     // this.createButtonCima(); // Commented out as the method is not defined
 
-    // Configuração do teclado (WASD + E para interação)
+    // Configuração do teclado (WASD para movimentação)
     this.teclas = this.input.keyboard.addKeys({
       up: Phaser.Input.Keyboard.KeyCodes.W,
       down: Phaser.Input.Keyboard.KeyCodes.S,
@@ -74,43 +85,47 @@ class ElevadorScene extends Phaser.Scene {
     // Atualiza a posição do jogador a cada frame
     this.movePlayer();
 
-      const closeToButtons =
-        Math.abs(this.player.x - this.proximidade.x) <= 50 &&
-        Math.abs(this.player.y - this.proximidade.y) <= 50;
+    const closeToButtons =
+      Math.abs(this.player.x - this.proximidade.x) <= 50 &&
+      Math.abs(this.player.y - this.proximidade.y) <= 50;
 
-      if (closeToButtons) {
-        if (!this.painelinelevShown) {
-          this.indicator.setVisible(false); // Esconde o indicador apenas na primeira vez
-          this.painelinelevShown = true; // Marca que o painel já foi mostrado pelo menos uma vez
-        }
+    if (closeToButtons) {
+      if (!this.painelinelevShown) {
+        this.indicator.setVisible(false); // Esconde o indicador apenas na primeira vez
+        this.painelinelevShown = true; // Marca que o painel já foi mostrado pelo menos uma vez
+      }
 
-        // Exibe o painel e os botões quando perto
-        this.painelinelev.setVisible(true);
-        this.botaoofficeel.setVisible(true);
-        this.botaopessoas.setVisible(true);
-        this.botaoestrategias.setVisible(true);
-        this.botaonegocios.setVisible(true);
-        this.botaotech.setVisible(true);
-        this.botaorelacoes.setVisible(true);
-      } else {
-        // Esconde o painel e os botões quando longe
-        this.painelinelev.setVisible(false);
-        this.botaoofficeel.setVisible(false);
-        this.botaopessoas.setVisible(false);
-        this.botaoestrategias.setVisible(false);
-        this.botaonegocios.setVisible(false);
-        this.botaotech.setVisible(false);
-        this.botaorelacoes.setVisible(false);
+      // Exibe o painel e os botões quando perto
+      this.painelinelev.setVisible(true);
+      this.botaoofficeel.setVisible(true);
+      this.botaopessoas.setVisible(true);
+      this.botaoestrategias.setVisible(true);
+      this.botaonegocios.setVisible(true);
+      this.botaotech.setVisible(true);
+      this.botaorelacoes.setVisible(true);
+    } else {
+      // Esconde o painel e os botões quando longe
+      this.painelinelev.setVisible(false);
+      this.botaoofficeel.setVisible(false);
+      this.botaopessoas.setVisible(false);
+      this.botaoestrategias.setVisible(false);
+      this.botaonegocios.setVisible(false);
+      this.botaotech.setVisible(false);
+      this.botaorelacoes.setVisible(false);
 
-        // O indicador só reaparece se o painel nunca tiver sido mostrado
-        if (!this.painelinelevShown) {
-          this.indicator.setVisible(true);
-        }
+      // O indicador só reaparece se o painel nunca tiver sido mostrado
+      if (!this.painelinelevShown) {
+        this.indicator.setVisible(true);
       }
     }
+  }
   
-
-
+  shutdown() {
+    // Para o áudio quando a cena for encerrada
+    if (this.elevatorSound) {
+      this.elevatorSound.stop();
+    }
+  }
 
   movePlayer() {
     let velocidade = 150;
@@ -149,17 +164,17 @@ class ElevadorScene extends Phaser.Scene {
   }
 
   createPlayer() {
-    // Criar jogador
+    // Cria o jogador
     this.player = this.physics.add.sprite(680, 120, "player");
     this.player.setScale(4);
     this.player.setCollideWorldBounds(true);
 
-    // Adicionar limites para o mundo do jogo
-    this.physics.world.setBounds(0, 0, width,height);
+    // Define os limites do mundo do jogo
+    this.physics.world.setBounds(0, 0, width, height);
   }
 
   createPlayerAnimations() {
-    // Animações do player
+    // Animações do jogador
     this.anims.create({
       key: "walk_down",
       frames: this.anims.generateFrameNumbers("player", { start: 0, end: 5 }),
@@ -190,8 +205,7 @@ class ElevadorScene extends Phaser.Scene {
   }
 
   createButtonOffice() {
-
-    // Adiciona o botão na posição especificada
+    // Adiciona o botão e o painel
     this.botaoofficeel = this.add.image(0, 0, "botaooffice").setOrigin(0, 0);
     this.botaoofficeel.setVisible(false);
     this.painelinelev = this.add.image(0, 0, "painelinelev").setOrigin(0, 0);
@@ -199,19 +213,18 @@ class ElevadorScene extends Phaser.Scene {
     this.painelinelev.setVisible(false);
 
     // Adiciona a sprite da exclamação
-    this.indicator = this.add
-      .sprite(width - 955, height - 660, "indicator").setScale(0.3);
+    this.indicator = this.add.sprite(width - 955, height - 660, "indicator").setScale(0.3);
     this.indicator.play('exclamando'); // Inicia a animação
     this.indicatorActive = true;
 
-    // Adiciona o botão na posição especificada
+    // Adiciona o botão interativo
     this.botaoofficeel = this.add.image(width - 905, height - 160, "botaooffice");
-    this.botaoofficeel.setInteractive(); // Torna o botão interativo (clicável)
-    this.botaoofficeel.setScale(1.2, 1.15); // Ajusta o tamanho do botão
+    this.botaoofficeel.setInteractive();
+    this.botaoofficeel.setScale(1.2, 1.15);
     this.botaoofficeel.setVisible(false);
 
     // Adiciona um objeto invisível para verificar a proximidade
-    this.proximidade = this.add.rectangle(width - 955 , height - 650, 105, 70, 0xff0000, 0);
+    this.proximidade = this.add.rectangle(width - 955, height - 650, 105, 70, 0xff0000, 0);
     this.physics.add.existing(this.proximidade, true);
 
     this.botaoofficeel.on("pointerdown", () => {
@@ -221,14 +234,13 @@ class ElevadorScene extends Phaser.Scene {
   }
 
   createButtonPessoas() {
-    // Adiciona o botão na posição especificada
+    // Botão Pessoas
     this.botaopessoas = this.add.image(0, 0, "botaopessoas").setOrigin(0, 0);
     this.botaopessoas.setVisible(false);
 
-    // Adiciona o botão na posição especificada
     this.botaopessoas = this.add.image(width - 620, height - 160, "botaopessoas");
-    this.botaopessoas.setInteractive(); // Torna o botão interativo (clicável)
-    this.botaopessoas.setScale(1.2, 1.15); // Ajusta o tamanho do botão
+    this.botaopessoas.setInteractive();
+    this.botaopessoas.setScale(1.2, 1.15);
     this.botaopessoas.setVisible(false);
 
     this.botaopessoas.on("pointerdown", () => {
@@ -238,14 +250,13 @@ class ElevadorScene extends Phaser.Scene {
   }
 
   createButtonEstrategias() {
-    // Adiciona o botão na posição especificada
+    // Botão Estratégias
     this.botaoestrategias = this.add.image(0, 0, "botaoestrategias").setOrigin(0, 0);
     this.botaoestrategias.setVisible(false);
 
-    // Adiciona o botão na posição especificada
     this.botaoestrategias = this.add.image(width - 620, height - 392, "botaoestrategias");
-    this.botaoestrategias.setInteractive(); // Torna o botão interativo (clicável)
-    this.botaoestrategias.setScale(1.2, 1.15); // Ajusta o tamanho do botão
+    this.botaoestrategias.setInteractive();
+    this.botaoestrategias.setScale(1.2, 1.15);
     this.botaoestrategias.setVisible(false);
 
     this.botaoestrategias.on("pointerdown", () => {
@@ -255,14 +266,13 @@ class ElevadorScene extends Phaser.Scene {
   }
 
   createButtonNegocios() {
-    // Adiciona o botão na posição especificada
+    // Botão Negócios
     this.botaonegocios = this.add.image(0, 0, "botaonegocios").setOrigin(0, 0);
     this.botaonegocios.setVisible(false);
 
-    // Adiciona o botão na posição especificada
     this.botaonegocios = this.add.image(width - 910, height - 393, "botaonegocios");
-    this.botaonegocios.setInteractive(); // Torna o botão interativo (clicável)
-    this.botaonegocios.setScale(1.2, 1.15); // Ajusta o tamanho do botão
+    this.botaonegocios.setInteractive();
+    this.botaonegocios.setScale(1.2, 1.15);
     this.botaonegocios.setVisible(false);
 
     this.botaonegocios.on("pointerdown", () => {
@@ -272,14 +282,13 @@ class ElevadorScene extends Phaser.Scene {
   }
 
   createButtonTech() {
-    // Adiciona o botão na posição especificada
+    // Botão Tech
     this.botaotech = this.add.image(0, 0, "botaotech").setOrigin(0, 0);
     this.botaotech.setVisible(false);
 
-    // Adiciona o botão na posição especificada
     this.botaotech = this.add.image(width - 906, height - 602, "botaotech");
-    this.botaotech.setInteractive(); // Torna o botão interativo (clicável)
-    this.botaotech.setScale(1.2, 1.15); //ajusta o tamanho do botão
+    this.botaotech.setInteractive();
+    this.botaotech.setScale(1.2, 1.15);
     this.botaotech.setVisible(false);
 
     this.botaotech.on("pointerdown", () => {
@@ -289,20 +298,18 @@ class ElevadorScene extends Phaser.Scene {
   }
 
   createButtonRelacoes() {
-    // Adiciona o botão na posição especificada
+    // Botão Relações
     this.botaorelacoes = this.add.image(0, 0, "botaorelacoes").setOrigin(0, 0);
     this.botaorelacoes.setVisible(false);
 
-    // Adiciona o botão na posição especificada
     this.botaorelacoes = this.add.image(width - 610, height - 605, "botaorelacoes");
-    this.botaorelacoes.setInteractive(); // Torna o botão interativo (clicável)
-    this.botaorelacoes.setScale(1.2, 1.15); // Ajusta o tamanho do botão
+    this.botaorelacoes.setInteractive();
+    this.botaorelacoes.setScale(1.2, 1.15);
     this.botaorelacoes.setVisible(false);
 
     this.botaorelacoes.on("pointerdown", () => {
       this.scene.stop("elevadorScene");
       this.scene.start("relacoesScene");
     });
-  };
+  }
 }
-
