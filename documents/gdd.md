@@ -129,6 +129,15 @@ incapazes de evoluir suas carreiras e possivelmente até deixam o trabalho, aind
 
 *Definição de metas SMART (específicas, mensuráveis, alcançáveis, relevantes e temporais) para seu projeto, com indicadores claros para mensuração*
 
+\# | Metas  
+--- | ---
+M01 | Buscamos concluir, no mínimo, a produção de +2 fases, que abordem as principais VPs, dentro do período restante de 2 sprints.
+M02 | Buscamos incluir, no mínimo, 3 minigames ao longo das fases que abordem questões das VPs, dentro das próximas 2 sprints.
+M03 | Dentro da 4a sprint, planejamos implementar trilhas sonoras para as fases de maneira padrão, no elevador e efeitos sonoros em atividades de interação e desafios.
+M04 | Planejamos implementar, no período da 4a sprint, movimentações de personagens e objetos com base nos conceitos de Movimento uniforme e uniformemente variado.
+M05 | Temos como objetivo criar um botão de ajustes que permita a adição de um filtro para daltônicos e manejo do volume dos sons em todas as fases até o fim da 4a sprint.
+M06 | Desejamos incorporar a diversidade dos colaboradores da VIVO dentro da customização de personagens, levando em conta gêneros e etnias, no mínimo, até a sprint final.
+
 ## 1.2. Requisitos do Projeto (sprints 1 e 2)
 
 No *kick-off* com o parceiro, realizado em 07/02/2024, a Vivo delineou os principais aspectos para o desenvolvimento do MVP. A Tabela 1 a seguir apresenta os requisitos fundamentais para a construção da solução proposta, garantindo alinhamento com as expectativas da empresa parceira.
