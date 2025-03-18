@@ -117,6 +117,10 @@ Com isso, esses são os princípios que guiam as tomadas de decisões e estraté
 
 *Descreva brevemente a solução desenvolvida para o parceiro de negócios. Descreva os aspectos essenciais para a criação de valor da ideia do produto com o objetivo de ajudar a entender melhor a realidade do cliente e entregar uma solução que está alinhado com o que ele espera. Observe a seção 2 e verifique que ali é possível trazer mais detalhes, portanto seja objetivo aqui. Atualize esta descrição até a entrega final, conforme desenvolvimento.*
 
+A solução desenvolvida pelo grupo é baseada na construção de um serious game jogável na web que, através de atividades dinâmicas
+e educativas, expande a perspectiva dos colaboradores dentro da VIVO acerca da convivência no dia-dia da empresa, de maneira que se tornem mais conscientes à respeito do "Job Rotation" praticado entre os seus principais setores (Pessoas, Negócios, Estratégias, Tecnologia e Relações Institucionais). Os aspectos essenciais para a criação de valor da nossa ideia são a desinformação e falta de motivação relacionadas às formas de pensar dos integrantes das equipes, levando em conta que estes frequentemente se veem
+incapazes de evoluir suas carreiras e possivelmente até deixam o trabalho, ainda que estejam inseridos em um ambiente com uma grande riqueza de oportunidades (com possibilidades de reskilling e upskilling, por exemplo), tendo suas respectivas mentalidades reformuladas com a utilização do nosso produto a partir do momento que serão capazes de reconhecer a existência destes extensos caminhos. Além disso, compreende-se que a composição dos funcionários é ampla e diversa, sendo comportada dentro deste universo a partir da customização de personagens e da interação com outros de características únicas.
+
 ### 1.1.6. Matriz de Riscos (sprint 4)
 
 *Registre na matriz os riscos identificados no projeto, visando avaliar situações que possam representar ameaças e oportunidades, bem como os impactos relevantes sobre o projeto. Apresente os riscos, ressaltando, para cada um, impactos e probabilidades com plano de ação e respostas.*
