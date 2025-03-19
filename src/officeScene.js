@@ -1,34 +1,50 @@
 class OfficeScene extends Phaser.Scene {
   constructor() {
-    // Chama o construtor da classe Phaser.Scene com a chave 'officeScene'
     super({ key: 'officeScene' });
-    this.canMove = true; // Controla se o jogador pode se mover
+    this.canMove = true;
   }
 
   preload() {
-    // Carrega imagens e spritesheets necessárias para a cena
+    // Carrega imagens, spritesheets e demais ativos
     this.load.spritesheet('player', '../assets/Player.png', { frameWidth: 32, frameHeight: 32 });
     this.load.image('telaComputador', '../assets/tela_computador.png');
     this.load.image('computador', '../assets/computador.png');
-    this.load.spritesheet('indicator', '../assets/spriteexclamação.png',{ frameWidth:254, frameHeight: 291 });
-
-    // Carrega o mapa do tiled
+    this.load.spritesheet('indicator', '../assets/spriteexclamação.png', { frameWidth: 254, frameHeight: 291 });
+    
+    // Carrega o mapa do Tiled e os tilesets
     this.load.tilemapTiledJSON('escritorio', '../assets/mapaJogoVivo/mapaJogoVivo.json');
     this.load.image('decoracao', '../assets/mapaJogoVivo/decoracao.png');
     this.load.image('paredes', '../assets/mapaJogoVivo/paredes.png');
     this.load.image('personalizado_vivo', '../assets/mapaJogoVivo/personalizado_vivo.png');
-
+    
+    // Demais ativos
     this.load.image('vivita', '../assets/vivita.png');
     this.load.image('balaoTexto', '../assets/balaoTexto.png');
+    
+    // Carrega o áudio da cena do escritório
+    this.load.audio('officeMusic', '../assets/Study and Relax [ ezmp3.co ].mp3');
   }
 
   create() {
 
 //skip elevador
-   this.scene.start("elevadorScene");
-    return;
+   /*this.scene.start("elevadorScene");
+    return;*/
 
-    this.cameras.main.fadeIn(1000); // Transição suave
+      const width = this.scale.width;
+      const height = this.scale.height;
+
+      // Transição suave
+      this.cameras.main.fadeIn(1000);
+
+      // Cria e inicia a música; se houver um tempo salvo, retoma a partir dele
+      const startTime = OfficeScene.lastMusicTime || 0;
+      this.officeMusic = this.sound.add("officeMusic", { loop: true });
+      this.officeMusic.play({ seek: startTime });
+
+      // Se a cena for pausada ou finalizada, salva o tempo atual e para a música
+      this.events.on("shutdown", this.onShutdown, this);
+      this.events.on("pause", this.onShutdown, this);
 
     //cria a animação
     this.anims.create({
@@ -39,24 +55,22 @@ class OfficeScene extends Phaser.Scene {
       repeat: -1
     });
 
-    // Configuração do teclado (WASD + E para interação)
+    // Configuração do teclado
     this.teclas = this.input.keyboard.addKeys({
-        up: Phaser.Input.Keyboard.KeyCodes.W,
-        down: Phaser.Input.Keyboard.KeyCodes.S,
-        left: Phaser.Input.Keyboard.KeyCodes.A,
-        right: Phaser.Input.Keyboard.KeyCodes.D,
-        interagir: Phaser.Input.Keyboard.KeyCodes.E,
+      up: Phaser.Input.Keyboard.KeyCodes.W,
+      down: Phaser.Input.Keyboard.KeyCodes.S,
+      left: Phaser.Input.Keyboard.KeyCodes.A,
+      right: Phaser.Input.Keyboard.KeyCodes.D,
+      interagir: Phaser.Input.Keyboard.KeyCodes.E,
+      ENTER: Phaser.Input.Keyboard.KeyCodes.ENTER
     });
 
-    // Cria o mapa do tiled
-    const map = this.make.tilemap({ key: "escritorio", tileWidth: 25, tileHeight: 20});
-
-    // Crias os assets usados para fazer o mapa
+    // Cria o mapa e as camadas
+    const map = this.make.tilemap({ key: "escritorio", tileWidth: 25, tileHeight: 20 });
     const tileset1 = map.addTilesetImage("decoracao");
     const tileset2 = map.addTilesetImage("paredes");
     const tileset3 = map.addTilesetImage("personalizado_vivo");
 
-    // Cria as camadas
     const offsetX = width - 1270;
     const layer1 = map.createLayer("chao", tileset2, offsetX, 0).setScale(2.5);
     const layer2 = map.createLayer("chaoLider", tileset1, offsetX, 0).setScale(2.5);
@@ -68,61 +82,40 @@ class OfficeScene extends Phaser.Scene {
     const layer8 = map.createLayer("plantas", tileset1, offsetX, 0).setScale(2.5);
     const layer9 = map.createLayer("portas", tileset1, offsetX, 0).setScale(2.5);
 
-    // Ativa colisões com base na propriedade 'collider' para todas as camadas
-    layer1.setCollisionByProperty({ collider: true });
-    layer2.setCollisionByProperty({ collider: true });
-    layer3.setCollisionByProperty({ collider: true });
-    layer4.setCollisionByProperty({ collider: true });
-    layer5.setCollisionByProperty({ collider: true });
-    layer6.setCollisionByProperty({ collider: true });
-    layer7.setCollisionByProperty({ collider: true });
-    layer8.setCollisionByProperty({ collider: true });
-    layer9.setCollisionByProperty({ collider: true });
+    [layer1, layer2, layer3, layer4, layer5, layer6, layer7, layer8, layer9].forEach(layer => {
+      layer.setCollisionByProperty({ collider: true });
+    });
 
-
-    // Cria a tela do computador, o computador e o indicador de exclamação
-    this.addVivita();
-    this.createComputer();
-    this.createPlayer();
+    // Cria os elementos da cena
+    this.addVivita(width, height);
+    this.createComputer(width, height);
+    this.createPlayer(width, height);
     this.createPlayerAnimations();
 
-    // Configura colisões entre o jogador e algumas camadas selecionadas
+    // Configura colisões do jogador com camadas selecionadas
     this.physics.add.collider(this.player, layer5);
     this.physics.add.collider(this.player, layer7);
     this.physics.add.collider(this.player, layer8);
 
-    // Define os limites do mundo do jogo usando as dimensões da tela
-    this.physics.world.setBounds(0, 0, this.screenWidth, this.screenHeight);
+    // Define os limites do mundo com base na tela
+    this.physics.world.setBounds(0, 0, width, height);
 
-    // Texto para depuração, exibindo as coordenadas do jogador
-    this.coordText = this.add.text(20, 20, "", {
-      fontSize: "16px",
-      fill: "#ffffff",
-    });
+    // Texto para depuração (coordenadas do jogador)
+    this.coordText = this.add.text(20, 20, "", { fontSize: "16px", fill: "#ffffff" });
+  }
 
-    // Cria a animação do indicador (apenas uma instância)
-    this.anims.create({
-      key: "exclamando",
-      frames: this.anims.generateFrameNumbers("indicator", { start: 0, end: 1 }),
-      frameRate: 3,
-      repeat: -1,
-    });
-
-    // Configura os controles do teclado (WASD + E para interação)
-    this.teclas = this.input.keyboard.addKeys({
-      up: Phaser.Input.Keyboard.KeyCodes.W,
-      down: Phaser.Input.Keyboard.KeyCodes.S,
-      left: Phaser.Input.Keyboard.KeyCodes.A,
-      right: Phaser.Input.Keyboard.KeyCodes.D,
-      interagir: Phaser.Input.Keyboard.KeyCodes.E,
-    });
+  onShutdown() {
+    // Salva o tempo atual da música e a para quando a cena é pausada ou encerrada
+    if (this.officeMusic && this.officeMusic.isPlaying) {
+      OfficeScene.lastMusicTime = this.officeMusic.seek;
+      this.officeMusic.stop();
+    }
   }
 
   update() {
-    // Atualiza o movimento do jogador
     this.movePlayer();
 
-    // Verifica se a tecla 'E' foi pressionada perto do computador
+    // Verifica se o jogador está próximo do computador e pressionou 'E'
     if (Phaser.Input.Keyboard.JustDown(this.teclas.interagir)) {
       if (
         Math.abs(this.player.x - this.computador.x) <= 50 &&
@@ -132,250 +125,230 @@ class OfficeScene extends Phaser.Scene {
       }
     }
 
-    // Se o jogador já voltou da salaLiderScene, cria o botão do elevador
+    // Se o jogador retornou da sala do líder, cria o botão do elevador
     if (this.returnedFromSalaLider && this.blockLoop === 0) {
       this.createButtonCima();
     }
   }
 
   movePlayer() {
-    const velocidade = 150; // Define a velocidade de movimento do jogador
-    let movendo = false; // Variável para verificar se o jogador está se movendo
+    const velocidade = 150;
+    let movendo = false;
 
-    // Movimentação do jogador utilizando as teclas WASD
     if (this.teclas.left.isDown) {
-      this.player.setVelocityX(-velocidade); // Move o jogador para a esquerda
-      this.player.anims.play("walk_left", true); // Toca a animação de andar para a esquerda
-      this.player.setFlipX(true); // Vira o sprite para a esquerda
-      movendo = true; // Define que o jogador está se movendo
+      this.player.setVelocityX(-velocidade);
+      this.player.anims.play("walk_left", true);
+      this.player.setFlipX(true);
+      movendo = true;
     } else if (this.teclas.right.isDown) {
-      this.player.setVelocityX(velocidade); // Move o jogador para a direita
-      this.player.anims.play("walk_right", true); // Toca a animação de andar para a direita
-      this.player.setFlipX(false); // Mantém o sprite para a direita
-      movendo = true; // Define que o jogador está se movendo
+      this.player.setVelocityX(velocidade);
+      this.player.anims.play("walk_right", true);
+      this.player.setFlipX(false);
+      movendo = true;
     } else {
-      this.player.setVelocityX(0); // Para o movimento horizontal do jogador
+      this.player.setVelocityX(0);
     }
 
     if (this.teclas.up.isDown) {
-      this.player.setVelocityY(-velocidade); // Move o jogador para cima
-      this.player.anims.play("walk_up", true); // Toca a animação de andar para cima
-      movendo = true; // Define que o jogador está se movendo
+      this.player.setVelocityY(-velocidade);
+      this.player.anims.play("walk_up", true);
+      movendo = true;
     } else if (this.teclas.down.isDown) {
-      this.player.setVelocityY(velocidade); // Move o jogador para baixo
-      this.player.anims.play("walk_down", true); // Toca a animação de andar para baixo
-      movendo = true; // Define que o jogador está se movendo
+      this.player.setVelocityY(velocidade);
+      this.player.anims.play("walk_down", true);
+      movendo = true;
     } else {
-      this.player.setVelocityY(0); // Para o movimento vertical do jogador
+      this.player.setVelocityY(0);
     }
 
     if (!movendo) {
-      this.player.anims.stop(); // Para a animação se o jogador não estiver se movendo
+      this.player.anims.stop();
     }
   }
 
-  createPlayer() {
-    // Cria o sprite do jogador usando as dimensões da tela
+  createPlayer(width, height) {
     this.player = this.physics.add.sprite(width - 405, height - 100, 'player');
-    this.player.setScale(6);
+    this.player.setScale(2.5);
   }
 
   createPlayerAnimations() {
-    // Define a animação de andar para baixo
     this.anims.create({
-      key: "walk_down", // Chave da animação
-      frames: this.anims.generateFrameNumbers("player", { start: 0, end: 5 }), // Frames da animação
-      frameRate: 10, // Taxa de quadros por segundo
-      repeat: -1, // Repetir indefinidamente
+      key: "walk_down",
+      frames: this.anims.generateFrameNumbers("player", { start: 0, end: 5 }),
+      frameRate: 10,
+      repeat: -1,
     });
-
-    // Define a animação de andar para a direita
     this.anims.create({
-      key: "walk_right", // Chave da animação
-      frames: this.anims.generateFrameNumbers("player", { start: 6, end: 11 }), // Frames da animação
-      frameRate: 10, // Taxa de quadros por segundo
-      repeat: -1, // Repetir indefinidamente
+      key: "walk_right",
+      frames: this.anims.generateFrameNumbers("player", { start: 6, end: 11 }),
+      frameRate: 10,
+      repeat: -1,
     });
-
-    // Define a animação de andar para cima
     this.anims.create({
-      key: "walk_up", // Chave da animação
-      frames: this.anims.generateFrameNumbers("player", { start: 12, end: 17 }), // Frames da animação
-      frameRate: 10, // Taxa de quadros por segundo
-      repeat: -1, // Repetir indefinidamente
+      key: "walk_up",
+      frames: this.anims.generateFrameNumbers("player", { start: 12, end: 17 }),
+      frameRate: 10,
+      repeat: -1,
     });
-
-    // Define a animação de andar para a esquerda
     this.anims.create({
-      key: "walk_left", // Chave da animação
-      frames: this.anims.generateFrameNumbers("player", { start: 6, end: 11 }), // Frames da animação
-      frameRate: 10, // Taxa de quadros por segundo
-      repeat: -1, // Repetir indefinidamente
+      key: "walk_left",
+      frames: this.anims.generateFrameNumbers("player", { start: 6, end: 11 }),
+      frameRate: 10,
+      repeat: -1,
     });
   }
 
   createButtonCima() {
-    //Constante para evitar a criação repetida
     this.blockLoop = 1;
+    const width = this.scale.width;
+    const height = this.scale.height;
 
-    // Adiciona a sprite da exclamação
     this.exclamacao = this.physics.add.sprite(width - 435, height - 700, "indicator").setScale(0.2);
     this.exclamacao.setImmovable(true);
-    this.exclamacao.play("exclamando"); // Inicia a animação
+    this.exclamacao.play("exclamando");
     this.indicatorActive = true;
 
-    // Cria a imagem de fundo do elevador e o painel
     this.bgelevoffice = this.add.image(0, 0, "bgElevOffice").setOrigin(0, 0);
     this.bgelevoffice.setDisplaySize(width, height);
     this.painelelev = this.add.image(width - 910, height - 600, "painelelev").setOrigin(0, 0);
     this.bgelevoffice.setVisible(false);
     this.painelelev.setVisible(false);
 
-    // Cria o botão do elevador e o torna interativo
     this.botaoCima = this.add.image(width - 680, height - 400, "botaoElevOffice");
-    this.botaoCima.setPosition(width - 680, height - 400);
     this.botaoCima.setInteractive();
     this.botaoCima.setScale(1);
     this.botaoCima.setVisible(false);
 
-    // Ao clicar no botão, troca para a cena do elevador
     this.botaoCima.on("pointerdown", () => {
+      // Troca para a cena 'elevadorScene' – nesse caso, o OfficeScene será encerrada
       this.scene.stop("officeScene");
       this.scene.start("elevadorScene");
     });
-    // Adiciona um overlap entre o player e a exclamation
+
+    // Ao sobrepor o jogador na exclamação, vamos chamar onShutdown() antes de mudar para 'buttonElevatorScene'
     this.physics.add.overlap(this.player, this.exclamacao, () => {
-      this.scene.switch('buttonElevatorScene'); // Troca para a cena do escritório
+      this.onShutdown(); // Salva o tempo e para a música
+      this.scene.switch('buttonElevatorScene');
     });
   }
 
-
-
-  createComputer() {
-    // Criar o computador na posição original
-    this.computador = this.add.image(width - 1020, height - 100, 'computador').setScale(0.09).setInteractive();
+  createComputer(width, height) {
+    this.computador = this.add.image(width - 1020, height - 100, 'computador')
+      .setScale(0.09)
+      .setInteractive();
     this.computador.setFlipX(true);
   }
-    
 
   addIndicatorAndComputer() {
-    // Adiciona a sprite da exclamação
+    const width = this.scale.width;
+    const height = this.scale.height;
+
     this.indicator = this.add.sprite(width - 1020, height - 150, 'indicator').setScale(0.2);
-    this.indicator.play('exclamando'); // Inicia a animação
+    this.indicator.play('exclamando');
     this.indicatorActive = true;
 
-    // Criar o computador na posição original
-    this.computador = this.add.image(width - 1020, height - 100, 'computador').setScale(0.09).setInteractive();
+    this.computador = this.add.image(width - 1020, height - 100, 'computador')
+      .setScale(0.09)
+      .setInteractive();
     this.computador.setFlipX(true);
 
-    // Muda a cor do computador ao passar o mouse
     this.computador.on("pointerover", () => {
       this.computador.setTint(0xaaaaaa);
     });
     this.computador.on("pointerout", () => {
       this.computador.clearTint();
     });
-
-    // Ao clicar no computador, exibe a tela correspondente
     this.computador.on("pointerdown", () => {
       this.showComputerScreen();
     });
   }
 
   showComputerScreen() {
-    // Mostrar a tela do computador
     this.indicator.destroy();
-    this.scene.switch("curriculoScene"); // Muda para a cena do curriculo
-    this.salaLider(); // Chama a função que cria a sala do lider
+    this.scene.switch("curriculoScene");
+    this.salaLider();
   }
 
-  addVivita() {
-    // Adiciona a vivita no jogo
-    var vivita = this.add.image(width/1.75, height/3.2, 'vivita').setScale(0.09);
+  addVivita(width, height) {
+    const vivita = this.add.image(width / 1.75, height / 3.2, 'vivita').setScale(0.09);
 
-    // Adiciona a sprite da exclamação
-    this.exclamation = this.add.sprite(width/1.75, height/4.6, 'indicator').setScale(0.2);
-    this.exclamation.play('exclamando'); // Inicia a animação
+    this.exclamation = this.add.sprite(width / 1.75, height / 4.6, 'indicator').setScale(0.2);
+    this.exclamation.play('exclamando');
     this.indicatorActive = true;
 
-    // Torna a vivita interativa
     vivita.setInteractive();
     vivita.on('pointerdown', () => {
-      this.showVivitaInteraction(); // Chama a função de interação com a vivita
+      this.showVivitaInteraction();
     });
 
-    // Adiciona um evento para a tecla 'E'
     this.input.keyboard.on('keydown-E', () => {
-      // Verifica se o jogador está próximo da Vivita
       if (
         Math.abs(this.player.x - vivita.x) <= 50 &&
         Math.abs(this.player.y - vivita.y) <= 50 &&
-        !this.vivitaInteracted // Verifica se a interação já ocorreu
+        !this.vivitaInteracted
       ) {
-        // Chama a função de interação com a vivita
         this.showVivitaInteraction();
-        this.vivitaInteracted = true; // Marca que a interação ocorreu
+        this.vivitaInteracted = true;
       }
     });
   }
 
   showVivitaInteraction() {
-    this.exclamation.setVisible(false); // Deixa a exclamação da vivita invisível
+    this.exclamation.setVisible(false);
 
-    // Lista com as falas da vivita
-    var speechVivita = ['Olá! Você deve ser Fulano, né?', 
-                        'Fiquei sabendo que você quer mudar de carreira na Vivo.',
-                        'Vou te explicar o primeiro passo.', 
-                        'Primeiro, você precisa criar o seu currículo.',
-                        'Vá até o computador no escritório.',
-                        'Preencha seu currículo e depois entregue-o na sala do líder.',
-                        'Boa sorte!'];
+    const speechVivita = [
+      'Olá! Você deve ser Fulano, né?',
+      'Fiquei sabendo que você quer mudar de carreira na Vivo.',
+      'Vou te explicar o primeiro passo.',
+      'Primeiro, você precisa criar o seu currículo.',
+      'Vá até o computador no escritório.',
+      'Preencha seu currículo e depois entregue-o na sala do líder.',
+      'Boa sorte!'
+    ];
 
-    // Adiciona o balão da fala da vivita                    
-    const balaoTexto = this.add.image(width/1.55, height/4.8, 'balaoTexto');
-
-    // Adiciona uma caixa de texto dentro do balão de texto
-    const text = this.add.text(width/1.68, height/7, speechVivita[0], {
+    const width = this.scale.width;
+    const height = this.scale.height;
+    const balaoTexto = this.add.image(width / 1.55, height / 4.8, 'balaoTexto');
+    const text = this.add.text(width / 1.68, height / 7, speechVivita[0], {
       fontSize: '16px',
       fill: '#000000',
       wordWrap: { width: balaoTexto.width - 20 }
     });
 
-    // Lógica para alternar entre as falas
     let currentSpeechIndex = 0;
-    this.input.keyboard.on('keydown-ENTER', () => { // As falas avançam apertando a tecla ENTER
-      currentSpeechIndex++; // Soma 1 cada fez que uma fala passa
-      if (currentSpeechIndex < speechVivita.length) { // Se a fala que está mostrando no momento estiver em uma posição menor do que o tamanho da lista, avança
-        text.setText(speechVivita[currentSpeechIndex]); // Mostra a fala de acordo com a posição na lista
+    this.input.keyboard.on('keydown-ENTER', () => {
+      currentSpeechIndex++;
+      if (currentSpeechIndex < speechVivita.length) {
+        text.setText(speechVivita[currentSpeechIndex]);
       } else {
-        balaoTexto.setVisible(false); // Deixa o balão da fala da vivita invisível
-        text.setVisible(false); // Deixa as falas invisíveis
-        this.input.keyboard.off('keydown-ENTER'); //Impede que o usuario aperte ENTER apos o dialogo acabar
-        this.addIndicatorAndComputer(); // Chama a função que adiciona a exclamação no computador
+        balaoTexto.setVisible(false);
+        text.setVisible(false);
+        this.input.keyboard.off('keydown-ENTER');
+        this.addIndicatorAndComputer();
       }
     });
   }
-   
-  salaLider() {
-    if (this.inTransition) return; // Evita múltiplas ativações do overlap
 
-    // Adiciona a exclamação na porta da sala da líder
+  salaLider() {
+    if (this.inTransition) return;
+
+    const width = this.scale.width;
+    const height = this.scale.height;
     this.exclamation = this.physics.add.sprite(width - 1200, height - 500, 'indicator').setScale(0.2);
-    this.exclamation.play('exclamando'); // Inicia a animação
+    this.exclamation.play('exclamando');
     this.indicatorActive = true;
 
-    // Adiciona um overlap entre a exclamação e o player
     this.physics.add.overlap(this.player, this.exclamation, () => {
-        if (!this.inTransition) { 
-            this.inTransition = true;
-            this.returnedFromSalaLider = true; // Marca que o jogador já foi para salaLiderScene
-            this.blockLoop = 0;
-            this.exclamation.setVisible(false);
-            this.scene.switch('salaLiderScene'); // Troca para a cena do líder
-        }
+      if (!this.inTransition) {
+        this.inTransition = true;
+        this.returnedFromSalaLider = true;
+        this.blockLoop = 0;
+        this.exclamation.setVisible(false);
+        this.scene.switch('salaLiderScene');
+      }
     });
-
-
   }
 }
 
+// Propriedade estática para armazenar o tempo de reprodução da música
+OfficeScene.lastMusicTime = 0;
