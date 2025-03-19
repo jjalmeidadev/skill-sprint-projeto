@@ -1,280 +1,280 @@
 // Dados do Quiz VP pessoas
-const perguntasPessoas = [
+const questionsPeople = [
     {
-        pergunta: "O setor de Pessoas da Vivo valoriza currículos bem organizados e fáceis de ler. Qual das seguintes práticas melhora a estrutura do seu currículo?",
-        alternativas: [
+        question: "O setor de Pessoas da Vivo valoriza currículos bem organizados e fáceis de ler. Qual das seguintes práticas melhora a estrutura do seu currículo?",
+        options: [
             "Usar parágrafos longos para descrever cada experiência.",
             "Utilizar marcadores para destacar conquistas e habilidades.",
             "Incluir informações detalhadas sobre sua vida pessoal.",
             "Adicionar todas as experiências desde o primeiro emprego, sem priorizar as mais recentes."
         ],
-        correta: 1
+        question: 1
     },
     {
-        pergunta: "Qual a importância de destacar soft skills no currículo?",
-        alternativas: [
+        question: "Qual a importância de destacar soft skills no currículo?",
+        options: [
             "São irrelevantes, apenas habilidades técnicas importam.",
             "Demonstram como o candidato se adapta e interage no ambiente de trabalho.",
             "Devem ser listadas de forma genérica, sem exemplos práticos.",
             "Devem substituir as experiências profissionais."
         ],
-        correta: 1
+        question: 1
     },
     {
-        pergunta: "Como adaptar o currículo para ser aprovado por um sistema ATS (Applicant Tracking System)?",
-        alternativas: [
+        question: "Como adaptar o currículo para ser aprovado por um sistema ATS (Applicant Tracking System)?",
+        options: [
             "Usando palavras-chave da descrição da vaga.",
             "Criando um design altamente visual e colorido.",
             "Usando apenas tópicos genéricos sobre experiências.",
             "Evitando títulos claros para as seções."
         ],
-        correta: 0
+        question: 0
     },
     {
-        pergunta: "O que é essencial para um currículo ser bem avaliado por um recrutador?",
-        alternativas: [
+        question: "O que é essencial para um currículo ser bem avaliado por um recrutador?",
+        options: [
             "Um layout sofisticado e cheio de imagens.",
             "Listar apenas experiências, sem detalhar conquistas.",
             "Destacar resultados e competências alinhadas à vaga.",
             "Usar um texto longo e detalhado para cada experiência."
         ],
-        correta: 2
+        question: 2
     },
     {
-        pergunta: "Qual erro pode prejudicar um candidato ao enviar um currículo?",
-        alternativas: [
+        question: "Qual erro pode prejudicar um candidato ao enviar um currículo?",
+        options: [
             "Usar um e-mail profissional no contato.",
             "Adaptar o currículo para cada vaga.",
             "Excluir informações de contato.",
             "Deixar informações desatualizadas ou incorretas."
         ],
-        correta: 2
+        question: 2
     }
 ];
 
 // Dados do Quiz VP Estratégia
-const perguntasEstrategia = [
+const questionsEstrategy = [
     {
-        pergunta: "A inteligência artificial é usada por sistemas de recrutamento (ATS) para filtrar currículos. Qual das seguintes abordagens ajuda seu currículo a ser bem classificado nesses sistemas?",
-        alternativas: [
+        question: "A inteligência artificial é usada por sistemas de recrutamento (ATS) para filtrar currículos. Qual das seguintes abordagens ajuda seu currículo a ser bem classificado nesses sistemas?",
+        options: [
             "Inserir palavras-chave relevantes da vaga na seção de habilidades e experiência.",
             "Utilizar fontes decorativas e imagens para destacar sua personalidade.",
             "Escrever um currículo genérico sem adaptação para cada vaga.",
             "Enviar o currículo no corpo do e-mail ao invés de um arquivo estruturado."
         ],
-        correta: 0,
+        question: 0,
     },
     {
-        pergunta: "O que pode tornar um candidato mais atrativo para uma vaga estratégica?",
-        alternativas: [
+        question: "O que pode tornar um candidato mais atrativo para uma vaga estratégica?",
+        options: [
             "Demonstrar capacidade analítica e experiência em inovação. ",
             "Usar um currículo sem foco e cheio de informações irrelevantes.",
             "Esconder experiências passadas para parecer mais flexível.",
             "Ignorar a personalização do currículo para cada oportunidade."
         ],
-        correta: 0
+        question: 0
     },
     {
-        pergunta: "Como destacar projetos de inovação no currículo?",
-        alternativas: [
+        question: "Como destacar projetos de inovação no currículo?",
+        options: [
             "Explicando a abordagem e os resultados obtidos.",
             "Apenas listando o nome dos projetos sem detalhes.",
             "Omitindo informações sobre desafios e aprendizados.",
             "Exagerando nos resultados para parecer mais impactante."
         ],
-        correta: 0
+        question: 0
     },
     {
-        pergunta: "Qual habilidade é essencial para atuar em novos negócios e IA?",
-        alternativas: [
+        question: "Qual habilidade é essencial para atuar em novos negócios e IA?",
+        options: [
             "Capacidade de adaptação e pensamento estratégico.",
             "Apenas habilidades operacionais sem visão de longo prazo.",
             "Criatividade sem aplicação prática.",
             "Exclusivamente experiência acadêmica sem prática no mercado."
         ],
-        correta: 0
+        question: 0
     },
     {
-        pergunta: "Como um candidato pode demonstrar conhecimento em inteligência artificial no currículo?",
-        alternativas: [
+        question: "Como um candidato pode demonstrar conhecimento em inteligência artificial no currículo?",
+        options: [
             "Mencionando cursos, projetos e experiência na área.",
             "Apenas citando que tem interesse no assunto.",
             "Ignorando certificações para não parecer muito técnico.",
             "Evitando mencionar IA caso não tenha experiência direta."
         ],
-        correta: 0
+        question: 0
     }
 ];
 
 // Dados do Quiz VP Negócios
-const perguntasNegocios = [
+const questionsBusiness = [
     {
-        pergunta: "Você deseja atuar na VP de Negócios da Vivo e percebe que a vaga enfatiza habilidades analíticas e gestão de projetos. Como você pode personalizar seu currículo para aumentar suas chances?",
-        alternativas: [
+        question: "Você deseja atuar na VP de Negócios da Vivo e percebe que a vaga enfatiza habilidades analíticas e gestão de projetos. Como você pode personalizar seu currículo para aumentar suas chances?",
+        options: [
             "Destacar experiências passadas que demonstram suas habilidades analíticas e projetos liderados.",
             "Manter um currículo genérico para que sirva para qualquer vaga.",
             "Adicionar certificações e cursos, mesmo que não tenham relação com a vaga.",
             "Escrever experiências apenas com as funções desempenhadas, sem resultados obtidos."
         ],
-        correta: 0,
+        question: 0,
     },
     {
-        pergunta: "O que é essencial para um currículo focado em vendas e negócios?",
-        alternativas: [
+        question: "O que é essencial para um currículo focado em vendas e negócios?",
+        options: [
             "Destacar metas atingidas e impacto nos resultados. ",
             "Apenas listar as empresas onde trabalhou sem detalhes.",
             "Usar um layout criativo sem estrutura clara.",
             "Omitir informações sobre clientes e mercado."
         ],
-        correta: 0
+        question: 0
     },
     {
-        pergunta: "Como descrever a experiência em negociação e vendas no currículo?",
-        alternativas: [
+        question: "Como descrever a experiência em negociação e vendas no currículo?",
+        options: [
             "Demonstrando crescimento de receita e estratégias aplicadas.",
             "Apenas mencionando que trabalhou com vendas.",
             "Excluindo informações sobre indicadores de performance.",
             "Utilizando frases genéricas sem exemplos concretos."
         ],
-        correta: 0
+        question: 0
     },
     {
-        pergunta: "Qual erro pode prejudicar um candidato na área comercial ao montar seu currículo?",
-        alternativas: [
+        question: "Qual erro pode prejudicar um candidato na área comercial ao montar seu currículo?",
+        options: [
             "Excluir números e métricas de performance.",
             "Destacar networking e relacionamento com clientes.",
             "Demonstrar experiência com estratégias de mercado.",
             "Incluir cases de sucesso relevantes."
         ],
-        correta: 0
+        question: 0
     },
     {
-        pergunta: "Qual é um diferencial para um currículo na área de negócios?",
-        alternativas: [
+        question: "Qual é um diferencial para um currículo na área de negócios?",
+        options: [
             "Experiência em estratégias de crescimento e desenvolvimento de mercado.",
             "Listar apenas habilidades técnicas.",
             "Ignorar a importância de soft skills.",
             "Criar um currículo genérico sem adaptações para a vaga."
         ],
-        correta: 0
+        question: 0
     }
 ];
 
 // Dados do Quiz VP Relações Institucionais
-const perguntasRelacoes = [
+const questionsRelationships = [
     {
-        pergunta: "Um currículo eficaz precisa de uma comunicação clara e objetiva. Qual das opções abaixo é a melhor forma de descrever uma experiência profissional?",
-        alternativas: [
+        question: "Um currículo eficaz precisa de uma comunicação clara e objetiva. Qual das opções abaixo é a melhor forma de descrever uma experiência profissional?",
+        options: [
             '"Trabalhei na empresa X e fiz muitas atividades na área de marketing."',
             '"Responsável por marketing na empresa X, onde aumentei o engajamento digital em 40% por meio de campanhas estratégicas."',
             '"Atuei no setor de marketing, onde fazia postagens nas redes sociais."',
             '"Tenho experiência com marketing e sou uma pessoa criativa e proativa."'
         ],
-        correta: 1,
+        question: 1,
     },
     {
-        pergunta: "Qual fator é mais relevante em um currículo para uma vaga em sustentabilidade?",
-        alternativas: [
+        question: "Qual fator é mais relevante em um currículo para uma vaga em sustentabilidade?",
+        options: [
             "Experiência com projetos ESG e impacto social.",
             "Uso de palavras-chave sem relevância para a área.",
             "Apenas a formação acadêmica sem experiências práticas.",
             "Omitir participação em iniciativas ambientais."
         ],
-        correta: 0
+        question: 0
     },
     {
-        pergunta: "Como destacar experiência com relações institucionais no currículo?",
-        alternativas: [
+        question: "Como destacar experiência com relações institucionais no currículo?",
+        options: [
             "Mencionando atuação com stakeholders e projetos de impacto.",
             "Apenas listando cargos sem descrição das atividades.",
             "Evitando detalhar parcerias estratégicas.",
             "Omitindo participação em políticas públicas e regulamentações."
         ],
-        correta: 0
+        question: 0
     },
     {
-        pergunta: "Qual das seguintes ações melhora um currículo para a área de sustentabilidade?",
-        alternativas: [
+        question: "Qual das seguintes ações melhora um currículo para a área de sustentabilidade?",
+        options: [
             "Incluir certificações e especializações relevantes.",
             "Usar um layout poluído e desorganizado.",
             "Ignorar experiências de voluntariado e impacto social.",
             "Excluir informações sobre engajamento com ONGs."
         ],
-        correta: 0
+        question: 0
     },
     {
-        pergunta: "O que um recrutador dessa área (VP de Relações Institucionais e Sustentabilidade) espera ver no currículo?",
-        alternativas: [
+        question: "O que um recrutador dessa área (VP de Relações Institucionais e Sustentabilidade) espera ver no currículo?",
+        options: [
             "Experiência com responsabilidade social e desenvolvimento sustentável.",
             "Apenas conhecimentos básicos sobre meio ambiente.",
             "Um currículo genérico, sem foco na área.",
             "Um documento com muitas páginas e informações irrelevantes."
         ],
-        correta: 0
+        question: 0
     }
 ];
 
 // Dados do Quiz VP Tecnologia
-const perguntasTecnologia = [
+const questionsTech = [
     {
-        pergunta: "O design do seu currículo pode influenciar na forma como ele é lido pelos sistemas automatizados (ATS). Qual das opções abaixo representa a melhor prática?",
-        alternativas: [
+        question: "O design do seu currículo pode influenciar na forma como ele é lido pelos sistemas automatizados (ATS). Qual das opções abaixo representa a melhor prática?",
+        options: [
             'Usar tabelas e colunas para organizar informações de forma estilizada.',
             'Criar um currículo em formato de imagem ou PDF com elementos gráficos.',
             'Manter um layout limpo, com formatação simples e sem uso excessivo de cores ou gráficos.',
             'Utilizar fontes incomuns para destacar seu diferencial.'
         ],
-        correta: 2,
+        question: 2,
     },
     {
-        pergunta: "Qual é um elemento essencial para um currículo na área de TI?",
-        alternativas: [
+        question: "Qual é um elemento essencial para um currículo na área de TI?",
+        options: [
             "Projetos desenvolvidos e conhecimento em tecnologias específicas.",
             "Apenas a lista de empresas onde trabalhou.",
             "Um design extremamente visual e sem estrutura clara.",
             "Ignorar certificações para focar apenas em experiência prática."
         ],
-        correta: 0
+        question: 0
     },
     {
-        pergunta: "Como um profissional de TI pode demonstrar experiência prática no currículo?",
-        alternativas: [
+        question: "Como um profissional de TI pode demonstrar experiência prática no currículo?",
+        options: [
             "Destacando projetos, certificações e metodologias utilizadas.",
             "Apenas mencionando que tem habilidades técnicas.",
             "Omitindo informações sobre ferramentas e tecnologias.",
             "Evitando links para portfólios ou GitHub."
         ],
-        correta: 0
+        question: 0
     },
     {
-        pergunta: "Qual a melhor maneira de destacar conhecimento em cibersegurança no currículo?",
-        alternativas: [
+        question: "Qual a melhor maneira de destacar conhecimento em cibersegurança no currículo?",
+        options: [
             "Citando certificações como CISSP e projetos na área.",
             "Apenas mencionando interesse no tema.",
             "Excluindo informações sobre vulnerabilidades tratadas.",
             "Usando frases vagas sem comprovação de conhecimento."
         ],
-        correta: 0
+        question: 0
     },
     {
-        pergunta: "Qual erro deve ser evitado ao criar um currículo para a área de TI?",
-        alternativas: [
+        question: "Qual erro deve ser evitado ao criar um currículo para a área de TI?",
+        options: [
             "Listar todas as tecnologias já utilizadas sem organização.",
             "Incluir certificações e cursos relevantes.",
             "Organizar a experiência de forma cronológica e clara.",
             "Excluir informações sobre impacto dos projetos."
         ],
-        correta: 0
+        question: 0
     }
 ];
 
 // Variáveis globais
-let perguntaAtual = 0;
-let progresso = 0;
-let pontuacao = 0;
-const TEMPO_POR_PERGUNTA = 30; // Segundos para responder
-let tempoRestante = TEMPO_POR_PERGUNTA;
-let temporizador;
+let presentQuestion = 0;
+let progress = 0;
+let points = 0;
+const timePerQuestion = 30; // Segundos para responder
+let timeLeft = timePerQuestion;
+let timer;
 
 // Classe para a cena inicial do currículo
 class CurriculoScene extends Phaser.Scene {
@@ -301,26 +301,26 @@ class CurriculoScene extends Phaser.Scene {
         var width = 1520;
         var height = 753;
 
-        // Imagem de fundo sem distorção
-        const fundo = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, 'primeiraTela');
+        // Imagem de backgroundGame sem distorção
+        const backgroundGame = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, 'primeiraTela');
 
         // Ajusta a escala para cobrir a tela mantendo a proporção
-        this.scaleBackgroundImage(fundo);
+        this.scaleBackgroundImage(backgroundGame);
 
         // Botão interativo com animação (fase Pessoas)
-        const botaoVpPessoas = this.add.image(
+        const buttonVpPeople = this.add.image(
             width - 1020, height - 370,
             'botao01'
         ).setInteractive();
 
-        botaoVpPessoas.on('pointerout', () => {
-            botaoVpPessoas.setScale(1);
+        buttonVpPeople.on('pointerout', () => {
+            buttonVpPeople.setScale(1);
         });
 
         // Efeito de piscar ao clicar
-        botaoVpPessoas.on('pointerdown', () => {
+        buttonVpPeople.on('pointerdown', () => {
             this.tweens.add({
-                targets: botaoVpPessoas,
+                targets: buttonVpPeople,
                 alpha: 0.6,
                 duration: 100,
                 yoyo: true,
@@ -334,19 +334,19 @@ class CurriculoScene extends Phaser.Scene {
         });
 
         // Botão interativo com animação (fase Estratégia)
-        const botaoVpEstrategia = this.add.image(
+        const buttonVpEstrategy = this.add.image(
             width - 780, height - 370,
             'botao02'
         ).setInteractive();
 
-        botaoVpEstrategia.on('pointerout', () => {
-            botaoVpEstrategia.setScale(1);
+        buttonVpEstrategy.on('pointerout', () => {
+            buttonVpEstrategy.setScale(1);
         });
 
         // Efeito de piscar ao clicar
-        botaoVpEstrategia.on('pointerdown', () => {
+        buttonVpEstrategy.on('pointerdown', () => {
             this.tweens.add({
-                targets: botaoVpEstrategia,
+                targets: buttonVpEstrategy,
                 alpha: 0.6,
                 duration: 100,
                 yoyo: true,
@@ -360,19 +360,19 @@ class CurriculoScene extends Phaser.Scene {
         });
 
         // Botão interativo com animação (fase Negócios)
-        const botaoVpNegocios = this.add.image(
+        const buttonVpBusiness = this.add.image(
             width - 500, height - 370,
             'botao03'
         ).setInteractive();
 
-        botaoVpNegocios.on('pointerout', () => {
-            botaoVpNegocios.setScale(1);
+        buttonVpBusiness.on('pointerout', () => {
+            buttonVpBusiness.setScale(1);
         });
 
         // Efeito de piscar ao clicar
-        botaoVpNegocios.on('pointerdown', () => {
+        buttonVpBusiness.on('pointerdown', () => {
             this.tweens.add({
-                targets: botaoVpNegocios,
+                targets: buttonVpBusiness,
                 alpha: 0.6,
                 duration: 100,
                 yoyo: true,
@@ -386,19 +386,19 @@ class CurriculoScene extends Phaser.Scene {
         });
 
         // Botão interativo com animação (fase Relações)
-        const botaoVpRelacoes = this.add.image(
+        const buttonVpRelationships = this.add.image(
             width - 1020, height - 270,
             'botao04'
         ).setInteractive();
 
-        botaoVpRelacoes.on('pointerout', () => {
-            botaoVpRelacoes.setScale(1);
+        buttonVpRelationships.on('pointerout', () => {
+            buttonVpRelationships.setScale(1);
         });
 
         // Efeito de piscar ao clicar
-        botaoVpRelacoes.on('pointerdown', () => {
+        buttonVpRelationships.on('pointerdown', () => {
             this.tweens.add({
-                targets: botaoVpRelacoes,
+                targets: buttonVpRelationships,
                 alpha: 0.6,
                 duration: 100,
                 yoyo: true,
@@ -412,19 +412,19 @@ class CurriculoScene extends Phaser.Scene {
         });
 
         // Botão interativo com animação (fase Tecnologia)
-        const botaoVpTecnologia = this.add.image(
+        const buttonVpTech = this.add.image(
             width - 755, height - 270,
             'botao05'
         ).setInteractive();
 
-        botaoVpTecnologia.on('pointerout', () => {
-            botaoVpTecnologia.setScale(1);
+        buttonVpTech.on('pointerout', () => {
+            buttonVpTech.setScale(1);
         });
 
         // Efeito de piscar ao clicar
-        botaoVpTecnologia.on('pointerdown', () => {
+        buttonVpTech.on('pointerdown', () => {
             this.tweens.add({
-                targets: botaoVpTecnologia,
+                targets: buttonVpTech,
                 alpha: 0.6,
                 duration: 100,
                 yoyo: true,
@@ -439,7 +439,7 @@ class CurriculoScene extends Phaser.Scene {
 
     }
 
-    // Método para ajustar a escala da imagem de fundo
+    // Método para ajustar a escala da imagem de backgroundGame
     scaleBackgroundImage(image) {
         // Centraliza a imagem
         image.setOrigin(0.5);
@@ -457,8 +457,8 @@ class CurriculoScene extends Phaser.Scene {
 class QuizVpPessoas extends Phaser.Scene {
     constructor() {
         super({ key: 'QuizVpPessoas' });
-        this.textosPergunta = []; // Armazena os textos da pergunta e alternativas
-        this.botoesAlternativas = []; // Armazena os botões das alternativas
+        this.questionTexts = []; // Armazena os textos da question e options
+        this.optionsButtons = []; // Armazena os botões das options
     }
 
     preload() {
@@ -471,14 +471,14 @@ class QuizVpPessoas extends Phaser.Scene {
         // Transição suave
         this.cameras.main.fadeIn(1000);
 
-        // Adicionar a imagem de fundo sem distorção
-        const fundo = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, 'TelaQuiz');
-        this.scaleBackgroundImage(fundo);
+        // Adicionar a imagem de backgroundGame sem distorção
+        const backgroundGame = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, 'TelaQuiz');
+        this.scaleBackgroundImage(backgroundGame);
 
         // Criar elementos de interface
-        this.criarBarraProgresso();
-        this.criarContadorPergunta();
-        this.mostrarPergunta();
+        this.createProgressBar();
+        this.createQuestionsCounter();
+        this.showQuestion();
     }
 
     scaleBackgroundImage(image) {
@@ -493,75 +493,75 @@ class QuizVpPessoas extends Phaser.Scene {
         image.setScale(scale);
     }
 
-    criarContadorPergunta() {
-        // Mostrar número da pergunta atual/total
-        this.textoPerguntaNumero = this.add.text(
+    createQuestionsCounter() {
+        // Mostrar número da question atual/total
+        this.textQuestionNumber = this.add.text(
             this.sys.game.config.width - 150,
             50,
-            `Pergunta ${perguntaAtual + 1}/${perguntasPessoas.length}`,
+            `Pergunta ${presentQuestion + 1}/${questionsPeople.length}`,
             { fontSize: '20px', fill: '#000', fontFamily: 'FontePadrao' }
         ).setOrigin(0.5);
     }
 
-    criarBarraProgresso() {
-        // Container para a barra de progresso
+    createProgressBar() {
+        // Container para a barra de progress
         const progressBarContainer = this.add.rectangle(100, 50, 300, 24, 0xDDDDDD)
             .setOrigin(0, 0.5)
             .setStrokeStyle(2, 0x000000);
 
-        // Barra de progresso roxa    
-        this.barraProgresso = this.add.rectangle(102, 50, 0, 20, 0xB600B9)
+        // Barra de progress roxa    
+        this.progressBar = this.add.rectangle(102, 50, 0, 20, 0xB600B9)
             .setOrigin(0, 0.5);
 
-        // Texto de progresso    
-        this.textoProgresso = this.add.text(
+        // Texto de progress    
+        this.progressText = this.add.text(
             420,
             50,
-            `${progresso}%`,
+            `${progress}%`,
             { fontSize: '20px', fill: '#000', fontFamily: 'FontePadrao', fontWeight: 'bold' }
         ).setOrigin(0, 0.5);
     }
 
-    atualizarBarraProgresso() {
-        // Atualizando a barra de progresso do quiz
-        const larguraMaxima = 296;
-        const novaLargura = (progresso / 100) * larguraMaxima;
+    updateProgressBar() {
+        // Atualizando a barra de progress do quiz
+        const maxHeight = 296;
+        const newWidth = (progress / 100) * maxHeight;
 
-        // Animar a barra de progresso
+        // Animar a barra de progress
         this.tweens.add({
-            targets: this.barraProgresso,
-            width: novaLargura,
+            targets: this.progressBar,
+            width: newWidth,
             duration: 500,
             ease: 'Power2'
         });
 
-        this.textoProgresso.setText(`${progresso}%`);
+        this.progressText.setText(`${progress}%`);
     }
 
-    limparElementos() {
-        // Remove os textos da pergunta e alternativas
-        this.textosPergunta.forEach(texto => texto.destroy());
-        this.textosPergunta = [];
+    cleanElements() {
+        // Remove os textos da question e options
+        this.questionTexts.forEach(texto => texto.destroy());
+        this.questionTexts = [];
 
-        // Remove os botões das alternativas
-        this.botoesAlternativas.forEach(botao => botao.destroy());
-        this.botoesAlternativas = [];
+        // Remove os botões das options
+        this.optionsButtons.forEach(btn => btn.destroy());
+        this.optionsButtons = [];
     }
 
-    mostrarPergunta() {
+    showQuestion() {
         // Limpa os elementos antigos
-        this.limparElementos();
+        this.cleanElements();
 
         // Atualiza o contador de perguntas
-        this.textoPerguntaNumero.setText(`Pergunta ${perguntaAtual + 1}/${perguntasPessoas.length}`);
+        this.textQuestionNumber.setText(`Pergunta ${presentQuestion + 1}/${questionsPeople.length}`);
 
-        const pergunta = perguntasPessoas[perguntaAtual];
+        const question = questionsPeople[presentQuestion];
 
-        // Exibindo a pergunta
-        const textoPergunta = this.add.text(
+        // Exibindo a question
+        const questionText = this.add.text(
             this.sys.game.config.width / 2,
             100,
-            pergunta.pergunta,
+            question.question,
             {
                 fontSize: '22px',
                 fill: '#B600B9',
@@ -572,15 +572,15 @@ class QuizVpPessoas extends Phaser.Scene {
             }
         ).setOrigin(0.5);
 
-        this.textosPergunta.push(textoPergunta);
+        this.questionTexts.push(questionText);
 
-        // Exibindo alternativas
+        // Exibindo options
         const startY = 200;
         const spacing = 50;
 
-        pergunta.alternativas.forEach((alternativa, index) => {
-            // Container da alternativa (retângulo)
-            const botaoContainer = this.add.rectangle(
+        question.options.forEach((alternative, index) => {
+            // Container da alternative (retângulo)
+            const containerButton = this.add.rectangle(
                 this.sys.game.config.width / 2,
                 startY + (index * spacing),
                 this.sys.game.config.width - 200,
@@ -590,26 +590,26 @@ class QuizVpPessoas extends Phaser.Scene {
                 .setInteractive();
 
             // Efeitos de hover
-            botaoContainer.on('pointerover', () => {
-                botaoContainer.fillColor = 0xDDDDDD;
-                botaoContainer.setScale(1.02);
+            containerButton.on('pointerover', () => {
+                containerButton.fillColor = 0xDDDDDD;
+                containerButton.setScale(1.02);
             });
 
-            botaoContainer.on('pointerout', () => {
-                botaoContainer.fillColor = 0xEAE8E8;
-                botaoContainer.setScale(1);
+            containerButton.on('pointerout', () => {
+                containerButton.fillColor = 0xEAE8E8;
+                containerButton.setScale(1);
             });
 
             // Evento de clique
-            botaoContainer.on('pointerdown', () => {
-                this.verificarResposta(index, botaoContainer);
+            containerButton.on('pointerdown', () => {
+                this.checkAnswer(index, containerButton);
             });
 
-            // Texto da alternativa
-            const textoAlternativa = this.add.text(
+            // Texto da alternative
+            const alternativeText = this.add.text(
                 this.sys.game.config.width / 2,
                 startY + (index * spacing),
-                `${index + 1}. ${alternativa}`,
+                `${index + 1}. ${alternative}`,
                 {
                     fontSize: '18px',
                     fill: '#000',
@@ -618,49 +618,49 @@ class QuizVpPessoas extends Phaser.Scene {
                 }
             ).setOrigin(0.5);
 
-            this.textosPergunta.push(textoAlternativa);
-            this.botoesAlternativas.push(botaoContainer);
+            this.questionTexts.push(alternativeText);
+            this.optionsButtons.push(containerButton);
         });
     }
 
-    verificarResposta(resposta, botaoClicado) {
+    checkAnswer(answerr, clickedButton) {
         // Desativar interação com todos os botões
-        this.botoesAlternativas.forEach(botao => {
-            botao.disableInteractive();
+        this.optionsButtons.forEach(btn => {
+            btn.disableInteractive();
         });
 
-        const pergunta = perguntasPessoas[perguntaAtual];
+        const question = questionsPeople[presentQuestion];
 
-        if (resposta === pergunta.correta) {
-            // Resposta correta
-            botaoClicado.fillColor = 0x88FF88; // Verde claro
+        if (answerr === question.question) {
+            // Resposta question
+            clickedButton.fillColor = 0x88FF88; // Verde claro
 
-            // Atualizar pontuação e progresso
-            pontuacao += 100; // Pontuação fixa por resposta correta
-            progresso += 20;
+            // Atualizar pontuação e progress
+            points += 100; // Pontuação fixa por answerr question
+            progress += 20;
 
             // Esperar um momento antes de seguir
             this.time.delayedCall(1500, () => {
-                perguntaAtual++;
-                this.atualizarBarraProgresso();
+                presentQuestion++;
+                this.updateProgressBar();
 
-                if (perguntaAtual < perguntasPessoas.length) {
-                    // Próxima pergunta com transição
+                if (presentQuestion < questionsPeople.length) {
+                    // Próxima question com transição
                     this.cameras.main.fadeOut(300, 0, 0, 0, () => {
                         this.cameras.main.fadeIn(300);
-                        this.mostrarPergunta();
+                        this.showQuestion();
                     });
                 } else {
                     // Quiz completo
-                    this.scene.start('CongratulationsSceneCurriculoVpPessoas', { pontuacao: pontuacao });
+                    this.scene.start('CongratulationsSceneCurriculoVpPessoas', { points: points });
                 }
             });
         } else {
             // Resposta incorreta
-            botaoClicado.fillColor = 0xFF8888; // Vermelho claro
+            clickedButton.fillColor = 0xFF8888; // Vermelho claro
 
-            // Destacar alternativa correta
-            this.botoesAlternativas[pergunta.correta].fillColor = 0x88FF88; // Verde claro
+            // Destacar alternative question
+            this.optionsButtons[question.question].fillColor = 0x88FF88; // Verde claro
 
             // Esperar um momento e mostrar tela de game over
             this.time.delayedCall(1500, () => {
@@ -689,12 +689,12 @@ class GameOverSceneCurriculo extends Phaser.Scene {
         // Transição de entrada
         this.cameras.main.fadeIn(1000, 0, 0, 0);
 
-        // Imagem de fundo sem distorção
-        const fundo = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, 'fundoGameOver');
-        this.scaleBackgroundImage(fundo);
+        // Imagem de backgroundGame sem distorção
+        const backgroundGame = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, 'fundoGameOver');
+        this.scaleBackgroundImage(backgroundGame);
 
         // Botão de texto para reiniciar
-        const botaoReiniciar = this.add.rectangle(
+        const restartButton = this.add.rectangle(
             this.sys.game.config.width / 2,
             510,
             250,
@@ -704,29 +704,29 @@ class GameOverSceneCurriculo extends Phaser.Scene {
             .setInteractive();
 
         // Efeitos do botão
-        botaoReiniciar.on('pointerover', () => {
-            botaoReiniciar.fillColor = 0xC30DC7;
-            botaoReiniciar.setScale(1.05);
+        restartButton.on('pointerover', () => {
+            restartButton.fillColor = 0xC30DC7;
+            restartButton.setScale(1.05);
         });
 
-        botaoReiniciar.on('pointerout', () => {
-            botaoReiniciar.fillColor = 0xB600B9;
-            botaoReiniciar.setScale(1);
+        restartButton.on('pointerout', () => {
+            restartButton.fillColor = 0xB600B9;
+            restartButton.setScale(1);
         });
 
         // Evento de clique
-        botaoReiniciar.on('pointerdown', () => {
+        restartButton.on('pointerdown', () => {
             // Efeito de click
             this.tweens.add({
-                targets: botaoReiniciar,
+                targets: restartButton,
                 scale: 0.95,
                 duration: 100,
                 yoyo: true,
                 onComplete: () => {
                     // Reiniciar variáveis
-                    perguntaAtual = 0;
-                    progresso = 0;
-                    pontuacao = 0;
+                    presentQuestion = 0;
+                    progress = 0;
+                    points = 0;
 
                     // Fade out e iniciar o quiz
                     this.cameras.main.fadeOut(500, 0, 0, 0, () => {
@@ -768,7 +768,7 @@ class CongratulationsSceneCurriculoVpPessoas extends Phaser.Scene {
     }
 
     init(data) {
-        this.pontuacaoFinal = data.pontuacao || 0;
+        this.finalPoints = data.points || 0;
     }
 
     preload() {
@@ -780,12 +780,12 @@ class CongratulationsSceneCurriculoVpPessoas extends Phaser.Scene {
         // Transição de entrada com efeito
         this.cameras.main.fadeIn(1000, 0, 0, 0);
 
-        // Imagem de fundo sem distorção
-        const fundo = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, 'fundoCongratulationsVpPessoas');
-        this.scaleBackgroundImage(fundo);
+        // Imagem de backgroundGame sem distorção
+        const backgroundGame = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, 'fundoCongratulationsVpPessoas');
+        this.scaleBackgroundImage(backgroundGame);
 
         // Botão de texto para voltar
-        const botaoVoltar = this.add.rectangle(
+        const backButton = this.add.rectangle(
             this.sys.game.config.width / 2,
             510,
             250,
@@ -795,29 +795,29 @@ class CongratulationsSceneCurriculoVpPessoas extends Phaser.Scene {
             .setInteractive();
 
         // Efeitos do botão
-        botaoVoltar.on('pointerover', () => {
-            botaoVoltar.fillColor = 0xC30DC7;
-            botaoVoltar.setScale(1.05);
+        backButton.on('pointerover', () => {
+            backButton.fillColor = 0xC30DC7;
+            backButton.setScale(1.05);
         });
 
-        botaoVoltar.on('pointerout', () => {
-            botaoVoltar.fillColor = 0xB600B9;
-            botaoVoltar.setScale(1);
+        backButton.on('pointerout', () => {
+            backButton.fillColor = 0xB600B9;
+            backButton.setScale(1);
         });
 
         // Evento de clique
-        botaoVoltar.on('pointerdown', () => {
+        backButton.on('pointerdown', () => {
             // Efeito de click
             this.tweens.add({
-                targets: botaoVoltar,
+                targets: backButton,
                 scale: 0.95,
                 duration: 100,
                 yoyo: true,
                 onComplete: () => {
                     // Reiniciar variáveis
-                    perguntaAtual = 0;
-                    progresso = 0;
-                    pontuacao = 0;
+                    presentQuestion = 0;
+                    progress = 0;
+                    points = 0;
 
                     // Fade out e iniciar o quiz
                     this.cameras.main.fadeOut(500, 0, 0, 0, () => {
@@ -861,8 +861,8 @@ class CongratulationsSceneCurriculoVpPessoas extends Phaser.Scene {
 class QuizVpEstrategia extends Phaser.Scene {
     constructor() {
         super({ key: 'QuizVpEstrategia' });
-        this.textosPergunta = []; // Armazena os textos da pergunta e alternativas
-        this.botoesAlternativas = []; // Armazena os botões das alternativas
+        this.questionTexts = []; // Armazena os textos da question e options
+        this.optionsButtons = []; // Armazena os botões das options
     }
 
     preload() {
@@ -875,14 +875,14 @@ class QuizVpEstrategia extends Phaser.Scene {
         // Transição suave
         this.cameras.main.fadeIn(1000);
 
-        // Adicionar a imagem de fundo sem distorção
-        const fundo = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, 'TelaQuiz');
-        this.scaleBackgroundImage(fundo);
+        // Adicionar a imagem de backgroundGame sem distorção
+        const backgroundGame = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, 'TelaQuiz');
+        this.scaleBackgroundImage(backgroundGame);
 
         // Criar elementos de interface
-        this.criarBarraProgresso();
-        this.criarContadorPergunta();
-        this.mostrarPergunta();
+        this.createProgressBar();
+        this.createQuestionsCounter();
+        this.showQuestion();
     }
 
     scaleBackgroundImage(image) {
@@ -897,75 +897,75 @@ class QuizVpEstrategia extends Phaser.Scene {
         image.setScale(scale);
     }
 
-    criarContadorPergunta() {
-        // Mostrar número da pergunta atual/total
-        this.textoPerguntaNumero = this.add.text(
+    createQuestionsCounter() {
+        // Mostrar número da question atual/total
+        this.textQuestionNumber = this.add.text(
             this.sys.game.config.width - 150,
             50,
-            `Pergunta ${perguntaAtual + 1}/${perguntasEstrategia.length}`,
+            `Pergunta ${presentQuestion + 1}/${questionsEstrategy.length}`,
             { fontSize: '20px', fill: '#000', fontFamily: 'FontePadrao' }
         ).setOrigin(0.5);
     }
 
-    criarBarraProgresso() {
-        // Container para a barra de progresso
+    createProgressBar() {
+        // Container para a barra de progress
         const progressBarContainer = this.add.rectangle(100, 50, 300, 24, 0xDDDDDD)
             .setOrigin(0, 0.5)
             .setStrokeStyle(2, 0x000000);
 
-        // Barra de progresso roxa    
-        this.barraProgresso = this.add.rectangle(102, 50, 0, 20, 0xB600B9)
+        // Barra de progress roxa    
+        this.progressBar = this.add.rectangle(102, 50, 0, 20, 0xB600B9)
             .setOrigin(0, 0.5);
 
-        // Texto de progresso    
-        this.textoProgresso = this.add.text(
+        // Texto de progress    
+        this.progressText = this.add.text(
             420,
             50,
-            `${progresso}%`,
+            `${progress}%`,
             { fontSize: '20px', fill: '#000', fontFamily: 'FontePadrao', fontWeight: 'bold' }
         ).setOrigin(0, 0.5);
     }
 
-    atualizarBarraProgresso() {
-        // Atualizando a barra de progresso do quiz
-        const larguraMaxima = 296;
-        const novaLargura = (progresso / 100) * larguraMaxima;
+    updateProgressBar() {
+        // Atualizando a barra de progress do quiz
+        const maxHeight = 296;
+        const newWidth = (progress / 100) * maxHeight;
 
-        // Animar a barra de progresso
+        // Animar a barra de progress
         this.tweens.add({
-            targets: this.barraProgresso,
-            width: novaLargura,
+            targets: this.progressBar,
+            width: newWidth,
             duration: 500,
             ease: 'Power2'
         });
 
-        this.textoProgresso.setText(`${progresso}%`);
+        this.progressText.setText(`${progress}%`);
     }
 
-    limparElementos() {
-        // Remove os textos da pergunta e alternativas
-        this.textosPergunta.forEach(texto => texto.destroy());
-        this.textosPergunta = [];
+    cleanElements() {
+        // Remove os textos da question e options
+        this.questionTexts.forEach(texto => texto.destroy());
+        this.questionTexts = [];
 
-        // Remove os botões das alternativas
-        this.botoesAlternativas.forEach(botao => botao.destroy());
-        this.botoesAlternativas = [];
+        // Remove os botões das options
+        this.optionsButtons.forEach(btn => btn.destroy());
+        this.optionsButtons = [];
     }
 
-    mostrarPergunta() {
+    showQuestion() {
         // Limpa os elementos antigos
-        this.limparElementos();
+        this.cleanElements();
 
         // Atualiza o contador de perguntas
-        this.textoPerguntaNumero.setText(`Pergunta ${perguntaAtual + 1}/${perguntasEstrategia.length}`);
+        this.textQuestionNumber.setText(`Pergunta ${presentQuestion + 1}/${questionsEstrategy.length}`);
 
-        const pergunta = perguntasEstrategia[perguntaAtual];
+        const question = questionsEstrategy[presentQuestion];
 
-        // Exibindo a pergunta
-        const textoPergunta = this.add.text(
+        // Exibindo a question
+        const questionText = this.add.text(
             this.sys.game.config.width / 2,
             100,
-            pergunta.pergunta,
+            question.question,
             {
                 fontSize: '22px',
                 fill: '#B600B9',
@@ -976,15 +976,15 @@ class QuizVpEstrategia extends Phaser.Scene {
             }
         ).setOrigin(0.5);
 
-        this.textosPergunta.push(textoPergunta);
+        this.questionTexts.push(questionText);
 
-        // Exibindo alternativas
+        // Exibindo options
         const startY = 200;
         const spacing = 50;
 
-        pergunta.alternativas.forEach((alternativa, index) => {
-            // Container da alternativa (retângulo)
-            const botaoContainer = this.add.rectangle(
+        question.options.forEach((alternative, index) => {
+            // Container da alternative (retângulo)
+            const containerButton = this.add.rectangle(
                 this.sys.game.config.width / 2,
                 startY + (index * spacing),
                 this.sys.game.config.width - 200,
@@ -994,26 +994,26 @@ class QuizVpEstrategia extends Phaser.Scene {
                 .setInteractive();
 
             // Efeitos de hover
-            botaoContainer.on('pointerover', () => {
-                botaoContainer.fillColor = 0xDDDDDD;
-                botaoContainer.setScale(1.02);
+            containerButton.on('pointerover', () => {
+                containerButton.fillColor = 0xDDDDDD;
+                containerButton.setScale(1.02);
             });
 
-            botaoContainer.on('pointerout', () => {
-                botaoContainer.fillColor = 0xEAE8E8;
-                botaoContainer.setScale(1);
+            containerButton.on('pointerout', () => {
+                containerButton.fillColor = 0xEAE8E8;
+                containerButton.setScale(1);
             });
 
             // Evento de clique
-            botaoContainer.on('pointerdown', () => {
-                this.verificarResposta(index, botaoContainer);
+            containerButton.on('pointerdown', () => {
+                this.checkAnswer(index, containerButton);
             });
 
-            // Texto da alternativa
-            const textoAlternativa = this.add.text(
+            // Texto da alternative
+            const alternativeText = this.add.text(
                 this.sys.game.config.width / 2,
                 startY + (index * spacing),
-                `${index + 1}. ${alternativa}`,
+                `${index + 1}. ${alternative}`,
                 {
                     fontSize: '18px',
                     fill: '#000',
@@ -1022,49 +1022,49 @@ class QuizVpEstrategia extends Phaser.Scene {
                 }
             ).setOrigin(0.5);
 
-            this.textosPergunta.push(textoAlternativa);
-            this.botoesAlternativas.push(botaoContainer);
+            this.questionTexts.push(alternativeText);
+            this.optionsButtons.push(containerButton);
         });
     }
 
-    verificarResposta(resposta, botaoClicado) {
+    checkAnswer(answerr, clickedButton) {
         // Desativar interação com todos os botões
-        this.botoesAlternativas.forEach(botao => {
-            botao.disableInteractive();
+        this.optionsButtons.forEach(btn => {
+            btn.disableInteractive();
         });
 
-        const pergunta = perguntasEstrategia[perguntaAtual];
+        const question = questionsEstrategy[presentQuestion];
 
-        if (resposta === pergunta.correta) {
-            // Resposta correta
-            botaoClicado.fillColor = 0x88FF88; // Verde claro
+        if (answerr === question.question) {
+            // Resposta question
+            clickedButton.fillColor = 0x88FF88; // Verde claro
 
-            // Atualizar pontuação e progresso
-            pontuacao += 100; // Pontuação fixa por resposta correta
-            progresso += 20;
+            // Atualizar pontuação e progress
+            points += 100; // Pontuação fixa por answerr question
+            progress += 20;
 
             // Esperar um momento antes de seguir
             this.time.delayedCall(1500, () => {
-                perguntaAtual++;
-                this.atualizarBarraProgresso();
+                presentQuestion++;
+                this.updateProgressBar();
 
-                if (perguntaAtual < perguntasEstrategia.length) {
-                    // Próxima pergunta com transição
+                if (presentQuestion < questionsEstrategy.length) {
+                    // Próxima question com transição
                     this.cameras.main.fadeOut(300, 0, 0, 0, () => {
                         this.cameras.main.fadeIn(300);
-                        this.mostrarPergunta();
+                        this.showQuestion();
                     });
                 } else {
                     // Quiz completo
-                    this.scene.start('CongratulationsSceneCurriculoVpEstrategia', { pontuacao: pontuacao });
+                    this.scene.start('CongratulationsSceneCurriculoVpEstrategia', { points: points });
                 }
             });
         } else {
             // Resposta incorreta
-            botaoClicado.fillColor = 0xFF8888; // Vermelho claro
+            clickedButton.fillColor = 0xFF8888; // Vermelho claro
 
-            // Destacar alternativa correta
-            this.botoesAlternativas[pergunta.correta].fillColor = 0x88FF88; // Verde claro
+            // Destacar alternative question
+            this.optionsButtons[question.question].fillColor = 0x88FF88; // Verde claro
 
             // Esperar um momento e mostrar tela de game over
             this.time.delayedCall(1500, () => {
@@ -1093,12 +1093,12 @@ class GameOverSceneCurriculoEstrategia extends Phaser.Scene {
         // Transição de entrada
         this.cameras.main.fadeIn(1000, 0, 0, 0);
 
-        // Imagem de fundo sem distorção
-        const fundo = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, 'fundoGameOver');
-        this.scaleBackgroundImage(fundo);
+        // Imagem de backgroundGame sem distorção
+        const backgroundGame = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, 'fundoGameOver');
+        this.scaleBackgroundImage(backgroundGame);
 
         // Botão de texto para reiniciar
-        const botaoReiniciar = this.add.rectangle(
+        const restartButton = this.add.rectangle(
             this.sys.game.config.width / 2,
             510,
             250,
@@ -1108,29 +1108,29 @@ class GameOverSceneCurriculoEstrategia extends Phaser.Scene {
             .setInteractive();
 
         // Efeitos do botão
-        botaoReiniciar.on('pointerover', () => {
-            botaoReiniciar.fillColor = 0xC30DC7;
-            botaoReiniciar.setScale(1.05);
+        restartButton.on('pointerover', () => {
+            restartButton.fillColor = 0xC30DC7;
+            restartButton.setScale(1.05);
         });
 
-        botaoReiniciar.on('pointerout', () => {
-            botaoReiniciar.fillColor = 0xB600B9;
-            botaoReiniciar.setScale(1);
+        restartButton.on('pointerout', () => {
+            restartButton.fillColor = 0xB600B9;
+            restartButton.setScale(1);
         });
 
         // Evento de clique
-        botaoReiniciar.on('pointerdown', () => {
+        restartButton.on('pointerdown', () => {
             // Efeito de click
             this.tweens.add({
-                targets: botaoReiniciar,
+                targets: restartButton,
                 scale: 0.95,
                 duration: 100,
                 yoyo: true,
                 onComplete: () => {
                     // Reiniciar variáveis
-                    perguntaAtual = 0;
-                    progresso = 0;
-                    pontuacao = 0;
+                    presentQuestion = 0;
+                    progress = 0;
+                    points = 0;
 
                     // Fade out e iniciar o quiz
                     this.cameras.main.fadeOut(500, 0, 0, 0, () => {
@@ -1172,7 +1172,7 @@ class CongratulationsSceneCurriculoVpEstrategia extends Phaser.Scene {
     }
 
     init(data) {
-        this.pontuacaoFinal = data.pontuacao || 0;
+        this.finalPoints = data.points || 0;
     }
 
     preload() {
@@ -1184,12 +1184,12 @@ class CongratulationsSceneCurriculoVpEstrategia extends Phaser.Scene {
         // Transição de entrada com efeito
         this.cameras.main.fadeIn(1000, 0, 0, 0);
 
-        // Imagem de fundo sem distorção
-        const fundo = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, 'fundoCongratulationsVpEstrategia');
-        this.scaleBackgroundImage(fundo);
+        // Imagem de backgroundGame sem distorção
+        const backgroundGame = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, 'fundoCongratulationsVpEstrategia');
+        this.scaleBackgroundImage(backgroundGame);
 
         // Botão de texto para voltar
-        const botaoVoltar = this.add.rectangle(
+        const backButton = this.add.rectangle(
             width / 2,
             height - 210,
             250,
@@ -1199,29 +1199,29 @@ class CongratulationsSceneCurriculoVpEstrategia extends Phaser.Scene {
             .setInteractive();
 
         // Efeitos do botão
-        botaoVoltar.on('pointerover', () => {
-            botaoVoltar.fillColor = 0xC30DC7;
-            botaoVoltar.setScale(1.05);
+        backButton.on('pointerover', () => {
+            backButton.fillColor = 0xC30DC7;
+            backButton.setScale(1.05);
         });
 
-        botaoVoltar.on('pointerout', () => {
-            botaoVoltar.fillColor = 0xB600B9;
-            botaoVoltar.setScale(1);
+        backButton.on('pointerout', () => {
+            backButton.fillColor = 0xB600B9;
+            backButton.setScale(1);
         });
 
         // Evento de clique
-        botaoVoltar.on('pointerdown', () => {
+        backButton.on('pointerdown', () => {
             // Efeito de click
             this.tweens.add({
-                targets: botaoVoltar,
+                targets: backButton,
                 scale: 0.95,
                 duration: 100,
                 yoyo: true,
                 onComplete: () => {
                     // Reiniciar variáveis
-                    perguntaAtual = 0;
-                    progresso = 0;
-                    pontuacao = 0;
+                    presentQuestion = 0;
+                    progress = 0;
+                    points = 0;
 
                     // Fade out e iniciar o quiz
                     this.cameras.main.fadeOut(500, 0, 0, 0, () => {
@@ -1262,8 +1262,8 @@ class CongratulationsSceneCurriculoVpEstrategia extends Phaser.Scene {
 class QuizVpNegocios extends Phaser.Scene {
     constructor() {
         super({ key: 'QuizVpNegocios' });
-        this.textosPergunta = []; // Armazena os textos da pergunta e alternativas
-        this.botoesAlternativas = []; // Armazena os botões das alternativas
+        this.questionTexts = []; // Armazena os textos da question e options
+        this.optionsButtons = []; // Armazena os botões das options
     }
 
     preload() {
@@ -1276,14 +1276,14 @@ class QuizVpNegocios extends Phaser.Scene {
         // Transição suave
         this.cameras.main.fadeIn(1000);
 
-        // Adicionar a imagem de fundo sem distorção
-        const fundo = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, 'TelaQuiz');
-        this.scaleBackgroundImage(fundo);
+        // Adicionar a imagem de backgroundGame sem distorção
+        const backgroundGame = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, 'TelaQuiz');
+        this.scaleBackgroundImage(backgroundGame);
 
         // Criar elementos de interface
-        this.criarBarraProgresso();
-        this.criarContadorPergunta();
-        this.mostrarPergunta();
+        this.createProgressBar();
+        this.createQuestionsCounter();
+        this.showQuestion();
     }
 
     scaleBackgroundImage(image) {
@@ -1298,75 +1298,75 @@ class QuizVpNegocios extends Phaser.Scene {
         image.setScale(scale);
     }
 
-    criarContadorPergunta() {
-        // Mostrar número da pergunta atual/total
-        this.textoPerguntaNumero = this.add.text(
+    createQuestionsCounter() {
+        // Mostrar número da question atual/total
+        this.textQuestionNumber = this.add.text(
             this.sys.game.config.width - 150,
             50,
-            `Pergunta ${perguntaAtual + 1}/${perguntasNegocios.length}`,
+            `Pergunta ${presentQuestion + 1}/${questionsBusiness.length}`,
             { fontSize: '20px', fill: '#000', fontFamily: 'FontePadrao' }
         ).setOrigin(0.5);
     }
 
-    criarBarraProgresso() {
-        // Container para a barra de progresso
+    createProgressBar() {
+        // Container para a barra de progress
         const progressBarContainer = this.add.rectangle(100, 50, 300, 24, 0xDDDDDD)
             .setOrigin(0, 0.5)
             .setStrokeStyle(2, 0x000000);
 
-        // Barra de progresso roxa    
-        this.barraProgresso = this.add.rectangle(102, 50, 0, 20, 0xB600B9)
+        // Barra de progress roxa    
+        this.progressBar = this.add.rectangle(102, 50, 0, 20, 0xB600B9)
             .setOrigin(0, 0.5);
 
-        // Texto de progresso    
-        this.textoProgresso = this.add.text(
+        // Texto de progress    
+        this.progressText = this.add.text(
             420,
             50,
-            `${progresso}%`,
+            `${progress}%`,
             { fontSize: '20px', fill: '#000', fontFamily: 'FontePadrao', fontWeight: 'bold' }
         ).setOrigin(0, 0.5);
     }
 
-    atualizarBarraProgresso() {
-        // Atualizando a barra de progresso do quiz
-        const larguraMaxima = 296;
-        const novaLargura = (progresso / 100) * larguraMaxima;
+    updateProgressBar() {
+        // Atualizando a barra de progress do quiz
+        const maxHeight = 296;
+        const newWidth = (progress / 100) * maxHeight;
 
-        // Animar a barra de progresso
+        // Animar a barra de progress
         this.tweens.add({
-            targets: this.barraProgresso,
-            width: novaLargura,
+            targets: this.progressBar,
+            width: newWidth,
             duration: 500,
             ease: 'Power2'
         });
 
-        this.textoProgresso.setText(`${progresso}%`);
+        this.progressText.setText(`${progress}%`);
     }
 
-    limparElementos() {
-        // Remove os textos da pergunta e alternativas
-        this.textosPergunta.forEach(texto => texto.destroy());
-        this.textosPergunta = [];
+    cleanElements() {
+        // Remove os textos da question e options
+        this.questionTexts.forEach(texto => texto.destroy());
+        this.questionTexts = [];
 
-        // Remove os botões das alternativas
-        this.botoesAlternativas.forEach(botao => botao.destroy());
-        this.botoesAlternativas = [];
+        // Remove os botões das options
+        this.optionsButtons.forEach(btn => btn.destroy());
+        this.optionsButtons = [];
     }
 
-    mostrarPergunta() {
+    showQuestion() {
         // Limpa os elementos antigos
-        this.limparElementos();
+        this.cleanElements();
 
         // Atualiza o contador de perguntas
-        this.textoPerguntaNumero.setText(`Pergunta ${perguntaAtual + 1}/${perguntasNegocios.length}`);
+        this.textQuestionNumber.setText(`Pergunta ${presentQuestion + 1}/${questionsBusiness.length}`);
 
-        const pergunta = perguntasNegocios[perguntaAtual];
+        const question = questionsBusiness[presentQuestion];
 
-        // Exibindo a pergunta
-        const textoPergunta = this.add.text(
+        // Exibindo a question
+        const questionText = this.add.text(
             this.sys.game.config.width / 2,
             100,
-            pergunta.pergunta,
+            question.question,
             {
                 fontSize: '22px',
                 fill: '#B600B9',
@@ -1377,15 +1377,15 @@ class QuizVpNegocios extends Phaser.Scene {
             }
         ).setOrigin(0.5);
 
-        this.textosPergunta.push(textoPergunta);
+        this.questionTexts.push(questionText);
 
-        // Exibindo alternativas
+        // Exibindo options
         const startY = 200;
         const spacing = 50;
 
-        pergunta.alternativas.forEach((alternativa, index) => {
-            // Container da alternativa (retângulo)
-            const botaoContainer = this.add.rectangle(
+        question.options.forEach((alternative, index) => {
+            // Container da alternative (retângulo)
+            const containerButton = this.add.rectangle(
                 this.sys.game.config.width / 2,
                 startY + (index * spacing),
                 this.sys.game.config.width - 200,
@@ -1395,26 +1395,26 @@ class QuizVpNegocios extends Phaser.Scene {
                 .setInteractive();
 
             // Efeitos de hover
-            botaoContainer.on('pointerover', () => {
-                botaoContainer.fillColor = 0xDDDDDD;
-                botaoContainer.setScale(1.02);
+            containerButton.on('pointerover', () => {
+                containerButton.fillColor = 0xDDDDDD;
+                containerButton.setScale(1.02);
             });
 
-            botaoContainer.on('pointerout', () => {
-                botaoContainer.fillColor = 0xEAE8E8;
-                botaoContainer.setScale(1);
+            containerButton.on('pointerout', () => {
+                containerButton.fillColor = 0xEAE8E8;
+                containerButton.setScale(1);
             });
 
             // Evento de clique
-            botaoContainer.on('pointerdown', () => {
-                this.verificarResposta(index, botaoContainer);
+            containerButton.on('pointerdown', () => {
+                this.checkAnswer(index, containerButton);
             });
 
-            // Texto da alternativa
-            const textoAlternativa = this.add.text(
+            // Texto da alternative
+            const alternativeText = this.add.text(
                 this.sys.game.config.width / 2,
                 startY + (index * spacing),
-                `${index + 1}. ${alternativa}`,
+                `${index + 1}. ${alternative}`,
                 {
                     fontSize: '18px',
                     fill: '#000',
@@ -1423,49 +1423,49 @@ class QuizVpNegocios extends Phaser.Scene {
                 }
             ).setOrigin(0.5);
 
-            this.textosPergunta.push(textoAlternativa);
-            this.botoesAlternativas.push(botaoContainer);
+            this.questionTexts.push(alternativeText);
+            this.optionsButtons.push(containerButton);
         });
     }
 
-    verificarResposta(resposta, botaoClicado) {
+    checkAnswer(answerr, clickedButton) {
         // Desativar interação com todos os botões
-        this.botoesAlternativas.forEach(botao => {
-            botao.disableInteractive();
+        this.optionsButtons.forEach(btn => {
+            btn.disableInteractive();
         });
 
-        const pergunta = perguntasNegocios[perguntaAtual];
+        const question = questionsBusiness[presentQuestion];
 
-        if (resposta === pergunta.correta) {
-            // Resposta correta
-            botaoClicado.fillColor = 0x88FF88; // Verde claro
+        if (answerr === question.question) {
+            // Resposta question
+            clickedButton.fillColor = 0x88FF88; // Verde claro
 
-            // Atualizar pontuação e progresso
-            pontuacao += 100; // Pontuação fixa por resposta correta
-            progresso += 20;
+            // Atualizar pontuação e progress
+            points += 100; // Pontuação fixa por answerr question
+            progress += 20;
 
             // Esperar um momento antes de seguir
             this.time.delayedCall(1500, () => {
-                perguntaAtual++;
-                this.atualizarBarraProgresso();
+                presentQuestion++;
+                this.updateProgressBar();
 
-                if (perguntaAtual < perguntasNegocios.length) {
-                    // Próxima pergunta com transição
+                if (presentQuestion < questionsBusiness.length) {
+                    // Próxima question com transição
                     this.cameras.main.fadeOut(300, 0, 0, 0, () => {
                         this.cameras.main.fadeIn(300);
-                        this.mostrarPergunta();
+                        this.showQuestion();
                     });
                 } else {
                     // Quiz completo
-                    this.scene.start('CongratulationsSceneCurriculoVpNegocios', { pontuacao: pontuacao });
+                    this.scene.start('CongratulationsSceneCurriculoVpNegocios', { points: points });
                 }
             });
         } else {
             // Resposta incorreta
-            botaoClicado.fillColor = 0xFF8888; // Vermelho claro
+            clickedButton.fillColor = 0xFF8888; // Vermelho claro
 
-            // Destacar alternativa correta
-            this.botoesAlternativas[pergunta.correta].fillColor = 0x88FF88; // Verde claro
+            // Destacar alternative question
+            this.optionsButtons[question.question].fillColor = 0x88FF88; // Verde claro
 
             // Esperar um momento e mostrar tela de game over
             this.time.delayedCall(1500, () => {
@@ -1494,12 +1494,12 @@ class GameOverSceneCurriculoNegocios extends Phaser.Scene {
         // Transição de entrada
         this.cameras.main.fadeIn(1000, 0, 0, 0);
 
-        // Imagem de fundo sem distorção
-        const fundo = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, 'fundoGameOver');
-        this.scaleBackgroundImage(fundo);
+        // Imagem de backgroundGame sem distorção
+        const backgroundGame = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, 'fundoGameOver');
+        this.scaleBackgroundImage(backgroundGame);
 
         // Botão de texto para reiniciar
-        const botaoReiniciar = this.add.rectangle(
+        const restartButton = this.add.rectangle(
             this.sys.game.config.width / 2,
             510,
             250,
@@ -1509,29 +1509,29 @@ class GameOverSceneCurriculoNegocios extends Phaser.Scene {
             .setInteractive();
 
         // Efeitos do botão
-        botaoReiniciar.on('pointerover', () => {
-            botaoReiniciar.fillColor = 0xC30DC7;
-            botaoReiniciar.setScale(1.05);
+        restartButton.on('pointerover', () => {
+            restartButton.fillColor = 0xC30DC7;
+            restartButton.setScale(1.05);
         });
 
-        botaoReiniciar.on('pointerout', () => {
-            botaoReiniciar.fillColor = 0xB600B9;
-            botaoReiniciar.setScale(1);
+        restartButton.on('pointerout', () => {
+            restartButton.fillColor = 0xB600B9;
+            restartButton.setScale(1);
         });
 
         // Evento de clique
-        botaoReiniciar.on('pointerdown', () => {
+        restartButton.on('pointerdown', () => {
             // Efeito de click
             this.tweens.add({
-                targets: botaoReiniciar,
+                targets: restartButton,
                 scale: 0.95,
                 duration: 100,
                 yoyo: true,
                 onComplete: () => {
                     // Reiniciar variáveis
-                    perguntaAtual = 0;
-                    progresso = 0;
-                    pontuacao = 0;
+                    presentQuestion = 0;
+                    progress = 0;
+                    points = 0;
 
                     // Fade out e iniciar o quiz
                     this.cameras.main.fadeOut(500, 0, 0, 0, () => {
@@ -1573,7 +1573,7 @@ class CongratulationsSceneCurriculoVpNegocios extends Phaser.Scene {
     }
 
     init(data) {
-        this.pontuacaoFinal = data.pontuacao || 0;
+        this.finalPoints = data.points || 0;
     }
 
     preload() {
@@ -1585,12 +1585,12 @@ class CongratulationsSceneCurriculoVpNegocios extends Phaser.Scene {
         // Transição de entrada com efeito
         this.cameras.main.fadeIn(1000, 0, 0, 0);
 
-        // Imagem de fundo sem distorção
-        const fundo = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, 'fundoCongratulationsVpNegocios');
-        this.scaleBackgroundImage(fundo);
+        // Imagem de backgroundGame sem distorção
+        const backgroundGame = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, 'fundoCongratulationsVpNegocios');
+        this.scaleBackgroundImage(backgroundGame);
 
         // Botão de texto para voltar
-        const botaoVoltar = this.add.rectangle(
+        const backButton = this.add.rectangle(
             this.sys.game.config.width / 2,
             510,
             250,
@@ -1600,29 +1600,29 @@ class CongratulationsSceneCurriculoVpNegocios extends Phaser.Scene {
             .setInteractive();
 
         // Efeitos do botão
-        botaoVoltar.on('pointerover', () => {
-            botaoVoltar.fillColor = 0xC30DC7;
-            botaoVoltar.setScale(1.05);
+        backButton.on('pointerover', () => {
+            backButton.fillColor = 0xC30DC7;
+            backButton.setScale(1.05);
         });
 
-        botaoVoltar.on('pointerout', () => {
-            botaoVoltar.fillColor = 0xB600B9;
-            botaoVoltar.setScale(1);
+        backButton.on('pointerout', () => {
+            backButton.fillColor = 0xB600B9;
+            backButton.setScale(1);
         });
 
         // Evento de clique
-        botaoVoltar.on('pointerdown', () => {
+        backButton.on('pointerdown', () => {
             // Efeito de click
             this.tweens.add({
-                targets: botaoVoltar,
+                targets: backButton,
                 scale: 0.95,
                 duration: 100,
                 yoyo: true,
                 onComplete: () => {
                     // Reiniciar variáveis
-                    perguntaAtual = 0;
-                    progresso = 0;
-                    pontuacao = 0;
+                    presentQuestion = 0;
+                    progress = 0;
+                    points = 0;
 
                     // Fade out e iniciar o quiz
                     this.cameras.main.fadeOut(500, 0, 0, 0, () => {
@@ -1663,8 +1663,8 @@ class CongratulationsSceneCurriculoVpNegocios extends Phaser.Scene {
 class QuizVpRelacoes extends Phaser.Scene {
     constructor() {
         super({ key: 'QuizVpRelacoes' });
-        this.textosPergunta = []; // Armazena os textos da pergunta e alternativas
-        this.botoesAlternativas = []; // Armazena os botões das alternativas
+        this.questionTexts = []; // Armazena os textos da question e options
+        this.optionsButtons = []; // Armazena os botões das options
     }
 
     preload() {
@@ -1677,14 +1677,14 @@ class QuizVpRelacoes extends Phaser.Scene {
         // Transição suave
         this.cameras.main.fadeIn(1000);
 
-        // Adicionar a imagem de fundo sem distorção
-        const fundo = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, 'TelaQuiz');
-        this.scaleBackgroundImage(fundo);
+        // Adicionar a imagem de backgroundGame sem distorção
+        const backgroundGame = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, 'TelaQuiz');
+        this.scaleBackgroundImage(backgroundGame);
 
         // Criar elementos de interface
-        this.criarBarraProgresso();
-        this.criarContadorPergunta();
-        this.mostrarPergunta();
+        this.createProgressBar();
+        this.createQuestionsCounter();
+        this.showQuestion();
     }
 
     scaleBackgroundImage(image) {
@@ -1699,75 +1699,75 @@ class QuizVpRelacoes extends Phaser.Scene {
         image.setScale(scale);
     }
 
-    criarContadorPergunta() {
-        // Mostrar número da pergunta atual/total
-        this.textoPerguntaNumero = this.add.text(
+    createQuestionsCounter() {
+        // Mostrar número da question atual/total
+        this.textQuestionNumber = this.add.text(
             this.sys.game.config.width - 150,
             50,
-            `Pergunta ${perguntaAtual + 1}/${perguntasRelacoes.length}`,
+            `Pergunta ${presentQuestion + 1}/${questionsRelationships.length}`,
             { fontSize: '20px', fill: '#000', fontFamily: 'FontePadrao' }
         ).setOrigin(0.5);
     }
 
-    criarBarraProgresso() {
-        // Container para a barra de progresso
+    createProgressBar() {
+        // Container para a barra de progress
         const progressBarContainer = this.add.rectangle(100, 50, 300, 24, 0xDDDDDD)
             .setOrigin(0, 0.5)
             .setStrokeStyle(2, 0x000000);
 
-        // Barra de progresso roxa    
-        this.barraProgresso = this.add.rectangle(102, 50, 0, 20, 0xB600B9)
+        // Barra de progress roxa    
+        this.progressBar = this.add.rectangle(102, 50, 0, 20, 0xB600B9)
             .setOrigin(0, 0.5);
 
-        // Texto de progresso    
-        this.textoProgresso = this.add.text(
+        // Texto de progress    
+        this.progressText = this.add.text(
             420,
             50,
-            `${progresso}%`,
+            `${progress}%`,
             { fontSize: '20px', fill: '#000', fontFamily: 'FontePadrao', fontWeight: 'bold' }
         ).setOrigin(0, 0.5);
     }
 
-    atualizarBarraProgresso() {
-        // Atualizando a barra de progresso do quiz
-        const larguraMaxima = 296;
-        const novaLargura = (progresso / 100) * larguraMaxima;
+    updateProgressBar() {
+        // Atualizando a barra de progress do quiz
+        const maxHeight = 296;
+        const newWidth = (progress / 100) * maxHeight;
 
-        // Animar a barra de progresso
+        // Animar a barra de progress
         this.tweens.add({
-            targets: this.barraProgresso,
-            width: novaLargura,
+            targets: this.progressBar,
+            width: newWidth,
             duration: 500,
             ease: 'Power2'
         });
 
-        this.textoProgresso.setText(`${progresso}%`);
+        this.progressText.setText(`${progress}%`);
     }
 
-    limparElementos() {
-        // Remove os textos da pergunta e alternativas
-        this.textosPergunta.forEach(texto => texto.destroy());
-        this.textosPergunta = [];
+    cleanElements() {
+        // Remove os textos da question e options
+        this.questionTexts.forEach(texto => texto.destroy());
+        this.questionTexts = [];
 
-        // Remove os botões das alternativas
-        this.botoesAlternativas.forEach(botao => botao.destroy());
-        this.botoesAlternativas = [];
+        // Remove os botões das options
+        this.optionsButtons.forEach(btn => btn.destroy());
+        this.optionsButtons = [];
     }
 
-    mostrarPergunta() {
+    showQuestion() {
         // Limpa os elementos antigos
-        this.limparElementos();
+        this.cleanElements();
 
         // Atualiza o contador de perguntas
-        this.textoPerguntaNumero.setText(`Pergunta ${perguntaAtual + 1}/${perguntasRelacoes.length}`);
+        this.textQuestionNumber.setText(`Pergunta ${presentQuestion + 1}/${questionsRelationships.length}`);
 
-        const pergunta = perguntasRelacoes[perguntaAtual];
+        const question = questionsRelationships[presentQuestion];
 
-        // Exibindo a pergunta
-        const textoPergunta = this.add.text(
+        // Exibindo a question
+        const questionText = this.add.text(
             this.sys.game.config.width / 2,
             100,
-            pergunta.pergunta,
+            question.question,
             {
                 fontSize: '22px',
                 fill: '#B600B9',
@@ -1778,15 +1778,15 @@ class QuizVpRelacoes extends Phaser.Scene {
             }
         ).setOrigin(0.5);
 
-        this.textosPergunta.push(textoPergunta);
+        this.questionTexts.push(questionText);
 
-        // Exibindo alternativas
+        // Exibindo options
         const startY = 200;
         const spacing = 50;
 
-        pergunta.alternativas.forEach((alternativa, index) => {
-            // Container da alternativa (retângulo)
-            const botaoContainer = this.add.rectangle(
+        question.options.forEach((alternative, index) => {
+            // Container da alternative (retângulo)
+            const containerButton = this.add.rectangle(
                 this.sys.game.config.width / 2,
                 startY + (index * spacing),
                 this.sys.game.config.width - 200,
@@ -1796,26 +1796,26 @@ class QuizVpRelacoes extends Phaser.Scene {
                 .setInteractive();
 
             // Efeitos de hover
-            botaoContainer.on('pointerover', () => {
-                botaoContainer.fillColor = 0xDDDDDD;
-                botaoContainer.setScale(1.02);
+            containerButton.on('pointerover', () => {
+                containerButton.fillColor = 0xDDDDDD;
+                containerButton.setScale(1.02);
             });
 
-            botaoContainer.on('pointerout', () => {
-                botaoContainer.fillColor = 0xEAE8E8;
-                botaoContainer.setScale(1);
+            containerButton.on('pointerout', () => {
+                containerButton.fillColor = 0xEAE8E8;
+                containerButton.setScale(1);
             });
 
             // Evento de clique
-            botaoContainer.on('pointerdown', () => {
-                this.verificarResposta(index, botaoContainer);
+            containerButton.on('pointerdown', () => {
+                this.checkAnswer(index, containerButton);
             });
 
-            // Texto da alternativa
-            const textoAlternativa = this.add.text(
+            // Texto da alternative
+            const alternativeText = this.add.text(
                 this.sys.game.config.width / 2,
                 startY + (index * spacing),
-                `${index + 1}. ${alternativa}`,
+                `${index + 1}. ${alternative}`,
                 {
                     fontSize: '18px',
                     fill: '#000',
@@ -1824,49 +1824,49 @@ class QuizVpRelacoes extends Phaser.Scene {
                 }
             ).setOrigin(0.5);
 
-            this.textosPergunta.push(textoAlternativa);
-            this.botoesAlternativas.push(botaoContainer);
+            this.questionTexts.push(alternativeText);
+            this.optionsButtons.push(containerButton);
         });
     }
 
-    verificarResposta(resposta, botaoClicado) {
+    checkAnswer(answerr, clickedButton) {
         // Desativar interação com todos os botões
-        this.botoesAlternativas.forEach(botao => {
-            botao.disableInteractive();
+        this.optionsButtons.forEach(btn => {
+            btn.disableInteractive();
         });
 
-        const pergunta = perguntasRelacoes[perguntaAtual];
+        const question = questionsRelationships[presentQuestion];
 
-        if (resposta === pergunta.correta) {
-            // Resposta correta
-            botaoClicado.fillColor = 0x88FF88; // Verde claro
+        if (answerr === question.question) {
+            // Resposta question
+            clickedButton.fillColor = 0x88FF88; // Verde claro
 
-            // Atualizar pontuação e progresso
-            pontuacao += 100; // Pontuação fixa por resposta correta
-            progresso += 20;
+            // Atualizar pontuação e progress
+            points += 100; // Pontuação fixa por answerr question
+            progress += 20;
 
             // Esperar um momento antes de seguir
             this.time.delayedCall(1500, () => {
-                perguntaAtual++;
-                this.atualizarBarraProgresso();
+                presentQuestion++;
+                this.updateProgressBar();
 
-                if (perguntaAtual < perguntasRelacoes.length) {
-                    // Próxima pergunta com transição
+                if (presentQuestion < questionsRelationships.length) {
+                    // Próxima question com transição
                     this.cameras.main.fadeOut(300, 0, 0, 0, () => {
                         this.cameras.main.fadeIn(300);
-                        this.mostrarPergunta();
+                        this.showQuestion();
                     });
                 } else {
                     // Quiz completo
-                    this.scene.start('CongratulationsSceneCurriculoVpRelacoes', { pontuacao: pontuacao });
+                    this.scene.start('CongratulationsSceneCurriculoVpRelacoes', { points: points });
                 }
             });
         } else {
             // Resposta incorreta
-            botaoClicado.fillColor = 0xFF8888; // Vermelho claro
+            clickedButton.fillColor = 0xFF8888; // Vermelho claro
 
-            // Destacar alternativa correta
-            this.botoesAlternativas[pergunta.correta].fillColor = 0x88FF88; // Verde claro
+            // Destacar alternative question
+            this.optionsButtons[question.question].fillColor = 0x88FF88; // Verde claro
 
             // Esperar um momento e mostrar tela de game over
             this.time.delayedCall(1500, () => {
@@ -1895,12 +1895,12 @@ class GameOverSceneCurriculoRelacoes extends Phaser.Scene {
         // Transição de entrada
         this.cameras.main.fadeIn(1000, 0, 0, 0);
 
-        // Imagem de fundo sem distorção
-        const fundo = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, 'fundoGameOver');
-        this.scaleBackgroundImage(fundo);
+        // Imagem de backgroundGame sem distorção
+        const backgroundGame = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, 'fundoGameOver');
+        this.scaleBackgroundImage(backgroundGame);
 
         // Botão de texto para reiniciar
-        const botaoReiniciar = this.add.rectangle(
+        const restartButton = this.add.rectangle(
             this.sys.game.config.width / 2,
             510,
             250,
@@ -1910,29 +1910,29 @@ class GameOverSceneCurriculoRelacoes extends Phaser.Scene {
             .setInteractive();
 
         // Efeitos do botão
-        botaoReiniciar.on('pointerover', () => {
-            botaoReiniciar.fillColor = 0xC30DC7;
-            botaoReiniciar.setScale(1.05);
+        restartButton.on('pointerover', () => {
+            restartButton.fillColor = 0xC30DC7;
+            restartButton.setScale(1.05);
         });
 
-        botaoReiniciar.on('pointerout', () => {
-            botaoReiniciar.fillColor = 0xB600B9;
-            botaoReiniciar.setScale(1);
+        restartButton.on('pointerout', () => {
+            restartButton.fillColor = 0xB600B9;
+            restartButton.setScale(1);
         });
 
         // Evento de clique
-        botaoReiniciar.on('pointerdown', () => {
+        restartButton.on('pointerdown', () => {
             // Efeito de click
             this.tweens.add({
-                targets: botaoReiniciar,
+                targets: restartButton,
                 scale: 0.95,
                 duration: 100,
                 yoyo: true,
                 onComplete: () => {
                     // Reiniciar variáveis
-                    perguntaAtual = 0;
-                    progresso = 0;
-                    pontuacao = 0;
+                    presentQuestion = 0;
+                    progress = 0;
+                    points = 0;
 
                     // Fade out e iniciar o quiz
                     this.cameras.main.fadeOut(500, 0, 0, 0, () => {
@@ -1974,7 +1974,7 @@ class CongratulationsSceneCurriculoVpRelacoes extends Phaser.Scene {
     }
 
     init(data) {
-        this.pontuacaoFinal = data.pontuacao || 0;
+        this.finalPoints = data.points || 0;
     }
 
     preload() {
@@ -1986,12 +1986,12 @@ class CongratulationsSceneCurriculoVpRelacoes extends Phaser.Scene {
         // Transição de entrada com efeito
         this.cameras.main.fadeIn(1000, 0, 0, 0);
 
-        // Imagem de fundo sem distorção
-        const fundo = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, 'fundoCongratulationsVpRelacoes');
-        this.scaleBackgroundImage(fundo);
+        // Imagem de backgroundGame sem distorção
+        const backgroundGame = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, 'fundoCongratulationsVpRelacoes');
+        this.scaleBackgroundImage(backgroundGame);
 
         // Botão de texto para voltar
-        const botaoVoltar = this.add.rectangle(
+        const backButton = this.add.rectangle(
             width / 2,
             height - 210,
             250,
@@ -2001,29 +2001,29 @@ class CongratulationsSceneCurriculoVpRelacoes extends Phaser.Scene {
             .setInteractive();
 
         // Efeitos do botão
-        botaoVoltar.on('pointerover', () => {
-            botaoVoltar.fillColor = 0xC30DC7;
-            botaoVoltar.setScale(1.05);
+        backButton.on('pointerover', () => {
+            backButton.fillColor = 0xC30DC7;
+            backButton.setScale(1.05);
         });
 
-        botaoVoltar.on('pointerout', () => {
-            botaoVoltar.fillColor = 0xB600B9;
-            botaoVoltar.setScale(1);
+        backButton.on('pointerout', () => {
+            backButton.fillColor = 0xB600B9;
+            backButton.setScale(1);
         });
 
         // Evento de clique
-        botaoVoltar.on('pointerdown', () => {
+        backButton.on('pointerdown', () => {
             // Efeito de click
             this.tweens.add({
-                targets: botaoVoltar,
+                targets: backButton,
                 scale: 0.95,
                 duration: 100,
                 yoyo: true,
                 onComplete: () => {
                     // Reiniciar variáveis
-                    perguntaAtual = 0;
-                    progresso = 0;
-                    pontuacao = 0;
+                    presentQuestion = 0;
+                    progress = 0;
+                    points = 0;
 
                     // Fade out e iniciar o quiz
                     this.cameras.main.fadeOut(500, 0, 0, 0, () => {
@@ -2064,8 +2064,8 @@ class CongratulationsSceneCurriculoVpRelacoes extends Phaser.Scene {
 class QuizVpTecnologia extends Phaser.Scene {
     constructor() {
         super({ key: 'QuizVpTecnologia' });
-        this.textosPergunta = []; // Armazena os textos da pergunta e alternativas
-        this.botoesAlternativas = []; // Armazena os botões das alternativas
+        this.questionTexts = []; // Armazena os textos da question e options
+        this.optionsButtons = []; // Armazena os botões das options
     }
 
     preload() {
@@ -2078,14 +2078,14 @@ class QuizVpTecnologia extends Phaser.Scene {
         // Transição suave
         this.cameras.main.fadeIn(1000);
 
-        // Adicionar a imagem de fundo sem distorção
-        const fundo = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, 'TelaQuiz');
-        this.scaleBackgroundImage(fundo);
+        // Adicionar a imagem de backgroundGame sem distorção
+        const backgroundGame = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, 'TelaQuiz');
+        this.scaleBackgroundImage(backgroundGame);
 
         // Criar elementos de interface
-        this.criarBarraProgresso();
-        this.criarContadorPergunta();
-        this.mostrarPergunta();
+        this.createProgressBar();
+        this.createQuestionsCounter();
+        this.showQuestion();
     }
 
     scaleBackgroundImage(image) {
@@ -2100,75 +2100,75 @@ class QuizVpTecnologia extends Phaser.Scene {
         image.setScale(scale);
     }
 
-    criarContadorPergunta() {
-        // Mostrar número da pergunta atual/total
-        this.textoPerguntaNumero = this.add.text(
+    createQuestionsCounter() {
+        // Mostrar número da question atual/total
+        this.textQuestionNumber = this.add.text(
             this.sys.game.config.width - 150,
             50,
-            `Pergunta ${perguntaAtual + 1}/${perguntasTecnologia.length}`,
+            `Pergunta ${presentQuestion + 1}/${questionsTech.length}`,
             { fontSize: '20px', fill: '#000', fontFamily: 'FontePadrao' }
         ).setOrigin(0.5);
     }
 
-    criarBarraProgresso() {
-        // Container para a barra de progresso
+    createProgressBar() {
+        // Container para a barra de progress
         const progressBarContainer = this.add.rectangle(100, 50, 300, 24, 0xDDDDDD)
             .setOrigin(0, 0.5)
             .setStrokeStyle(2, 0x000000);
 
-        // Barra de progresso roxa    
-        this.barraProgresso = this.add.rectangle(102, 50, 0, 20, 0xB600B9)
+        // Barra de progress roxa    
+        this.progressBar = this.add.rectangle(102, 50, 0, 20, 0xB600B9)
             .setOrigin(0, 0.5);
 
-        // Texto de progresso    
-        this.textoProgresso = this.add.text(
+        // Texto de progress    
+        this.progressText = this.add.text(
             420,
             50,
-            `${progresso}%`,
+            `${progress}%`,
             { fontSize: '20px', fill: '#000', fontFamily: 'FontePadrao', fontWeight: 'bold' }
         ).setOrigin(0, 0.5);
     }
 
-    atualizarBarraProgresso() {
-        // Atualizando a barra de progresso do quiz
-        const larguraMaxima = 296;
-        const novaLargura = (progresso / 100) * larguraMaxima;
+    updateProgressBar() {
+        // Atualizando a barra de progress do quiz
+        const maxHeight = 296;
+        const newWidth = (progress / 100) * maxHeight;
 
-        // Animar a barra de progresso
+        // Animar a barra de progress
         this.tweens.add({
-            targets: this.barraProgresso,
-            width: novaLargura,
+            targets: this.progressBar,
+            width: newWidth,
             duration: 500,
             ease: 'Power2'
         });
 
-        this.textoProgresso.setText(`${progresso}%`);
+        this.progressText.setText(`${progress}%`);
     }
 
-    limparElementos() {
-        // Remove os textos da pergunta e alternativas
-        this.textosPergunta.forEach(texto => texto.destroy());
-        this.textosPergunta = [];
+    cleanElements() {
+        // Remove os textos da question e options
+        this.questionTexts.forEach(texto => texto.destroy());
+        this.questionTexts = [];
 
-        // Remove os botões das alternativas
-        this.botoesAlternativas.forEach(botao => botao.destroy());
-        this.botoesAlternativas = [];
+        // Remove os botões das options
+        this.optionsButtons.forEach(btn => btn.destroy());
+        this.optionsButtons = [];
     }
 
-    mostrarPergunta() {
+    showQuestion() {
         // Limpa os elementos antigos
-        this.limparElementos();
+        this.cleanElements();
 
         // Atualiza o contador de perguntas
-        this.textoPerguntaNumero.setText(`Pergunta ${perguntaAtual + 1}/${perguntasTecnologia.length}`);
+        this.textQuestionNumber.setText(`Pergunta ${presentQuestion + 1}/${questionsTech.length}`);
 
-        const pergunta = perguntasTecnologia[perguntaAtual];
+        const question = questionsTech[presentQuestion];
 
-        // Exibindo a pergunta
-        const textoPergunta = this.add.text(
+        // Exibindo a question
+        const questionText = this.add.text(
             this.sys.game.config.width / 2,
             100,
-            pergunta.pergunta,
+            question.question,
             {
                 fontSize: '22px',
                 fill: '#B600B9',
@@ -2179,15 +2179,15 @@ class QuizVpTecnologia extends Phaser.Scene {
             }
         ).setOrigin(0.5);
 
-        this.textosPergunta.push(textoPergunta);
+        this.questionTexts.push(questionText);
 
-        // Exibindo alternativas
+        // Exibindo options
         const startY = 200;
         const spacing = 50;
 
-        pergunta.alternativas.forEach((alternativa, index) => {
-            // Container da alternativa (retângulo)
-            const botaoContainer = this.add.rectangle(
+        question.options.forEach((alternative, index) => {
+            // Container da alternative (retângulo)
+            const containerButton = this.add.rectangle(
                 this.sys.game.config.width / 2,
                 startY + (index * spacing),
                 this.sys.game.config.width - 200,
@@ -2197,26 +2197,26 @@ class QuizVpTecnologia extends Phaser.Scene {
                 .setInteractive();
 
             // Efeitos de hover
-            botaoContainer.on('pointerover', () => {
-                botaoContainer.fillColor = 0xDDDDDD;
-                botaoContainer.setScale(1.02);
+            containerButton.on('pointerover', () => {
+                containerButton.fillColor = 0xDDDDDD;
+                containerButton.setScale(1.02);
             });
 
-            botaoContainer.on('pointerout', () => {
-                botaoContainer.fillColor = 0xEAE8E8;
-                botaoContainer.setScale(1);
+            containerButton.on('pointerout', () => {
+                containerButton.fillColor = 0xEAE8E8;
+                containerButton.setScale(1);
             });
 
             // Evento de clique
-            botaoContainer.on('pointerdown', () => {
-                this.verificarResposta(index, botaoContainer);
+            containerButton.on('pointerdown', () => {
+                this.checkAnswer(index, containerButton);
             });
 
-            // Texto da alternativa
-            const textoAlternativa = this.add.text(
+            // Texto da alternative
+            const alternativeText = this.add.text(
                 this.sys.game.config.width / 2,
                 startY + (index * spacing),
-                `${index + 1}. ${alternativa}`,
+                `${index + 1}. ${alternative}`,
                 {
                     fontSize: '18px',
                     fill: '#000',
@@ -2225,49 +2225,49 @@ class QuizVpTecnologia extends Phaser.Scene {
                 }
             ).setOrigin(0.5);
 
-            this.textosPergunta.push(textoAlternativa);
-            this.botoesAlternativas.push(botaoContainer);
+            this.questionTexts.push(alternativeText);
+            this.optionsButtons.push(containerButton);
         });
     }
 
-    verificarResposta(resposta, botaoClicado) {
+    checkAnswer(answerr, clickedButton) {
         // Desativar interação com todos os botões
-        this.botoesAlternativas.forEach(botao => {
-            botao.disableInteractive();
+        this.optionsButtons.forEach(btn => {
+            btn.disableInteractive();
         });
 
-        const pergunta = perguntasTecnologia[perguntaAtual];
+        const question = questionsTech[presentQuestion];
 
-        if (resposta === pergunta.correta) {
-            // Resposta correta
-            botaoClicado.fillColor = 0x88FF88; // Verde claro
+        if (answerr === question.question) {
+            // Resposta question
+            clickedButton.fillColor = 0x88FF88; // Verde claro
 
-            // Atualizar pontuação e progresso
-            pontuacao += 100; // Pontuação fixa por resposta correta
-            progresso += 20;
+            // Atualizar pontuação e progress
+            points += 100; // Pontuação fixa por answerr question
+            progress += 20;
 
             // Esperar um momento antes de seguir
             this.time.delayedCall(1500, () => {
-                perguntaAtual++;
-                this.atualizarBarraProgresso();
+                presentQuestion++;
+                this.updateProgressBar();
 
-                if (perguntaAtual < perguntasTecnologia.length) {
-                    // Próxima pergunta com transição
+                if (presentQuestion < questionsTech.length) {
+                    // Próxima question com transição
                     this.cameras.main.fadeOut(300, 0, 0, 0, () => {
                         this.cameras.main.fadeIn(300);
-                        this.mostrarPergunta();
+                        this.showQuestion();
                     });
                 } else {
                     // Quiz completo
-                    this.scene.start('CongratulationsSceneCurriculoVpTecnologia', { pontuacao: pontuacao });
+                    this.scene.start('CongratulationsSceneCurriculoVpTecnologia', { points: points });
                 }
             });
         } else {
             // Resposta incorreta
-            botaoClicado.fillColor = 0xFF8888; // Vermelho claro
+            clickedButton.fillColor = 0xFF8888; // Vermelho claro
 
-            // Destacar alternativa correta
-            this.botoesAlternativas[pergunta.correta].fillColor = 0x88FF88; // Verde claro
+            // Destacar alternative question
+            this.optionsButtons[question.question].fillColor = 0x88FF88; // Verde claro
 
             // Esperar um momento e mostrar tela de game over
             this.time.delayedCall(1500, () => {
@@ -2296,12 +2296,12 @@ class GameOverSceneCurriculoTecnologia extends Phaser.Scene {
         // Transição de entrada
         this.cameras.main.fadeIn(1000, 0, 0, 0);
 
-        // Imagem de fundo sem distorção
-        const fundo = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, 'fundoGameOver');
-        this.scaleBackgroundImage(fundo);
+        // Imagem de backgroundGame sem distorção
+        const backgroundGame = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, 'fundoGameOver');
+        this.scaleBackgroundImage(backgroundGame);
 
         // Botão de texto para reiniciar
-        const botaoReiniciar = this.add.rectangle(
+        const restartButton = this.add.rectangle(
             this.sys.game.config.width / 2,
             510,
             250,
@@ -2311,29 +2311,29 @@ class GameOverSceneCurriculoTecnologia extends Phaser.Scene {
             .setInteractive();
 
         // Efeitos do botão
-        botaoReiniciar.on('pointerover', () => {
-            botaoReiniciar.fillColor = 0xC30DC7;
-            botaoReiniciar.setScale(1.05);
+        restartButton.on('pointerover', () => {
+            restartButton.fillColor = 0xC30DC7;
+            restartButton.setScale(1.05);
         });
 
-        botaoReiniciar.on('pointerout', () => {
-            botaoReiniciar.fillColor = 0xB600B9;
-            botaoReiniciar.setScale(1);
+        restartButton.on('pointerout', () => {
+            restartButton.fillColor = 0xB600B9;
+            restartButton.setScale(1);
         });
 
         // Evento de clique
-        botaoReiniciar.on('pointerdown', () => {
+        restartButton.on('pointerdown', () => {
             // Efeito de click
             this.tweens.add({
-                targets: botaoReiniciar,
+                targets: restartButton,
                 scale: 0.95,
                 duration: 100,
                 yoyo: true,
                 onComplete: () => {
                     // Reiniciar variáveis
-                    perguntaAtual = 0;
-                    progresso = 0;
-                    pontuacao = 0;
+                    presentQuestion = 0;
+                    progress = 0;
+                    points = 0;
 
                     // Fade out e iniciar o quiz
                     this.cameras.main.fadeOut(500, 0, 0, 0, () => {
@@ -2375,7 +2375,7 @@ class CongratulationsSceneCurriculoVpTecnologia extends Phaser.Scene {
     }
 
     init(data) {
-        this.pontuacaoFinal = data.pontuacao || 0;
+        this.finalPoints = data.points || 0;
     }
 
     preload() {
@@ -2387,12 +2387,12 @@ class CongratulationsSceneCurriculoVpTecnologia extends Phaser.Scene {
         // Transição de entrada com efeito
         this.cameras.main.fadeIn(1000, 0, 0, 0);
 
-        // Imagem de fundo sem distorção
-        const fundo = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, 'fundoCongratulationsVpTecnologia');
-        this.scaleBackgroundImage(fundo);
+        // Imagem de backgroundGame sem distorção
+        const backgroundGame = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, 'fundoCongratulationsVpTecnologia');
+        this.scaleBackgroundImage(backgroundGame);
 
         // Botão de texto para voltar
-        const botaoVoltar = this.add.rectangle(
+        const backButton = this.add.rectangle(
             width / 2,
             height - 210,
             250,
@@ -2402,29 +2402,29 @@ class CongratulationsSceneCurriculoVpTecnologia extends Phaser.Scene {
             .setInteractive();
 
         // Efeitos do botão
-        botaoVoltar.on('pointerover', () => {
-            botaoVoltar.fillColor = 0xC30DC7;
-            botaoVoltar.setScale(1.05);
+        backButton.on('pointerover', () => {
+            backButton.fillColor = 0xC30DC7;
+            backButton.setScale(1.05);
         });
 
-        botaoVoltar.on('pointerout', () => {
-            botaoVoltar.fillColor = 0xB600B9;
-            botaoVoltar.setScale(1);
+        backButton.on('pointerout', () => {
+            backButton.fillColor = 0xB600B9;
+            backButton.setScale(1);
         });
 
         // Evento de clique
-        botaoVoltar.on('pointerdown', () => {
+        backButton.on('pointerdown', () => {
             // Efeito de click
             this.tweens.add({
-                targets: botaoVoltar,
+                targets: backButton,
                 scale: 0.95,
                 duration: 100,
                 yoyo: true,
                 onComplete: () => {
                     // Reiniciar variáveis
-                    perguntaAtual = 0;
-                    progresso = 0;
-                    pontuacao = 0;
+                    presentQuestion = 0;
+                    progress = 0;
+                    points = 0;
 
                     // Fade out e iniciar o quiz
                     this.cameras.main.fadeOut(500, 0, 0, 0, () => {
