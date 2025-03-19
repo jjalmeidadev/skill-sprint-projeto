@@ -25,8 +25,8 @@ class OfficeScene extends Phaser.Scene {
   create() {
 
 //skip elevador
-   // this.scene.start("elevadorScene");
-    //return;
+   this.scene.start("elevadorScene");
+    return;
 
     this.cameras.main.fadeIn(1000); // Transição suave
 
@@ -177,7 +177,7 @@ class OfficeScene extends Phaser.Scene {
   createPlayer() {
     // Cria o sprite do jogador usando as dimensões da tela
     this.player = this.physics.add.sprite(width - 405, height - 100, 'player');
-    this.player.setScale(2.5);
+    this.player.setScale(6);
   }
 
   createPlayerAnimations() {
