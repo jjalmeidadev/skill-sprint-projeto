@@ -111,7 +111,15 @@ Com isso, esses são os princípios que guiam as tomadas de decisões e estraté
 
 ### 1.1.4. Proposta de Valor (sprint 4)
 
-*Posicione aqui o canvas de proposta de valor. Descreva os aspectos essenciais para a criação de valor da ideia do produto com o objetivo de ajudar a entender melhor a realidade do cliente e entregar uma solução que está alinhado com o que ele espera.*
+O Value Proposition Canvas é uma ferramenta poderosa de planejamento estretégico dividida em dois blocos, Perfil do Cliente e Mapa de Valor, utilizada para desenvolver soluções e serviços eficazes voltados nas necessidades dos clientes. A ferramenta é projetada para promover o alinhamento e a compreensão profunda das dores do cliente, permitindo que a solução atenda da melhor forma a demanda do mercado. Sua utilização auxilia na melhoria contínua se moldando com base no feedback do cliente, a fim de entregar o melhor serviço além de potencializar o trabalho entregue por ter um direcionamento mais claro sobre o que será produzido.
+
+<div align="Análise SWOT">
+  <sub>Canvas Proposta de Valor</sub><br>
+  <img src="https://github.com/user-attachments/assets/e3d2265f-7577-46cf-81dc-b10dcd84a82d" width="900px" 
+  alt="Canvas Proposta de Valor"><br>
+  <sup>Fonte: profuzido pelo autor.</sup>
+</div>
+
 
 ### 1.1.5. Descrição da Solução Desenvolvida (sprint 4)
 
