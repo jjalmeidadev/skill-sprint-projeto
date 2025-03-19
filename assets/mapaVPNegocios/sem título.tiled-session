@@ -1,0 +1,10 @@
+{
+    "last.imagePath": "C:/Users/Inteli/Documents/mapaVPNegocios",
+    "map.lastUsedFormat": "json",
+    "property.type": "bool",
+    "tileset.embedInMap": true,
+    "tileset.tileSize": {
+        "height": 16,
+        "width": 16
+    }
+}
