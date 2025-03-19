@@ -26,27 +26,34 @@ class OfficeScene extends Phaser.Scene {
   }
 
   create() {
-    // Transição suave
-    this.cameras.main.fadeIn(1000);
 
-    // Cria e inicia a música; se houver um tempo salvo, retoma a partir dele
-    const startTime = OfficeScene.lastMusicTime || 0;
-    this.officeMusic = this.sound.add('officeMusic', { loop: true });
-    this.officeMusic.play({ seek: startTime });
+//skip elevador
+   /*this.scene.start("elevadorScene");
+    return;*/
 
-    // Se a cena for pausada ou finalizada, salva o tempo atual e para a música
-    this.events.on('shutdown', this.onShutdown, this);
-    this.events.on('pause', this.onShutdown, this);
+      const width = this.scale.width;
+      const height = this.scale.height;
 
-    // Cria a animação do indicador (apenas uma vez)
-    if (!this.anims.exists('exclamando')) {
-      this.anims.create({
-        key: 'exclamando',
-        frames: this.anims.generateFrameNumbers('indicator', { start: 0, end: 1 }),
-        frameRate: 3,
-        repeat: -1
-      });
-    }
+      // Transição suave
+      this.cameras.main.fadeIn(1000);
+
+      // Cria e inicia a música; se houver um tempo salvo, retoma a partir dele
+      const startTime = OfficeScene.lastMusicTime || 0;
+      this.officeMusic = this.sound.add("officeMusic", { loop: true });
+      this.officeMusic.play({ seek: startTime });
+
+      // Se a cena for pausada ou finalizada, salva o tempo atual e para a música
+      this.events.on("shutdown", this.onShutdown, this);
+      this.events.on("pause", this.onShutdown, this);
+
+    //cria a animação
+    this.anims.create({
+      key: 'exclamando',
+      frames: this.anims.generateFrameNumbers('indicator', { start: 0, end: 1 }),
+      //velocidade da animação
+      frameRate: 3,
+      repeat: -1
+    });
 
     // Configuração do teclado
     this.teclas = this.input.keyboard.addKeys({
