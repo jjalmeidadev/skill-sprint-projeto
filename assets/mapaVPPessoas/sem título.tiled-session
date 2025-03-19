@@ -1,0 +1,52 @@
+{
+    "activeFile": "mapaVPPessoas.tmx",
+    "expandedProjectPaths": [
+    ],
+    "file.lastUsedOpenFilter": "Todos os Ficheiros (*)",
+    "fileStates": {
+        "": {
+            "scaleInDock": 1
+        },
+        "C:/Users/Inteli/Documents/mapaJogoVivo/mapaJogoVivo.tmx": {
+            "scale": 2.3797499999999996,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 267.0448576531149,
+                "y": 159.89074482613722
+            }
+        },
+        "C:/Users/Inteli/Documents/mapaJogoVivo/mapaJogoVivo.tmx#decoracao": {
+            "scaleInDock": 1
+        },
+        "C:/Users/Inteli/Documents/mapaJogoVivo/mapaJogoVivo.tmx#paredes": {
+            "scaleInDock": 1
+        },
+        "C:/Users/Inteli/Documents/mapaJogoVivo/mapaJogoVivo.tmx#personalizado_vivo": {
+            "scaleInDock": 1
+        },
+        "mapaVPPessoas.tmx": {
+            "scale": 2.3797499999999996,
+            "selectedLayer": 9,
+            "viewCenter": {
+                "x": 267.0448576531149,
+                "y": 159.89074482613722
+            }
+        },
+        "mapaVPPessoas.tmx#decoracao": {
+            "scaleInDock": 2,
+            "scaleInEditor": 2
+        },
+        "mapaVPPessoas.tmx#paredes": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        }
+    },
+    "openFiles": [
+        "mapaVPPessoas.tmx"
+    ],
+    "project": "sem título.tiled-project",
+    "recentFiles": [
+        "mapaVPPessoas.tmx",
+        "C:/Users/Inteli/Documents/mapaJogoVivo/mapaJogoVivo.tmx"
+    ]
+}

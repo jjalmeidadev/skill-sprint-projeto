@@ -49,7 +49,7 @@ class InitialScene extends Phaser.Scene {
         botaoJogar.on('pointerdown', () => {
             this.shutdown();
             this.scene.stop('initialScene');
-            this.scene.start('cutScene');
+            this.scene.start('vpPessoasScene');
         });
     }
 

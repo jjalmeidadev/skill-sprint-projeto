@@ -28,6 +28,7 @@ const config = {
       OfficeScene,
       SalaLider,
       VpNegociosScene,
+      VpPessoasScene,
 
       CurriculoScene,
       QuizVpPessoas,

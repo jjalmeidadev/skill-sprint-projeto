@@ -1,0 +1,47 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "mapaVPPessoas.tmx",
+    "expandedProjectPaths": [
+    ],
+    "file.lastUsedOpenFilter": "Todos os Ficheiros (*)",
+    "fileStates": {
+        "": {
+            "scaleInDock": 1
+        },
+        "mapaVPPessoas.tmx": {
+            "scale": 2.3797499999999996,
+            "selectedLayer": 4,
+            "viewCenter": {
+                "x": 199.81090450677593,
+                "y": 159.89074482613722
+            }
+        },
+        "mapaVPPessoas.tmx#decoracao": {
+            "scaleInDock": 2
+        },
+        "mapaVPPessoas.tmx#paredes": {
+            "scaleInDock": 1
+        }
+    },
+    "last.imagePath": "C:/Users/Inteli/Documents/mapaVPPessoas",
+    "map.lastUsedFormat": "tmx",
+    "map.tileHeight": 16,
+    "map.tileWidth": 16,
+    "map.width": 25,
+    "openFiles": [
+        "mapaVPPessoas.tmx"
+    ],
+    "project": "sem título.tiled-project",
+    "property.type": "bool",
+    "recentFiles": [
+        "mapaVPPessoas.tmx"
+    ],
+    "tileset.embedInMap": true,
+    "tileset.tileSize": {
+        "height": 16,
+        "width": 16
+    }
+}
