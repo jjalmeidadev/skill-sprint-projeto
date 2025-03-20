@@ -10,7 +10,7 @@ class GameplayTutorialScene extends Phaser.Scene {
         // Carrega a fonte
         this.load.font('FontePadrao', 'fonts/PixelifySans-VariableFont_wght.ttf');
         // Carregar a imagem de introdução
-        this.load.image('introducao', '../assets/instrucao.png');
+        this.load.image('introducao', '../assets/tutorial de jogabilidade.png');
     }
 
     create() {
