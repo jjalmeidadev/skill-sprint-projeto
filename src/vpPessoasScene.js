@@ -8,6 +8,9 @@ class VpPessoasScene extends Phaser.Scene {
         this.load.tilemapTiledJSON('vpPessoas', '../assets/mapaVPPessoas/mapaVPPessoas.json');
         this.load.image('decoracao', '../assets/mapaVPPessoas/decoracao.png');
         this.load.image('paredes', '../assets/mapaVPPessoas/paredes.png');
+
+        // Carrega imagens, spritesheets e demais ativos
+        this.load.spritesheet('player', '../assets/Player.png', { frameWidth: 32, frameHeight: 32 });
     }
 
     create() {
@@ -30,6 +33,99 @@ class VpPessoasScene extends Phaser.Scene {
 
         [layer1, layer2, layer3, layer4, layer5, layer6, layer7, layer8, layer9, layer10].forEach(layer => {
         layer.setCollisionByProperty({ collider: true });
-    });
+        });
+
+        // Configuração do teclado
+        this.teclas = this.input.keyboard.addKeys({
+        up: Phaser.Input.Keyboard.KeyCodes.W,
+        down: Phaser.Input.Keyboard.KeyCodes.S,
+        left: Phaser.Input.Keyboard.KeyCodes.A,
+        right: Phaser.Input.Keyboard.KeyCodes.D,
+        interagir: Phaser.Input.Keyboard.KeyCodes.E,
+        ENTER: Phaser.Input.Keyboard.KeyCodes.ENTER
+        });
+
+        this.createPlayer(width, height);
+        this.createPlayerAnimations();
+
+        // Configura colisões do jogador com camadas selecionadas
+        this.physics.add.collider(this.player, layer2);
+        this.physics.add.collider(this.player, layer3);
+        this.physics.add.collider(this.player, layer4);
+        this.physics.add.collider(this.player, layer5);
+        this.physics.add.collider(this.player, layer6);
+        this.physics.add.collider(this.player, layer7);
+        this.physics.add.collider(this.player, layer9);
     }
+
+    update(){
+        this.movePlayer();
+    }
+
+    movePlayer() {
+        const velocidade = 150;
+        let movendo = false;
+    
+        if (this.teclas.left.isDown) {
+          this.player.setVelocityX(-velocidade);
+          this.player.anims.play("walk_left", true);
+          this.player.setFlipX(true);
+          movendo = true;
+        } else if (this.teclas.right.isDown) {
+          this.player.setVelocityX(velocidade);
+          this.player.anims.play("walk_right", true);
+          this.player.setFlipX(false);
+          movendo = true;
+        } else {
+          this.player.setVelocityX(0);
+        }
+    
+        if (this.teclas.up.isDown) {
+          this.player.setVelocityY(-velocidade);
+          this.player.anims.play("walk_up", true);
+          movendo = true;
+        } else if (this.teclas.down.isDown) {
+          this.player.setVelocityY(velocidade);
+          this.player.anims.play("walk_down", true);
+          movendo = true;
+        } else {
+          this.player.setVelocityY(0);
+        }
+    
+        if (!movendo) {
+          this.player.anims.stop();
+        }
+      }
+
+      createPlayer(width, height) {
+        this.player = this.physics.add.sprite(width - 508, height - 660, 'player');
+        this.player.setScale(2.5);
+      }
+
+      createPlayerAnimations() {
+        this.anims.create({
+          key: "walk_down",
+          frames: this.anims.generateFrameNumbers("player", { start: 0, end: 5 }),
+          frameRate: 10,
+          repeat: -1,
+        });
+        this.anims.create({
+          key: "walk_right",
+          frames: this.anims.generateFrameNumbers("player", { start: 6, end: 11 }),
+          frameRate: 10,
+          repeat: -1,
+        });
+        this.anims.create({
+          key: "walk_up",
+          frames: this.anims.generateFrameNumbers("player", { start: 12, end: 17 }),
+          frameRate: 10,
+          repeat: -1,
+        });
+        this.anims.create({
+          key: "walk_left",
+          frames: this.anims.generateFrameNumbers("player", { start: 6, end: 11 }),
+          frameRate: 10,
+          repeat: -1,
+        });
+      }
 }
