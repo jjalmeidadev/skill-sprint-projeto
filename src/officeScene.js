@@ -12,10 +12,10 @@ class OfficeScene extends Phaser.Scene {
     this.load.spritesheet('indicator', '../assets/spriteexclamação.png', { frameWidth: 254, frameHeight: 291 });
     
     // Carrega o mapa do Tiled e os tilesets
-    this.load.tilemapTiledJSON('escritorio', '../assets/mapaJogoVivo/mapaJogoVivo.json');
-    this.load.image('decoracao', '../assets/mapaJogoVivo/decoracao.png');
-    this.load.image('paredes', '../assets/mapaJogoVivo/paredes.png');
-    this.load.image('personalizado_vivo', '../assets/mapaJogoVivo/personalizado_vivo.png');
+    this.load.tilemapTiledJSON('escritorio', '../assets/mapaOffice/mapaOffice.json');
+    this.load.image('decoracao', '../assets/mapaOffice/decoracao.png');
+    this.load.image('paredes', '../assets/mapaOffice/paredes.png');
+    this.load.image('personalizado_vivo', '../assets/mapaOffice/personalizado_vivo.png');
     
     // Demais ativos
     this.load.image('vivita', '../assets/vivita.png');
@@ -75,13 +75,19 @@ class OfficeScene extends Phaser.Scene {
     const offsetX = width - 1270;
     const layer1 = map.createLayer("chao", tileset2, offsetX, 0).setScale(2.5);
     const layer2 = map.createLayer("chaoLider", tileset1, offsetX, 0).setScale(2.5);
-    const layer3 = map.createLayer("tapetes", tileset3, offsetX, 0).setScale(2.5);
-    const layer4 = map.createLayer("tapeteLider", tileset1, offsetX, 0).setScale(2.5);
-    const layer5 = map.createLayer("paredes", tileset2, offsetX, 0).setScale(2.5);
-    const layer6 = map.createLayer("detalhesParede", tileset2, offsetX, 0).setScale(2.5);
-    const layer7 = map.createLayer("decoracao", tileset1, offsetX, 0).setScale(2.5);
-    const layer8 = map.createLayer("plantas", tileset1, offsetX, 0).setScale(2.5);
-    const layer9 = map.createLayer("portas", tileset1, offsetX, 0).setScale(2.5);
+    const layer3 = map.createLayer("parede", tileset2, offsetX, 0).setScale(2.5);
+    const layer4 = map.createLayer("tapete", tileset3, offsetX, 0).setScale(2.5);
+    const layer5 = map.createLayer("tapeteLider", tileset1, offsetX, 0).setScale(2.5);
+    const layer6 = map.createLayer("acabamento", tileset2, offsetX, 0).setScale(2.5);
+    const layer7 = map.createLayer("cadeira", tileset1, offsetX, 0).setScale(2.5);
+    const layer8 = map.createLayer("cadeiraTras", tileset1, offsetX, 0).setScale(2.5);
+    const layer9 = map.createLayer("quadro", tileset1, offsetX, 0).setScale(2.5);
+    const layer10 = map.createLayer("sofa", tileset1, offsetX, 0).setScale(2.5);
+    const layer11 = map.createLayer("planta", tileset1, offsetX, 0).setScale(2.5);
+    const layer12 = map.createLayer("porta", tileset1, offsetX, 0).setScale(2.5);
+    const layer13 = map.createLayer("decoracao", tileset1, offsetX, 0).setScale(2.5);
+
+
 
     //Ativa as colisões com base na propriedade 'collider' para todas as camadas
     layer1.setCollisionByProperty({ collider: true });
@@ -93,6 +99,10 @@ class OfficeScene extends Phaser.Scene {
     layer7.setCollisionByProperty({ collider: true });
     layer8.setCollisionByProperty({ collider: true });
     layer9.setCollisionByProperty({ collider: true });
+    layer10.setCollisionByProperty({ collider: true });
+    layer11.setCollisionByProperty({ collider: true });
+    layer12.setCollisionByProperty({ collider: true });
+    layer13.setCollisionByProperty({ collider: true });
 
 
     // Cria os elementos da cena
@@ -102,9 +112,11 @@ class OfficeScene extends Phaser.Scene {
     this.createPlayerAnimations();
 
     // Configura colisões do jogador com camadas selecionadas
-    this.physics.add.collider(this.player, layer5);
+    this.physics.add.collider(this.player, layer3);
     this.physics.add.collider(this.player, layer7);
     this.physics.add.collider(this.player, layer8);
+    this.physics.add.collider(this.player, layer9);
+    this.physics.add.collider(this.player, layer10);
 
     // Define os limites do mundo com base na tela
     this.physics.world.setBounds(0, 0, width, height);
