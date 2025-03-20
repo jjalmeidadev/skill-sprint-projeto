@@ -336,10 +336,10 @@ class CurriculoScene extends Phaser.Scene {
         const botaoVpPessoas = this.add.image(
             width - 1020, height - 370,
             'botao01'
-        ).setInteractive();
+        ).setInteractive().setScale(0.23);
 
         botaoVpPessoas.on('pointerout', () => {
-            botaoVpPessoas.setScale(1);
+            botaoVpPessoas.setScale(0.23);
         });
 
         // Efeito de piscar ao clicar
@@ -362,10 +362,10 @@ class CurriculoScene extends Phaser.Scene {
         const botaoVpEstrategia = this.add.image(
             width - 750, height - 370,
             'botao02'
-        ).setInteractive();
+        ).setInteractive().setScale(0.23);
 
         botaoVpEstrategia.on('pointerout', () => {
-            botaoVpEstrategia.setScale(1);
+            botaoVpEstrategia.setScale(0.23);
         });
 
         // Efeito de piscar ao clicar
@@ -388,10 +388,10 @@ class CurriculoScene extends Phaser.Scene {
         const botaoVpNegocios = this.add.image(
             width - 480, height - 370,
             'botao03'
-        ).setInteractive();
+        ).setInteractive().setScale(0.23);
 
         botaoVpNegocios.on('pointerout', () => {
-            botaoVpNegocios.setScale(1);
+            botaoVpNegocios.setScale(0.23);
         });
 
         // Efeito de piscar ao clicar
@@ -414,10 +414,10 @@ class CurriculoScene extends Phaser.Scene {
         const botaoVpRelacoes = this.add.image(
             width - 1020, height - 270,
             'botao04'
-        ).setInteractive();
+        ).setInteractive().setScale(0.23);
 
         botaoVpRelacoes.on('pointerout', () => {
-            botaoVpRelacoes.setScale(1);
+            botaoVpRelacoes.setScale(0.23);
         });
 
         // Efeito de piscar ao clicar
@@ -440,10 +440,10 @@ class CurriculoScene extends Phaser.Scene {
         const botaoVpTecnologia = this.add.image(
             width - 750, height - 270,
             'botao05'
-        ).setInteractive();
+        ).setInteractive().setScale(0.23);
 
         botaoVpTecnologia.on('pointerout', () => {
-            botaoVpTecnologia.setScale(1);
+            botaoVpTecnologia.setScale(0.23);
         });
 
         // Efeito de piscar ao clicar
