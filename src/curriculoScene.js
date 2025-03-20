@@ -871,7 +871,7 @@ class CongratulationsSceneCurriculoVpPessoas extends Phaser.Scene {
             'VOLTAR AO ESCRITÓRIO',
             {
                 fontSize: '22px',
-                fill: '#FFF',
+                fill: '#000',
                 fontFamily: 'FontePadrao'
             }
         ).setOrigin(0.5);
@@ -1287,7 +1287,7 @@ class CongratulationsSceneCurriculoVpEstrategia extends Phaser.Scene {
             'VOLTAR AO ESCRITÓRIO',
             {
                 fontSize: '22px',
-                fill: '#FFF',
+                fill: '#000',
                 fontFamily: 'FontePadrao'
             }
         ).setOrigin(0.5);
@@ -1700,7 +1700,7 @@ class CongratulationsSceneCurriculoVpNegocios extends Phaser.Scene {
             'VOLTAR AO ESCRITÓRIO',
             {
                 fontSize: '22px',
-                fill: '#FFF',
+                fill: '#000',
                 fontFamily: 'FontePadrao'
             }
         ).setOrigin(0.5);
@@ -2113,7 +2113,7 @@ class CongratulationsSceneCurriculoVpRelacoes extends Phaser.Scene {
             'VOLTAR AO ESCRITÓRIO',
             {
                 fontSize: '22px',
-                fill: '#FFF',
+                fill: '#000',
                 fontFamily: 'FontePadrao'
             }
         ).setOrigin(0.5);
@@ -2526,7 +2526,7 @@ class CongratulationsSceneCurriculoVpTecnologia extends Phaser.Scene {
             'VOLTAR AO ESCRITÓRIO',
             {
                 fontSize: '22px',
-                fill: '#FFF',
+                fill: '#000',
                 fontFamily: 'FontePadrao'
             }
         ).setOrigin(0.5);
