@@ -315,7 +315,7 @@ class ElevadorScene extends Phaser.Scene {
     this.botaopessoas.on("pointerdown", () => {
       this.shutdown();
       this.scene.stop("elevadorScene");
-      this.scene.start("officeScene");
+      this.scene.start("vpPessoasScene");
     });
   }
 
@@ -359,7 +359,7 @@ class ElevadorScene extends Phaser.Scene {
     this.botaonegocios.on("pointerdown", () => {
       this.shutdown();
       this.scene.stop("elevadorScene");
-      this.scene.start("negociosScene");
+      this.scene.start("vpNegociosScene");
     });
   }
 
