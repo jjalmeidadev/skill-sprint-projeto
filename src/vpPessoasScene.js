@@ -30,8 +30,10 @@ class VpPessoasScene extends Phaser.Scene {
         const layer8 = map.createLayer("elevador", tileset1, offsetX, 0).setScale(2.5);
         const layer9 = map.createLayer("planta", tileset1, offsetX, 0).setScale(2.5);
         const layer10 = map.createLayer("decoracao", tileset1, offsetX, 0).setScale(2.5);
+        const layer11 = map.createLayer("acabamento", tileset2, offsetX, 0).setScale(2.5);
 
-        [layer1, layer2, layer3, layer4, layer5, layer6, layer7, layer8, layer9, layer10].forEach(layer => {
+
+        [layer1, layer2, layer3, layer4, layer5, layer6, layer7, layer8, layer9, layer10, layer11].forEach(layer => {
         layer.setCollisionByProperty({ collider: true });
         });
 
