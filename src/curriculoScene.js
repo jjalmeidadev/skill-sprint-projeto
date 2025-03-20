@@ -49,7 +49,7 @@ const perguntasPessoas = [
         alternativas: [
             "Usar um e-mail profissional no contato.",
             "Adaptar o currículo para cada vaga.",
-            "Excluir informações de contato.",
+            "Expor informações de contato.",
             "Deixar informações desatualizadas ou incorretas."
         ],
         correta: 3,
