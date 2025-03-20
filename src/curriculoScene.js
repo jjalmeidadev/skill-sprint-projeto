@@ -1,4 +1,4 @@
-// Dados do Quiz VP pessoas
+// Dados do Quiz VP Pessoas
 const perguntasPessoas = [
     {
         pergunta: "O setor de Pessoas da Vivo valoriza currículos bem organizados e fáceis de ler. Qual das seguintes práticas melhora a estrutura do seu currículo?",
@@ -8,7 +8,8 @@ const perguntasPessoas = [
             "Incluir informações detalhadas sobre sua vida pessoal.",
             "Adicionar todas as experiências desde o primeiro emprego, sem priorizar as mais recentes."
         ],
-        correta: 1
+        correta: 1,
+        feedback: "Pense novamente! Um currículo bem estruturado facilita a leitura e destaca suas conquistas de forma clara. Qual alternativa faz isso melhor?"
     },
     {
         pergunta: "Qual a importância de destacar soft skills no currículo?",
@@ -18,7 +19,8 @@ const perguntasPessoas = [
             "Devem ser listadas de forma genérica, sem exemplos práticos.",
             "Devem substituir as experiências profissionais."
         ],
-        correta: 1
+        correta: 1,
+        feedback: "Reflita! Soft skills mostram como você se relaciona e se adapta no trabalho. Qual alternativa destaca isso de forma mais eficaz?"
     },
     {
         pergunta: "Como adaptar o currículo para ser aprovado por um sistema ATS (Applicant Tracking System)?",
@@ -28,7 +30,8 @@ const perguntasPessoas = [
             "Usando apenas tópicos genéricos sobre experiências.",
             "Evitando títulos claros para as seções."
         ],
-        correta: 0
+        correta: 0,
+        feedback: "Pense melhor! Sistemas ATS buscam palavras-chave específicas. Qual alternativa reflete essa necessidade?"
     },
     {
         pergunta: "O que é essencial para um currículo ser bem avaliado por um recrutador?",
@@ -38,17 +41,19 @@ const perguntasPessoas = [
             "Destacar resultados e competências alinhadas à vaga.",
             "Usar um texto longo e detalhado para cada experiência."
         ],
-        correta: 2
+        correta: 2,
+        feedback: "Reflita! Recrutadores valorizam resultados e competências alinhadas à vaga. Qual alternativa destaca isso?"
     },
     {
         pergunta: "Qual erro pode prejudicar um candidato ao enviar um currículo?",
         alternativas: [
             "Usar um e-mail profissional no contato.",
             "Adaptar o currículo para cada vaga.",
-            "Excluir informações de contato.",
+            "Expor informações de contato.",
             "Deixar informações desatualizadas ou incorretas."
         ],
-        correta: 2
+        correta: 3,
+        feedback: "Pense novamente! Informações desatualizadas ou incorretas podem prejudicar sua candidatura. Qual alternativa reflete isso?"
     }
 ];
 
@@ -63,16 +68,18 @@ const perguntasEstrategia = [
             "Enviar o currículo no corpo do e-mail ao invés de um arquivo estruturado."
         ],
         correta: 0,
+        feedback: "Reflita! Sistemas ATS priorizam palavras-chave relevantes. Qual alternativa melhor atende a essa necessidade?"
     },
     {
         pergunta: "O que pode tornar um candidato mais atrativo para uma vaga estratégica?",
         alternativas: [
-            "Demonstrar capacidade analítica e experiência em inovação. ",
+            "Demonstrar capacidade analítica e experiência em inovação.",
             "Usar um currículo sem foco e cheio de informações irrelevantes.",
             "Esconder experiências passadas para parecer mais flexível.",
             "Ignorar a personalização do currículo para cada oportunidade."
         ],
-        correta: 0
+        correta: 0,
+        feedback: "Pense novamente! Capacidade analítica e inovação são essenciais para vagas estratégicas. Qual alternativa destaca isso?"
     },
     {
         pergunta: "Como destacar projetos de inovação no currículo?",
@@ -82,7 +89,8 @@ const perguntasEstrategia = [
             "Omitindo informações sobre desafios e aprendizados.",
             "Exagerando nos resultados para parecer mais impactante."
         ],
-        correta: 0
+        correta: 0,
+        feedback: "Reflita! Projetos de inovação devem ser claros e objetivos. Qual alternativa melhor descreve isso?"
     },
     {
         pergunta: "Qual habilidade é essencial para atuar em novos negócios e IA?",
@@ -92,7 +100,8 @@ const perguntasEstrategia = [
             "Criatividade sem aplicação prática.",
             "Exclusivamente experiência acadêmica sem prática no mercado."
         ],
-        correta: 0
+        correta: 0,
+        feedback: "Pense melhor! Adaptação e pensamento estratégico são cruciais. Qual alternativa reflete isso?"
     },
     {
         pergunta: "Como um candidato pode demonstrar conhecimento em inteligência artificial no currículo?",
@@ -102,7 +111,8 @@ const perguntasEstrategia = [
             "Ignorando certificações para não parecer muito técnico.",
             "Evitando mencionar IA caso não tenha experiência direta."
         ],
-        correta: 0
+        correta: 0,
+        feedback: "Reflita! Cursos, projetos e experiência são fundamentais para demonstrar conhecimento. Qual alternativa destaca isso?"
     }
 ];
 
@@ -117,16 +127,18 @@ const perguntasNegocios = [
             "Escrever experiências apenas com as funções desempenhadas, sem resultados obtidos."
         ],
         correta: 0,
+        feedback: "Reflita! Destacar habilidades analíticas e projetos liderados é essencial. Qual alternativa reflete isso?"
     },
     {
         pergunta: "O que é essencial para um currículo focado em vendas e negócios?",
         alternativas: [
-            "Destacar metas atingidas e impacto nos resultados. ",
+            "Destacar metas atingidas e impacto nos resultados.",
             "Apenas listar as empresas onde trabalhou sem detalhes.",
             "Usar um layout criativo sem estrutura clara.",
             "Omitir informações sobre clientes e mercado."
         ],
-        correta: 0
+        correta: 0,
+        feedback: "Pense novamente! Metas atingidas e impacto nos resultados são fundamentais. Qual alternativa reflete isso?"
     },
     {
         pergunta: "Como descrever a experiência em negociação e vendas no currículo?",
@@ -136,7 +148,8 @@ const perguntasNegocios = [
             "Excluindo informações sobre indicadores de performance.",
             "Utilizando frases genéricas sem exemplos concretos."
         ],
-        correta: 0
+        correta: 0,
+        feedback: "Reflita! Crescimento de receita e estratégias aplicadas são essenciais. Qual alternativa reflete isso?"
     },
     {
         pergunta: "Qual erro pode prejudicar um candidato na área comercial ao montar seu currículo?",
@@ -146,7 +159,8 @@ const perguntasNegocios = [
             "Demonstrar experiência com estratégias de mercado.",
             "Incluir cases de sucesso relevantes."
         ],
-        correta: 0
+        correta: 0,
+        feedback: "Pense novamente! Números e métricas são fundamentais para demonstrar resultados. Qual alternativa reflete isso?"
     },
     {
         pergunta: "Qual é um diferencial para um currículo na área de negócios?",
@@ -156,7 +170,8 @@ const perguntasNegocios = [
             "Ignorar a importância de soft skills.",
             "Criar um currículo genérico sem adaptações para a vaga."
         ],
-        correta: 0
+        correta: 0,
+        feedback: "Reflita! Estratégias de crescimento e desenvolvimento de mercado são diferenciais. Qual alternativa reflete isso?"
     }
 ];
 
@@ -171,6 +186,7 @@ const perguntasRelacoes = [
             '"Tenho experiência com marketing e sou uma pessoa criativa e proativa."'
         ],
         correta: 1,
+        feedback: "Reflita! Descrever conquistas e resultados é essencial. Qual alternativa reflete isso?"
     },
     {
         pergunta: "Qual fator é mais relevante em um currículo para uma vaga em sustentabilidade?",
@@ -180,7 +196,8 @@ const perguntasRelacoes = [
             "Apenas a formação acadêmica sem experiências práticas.",
             "Omitir participação em iniciativas ambientais."
         ],
-        correta: 0
+        correta: 0,
+        feedback: "Pense novamente! Projetos ESG e impacto social são altamente valorizados. Qual alternativa reflete isso?"
     },
     {
         pergunta: "Como destacar experiência com relações institucionais no currículo?",
@@ -190,7 +207,8 @@ const perguntasRelacoes = [
             "Evitando detalhar parcerias estratégicas.",
             "Omitindo participação em políticas públicas e regulamentações."
         ],
-        correta: 0
+        correta: 0,
+        feedback: "Reflita! Atuação com stakeholders e projetos de impacto são essenciais. Qual alternativa reflete isso?"
     },
     {
         pergunta: "Qual das seguintes ações melhora um currículo para a área de sustentabilidade?",
@@ -200,7 +218,8 @@ const perguntasRelacoes = [
             "Ignorar experiências de voluntariado e impacto social.",
             "Excluir informações sobre engajamento com ONGs."
         ],
-        correta: 0
+        correta: 0,
+        feedback: "Pense novamente! Certificações e especializações relevantes são diferenciais. Qual alternativa reflete isso?"
     },
     {
         pergunta: "O que um recrutador dessa área (VP de Relações Institucionais e Sustentabilidade) espera ver no currículo?",
@@ -210,7 +229,8 @@ const perguntasRelacoes = [
             "Um currículo genérico, sem foco na área.",
             "Um documento com muitas páginas e informações irrelevantes."
         ],
-        correta: 0
+        correta: 0,
+        feedback: "Reflita! Experiência com responsabilidade social e desenvolvimento sustentável é essencial. Qual alternativa reflete isso?"
     }
 ];
 
@@ -219,12 +239,13 @@ const perguntasTecnologia = [
     {
         pergunta: "O design do seu currículo pode influenciar na forma como ele é lido pelos sistemas automatizados (ATS). Qual das opções abaixo representa a melhor prática?",
         alternativas: [
-            'Usar tabelas e colunas para organizar informações de forma estilizada.',
-            'Criar um currículo em formato de imagem ou PDF com elementos gráficos.',
-            'Manter um layout limpo, com formatação simples e sem uso excessivo de cores ou gráficos.',
-            'Utilizar fontes incomuns para destacar seu diferencial.'
+            "Usar tabelas e colunas para organizar informações de forma estilizada.",
+            "Criar um currículo em formato de imagem ou PDF com elementos gráficos.",
+            "Manter um layout limpo, com formatação simples e sem uso excessivo de cores ou gráficos.",
+            "Utilizar fontes incomuns para destacar seu diferencial."
         ],
         correta: 2,
+        feedback: "Pense novamente! Um layout limpo e simples é mais eficaz para sistemas ATS. Qual alternativa reflete isso?"
     },
     {
         pergunta: "Qual é um elemento essencial para um currículo na área de TI?",
@@ -234,7 +255,8 @@ const perguntasTecnologia = [
             "Um design extremamente visual e sem estrutura clara.",
             "Ignorar certificações para focar apenas em experiência prática."
         ],
-        correta: 0
+        correta: 0,
+        feedback: "Reflita! Projetos desenvolvidos e conhecimento em tecnologias específicas são essenciais. Qual alternativa reflete isso?"
     },
     {
         pergunta: "Como um profissional de TI pode demonstrar experiência prática no currículo?",
@@ -244,7 +266,8 @@ const perguntasTecnologia = [
             "Omitindo informações sobre ferramentas e tecnologias.",
             "Evitando links para portfólios ou GitHub."
         ],
-        correta: 0
+        correta: 0,
+        feedback: "Pense novamente! Projetos, certificações e metodologias são fundamentais. Qual alternativa reflete isso?"
     },
     {
         pergunta: "Qual a melhor maneira de destacar conhecimento em cibersegurança no currículo?",
@@ -254,7 +277,8 @@ const perguntasTecnologia = [
             "Excluindo informações sobre vulnerabilidades tratadas.",
             "Usando frases vagas sem comprovação de conhecimento."
         ],
-        correta: 0
+        correta: 0,
+        feedback: "Reflita! Certificações e projetos são essenciais para destacar conhecimento. Qual alternativa reflete isso?"
     },
     {
         pergunta: "Qual erro deve ser evitado ao criar um currículo para a área de TI?",
@@ -264,7 +288,8 @@ const perguntasTecnologia = [
             "Organizar a experiência de forma cronológica e clara.",
             "Excluir informações sobre impacto dos projetos."
         ],
-        correta: 0
+        correta: 0,
+        feedback: "Pense novamente! Listar tecnologias sem organização torna o currículo confuso. Qual alternativa reflete isso?"
     }
 ];
 
@@ -311,10 +336,10 @@ class CurriculoScene extends Phaser.Scene {
         const botaoVpPessoas = this.add.image(
             width - 1020, height - 370,
             'botao01'
-        ).setInteractive();
+        ).setInteractive().setScale(0.23);
 
         botaoVpPessoas.on('pointerout', () => {
-            botaoVpPessoas.setScale(1);
+            botaoVpPessoas.setScale(0.23);
         });
 
         // Efeito de piscar ao clicar
@@ -337,10 +362,10 @@ class CurriculoScene extends Phaser.Scene {
         const botaoVpEstrategia = this.add.image(
             width - 750, height - 370,
             'botao02'
-        ).setInteractive();
+        ).setInteractive().setScale(0.23);
 
         botaoVpEstrategia.on('pointerout', () => {
-            botaoVpEstrategia.setScale(1);
+            botaoVpEstrategia.setScale(0.23);
         });
 
         // Efeito de piscar ao clicar
@@ -363,10 +388,10 @@ class CurriculoScene extends Phaser.Scene {
         const botaoVpNegocios = this.add.image(
             width - 480, height - 370,
             'botao03'
-        ).setInteractive();
+        ).setInteractive().setScale(0.23);
 
         botaoVpNegocios.on('pointerout', () => {
-            botaoVpNegocios.setScale(1);
+            botaoVpNegocios.setScale(0.23);
         });
 
         // Efeito de piscar ao clicar
@@ -389,10 +414,10 @@ class CurriculoScene extends Phaser.Scene {
         const botaoVpRelacoes = this.add.image(
             width - 1020, height - 270,
             'botao04'
-        ).setInteractive();
+        ).setInteractive().setScale(0.23);
 
         botaoVpRelacoes.on('pointerout', () => {
-            botaoVpRelacoes.setScale(1);
+            botaoVpRelacoes.setScale(0.23);
         });
 
         // Efeito de piscar ao clicar
@@ -415,10 +440,10 @@ class CurriculoScene extends Phaser.Scene {
         const botaoVpTecnologia = this.add.image(
             width - 750, height - 270,
             'botao05'
-        ).setInteractive();
+        ).setInteractive().setScale(0.23);
 
         botaoVpTecnologia.on('pointerout', () => {
-            botaoVpTecnologia.setScale(1);
+            botaoVpTecnologia.setScale(0.23);
         });
 
         // Efeito de piscar ao clicar
@@ -629,7 +654,7 @@ class QuizVpPessoas extends Phaser.Scene {
             botao.disableInteractive();
         });
 
-        const pergunta = perguntasPessoas[perguntaAtual];
+        const pergunta = perguntasPessoas[perguntaAtual]; // Substitua por perguntasEstrategia, perguntasNegocios, etc., conforme a cena
 
         if (resposta === pergunta.correta) {
             // Resposta correta
@@ -659,107 +684,119 @@ class QuizVpPessoas extends Phaser.Scene {
             // Resposta incorreta
             botaoClicado.fillColor = 0xFF8888; // Vermelho claro
 
-            // Destacar alternativa correta
-            this.botoesAlternativas[pergunta.correta].fillColor = 0x88FF88; // Verde claro
+            // Exibir feedback explicativo
+            const feedbackText = this.add.text(
+                this.sys.game.config.width / 2,
+                this.sys.game.config.height / 2 + 50,
+                pergunta.feedback, // Adicione a propriedade `feedback` ao objeto da pergunta
+                {
+                    fontSize: '20px',
+                    fill: '#FF888',
+                    fontFamily: 'FontePadrao',
+                    wordWrap: { width: this.sys.game.config.width - 100 },
+                    align: 'center'
+                }
+            ).setOrigin(0.5);
 
-            // Esperar um momento e mostrar tela de game over
-            this.time.delayedCall(1500, () => {
-                this.scene.start('GameOverSceneCurriculo', { motivo: 'errou' });
+            // Esperar um momento antes de permitir nova tentativa
+            this.time.delayedCall(3000, () => {
+                feedbackText.destroy(); // Remove o feedback
+                this.mostrarPergunta(); // Volta para a mesma pergunta
             });
         }
     }
 }
 
-// Classe para a cena de Game Over
-class GameOverSceneCurriculo extends Phaser.Scene {
-    constructor() {
-        super({ key: 'GameOverSceneCurriculo' });
-    }
+// // Classe para a cena de Game Over
+// class GameOverSceneCurriculo extends Phaser.Scene {
+//     constructor() {
+//         super({ key: 'GameOverSceneCurriculo' });
+//     }
 
-    init(data) {
-        this.motivoGameOver = data.motivo || 'errou';
-    }
+//     init(data) {
+//         this.motivoGameOver = data.motivo || 'errou';
+//     }
 
-    preload() {
-        // Carregando recursos
-        this.load.image('fundoGameOver', '../assets/gameover_curriculo.png');
-    }
+//     preload() {
+//         // Carregando recursos
+//         this.load.image('fundoGameOver', '../assets/gameover_curriculo.png');
+//     }
 
-    create() {
-        // Transição de entrada
-        this.cameras.main.fadeIn(1000, 0, 0, 0);
+//     create() {
+//         // Transição de entrada
+//         this.cameras.main.fadeIn(1000, 0, 0, 0);
 
-        // Imagem de fundo sem distorção
-        const fundo = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, 'fundoGameOver');
-        this.scaleBackgroundImage(fundo);
+//         // Imagem de fundo sem distorção
+//         const fundo = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, 'fundoGameOver');
+//         this.scaleBackgroundImage(fundo);
 
-        // Botão de texto para reiniciar
-        const botaoReiniciar = this.add.rectangle(
-            this.sys.game.config.width / 2,
-            510,
-            250,
-            60,
-            0xB600B9
-        ).setStrokeStyle(2, 0x880088)
-            .setInteractive();
+//         // Botão de texto para reiniciar
+//         const botaoReiniciar = this.add.rectangle(
+//             this.sys.game.config.width / 2,
+//             510,
+//             250,
+//             60,
+//             0xB600B9
+//         ).setStrokeStyle(2, 0x880088)
+//             .setInteractive();
 
-        // Efeitos do botão
-        botaoReiniciar.on('pointerover', () => {
-            botaoReiniciar.fillColor = 0xC30DC7;
-            botaoReiniciar.setScale(1.05);
-        });
+//         // Efeitos do botão
+//         botaoReiniciar.on('pointerover', () => {
+//             botaoReiniciar.fillColor = 0xC30DC7;
+//             botaoReiniciar.setScale(1.05);
+//         });
 
-        botaoReiniciar.on('pointerout', () => {
-            botaoReiniciar.fillColor = 0xB600B9;
-            botaoReiniciar.setScale(1);
-        });
+//         botaoReiniciar.on('pointerout', () => {
+//             botaoReiniciar.fillColor = 0xB600B9;
+//             botaoReiniciar.setScale(1);
+//         });
 
-        // Evento de clique
-        botaoReiniciar.on('pointerdown', () => {
-            // Efeito de click
-            this.tweens.add({
-                targets: botaoReiniciar,
-                scale: 0.95,
-                duration: 100,
-                yoyo: true,
-                onComplete: () => {
-                    // Reiniciar variáveis
-                    perguntaAtual = 0;
-                    progresso = 0;
-                    pontuacao = 0;
+//         // Evento de clique
+//         botaoReiniciar.on('pointerdown', () => {
+//             // Efeito de click
+//             this.tweens.add({
+//                 targets: botaoReiniciar,
+//                 scale: 0.95,
+//                 duration: 100,
+//                 yoyo: true,
+//                 onComplete: () => {
+//                     // Reiniciar variáveis
+//                     perguntaAtual = 0;
+//                     progresso = 0;
+//                     pontuacao = 0;
 
-                    // Fade out e iniciar o quiz
-                    this.cameras.main.fadeOut(500, 0, 0, 0, () => {
-                        this.scene.start('QuizVpPessoas');
-                    });
-                }
-            });
-        });
+//                     // Fade out e iniciar o quiz
+//                     this.cameras.main.fadeOut(500, 0, 0, 0, () => {
+//                         this.scene.start('QuizVpPessoas');
+//                     });
+//                 }
+//             });
+//         });
 
-        // Texto do botão
-        this.add.text(
-            this.sys.game.config.width / 2,
-            510,
-            'TENTAR NOVAMENTE',
-            {
-                fontSize: '22px',
-                fill: '#FFF',
-                fontFamily: 'FontePadrao'
-            }
-        ).setOrigin(0.5);
-    }
+//         // Texto do botão
+//         this.add.text(
+//             this.sys.game.config.width / 2,
+//             510,
+//             'TENTAR NOVAMENTE',
+//             {
+//                 fontSize: '22px',
+//                 fill: '#FFF',
+//                 fontFamily: 'FontePadrao'
+//             }
+//         ).setOrigin(0.5);
+//     }
 
-    scaleBackgroundImage(image) {
-        // Centraliza a imagem
-        image.setOrigin(0.5);
+//     scaleBackgroundImage(image) {
+//         // Centraliza a imagem
+//         image.setOrigin(0.5);
 
-        // Mantém a proporção e cobre a tela
-        const scaleX = this.cameras.main.width / image.width;
-        const scaleY = this.cameras.main.height / image.height;
-        const scale = Math.max(scaleX, scaleY);
-        image.setScale(scale);
-    }
-}
+//         // Mantém a proporção e cobre a tela
+//         const scaleX = this.cameras.main.width / image.width;
+//         const scaleY = this.cameras.main.height / image.height;
+//         const scale = Math.max(scaleX, scaleY);
+//         image.setScale(scale);
+//     }
+// }
 
 // Classe para a cena de parabéns
 class CongratulationsSceneCurriculoVpPessoas extends Phaser.Scene {
@@ -834,7 +871,7 @@ class CongratulationsSceneCurriculoVpPessoas extends Phaser.Scene {
             'VOLTAR AO ESCRITÓRIO',
             {
                 fontSize: '22px',
-                fill: '#FFF',
+                fill: '#000',
                 fontFamily: 'FontePadrao'
             }
         ).setOrigin(0.5);
@@ -1063,107 +1100,119 @@ class QuizVpEstrategia extends Phaser.Scene {
             // Resposta incorreta
             botaoClicado.fillColor = 0xFF8888; // Vermelho claro
 
-            // Destacar alternativa correta
-            this.botoesAlternativas[pergunta.correta].fillColor = 0x88FF88; // Verde claro
+            // Exibir feedback explicativo
+            const feedbackText = this.add.text(
+                this.sys.game.config.width / 2,
+                this.sys.game.config.height / 2 + 50,
+                pergunta.feedback, // Adicione a propriedade `feedback` ao objeto da pergunta
+                {
+                    fontSize: '20px',
+                    fill: '#FF888',
+                    fontFamily: 'FontePadrao',
+                    wordWrap: { width: this.sys.game.config.width - 100 },
+                    align: 'center'
+                }
+            ).setOrigin(0.5);
 
-            // Esperar um momento e mostrar tela de game over
-            this.time.delayedCall(1500, () => {
-                this.scene.start('GameOverSceneCurriculoEstrategia', { motivo: 'errou' });
+            // Esperar um momento antes de permitir nova tentativa
+            this.time.delayedCall(3000, () => {
+                feedbackText.destroy(); // Remove o feedback
+                this.mostrarPergunta(); // Volta para a mesma pergunta
             });
         }
     }
 }
 
-// Classe para a cena de Game Over de Estratégia
-class GameOverSceneCurriculoEstrategia extends Phaser.Scene {
-    constructor() {
-        super({ key: 'GameOverSceneCurriculoEstrategia' });
-    }
+// // Classe para a cena de Game Over de Estratégia
+// class GameOverSceneCurriculoEstrategia extends Phaser.Scene {
+//     constructor() {
+//         super({ key: 'GameOverSceneCurriculoEstrategia' });
+//     }
 
-    init(data) {
-        this.motivoGameOver = data.motivo || 'errou';
-    }
+//     init(data) {
+//         this.motivoGameOver = data.motivo || 'errou';
+//     }
 
-    preload() {
-        // Carregando recursos
-        this.load.image('fundoGameOver', '../assets/gameover_curriculo.png');
-    }
+//     preload() {
+//         // Carregando recursos
+//         this.load.image('fundoGameOver', '../assets/gameover_curriculo.png');
+//     }
 
-    create() {
-        // Transição de entrada
-        this.cameras.main.fadeIn(1000, 0, 0, 0);
+//     create() {
+//         // Transição de entrada
+//         this.cameras.main.fadeIn(1000, 0, 0, 0);
 
-        // Imagem de fundo sem distorção
-        const fundo = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, 'fundoGameOver');
-        this.scaleBackgroundImage(fundo);
+//         // Imagem de fundo sem distorção
+//         const fundo = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, 'fundoGameOver');
+//         this.scaleBackgroundImage(fundo);
 
-        // Botão de texto para reiniciar
-        const botaoReiniciar = this.add.rectangle(
-            this.sys.game.config.width / 2,
-            510,
-            250,
-            60,
-            0xB600B9
-        ).setStrokeStyle(2, 0x880088)
-            .setInteractive();
+//         // Botão de texto para reiniciar
+//         const botaoReiniciar = this.add.rectangle(
+//             this.sys.game.config.width / 2,
+//             510,
+//             250,
+//             60,
+//             0xB600B9
+//         ).setStrokeStyle(2, 0x880088)
+//             .setInteractive();
 
-        // Efeitos do botão
-        botaoReiniciar.on('pointerover', () => {
-            botaoReiniciar.fillColor = 0xC30DC7;
-            botaoReiniciar.setScale(1.05);
-        });
+//         // Efeitos do botão
+//         botaoReiniciar.on('pointerover', () => {
+//             botaoReiniciar.fillColor = 0xC30DC7;
+//             botaoReiniciar.setScale(1.05);
+//         });
 
-        botaoReiniciar.on('pointerout', () => {
-            botaoReiniciar.fillColor = 0xB600B9;
-            botaoReiniciar.setScale(1);
-        });
+//         botaoReiniciar.on('pointerout', () => {
+//             botaoReiniciar.fillColor = 0xB600B9;
+//             botaoReiniciar.setScale(1);
+//         });
 
-        // Evento de clique
-        botaoReiniciar.on('pointerdown', () => {
-            // Efeito de click
-            this.tweens.add({
-                targets: botaoReiniciar,
-                scale: 0.95,
-                duration: 100,
-                yoyo: true,
-                onComplete: () => {
-                    // Reiniciar variáveis
-                    perguntaAtual = 0;
-                    progresso = 0;
-                    pontuacao = 0;
+//         // Evento de clique
+//         botaoReiniciar.on('pointerdown', () => {
+//             // Efeito de click
+//             this.tweens.add({
+//                 targets: botaoReiniciar,
+//                 scale: 0.95,
+//                 duration: 100,
+//                 yoyo: true,
+//                 onComplete: () => {
+//                     // Reiniciar variáveis
+//                     perguntaAtual = 0;
+//                     progresso = 0;
+//                     pontuacao = 0;
 
-                    // Fade out e iniciar o quiz
-                    this.cameras.main.fadeOut(500, 0, 0, 0, () => {
-                        this.scene.start('QuizVpEstrategia');
-                    });
-                }
-            });
-        });
+//                     // Fade out e iniciar o quiz
+//                     this.cameras.main.fadeOut(500, 0, 0, 0, () => {
+//                         this.scene.start('QuizVpEstrategia');
+//                     });
+//                 }
+//             });
+//         });
 
-        // Texto do botão
-        this.add.text(
-            this.sys.game.config.width / 2,
-            510,
-            'TENTAR NOVAMENTE',
-            {
-                fontSize: '22px',
-                fill: '#FFF',
-                fontFamily: 'FontePadrao'
-            }
-        ).setOrigin(0.5);
-    }
+//         // Texto do botão
+//         this.add.text(
+//             this.sys.game.config.width / 2,
+//             510,
+//             'TENTAR NOVAMENTE',
+//             {
+//                 fontSize: '22px',
+//                 fill: '#FFF',
+//                 fontFamily: 'FontePadrao'
+//             }
+//         ).setOrigin(0.5);
+//     }
 
-    scaleBackgroundImage(image) {
-        // Centraliza a imagem
-        image.setOrigin(0.5);
+//     scaleBackgroundImage(image) {
+//         // Centraliza a imagem
+//         image.setOrigin(0.5);
 
-        // Mantém a proporção e cobre a tela
-        const scaleX = this.cameras.main.width / image.width;
-        const scaleY = this.cameras.main.height / image.height;
-        const scale = Math.max(scaleX, scaleY);
-        image.setScale(scale);
-    }
-}
+//         // Mantém a proporção e cobre a tela
+//         const scaleX = this.cameras.main.width / image.width;
+//         const scaleY = this.cameras.main.height / image.height;
+//         const scale = Math.max(scaleX, scaleY);
+//         image.setScale(scale);
+//     }
+// }
 
 // Classe para a cena de parabéns de Estratégia
 class CongratulationsSceneCurriculoVpEstrategia extends Phaser.Scene {
@@ -1238,7 +1287,7 @@ class CongratulationsSceneCurriculoVpEstrategia extends Phaser.Scene {
             'VOLTAR AO ESCRITÓRIO',
             {
                 fontSize: '22px',
-                fill: '#FFF',
+                fill: '#000',
                 fontFamily: 'FontePadrao'
             }
         ).setOrigin(0.5);
@@ -1464,107 +1513,119 @@ class QuizVpNegocios extends Phaser.Scene {
             // Resposta incorreta
             botaoClicado.fillColor = 0xFF8888; // Vermelho claro
 
-            // Destacar alternativa correta
-            this.botoesAlternativas[pergunta.correta].fillColor = 0x88FF88; // Verde claro
+            // Exibir feedback explicativo
+            const feedbackText = this.add.text(
+                this.sys.game.config.width / 2,
+                this.sys.game.config.height / 2 + 50,
+                pergunta.feedback, // Adicione a propriedade `feedback` ao objeto da pergunta
+                {
+                    fontSize: '20px',
+                    fill: '#FF888',
+                    fontFamily: 'FontePadrao',
+                    wordWrap: { width: this.sys.game.config.width - 100 },
+                    align: 'center'
+                }
+            ).setOrigin(0.5);
 
-            // Esperar um momento e mostrar tela de game over
-            this.time.delayedCall(1500, () => {
-                this.scene.start('GameOverSceneCurriculoNegocios', { motivo: 'errou' });
+            // Esperar um momento antes de permitir nova tentativa
+            this.time.delayedCall(3000, () => {
+                feedbackText.destroy(); // Remove o feedback
+                this.mostrarPergunta(); // Volta para a mesma pergunta
             });
         }
     }
 }
 
-// Classe para a cena de Game Over de Negócios
-class GameOverSceneCurriculoNegocios extends Phaser.Scene {
-    constructor() {
-        super({ key: 'GameOverSceneCurriculoNegocios' });
-    }
+// // Classe para a cena de Game Over de Negócios
+// class GameOverSceneCurriculoNegocios extends Phaser.Scene {
+//     constructor() {
+//         super({ key: 'GameOverSceneCurriculoNegocios' });
+//     }
 
-    init(data) {
-        this.motivoGameOver = data.motivo || 'errou';
-    }
+//     init(data) {
+//         this.motivoGameOver = data.motivo || 'errou';
+//     }
 
-    preload() {
-        // Carregando recursos
-        this.load.image('fundoGameOver', '../assets/gameover_curriculo.png');
-    }
+//     preload() {
+//         // Carregando recursos
+//         this.load.image('fundoGameOver', '../assets/gameover_curriculo.png');
+//     }
 
-    create() {
-        // Transição de entrada
-        this.cameras.main.fadeIn(1000, 0, 0, 0);
+//     create() {
+//         // Transição de entrada
+//         this.cameras.main.fadeIn(1000, 0, 0, 0);
 
-        // Imagem de fundo sem distorção
-        const fundo = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, 'fundoGameOver');
-        this.scaleBackgroundImage(fundo);
+//         // Imagem de fundo sem distorção
+//         const fundo = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, 'fundoGameOver');
+//         this.scaleBackgroundImage(fundo);
 
-        // Botão de texto para reiniciar
-        const botaoReiniciar = this.add.rectangle(
-            this.sys.game.config.width / 2,
-            510,
-            250,
-            60,
-            0xB600B9
-        ).setStrokeStyle(2, 0x880088)
-            .setInteractive();
+//         // Botão de texto para reiniciar
+//         const botaoReiniciar = this.add.rectangle(
+//             this.sys.game.config.width / 2,
+//             510,
+//             250,
+//             60,
+//             0xB600B9
+//         ).setStrokeStyle(2, 0x880088)
+//             .setInteractive();
 
-        // Efeitos do botão
-        botaoReiniciar.on('pointerover', () => {
-            botaoReiniciar.fillColor = 0xC30DC7;
-            botaoReiniciar.setScale(1.05);
-        });
+//         // Efeitos do botão
+//         botaoReiniciar.on('pointerover', () => {
+//             botaoReiniciar.fillColor = 0xC30DC7;
+//             botaoReiniciar.setScale(1.05);
+//         });
 
-        botaoReiniciar.on('pointerout', () => {
-            botaoReiniciar.fillColor = 0xB600B9;
-            botaoReiniciar.setScale(1);
-        });
+//         botaoReiniciar.on('pointerout', () => {
+//             botaoReiniciar.fillColor = 0xB600B9;
+//             botaoReiniciar.setScale(1);
+//         });
 
-        // Evento de clique
-        botaoReiniciar.on('pointerdown', () => {
-            // Efeito de click
-            this.tweens.add({
-                targets: botaoReiniciar,
-                scale: 0.95,
-                duration: 100,
-                yoyo: true,
-                onComplete: () => {
-                    // Reiniciar variáveis
-                    perguntaAtual = 0;
-                    progresso = 0;
-                    pontuacao = 0;
+//         // Evento de clique
+//         botaoReiniciar.on('pointerdown', () => {
+//             // Efeito de click
+//             this.tweens.add({
+//                 targets: botaoReiniciar,
+//                 scale: 0.95,
+//                 duration: 100,
+//                 yoyo: true,
+//                 onComplete: () => {
+//                     // Reiniciar variáveis
+//                     perguntaAtual = 0;
+//                     progresso = 0;
+//                     pontuacao = 0;
 
-                    // Fade out e iniciar o quiz
-                    this.cameras.main.fadeOut(500, 0, 0, 0, () => {
-                        this.scene.start('QuizVpNegocios');
-                    });
-                }
-            });
-        });
+//                     // Fade out e iniciar o quiz
+//                     this.cameras.main.fadeOut(500, 0, 0, 0, () => {
+//                         this.scene.start('QuizVpNegocios');
+//                     });
+//                 }
+//             });
+//         });
 
-        // Texto do botão
-        this.add.text(
-            this.sys.game.config.width / 2,
-            510,
-            'TENTAR NOVAMENTE',
-            {
-                fontSize: '22px',
-                fill: '#FFF',
-                fontFamily: 'FontePadrao'
-            }
-        ).setOrigin(0.5);
-    }
+//         // Texto do botão
+//         this.add.text(
+//             this.sys.game.config.width / 2,
+//             510,
+//             'TENTAR NOVAMENTE',
+//             {
+//                 fontSize: '22px',
+//                 fill: '#FFF',
+//                 fontFamily: 'FontePadrao'
+//             }
+//         ).setOrigin(0.5);
+//     }
 
-    scaleBackgroundImage(image) {
-        // Centraliza a imagem
-        image.setOrigin(0.5);
+//     scaleBackgroundImage(image) {
+//         // Centraliza a imagem
+//         image.setOrigin(0.5);
 
-        // Mantém a proporção e cobre a tela
-        const scaleX = this.cameras.main.width / image.width;
-        const scaleY = this.cameras.main.height / image.height;
-        const scale = Math.max(scaleX, scaleY);
-        image.setScale(scale);
-    }
-}
+//         // Mantém a proporção e cobre a tela
+//         const scaleX = this.cameras.main.width / image.width;
+//         const scaleY = this.cameras.main.height / image.height;
+//         const scale = Math.max(scaleX, scaleY);
+//         image.setScale(scale);
+//     }
+// }
 
 // Classe para a cena de parabéns de Negócios
 class CongratulationsSceneCurriculoVpNegocios extends Phaser.Scene {
@@ -1639,7 +1700,7 @@ class CongratulationsSceneCurriculoVpNegocios extends Phaser.Scene {
             'VOLTAR AO ESCRITÓRIO',
             {
                 fontSize: '22px',
-                fill: '#FFF',
+                fill: '#000',
                 fontFamily: 'FontePadrao'
             }
         ).setOrigin(0.5);
@@ -1865,107 +1926,119 @@ class QuizVpRelacoes extends Phaser.Scene {
             // Resposta incorreta
             botaoClicado.fillColor = 0xFF8888; // Vermelho claro
 
-            // Destacar alternativa correta
-            this.botoesAlternativas[pergunta.correta].fillColor = 0x88FF88; // Verde claro
+            // Exibir feedback explicativo
+            const feedbackText = this.add.text(
+                this.sys.game.config.width / 2,
+                this.sys.game.config.height / 2 + 50,
+                pergunta.feedback, // Adicione a propriedade `feedback` ao objeto da pergunta
+                {
+                    fontSize: '20px',
+                    fill: '#FF888',
+                    fontFamily: 'FontePadrao',
+                    wordWrap: { width: this.sys.game.config.width - 100 },
+                    align: 'center'
+                }
+            ).setOrigin(0.5);
 
-            // Esperar um momento e mostrar tela de game over
-            this.time.delayedCall(1500, () => {
-                this.scene.start('GameOverSceneCurriculoRelacoes', { motivo: 'errou' });
+            // Esperar um momento antes de permitir nova tentativa
+            this.time.delayedCall(3000, () => {
+                feedbackText.destroy(); // Remove o feedback
+                this.mostrarPergunta(); // Volta para a mesma pergunta
             });
         }
     }
 }
 
-// Classe para a cena de Game Over de Relações
-class GameOverSceneCurriculoRelacoes extends Phaser.Scene {
-    constructor() {
-        super({ key: 'GameOverSceneCurriculoRelacoes' });
-    }
+// // Classe para a cena de Game Over de Relações
+// class GameOverSceneCurriculoRelacoes extends Phaser.Scene {
+//     constructor() {
+//         super({ key: 'GameOverSceneCurriculoRelacoes' });
+//     }
 
-    init(data) {
-        this.motivoGameOver = data.motivo || 'errou';
-    }
+//     init(data) {
+//         this.motivoGameOver = data.motivo || 'errou';
+//     }
 
-    preload() {
-        // Carregando recursos
-        this.load.image('fundoGameOver', '../assets/gameover_curriculo.png');
-    }
+//     preload() {
+//         // Carregando recursos
+//         this.load.image('fundoGameOver', '../assets/gameover_curriculo.png');
+//     }
 
-    create() {
-        // Transição de entrada
-        this.cameras.main.fadeIn(1000, 0, 0, 0);
+//     create() {
+//         // Transição de entrada
+//         this.cameras.main.fadeIn(1000, 0, 0, 0);
 
-        // Imagem de fundo sem distorção
-        const fundo = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, 'fundoGameOver');
-        this.scaleBackgroundImage(fundo);
+//         // Imagem de fundo sem distorção
+//         const fundo = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, 'fundoGameOver');
+//         this.scaleBackgroundImage(fundo);
 
-        // Botão de texto para reiniciar
-        const botaoReiniciar = this.add.rectangle(
-            this.sys.game.config.width / 2,
-            510,
-            250,
-            60,
-            0xB600B9
-        ).setStrokeStyle(2, 0x880088)
-            .setInteractive();
+//         // Botão de texto para reiniciar
+//         const botaoReiniciar = this.add.rectangle(
+//             this.sys.game.config.width / 2,
+//             510,
+//             250,
+//             60,
+//             0xB600B9
+//         ).setStrokeStyle(2, 0x880088)
+//             .setInteractive();
 
-        // Efeitos do botão
-        botaoReiniciar.on('pointerover', () => {
-            botaoReiniciar.fillColor = 0xC30DC7;
-            botaoReiniciar.setScale(1.05);
-        });
+//         // Efeitos do botão
+//         botaoReiniciar.on('pointerover', () => {
+//             botaoReiniciar.fillColor = 0xC30DC7;
+//             botaoReiniciar.setScale(1.05);
+//         });
 
-        botaoReiniciar.on('pointerout', () => {
-            botaoReiniciar.fillColor = 0xB600B9;
-            botaoReiniciar.setScale(1);
-        });
+//         botaoReiniciar.on('pointerout', () => {
+//             botaoReiniciar.fillColor = 0xB600B9;
+//             botaoReiniciar.setScale(1);
+//         });
 
-        // Evento de clique
-        botaoReiniciar.on('pointerdown', () => {
-            // Efeito de click
-            this.tweens.add({
-                targets: botaoReiniciar,
-                scale: 0.95,
-                duration: 100,
-                yoyo: true,
-                onComplete: () => {
-                    // Reiniciar variáveis
-                    perguntaAtual = 0;
-                    progresso = 0;
-                    pontuacao = 0;
+//         // Evento de clique
+//         botaoReiniciar.on('pointerdown', () => {
+//             // Efeito de click
+//             this.tweens.add({
+//                 targets: botaoReiniciar,
+//                 scale: 0.95,
+//                 duration: 100,
+//                 yoyo: true,
+//                 onComplete: () => {
+//                     // Reiniciar variáveis
+//                     perguntaAtual = 0;
+//                     progresso = 0;
+//                     pontuacao = 0;
 
-                    // Fade out e iniciar o quiz
-                    this.cameras.main.fadeOut(500, 0, 0, 0, () => {
-                        this.scene.start('QuizVpRelacoes');
-                    });
-                }
-            });
-        });
+//                     // Fade out e iniciar o quiz
+//                     this.cameras.main.fadeOut(500, 0, 0, 0, () => {
+//                         this.scene.start('QuizVpRelacoes');
+//                     });
+//                 }
+//             });
+//         });
 
-        // Texto do botão
-        this.add.text(
-            this.sys.game.config.width / 2,
-            510,
-            'TENTAR NOVAMENTE',
-            {
-                fontSize: '22px',
-                fill: '#FFF',
-                fontFamily: 'FontePadrao'
-            }
-        ).setOrigin(0.5);
-    }
+//         // Texto do botão
+//         this.add.text(
+//             this.sys.game.config.width / 2,
+//             510,
+//             'TENTAR NOVAMENTE',
+//             {
+//                 fontSize: '22px',
+//                 fill: '#FFF',
+//                 fontFamily: 'FontePadrao'
+//             }
+//         ).setOrigin(0.5);
+//     }
 
-    scaleBackgroundImage(image) {
-        // Centraliza a imagem
-        image.setOrigin(0.5);
+//     scaleBackgroundImage(image) {
+//         // Centraliza a imagem
+//         image.setOrigin(0.5);
 
-        // Mantém a proporção e cobre a tela
-        const scaleX = this.cameras.main.width / image.width;
-        const scaleY = this.cameras.main.height / image.height;
-        const scale = Math.max(scaleX, scaleY);
-        image.setScale(scale);
-    }
-}
+//         // Mantém a proporção e cobre a tela
+//         const scaleX = this.cameras.main.width / image.width;
+//         const scaleY = this.cameras.main.height / image.height;
+//         const scale = Math.max(scaleX, scaleY);
+//         image.setScale(scale);
+//     }
+// }
 
 // Classe para a cena de parabéns de Relações
 class CongratulationsSceneCurriculoVpRelacoes extends Phaser.Scene {
@@ -2040,7 +2113,7 @@ class CongratulationsSceneCurriculoVpRelacoes extends Phaser.Scene {
             'VOLTAR AO ESCRITÓRIO',
             {
                 fontSize: '22px',
-                fill: '#FFF',
+                fill: '#000',
                 fontFamily: 'FontePadrao'
             }
         ).setOrigin(0.5);
@@ -2266,107 +2339,119 @@ class QuizVpTecnologia extends Phaser.Scene {
             // Resposta incorreta
             botaoClicado.fillColor = 0xFF8888; // Vermelho claro
 
-            // Destacar alternativa correta
-            this.botoesAlternativas[pergunta.correta].fillColor = 0x88FF88; // Verde claro
+            // Exibir feedback explicativo
+            const feedbackText = this.add.text(
+                this.sys.game.config.width / 2,
+                this.sys.game.config.height / 2 + 50,
+                pergunta.feedback, // Adicione a propriedade `feedback` ao objeto da pergunta
+                {
+                    fontSize: '20px',
+                    fill: '#FF888',
+                    fontFamily: 'FontePadrao',
+                    wordWrap: { width: this.sys.game.config.width - 100 },
+                    align: 'center'
+                }
+            ).setOrigin(0.5);
 
-            // Esperar um momento e mostrar tela de game over
-            this.time.delayedCall(1500, () => {
-                this.scene.start('GameOverSceneCurriculoTecnologia', { motivo: 'errou' });
+            // Esperar um momento antes de permitir nova tentativa
+            this.time.delayedCall(3000, () => {
+                feedbackText.destroy(); // Remove o feedback
+                this.mostrarPergunta(); // Volta para a mesma pergunta
             });
         }
     }
 }
 
-// Classe para a cena de Game Over de Tecnologia
-class GameOverSceneCurriculoTecnologia extends Phaser.Scene {
-    constructor() {
-        super({ key: 'GameOverSceneCurriculoTecnologia' });
-    }
+// // Classe para a cena de Game Over de Tecnologia
+// class GameOverSceneCurriculoTecnologia extends Phaser.Scene {
+//     constructor() {
+//         super({ key: 'GameOverSceneCurriculoTecnologia' });
+//     }
 
-    init(data) {
-        this.motivoGameOver = data.motivo || 'errou';
-    }
+//     init(data) {
+//         this.motivoGameOver = data.motivo || 'errou';
+//     }
 
-    preload() {
-        // Carregando recursos
-        this.load.image('fundoGameOver', '../assets/gameover_curriculo.png');
-    }
+//     preload() {
+//         // Carregando recursos
+//         this.load.image('fundoGameOver', '../assets/gameover_curriculo.png');
+//     }
 
-    create() {
-        // Transição de entrada
-        this.cameras.main.fadeIn(1000, 0, 0, 0);
+//     create() {
+//         // Transição de entrada
+//         this.cameras.main.fadeIn(1000, 0, 0, 0);
 
-        // Imagem de fundo sem distorção
-        const fundo = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, 'fundoGameOver');
-        this.scaleBackgroundImage(fundo);
+//         // Imagem de fundo sem distorção
+//         const fundo = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, 'fundoGameOver');
+//         this.scaleBackgroundImage(fundo);
 
-        // Botão de texto para reiniciar
-        const botaoReiniciar = this.add.rectangle(
-            this.sys.game.config.width / 2,
-            510,
-            250,
-            60,
-            0xB600B9
-        ).setStrokeStyle(2, 0x880088)
-            .setInteractive();
+//         // Botão de texto para reiniciar
+//         const botaoReiniciar = this.add.rectangle(
+//             this.sys.game.config.width / 2,
+//             510,
+//             250,
+//             60,
+//             0xB600B9
+//         ).setStrokeStyle(2, 0x880088)
+//             .setInteractive();
 
-        // Efeitos do botão
-        botaoReiniciar.on('pointerover', () => {
-            botaoReiniciar.fillColor = 0xC30DC7;
-            botaoReiniciar.setScale(1.05);
-        });
+//         // Efeitos do botão
+//         botaoReiniciar.on('pointerover', () => {
+//             botaoReiniciar.fillColor = 0xC30DC7;
+//             botaoReiniciar.setScale(1.05);
+//         });
 
-        botaoReiniciar.on('pointerout', () => {
-            botaoReiniciar.fillColor = 0xB600B9;
-            botaoReiniciar.setScale(1);
-        });
+//         botaoReiniciar.on('pointerout', () => {
+//             botaoReiniciar.fillColor = 0xB600B9;
+//             botaoReiniciar.setScale(1);
+//         });
 
-        // Evento de clique
-        botaoReiniciar.on('pointerdown', () => {
-            // Efeito de click
-            this.tweens.add({
-                targets: botaoReiniciar,
-                scale: 0.95,
-                duration: 100,
-                yoyo: true,
-                onComplete: () => {
-                    // Reiniciar variáveis
-                    perguntaAtual = 0;
-                    progresso = 0;
-                    pontuacao = 0;
+//         // Evento de clique
+//         botaoReiniciar.on('pointerdown', () => {
+//             // Efeito de click
+//             this.tweens.add({
+//                 targets: botaoReiniciar,
+//                 scale: 0.95,
+//                 duration: 100,
+//                 yoyo: true,
+//                 onComplete: () => {
+//                     // Reiniciar variáveis
+//                     perguntaAtual = 0;
+//                     progresso = 0;
+//                     pontuacao = 0;
 
-                    // Fade out e iniciar o quiz
-                    this.cameras.main.fadeOut(500, 0, 0, 0, () => {
-                        this.scene.start('QuizVpTecnologia');
-                    });
-                }
-            });
-        });
+//                     // Fade out e iniciar o quiz
+//                     this.cameras.main.fadeOut(500, 0, 0, 0, () => {
+//                         this.scene.start('QuizVpTecnologia');
+//                     });
+//                 }
+//             });
+//         });
 
-        // Texto do botão
-        this.add.text(
-            this.sys.game.config.width / 2,
-            510,
-            'TENTAR NOVAMENTE',
-            {
-                fontSize: '22px',
-                fill: '#FFF',
-                fontFamily: 'FontePadrao'
-            }
-        ).setOrigin(0.5);
-    }
+//         // Texto do botão
+//         this.add.text(
+//             this.sys.game.config.width / 2,
+//             510,
+//             'TENTAR NOVAMENTE',
+//             {
+//                 fontSize: '22px',
+//                 fill: '#FFF',
+//                 fontFamily: 'FontePadrao'
+//             }
+//         ).setOrigin(0.5);
+//     }
 
-    scaleBackgroundImage(image) {
-        // Centraliza a imagem
-        image.setOrigin(0.5);
+//     scaleBackgroundImage(image) {
+//         // Centraliza a imagem
+//         image.setOrigin(0.5);
 
-        // Mantém a proporção e cobre a tela
-        const scaleX = this.cameras.main.width / image.width;
-        const scaleY = this.cameras.main.height / image.height;
-        const scale = Math.max(scaleX, scaleY);
-        image.setScale(scale);
-    }
-}
+//         // Mantém a proporção e cobre a tela
+//         const scaleX = this.cameras.main.width / image.width;
+//         const scaleY = this.cameras.main.height / image.height;
+//         const scale = Math.max(scaleX, scaleY);
+//         image.setScale(scale);
+//     }
+// }
 
 // Classe para a cena de parabéns de Tecnologia
 class CongratulationsSceneCurriculoVpTecnologia extends Phaser.Scene {
@@ -2441,7 +2526,7 @@ class CongratulationsSceneCurriculoVpTecnologia extends Phaser.Scene {
             'VOLTAR AO ESCRITÓRIO',
             {
                 fontSize: '22px',
-                fill: '#FFF',
+                fill: '#000',
                 fontFamily: 'FontePadrao'
             }
         ).setOrigin(0.5);
