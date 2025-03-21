@@ -14,10 +14,17 @@ class SalaLider extends Phaser.Scene {
         // Carrega o mapa da sala do líder
         this.load.tilemapTiledJSON('salaLider', '../assets/mapaSalaLider/mapaSalaLider.json');
         this.load.image('decoracao', '../assets/mapaSalaLider/decoracao.png');
+
+        // Carrega os efeitos sonoros
+        this.load.audio('keySound', '../assets/sounds/computer-keyboard-typing-290582 (mp3cut.net).mp3');
+        this.load.audio('indicatorSound', '../assets/sounds/497198_abacagi_bubble-pops (mp3cut.net).wav');
     }
 
     create() {
         this.cameras.main.fadeIn(1000); // Transição suave
+
+        // Carrega os efeitos sonoros
+        this.buttonClick = this.sound.add('buttonSound', {loop: false, volume: 10});
 
         //cria a animação da exclamação
         this.anims.create({
@@ -78,6 +85,10 @@ class SalaLider extends Phaser.Scene {
     update() {
         // Atualiza o movimento do jogador
         this.movePlayer();
+
+        if(this.indicatorActive == false) {
+          this.indicatorSound.stop();
+        }
     }   
 
     movePlayer() {
@@ -175,6 +186,10 @@ class SalaLider extends Phaser.Scene {
         this.exclamation = this.add.sprite(width - 600, height - 400, 'indicator').setScale(0.3);
         this.exclamation.play('exclamando'); // Inicia a animação
         this.indicatorActive = true;
+        if(this.indicatorActive) {
+          this.indicatorSound = this.sound.add('indicatorSound', {loop: true, volume: 10});
+          this.indicatorSound.play();
+        } 
     
         // Torna a leader interativa
         this.leader.setInteractive();
@@ -184,6 +199,7 @@ class SalaLider extends Phaser.Scene {
     
         // Adiciona um evento para a tecla 'E'
         this.input.keyboard.on('keydown-E', () => {
+          this.indicatorActive = false;
           // Verifica se o jogador está próximo da leader
           if (
             Math.abs(this.player.x - this.leader.x) <= 150 &&
@@ -192,6 +208,7 @@ class SalaLider extends Phaser.Scene {
           ) {
             // Chama a função de interação com a leader
             this.showLeaderInteraction();
+            this.buttonClick.play();
             this.leaderInteracted = true; // Marca que a interação ocorreu
           }
         });
@@ -225,6 +242,7 @@ class SalaLider extends Phaser.Scene {
           currentSpeechIndex++; // Soma 1 cada fez que uma fala passa
           if (currentSpeechIndex < speechLeader.length) { // Se a fala que está mostrando no momento estiver em uma posição menor do que o tamanho da lista, avança
             text.setText(speechLeader[currentSpeechIndex]); // Mostra a fala de acordo com a posição na lista
+            this.buttonClick.play();
           } else {
             balaoTexto.setVisible(false); // Deixa o balão da fala da vivita invisível
             text.setVisible(false); // Deixa as falas invisíveis
@@ -240,9 +258,14 @@ class SalaLider extends Phaser.Scene {
       this.exclamacao.setImmovable(true);
       this.exclamacao.play('exclamando'); // Inicia a animação
       this.indicatorActive = true;
+      if(this.indicatorActive) {
+        this.indicatorSound = this.sound.add('indicatorSound', {loop: true, volume: 10});
+        this.indicatorSound.play();
+      } 
 
       // Adiciona um overlap entre o player e a exclamation
       this.physics.add.overlap(this.player, this.exclamacao , () => {
+        this.indicatorActive = false;
         this.scene.switch('officeScene'); // Troca para a cena do escritório
     });
     }
