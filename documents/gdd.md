@@ -145,16 +145,21 @@ R02 | O jogo terá uma tela de abertura, onde o jogador inicia clicando em "Joga
 R03 | O jogo iniciará com uma cutscene, onde serão ilustrados o contexto e a ambientação inicial do jogo.
 R04 | O jogador deve seguir as instruções dos diálogos dos NPCs para passar de fase, apertando a tecla "Enter" para avançar nas falas.
 R05 | A primeira tela de jogabilidade será um escritório onde o jogador realizará suas primeiras interações no jogo.
-R06 | A primeira fase terá um quiz sobre elaboração de currículo em um computador.
+R06 | A primeira fase terá um quiz sobre elaboração de currículo em um computador (objetivo: ensinar a criar um currículo atrativo e eficaz).
 R07 | Todas as fases terão como objetivo motivar o usuário a realizar o *Job Rotation* na Vivo.
 R08 | O jogo terá um *Game Design Document* completo e detalhado. 
 R09 | As características dos personagens devem refletir o valor de diversidade da Vivo e trazer representatividade para o jogo.
-R10| O jogador terá, como ferramenta de *gameplay*, um assistente que lhe fornecerá dicas.
-R11| O código do jogo deverá ser segmentado de maneira à priorizar a organização e didática.
-R12| O jogo contará com diferentes trilhas sonoras, personalizadas para diferentes contextos dentro do jogo.
-R13| A segunda tela de jogabilidade será a sala do líder, onde o jogador finaliza sua missão do primeiro nível.
-R14| A movimentação entre os níveis do jogo acontecerá através do elevador, onde cada andar do prédio da Vivo representa uma fase do jogo.
-R15| A primeira fase será no escritório da Vice-Presidência de Pessoas e contará com uma simulação de situação de resolução de problemas.
+R10 | O jogador terá, como ferramenta de *gameplay*, um assistente que lhe fornecerá dicas.
+R11 | O código do jogo deverá ser segmentado de maneira à priorizar a organização e didática.
+R12 | O jogo contará com diferentes trilhas sonoras, personalizadas para diferentes contextos dentro do jogo.
+R13 | A segunda tela de jogabilidade será a sala do líder, onde o jogador finaliza sua missão do primeiro nível.
+R14 | A movimentação entre os níveis do jogo acontecerá através do elevador, onde cada andar do prédio da Vivo representa uma fase do jogo.
+R15 | A segunda fase será no escritório da Vice-Presidência de Pessoas e contará com uma simulação de situação de resolução de problemas (objetivo: preparar os jogadores para dinâmicas de entrevistas).
+R16 | O design visual do jogo utilizará uma paleta de cores consistente e coerente, alinhada ao tema e à atmosfera proposta.
+R17 | Utilizaremos algumas movimentações bidimensionais de elementos gráficos no jogo, utilizando conhecimentos sobre vetores e cinemática.
+R18 | O jogo contará com um botão de ajustes que proporciona acessibilidade com filtro de daltonismo e ajuste de volume. 
+R19 | A terceira fase será na Vice-Presidência de Negócios e contará com 2 minigames dinâmicos (objetivo: preparar os jogadores para resolução de cases).
+R20 | A quarta fase será na Vice-Presidência de Estratégia e contará com 1 minigame (objetivo: ensinar a estruturar um plano de carreira).
 
 ## 1.3. Público-alvo do Projeto (sprint 2)
 
