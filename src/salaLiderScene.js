@@ -202,7 +202,7 @@ class SalaLider extends Phaser.Scene {
     
         // Lista com as falas da vivita
         var speechLeader = ['Olá, Fulano! Tudo bem?', 
-                            'Ah, então quer dizer que você quer migrar para uma nova VP? Que alegria!',
+                            'Ah, então quer dizer que você quer migrar para uma nova posição na VP? Que alegria!',
                             'Vou analisar seu currículo.',
                             'Vamos ver...', 
                             'Seu currículo está uma maravilha! Seguiu todas as diretrizes!',
