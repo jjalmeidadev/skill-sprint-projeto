@@ -13,7 +13,7 @@ class TutorialScene extends Phaser.Scene {
         // Lista das falas condicionais baseadas na resposta do jogador
         this.perguntaCondicional = [
             "Vivinho: UAU! Que bom que você já sabe. Agora, quero te explicar uma coisa muito importante na sua jornada a partir de agora, o termo JOB ROTATION.",
-            "Vivinho: Na Vivo, o termo JOB ROTATION se refere a uma estratégia de desenvolvimento profissional em que os colaboradores têm a oportunidade de atuar temporariamente em diferentes áreas da empresa.",
+            "Vivinho: Na Vivo, o termo JOB ROTATION se refere a uma estratégia de desenvolvimento profissional em que as pessoas estagiarias têm a oportunidade de atuar temporariamente em diferentes áreas da empresa.",
             "Vivinho: O principal objetivo desse programa é ampliar a visão sistêmica do negócio, desenvolver novas habilidades e preparar os funcionários para futuras posições de liderança.",
             "Vivinho: Por isso, irei te guiar para ser um líder na Vivo!"
 
