@@ -2,7 +2,7 @@ class GameplayTutorialScene extends Phaser.Scene {
     constructor() {
         super({ 
             key: 'gameplayTutorialScene',
-            backgroundColor: '#61088d' // Cor de fundo definida aqui no objeto de configuração
+            backgroundColor: '#670099' // Cor de fundo definida aqui no objeto de configuração
         });
     }
 
