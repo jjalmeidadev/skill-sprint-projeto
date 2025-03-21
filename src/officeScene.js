@@ -24,6 +24,7 @@ class OfficeScene extends Phaser.Scene {
     // Carrega o áudio da cena do escritório
     this.load.audio('officeMusic', '../assets/Study and Relax [ ezmp3.co ].mp3');
     this.load.audio('keySound', '../assets/sounds/computer-keyboard-typing-290582 (mp3cut.net).mp3');
+    this.load.audio('indicatorSound', '../assets/sounds/497198_abacagi_bubble-pops (mp3cut.net).wav');
   }
 
   create() {
@@ -147,12 +148,17 @@ class OfficeScene extends Phaser.Scene {
         Math.abs(this.player.y - this.computador.y) <= 50
       ) {
         this.showComputerScreen();
+        this.indicatorActive = false;
       }
     }
 
     // Se o jogador retornou da sala do líder, cria o botão do elevador
     if (this.returnedFromSalaLider && this.blockLoop === 0) {
       this.createButtonCima();
+    }
+
+    if(this.indicatorActive == false) {
+      this.indicatorSound.stop();
     }
   }
 
@@ -230,6 +236,10 @@ class OfficeScene extends Phaser.Scene {
     this.exclamacao.setImmovable(true);
     this.exclamacao.play("exclamando");
     this.indicatorActive = true;
+    if(this.indicatorActive) {
+        this.indicatorSound = this.sound.add('indicatorSound', {loop: false, volume: 10});
+        this.indicatorSound.play();
+    }
 
     this.bgelevoffice = this.add.image(0, 0, "bgElevOffice").setOrigin(0, 0);
     this.bgelevoffice.setDisplaySize(width, height);
@@ -266,6 +276,10 @@ class OfficeScene extends Phaser.Scene {
     this.indicator = this.add.sprite(width - 1020, height - 150, 'indicator').setScale(0.2);
     this.indicator.play('exclamando');
     this.indicatorActive = true;
+    if(this.indicatorActive) {
+      this.indicatorSound = this.sound.add('indicatorSound', {loop: true, volume: 10});
+      this.indicatorSound.play();
+    }
 
     this.computador = this.add.image(width - 1020, height - 100, 'computador')
       .setScale(0.09)
@@ -273,20 +287,29 @@ class OfficeScene extends Phaser.Scene {
     this.computador.setFlipX(true);
 
     this.computador.on("pointerover", () => {
+      this.indicatorActive = false;
+      this.indicatorSound.stop();
       this.computador.setTint(0xaaaaaa);
     });
     this.computador.on("pointerout", () => {
+      this.indicatorActive = false;
+      this.indicatorSound.stop();
       this.computador.clearTint();
     });
     this.computador.on("pointerdown", () => {
+      this.indicatorActive = false;
+      this.indicatorSound.stop();
       this.showComputerScreen();
     });
   }
 
   showComputerScreen() {
+    this.indicatorActive = false;
+    this.indicatorSound.stop();
     this.buttonClick.play();
     this.indicator.destroy();
     this.scene.switch("curriculoScene");
+    this.indicatorActive = true;
     this.salaLider();
   }
 
@@ -296,6 +319,10 @@ class OfficeScene extends Phaser.Scene {
     this.exclamation = this.add.sprite(width / 1.75, height / 4.6, 'indicator').setScale(0.2);
     this.exclamation.play('exclamando');
     this.indicatorActive = true;
+    if(this.indicatorActive) {
+      this.indicatorSound = this.sound.add('indicatorSound', {loop: true, volume: 10});
+      this.indicatorSound.play();
+    } 
 
     vivita.setInteractive();
     vivita.on('pointerdown', () => {
@@ -303,6 +330,7 @@ class OfficeScene extends Phaser.Scene {
     });
 
     this.input.keyboard.on('keydown-E', () => {
+      this.indicatorActive = false;
       if (
         Math.abs(this.player.x - vivita.x) <= 50 &&
         Math.abs(this.player.y - vivita.y) <= 50 &&
@@ -353,6 +381,7 @@ class OfficeScene extends Phaser.Scene {
   }
 
   salaLider() {
+    
     if (this.inTransition) return;
 
     const width = this.scale.width;
@@ -360,6 +389,11 @@ class OfficeScene extends Phaser.Scene {
     this.exclamation = this.physics.add.sprite(width - 1200, height - 500, 'indicator').setScale(0.2);
     this.exclamation.play('exclamando');
     this.indicatorActive = true;
+
+    if(this.indicatorActive) {
+      this.indicatorSound = this.sound.add('indicatorSound', {loop: true, volume: 10});
+      this.indicatorSound.play();
+    }
 
     this.physics.add.overlap(this.player, this.exclamation, () => {
       if (!this.inTransition) {
