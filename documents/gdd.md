@@ -725,6 +725,13 @@ Os casos de teste descritos a seguir foram elaborados para avaliar os diferentes
 7 |O jogo foi iniciado|Aguardar a tela de nome aparecer|A caixa de texto para digitar o nome está visível
 8 |A caixa de texto está visível|Digitar um nome e confirmar|O nome digitado deve ser armazenado e utilizado no jogo
 9 |O jogador está próximo do NPC|Pressionar a tecla "E"|Um diálogo deve aparecer na tela iniciando a interação com o NPC|
+10 | O jogo foi iniciado | Aguardar na tela inicial | A trilha sonora específica da tela inicial deve começar a tocar  
+11 | O jogador entrou na Cena 1 | Aguardar alguns segundos | A trilha sonora da Cena 1 deve começar a tocar e substituir a da tela inicial  
+12 | O jogador entrou na cena do Elevador | Permanecer na cena do elevador | A trilha sonora do elevador deve começar a tocar automaticamente  
+13 | O jogador está interagindo com um NPC | Pressionar a tecla "ENTER" para avançar o diálogo | Um som de efeito deve ser reproduzido ao avançar o diálogo  
+14 | O jogador chegou ao elevador | Entrar no elevador | O jogo deve carregar corretamente a nova cena "Elevador"  
+15 | O jogador está na cena do Elevador | Pressionar os botões do painel do elevador para escolher um andar | O jogo deve trocar para a cena correspondente ao andar selecionado  
+
 
 Através desses testes, foi possível identificar pontos de melhoria, ajustar comportamentos inesperados e assegurar que a experiência do jogador seja fluida e intuitiva.
 
