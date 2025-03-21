@@ -859,6 +859,7 @@ class CongratulationsSceneCurriculoVpPessoas extends Phaser.Scene {
                     // Fade out e iniciar o quiz
                     this.cameras.main.fadeOut(500, 0, 0, 0, () => {
                         this.scene.switch('officeScene');
+                    
                     });
                 }
             });
@@ -2466,11 +2467,15 @@ class CongratulationsSceneCurriculoVpTecnologia extends Phaser.Scene {
     preload() {
         // Carregando recursos
         this.load.image('fundoCongratulationsVpTecnologia', '../assets/parabens_cv_vpdetecnologia.png');
+        this.load.audio("excbubble", "../assets/sounds/somexclamacao.wav");
+
     }
 
     create() {
         // Transição de entrada com efeito
         this.cameras.main.fadeIn(1000, 0, 0, 0);
+
+        this.excbubble = this.sound.add("excbubble");
 
         // Imagem de fundo sem distorção
         const fundo = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, 'fundoCongratulationsVpTecnologia');
@@ -2514,6 +2519,8 @@ class CongratulationsSceneCurriculoVpTecnologia extends Phaser.Scene {
                     // Fade out e iniciar o quiz
                     this.cameras.main.fadeOut(500, 0, 0, 0, () => {
                         this.scene.switch('officeScene');
+                    this.excbubble.play();
+
                     });
                 }
             });

@@ -28,15 +28,25 @@ class ElevadorScene extends Phaser.Scene {
     
     // Se o sprite 'indicator' não estiver sendo carregado em outra cena, descomente a linha abaixo:
     this.load.spritesheet("indicator", "../assets/spriteexclamação.png", { frameWidth: 254, frameHeight: 291 });
+    this.load.audio("excbubble", "../assets/sounds/somexclamacao.wav");
+
   }
 
   create() {
     const width = this.scale.width;
     const height = this.scale.height;
 
+    this.excbubble = this.sound.add("excbubble", {
+      loop: false,
+      volume: 10,
+    });
+
+    //Audio toca sempre que a cena inicia
+    this.excbubble.play();
+
     // Registra os eventos para pausar o áudio sempre que a cena for interrompida
-    this.events.on('shutdown', this.shutdown, this);
-    this.events.on('pause', this.shutdown, this);
+    this.events.on("shutdown", this.shutdown, this);
+    this.events.on("pause", this.shutdown, this);
 
     // Inicia o áudio do elevador em loop
     this.elevatorSound = this.sound.add("elevatorAudio", {
@@ -49,7 +59,10 @@ class ElevadorScene extends Phaser.Scene {
     if (!this.anims.exists("exclamando")) {
       this.anims.create({
         key: "exclamando",
-        frames: this.anims.generateFrameNumbers("indicator", { start: 0, end: 1 }),
+        frames: this.anims.generateFrameNumbers("indicator", {
+          start: 0,
+          end: 1,
+        }),
         frameRate: 3,
         repeat: -1,
       });
@@ -64,19 +77,21 @@ class ElevadorScene extends Phaser.Scene {
     this.background.setDisplaySize(width, height);
 
     // Cria a sprite do indicador ("exclamando")
-    this.indicator = this.add.sprite(width - 955, height - 660, "indicator").setScale(0.3);
+    this.indicator = this.add
+      .sprite(width - 955, height - 660, "indicator")
+      .setScale(0.3);
     this.indicator.play("exclamando");
     this.indicatorActive = true;
 
     // Criação dos elementos da cena
-  this.createPlayer();
-  this.createPlayerAnimations();
-  this.createButtonOffice(width, height);
-  this.createButtonPessoas(width, height);
-  this.createButtonEstrategias(width, height);
-  this.createButtonNegocios(width, height);
-  this.createButtonTech(width, height);
-  this.createButtonRelacoes(width, height);
+    this.createPlayer();
+    this.createPlayerAnimations();
+    this.createButtonOffice(width, height);
+    this.createButtonPessoas(width, height);
+    this.createButtonEstrategias(width, height);
+    this.createButtonNegocios(width, height);
+    this.createButtonTech(width, height);
+    this.createButtonRelacoes(width, height);
     this.createBarriers();
 
     // this.createButtonCima(); // Commented out as the method is not defined
@@ -105,8 +120,9 @@ class ElevadorScene extends Phaser.Scene {
 
     if (closeToButtons) {
       if (!this.painelinelevShown) {
+        this.painelinelevShown = true;
+        // Marca que o painel já foi mostrado pelo menos uma vez
         this.indicator.setVisible(false); // Esconde o indicador apenas na primeira vez
-        this.painelinelevShown = true; // Marca que o painel já foi mostrado pelo menos uma vez
       }
 
       // Exibe o painel e os botões quando perto
@@ -263,13 +279,6 @@ class ElevadorScene extends Phaser.Scene {
     this.painelinelev.setDisplaySize(width, height);
     this.painelinelev.setVisible(false);
 
-    // Adiciona a sprite da exclamação
-    this.indicator = this.add
-      .sprite(width - 955, height - 660, "indicator")
-      .setScale(0.3);
-    this.indicator.play("exclamando"); // Inicia a animação
-    this.indicatorActive = true;
-
     // Adiciona o botão interativo
     this.botaoofficeel = this.add.image(
       width - 905,
@@ -292,7 +301,6 @@ class ElevadorScene extends Phaser.Scene {
     this.physics.add.existing(this.proximidade, true);
 
     this.botaoofficeel.on("pointerdown", () => {
-      this.shutdown();
       this.scene.stop("elevadorScene");
       this.scene.start("officeScene");
     });
