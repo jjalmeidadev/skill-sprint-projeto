@@ -22,7 +22,7 @@ class OfficeScene extends Phaser.Scene {
     this.load.image('balaoTexto', '../assets/balaoTexto.png');
     
     // Carrega o áudio da cena do escritório
-    this.load.audio('officeMusic', '../assets/Study and Relax [ ezmp3.co ].mp3');
+    this.load.audio('officeMusic', '../assets/0320(1).MP3');
     this.load.audio('keySound', '../assets/sounds/computer-keyboard-typing-290582 (mp3cut.net).mp3');
   }
 
