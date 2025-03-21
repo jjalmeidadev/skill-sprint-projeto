@@ -28,6 +28,10 @@ class ElevadorScene extends Phaser.Scene {
     
     // Se o sprite 'indicator' não estiver sendo carregado em outra cena, descomente a linha abaixo:
     this.load.spritesheet("indicator", "../assets/spriteexclamação.png", { frameWidth: 254, frameHeight: 291 });
+
+    // Carrega o áudio da cena do escritório
+    this.load.audio('indicatorSound', '../assets/sounds/497198_abacagi_bubble-pops (mp3cut.net).wav');
+    this.load.audio('buttonSound', '../assets/sounds/687107__aphom000__mouse-2-button-fast-click.wav');
   }
 
   create() {
@@ -37,6 +41,10 @@ class ElevadorScene extends Phaser.Scene {
     // Registra os eventos para pausar o áudio sempre que a cena for interrompida
     this.events.on('shutdown', this.shutdown, this);
     this.events.on('pause', this.shutdown, this);
+
+    // Adiciona os efeitos sonoros
+    this.buttonClick = this.sound.add('buttonSound', {loop: false, volume: 10});
+    this.indicatorSound = this.sound.add('indicatorSound', {loop: true, volume: 10});
 
     // Inicia o áudio do elevador em loop
     this.elevatorSound = this.sound.add("elevatorAudio", {
@@ -69,14 +77,14 @@ class ElevadorScene extends Phaser.Scene {
     this.indicatorActive = true;
 
     // Criação dos elementos da cena
-  this.createPlayer();
-  this.createPlayerAnimations();
-  this.createButtonOffice(width, height);
-  this.createButtonPessoas(width, height);
-  this.createButtonEstrategias(width, height);
-  this.createButtonNegocios(width, height);
-  this.createButtonTech(width, height);
-  this.createButtonRelacoes(width, height);
+    this.createPlayer();
+    this.createPlayerAnimations();
+    this.createButtonOffice(width, height);
+    this.createButtonPessoas(width, height);
+    this.createButtonEstrategias(width, height);
+    this.createButtonNegocios(width, height);
+    this.createButtonTech(width, height);
+    this.createButtonRelacoes(width, height);
     this.createBarriers();
 
     // this.createButtonCima(); // Commented out as the method is not defined
@@ -91,6 +99,7 @@ class ElevadorScene extends Phaser.Scene {
 
     // Define os limites do mundo do jogo
     this.physics.world.setBounds(0, 0, width, height);
+
   }
 
   update() {
@@ -105,6 +114,7 @@ class ElevadorScene extends Phaser.Scene {
 
     if (closeToButtons) {
       if (!this.painelinelevShown) {
+        this.indicatorSound.stop();
         this.indicator.setVisible(false); // Esconde o indicador apenas na primeira vez
         this.painelinelevShown = true; // Marca que o painel já foi mostrado pelo menos uma vez
       }
@@ -269,6 +279,9 @@ class ElevadorScene extends Phaser.Scene {
       .setScale(0.3);
     this.indicator.play("exclamando"); // Inicia a animação
     this.indicatorActive = true;
+    if (this.indicatorActive) {
+      this.indicatorSound.play();
+    }
 
     // Adiciona o botão interativo
     this.botaoofficeel = this.add.image(
@@ -291,7 +304,10 @@ class ElevadorScene extends Phaser.Scene {
     );
     this.physics.add.existing(this.proximidade, true);
 
+    
+
     this.botaoofficeel.on("pointerdown", () => {
+      this.buttonClick.play();
       this.shutdown();
       this.scene.stop("elevadorScene");
       this.scene.start("officeScene");
@@ -313,6 +329,7 @@ class ElevadorScene extends Phaser.Scene {
     this.botaopessoas.setVisible(false);
 
     this.botaopessoas.on("pointerdown", () => {
+      this.buttonClick.play();
       this.shutdown();
       this.scene.stop("elevadorScene");
       this.scene.start("vpPessoasScene");
@@ -336,6 +353,7 @@ class ElevadorScene extends Phaser.Scene {
     this.botaoestrategias.setVisible(false);
 
     this.botaoestrategias.on("pointerdown", () => {
+      this.buttonClick.play();
       this.shutdown();
       this.scene.stop("elevadorScene");
       this.scene.start("estrategiasScene");
@@ -357,6 +375,7 @@ class ElevadorScene extends Phaser.Scene {
     this.botaonegocios.setVisible(false);
 
     this.botaonegocios.on("pointerdown", () => {
+      this.buttonClick.play();
       this.shutdown();
       this.scene.stop("elevadorScene");
       this.scene.start("vpNegociosScene");
@@ -371,6 +390,7 @@ class ElevadorScene extends Phaser.Scene {
     this.botaotech.setVisible(false);
 
     this.botaotech.on("pointerdown", () => {
+      this.buttonClick.play();
       this.shutdown();
       this.scene.stop("elevadorScene");
       this.scene.start("techScene");
@@ -392,6 +412,7 @@ class ElevadorScene extends Phaser.Scene {
     this.botaorelacoes.setVisible(false);
 
     this.botaorelacoes.on("pointerdown", () => {
+      this.buttonClick.play();
       this.shutdown();
       this.scene.stop("elevadorScene");
       this.scene.start("relacoesScene");

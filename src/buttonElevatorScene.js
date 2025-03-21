@@ -8,6 +8,12 @@ class buttonElevatorScene extends Phaser.Scene {
         this.load.image('buttonElevOffice', '../assets/botaocimaelevador.png');
         this.load.image('bgElevOffice', '../assets/bgelevadoroffice.png');
         this.load.image('displayelev', '../assets/painelelevador.png');
+
+        // Carrega os efeitos sonoros
+        this.load.audio('buttonSound', '../assets/sounds/687107__aphom000__mouse-2-button-fast-click.wav');
+
+        // Adiciona os efeitos sonoros
+        this.buttonClick = this.sound.add('buttonSound', {loop: false, volume: 10});
     }
 
     create() {
@@ -22,6 +28,7 @@ class buttonElevatorScene extends Phaser.Scene {
 
         // Adiciona a interação para mudar de cena ao clicar no botão
         this.buttonUP.on("pointerdown", () => {
+            this.buttonClick.play();
             this.scene.start("elevadorScene"); // Troca para a cena do elevador
         });
     }
