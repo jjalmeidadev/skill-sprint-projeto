@@ -35,7 +35,7 @@ class TutorialScene extends Phaser.Scene {
         this.load.image('vivinho', '../assets/vivinho.png');
         this.load.image('botaoSim', '../assets/botao_sim.png');
         this.load.image('botaoNao', '../assets/botao_nao.png');
-        this.load.image('jobRotation', '../assets/jobRotationVivo.png');
+        this.load.image('jobRotation', '../assets/planoCarreira.png');
         this.load.font('FontePadrao', 'fonts/PixelifySans-VariableFont_wght.ttf'); // Fonte do jogo
 
         // Carrega o mapa do Tiled e os tilesets
