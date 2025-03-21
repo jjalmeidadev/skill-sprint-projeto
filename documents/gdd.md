@@ -449,7 +449,13 @@ Pensamos em customizar as fases de acordo com elementos que remetam às Vice-Pre
 
 ### 3.3.5. Trilha sonora (sprint 4)
 
-*Descreva a trilha sonora do jogo, indicando quais músicas serão utilizadas no mundo e nas fases. Utilize listas ou tabelas para organizar esta seção. Caso utilize material de terceiros em licença Creative Commons, não deixe de citar os autores/fontes.*
+A trilha sonora do jogo foi cuidadosamente escolhida para acompanhar a ambientação de cada cena, contribuindo para a imersão do jogador. As músicas variam conforme o ambiente e a atmosfera desejada, indo desde tons mais leves e relaxantes até sons temáticos específicos como música de elevador.
+Abaixo está a lista das músicas utilizadas em cada parte do jogo:
+| Cena                  | Descrição da Trilha                                                | Fonte / Link                                                 | Autor e Licença                            |
+|-----------------------|---------------------------------------------------------------------|--------------------------------------------------------------|---------------------------------------------|
+| Tela Inicial          | Trilha leve e acolhedora para recepcionar o jogador.               | [YouTube - Game Start Adventure Meme | Kevin MacLeod - "Pixelland" <br>Licença: CC BY 3.0 |
+| Cena 1 - Escritório   | Música tranquila e suave, ideal para um ambiente de trabalho.      | [YouTube - Calm Office Música para Trabalhar no Escritório | Kevin MacLeod - "Carefree" <br>Licença: CC BY 3.0 |
+| Cena do Elevador      | Clássica música de elevador, divertida e temática.                 | [YouTube - Elevator Local Forecast - Elevator | Kevin MacLeod - "Lobby Time" <br>Licença: CC BY 3.0 |
 
 *Exemplo de tabela*
 \# | titulo | ocorrência | autoria
