@@ -41,6 +41,7 @@ class OfficeScene extends Phaser.Scene {
 
       // Carrega os efeitos sonoros
       this.buttonClick = this.sound.add('buttonSound', {loop: false, volume: 10});
+      this.indicatorSound = this.sound.add('indicatorSound', {loop: true, volume: 10});
 
       // Cria e inicia a música; se houver um tempo salvo, retoma a partir dele
       const startTime = OfficeScene.lastMusicTime || 0;
@@ -237,7 +238,6 @@ class OfficeScene extends Phaser.Scene {
     this.exclamacao.play("exclamando");
     this.indicatorActive = true;
     if(this.indicatorActive) {
-        this.indicatorSound = this.sound.add('indicatorSound', {loop: false, volume: 10});
         this.indicatorSound.play();
     }
 
@@ -260,6 +260,7 @@ class OfficeScene extends Phaser.Scene {
 
     // Ao sobrepor o jogador na exclamação, vamos chamar onShutdown() antes de mudar para 'buttonElevatorScene'
     this.physics.add.overlap(this.player, this.exclamacao, () => {
+      this.indicatorActive = false;
       this.onShutdown(); // Salva o tempo e para a música
       this.scene.switch('buttonElevatorScene');
     });
@@ -277,7 +278,6 @@ class OfficeScene extends Phaser.Scene {
     this.indicator.play('exclamando');
     this.indicatorActive = true;
     if(this.indicatorActive) {
-      this.indicatorSound = this.sound.add('indicatorSound', {loop: true, volume: 10});
       this.indicatorSound.play();
     }
 
@@ -309,7 +309,6 @@ class OfficeScene extends Phaser.Scene {
     this.buttonClick.play();
     this.indicator.destroy();
     this.scene.switch("curriculoScene");
-    this.indicatorActive = true;
     this.salaLider();
   }
 
@@ -319,8 +318,7 @@ class OfficeScene extends Phaser.Scene {
     this.exclamation = this.add.sprite(width / 1.75, height / 4.6, 'indicator').setScale(0.2);
     this.exclamation.play('exclamando');
     this.indicatorActive = true;
-    if(this.indicatorActive) {
-      this.indicatorSound = this.sound.add('indicatorSound', {loop: true, volume: 10});
+    if(this.indicatorActive) {  
       this.indicatorSound.play();
     } 
 
@@ -388,12 +386,7 @@ class OfficeScene extends Phaser.Scene {
     const height = this.scale.height;
     this.exclamation = this.physics.add.sprite(width - 1200, height - 500, 'indicator').setScale(0.2);
     this.exclamation.play('exclamando');
-    this.indicatorActive = true;
-
-    if(this.indicatorActive) {
-      this.indicatorSound = this.sound.add('indicatorSound', {loop: true, volume: 10});
-      this.indicatorSound.play();
-    }
+    this.indicatorActive = false;
 
     this.physics.add.overlap(this.player, this.exclamation, () => {
       if (!this.inTransition) {
