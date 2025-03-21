@@ -22,6 +22,7 @@ const config = {
     
     scene: [
       InitialScene,
+      AjusteScene,
       CreditosScene,
       CutScene,
       TutorialScene,
@@ -29,6 +30,7 @@ const config = {
       SalaLider,
       VpNegociosScene,
       VpPessoasScene,
+      
 
       CurriculoScene,
       QuizVpPessoas,
@@ -50,6 +52,7 @@ const config = {
       buttonElevatorScene,
       ElevadorScene, 
       GameplayTutorialScene
+      
     ], // Lista das cenas do jogo
   };
   
