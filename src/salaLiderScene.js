@@ -18,6 +18,7 @@ class SalaLider extends Phaser.Scene {
         // Carrega os efeitos sonoros
         this.load.audio('keySound', '../assets/sounds/computer-keyboard-typing-290582 (mp3cut.net).mp3');
         this.load.audio('indicatorSound', '../assets/sounds/497198_abacagi_bubble-pops (mp3cut.net).wav');
+        this.load.audio('walkSound', '../assets/sounds/753292__vrymaa__footsteps-high-heels-hardwood-walk-run (mp3cut.net).wav');
     }
 
     create() {
@@ -25,6 +26,7 @@ class SalaLider extends Phaser.Scene {
 
         // Carrega os efeitos sonoros
         this.buttonClick = this.sound.add('buttonSound', {loop: false, volume: 10});
+        this.walkSound = this.sound.add('walkSound', {loop: false, volume: 10});
 
         //cria a animação da exclamação
         this.anims.create({
@@ -92,40 +94,44 @@ class SalaLider extends Phaser.Scene {
     }   
 
     movePlayer() {
-        const velocidade = 150;
-        let movendo = false;
-    
-        // Movimentação do jogador utilizando as teclas WASD
-        if (this.teclas.left.isDown) {
-          this.player.setVelocityX(-velocidade);
-          this.player.anims.play("walk_left", true);
-          this.player.setFlipX(true); // Vira o sprite para a esquerda
-          movendo = true;
-        } else if (this.teclas.right.isDown) {
-          this.player.setVelocityX(velocidade);
-          this.player.anims.play("walk_right", true);
-          this.player.setFlipX(false); // Mantém o sprite para a direita
-          movendo = true;
-        } else {
-          this.player.setVelocityX(0);
-        }
-    
-        if (this.teclas.up.isDown) {
-          this.player.setVelocityY(-velocidade);
-          this.player.anims.play("walk_up", true);
-          movendo = true;
-        } else if (this.teclas.down.isDown) {
-          this.player.setVelocityY(velocidade);
-          this.player.anims.play("walk_down", true);
-          movendo = true;
-        } else {
-          this.player.setVelocityY(0);
-        }
-    
-        if (!movendo) {
-          this.player.anims.stop();
+      const velocidade = 150;
+      let movendo = false;
+
+      if (this.teclas.left.isDown) {
+        this.player.setVelocityX(-velocidade);
+        this.player.anims.play("walk_left", true);
+        this.player.setFlipX(true);
+        movendo = true;
+      } else if (this.teclas.right.isDown) {
+        this.player.setVelocityX(velocidade);
+        this.player.anims.play("walk_right", true);
+        this.player.setFlipX(false);
+        movendo = true;
+      } else {
+        this.player.setVelocityX(0);
+      }
+
+      if (this.teclas.up.isDown) {
+        this.player.setVelocityY(-velocidade);
+        this.player.anims.play("walk_up", true);
+        movendo = true;
+      } else if (this.teclas.down.isDown) {
+        this.player.setVelocityY(velocidade);
+        this.player.anims.play("walk_down", true);
+        movendo = true;
+      } else {
+        this.player.setVelocityY(0);
+      }
+
+      if (!movendo) {
+        this.player.anims.stop();
+        this.walkSound.stop();
+      } else {
+        if (!this.walkSound.isPlaying) {
+        this.walkSound.play();
         }
       }
+    }
 
       createPlayer() {
         // Cria o sprite do jogador usando as dimensões da tela

@@ -25,6 +25,7 @@ class OfficeScene extends Phaser.Scene {
     this.load.audio('officeMusic', '../assets/Study and Relax [ ezmp3.co ].mp3');
     this.load.audio('keySound', '../assets/sounds/computer-keyboard-typing-290582 (mp3cut.net).mp3');
     this.load.audio('indicatorSound', '../assets/sounds/497198_abacagi_bubble-pops (mp3cut.net).wav');
+    this.load.audio('walkSound', '../assets/sounds/753292__vrymaa__footsteps-high-heels-hardwood-walk-run (mp3cut.net).wav');
   }
 
   create() {
@@ -42,6 +43,7 @@ class OfficeScene extends Phaser.Scene {
       // Carrega os efeitos sonoros
       this.buttonClick = this.sound.add('buttonSound', {loop: false, volume: 10});
       this.indicatorSound = this.sound.add('indicatorSound', {loop: true, volume: 10});
+      this.walkSound = this.sound.add('walkSound', {loop: false, volume: 10});
 
       // Cria e inicia a música; se houver um tempo salvo, retoma a partir dele
       const startTime = OfficeScene.lastMusicTime || 0;
@@ -195,6 +197,11 @@ class OfficeScene extends Phaser.Scene {
 
     if (!movendo) {
       this.player.anims.stop();
+      this.walkSound.stop();
+    } else {
+      if (!this.walkSound.isPlaying) {
+      this.walkSound.play();
+      }
     }
   }
 

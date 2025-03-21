@@ -29,9 +29,10 @@ class ElevadorScene extends Phaser.Scene {
     // Se o sprite 'indicator' não estiver sendo carregado em outra cena, descomente a linha abaixo:
     this.load.spritesheet("indicator", "../assets/spriteexclamação.png", { frameWidth: 254, frameHeight: 291 });
 
-    // Carrega o áudio da cena do escritório
+    // Carrega os efeitos sonoros
     this.load.audio('indicatorSound', '../assets/sounds/497198_abacagi_bubble-pops (mp3cut.net).wav');
     this.load.audio('buttonSound', '../assets/sounds/687107__aphom000__mouse-2-button-fast-click.wav');
+    this.load.audio('walkSound', '../assets/sounds/753292__vrymaa__footsteps-high-heels-hardwood-walk-run (mp3cut.net).wav');
   }
 
   create() {
@@ -45,6 +46,7 @@ class ElevadorScene extends Phaser.Scene {
     // Adiciona os efeitos sonoros
     this.buttonClick = this.sound.add('buttonSound', {loop: false, volume: 10});
     this.indicatorSound = this.sound.add('indicatorSound', {loop: true, volume: 10});
+    this.walkSound = this.sound.add('walkSound', {loop: false, volume: 10});
 
     // Inicia o áudio do elevador em loop
     this.elevatorSound = this.sound.add("elevatorAudio", {
@@ -183,6 +185,11 @@ class ElevadorScene extends Phaser.Scene {
 
     if (!movendo) {
       this.player.anims.stop();
+      this.walkSound.stop();
+    } else {
+      if (!this.walkSound.isPlaying) {
+      this.walkSound.play();
+      }
     }
   }
 

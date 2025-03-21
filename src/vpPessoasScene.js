@@ -11,6 +11,9 @@ class VpPessoasScene extends Phaser.Scene {
 
         // Carrega imagens, spritesheets e demais ativos
         this.load.spritesheet('player', '../assets/Player.png', { frameWidth: 32, frameHeight: 32 });
+
+        // Carrega os efeitos sonoros
+        this.load.audio('walkSound', '../assets/sounds/753292__vrymaa__footsteps-high-heels-hardwood-walk-run (mp3cut.net).wav');
     }
 
     create() {
@@ -58,6 +61,9 @@ class VpPessoasScene extends Phaser.Scene {
         this.physics.add.collider(this.player, layer6);
         this.physics.add.collider(this.player, layer7);
         this.physics.add.collider(this.player, layer9);
+
+        // Adiciona os efeitos sonoros
+        this.walkSound = this.sound.add('walkSound', {loop: false, volume: 10});
     }
 
     update(){
@@ -65,39 +71,44 @@ class VpPessoasScene extends Phaser.Scene {
     }
 
     movePlayer() {
-        const velocidade = 150;
-        let movendo = false;
-    
-        if (this.teclas.left.isDown) {
-          this.player.setVelocityX(-velocidade);
-          this.player.anims.play("walk_left", true);
-          this.player.setFlipX(true);
-          movendo = true;
-        } else if (this.teclas.right.isDown) {
-          this.player.setVelocityX(velocidade);
-          this.player.anims.play("walk_right", true);
-          this.player.setFlipX(false);
-          movendo = true;
-        } else {
-          this.player.setVelocityX(0);
-        }
-    
-        if (this.teclas.up.isDown) {
-          this.player.setVelocityY(-velocidade);
-          this.player.anims.play("walk_up", true);
-          movendo = true;
-        } else if (this.teclas.down.isDown) {
-          this.player.setVelocityY(velocidade);
-          this.player.anims.play("walk_down", true);
-          movendo = true;
-        } else {
-          this.player.setVelocityY(0);
-        }
-    
-        if (!movendo) {
-          this.player.anims.stop();
+      const velocidade = 150;
+      let movendo = false;
+
+      if (this.teclas.left.isDown) {
+        this.player.setVelocityX(-velocidade);
+        this.player.anims.play("walk_left", true);
+        this.player.setFlipX(true);
+        movendo = true;
+      } else if (this.teclas.right.isDown) {
+        this.player.setVelocityX(velocidade);
+        this.player.anims.play("walk_right", true);
+        this.player.setFlipX(false);
+        movendo = true;
+      } else {
+        this.player.setVelocityX(0);
+      }
+
+      if (this.teclas.up.isDown) {
+        this.player.setVelocityY(-velocidade);
+        this.player.anims.play("walk_up", true);
+        movendo = true;
+      } else if (this.teclas.down.isDown) {
+        this.player.setVelocityY(velocidade);
+        this.player.anims.play("walk_down", true);
+        movendo = true;
+      } else {
+        this.player.setVelocityY(0);
+      }
+
+      if (!movendo) {
+        this.player.anims.stop();
+        this.walkSound.stop();
+      } else {
+        if (!this.walkSound.isPlaying) {
+        this.walkSound.play();
         }
       }
+    }
 
       createPlayer(width, height) {
         this.player = this.physics.add.sprite(width - 508, height - 660, 'player');
