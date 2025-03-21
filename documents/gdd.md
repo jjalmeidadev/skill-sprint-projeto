@@ -453,9 +453,9 @@ A trilha sonora do jogo foi cuidadosamente escolhida para acompanhar a ambienta�
 Abaixo está a lista das músicas utilizadas em cada parte do jogo:
 | Cena                  | Descrição da Trilha                                                | Fonte / Link                                                 | Autor e Licença                            |
 |-----------------------|---------------------------------------------------------------------|--------------------------------------------------------------|---------------------------------------------|
-| Tela Inicial          | Trilha leve e acolhedora para recepcionar o jogador.               | [YouTube - Game Start Adventure Meme | Kevin MacLeod - "Pixelland" <br>Licença: CC BY 3.0 |
-| Cena 1 - Escritório   | Música tranquila e suave, ideal para um ambiente de trabalho.      | [YouTube - Calm Office Música para Trabalhar no Escritório | Kevin MacLeod - "Carefree" <br>Licença: CC BY 3.0 |
-| Cena do Elevador      | Clássica música de elevador, divertida e temática.                 | [YouTube - Elevator Local Forecast - Elevator | Kevin MacLeod - "Lobby Time" <br>Licença: CC BY 3.0 |
+| Tela Inicial          | Trilha leve e acolhedora para recepcionar o jogador.               | [YouTube - Game Start Adventure Meme | Kevin MacLeod - "Pixelland" |
+| Cena 1 - Escritório   | Música tranquila e suave, ideal para um ambiente de trabalho.      | [YouTube - Calm Office Música para Trabalhar no Escritório | STUDIO LUZES DE PARÍS - "Carefree" |
+| Cena do Elevador      | Clássica música de elevador, divertida e temática.                 | [YouTube - Elevator Local Forecast - Elevator | Kevin MacLeod - "Elevator" |
 
 *Exemplo de tabela*
 \# | titulo | ocorrência | autoria
