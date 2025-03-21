@@ -43,6 +43,11 @@ class TutorialScene extends Phaser.Scene {
         this.load.image('decoracao', '../assets/mapaOffice/decoracao.png');
         this.load.image('paredes', '../assets/mapaOffice/paredes.png');
         this.load.image('personalizado_vivo', '../assets/mapaOffice/personalizado_vivo.png');
+
+        // Carrega os efeitos sonoros
+        this.load.audio('keySound', '../assets/sounds/computer-keyboard-typing-290582 (mp3cut.net).mp3');
+        this.load.audio('buttonSound', '../assets/sounds/687107__aphom000__mouse-2-button-fast-click.wav');
+
     }
 
     create() {
@@ -130,7 +135,11 @@ class TutorialScene extends Phaser.Scene {
         });
 
         // Adiciona interação para avançar o diálogo ao pressionar ENTER
-        this.input.keyboard.on('keydown-ENTER', () => this.nextDialog());
+        this.input.keyboard.on('keydown-ENTER', () => {
+            this.nextDialog();
+            this.buttonClick = this.sound.add('keySound', {loop: false, volume: 10});
+            this.buttonClick.play();
+        });    
     }
 
     createDialogBox() {
@@ -214,9 +223,17 @@ class TutorialScene extends Phaser.Scene {
         this.botaoNao = this.add.image(x + 200, y + 125, 'botaoNao').setScale(0.65).setInteractive();
 
         // Define a ação ao clicar no botão 'Sim'
-        this.botaoSim.on('pointerdown', () => this.chooseOption(0));
+        this.botaoSim.on('pointerdown', () => {
+            this.buttonClick = this.sound.add('buttonSound', {loop: false, volume: 10});
+            this.buttonClick.play(); // Tocar o som do botão
+            this.chooseOption(0)
+        });
         // Define a ação ao clicar no botão 'Não'
-        this.botaoNao.on('pointerdown', () => this.chooseOption(1));
+        this.botaoNao.on('pointerdown', () => {
+            this.buttonClick = this.sound.add('buttonSound', {loop: false, volume: 10});
+            this.buttonClick.play(); // Tocar o som do botão
+            this.chooseOption(1)
+        });
     }
 
     chooseOption(optionIndex) {
