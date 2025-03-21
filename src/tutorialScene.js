@@ -21,7 +21,7 @@ class TutorialScene extends Phaser.Scene {
 
         // Lista das falas de finalização do tutorial
         this.finalizacao = [
-            "Vivinho: Observe esse esquema. Note que um jovem estagiário pode evoluir para diversos cargos e realizar o job rotation na Vivo. Vamos mergulhar nisso nos próximos níveis!"
+            "Vivinho: Observe esse esquema. Note que um novo talento pode evoluir para diversos cargos e realizar o job rotation na Vivo. Vamos mergulhar nisso nos próximos níveis!"
         ];
 
         this.currentLine = 0; // Índice da fala atual

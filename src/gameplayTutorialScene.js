@@ -62,9 +62,9 @@ class GameplayTutorialScene extends Phaser.Scene {
             'Clique ou pressione ENTER para continuar', // Texto de instrução
             { 
                 fontSize: '24px', 
-                fill: '#ffffff',
+                fill: '#000000',
                 fontFamily: '"FontePadrao", Arial, sans-serif', // Fonte personalizada
-                backgroundColor: '#000000', // Fundo do texto para maior visibilidade
+                backgroundColor: '#ffffff', // Fundo do texto para maior visibilidade
                 padding: { x: 10, y: 5 } // Espaçamento do texto
             }
         ).setOrigin(0.5); // Centraliza o texto
