@@ -1,6 +1,7 @@
  class AjusteScene extends Phaser.Scene {
   constructor() {
     super({ key: 'ajusteScene' });
+    this.ajustes = new Config(this)
   }
 
   preload() {
@@ -11,13 +12,7 @@
     this.load.image('bg04', '../assets/assetsBackground/4.png');
     this.load.image('bg05', '../assets/assetsBackground/5.png');
     this.load.image('bg06', '../assets/assetsBackground/6.png');
-     //adiciona a imagem de fundo da cena de ajustes
-    this.load.image('layoutAjustes', '../assets/assets_botoes/layoutAjustses.png');
-    //adiciona imagem dos botões de ajustes
-    this.load.image('botaoMais', '../assets/assets_botoes/botaoMais.png');
-    this.load.image('botaoMenos', '../assets/assets_botoes/botaoMenos.png');
-    //adiciona imagem do botão de retorno
-    this.load.image('botaoVoltar', '../assets/assets_botoes/botoaX.png');
+    this.ajustes.carregarAssets()
     //adiciona o titulo do jogo 
     this.load.image('titulo', '../assets/assetsBackground/titulo.png ');
     // Carrega o áudio da tela inicial
@@ -76,7 +71,7 @@
         botaoMais.setScale(1);
         botaoMais.on('pointerdown', () => {
           this.buttonSound();
-          this.sound.volume += 0.5;
+          this.sound.volume += 0.2;
       });
     }
 
@@ -86,7 +81,7 @@
             botaoMenos.setScale(1);
             botaoMenos.on('pointerdown', () => {
               this.buttonSound(); 
-              this.sound.volume -= 0.5;
+              this.sound.volume -= 0.2;
         });
     }
 
