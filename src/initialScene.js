@@ -11,6 +11,7 @@ class InitialScene extends Phaser.Scene {
         this.load.image('botaoAjustes', '../assets/botao_ajustes.png');
         // Carrega o áudio da tela inicial
         this.load.audio('initialMusic', '../assets/Adventure Meme [ ezmp3.co ].mp3');
+        this.load.audio('buttonSound', '../assets/sounds/687107__aphom000__mouse-2-button-fast-click.wav');
     }
 
     create() {
@@ -42,11 +43,17 @@ class InitialScene extends Phaser.Scene {
         }
     }
 
+    buttonSound() {
+        this.buttonClick = this.sound.add('buttonSound', {loop: false, volume: 10});
+        this.buttonClick.play();
+    }
+
     createButtonJogar(width, height) {
         const botaoJogar = this.add.image(width / 2, (height / 2) + 50, 'botaoJogar');
         botaoJogar.setInteractive();
         botaoJogar.setScale(1);
         botaoJogar.on('pointerdown', () => {
+            this.buttonSound();
             this.shutdown();
             this.scene.stop('initialScene');
             this.scene.start('cutScene');
@@ -58,6 +65,7 @@ class InitialScene extends Phaser.Scene {
         botaoCreditos.setInteractive();
         botaoCreditos.setScale(1.2);
         botaoCreditos.on('pointerdown', () => {
+            this.buttonSound();
             this.shutdown();
             this.scene.stop('initialScene');
             this.scene.start('creditosScene');
@@ -69,6 +77,7 @@ class InitialScene extends Phaser.Scene {
         botaoAjustes.setInteractive();
         botaoAjustes.setScale(1.4);
         botaoAjustes.on('pointerdown', () => {
+            this.buttonSound();
             this.shutdown();
             this.scene.stop('initialScene');
             this.scene.start('cutScene');

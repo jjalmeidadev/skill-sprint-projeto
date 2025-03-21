@@ -23,6 +23,7 @@ class OfficeScene extends Phaser.Scene {
     
     // Carrega o áudio da cena do escritório
     this.load.audio('officeMusic', '../assets/Study and Relax [ ezmp3.co ].mp3');
+    this.load.audio('keySound', '../assets/sounds/computer-keyboard-typing-290582 (mp3cut.net).mp3');
   }
 
   create() {
@@ -36,6 +37,9 @@ class OfficeScene extends Phaser.Scene {
 
       // Transição suave
       this.cameras.main.fadeIn(1000);
+
+      // Carrega os efeitos sonoros
+      this.buttonClick = this.sound.add('buttonSound', {loop: false, volume: 10});
 
       // Cria e inicia a música; se houver um tempo salvo, retoma a partir dele
       const startTime = OfficeScene.lastMusicTime || 0;
@@ -88,7 +92,6 @@ class OfficeScene extends Phaser.Scene {
     const layer13 = map.createLayer("decoracao", tileset1, offsetX, 0).setScale(2.5);
 
 
-
     //Ativa as colisões com base na propriedade 'collider' para todas as camadas
     layer1.setCollisionByProperty({ collider: true });
     layer2.setCollisionByProperty({ collider: true });
@@ -123,6 +126,7 @@ class OfficeScene extends Phaser.Scene {
 
     // Texto para depuração, exibindo as coordenadas do jogador
     this.coordText = this.add.text(20, 20, "", {fontSize: "16px", fill: "#ffffff"});
+
   }
 
   onShutdown() {
@@ -280,6 +284,7 @@ class OfficeScene extends Phaser.Scene {
   }
 
   showComputerScreen() {
+    this.buttonClick.play();
     this.indicator.destroy();
     this.scene.switch("curriculoScene");
     this.salaLider();
@@ -305,6 +310,7 @@ class OfficeScene extends Phaser.Scene {
       ) {
         this.showVivitaInteraction();
         this.vivitaInteracted = true;
+        this.buttonClick.play();
       }
     });
   }
@@ -336,6 +342,7 @@ class OfficeScene extends Phaser.Scene {
       currentSpeechIndex++;
       if (currentSpeechIndex < speechVivita.length) {
         text.setText(speechVivita[currentSpeechIndex]);
+        this.buttonClick.play();
       } else {
         balaoTexto.setVisible(false);
         text.setVisible(false);
