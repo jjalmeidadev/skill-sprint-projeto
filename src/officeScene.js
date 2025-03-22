@@ -34,25 +34,25 @@ class OfficeScene extends Phaser.Scene {
    /*this.scene.start("elevadorScene");
     return;*/
 
-      const width = this.scale.width;
-      const height = this.scale.height;
+    const width = this.scale.width;
+    const height = this.scale.height;
 
-      // Transição suave
-      this.cameras.main.fadeIn(1000);
+    // Transição suave
+    this.cameras.main.fadeIn(1000);
 
-      // Carrega os efeitos sonoros
-      this.buttonClick = this.sound.add('buttonSound', {loop: false, volume: 10});
-      this.indicatorSound = this.sound.add('indicatorSound', {loop: true, volume: 10});
-      this.walkSound = this.sound.add('walkSound', {loop: false, volume: 10});
+    // Carrega os efeitos sonoros
+    this.buttonClick = this.sound.add('buttonSound', {loop: false, volume: 10});
+    this.indicatorSound = this.sound.add('indicatorSound', {loop: true, volume: 10});
+    this.walkSound = this.sound.add('walkSound', {loop: false, volume: 10});
 
-      // Cria e inicia a música; se houver um tempo salvo, retoma a partir dele
-      const startTime = OfficeScene.lastMusicTime || 0;
-      this.officeMusic = this.sound.add("officeMusic", { loop: true });
-      this.officeMusic.play({ seek: startTime });
+    // Cria e inicia a música; se houver um tempo salvo, retoma a partir dele
+    const startTime = OfficeScene.lastMusicTime || 0;
+    this.officeMusic = this.sound.add("officeMusic", { loop: true });
+    this.officeMusic.play({ seek: startTime });
 
-      // Se a cena for pausada ou finalizada, salva o tempo atual e para a música
-      this.events.on("shutdown", this.onShutdown, this);
-      this.events.on("pause", this.onShutdown, this);
+    // Se a cena for pausada ou finalizada, salva o tempo atual e para a música
+    this.events.on("shutdown", this.onShutdown, this);
+    this.events.on("pause", this.onShutdown, this);
 
     //cria a animação
     this.anims.create({
@@ -296,16 +296,19 @@ class OfficeScene extends Phaser.Scene {
     this.computador.on("pointerover", () => {
       this.indicatorActive = false;
       this.indicatorSound.stop();
+      this.walkSound.stop();
       this.computador.setTint(0xaaaaaa);
     });
     this.computador.on("pointerout", () => {
       this.indicatorActive = false;
       this.indicatorSound.stop();
+      this.walkSound.stop();
       this.computador.clearTint();
     });
     this.computador.on("pointerdown", () => {
       this.indicatorActive = false;
       this.indicatorSound.stop();
+      this.walkSound.stop();
       this.showComputerScreen();
     });
   }
@@ -327,6 +330,7 @@ class OfficeScene extends Phaser.Scene {
     this.indicatorActive = true;
     if(this.indicatorActive) {  
       this.indicatorSound.play();
+      this.walkSound.stop();
     } 
 
     vivita.setInteractive();
@@ -386,25 +390,30 @@ class OfficeScene extends Phaser.Scene {
   }
 
   salaLider() {
-    
     if (this.inTransition) return;
 
     const width = this.scale.width;
     const height = this.scale.height;
+
     this.exclamation = this.physics.add.sprite(width - 1200, height - 500, 'indicator').setScale(0.2);
     this.exclamation.play('exclamando');
-    this.indicatorActive = false;
+    
+    this.indicatorActive = true;
+    this.indicatorSound = this.sound.add('indicatorSound', {loop: true, volume: 10});
+    this.indicatorSound.play();
 
     this.physics.add.overlap(this.player, this.exclamation, () => {
-      if (!this.inTransition) {
-        this.inTransition = true;
-        this.returnedFromSalaLider = true;
-        this.blockLoop = 0;
-        this.exclamation.setVisible(false);
-        this.scene.switch('salaLiderScene');
-      }
+        if (!this.inTransition) {
+            this.inTransition = true;
+            this.returnedFromSalaLider = true;
+            this.blockLoop = 0;
+            this.exclamation.setVisible(false);
+            this.indicatorActive = false;
+            this.indicatorSound.stop(); // Para o som quando há overlap
+            this.scene.switch('salaLiderScene');
+        }
     });
-  }
+}
 }
 
 // Propriedade estática para armazenar o tempo de reprodução da música
