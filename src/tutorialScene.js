@@ -13,15 +13,15 @@ class TutorialScene extends Phaser.Scene {
         // Lista das falas condicionais baseadas na resposta do jogador
         this.perguntaCondicional = [
             "Vivinho: UAU! Que bom que você já sabe. Agora, quero te explicar uma coisa muito importante na sua jornada a partir de agora, o termo JOB ROTATION.",
-            "Vivinho: Na Vivo, o termo JOB ROTATION se refere a uma estratégia de desenvolvimento profissional em que os colaboradores têm a oportunidade de atuar temporariamente em diferentes áreas da empresa.",
-            "Vivinho: O principal objetivo desse programa é ampliar a visão sistêmica do negócio, desenvolver novas habilidades e preparar os funcionários para futuras posições de liderança.",
+            "Vivinho: Na Vivo, o termo JOB ROTATION se refere a uma estratégia de desenvolvimento profissional em que as pessoas estagiarias têm a oportunidade de atuar temporariamente em diferentes áreas da empresa.",
+            "Vivinho: O principal objetivo desse programa é ampliar a visão sistêmica do negócio, desenvolver novas habilidades e preparar os funcionários para se tornarem futuros gestores e líderes.",
             "Vivinho: Por isso, irei te guiar para ser um líder na Vivo!"
 
         ];
 
         // Lista das falas de finalização do tutorial
         this.finalizacao = [
-            "Vivinho: Observe esse esquema. Note que um jovem estagiário pode evoluir para diversos cargos e realizar o job rotation na Vivo. Vamos mergulhar nisso nos próximos níveis!"
+            "Vivinho: Observe esse esquema. Note que um novo talento pode evoluir para diversos cargos e realizar o job rotation na Vivo. Vamos mergulhar nisso nos próximos níveis!"
         ];
 
         this.currentLine = 0; // Índice da fala atual
@@ -35,7 +35,7 @@ class TutorialScene extends Phaser.Scene {
         this.load.image('vivinho', '../assets/vivinho.png');
         this.load.image('botaoSim', '../assets/botao_sim.png');
         this.load.image('botaoNao', '../assets/botao_nao.png');
-        this.load.image('jobRotation', '../assets/jobRotationVivo.png');
+        this.load.image('jobRotation', '../assets/planoCarreira.png');
         this.load.font('FontePadrao', 'fonts/PixelifySans-VariableFont_wght.ttf'); // Fonte do jogo
 
         // Carrega o mapa do Tiled e os tilesets

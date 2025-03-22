@@ -5,13 +5,13 @@ class CreditosScene extends Phaser.Scene {
 
     preload() {
         // Carrega as imagens para a tela creditos
-        this.load.image('backgroundCreditos', '../assets/fundoCreditos.png');
+        this.load.image('backgroundCreditos', '../assets/créditos.png');
         this.load.image('arrow', '../assets/seta.png');
     }
 
     create() {
         // Adiciona a imagem de fundo
-        this.add.image(width/2, height/2, 'backgroundCreditos');
+        this.add.image(width/2, height/2, 'backgroundCreditos').setScale(0.7);
         
         // Chama a função que cria a seta
         this.createSeta();

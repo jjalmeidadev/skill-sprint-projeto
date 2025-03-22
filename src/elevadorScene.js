@@ -33,15 +33,24 @@ class ElevadorScene extends Phaser.Scene {
     this.load.audio('indicatorSound', '../assets/sounds/497198_abacagi_bubble-pops (mp3cut.net).wav');
     this.load.audio('buttonSound', '../assets/sounds/687107__aphom000__mouse-2-button-fast-click.wav');
     this.load.audio('walkSound', '../assets/sounds/753292__vrymaa__footsteps-high-heels-hardwood-walk-run (mp3cut.net).wav');
+    this.load.audio("excbubble", "../assets/sounds/somexclamacao.wav");
   }
 
   create() {
     const width = this.scale.width;
     const height = this.scale.height;
 
+    this.excbubble = this.sound.add("excbubble", {
+      loop: false,
+      volume: 10,
+    });
+
+    //Audio toca sempre que a cena inicia
+    this.excbubble.play();
+
     // Registra os eventos para pausar o áudio sempre que a cena for interrompida
-    this.events.on('shutdown', this.shutdown, this);
-    this.events.on('pause', this.shutdown, this);
+    this.events.on("shutdown", this.shutdown, this);
+    this.events.on("pause", this.shutdown, this);
 
     // Adiciona os efeitos sonoros
     this.buttonClick = this.sound.add('buttonSound', {loop: false, volume: 10});
@@ -59,7 +68,10 @@ class ElevadorScene extends Phaser.Scene {
     if (!this.anims.exists("exclamando")) {
       this.anims.create({
         key: "exclamando",
-        frames: this.anims.generateFrameNumbers("indicator", { start: 0, end: 1 }),
+        frames: this.anims.generateFrameNumbers("indicator", {
+          start: 0,
+          end: 1,
+        }),
         frameRate: 3,
         repeat: -1,
       });
@@ -74,7 +86,9 @@ class ElevadorScene extends Phaser.Scene {
     this.background.setDisplaySize(width, height);
 
     // Cria a sprite do indicador ("exclamando")
-    this.indicator = this.add.sprite(width - 955, height - 660, "indicator").setScale(0.3);
+    this.indicator = this.add
+      .sprite(width - 955, height - 660, "indicator")
+      .setScale(0.3);
     this.indicator.play("exclamando");
     this.indicatorActive = true;
 

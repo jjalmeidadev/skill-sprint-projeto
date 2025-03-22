@@ -2,7 +2,7 @@ class GameplayTutorialScene extends Phaser.Scene {
     constructor() {
         super({ 
             key: 'gameplayTutorialScene',
-            backgroundColor: '#61088d' // Cor de fundo definida aqui no objeto de configuração
+            backgroundColor: '#670099' // Cor de fundo definida aqui no objeto de configuração
         });
     }
 
@@ -11,7 +11,7 @@ class GameplayTutorialScene extends Phaser.Scene {
         this.load.font('FontePadrao', 'fonts/PixelifySans-VariableFont_wght.ttf');
 
         // Carregar a imagem de introdução
-        this.load.image('introducao', '../assets/instrucao.png');
+        this.load.image('introducao', '../assets/tutorial de jogabilidade.png');
 
         // Efeito sonoro de clique
         this.load.audio('buttonSound', '../assets/sounds/687107__aphom000__mouse-2-button-fast-click.wav');
@@ -62,9 +62,9 @@ class GameplayTutorialScene extends Phaser.Scene {
             'Clique ou pressione ENTER para continuar', // Texto de instrução
             { 
                 fontSize: '24px', 
-                fill: '#ffffff',
+                fill: '#000000',
                 fontFamily: '"FontePadrao", Arial, sans-serif', // Fonte personalizada
-                backgroundColor: '#000000', // Fundo do texto para maior visibilidade
+                backgroundColor: '#ffffff', // Fundo do texto para maior visibilidade
                 padding: { x: 10, y: 5 } // Espaçamento do texto
             }
         ).setOrigin(0.5); // Centraliza o texto

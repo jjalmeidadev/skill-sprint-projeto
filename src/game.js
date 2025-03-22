@@ -22,6 +22,7 @@ const config = {
     
     scene: [
       InitialScene,
+      AjusteScene,
       CreditosScene,
       CutScene,
       TutorialScene,
@@ -29,27 +30,29 @@ const config = {
       SalaLider,
       VpNegociosScene,
       VpPessoasScene,
+      
 
       CurriculoScene,
       QuizVpPessoas,
-      GameOverSceneCurriculo,
+      // GameOverSceneCurriculo,
       CongratulationsSceneCurriculoVpPessoas,
       QuizVpEstrategia,
-      GameOverSceneCurriculoEstrategia,
+      // GameOverSceneCurriculoEstrategia,
       CongratulationsSceneCurriculoVpEstrategia,
       QuizVpNegocios,
-      GameOverSceneCurriculoNegocios,
+      // GameOverSceneCurriculoNegocios,
       CongratulationsSceneCurriculoVpNegocios,
       QuizVpRelacoes,
-      GameOverSceneCurriculoRelacoes,
+      // GameOverSceneCurriculoRelacoes,
       CongratulationsSceneCurriculoVpRelacoes,
       QuizVpTecnologia,
-      GameOverSceneCurriculoTecnologia,
+      // GameOverSceneCurriculoTecnologia,
       CongratulationsSceneCurriculoVpTecnologia,
       
       buttonElevatorScene,
       ElevadorScene, 
       GameplayTutorialScene
+      
     ], // Lista das cenas do jogo
   };
   
