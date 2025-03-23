@@ -14,6 +14,7 @@ class VpPessoasScene extends Phaser.Scene {
 
         // Carrega os efeitos sonoros
         this.load.audio('walkSound', '../assets/sounds/753292__vrymaa__footsteps-high-heels-hardwood-walk-run (mp3cut.net).wav');
+        this.load.audio('PessoasMusic', '../assets/sounds/VPpessoas.mp3')
     }
 
     create() {
@@ -39,6 +40,11 @@ class VpPessoasScene extends Phaser.Scene {
         [layer1, layer2, layer3, layer4, layer5, layer6, layer7, layer8, layer9, layer10, layer11].forEach(layer => {
         layer.setCollisionByProperty({ collider: true });
         });
+
+        // Cria e inicia a música; se houver um tempo salvo, retoma a partir dele
+      const startTime = VpPessoasScene.lastMusicTime || 0;
+      this.PessoasMusic = this.sound.add("PessoasMusic", { loop: true });
+      this.PessoasMusic.play({ seek: startTime });
 
         // Configuração do teclado
         this.teclas = this.input.keyboard.addKeys({
@@ -141,4 +147,15 @@ class VpPessoasScene extends Phaser.Scene {
           repeat: -1,
         });
       }
+
+      onShutdown() {
+        // Salva o tempo atual da música e a para quando a cena é pausada ou encerrada
+        if (this.PessoasMusic && this.PessoasMusic.isPlaying) {
+          VpPessoasScene.lastMusicTime = this.PessoasMusic.seek;
+          this.PessoasMusic.stop();
+        }
+      }
 }
+
+// Propriedade estática para armazenar o tempo de reprodução da música
+VpPessoasScene.lastMusicTime = 0;

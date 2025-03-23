@@ -28,6 +28,8 @@ class SalaLider extends Phaser.Scene {
         this.load.audio('keySound', '../assets/sounds/computer-keyboard-typing-290582 (mp3cut.net).mp3');
         this.load.audio('indicatorSound', '../assets/sounds/497198_abacagi_bubble-pops (mp3cut.net).wav');
         this.load.audio('walkSound', '../assets/sounds/753292__vrymaa__footsteps-high-heels-hardwood-walk-run (mp3cut.net).wav');
+        this.load.audio('talkSound', '../assets/sounds/talkSound.wav'
+        )
     }
 
     create() {
@@ -247,47 +249,67 @@ class SalaLider extends Phaser.Scene {
         });
       }
 
-  showLeaderInteraction() {
-    this.exclamation.setVisible(false); // Deixa a exclamação da vivita invisível
-
-    // Lista com as falas da vivita
-    var speechLeader = [
-      "Olá, Fulano! Tudo bem?",
-      "Ah, então quer dizer que você quer migrar para uma nova posição na VP? Que alegria!",
-      "Vou analisar seu currículo.",
-      "Vamos ver...",
-      "Seu currículo está uma maravilha! Seguiu todas as diretrizes!",
-      "Vá até o elevador para conhecer as áreas internas da vivo!",
-    ];
-
-    // Adiciona o balão da fala da vivita
-    const balaoTexto = this.add.image(width - 730, height - 420, "balaoTexto");
-    balaoTexto.setFlipX(true);
-
-    // Adiciona uma caixa de texto dentro do balão de texto
-    const text = this.add.text(width - 815, height - 480, speechLeader[0], {
-      fontSize: "16px",
-      fill: "#000000",
-      wordWrap: { width: balaoTexto.width - 20 },
-    });
-
-    // Lógica para alternar entre as falas
-    let currentSpeechIndex = 0;
-    this.input.keyboard.on("keydown-ENTER", () => {
-      // As falas avançam apertando a tecla ENTER
-      currentSpeechIndex++; // Soma 1 cada fez que uma fala passa
-      if (currentSpeechIndex < speechLeader.length) {
-        // Se a fala que está mostrando no momento estiver em uma posição menor do que o tamanho da lista, avança
-        text.setText(speechLeader[currentSpeechIndex]); // Mostra a fala de acordo com a posição na lista
-        this.buttonClick.play();
-      } else {
-        balaoTexto.setVisible(false); // Deixa o balão da fala da vivita invisível
-        text.setVisible(false); // Deixa as falas invisíveis
-        this.input.keyboard.off("keydown-ENTER"); //Impede que o usuario aperte ENTER apos o dialogo acabar
-        this.backToOffice(); // Chama a função que adiciona a exclamação no computador
-      }
-    });
-  }
+      showLeaderInteraction() {
+        this.exclamation.setVisible(false); // Remove a exclamação
+    
+        var speechLeader = [
+            'Olá, Fulano! Tudo bem?', 
+            'Ah, então quer dizer que você quer migrar para uma nova VP? Que alegria!',
+            'Vou analisar seu currículo.',
+            'Vamos ver...', 
+            'Seu currículo está uma maravilha! Seguiu todas as diretrizes!',
+            'Vá até o elevador para conhecer as áreas internas da vivo!'
+        ];
+    
+        let currentSpeechIndex = 0;
+        let audio = this.sound.add('talkSound', { volume: 10});
+        let balaoTexto, text;
+    
+        // Evento para iniciar o diálogo ao pressionar "E"
+        this.input.keyboard.on('keydown-E', () => {
+            if (!balaoTexto) { // Evita iniciar o diálogo várias vezes
+                // Adiciona o balão de fala
+                balaoTexto = this.add.image(width - 730, height - 420, 'balaoTexto');
+                balaoTexto.setFlipX(true);
+                balaoTexto.setVisible(true);
+    
+                // Adiciona a caixa de texto dentro do balão
+                text = this.add.text(width - 815, height - 480, speechLeader[0], {
+                    fontSize: '16px',
+                    fill: '#000000',
+                    wordWrap: { width: balaoTexto.width - 20 }
+                });
+                text.setVisible(true);
+    
+                // Inicia o áudio ao começar o diálogo
+                audio.play();
+            }
+        });
+    
+        // Evento para avançar o diálogo com "ENTER"
+        this.input.keyboard.on('keydown-ENTER', () => { 
+            if (!balaoTexto || !text) return; // Se o diálogo não começou, ignora
+    
+            currentSpeechIndex++; 
+    
+            if (currentSpeechIndex < speechLeader.length) { 
+                audio.stop(); // Para o áudio antes de reiniciar
+                audio.play(); // Toca novamente para a nova fala
+    
+                text.setText(speechLeader[currentSpeechIndex]); // Atualiza o texto
+                this.buttonClick.play();
+            } else {
+                // Finaliza o diálogo
+                balaoTexto.setVisible(false);
+                text.setVisible(false);
+                audio.stop(); // Para o áudio ao final
+                this.input.keyboard.off('keydown-ENTER'); // Desativa ENTER após o diálogo
+                this.input.keyboard.off('keydown-E'); // Impede reiniciar o diálogo
+                this.backToOffice();
+            }
+        });
+    }
+    
 
     backToOffice() {
       // Adiciona a sprite da exclamação
