@@ -24,11 +24,8 @@ class OfficeScene extends Phaser.Scene {
     );
     this.load.image("decoracao", "../assets/mapaOffice/decoracao.png");
     this.load.image("paredes", "../assets/mapaOffice/paredes.png");
-    this.load.image(
-      "personalizado_vivo",
-      "../assets/mapaOffice/personalizado_vivo.png"
-    );
-
+    this.load.image("personalizado_vivo", "../assets/mapaOffice/personalizado_vivo.png");
+      
     // Demais ativos
     this.load.image("vivita", "../assets/vivita.png");
     this.load.image("balaoTexto", "../assets/balaoTexto.png");
@@ -38,7 +35,6 @@ class OfficeScene extends Phaser.Scene {
     this.load.audio('keySound', '../assets/sounds/computer-keyboard-typing-290582 (mp3cut.net).mp3');
     this.load.audio('indicatorSound', '../assets/sounds/497198_abacagi_bubble-pops (mp3cut.net).wav');
     this.load.audio('walkSound', '../assets/sounds/753292__vrymaa__footsteps-high-heels-hardwood-walk-run (mp3cut.net).wav');
-    this.load.audio("excbubble", "../assets/sounds/somexclamacao.wav");
   }
 
   create() {
@@ -56,8 +52,6 @@ class OfficeScene extends Phaser.Scene {
       this.buttonClick = this.sound.add('buttonSound', {loop: false, volume: 10});
       this.indicatorSound = this.sound.add('indicatorSound', {loop: true, volume: 10});
       this.walkSound = this.sound.add('walkSound', {loop: false, volume: 10});
-      this.excbubble = this.sound.add("excbubble", { loop: false, volume: 10 });
-      this.excbubble.play();//Audio toca sempre que a cena inicia
 
     // Cria e inicia a música; se houver um tempo salvo, retoma a partir dele
     const startTime = OfficeScene.lastMusicTime || 0;
@@ -187,7 +181,6 @@ class OfficeScene extends Phaser.Scene {
         Math.abs(this.player.y - this.computador.y) <= 50
       ) {
         this.showComputerScreen();
-        this.excbubble.play(false);
         this.indicatorActive = false;
       }
     }
@@ -283,7 +276,6 @@ class OfficeScene extends Phaser.Scene {
     this.exclamacao.setImmovable(true);
     this.exclamacao.play("exclamando");
     this.indicatorActive = true;
-    this.excbubble.play();
     if(this.indicatorActive) {
         this.indicatorSound.play();
     }
@@ -332,7 +324,6 @@ class OfficeScene extends Phaser.Scene {
       .sprite(width - 1020, height - 150, "indicator")
       .setScale(0.2);
     this.indicator.play("exclamando");
-    this.excbubble.play();
     this.indicatorActive = true;
     if(this.indicatorActive) {
       this.indicatorSound.play();
@@ -371,7 +362,6 @@ class OfficeScene extends Phaser.Scene {
     this.indicator.destroy();
     this.scene.switch("curriculoScene");
     this.salaLider();
-    this.excbubble.stop()
   }
 
   addVivita(width, height) {

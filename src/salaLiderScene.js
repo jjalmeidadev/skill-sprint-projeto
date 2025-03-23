@@ -28,7 +28,6 @@ class SalaLider extends Phaser.Scene {
         this.load.audio('keySound', '../assets/sounds/computer-keyboard-typing-290582 (mp3cut.net).mp3');
         this.load.audio('indicatorSound', '../assets/sounds/497198_abacagi_bubble-pops (mp3cut.net).wav');
         this.load.audio('walkSound', '../assets/sounds/753292__vrymaa__footsteps-high-heels-hardwood-walk-run (mp3cut.net).wav');
-        this.load.audio("excbubble", "../assets/sounds/somexclamacao.wav");
     }
 
     create() {
@@ -37,7 +36,6 @@ class SalaLider extends Phaser.Scene {
         // Carrega os efeitos sonoros
         this.buttonClick = this.sound.add('buttonSound', {loop: false, volume: 10});
         this.walkSound = this.sound.add('walkSound', {loop: false, volume: 10});
-        this.excbubble = this.sound.add("excbubble"); // Som da exclamação
 
     //cria a animação da exclamação
     this.anims.create({
@@ -296,7 +294,6 @@ class SalaLider extends Phaser.Scene {
       this.exclamacao = this.physics.add.sprite(width - 1050, height - 230, 'indicator').setScale(0.3);
       this.exclamacao.setImmovable(true);
       this.exclamacao.play('exclamando'); // Inicia a animação
-      this.excbubble.play(); // Toca o som da exclamação
       this.indicatorActive = true;
       if(this.indicatorActive) {
         this.indicatorSound = this.sound.add('indicatorSound', {loop: true, volume: 10});

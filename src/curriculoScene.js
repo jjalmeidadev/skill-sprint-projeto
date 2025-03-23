@@ -800,8 +800,8 @@ class QuizVpPessoas extends Phaser.Scene {
 
 //                     // Fade out e iniciar o quiz
 //                     this.cameras.main.fadeOut(500, 0, 0, 0, () => {
-                           this.cliqueSom = this.sound.add('cliqueSom', {loop: false, volume: 10});
-                           this.cliqueSom.play();
+                           //this.cliqueSom = this.sound.add('cliqueSom', {loop: false, volume: 10});
+                           //this.cliqueSom.play();
 //                         this.scene.start('QuizVpPessoas');
 //                     });
 //                 }
