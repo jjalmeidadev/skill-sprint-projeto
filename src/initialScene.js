@@ -19,7 +19,7 @@ class InitialScene extends Phaser.Scene {
         this.load.image('botaoAjustes', '../assets/assets_botoes/botaoAjustes.png');
         this.load.image('layoutPlay', '../assets/assets_botoes/layoutPlay.png');
         // Carrega o áudio da tela inicial
-        this.load.audio('initialMusic', '../assets/Adventure Meme [ ezmp3.co ].mp3');
+        this.load.audio('initialMusic', '../assets/Kevin MacLeod - Pixelland ♫ NO COPYRIGHT 8-bit Music.mp3');
         this.load.audio('buttonSound', '../assets/sounds/687107__aphom000__mouse-2-button-fast-click.wav');
     }
 
