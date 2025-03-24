@@ -21,8 +21,11 @@ class TutorialScene extends Phaser.Scene {
 
         // Lista das falas de finalização do tutorial
         this.finalizacao = [
-            "Vivinho: Observe esse esquema. Note que um novo talento pode evoluir para diversos cargos e realizar o job rotation na Vivo. Vamos mergulhar nisso nos próximos níveis!"
+            "Vivinho: Observe esse esquema. Note que um novo talento pode evoluir para diversos cargos e realizar o job rotation na Vivo. Vamos mergulhar nisso nos próximos níveis!",
+            "Vivinho: Além disso, a Vivo usa a plataforma Gupy para gerenciar seus processos seletivos, permitindo que candidatos cadastrem currículos, participem de testes e acompanhem o andamento das vagas."
         ];
+        this.currentFinalizacaoLine = 0;
+
 
         this.currentLine = 0; // Índice da fala atual
         //this.playerName = ""; // Nome do jogador
@@ -302,6 +305,14 @@ class TutorialScene extends Phaser.Scene {
 
         // Se a imagem já foi mostrada e ENTER for pressionado novamente, troca de cena
         if (this.exibirImagem && this.sobreposicao.alpha === 1) {
+            // Se ainda houver falas na finalização, mostre todas antes de mudar de cena
+            if (this.currentFinalizacaoLine < this.finalizacao.length - 1) {
+                this.currentFinalizacaoLine++;
+                this.dialogText.setText(this.finalizacao[this.currentFinalizacaoLine]);
+                return;
+            }
+        
+            // Quando todas as falas forem mostradas, muda para a próxima cena
             this.scene.start('officeScene');
             return;
         }
