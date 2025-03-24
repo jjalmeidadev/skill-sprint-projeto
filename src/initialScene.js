@@ -1,63 +1,112 @@
 class InitialScene extends Phaser.Scene {
-
     constructor() {
-        // Chama o construtor da classe Phaser.Scene com a chave 'initialScene'
         super({ key: 'initialScene' });
     }
 
     preload() {
-        // Carrega as imagens necessárias para a cena inicial
-        this.load.image('telaInicial', '../assets/tela_inicial.png');
-        this.load.image('botaoJogar', '../assets/botao_jogar.png');
-        this.load.image('botaoCreditos', '../assets/botao_creditos.png');
-        this.load.image('botaoAjustes', '../assets/botao_ajustes.png');
+        // Carrega os ativos visuais
+        this.load.image('bg01', '../assets/assetsBackground/1.png');
+        this.load.image('bg02', '../assets/assetsBackground/2.png');
+        this.load.image('bg03', '../assets/assetsBackground/3.png');
+        this.load.image('bg04', '../assets/assetsBackground/4.png');
+        this.load.image('bg05', '../assets/assetsBackground/5.png');
+        this.load.image('bg06', '../assets/assetsBackground/6.png');
+       
+        this.load.image('titulo', '../assets/assetsBackground/titulo.png ');
+
+        this.load.image('botaoJogar', '../assets/assets_botoes/botaoPlay.png');
+        this.load.image('botaoCreditos', '../assets/assets_botoes/botaoCreditos.png');
+        this.load.image('botaoAjustes', '../assets/assets_botoes/botaoAjustes.png');
+        this.load.image('layoutPlay', '../assets/assets_botoes/layoutPlay.png');
+        // Carrega o áudio da tela inicial
+        this.load.audio('initialMusic', '../assets/Adventure Meme [ ezmp3.co ].mp3');
+        this.load.audio('buttonSound', '../assets/sounds/687107__aphom000__mouse-2-button-fast-click.wav');
     }
 
     create() {
-        this.cameras.main.fadeIn(1000); // Transição suave
-        
-        // Adiciona a imagem de fundo 'telaInicial' e ajusta seu tamanho para preencher a tela
-        this.add.image(width/2, height/2, 'telaInicial').setScale(1.8);
+        const width = this.scale.width;
+        const height = this.scale.height;
+        this.cameras.main.fadeIn(1000);
 
-        // Cria os botões na tela inicial
-        this.createButtonJogar();
-        this.createButtonCreditos();
-        this.createButtonAjustes();
+        this.bgs = [];
+        const speeds = [0.005, 0.05, 0.07, 0.08, 0.09, 0.1];
+        for (let i = 0; i < 6; i++) {
+            let bg = this.add.tileSprite(0, 0, 576, 324, `bg0${i + 1}`)
+                .setOrigin(0, 0)
+                .setScale(2.8);
+
+            this.bgs.push({ sprite: bg, speed: speeds[i] });
+        }
+
+        // Inicia a música da tela inicial em loop
+        this.initialMusic = this.sound.add('initialMusic', { loop: true, volume: 1 });
+        this.initialMusic.play();
+
+        // Registra os eventos para pausar a música ao sair/pausar a cena
+        this.events.on('shutdown', this.shutdown, this);
+        this.events.on('pause', this.shutdown, this);
+
+        // Adiciona a imagem de fundo e ajusta seu tamanho
+        this.add.image(width/2, height/4, 'titulo').setScale(2.0);
+        this.add.image(width/2, height - 250, 'layoutPlay').setScale(1.0);
+
+        // Cria os botões da tela inicial
+        this.createButtonJogar(width, height);
+        this.createButtonCreditos(width, height);
+        this.createButtonAjustes(width, height);
     }
 
-    createButtonJogar() {
-        // Adiciona o botão 'Jogar' na posição especificada
+    shutdown() {
+        // Interrompe a música ao encerrar ou pausar a cena
+        if (this.initialMusic && this.initialMusic.isPlaying) {
+            this.initialMusic.stop();
+        }
+    }
+
+    buttonSound() {
+        this.buttonClick = this.sound.add('buttonSound', {loop: false, volume: 10});
+        this.buttonClick.play();
+    }
+
+    createButtonJogar(width, height) {
         const botaoJogar = this.add.image(width / 2, (height / 2) + 50, 'botaoJogar');
-        botaoJogar.setInteractive(); // Torna o botão interativo (clicável)
-        botaoJogar.setScale(1); // Ajusta o tamanho do botão
+        botaoJogar.setInteractive();
+        botaoJogar.setScale(1);
         botaoJogar.on('pointerdown', () => {
-            // Define a ação ao clicar no botão: para a cena atual e inicia a cena 'cutScene'
+            this.buttonSound();
+            this.shutdown();
             this.scene.stop('initialScene');
             this.scene.start('cutScene');
         });
     }
 
-    createButtonCreditos() {
-        // Adiciona o botão 'Créditos' na posição especificada
-        const botaoCreditos = this.add.image(width / 3.5, height / 1.3, 'botaoCreditos');
-        botaoCreditos.setInteractive(); // Torna o botão interativo (clicável)
-        botaoCreditos.setScale(1.2); // Ajusta o tamanho do botão
+    createButtonCreditos(width, height) {
+        const botaoCreditos = this.add.image(width / 2, height / 1.5, 'botaoCreditos');
+        botaoCreditos.setInteractive();
+        botaoCreditos.setScale(1);
         botaoCreditos.on('pointerdown', () => {
-            // Define a ação ao clicar no botão: para a cena atual e inicia a cena 'cutScene'
+            this.buttonSound();
+            this.shutdown();
             this.scene.stop('initialScene');
             this.scene.start('creditosScene');
         });
     }
 
-    createButtonAjustes() {
-        // Adiciona o botão 'Ajustes' na posição especificada
-        const botaoAjustes = this.add.image(width / 1.45, height / 1.34, 'botaoAjustes');
-        botaoAjustes.setInteractive(); // Torna o botão interativo (clicável)
-        botaoAjustes.setScale(1.4); // Ajusta o tamanho do botão
+    createButtonAjustes(width, height) {
+        const botaoAjustes = this.add.image(width / 2, height - 175, 'botaoAjustes');
+        botaoAjustes.setInteractive();
+        botaoAjustes.setScale(1);
         botaoAjustes.on('pointerdown', () => {
-            // Define a ação ao clicar no botão: para a cena atual e inicia a cena 'cutScene'
+            this.buttonSound();
+            this.shutdown();
             this.scene.stop('initialScene');
-            this.scene.start('cutScene');
+            this.scene.start('ajusteScene');
+        });
+    }
+
+    update() {
+        this.bgs.forEach(layer => {
+            layer.sprite.tilePositionX += layer.speed;
         });
     }
 }

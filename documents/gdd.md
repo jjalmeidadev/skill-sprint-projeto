@@ -111,15 +111,19 @@ Com isso, esses são os princípios que guiam as tomadas de decisões e estraté
 
 ### 1.1.4. Proposta de Valor (sprint 4)
 
-*Posicione aqui o canvas de proposta de valor. Descreva os aspectos essenciais para a criação de valor da ideia do produto com o objetivo de ajudar a entender melhor a realidade do cliente e entregar uma solução que está alinhado com o que ele espera.*
+O Value Proposition Canvas é uma ferramenta poderosa de planejamento estretégico dividida em dois blocos, Perfil do Cliente e Mapa de Valor, utilizada para desenvolver soluções e serviços eficazes voltados nas necessidades dos clientes. A ferramenta é projetada para promover o alinhamento e a compreensão profunda das dores do cliente, permitindo que a solução atenda da melhor forma a demanda do mercado. Sua utilização auxilia na melhoria contínua se moldando com base no feedback do cliente, a fim de entregar o melhor serviço além de potencializar o trabalho entregue por ter um direcionamento mais claro sobre o que será produzido.
+
+<div align="Análise SWOT">
+  <sub>Canvas Proposta de Valor</sub><br>
+  <img src="https://github.com/user-attachments/assets/e3d2265f-7577-46cf-81dc-b10dcd84a82d" width="900px" 
+  alt="Canvas Proposta de Valor"><br>
+  <sup>Fonte: profuzido pelo autor.</sup>
+</div>
+
 
 ### 1.1.5. Descrição da Solução Desenvolvida (sprint 4)
 
 *Descreva brevemente a solução desenvolvida para o parceiro de negócios. Descreva os aspectos essenciais para a criação de valor da ideia do produto com o objetivo de ajudar a entender melhor a realidade do cliente e entregar uma solução que está alinhado com o que ele espera. Observe a seção 2 e verifique que ali é possível trazer mais detalhes, portanto seja objetivo aqui. Atualize esta descrição até a entrega final, conforme desenvolvimento.*
-
-A solução desenvolvida pelo grupo é baseada na construção de um serious game jogável na web que, através de atividades dinâmicas
-e educativas, expande a perspectiva dos colaboradores dentro da VIVO acerca da convivência no dia-dia da empresa, de maneira que se tornem mais conscientes à respeito do "Job Rotation" praticado entre os seus principais setores (Pessoas, Negócios, Estratégias, Tecnologia e Relações Institucionais). Os aspectos essenciais para a criação de valor da nossa ideia são a desinformação e falta de motivação relacionadas às formas de pensar dos integrantes das equipes, levando em conta que estes frequentemente se veem
-incapazes de evoluir suas carreiras e possivelmente até deixam o trabalho, ainda que estejam inseridos em um ambiente com uma grande riqueza de oportunidades (com possibilidades de reskilling e upskilling, por exemplo), tendo suas respectivas mentalidades reformuladas com a utilização do nosso produto a partir do momento que serão capazes de reconhecer a existência destes extensos caminhos. Além disso, compreende-se que a composição dos funcionários é ampla e diversa, sendo comportada dentro deste universo a partir da customização de personagens e da interação com outros de características únicas.
 
 ### 1.1.6. Matriz de Riscos (sprint 4)
 
@@ -128,15 +132,6 @@ incapazes de evoluir suas carreiras e possivelmente até deixam o trabalho, aind
 ### 1.1.7. Objetivos, Metas e Indicadores (sprint 4)
 
 *Definição de metas SMART (específicas, mensuráveis, alcançáveis, relevantes e temporais) para seu projeto, com indicadores claros para mensuração*
-
-\# | Metas  
---- | ---
-M01 | Buscamos concluir, no mínimo, a produção de +2 fases, que abordem as principais VPs, dentro do período restante de 2 sprints.
-M02 | Buscamos incluir, no mínimo, 3 minigames ao longo das fases que abordem questões das VPs, dentro das próximas 2 sprints.
-M03 | Dentro da 4a sprint, planejamos implementar trilhas sonoras para as fases de maneira padrão, no elevador e efeitos sonoros em atividades de interação e desafios.
-M04 | Planejamos implementar, no período da 4a sprint, movimentações de personagens e objetos com base nos conceitos de Movimento uniforme e uniformemente variado.
-M05 | Temos como objetivo criar um botão de ajustes que permita a adição de um filtro para daltônicos e manejo do volume dos sons em todas as fases até o fim da 4a sprint.
-M06 | Desejamos incorporar a diversidade dos colaboradores da VIVO dentro da customização de personagens, levando em conta gêneros e etnias, no mínimo, até a sprint final.
 
 ## 1.2. Requisitos do Projeto (sprints 1 e 2)
 
@@ -150,16 +145,21 @@ R02 | O jogo terá uma tela de abertura, onde o jogador inicia clicando em "Joga
 R03 | O jogo iniciará com uma cutscene, onde serão ilustrados o contexto e a ambientação inicial do jogo.
 R04 | O jogador deve seguir as instruções dos diálogos dos NPCs para passar de fase, apertando a tecla "Enter" para avançar nas falas.
 R05 | A primeira tela de jogabilidade será um escritório onde o jogador realizará suas primeiras interações no jogo.
-R06 | A primeira fase terá um quiz sobre elaboração de currículo em um computador.
+R06 | A primeira fase terá um quiz sobre elaboração de currículo em um computador (objetivo: ensinar a criar um currículo atrativo e eficaz).
 R07 | Todas as fases terão como objetivo motivar o usuário a realizar o *Job Rotation* na Vivo.
 R08 | O jogo terá um *Game Design Document* completo e detalhado. 
 R09 | As características dos personagens devem refletir o valor de diversidade da Vivo e trazer representatividade para o jogo.
-R10| O jogador terá, como ferramenta de *gameplay*, um assistente que lhe fornecerá dicas.
-R11| O código do jogo deverá ser segmentado de maneira à priorizar a organização e didática.
-R12| O jogo contará com diferentes trilhas sonoras, personalizadas para diferentes contextos dentro do jogo.
-R13| A segunda tela de jogabilidade será a sala do líder, onde o jogador finaliza sua missão do primeiro nível.
-R14| A movimentação entre os níveis do jogo acontecerá através do elevador, onde cada andar do prédio da Vivo representa uma fase do jogo.
-R15| A primeira fase será no escritório da Vice-Presidência de Pessoas e contará com uma simulação de situação de resolução de problemas.
+R10 | O jogador terá, como ferramenta de *gameplay*, um assistente que lhe fornecerá dicas.
+R11 | O código do jogo deverá ser segmentado de maneira à priorizar a organização e didática.
+R12 | O jogo contará com diferentes trilhas sonoras, personalizadas para diferentes contextos dentro do jogo.
+R13 | A segunda tela de jogabilidade será a sala do líder, onde o jogador finaliza sua missão do primeiro nível.
+R14 | A movimentação entre os níveis do jogo acontecerá através do elevador, onde cada andar do prédio da Vivo representa uma fase do jogo.
+R15 | A segunda fase será no escritório da Vice-Presidência de Pessoas e contará com uma simulação de situação de resolução de problemas (objetivo: preparar os jogadores para dinâmicas de entrevistas).
+R16 | O design visual do jogo utilizará uma paleta de cores consistente e coerente, alinhada ao tema e à atmosfera proposta.
+R17 | Utilizaremos algumas movimentações bidimensionais de elementos gráficos no jogo, utilizando conhecimentos sobre vetores e cinemática.
+R18 | O jogo contará com um botão de ajustes que proporciona acessibilidade com filtro de daltonismo e ajuste de volume. 
+R19 | A terceira fase será na Vice-Presidência de Negócios e contará com 2 minigames dinâmicos (objetivo: preparar os jogadores para resolução de cases).
+R20 | A quarta fase será na Vice-Presidência de Estratégia e contará com 1 minigame (objetivo: ensinar a estruturar um plano de carreira).
 
 ## 1.3. Público-alvo do Projeto (sprint 2)
 
@@ -449,7 +449,13 @@ Pensamos em customizar as fases de acordo com elementos que remetam às Vice-Pre
 
 ### 3.3.5. Trilha sonora (sprint 4)
 
-*Descreva a trilha sonora do jogo, indicando quais músicas serão utilizadas no mundo e nas fases. Utilize listas ou tabelas para organizar esta seção. Caso utilize material de terceiros em licença Creative Commons, não deixe de citar os autores/fontes.*
+A trilha sonora do jogo foi cuidadosamente escolhida para acompanhar a ambientação de cada cena, contribuindo para a imersão do jogador. As músicas variam conforme o ambiente e a atmosfera desejada, indo desde tons mais leves e relaxantes até sons temáticos específicos como música de elevador.
+Abaixo está a lista das músicas utilizadas em cada parte do jogo:
+| Cena                  | Descrição da Trilha                                                | Fonte / Link                                                 | Autor e Licença                            |
+|-----------------------|---------------------------------------------------------------------|--------------------------------------------------------------|---------------------------------------------|
+| Tela Inicial          | Trilha leve e acolhedora para recepcionar o jogador.               | [YouTube - Game Start Adventure Meme | Kevin MacLeod - "Pixelland" |
+| Cena 1 - Escritório   | Música tranquila e suave, ideal para um ambiente de trabalho.      | [YouTube - Calm Office Música para Trabalhar no Escritório | STUDIO LUZES DE PARÍS - "Carefree" |
+| Cena do Elevador      | Clássica música de elevador, divertida e temática.                 | [YouTube - Elevator Local Forecast - Elevator | Kevin MacLeod - "Elevator" |
 
 *Exemplo de tabela*
 \# | titulo | ocorrência | autoria
@@ -725,6 +731,13 @@ Os casos de teste descritos a seguir foram elaborados para avaliar os diferentes
 7 |O jogo foi iniciado|Aguardar a tela de nome aparecer|A caixa de texto para digitar o nome está visível
 8 |A caixa de texto está visível|Digitar um nome e confirmar|O nome digitado deve ser armazenado e utilizado no jogo
 9 |O jogador está próximo do NPC|Pressionar a tecla "E"|Um diálogo deve aparecer na tela iniciando a interação com o NPC|
+10 | O jogo foi iniciado | Aguardar na tela inicial | A trilha sonora específica da tela inicial deve começar a tocar  
+11 | O jogador entrou na Cena 1 | Aguardar alguns segundos | A trilha sonora da Cena 1 deve começar 
+12 | O jogador entrou na cena do Elevador | Permanecer na cena do elevador | A trilha sonora do elevador deve começar a tocar automaticamente  
+13 | O jogador está interagindo com um NPC | Pressionar a tecla "ENTER" para avançar o diálogo | Um som de efeito deve ser reproduzido ao avançar o diálogo  
+14 | O jogador chegou ao elevador | Entrar no elevador | O jogo deve carregar corretamente a nova cena "Elevador"  
+15 | O jogador está na cena do Elevador | Pressionar os botões do painel do elevador para escolher um andar | O jogo deve trocar para a cena correspondente ao andar selecionado  
+
 
 Através desses testes, foi possível identificar pontos de melhoria, ajustar comportamentos inesperados e assegurar que a experiência do jogador seja fluida e intuitiva.
 

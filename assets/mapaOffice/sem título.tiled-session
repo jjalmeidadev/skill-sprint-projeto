@@ -1,0 +1,74 @@
+{
+    "activeFile": "mapaOffice.json",
+    "expandedProjectPaths": [
+    ],
+    "fileStates": {
+        "": {
+            "scaleInEditor": 3
+        },
+        "#decoracao": {
+            "scaleInDock": 2
+        },
+        "#paredes": {
+            "scaleInDock": 1.5
+        },
+        "#personalizado_vivo": {
+            "scaleInDock": 1
+        },
+        "C:/Users/Inteli/Documents/mapaSalaLider/mapaSalaLider.tmx": {
+            "scale": 7.849374999999999,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 79.94267059479259,
+                "y": 47.96560235687555
+            }
+        },
+        "C:/Users/Inteli/Documents/mapaSalaLider/mapaSalaLider.tmx#decoracao": {
+            "scaleInDock": 1
+        },
+        "mapaOffice.json": {
+            "scale": 2.7075,
+            "selectedLayer": 10,
+            "viewCenter": {
+                "x": 140.90489381348107,
+                "y": 160.1108033240997
+            }
+        },
+        "mapaOffice.json#decoracao": {
+            "scaleInDock": 2
+        },
+        "mapaOffice.json#paredes": {
+            "scaleInDock": 1
+        },
+        "mapaOffice.json#personalizado_vivo": {
+            "scaleInDock": 1
+        },
+        "mapaOffice.tmx": {
+            "scale": 2.7075,
+            "selectedLayer": 10,
+            "viewCenter": {
+                "x": 259.0951061865189,
+                "y": 160.1108033240997
+            }
+        },
+        "mapaOffice.tmx#decoracao": {
+            "scaleInDock": 2
+        },
+        "mapaOffice.tmx#paredes": {
+            "scaleInDock": 1
+        },
+        "mapaOffice.tmx#personalizado_vivo": {
+            "scaleInDock": 1
+        }
+    },
+    "map.lastUsedFormat": "json",
+    "openFiles": [
+        "mapaOffice.json"
+    ],
+    "project": "",
+    "property.type": "bool",
+    "recentFiles": [
+        "mapaOffice.json",
+        "C:/Users/Inteli/Documents/mapaSalaLider/mapaSalaLider.tmx"
+    ]
+}

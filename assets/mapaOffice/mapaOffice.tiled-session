@@ -1,0 +1,48 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "",
+    "expandedProjectPaths": [
+    ],
+    "fileStates": {
+        "#decoracao": {
+            "scaleInDock": 2
+        },
+        "#paredes": {
+            "scaleInDock": 1.5
+        },
+        "#personalizado_vivo": {
+            "scaleInDock": 1
+        },
+        "C:/Users/Inteli/Documents/mapaSalaLider/mapaSalaLider.tmx": {
+            "scale": 7.849374999999999,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 79.94267059479259,
+                "y": 47.96560235687555
+            }
+        },
+        "C:/Users/Inteli/Documents/mapaSalaLider/mapaSalaLider.tmx#decoracao": {
+            "scaleInDock": 1
+        }
+    },
+    "last.imagePath": "C:/Users/Inteli/Documents/mapaOffice",
+    "map.lastUsedFormat": "json",
+    "map.tileHeight": 16,
+    "map.tileWidth": 16,
+    "map.width": 25,
+    "openFiles": [
+    ],
+    "project": "sem título.tiled-project",
+    "property.type": "bool",
+    "recentFiles": [
+        "C:/Users/Inteli/Documents/mapaSalaLider/mapaSalaLider.tmx"
+    ],
+    "tileset.embedInMap": true,
+    "tileset.tileSize": {
+        "height": 16,
+        "width": 16
+    }
+}

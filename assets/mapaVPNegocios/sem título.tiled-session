@@ -1,0 +1,45 @@
+{
+    "activeFile": "mapaVPNegocios.json",
+    "expandedProjectPaths": [
+    ],
+    "fileStates": {
+        "": {
+            "scaleInEditor": 1
+        },
+        "#decoracao": {
+            "scaleInDock": 1
+        },
+        "#paredes": {
+            "scaleInDock": 1
+        },
+        "mapaVPNegocios.json": {
+            "scale": 2.3797499999999996,
+            "selectedLayer": 10,
+            "viewCenter": {
+                "x": 199.81090450677593,
+                "y": 159.89074482613722
+            }
+        },
+        "mapaVPNegocios.json#decoracao": {
+            "scaleInDock": 2
+        },
+        "mapaVPNegocios.json#paredes": {
+            "scaleInDock": 1.5
+        }
+    },
+    "last.imagePath": "C:/Users/Inteli/Documents/mapaVPNegocios",
+    "map.lastUsedFormat": "json",
+    "openFiles": [
+        "mapaVPNegocios.json"
+    ],
+    "project": "sem título.tiled-project",
+    "property.type": "bool",
+    "recentFiles": [
+        "mapaVPNegocios.json"
+    ],
+    "tileset.embedInMap": true,
+    "tileset.tileSize": {
+        "height": 16,
+        "width": 16
+    }
+}

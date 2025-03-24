@@ -2,15 +2,20 @@ class GameplayTutorialScene extends Phaser.Scene {
     constructor() {
         super({ 
             key: 'gameplayTutorialScene',
-            backgroundColor: '#61088d' // Cor de fundo definida aqui no objeto de configuração
+            backgroundColor: '#670099' // Cor de fundo definida aqui no objeto de configuração
         });
     }
 
     preload() {
         // Carrega a fonte
         this.load.font('FontePadrao', 'fonts/PixelifySans-VariableFont_wght.ttf');
+
         // Carregar a imagem de introdução
-        this.load.image('introducao', '../assets/instrucao.png');
+        this.load.image('introducao', '../assets/tutorial de jogabilidade.png');
+
+        // Efeito sonoro de clique
+        this.load.audio('buttonSound', '../assets/sounds/687107__aphom000__mouse-2-button-fast-click.wav');
+        this.load.audio('keySound', '../assets/sounds/computer-keyboard-typing-290582 (mp3cut.net).mp3');
     }
 
     create() {
@@ -19,9 +24,8 @@ class GameplayTutorialScene extends Phaser.Scene {
         
         this.cameras.main.fadeIn(1000); // Efeito de transição para a cena
 
-        //const { width, height } = this.scale; // Obter dimensões da tela
+        const { width, height } = this.scale; // Obter dimensões da tela
         const tutorialImg = this.add.image(width / 2, height / 2, 'introducao').setOrigin(0.5); // Posicionamento da imagem
-
 
         // Ajuste de escala para manter as proporções corretas
         const scaleX = width / tutorialImg.width;
@@ -38,10 +42,18 @@ class GameplayTutorialScene extends Phaser.Scene {
         };
 
         // Detectar clique na tela
-        this.input.on('pointerdown', startNextScene);
+        this.input.on('pointerdown', () => {
+            this.buttonClick = this.sound.add('buttonSound', {loop: false, volume: 10});
+            this.buttonClick.play(); // Tocar o som do botão
+            startNextScene();
+        });
 
         // Detectar a tecla ENTER para avançar
-        this.input.keyboard.on('keydown-ENTER', startNextScene);
+        this.input.keyboard.on('keydown-ENTER', () => {
+            this.buttonClick = this.sound.add('keySound', {loop: false, volume: 10});
+            this.buttonClick.play(); // Tocar o som do botão
+            startNextScene();
+        });
 
         // Texto de instrução para o jogador
         this.add.text(
@@ -50,9 +62,9 @@ class GameplayTutorialScene extends Phaser.Scene {
             'Clique ou pressione ENTER para continuar', // Texto de instrução
             { 
                 fontSize: '24px', 
-                fill: '#ffffff',
+                fill: '#000000',
                 fontFamily: '"FontePadrao", Arial, sans-serif', // Fonte personalizada
-                backgroundColor: '#000000', // Fundo do texto para maior visibilidade
+                backgroundColor: '#ffffff', // Fundo do texto para maior visibilidade
                 padding: { x: 10, y: 5 } // Espaçamento do texto
             }
         ).setOrigin(0.5); // Centraliza o texto
