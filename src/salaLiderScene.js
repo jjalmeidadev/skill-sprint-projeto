@@ -1,4 +1,5 @@
 class SalaLider extends Phaser.Scene {
+<<<<<<< Updated upstream
   constructor() {
     super({ key: "salaLiderScene" });
   }
@@ -16,6 +17,16 @@ class SalaLider extends Phaser.Scene {
       frameWidth: 16,
       frameHeight: 16,
     });
+=======
+    constructor() {
+        super({ key: 'salaLiderScene' });
+    }
+    preload() {
+        // Carrega a sprite do jogador e da exclamação
+        this.load.spritesheet('player', '../assets/Player.png', { frameWidth: 32, frameHeight: 32 });
+        this.load.spritesheet('indicator', '../assets/exclamaçãoRoxa.png',{ frameWidth: 254, frameHeight: 291 });
+        this.load.spritesheet('leader', '../assets/lider_spritesheet.png',{frameWidth: 16, frameHeight: 16});
+>>>>>>> Stashed changes
 
     // Carrega o balão de texto
     this.load.image("balaoTexto", "../assets/balaoTexto.png");
