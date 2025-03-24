@@ -14,9 +14,9 @@ class SalaLider extends Phaser.Scene {
     });
     this.load.spritesheet("leader", "../assets/personagens/LiderReading.png", { 
       frameWidth: 16,
-      frameHeight: 16,
+      frameHeight: 32,
     });
-
+    
     // Carrega o balão de texto
     this.load.image("balaoTexto", "../assets/balaoTexto.png");
 
