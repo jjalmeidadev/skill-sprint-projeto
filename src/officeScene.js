@@ -12,9 +12,9 @@ class OfficeScene extends Phaser.Scene {
     });
     this.load.image("telaComputador", "../assets/tela_computador.png");
     this.load.image("computador", "../assets/computador.png");
-    this.load.spritesheet("indicator", "../assets/spriteexclamação.png", {
+    this.load.spritesheet("indicator", "../assets/exclamaçãoRoxa.png", {
       frameWidth: 254,
-      frameHeight: 291,
+      frameHeight: 305,
     });
 
     // Carrega o mapa do Tiled e os tilesets
