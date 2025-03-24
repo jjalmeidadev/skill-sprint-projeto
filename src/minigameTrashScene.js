@@ -33,15 +33,14 @@ class MinigameTrashScene extends Phaser.Scene {
         this.smile.setCollideWorldBounds(true); // Faz a carinha colidir com os limites do mundo
         this.smile.setBounce(0.7); // Define o valor de quique para a carinha
         this.smile.setScale(0.12); // Define o tamanho da carinha feliz
-        this.smile.setGravityX(-100);
-
-        // Barra de progresso
-        this.progressBarBackground = this.add.graphics();
-        this.progressBarBackground.fillStyle(0x808080, 1);
-        this.progressBarBackground.fillRect(width - 1450, height - 730, 300, 30); // fundo cinza
+        this.smile.setGravityX(-100); // Define a gravidade do eixo X para a carinha feliz
+       
+        this.progressBarBackground = this.add.graphics(); // Barra de progresso
+        this.progressBarBackground.fillStyle(0x808080, 1); // Fundo Cinza
+        this.progressBarBackground.fillRect(width - 1450, height - 730, 300, 30); // Cria a barra de progresso
 
         this.progressBar = this.add.graphics();
-        this.updateProgressBar(); // inicializa com progresso 0
+        this.updateProgressBar(); // inicializa com progresso em 0
 
         this.physics.add.overlap(this.hand, this.smile, this.collectSmile, null, this); // Adiciona detecção de sobreposição entre a mão e as carinhas
 
@@ -78,19 +77,19 @@ class MinigameTrashScene extends Phaser.Scene {
             }
         });
 
-        if (this.banana && this.banana.x < 0) {
-            this.banana.destroy();
-            this.banana = null;
+        if (this.banana && this.banana.x < 0) { // Verifica se a banana existe e se saiu da tela pelo lado esquerdo
+            this.banana.destroy(); // Destroi o sprite da banana
+            this.banana = null; // Define a variável banana como null
         }
-    
-        if (this.bottle && this.bottle.x < 0) {
-            this.bottle.destroy();
-            this.bottle = null;
+        
+        if (this.bottle && this.bottle.x < 0) { // Verifica se a garrafa existe e se saiu da tela pelo lado esquerdo
+            this.bottle.destroy(); // Destroi o sprite da garrafa
+            this.bottle = null; // Define a variável bottle como null
         }
-    
-        if (this.paper && this.paper.x < 0) {
-            this.paper.destroy();
-            this.paper = null;
+        
+        if (this.paper && this.paper.x < 0) { // Verifica se o papel existe e se saiu da tela pelo lado esquerdo
+            this.paper.destroy(); // Destroi o sprite do papel
+            this.paper = null; // Define a variável paper como null
         }
     }
 
@@ -99,7 +98,6 @@ class MinigameTrashScene extends Phaser.Scene {
         smile.setVisible(false); // Oculta a carinha
         smile.disableBody(true, true); // Desativa o corpo físico da carinha
         this.happiness += 1; // Incrementa a pontuação em 1
-        this.happiness += 1;
         this.updateProgressBar();
 
         this.time.delayedCall(1000, () => {
@@ -117,8 +115,8 @@ class MinigameTrashScene extends Phaser.Scene {
         let posX = Phaser.Math.Between(50, this.sys.game.config.width - 50); // Gera uma posição X aleatória para a banana
         this.banana = this.physics.add.sprite(1500, posY, 'banana'); // Adiciona o sprite da banana à cena
         this.banana.setVelocityX(-200); // Define a velocidade da banana
-        this.banana.setScale(0.28);
-        this.bananaExists = true;
+        this.banana.setScale(0.28); // Define o tamanho da banana
+        this.bananaExists = true; // Variável de controle
     }
 
     // Função para gerar uma garrafa
@@ -127,8 +125,8 @@ class MinigameTrashScene extends Phaser.Scene {
         let posX = Phaser.Math.Between(50, this.sys.game.config.width - 50); // Gera uma posição X aleatória para a garrfa
         this.bottle = this.physics.add.sprite(1500, posY, 'bottle'); // Adiciona o sprite do garrafa à cena
         this.bottle.setVelocityX(-200); // Define a velocidade da garrafa
-        this.bottle.setScale(0.5);
-        this.bottleExists = true;
+        this.bottle.setScale(0.5); // Define o tamanho da garrafa
+        this.bottleExists = true; // Variável de controle
     }
 
      // Função para gerar uma banana
@@ -137,8 +135,8 @@ class MinigameTrashScene extends Phaser.Scene {
         let posX = Phaser.Math.Between(50, this.sys.game.config.width - 50); // Gera uma posição X aleatória para o papel
         this.paper = this.physics.add.sprite(1500, posY, 'paper'); // Adiciona o sprite do papel à cena
         this.paper.setVelocityX(-200); // Define a velocidade do papel
-        this.paper.setScale(0.2);
-        this.paperExists = true;
+        this.paper.setScale(0.2); // Define o tamanha do papel
+        this.paperExists = true; // Variável de controle
     }
 
     // Função para tratar a colisão da mão com a banana
@@ -148,37 +146,39 @@ class MinigameTrashScene extends Phaser.Scene {
         let explosao = this.add.sprite(this.hand.x, this.hand.y, 'explosion'); // Adiciona o sprite da explosão à cena.
         explosao.anims.play('explosion'); // Inicia a animação de explosão.
         explosao.on('animationcomplete', () => {
-            this.scene.start('initialScene', { pontuacao: this.score }); // Inicia a cena de Game Over.
+            this.scene.start('initialScene', { pontuacao: this.score }); // Inicia a cena de Game Over
         });
     }
 
+    // Função para gerar lixo aleatório
     spawnRandomTrash() {
-        const lixoAleatorio = Phaser.Math.Between(0, 2); // 0: banana, 1: bottle, 2: paper
+        const lixoAleatorio = Phaser.Math.Between(0, 2); // Gera um número aleatório entre 0 e 2 para decidir o tipo de lixo
     
         switch (lixoAleatorio) {
-            case 0:
-                this.addBanana();
-                this.physics.add.collider(this.hand, this.banana, this.crash, null, this);
+            case 0: // Caso o número seja 0
+                this.addBanana(); // Adiciona uma banana à cena
+                this.physics.add.collider(this.hand, this.banana, this.crash, null, this); // Adiciona colisão entre a mão e a banana
                 break;
-            case 1:
-                this.addBottle();
-                this.physics.add.collider(this.hand, this.bottle, this.crash, null, this);
+            case 1: // Caso o número seja 1
+                this.addBottle(); // Adiciona uma garrafa à cena
+                this.physics.add.collider(this.hand, this.bottle, this.crash, null, this); // Adiciona colisão entre a mão e a garrafa
                 break;
-            case 2:
-                this.addPaper();
-                this.physics.add.collider(this.hand, this.paper, this.crash, null, this);
+            case 2: // Caso o número seja 2
+                this.addPaper(); // Adiciona um papel à cena
+                this.physics.add.collider(this.hand, this.paper, this.crash, null, this); // Adiciona colisão entre a mão e o papel
                 break;
         }
     }
+    
 
     updateProgressBar() {
-        const max = 10;
-        const percentage = Phaser.Math.Clamp(this.happiness / max, 0, 1);
-        const barWidth = 300;
-        const barHeight = 30;
-    
-        this.progressBar.clear();
-        this.progressBar.fillStyle(0x00ff00, 1); // cor da barra (verde)
-        this.progressBar.fillRect(width - 1450, height - 730, barWidth * percentage, barHeight);
+        const max = 10; // Define o valor máximo de felicidade
+        const percentage = Phaser.Math.Clamp(this.happiness / max, 0, 1); // Calcula a porcentagem de felicidade, garantindo que esteja entre 0 e 1
+        const barWidth = 300; // Define a largura da barra de progresso
+        const barHeight = 30; // Define a altura da barra de progresso
+
+        this.progressBar.clear(); // Limpa o gráfico da barra de progresso anterior
+        this.progressBar.fillStyle(0x00ff00, 1); // Define a cor da barra de progresso (verde)
+        this.progressBar.fillRect(width - 1450, height - 730, barWidth * percentage, barHeight); // Desenha a barra de progresso com base na porcentagem de felicidade
     }
 }
