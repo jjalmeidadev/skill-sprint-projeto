@@ -377,7 +377,7 @@ class ElevadorScene extends Phaser.Scene {
       this.buttonClick.play();
       this.shutdown();
       this.scene.stop("elevadorScene");
-      this.scene.start("estrategiasScene");
+      this.scene.start("VpEstrategiaScene");
     });
   }
 

@@ -30,6 +30,7 @@ const config = {
       SalaLider,
       VpNegociosScene,
       VpPessoasScene,
+      VpEstrategiaScene,
       
 
       CurriculoScene,

@@ -1,0 +1,36 @@
+{
+    "activeFile": "",
+    "expandedProjectPaths": [
+    ],
+    "file.lastUsedOpenFilter": "Todos os Ficheiros (*)",
+    "fileStates": {
+        "": {
+            "scaleInDock": 1.5
+        },
+        "#chao": {
+            "scaleInDock": 1
+        },
+        "#decoracao": {
+            "scaleInDock": 1
+        },
+        "#paredes": {
+            "scaleInDock": 1.5
+        },
+        "map_estrategia.tmx#paredes": {
+            "scaleInEditor": 3
+        }
+    },
+    "last.imagePath": "C:/Users/Inteli/Desktop/map_vp_estrategia",
+    "map.lastUsedFormat": "json",
+    "openFiles": [
+    ],
+    "project": "map_vp_estrategia.tiled-project",
+    "property.type": "bool",
+    "recentFiles": [
+    ],
+    "tileset.embedInMap": true,
+    "tileset.tileSize": {
+        "height": 16,
+        "width": 16
+    }
+}
