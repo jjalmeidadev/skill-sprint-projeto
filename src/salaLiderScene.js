@@ -8,9 +8,9 @@ class SalaLider extends Phaser.Scene {
       frameWidth: 32,
       frameHeight: 32,
     });
-    this.load.spritesheet("indicator", "../assets/spriteexclamação.png", {
+    this.load.spritesheet("indicator", "../assets/exclamaçãoRoxa.png", {
       frameWidth: 254,
-      frameHeight: 291,
+      frameHeight: 305,
     });
     this.load.spritesheet("leader", "../assets/lider_spritesheet.png", {
       frameWidth: 16,
