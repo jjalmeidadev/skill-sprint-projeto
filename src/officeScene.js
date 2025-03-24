@@ -7,14 +7,14 @@ class OfficeScene extends Phaser.Scene {
   preload() {
     // Carrega imagens, spritesheets e demais ativos
     this.load.spritesheet("player", "../assets/Player.png", {
-      frameWidth: 32,
-      frameHeight: 32,
+      frameWidth: 16,
+      frameHeight: 16,
     });
     this.load.image("telaComputador", "../assets/tela_computador.png");
     this.load.image("computador", "../assets/computador.png");
-    this.load.spritesheet("indicator", "../assets/spriteexclamação.png", {
+    this.load.spritesheet("indicator", "../assets/exclamaçãoRoxa.png", {
       frameWidth: 254,
-      frameHeight: 291,
+      frameHeight: 305,
     });
 
     // Carrega o mapa do Tiled e os tilesets
