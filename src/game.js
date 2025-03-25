@@ -29,9 +29,13 @@ const config = {
       OfficeScene,
       SalaLider,
       VpNegociosScene,
+
       VpPessoasScene,
+      MinigameTrashScene,
+      GameOverMinigameTrashScene,
+      CongratulationsMinigameScene,
+
       VpEstrategiaScene,
-      
 
       CurriculoScene,
       QuizVpPessoas,

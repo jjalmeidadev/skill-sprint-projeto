@@ -503,7 +503,7 @@ O Gameflow de Skill Print pode ser observado a seguir:
 <div align="center">
   <sub>Diagrama de Cenas</sub><br>
  
-![Image](https://github.com/user-attachments/assets/393b8899-1bc1-4ede-88e8-e4a5a0b202c8)
+ ![Image](https://github.com/user-attachments/assets/e5c2d30d-10b0-4523-8660-6ef98265b399)
 
 
 Link de acesso:  (file:///C:/Users/Inteli/Downloads/DIAGRAMA%20DE%20CENAS.pdf)
