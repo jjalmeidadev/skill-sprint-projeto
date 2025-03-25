@@ -13,7 +13,7 @@ class ElevadorScene extends Phaser.Scene {
     this.load.image("backgroundelev", "../assets/bgelevadorvar1.png");
     this.load.image("backgroundelev2", "../assets/bgelevadorvar2.jpg");
     this.load.image("backgroundelev3", "../assets/bgelevadorvar3.jpg");
-    this.load.spritesheet("player", "../assets/Player.png", { frameWidth: 32, frameHeight: 32, });
+    this.load.spritesheet("player", "../assets/personagens/skinsPlayer/player1all.png", { frameWidth: 16, frameHeight: 32, });
     
     this.load.image("painelinelev", "../assets/painelinelev.png");
     this.load.image("botaoestrategias", "../assets/botaoestrategias.png");
@@ -174,12 +174,10 @@ class ElevadorScene extends Phaser.Scene {
     if (this.teclas.left.isDown) {
       this.player.setVelocityX(-velocidade);
       this.player.anims.play("walk_left", true);
-      this.player.setFlipX(true);
       movendo = true;
     } else if (this.teclas.right.isDown) {
       this.player.setVelocityX(velocidade);
       this.player.anims.play("walk_right", true);
-      this.player.setFlipX(false);
       movendo = true;
     } else {
       this.player.setVelocityX(0);
@@ -260,29 +258,33 @@ class ElevadorScene extends Phaser.Scene {
     this.physics.world.setBounds(0, 0, width, height);
   }
 
+  createPlayer(width, height) {
+    this.player = this.physics.add.sprite(width - 405, height - 100, "player");
+    this.player.setScale(2);
+  }
+
   createPlayerAnimations() {
-    // Animações do player
     this.anims.create({
       key: "walk_down",
-      frames: this.anims.generateFrameNumbers("player", { start: 0, end: 5 }),
+      frames: this.anims.generateFrameNumbers("player", { start: 130, end: 135 }),
       frameRate: 10,
       repeat: -1,
     });
     this.anims.create({
       key: "walk_right",
-      frames: this.anims.generateFrameNumbers("player", { start: 6, end: 11 }),
+      frames: this.anims.generateFrameNumbers("player", { start: 112, end: 117 }),
       frameRate: 10,
       repeat: -1,
     });
     this.anims.create({
       key: "walk_up",
-      frames: this.anims.generateFrameNumbers("player", { start: 12, end: 17 }),
+      frames: this.anims.generateFrameNumbers("player", { start: 118, end: 123 }),
       frameRate: 10,
       repeat: -1,
     });
     this.anims.create({
       key: "walk_left",
-      frames: this.anims.generateFrameNumbers("player", { start: 6, end: 11 }),
+      frames: this.anims.generateFrameNumbers("player", { start: 124, end: 129 }),
       frameRate: 10,
       repeat: -1,
     });
