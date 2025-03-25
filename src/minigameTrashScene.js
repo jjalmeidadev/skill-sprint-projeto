@@ -18,7 +18,7 @@ class MinigameTrashScene extends Phaser.Scene {
     }
 
     create() {
-        this.background = this.add.image(width / 2, height / 2, 'backgroundTrash'); // Adiciona a imagem de fundo ao centro da cena
+        this.background = this.add.tileSprite(0, 0, width, height, 'backgroundTrash').setOrigin(0, 0); // Adiciona a imagem de fundo ao centro da cena
 
         this.happiness = 0; // Inicializa a pontuação em 0
         this.vivinho = 0; // Contador de partes do vivinho
@@ -44,6 +44,14 @@ class MinigameTrashScene extends Phaser.Scene {
         this.progressBar = this.add.graphics();
         this.updateProgressBar(); // inicializa com progresso em 0
 
+        // Barra de progresso das partes do Vivinho
+        this.vivinhoBarBackground = this.add.graphics();
+        this.vivinhoBarBackground.fillStyle(0x808080, 1); // Fundo cinza
+        this.vivinhoBarBackground.fillRect(width - 1450, height - 690, 300, 30); // Barra logo abaixo da felicidade
+
+        this.vivinhoProgressBar = this.add.graphics();
+        this.updateVivinhoProgressBar(); // Inicializa com progresso 0
+
         this.physics.add.overlap(this.hand, this.smile, this.collectSmile, null, this); // Adiciona detecção de sobreposição entre a mão e as carinhas
 
         // Evento que gera lixo a cada 5 segundos
@@ -52,7 +60,15 @@ class MinigameTrashScene extends Phaser.Scene {
         callback: this.spawnRandomTrash,
         callbackScope: this,
         loop: true
-    });
+        });
+
+        // Evento que gera as partes do vivinho a cada 5 segundos
+        this.time.addEvent({
+            delay: 2500,
+            callback: this.spawnRandomVivinho,
+            callbackScope: this,
+            loop: true
+        });
 
         this.headSpawned = false;
         this.bodySpawned = false;
@@ -61,6 +77,12 @@ class MinigameTrashScene extends Phaser.Scene {
 
     update() {
         let movendo = false; // Inicializa a variável de movimento
+
+        if (this.vivinho === 3 && this.happiness === 5) {
+            this.time.delayedCall(200, () => {
+                this.scene.start('congratulationsMinigameScene');
+            });
+        }
 
         const movimentos = [
             { key: 'W', velocity: { x: 0, y: -300 }, angle: 270 },
@@ -91,6 +113,8 @@ class MinigameTrashScene extends Phaser.Scene {
             this.paper.destroy(); // Destroi o sprite do papel
             this.paper = null; // Define a variável paper como null
         }
+
+        this.background.tilePositionX += 0.5; // Controla a velocidade do movimento (pode ajustar o valor)
     }
 
     // Função para coletar a carinnha feliz
@@ -188,31 +212,29 @@ class MinigameTrashScene extends Phaser.Scene {
             this.head.setVisible(false);
             this.head.disableBody(true, true);
             this.vivinho += 1;
+            this.updateVivinhoProgressBar(); // <-- Atualiza a barra
         } else if (this.bodyCollected && part === this.body) {
             this.bodyCollected = false;
             this.body.setVisible(false);
             this.body.disableBody(true, true);
             this.vivinho += 1;
+            this.updateVivinhoProgressBar(); // <-- Atualiza a barra
         } else if (this.legsCollected && part === this.legs) {
             this.legsCollected = false;
             this.legs.setVisible(false);
             this.legs.disableBody(true, true);
             this.vivinho += 1;
+            this.updateVivinhoProgressBar(); // <-- Atualiza a barra
         }
     
         this.collected = this.sound.add('collectSound', { loop: false, volume: 10 });
         this.collected.play();
     
-        if (this.vivinho === 3) {
-            this.time.delayedCall(200, () => {
-                this.scene.start('congratulationsMinigameScene');
-            });
-        }
     }
 
     // Função para gerar lixo aleatório
     spawnRandomTrash() {
-        const randomTrash = Phaser.Math.Between(0, 5); // Gera um número aleatório entre 0 e 2 para decidir o tipo de lixo
+        const randomTrash = Phaser.Math.Between(0, 2); // Gera um número aleatório entre 0 e 2 para decidir o tipo de lixo
     
         switch (randomTrash) {
             case 0: // Caso o número seja 0
@@ -227,7 +249,13 @@ class MinigameTrashScene extends Phaser.Scene {
                 this.addPaper(); // Adiciona um papel à cena
                 this.physics.add.collider(this.hand, this.paper, this.crash, null, this); // Adiciona colisão entre a mão e o papel
                 break;
-            case 3:
+    }
+}
+    spawnRandomVivinho() {
+        const randomVivinho = Phaser.Math.Between(0, 2); // Gera um número aleatório entre 0 e 2 para decidir o tipo de lixo
+
+        switch(randomVivinho) {
+            case 0:
                 if (!this.headSpawned) {
                     this.addHead();
                     this.physics.add.overlap(this.hand, this.head, this.collectVivinho, null, this);
@@ -235,7 +263,7 @@ class MinigameTrashScene extends Phaser.Scene {
                     this.headSpawned = true;
                 }
                 break;
-            case 4:
+            case 1:
                 if (!this.bodySpawned) {
                     this.addBody();
                     this.physics.add.overlap(this.hand, this.body, this.collectVivinho, null, this);
@@ -243,7 +271,7 @@ class MinigameTrashScene extends Phaser.Scene {
                     this.bodySpawned = true;
                 }
                 break;
-            case 5:
+            case 2:
                 if (!this.legsSpawned) {
                     this.addLegs();
                     this.physics.add.overlap(this.hand, this.legs, this.collectVivinho, null, this);
@@ -253,17 +281,27 @@ class MinigameTrashScene extends Phaser.Scene {
                 break;
         }
     }
-    
 
     updateProgressBar() {
-        const max = 10; // Define o valor máximo de felicidade
+        const max = 5; // Define o valor máximo de felicidade
         const percentage = Phaser.Math.Clamp(this.happiness / max, 0, 1); // Calcula a porcentagem de felicidade, garantindo que esteja entre 0 e 1
         const barWidth = 300; // Define a largura da barra de progresso
         const barHeight = 30; // Define a altura da barra de progresso
 
         this.progressBar.clear(); // Limpa o gráfico da barra de progresso anterior
-        this.progressBar.fillStyle(0x88FF88, 1); // Define a cor da barra de progresso (verde)
+        this.progressBar.fillStyle(0xFED308, 1); // Define a cor da barra de progresso (amarelo)
         this.progressBar.fillRect(width - 1450, height - 730, barWidth * percentage, barHeight); // Desenha a barra de progresso com base na porcentagem de felicidade
+    }
+
+    updateVivinhoProgressBar() {
+        const maxParts = 3; // Cabeça, corpo e pernas
+        const percentage = Phaser.Math.Clamp(this.vivinho / maxParts, 0, 1);
+        const barWidth = 300;
+        const barHeight = 30;
+    
+        this.vivinhoProgressBar.clear();
+        this.vivinhoProgressBar.fillStyle(0x670099, 1); // Define a cor da barra de progresso (roxo)
+        this.vivinhoProgressBar.fillRect(width - 1450, height - 690, barWidth * percentage, barHeight);
     }
 }
 
@@ -336,11 +374,21 @@ class CongratulationsMinigameScene extends Phaser.Scene {
     preload() {
         this.load.image('congratulation', '../assets/assetsTrash/parabens.png');
         this.load.image('vivinhoComplete', '../assets/assetsTrash/moldura.png');
+        this.load.image('buttonBack', '../assets/assetsTrash/buttonBack.png');
+        this.load.image('background', '../assets/assetsTrash/mapaVPPessoas.png');
+        this.load.audio('buttonSound', '../assets/sounds/687107__aphom000__mouse-2-button-fast-click.wav');
     }
 
     create() {
+        this.add.image(width / 2, height - 355, 'background').setScale(2.5);
         this.addCongratulation();
         this.addVivinhoComplete();
+        this.createButtonBack();
+    }
+
+    buttonSound() {
+        this.buttonClick = this.sound.add('buttonSound', {loop: false, volume: 10});
+        this.buttonClick.play();
     }
 
     addCongratulation() {
@@ -363,6 +411,16 @@ class CongratulationsMinigameScene extends Phaser.Scene {
             angle: 360, // Adiciona rotação completa
             duration: 1000,
             ease: 'Bounce.easeOut'
+        });
+    }
+
+    createButtonBack() {
+        const buttonBack = this.add.image(width / 2, height - 80, 'buttonBack');
+        buttonBack.setInteractive();
+        buttonBack.setScale(0.7);
+        buttonBack.on('pointerdown', () => {
+            this.buttonSound();
+            this.scene.switch('vpPessoasScene');
         });
     }
 }

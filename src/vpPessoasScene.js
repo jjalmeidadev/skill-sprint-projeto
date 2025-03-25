@@ -7,14 +7,16 @@ class VpPessoasScene extends Phaser.Scene {
         // Carrega o mapa do Tiled e os tilesets
         this.load.tilemapTiledJSON('vpPessoas', '../assets/mapaVPPessoas/mapaVPPessoas.json');
         this.load.image('decoracao', '../assets/mapaVPPessoas/decoracao.png');
-        this.load.image('paredes', '../assets/mapaVPPessoas/paredes.png');
+        this.load.image('paredes', '../assets/mapaVPPessoas/paredes.png');    
 
         // Carrega imagens, spritesheets e demais ativos
         this.load.spritesheet('player', '../assets/Player.png', { frameWidth: 32, frameHeight: 32 });
 
         // Carrega os efeitos sonoros
         this.load.audio('walkSound', '../assets/sounds/753292__vrymaa__footsteps-high-heels-hardwood-walk-run (mp3cut.net).wav');
-        this.load.audio('PessoasMusic', '../assets/sounds/VPpessoas.mp3')
+        this.load.audio('PessoasMusic', '../assets/sounds/VPpessoas.mp3');
+
+        this.load.spritesheet('trash', '../assets/trash.png', {frameWidth: 267, frameHeight: 343});
     }
 
     create() {
@@ -42,9 +44,9 @@ class VpPessoasScene extends Phaser.Scene {
         });
 
         // Cria e inicia a música; se houver um tempo salvo, retoma a partir dele
-      const startTime = VpPessoasScene.lastMusicTime || 0;
-      this.PessoasMusic = this.sound.add("PessoasMusic", { loop: true });
-      this.PessoasMusic.play({ seek: startTime });
+        const startTime = VpPessoasScene.lastMusicTime || 0;
+        this.PessoasMusic = this.sound.add("PessoasMusic", { loop: true });
+        this.PessoasMusic.play({ seek: startTime });
 
         // Configuração do teclado
         this.teclas = this.input.keyboard.addKeys({
@@ -70,10 +72,27 @@ class VpPessoasScene extends Phaser.Scene {
 
         // Adiciona os efeitos sonoros
         this.walkSound = this.sound.add('walkSound', {loop: false, volume: 10});
+
+        this.createTrash();
     }
 
-    update(){
-        this.movePlayer();
+    update() {
+      this.movePlayer();
+    
+      // Verifica distância para ativar/desativar a possibilidade de interação
+      if (this.trash) {
+        const dist = Phaser.Math.Distance.Between(
+          this.player.x, this.player.y,
+          this.trash.x, this.trash.y
+        );
+        this.canInteractWithTrash = dist < 50; // ajuste a distância conforme necessário
+      }
+    
+      if (this.canInteractWithTrash && Phaser.Input.Keyboard.JustDown(this.teclas.interagir)) {
+        this.buttonClick = this.sound.add('buttonSound', {loop: false, volume: 10});
+        this.buttonClick.play();
+        this.scene.switch('minigameTrashScene');
+      }
     }
 
     movePlayer() {
@@ -154,6 +173,20 @@ class VpPessoasScene extends Phaser.Scene {
           VpPessoasScene.lastMusicTime = this.PessoasMusic.seek;
           this.PessoasMusic.stop();
         }
+      }
+
+      createTrash() {
+        const trash = this.physics.add.sprite(width - 735, height - 570, 'trash');
+        trash.setScale(0.1);
+        trash.setImmovable(true);
+      
+        // Apenas overlap é necessário para ativar a possibilidade de interação
+        this.physics.add.overlap(this.player, trash, () => {
+          this.canInteractWithTrash = true;
+        });
+      
+        // Detectar quando sai da zona de interação (usando evento de update com verificação de distância)
+        this.trash = trash; // Salva o objeto para usar no update
       }
 }
 

@@ -76,7 +76,7 @@ class InitialScene extends Phaser.Scene {
             this.buttonSound();
             this.shutdown();
             this.scene.stop('initialScene');
-            this.scene.start('minigameTrashScene');
+            this.scene.start('vpPessoasScene');
         });
     }
 
