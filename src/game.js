@@ -35,6 +35,8 @@ const config = {
       GameOverMinigameTrashScene,
       CongratulationsMinigameScene,
 
+      VpEstrategiaScene,
+
       CurriculoScene,
       QuizVpPessoas,
       // GameOverSceneCurriculo,
