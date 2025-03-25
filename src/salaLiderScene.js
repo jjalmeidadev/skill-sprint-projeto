@@ -8,15 +8,15 @@ class SalaLider extends Phaser.Scene {
       frameWidth: 32,
       frameHeight: 32,
     });
-    this.load.spritesheet("indicator", "../assets/spriteexclamação.png", {
+    this.load.spritesheet("indicator", "../assets/exclamaçãoRoxa.png", {
       frameWidth: 254,
-      frameHeight: 291,
+      frameHeight: 305,
     });
-    this.load.spritesheet("leader", "../assets/lider_spritesheet.png", {
+    this.load.spritesheet("leader", "../assets/personagens/LiderReading.png", { 
       frameWidth: 16,
-      frameHeight: 16,
+      frameHeight: 32,
     });
-
+    
     // Carrega o balão de texto
     this.load.image("balaoTexto", "../assets/balaoTexto.png");
 
@@ -202,7 +202,7 @@ class SalaLider extends Phaser.Scene {
   createLeaderAnimations() {
     this.anims.create({
       key: "drink",
-      frames: this.anims.generateFrameNumbers("leader", { start: 16, end: 19 }),
+      frames: this.anims.generateFrameNumbers("leader", { start: 0, end: 11 }),
       frameRate: 4,
       repeat: -1,
     });
@@ -211,7 +211,7 @@ class SalaLider extends Phaser.Scene {
       addLeader() {
         //Adiciona a líder no jogo
         this.leader = this.physics.add.sprite(width - 600, height - 300, 'leader');
-        this.leader.setScale(5.5);
+        this.leader.setScale(4.5);
         this.leader.setFlipX(true);
         this.leader.setImmovable(true);
         this.leader.anims.play('drink');

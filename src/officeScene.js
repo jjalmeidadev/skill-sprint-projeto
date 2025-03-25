@@ -12,9 +12,9 @@ class OfficeScene extends Phaser.Scene {
     });
     this.load.image("telaComputador", "../assets/tela_computador.png");
     this.load.image("computador", "../assets/computador.png");
-    this.load.spritesheet("indicator", "../assets/spriteexclamação.png", {
+    this.load.spritesheet("indicator", "../assets/exclamaçãoRoxa.png", {
       frameWidth: 254,
-      frameHeight: 291,
+      frameHeight: 305,
     });
 
     // Carrega o mapa do Tiled e os tilesets
@@ -51,8 +51,8 @@ class OfficeScene extends Phaser.Scene {
 
       // Carrega os efeitos sonoros
       this.buttonClick = this.sound.add('buttonSound', {loop: false, volume: 10});
-      this.indicatorSound = this.sound.add('indicatorSound', {loop: true, volume: 10});
-      this.walkSound = this.sound.add('walkSound', {loop: false, volume: 10});
+      this.indicatorSound = this.sound.add('indicatorSound', {loop: true, volume: 1.5});
+      this.walkSound = this.sound.add('walkSound', {loop: false, volume: 2});
 
     // Cria e inicia a música; se houver um tempo salvo, retoma a partir dele
     const startTime = OfficeScene.lastMusicTime || 0;

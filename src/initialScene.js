@@ -136,7 +136,7 @@ class InitialScene extends Phaser.Scene {
       loop: true,
       volume: 1,
     });
-    this.initialMusic.play(false);
+    this.initialMusic.play();
 
     this.explobird = this.add
       .image(width - 300, height - 430, "explobird")
