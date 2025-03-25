@@ -40,7 +40,7 @@ class InitialScene extends Phaser.Scene {
     // Carrega o áudio da tela inicial
     this.load.audio(
       "initialMusic",
-      "../assets/Adventure Meme [ ezmp3.co ].mp3"
+      "../assets/Kevin MacLeod - Pixelland ♫ NO COPYRIGHT 8-bit Music.mp3"
     );
     this.load.audio(
       "buttonSound",
