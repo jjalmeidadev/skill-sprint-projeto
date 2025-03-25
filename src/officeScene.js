@@ -43,6 +43,10 @@ class OfficeScene extends Phaser.Scene {
     /*this.scene.start("elevadorScene");
     return;*/
 
+    if (this.walkSound && this.walkSound.isPlaying) {
+      this.walkSound.stop();
+  }
+
     const width = this.scale.width;
     const height = this.scale.height;
 
