@@ -134,7 +134,7 @@ class InitialScene extends Phaser.Scene {
     // Inicia a música da tela inicial em loop
     this.initialMusic = this.sound.add("initialMusic", {
       loop: true,
-      volume: 1,
+      volume: 0.05,
     });
     this.initialMusic.play();
 
@@ -181,7 +181,7 @@ class InitialScene extends Phaser.Scene {
 
     this.explosao.setActive(true);
     this.explosao.setVisible(true);
-    this.sound.play("vineboom", { volume: 0.02 });
+    this.sound.play("vineboom", { volume: 0.03 });
     this.explosao.anims.play("explosao", true);
     this.explosao.on("animationcomplete", () => {
       this.explosao.setVisible(false);
@@ -221,7 +221,7 @@ class InitialScene extends Phaser.Scene {
 
     this.tweens3.on("complete", () => {
       this.sound.stopByKey("vidroslide");
-      this.sound.play("vidroslide", { volume: 1 });
+      this.sound.play("vidroslide", { volume: 2 });
       this.vidroslidePlayed = true;
 
       this.tweens4 = this.tweens.add({
