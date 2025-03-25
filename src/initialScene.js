@@ -11,6 +11,7 @@ class InitialScene extends Phaser.Scene {
         this.load.image('bg04', '../assets/assetsBackground/4.png');
         this.load.image('bg05', '../assets/assetsBackground/5.png');
         this.load.image('bg06', '../assets/assetsBackground/6.png');
+        this.load.image('vivinho', '../assets/vivinho.png');
        
         this.load.image('titulo', '../assets/assetsBackground/titulo.png ');
 
@@ -49,6 +50,8 @@ class InitialScene extends Phaser.Scene {
         // Adiciona a imagem de fundo e ajusta seu tamanho
         this.add.image(width/2, height/4, 'titulo').setScale(2.0);
         this.add.image(width/2, height - 250, 'layoutPlay').setScale(1.0);
+
+        this.add.image(width - 100, height - 100, 'vivinho').setScale(0.75);
 
         // Cria os botões da tela inicial
         this.createButtonJogar(width, height);
