@@ -675,7 +675,7 @@ Abaixo, estão as principais telas desenvolvidas nesta sprint:
 
 <div align="center">
   <sub>Sala do Elevador</sub><br>
-  <img src="../assets/bgelevadorvar1.jpg" width="900px" 
+  <img src="../assets/bgelevadorvar1.png" width="900px" 
   alt="Sala do Elevador"><br>
   <sup>Fonte: produzido pelos autores. Design da sala do elevador, que servirá como ponto de transição entre as fases. </sup>
 </div>
