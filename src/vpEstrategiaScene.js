@@ -69,7 +69,7 @@ class VpEstrategiaScene extends Phaser.Scene {
         });
 
         // Adiciona os efeitos sonoros
-        this.walkSound = this.sound.add('walkSound', { loop: false, volume: 10 });
+        this.walkSound = this.sound.add('walkSound', { loop: false, volume: 2 });
 
         // Variável para controlar o estado do diálogo
         this.dialogoAtivo = false;

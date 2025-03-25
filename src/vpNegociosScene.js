@@ -62,7 +62,7 @@ class VpNegociosScene extends Phaser.Scene {
         this.physics.add.collider(this.player, layer9);
 
         // Adiciona os efeitos sonoros
-        this.walkSound = this.sound.add('walkSound', {loop: false, volume: 10});
+        this.walkSound = this.sound.add('walkSound', {loop: false, volume: 2});
     }
 
     update(){

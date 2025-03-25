@@ -446,7 +446,7 @@ class OfficeScene extends Phaser.Scene {
     this.exclamation.play('exclamando');
     
     this.indicatorActive = true;
-    this.indicatorSound = this.sound.add('indicatorSound', {loop: true, volume: 10});
+    this.indicatorSound = this.sound.add('indicatorSound', {loop: true, volume: 1.5});
     this.indicatorSound.play();
 
     this.physics.add.overlap(this.player, this.exclamation, () => {

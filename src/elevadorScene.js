@@ -54,8 +54,8 @@ class ElevadorScene extends Phaser.Scene {
 
     // Adiciona os efeitos sonoros
     this.buttonClick = this.sound.add('buttonSound', {loop: false, volume: 10});
-    this.indicatorSound = this.sound.add('indicatorSound', {loop: true, volume: 10});
-    this.walkSound = this.sound.add('walkSound', {loop: false, volume: 10});
+    this.indicatorSound = this.sound.add('indicatorSound', {loop: true, volume: 1.5});
+    this.walkSound = this.sound.add('walkSound', {loop: false, volume: 2});
 
     // Inicia o áudio do elevador em loop
     this.elevatorSound = this.sound.add("elevatorAudio", {
