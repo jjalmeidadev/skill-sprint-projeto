@@ -420,7 +420,8 @@ class CongratulationsMinigameScene extends Phaser.Scene {
         buttonBack.setScale(0.7);
         buttonBack.on('pointerdown', () => {
             this.buttonSound();
-            this.scene.switch('vpPessoasScene');
+            this.scene.stop('congratulationsMinigameScene');
+            this.scene.resume('vpPessoasScene');
         });
     }
 }

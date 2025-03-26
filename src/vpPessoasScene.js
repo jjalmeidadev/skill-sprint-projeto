@@ -15,9 +15,13 @@ class VpPessoasScene extends Phaser.Scene {
         // Carrega os efeitos sonoros
         this.load.audio('walkSound', '../assets/sounds/753292__vrymaa__footsteps-high-heels-hardwood-walk-run (mp3cut.net).wav');
         this.load.audio('PessoasMusic', '../assets/sounds/VPpessoas.mp3');
+        this.load.audio('indicatorSound', '../assets/sounds/497198_abacagi_bubble-pops (mp3cut.net).wav');
 
         this.load.spritesheet('trash', '../assets/trash.png', {frameWidth: 267, frameHeight: 343});
         this.load.spritesheet('book', '../assets/assetsBookVPPessoas/book.png', {frameWidth: 835, frameHeight: 520});
+
+        this.load.spritesheet("indicator", "../assets/exclamaçãoRoxa.png", {frameWidth: 254, frameHeight: 305,});
+        this.load.image('keyE', '../assets/teclaE.png');  
     }
 
     create() {
@@ -74,6 +78,14 @@ class VpPessoasScene extends Phaser.Scene {
         // Adiciona os efeitos sonoros
         this.walkSound = this.sound.add('walkSound', {loop: false, volume: 10});
 
+        // Cria a animação do indicador
+        this.anims.create({
+          key: "exclamando",
+          frames: this.anims.generateFrameNumbers("indicator", {start: 0, end: 1}),
+          frameRate: 3, // Velocidade da animação
+          repeat: -1,
+        });
+
         this.createTrash();
         this.createBook();
     }
@@ -88,20 +100,33 @@ class VpPessoasScene extends Phaser.Scene {
           this.trash.x, this.trash.y
         );
         this.canInteractWithTrash = dist < 50; // ajuste a distância conforme necessário
-        this.canInteractWithBook = dist < 400; // ajuste a distância conforme necessário
+        this.canInteractWithBook = dist < 300; // ajuste a distância conforme necessário
+
+        // Se afastou, destrói a tecla E
+        if (dist >= 50 && this.keyE) {
+          this.keyE.destroy();
+          this.keyE = null;
+        }
       }
     
       if (this.canInteractWithTrash && Phaser.Input.Keyboard.JustDown(this.teclas.interagir)) {
         this.buttonClick = this.sound.add('buttonSound', {loop: false, volume: 10});
         this.buttonClick.play();
-        this.scene.switch('minigameTrashScene');
+        this.scene.pause();
+        this.scene.launch('minigameTrashScene');
       }
 
       if (this.canInteractWithBook && Phaser.Input.Keyboard.JustDown(this.teclas.interagir)) {
         this.buttonClick = this.sound.add('buttonSound', {loop: false, volume: 10});
         this.buttonClick.play();
-        this.scene.switch('bookScene');
+        this.scene.pause();
+        this.scene.launch('bookScene');
       }
+    }
+
+    indicatorSound() {
+      this.exclaming = this.sound.add('indicatorSound', {loop: false, volume: 10});
+      this.exclaming.play();
     }
 
     movePlayer() {
@@ -188,10 +213,15 @@ class VpPessoasScene extends Phaser.Scene {
         const trash = this.physics.add.sprite(width - 735, height - 570, 'trash');
         trash.setScale(0.1);
         trash.setImmovable(true);
+        this.createIndicatorTrash();
       
         // Apenas overlap é necessário para ativar a possibilidade de interação
         this.physics.add.overlap(this.player, trash, () => {
           this.canInteractWithTrash = true;
+        
+          if (!this.keyE) {
+            this.keyE = this.add.image(width - 735, height - 610, 'keyE').setScale(0.2);
+          }
         });
       
         // Detectar quando sai da zona de interação (usando evento de update com verificação de distância)
@@ -210,6 +240,34 @@ class VpPessoasScene extends Phaser.Scene {
       
         // Detectar quando sai da zona de interação (usando evento de update com verificação de distância)
         this.book = book; // Salva o objeto para usar no update
+      }
+
+      createIndicatorTrash() {
+        this.indicatorTrash = this.physics.add.sprite(width - 740, height - 630, 'indicator');
+        this.indicatorTrash.setScale(0.2);
+        this.indicatorTrash.setImmovable(true);
+        this.indicatorTrash.play("exclamando");
+      
+        // Toca o som de alerta
+        this.indicatorSoundInstance = this.sound.add('indicatorSound', { loop: true, volume: 10 });
+        this.indicatorSoundInstance.play();
+      
+        this.physics.add.overlap(this.player, this.indicatorTrash, () => {
+          if (this.indicatorTrashActive) {
+            this.indicatorSoundInstance.stop();
+            this.indicatorTrash.destroy();
+            this.indicatorTrashActive = false;
+          }
+        });
+      
+        this.indicatorTrashActive = true; // Flag de controle
+      }
+
+      resume() {
+        if (this.keyE) {
+          this.keyE.destroy();
+          this.keyE = null;
+        }
       }
 }
 
@@ -266,7 +324,8 @@ class bookScene extends Phaser.Scene {
         buttonArrow.setScale(0.8);
         buttonArrow.on('pointerdown', () => {
             this.buttonSound();
-            this.scene.switch('vpPessoasScene');
+            this.scene.stop('bookScene');
+            this.scene.resume('vpPessoasScene');
         });
     }
 
