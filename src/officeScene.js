@@ -407,7 +407,7 @@ class OfficeScene extends Phaser.Scene {
     this.exclamation.setVisible(false);
 
     const speechVivita = [
-      "Olá! Você deve ser Fulano, né?",
+      "Olá! Você deve ser " + playerName + ", né?",
       "Fiquei sabendo que você quer mudar de carreira na Vivo.",
       "Vou te explicar o primeiro passo.",
       "Primeiro, você precisa criar o seu currículo.",

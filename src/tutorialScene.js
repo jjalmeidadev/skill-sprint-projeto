@@ -6,7 +6,7 @@ class TutorialScene extends Phaser.Scene {
         //Lista de falas do vivinho(tutorial)
         this.introducao = [
             "Olá! Qual é o seu nome?",
-            "Vivinho: Olá, Fulano! Bem-vindo à Vivo! Somos a maior empresa de telecomunicações do Brasil! Parabéns por fazer parte do nosso time!",
+            "Vivinho: Olá, " + playerName + "! Bem-vindo à Vivo! Somos a maior empresa de telecomunicações do Brasil! Parabéns por fazer parte do nosso time!",
             "Vivinho: Eu tenho uma importante missão: apresentar para você o plano de carreira interno da Vivo. Me diga, você conhece o plano de carreira da Vivo?"
         ];
 

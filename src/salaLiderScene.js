@@ -275,7 +275,7 @@ class SalaLider extends Phaser.Scene {
     this.exclamation.setVisible(false); // Remove a exclamação
 
     var speechLeader = [
-      'Olá, Fulano! Tudo bem?',
+      'Olá, ' + playerName + '! Tudo bem?',
       'Ah, então quer dizer que você quer migrar para uma nova VP? Que alegria!',
       'Vou analisar seu currículo.',
       'Vamos ver...',
