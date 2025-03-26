@@ -2,19 +2,35 @@ class InitialScene extends Phaser.Scene {
   constructor() {
     super({ key: "initialScene" });
     this.vidroslidePlayed = false;
+    const config = {
+      type: Phaser.AUTO,
+      width: 800,
+      height: 600,
+      physics: {
+        default: "arcade",
+        arcade: {
+          debug: false, // Set to true to see hitboxes
+          gravity: { y: 0 },
+          fps: 60, // Force constant frame updates
+          fixedStep: true, // Ensures physics runs at a fixed time step
+        },
+      },
+      scene: InitialScene,
+    };
+
   }
 
-    preload() {
-        // Carrega os ativos visuais
-        this.load.image('bg01', '../assets/assetsBackground/1.png');
-        this.load.image('bg02', '../assets/assetsBackground/2.png');
-        this.load.image('bg03', '../assets/assetsBackground/3.png');
-        this.load.image('bg04', '../assets/assetsBackground/4.png');
-        this.load.image('bg05', '../assets/assetsBackground/5.png');
-        this.load.image('bg06', '../assets/assetsBackground/6.png');
-        this.load.image('vivinho', '../assets/vivinho.png');
-       
-        this.load.image('titulo', '../assets/assetsBackground/titulo.png ');
+  preload() {
+    // Carrega os ativos visuais
+    this.load.image("bg01", "../assets/assetsBackground/1.png");
+    this.load.image("bg02", "../assets/assetsBackground/2.png");
+    this.load.image("bg03", "../assets/assetsBackground/3.png");
+    this.load.image("bg04", "../assets/assetsBackground/4.png");
+    this.load.image("bg05", "../assets/assetsBackground/5.png");
+    this.load.image("bg06", "../assets/assetsBackground/6.png");
+    this.load.image("vivinho", "../assets/vivinho.png");
+
+    this.load.image("titulo", "../assets/assetsBackground/titulo.png ");
 
     this.load.image("botaoJogar", "../assets/assets_botoes/botaoPlay.png");
     this.load.image(
@@ -75,18 +91,24 @@ class InitialScene extends Phaser.Scene {
     );
     const birdeaster = this.birdeaster;
     this.birdeaster.v0 = 0;
-    this.birdeaster.a = 40;
+    this.birdeaster.a = 20;
     this.timeset = this.time.now;
 
     this.meteoro = this.physics.add.sprite(
-      width + 210,
+      width + 5,
       height - 1050,
       "meteoro"
     );
     const meteoro = this.meteoro;
     this.meteoro.setFlipX(true);
+    meteoro.setAngle(-20);
     this.meteoro.setScale(0.4);
-    this.meteoro.dS = 70;
+    this.meteoro.dS = 35;
+    this.meteoro.v0 = 0;
+    this.meteoro.a = 9;
+
+    this.birdeaster.body.setEnable(true);
+    this.meteoro.body.setEnable(true);
 
     this.explosao = this.physics.add.sprite(
       width - 500,
@@ -149,11 +171,11 @@ class InitialScene extends Phaser.Scene {
     this.events.on("shutdown", this.shutdown, this);
     this.events.on("pause", this.shutdown, this);
 
-        // Adiciona a imagem de fundo e ajusta seu tamanho
-        this.add.image(width/2, height/4, 'titulo').setScale(2.0);
-        this.add.image(width/2, height - 250, 'layoutPlay').setScale(1.0);
+    // Adiciona a imagem de fundo e ajusta seu tamanho
+    this.add.image(width / 2, height / 4, "titulo").setScale(2.0);
+    this.add.image(width / 2, height - 250, "layoutPlay").setScale(1.0);
 
-        this.add.image(width - 100, height - 100, 'vivinho').setScale(0.75);
+    this.add.image(width - 100, height - 100, "vivinho").setScale(0.75);
 
     // Cria os botões da tela inicial
     this.createButtonJogar(width, height);
@@ -163,13 +185,17 @@ class InitialScene extends Phaser.Scene {
     this.physics.add.collider(
       this.birdeaster,
       this.meteoro,
-      this.collision,
+      (birdeaster, meteoro) => {
+        console.log("Colisão detectada dentro da função anônima!");
+        this.collision(birdeaster, meteoro);
+      },
       null,
       this
     );
   }
 
-  collision(birdeaster, meteoro, explosao) {
+  collision = (birdeaster, meteoro) => {
+    console.log("Colisão detectada!");
     birdeaster.setVelocity(0, 0);
     meteoro.setVelocity(0, 0);
 
@@ -216,11 +242,11 @@ class InitialScene extends Phaser.Scene {
     // Set tweens3 only once
     this.tweens3 = this.tweens.add({
       targets: this.explobird,
-      x: this.explobird.x - 400,
-      y: this.explobird.y - 10,
+      x: this.explobird.x - 600,
+      y: this.explobird.y - 5,
       duration: 1800,
       ease: "Linear",
-    }); 
+    });
 
     this.tweens3.on("complete", () => {
       this.sound.stopByKey("vidroslide");
@@ -234,7 +260,7 @@ class InitialScene extends Phaser.Scene {
         ease: "Linear",
       });
     });
-  }
+  };
 
   shutdown() {
     // Interrompe a música ao encerrar ou pausar a cena
@@ -263,17 +289,21 @@ class InitialScene extends Phaser.Scene {
     });
   }
 
-    createButtonCreditos(width, height) {
-        const botaoCreditos = this.add.image(width / 2, height / 1.5, 'botaoCreditos');
-        botaoCreditos.setInteractive();
-        botaoCreditos.setScale(1);
-        botaoCreditos.on('pointerdown', () => {
-            this.buttonSound();
-            this.shutdown();
-            this.scene.stop('initialScene');
-            this.scene.switch('creditosScene');
-        });
-    }
+  createButtonCreditos(width, height) {
+    const botaoCreditos = this.add.image(
+      width / 2,
+      height / 1.5,
+      "botaoCreditos"
+    );
+    botaoCreditos.setInteractive();
+    botaoCreditos.setScale(1);
+    botaoCreditos.on("pointerdown", () => {
+      this.buttonSound();
+      this.shutdown();
+      this.scene.stop("initialScene");
+      this.scene.switch("creditosScene");
+    });
+  }
 
   createButtonAjustes(width, height) {
     const botaoAjustes = this.add.image(
@@ -316,12 +346,25 @@ class InitialScene extends Phaser.Scene {
           0.5 * this.birdeaster.a * t * t;
 
         // Cálculo da velocidade com V = delta S/t
-        let vmeteor = -this.meteoro.dS / t;
 
-        // Cálculo do deslocamento com deltaS = posição inicial + velocidade * tempo
-        this.meteoro.x -= (this.meteoro.dS * delta) / 1000;
-        this.meteoro.y += (this.meteoro.dS * delta) / 1000;
+        this.meteoro.setVelocityX(-this.meteoro.dS / t);
+
+        // Cálculo da velocidade com V = v0 + at
+
+        this.meteoro.setVelocityY(this.meteoro.v0 + this.meteoro.a * t);
       }
+    }
+    if (this.meteoro.visible) {
+      console.log(
+        "A posição do meteoro no eixo X é: " +
+          this.meteoro.x +
+          " A posição do meteoro no eixo Y é: " +
+          this.meteoro.y +
+          "A velocidade do meteoro no eixo X é: " +
+          this.meteoro.body.velocity.x +
+          " A velocidade do meteoro no eixo Y é: " +
+          this.meteoro.body.velocity.y
+      );
     }
   }
 }
