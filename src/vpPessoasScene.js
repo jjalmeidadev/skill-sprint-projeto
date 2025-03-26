@@ -13,7 +13,7 @@ class VpPessoasScene extends Phaser.Scene {
         // Carrega o mapa do Tiled e os tilesets
         this.load.tilemapTiledJSON('vpPessoas', '../assets/mapaVPPessoas/mapaVPPessoas.json');
         this.load.image('decoracao', '../assets/mapaVPPessoas/decoracao.png');
-        this.load.image('paredes', '../assets/mapaVPPessoas/paredes.png');    
+        this.load.image('paredes', '../assets/mapaVPPessoas/paredes.png');
 
         // Carrega imagens, spritesheets e demais ativos
         this.load.spritesheet('player', '../assets/personagens/skinsPlayer/player1all.png', { frameWidth: 16, frameHeight: 32 });
@@ -22,21 +22,34 @@ class VpPessoasScene extends Phaser.Scene {
         this.load.audio('walkSound', '../assets/sounds/753292__vrymaa__footsteps-high-heels-hardwood-walk-run (mp3cut.net).wav');
         this.load.audio('PessoasMusic', '../assets/sounds/VPpessoas.mp3')
 
-        this.load.spritesheet("npcReceptor", "../assets/personagens/LiderReading.png", { frameWidth: 16, frameHeight: 32, });         
-        this.load.spritesheet("npc11", "../assets/personagens/VPpessoas/npc11.png", { frameWidth: 16, frameHeight: 32,});    
-        this.load.spritesheet("npc12", "../assets/personagens/VPpessoas/npc12.png", { frameWidth: 16, frameHeight: 32,});   
-        this.load.spritesheet("npc13", "../assets/personagens/VPpessoas/npc13.png", { frameWidth: 16, frameHeight: 32,});        
-        this.load.spritesheet("npc14", "../assets/personagens/VPpessoas/npc14.png", { frameWidth: 16, frameHeight: 32,});      
+        this.load.spritesheet("npcReceptor", "../assets/personagens/LiderReading.png", { frameWidth: 16, frameHeight: 32, });
+          
+        this.load.spritesheet("npc11", "../assets/personagens/VPpessoas/npc11.png", { frameWidth: 16, frameHeight: 32,});
+    
+        this.load.spritesheet("npc12", "../assets/personagens/VPpessoas/npc12.png", { frameWidth: 16, frameHeight: 32,});
+    
+        this.load.spritesheet("npc13", "../assets/personagens/VPpessoas/npc13.png", { frameWidth: 16, frameHeight: 32,});
+          
+        this.load.spritesheet("npc14", "../assets/personagens/VPpessoas/npc14.png", { frameWidth: 16, frameHeight: 32,});
+          
         this.load.spritesheet("npc15", "../assets/personagens/VPpessoas/npc15.png", { frameWidth: 16, frameHeight: 32,});
-        this.load.spritesheet("npc16", "../assets/personagens/VPpessoas/npc16.png", { frameWidth: 16, frameHeight: 32,});
-        this.load.spritesheet("npc17", "../assets/personagens/VPpessoas/npc17.png", { frameWidth: 16, frameHeight: 32,});
-        this.load.spritesheet("npc18", "../assets/personagens/VPpessoas/npc18.png", { frameWidth: 16, frameHeight: 32,});
-        this.load.spritesheet("npc19", "../assets/personagens/VPpessoas/npc19.png", { frameWidth: 16, frameHeight: 32, });
-        this.load.spritesheet("npc20", "../assets/personagens/VPpessoas/npc20.png", { frameWidth: 16, frameHeight: 32,});
-        this.load.spritesheet("npc21", "../assets/personagens/VPpessoas/npc21.png", { frameWidth: 16, frameHeight: 32,});
-        this.load.spritesheet("npc22", "../assets/personagens/VPpessoas/npc22.png", { frameWidth: 16, frameHeight: 32,});
-        this.load.spritesheet("npc23", "../assets/personagens/VPpessoas/npc23.png", { frameWidth: 16, frameHeight: 32,});
 
+        this.load.spritesheet("npc16", "../assets/personagens/VPpessoas/npc16.png", { frameWidth: 16, frameHeight: 32,});
+
+        this.load.spritesheet("npc17", "../assets/personagens/VPpessoas/npc17.png", { frameWidth: 16, frameHeight: 32,});
+
+        this.load.spritesheet("npc18", "../assets/personagens/VPpessoas/npc18.png", { frameWidth: 16, frameHeight: 32,});
+
+        this.load.spritesheet("npc19", "../assets/personagens/VPpessoas/npc19.png", { frameWidth: 16, frameHeight: 32, });
+
+        this.load.spritesheet("npc20", "../assets/personagens/VPpessoas/npc20.png", { frameWidth: 16, frameHeight: 32,});
+
+        this.load.spritesheet("npc21", "../assets/personagens/VPpessoas/npc21.png", { frameWidth: 16, frameHeight: 32,});
+
+        this.load.spritesheet("npc22", "../assets/personagens/VPpessoas/npc22.png", { frameWidth: 16, frameHeight: 32,});
+
+        this.load.spritesheet("npc23", "../assets/personagens/VPpessoas/npc23.png", { frameWidth: 16, frameHeight: 32,});
+   
         this.load.audio('PessoasMusic', '../assets/sounds/VPpessoas.mp3');
         this.load.audio('indicatorSound', '../assets/sounds/497198_abacagi_bubble-pops (mp3cut.net).wav');
 
@@ -72,9 +85,9 @@ class VpPessoasScene extends Phaser.Scene {
         });
 
         // Cria e inicia a música; se houver um tempo salvo, retoma a partir dele
-        const startTime = VpPessoasScene.lastMusicTime || 0;
-        this.PessoasMusic = this.sound.add("PessoasMusic", { loop: true });
-        this.PessoasMusic.play({ seek: startTime });
+      const startTime = VpPessoasScene.lastMusicTime || 0;
+      this.PessoasMusic = this.sound.add("PessoasMusic", { loop: true });
+      this.PessoasMusic.play({ seek: startTime });
 
         // Configuração do teclado
         this.teclas = this.input.keyboard.addKeys({
@@ -102,9 +115,6 @@ class VpPessoasScene extends Phaser.Scene {
         this.physics.add.collider(this.player, layer7);
         this.physics.add.collider(this.player, layer9);
 
-        // Adiciona os efeitos sonoros
-        this.walkSound = this.sound.add('walkSound', {loop: false, volume: 10});
-
         // Cria a animação do indicador
         this.anims.create({
           key: "exclamando",
@@ -115,48 +125,51 @@ class VpPessoasScene extends Phaser.Scene {
 
         this.createTrash();
         this.createBook();
+
+        // Adiciona os efeitos sonoros
+        this.walkSound = this.sound.add('walkSound', {loop: false, volume: 10});
     }
 
     addNpc() {
       //Adiciona a npc no jogo
-      this.npc11 = this.physics.add.sprite(width - 500, height - 400, 'npc11');
+      this.npc11 = this.physics.add.sprite(width - 1070, height - 185, 'npc11');
       this.npc11.setScale(2.0);
       this.npc11.setImmovable(true);
       this.createNpcAnimations();
       this.npc11.anims.play('Idle');
   
-      this.npc12 = this.physics.add.sprite(width - 530, height - 400, 'npc12');
+      this.npc12 = this.physics.add.sprite(width - 885, height - 265, 'npc12');
       this.npc12.setScale(2.0);
       this.npc12.setImmovable(true);
       this.createNpcAnimations();
       this.npc12.anims.play('npc12');
   
-      this.npc13 = this.physics.add.sprite(width - 560, height - 400, 'npc13');
+      this.npc13 = this.physics.add.sprite(width - 1070, height - 265, 'npc13');
       this.npc13.setScale(2.0);
       this.npc13.setImmovable(true);
       this.createNpcAnimations();
       this.npc13.setFlipX(true);
       this.npc13.anims.play('npc13');
   
-      this.npc14 = this.physics.add.sprite(width - 590, height - 400, 'npc14');
+      this.npc14 = this.physics.add.sprite(width - 655, height - 265, 'npc14');
       this.npc14.setScale(2.0);
       this.npc14.setImmovable(true);
       this.createNpcAnimations();
       this.npc14.play('npc14');
   
-      this.npc15 = this.physics.add.sprite(width - 620, height - 400, 'npc15');
+      this.npc15 = this.physics.add.sprite(width - 885, height - 185, 'npc15');
       this.npc15.setScale(2.0);
       this.npc15.setImmovable(true);
       this.createNpcAnimations();
       this.npc15.anims.play('npc15');
   
-      this.npc16 = this.physics.add.sprite(width - 650, height - 400, 'npc16');
+      this.npc16 = this.physics.add.sprite(width - 487, height - 200, 'npc16');
       this.npc16.setScale(2.0);
       this.npc16.setImmovable(true);
       this.createNpcAnimations();
       this.npc16.anims.play('npc16');
 
-      this.npc17 = this.physics.add.sprite(width - 670, height - 400, 'npc17');
+      this.npc17 = this.physics.add.sprite(width - 810, height - 624, 'npc17');
       this.npc17.setScale(2.0);
       this.npc17.setImmovable(true);
       this.createNpcAnimations();
@@ -192,7 +205,7 @@ class VpPessoasScene extends Phaser.Scene {
       this.createNpcAnimations();
       this.npc22.anims.play('npc22');
 
-      this.npc23 = this.physics.add.sprite(width - 650, height - 400, 'npc23');
+      this.npc23 = this.physics.add.sprite(width - 1200, height - 350, 'npc23');
       this.npc23.setScale(2.0);
       this.npc23.setImmovable(true);
       this.createNpcAnimations();
@@ -202,16 +215,6 @@ class VpPessoasScene extends Phaser.Scene {
     
     createNpcAnimations() { 
         this.anims.create({
-
-          //sentado direita 1: 280-285, sentado esquerda 1: 286-291
-          //setado direita 2: 336-341, sentado esquerda 2: 342-347
-          //no celular: 392-403
-          //lendo livro: 448-459
-          //idle direita: 56-62
-          //idle cima: 63-68
-          //idle esquerda: 69-74
-          //idle baixo: 75-80
-
           key: "npc11",//sentado direita 1
           frames: this.anims.generateFrameNumbers('npc11', { start: 0, end: 5 }),
           frameRate: 4,
@@ -302,11 +305,11 @@ class VpPessoasScene extends Phaser.Scene {
           repeat: -1,
         });
       }
+      
+    update(){
+        this.movePlayer();
 
-    update() {
-      this.movePlayer();
-
-      // LIXO
+        // LIXO
       if (this.trash) {
         const distTrash = Phaser.Math.Distance.Between(
           this.player.x, this.player.y,
@@ -578,112 +581,112 @@ class VpPessoasScene extends Phaser.Scene {
 VpPessoasScene.lastMusicTime = 0;
 
 class bookScene extends Phaser.Scene {
-    constructor() {
-        super({ key: 'bookScene' });
-    }
+  constructor() {
+      super({ key: 'bookScene' });
+  }
 
-    preload() {
-        this.load.image('arrowYellow', '../assets/assetsBookVPPessoas/arrow_yellow.png');
-        this.load.image('backgroundTable', '../assets/assetsBookVPPessoas/backgroundTable.png');
-        this.load.image('bookTable', '../assets/assetsBookVPPessoas/caderno.png');
-        this.load.image('column1', '../assets/assetsBookVPPessoas/coluna1.png');
-        this.load.image('column2', '../assets/assetsBookVPPessoas/coluna2.png');
-        this.load.image('column3', '../assets/assetsBookVPPessoas/coluna3.png');
-        this.load.image('column4', '../assets/assetsBookVPPessoas/coluna4.png');
-        this.load.image('column5', '../assets/assetsBookVPPessoas/coluna5.png');
-        this.load.image('board', '../assets/assetsBookVPPessoas/prancheta.png');
-        this.load.image('answer1', '../assets/assetsBookVPPessoas/topico1.png');
-        this.load.image('answer2', '../assets/assetsBookVPPessoas/topico2.png');
-        this.load.image('answer3', '../assets/assetsBookVPPessoas/topico3.png');
-        this.load.image('answer4', '../assets/assetsBookVPPessoas/topico4.png');
-        this.load.image('answer5', '../assets/assetsBookVPPessoas/topico5.png');
+  preload() {
+      this.load.image('arrowYellow', '../assets/assetsBookVPPessoas/arrow_yellow.png');
+      this.load.image('backgroundTable', '../assets/assetsBookVPPessoas/backgroundTable.png');
+      this.load.image('bookTable', '../assets/assetsBookVPPessoas/caderno.png');
+      this.load.image('column1', '../assets/assetsBookVPPessoas/coluna1.png');
+      this.load.image('column2', '../assets/assetsBookVPPessoas/coluna2.png');
+      this.load.image('column3', '../assets/assetsBookVPPessoas/coluna3.png');
+      this.load.image('column4', '../assets/assetsBookVPPessoas/coluna4.png');
+      this.load.image('column5', '../assets/assetsBookVPPessoas/coluna5.png');
+      this.load.image('board', '../assets/assetsBookVPPessoas/prancheta.png');
+      this.load.image('answer1', '../assets/assetsBookVPPessoas/topico1.png');
+      this.load.image('answer2', '../assets/assetsBookVPPessoas/topico2.png');
+      this.load.image('answer3', '../assets/assetsBookVPPessoas/topico3.png');
+      this.load.image('answer4', '../assets/assetsBookVPPessoas/topico4.png');
+      this.load.image('answer5', '../assets/assetsBookVPPessoas/topico5.png');
 
-        this.load.audio('buttonSound', '../assets/sounds/687107__aphom000__mouse-2-button-fast-click.wav');
-        this.load.audio('soundPaper', '../assets/sounds/484957__spacejoe__page-turns-2 (mp3cut.net).wav');
-    }
+      this.load.audio('buttonSound', '../assets/sounds/687107__aphom000__mouse-2-button-fast-click.wav');
+      this.load.audio('soundPaper', '../assets/sounds/484957__spacejoe__page-turns-2 (mp3cut.net).wav');
+  }
 
-    create() {
-        this.add.image(width / 2, height / 2, 'backgroundTable').setScale(0.7);
-        this.add.image(width - 960, height - 340, 'bookTable').setScale(0.7);
+  create() {
+      this.add.image(width / 2, height / 2, 'backgroundTable').setScale(0.7);
+      this.add.image(width - 960, height - 340, 'bookTable').setScale(0.7);
 
-        this.createArrow();
-        this.createColumns();
-        this.createBoard();
-    }
+      this.createArrow();
+      this.createColumns();
+      this.createBoard();
+  }
 
-    buttonSound() {
-      this.buttonClick = this.sound.add('buttonSound', {loop: false, volume: 10});
-      this.buttonClick.play();
-    }
+  buttonSound() {
+    this.buttonClick = this.sound.add('buttonSound', {loop: false, volume: 10});
+    this.buttonClick.play();
+  }
 
-    soundPaper() {
-      this.pageTurn = this.sound.add('soundPaper', {loop: false, volume: 10});
-      this.pageTurn.play();
-    }
+  soundPaper() {
+    this.pageTurn = this.sound.add('soundPaper', {loop: false, volume: 10});
+    this.pageTurn.play();
+  }
 
-    createArrow() {
-      const buttonArrow = this.add.image(width - 1200, height - 70, 'arrowYellow');
-        buttonArrow.setInteractive();
-        buttonArrow.setScale(0.8);
-        buttonArrow.on('pointerdown', () => {
-            this.buttonSound();
-            this.scene.stop('bookScene');
-            this.scene.resume('vpPessoasScene');
-        });
-    }
-
-    createColumns() {
-      const column1 = this.add.image(width - 1105, height - 490, 'column1').setScale(0.7);
-      const column2 = this.add.image(width - 1118, height - 430, 'column2').setScale(0.7);
-      const column3 = this.add.image(width - 1110, height - 355, 'column3').setScale(0.7);
-      const column4 = this.add.image(width - 1108, height - 275, 'column4').setScale(0.7);
-      const column5 = this.add.image(width - 1110, height - 200, 'column5').setScale(0.7);
-
-      const columns = [column1, column2, column3, column4, column5];
-
-      columns.forEach((column, index) => {
-      column.setInteractive();
-
-      column.on('pointerover', () => {
-        column.setScale(0.8); // Aumenta o tamanho ao passar o cursor
+  createArrow() {
+    const buttonArrow = this.add.image(width - 1200, height - 70, 'arrowYellow');
+      buttonArrow.setInteractive();
+      buttonArrow.setScale(0.8);
+      buttonArrow.on('pointerdown', () => {
+          this.buttonSound();
+          this.scene.stop('bookScene');
+          this.scene.resume('vpPessoasScene');
       });
+  }
 
-      column.on('pointerout', () => {
-        column.setScale(0.7); // Volta ao tamanho normal ao tirar o cursor
-      });
+  createColumns() {
+    const column1 = this.add.image(width - 1105, height - 490, 'column1').setScale(0.7);
+    const column2 = this.add.image(width - 1118, height - 430, 'column2').setScale(0.7);
+    const column3 = this.add.image(width - 1110, height - 355, 'column3').setScale(0.7);
+    const column4 = this.add.image(width - 1108, height - 275, 'column4').setScale(0.7);
+    const column5 = this.add.image(width - 1110, height - 200, 'column5').setScale(0.7);
 
-      column.on('pointerdown', () => {
-        this.column = index + 1; // Define a coluna selecionada
-        this.buttonSound();
-        this.createBoard(); // Atualiza o quadro com base na coluna selecionada
-      });
-      });
+    const columns = [column1, column2, column3, column4, column5];
+
+    columns.forEach((column, index) => {
+    column.setInteractive();
+
+    column.on('pointerover', () => {
+      column.setScale(0.8); // Aumenta o tamanho ao passar o cursor
+    });
+
+    column.on('pointerout', () => {
+      column.setScale(0.7); // Volta ao tamanho normal ao tirar o cursor
+    });
+
+    column.on('pointerdown', () => {
+      this.column = index + 1; // Define a coluna selecionada
+      this.buttonSound();
+      this.createBoard(); // Atualiza o quadro com base na coluna selecionada
+    });
+    });
+  }
+
+  createBoard() {
+    this.add.image(width - 460, height - 377, 'board').setScale(0.7);
+
+    switch (this.column) {
+    case 1:
+      this.add.image(width - 460, height - 377, 'answer1').setScale(0.7);
+      this.soundPaper();
+      break;
+    case 2:
+      this.add.image(width - 460, height - 377, 'answer2').setScale(0.7);
+      this.soundPaper();
+      break;
+    case 3:
+      this.add.image(width - 460, height - 377, 'answer3').setScale(0.7);
+      this.soundPaper();
+      break;
+    case 4:
+      this.add.image(width - 460, height - 377, 'answer4').setScale(0.7);
+      this.soundPaper();
+      break;
+    case 5:
+      this.add.image(width - 460, height - 377, 'answer5').setScale(0.7);
+      this.soundPaper();
+      break;
     }
-
-    createBoard() {
-      this.add.image(width - 460, height - 377, 'board').setScale(0.7);
-
-      switch (this.column) {
-      case 1:
-        this.add.image(width - 460, height - 377, 'answer1').setScale(0.7);
-        this.soundPaper();
-        break;
-      case 2:
-        this.add.image(width - 460, height - 377, 'answer2').setScale(0.7);
-        this.soundPaper();
-        break;
-      case 3:
-        this.add.image(width - 460, height - 377, 'answer3').setScale(0.7);
-        this.soundPaper();
-        break;
-      case 4:
-        this.add.image(width - 460, height - 377, 'answer4').setScale(0.7);
-        this.soundPaper();
-        break;
-      case 5:
-        this.add.image(width - 460, height - 377, 'answer5').setScale(0.7);
-        this.soundPaper();
-        break;
-      }
-    }
+  }
 }
