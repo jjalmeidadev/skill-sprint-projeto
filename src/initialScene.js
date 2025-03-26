@@ -157,7 +157,7 @@ class InitialScene extends Phaser.Scene {
     // Inicia a música da tela inicial em loop
     this.initialMusic = this.sound.add("initialMusic", {
       loop: true,
-      volume: 0.05,
+      volume: 2,
     });
     this.initialMusic.play();
 

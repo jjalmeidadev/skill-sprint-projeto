@@ -18,7 +18,7 @@ class SalaLider extends Phaser.Scene {
     });
 
     // Carrega o balão de texto
-    this.load.image("balaoTexto", "../assets/balaoTexto.png");
+    this.load.image("textBalloon", "../assets/balaoTexto.png");
 
     // Carrega o mapa da sala do líder
     this.load.tilemapTiledJSON('salaLider', '../assets/mapaSalaLider/mapaSalaLider.json');
@@ -62,7 +62,7 @@ class SalaLider extends Phaser.Scene {
     this.leaderInteracted = false; // Variável para controlar se a interação já ocorreu
 
     // Configuração do teclado (WASD + E para interação)
-    this.teclas = this.input.keyboard.addKeys({
+    this.keyboards = this.input.keyboard.addKeys({
       up: Phaser.Input.Keyboard.KeyCodes.W,
       down: Phaser.Input.Keyboard.KeyCodes.S,
       left: Phaser.Input.Keyboard.KeyCodes.A,
@@ -148,12 +148,12 @@ class SalaLider extends Phaser.Scene {
     const velocidade = 150;
     let movendo = false;
 
-    if (this.teclas.left.isDown) {
+    if (this.keyboards.left.isDown) {
       this.player.setVelocityX(-velocidade);
       this.player.anims.play("walk_left", true);
       this.player.setFlipX(true);
       movendo = true;
-    } else if (this.teclas.right.isDown) {
+    } else if (this.keyboards.right.isDown) {
       this.player.setVelocityX(velocidade);
       this.player.anims.play("walk_right", true);
       this.player.setFlipX(false);
@@ -162,11 +162,11 @@ class SalaLider extends Phaser.Scene {
       this.player.setVelocityX(0);
     }
 
-    if (this.teclas.up.isDown) {
+    if (this.keyboards.up.isDown) {
       this.player.setVelocityY(-velocidade);
       this.player.anims.play("walk_up", true);
       movendo = true;
-    } else if (this.teclas.down.isDown) {
+    } else if (this.keyboards.down.isDown) {
       this.player.setVelocityY(velocidade);
       this.player.anims.play("walk_down", true);
       movendo = true;
@@ -274,7 +274,7 @@ class SalaLider extends Phaser.Scene {
   showLeaderInteraction() {
     this.exclamation.setVisible(false); // Remove a exclamação
 
-    var speechLeader = [
+    var leaderDialog = [
       'Olá, ' + playerName + '! Tudo bem?',
       'Ah, então quer dizer que você quer migrar para uma nova VP? Que alegria!',
       'Vou analisar seu currículo.',
@@ -283,21 +283,21 @@ class SalaLider extends Phaser.Scene {
       'Vá até o elevador para conhecer as áreas internas da vivo!'
     ];
 
-    let currentSpeechIndex = 0;
-    const audio = this.sound.add('talkSound', { volume: 5 });
-    let balaoTexto, text;
+    let currentDialogIndex = 0;
+    const audio = this.sound.add('talkSound', { volume: 1 });
+    let textBalloon, text;
 
     // Adiciona o balão de fala
-    if (!balaoTexto) {
-      balaoTexto = this.add.image(width - 730, height - 420, 'balaoTexto');
-      balaoTexto.setFlipX(true);
-      balaoTexto.setVisible(true);
+    if (!textBalloon) {
+      textBalloon = this.add.image(width - 730, height - 420, 'textBalloon');
+      textBalloon.setFlipX(true);
+      textBalloon.setVisible(true);
 
       // Adiciona a caixa de texto dentro do balão
-      text = this.add.text(width - 815, height - 480, speechLeader[0], {
+      text = this.add.text(width - 815, height - 480, leaderDialog[0], {
         fontSize: '16px',
         fill: '#000000',
-        wordWrap: { width: balaoTexto.width - 20 }
+        wordWrap: { width: textBalloon.width - 20 }
       });
       text.setVisible(true);
 
@@ -307,19 +307,19 @@ class SalaLider extends Phaser.Scene {
 
     // Evento para avançar o diálogo com "ENTER"
     this.input.keyboard.on('keydown-ENTER', () => {
-      if (!balaoTexto || !text) return; // Se o diálogo não começou, ignora
+      if (!textBalloon || !text) return; // Se o diálogo não começou, ignora
 
-      currentSpeechIndex++;
+      currentDialogIndex++;
 
-      if (currentSpeechIndex < speechLeader.length) {
+      if (currentDialogIndex < leaderDialog.length) {
         audio.stop(); // Para o áudio antes de reiniciar
         audio.play(); // Toca novamente para a nova fala
 
-        text.setText(speechLeader[currentSpeechIndex]); // Atualiza o texto
+        text.setText(leaderDialog[currentDialogIndex]); // Atualiza o texto
         this.buttonClick.play();
       } else {
         // Finaliza o diálogo
-        balaoTexto.setVisible(false);
+        textBalloon.setVisible(false);
         text.setVisible(false);
         audio.stop(); // Para o áudio ao final
         this.input.keyboard.off('keydown-ENTER'); // Desativa ENTER após o diálogo
@@ -331,9 +331,9 @@ class SalaLider extends Phaser.Scene {
 
   backToOffice() {
     // Adiciona a sprite da exclamação
-    this.exclamacao = this.physics.add.sprite(width - 1050, height - 230, 'indicator').setScale(0.3);
-    this.exclamacao.setImmovable(true);
-    this.exclamacao.play('exclamando'); // Inicia a animação
+    this.exclamation = this.physics.add.sprite(width - 1050, height - 230, 'indicator').setScale(0.3);
+    this.exclamation.setImmovable(true);
+    this.exclamation.play('exclamando'); // Inicia a animação
     this.indicatorActive = true;
     if (this.indicatorActive) {
       this.indicatorSound = this.sound.add('indicatorSound', { loop: true, volume: 1.5 });
@@ -341,7 +341,7 @@ class SalaLider extends Phaser.Scene {
     }
 
     // Adiciona um overlap entre o player e a exclamation
-    this.physics.add.overlap(this.player, this.exclamacao, () => {
+    this.physics.add.overlap(this.player, this.exclamation, () => {
       this.indicatorActive = false;
       if (this.walkSound.isPlaying) {
         this.walkSound.stop();
