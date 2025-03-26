@@ -284,7 +284,7 @@ class SalaLider extends Phaser.Scene {
     ];
 
     let currentSpeechIndex = 0;
-    const audio = this.sound.add('talkSound', { volume: 5 });
+    const audio = this.sound.add('talkSound', { volume: 1 });
     let balaoTexto, text;
 
     // Adiciona o balão de fala
