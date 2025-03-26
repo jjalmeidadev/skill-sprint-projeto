@@ -21,7 +21,7 @@ class OfficeScene extends Phaser.Scene {
     // Demais ativos
     this.load.image("vivita", "../assets/vivita.png");
     this.load.image("balaoTexto", "../assets/balaoTexto.png");
-  
+    this.load.image('keyE', '../assets/teclaE.png');  
 
     // Carrega o áudio da cena do escritório
     this.load.audio("officeMusic", "../assets/0320(1).MP3");
@@ -151,17 +151,6 @@ class OfficeScene extends Phaser.Scene {
   update() {
     this.movePlayer();
 
-    // Verifica se o jogador está próximo do computador e pressionou 'E'
-    if (Phaser.Input.Keyboard.JustDown(this.teclas.interagir)) {
-      if (
-        Math.abs(this.player.x - this.computador.x) <= 50 &&
-        Math.abs(this.player.y - this.computador.y) <= 50
-      ) {
-        this.showComputerScreen();
-        this.indicatorActive = false;
-      }
-    }
-
     // Se o jogador retornou da sala do líder, cria o botão do elevador
     if (this.returnedFromSalaLider && this.blockLoop === 0) {
       this.createButtonCima();
@@ -169,6 +158,28 @@ class OfficeScene extends Phaser.Scene {
 
     if(this.indicatorActive == false) {
       this.indicatorSound.stop();
+    }
+
+    // COMPUTADOR
+    if (this.computer) {
+      const distComputer = Phaser.Math.Distance.Between(
+        this.player.x, this.player.y,
+        this.computer.x, this.computer.y
+      );
+      this.canInteractWithComputer = distComputer < 100;
+
+      if (distComputer >= 100 && this.keyEComputer) {
+        this.keyEComputer.destroy();
+        this.keyEComputer = null;
+      }
+    }
+
+    // INTERAÇÃO COMPUTADOR
+    if (this.canInteractWithComputer && Phaser.Input.Keyboard.JustDown(this.teclas.interagir)) {
+      this.buttonClick = this.sound.add('buttonSound', { loop: false, volume: 10 });
+      this.buttonClick.play();
+      this.scene.pause();
+      this.scene.launch('curriculoScene');
     }
   }
 
@@ -287,47 +298,46 @@ class OfficeScene extends Phaser.Scene {
     this.computador.setFlipX(true);
   }
 
-  addIndicatorAndComputer() {
-    this.indicator = this.add.sprite(width - 1020, height - 150, "indicator").setScale(0.2);
-    this.indicator.play("exclamando");
-    this.indicatorActive = true;
-    if(this.indicatorActive) {
-      this.indicatorSound.play();
-    }
+  addComputer() {
+    const computer = this.physics.add.image(width - 1020, height - 100, "computador").setScale(0.09);
+    computer.setInteractive();
+    computer.setFlipX(true);
+    this.createIndicatorComputer();
 
-    this.computador = this.add.image(width - 1020, height - 100, "computador").setScale(0.09)
-    this.computador.setInteractive();
-    this.computador.setFlipX(true);
-
-    this.computador.on("pointerover", () => {
-      this.indicatorActive = false;
-      this.indicatorSound.stop();
-      this.walkSound.stop();
-      this.computador.setTint(0xaaaaaa);
+    // Apenas overlap é necessário para ativar a possibilidade de interação
+    this.physics.add.overlap(this.player, computer, () => {
+      this.canInteractWithComputer = true;
+    
+      if (!this.keyEComputer) {
+        this.keyEComputer = this.add.image(width - 1020, height - 150, 'keyE').setScale(0.2);
+      }
     });
-    this.computador.on("pointerout", () => {
-      this.indicatorActive = false;
-      this.indicatorSound.stop();
-      this.walkSound.stop();
-      this.computador.clearTint();
-    });
-    this.computador.on("pointerdown", () => {
-      this.indicatorActive = false;
-      this.indicatorSound.stop();
-      this.walkSound.stop();
-      this.showComputerScreen();
-    });
+  
+    // Detectar quando sai da zona de interação (usando evento de update com verificação de distância)
+    this.computer = computer; // Salva o objeto para usar no update
   }
 
-  showComputerScreen() {
-    this.indicatorActive = false;
-    this.indicatorSound.stop();
-    this.buttonClick.play();
-    this.indicator.destroy();
-    this.scene.switch("curriculoScene");
-    this.salaLider();
+  createIndicatorComputer() {
+    this.indicatorComputer = this.physics.add.sprite(width - 1020, height - 150, 'indicator');
+    this.indicatorComputer.setScale(0.2);
+    this.indicatorComputer.setImmovable(true);
+    this.indicatorComputer.play("exclamando");
+  
+    this.indicatorSoundComputer = this.sound.add('indicatorSound', { loop: true, volume: 10 });
+    this.indicatorSoundComputer.play();
+  
+    this.physics.add.overlap(this.player, this.indicatorComputer, () => {
+      if (this.indicatorComputerActive) {
+        this.indicatorSoundComputer.stop();
+        this.indicatorComputer.destroy();
+        this.indicatorComputerActive = false;
+      }
+    });
+  
+    this.indicatorComputerActive = true;
   }
 
+  
   addVivita(width, height) {
     const vivita = this.add.image(width / 1.75, height / 3.2, "vivita").setScale(0.09);
 
@@ -357,7 +367,6 @@ class OfficeScene extends Phaser.Scene {
       }
     });
   }
-
   showVivitaInteraction() {
     this.exclamation.setVisible(false);
 
@@ -390,7 +399,7 @@ class OfficeScene extends Phaser.Scene {
         balaoTexto.setVisible(false);
         text.setVisible(false);
         this.input.keyboard.off("keydown-ENTER");
-        this.addIndicatorAndComputer();
+        this.addComputer();
       }
     });
   }
@@ -418,8 +427,15 @@ class OfficeScene extends Phaser.Scene {
             this.indicatorSound.stop(); // Para o som quando há overlap
             this.scene.switch('salaLiderScene');
         }
-    });
-}
+    }); 
+  }
+
+  resume() {
+    if (this.keyEComputer) {
+      this.keyEComputer.destroy();
+      this.keyEComputer = null;
+    }
+  }
 }
 
 // Propriedade estática para armazenar o tempo de reprodução da música

@@ -904,7 +904,8 @@ class CongratulationsSceneCurriculoVpPessoas extends Phaser.Scene {
                         this.cliqueSom = this.sound.add('cliqueSom', {loop: false, volume: 10});
                         this.cliqueSom.play();
 
-                        this.scene.switch('officeScene');
+                        this.scene.stop('CongratulationsSceneCurriculoVpPessoas');
+                        this.scene.resume('officeScene');
                     
                     });
                 }
@@ -1333,7 +1334,8 @@ class CongratulationsSceneCurriculoVpEstrategia extends Phaser.Scene {
                         this.cliqueSom = this.sound.add('cliqueSom', {loop: false, volume: 10});
                         this.cliqueSom.play();
 
-                        this.scene.switch('officeScene');
+                        this.scene.stop('CongratulationsSceneCurriculoVpEstrategia');
+                        this.scene.resume('officeScene');
                     });
                 }
             });
@@ -1758,7 +1760,8 @@ class CongratulationsSceneCurriculoVpNegocios extends Phaser.Scene {
                         this.cliqueSom = this.sound.add('cliqueSom', {loop: false, volume: 10});
                         this.cliqueSom.play();
 
-                        this.scene.switch('officeScene');
+                        this.scene.stop('CongratulationsSceneCurriculoVpNegocios');
+                        this.scene.resume('officeScene');
                     });
                 }
             });
@@ -2183,7 +2186,8 @@ class CongratulationsSceneCurriculoVpRelacoes extends Phaser.Scene {
                         this.cliqueSom = this.sound.add('cliqueSom', {loop: false, volume: 10});
                         this.cliqueSom.play();
 
-                        this.scene.switch('officeScene');
+                        this.scene.stop('CongratulationsSceneCurriculoVpRelacoes');
+                        this.scene.resume('officeScene');
                     });
                 }
             });
@@ -2612,8 +2616,9 @@ class CongratulationsSceneCurriculoVpTecnologia extends Phaser.Scene {
                         this.cliqueSom = this.sound.add('cliqueSom', {loop: false, volume: 10});
                         this.cliqueSom.play();
 
-                        this.scene.switch('officeScene');
-                    this.excbubble.play();
+                        this.scene.stop('CongratulationsSceneCurriculoVpTecnologia');
+                        this.scene.resume('officeScene');
+                        this.excbubble.play();
 
                     });
                 }
