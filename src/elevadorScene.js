@@ -22,6 +22,9 @@ class ElevadorScene extends Phaser.Scene {
     this.load.image("botaopessoas", "../assets/botaopessoas.png");
     this.load.image("botaotech", "../assets/botaotech.png");
     this.load.image("botaorelacoes", "../assets/botaorelacoes.png");
+    this.load.video("videoelev1", "../assets/videoelev1.mp4");
+    this.load.video("videoelev2", "../assets/videoelev2.mp4");
+    this.load.video("videoelev3", "../assets/videoelev3.mp4");
 
     // Carrega o áudio específico para o elevador
     this.load.audio('elevatorAudio', '../assets/Local Forecast - Elevator [ ezmp3.co ].mp3');
@@ -63,7 +66,7 @@ class ElevadorScene extends Phaser.Scene {
       volume: 0.5, // Define o volume da música
     });
     this.elevatorSound.play();
-
+    
     // Cria a animação para o indicador (caso ainda não exista)
     if (!this.anims.exists("exclamando")) {
       this.anims.create({
@@ -84,6 +87,19 @@ class ElevadorScene extends Phaser.Scene {
     const randomBackground = Phaser.Math.RND.pick(backgrounds);
     this.background = this.add.image(0, 0, randomBackground).setOrigin(0, 0);
     this.background.setDisplaySize(width, height);
+
+    //Passa comerciais aleatorios na tv
+    const videos = ["videoelev1", "videoelev2", "videoelev3"];
+    const randomVideo = Phaser.Math.RND.pick(videos);
+    this.video = this.add.video(width - 561, height - 594, randomVideo).setOrigin(0.5);
+    this.video.setDisplaySize(width/45, height/31)
+    this.video.setAngle(32.7);
+    this.video.play(false);
+    this.video.on('complete', () => {
+      const nextVideoKey = Phaser.Math.RND.pick(["../assets/videoelev1.mp4", "../assets/videoelev2.mp4", "../assets/videoelev3.mp4"]);
+      this.video.loadURL(nextVideoKey);
+      this.video.play(false);
+    });
 
     // Cria a sprite do indicador ("exclamando")
     this.indicator = this.add
@@ -166,6 +182,7 @@ class ElevadorScene extends Phaser.Scene {
       this.elevatorSound.stop();
     }
   }
+
 
   movePlayer() {
     const velocidade = 150;

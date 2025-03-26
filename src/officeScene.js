@@ -29,18 +29,20 @@ class OfficeScene extends Phaser.Scene {
     // Demais ativos
     this.load.image("vivita", "../assets/vivita.png");
     this.load.image("balaoTexto", "../assets/balaoTexto.png");
+  
 
     // Carrega o áudio da cena do escritório
     this.load.audio("officeMusic", "../assets/0320(1).MP3");
     this.load.audio('keySound', '../assets/sounds/computer-keyboard-typing-290582 (mp3cut.net).mp3');
     this.load.audio('indicatorSound', '../assets/sounds/497198_abacagi_bubble-pops (mp3cut.net).wav');
     this.load.audio('walkSound', '../assets/sounds/753292__vrymaa__footsteps-high-heels-hardwood-walk-run (mp3cut.net).wav');
+
     
   }
 
   create() {
     //skip elevador
-    /*this.scene.start("elevadorScene");
+   /* this.scene.start("elevadorScene");
     return;*/
 
     if (this.walkSound && this.walkSound.isPlaying) {
@@ -407,7 +409,7 @@ class OfficeScene extends Phaser.Scene {
     this.exclamation.setVisible(false);
 
     const speechVivita = [
-      "Olá! Você deve ser Fulano, né?",
+      "Olá! Você deve ser " + playerName + ", né?",
       "Fiquei sabendo que você quer mudar de carreira na Vivo.",
       "Vou te explicar o primeiro passo.",
       "Primeiro, você precisa criar o seu currículo.",
