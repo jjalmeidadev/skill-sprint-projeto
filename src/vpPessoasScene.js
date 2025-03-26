@@ -3,6 +3,12 @@ class VpPessoasScene extends Phaser.Scene {
       super({ key: 'vpPessoasScene' });
     }
 
+//lembrar de criar os personagens 11 12 13 14 15 16 17 18 19 20 21 22 23 e add no jogo 
+//6 sentados de frente
+//3 sentados pra direta e 4 pra esquerda
+//corrigir as coordenadas dos npcs
+//verificar as layers
+
     preload() {
         // Carrega o mapa do Tiled e os tilesets
         this.load.tilemapTiledJSON('vpPessoas', '../assets/mapaVPPessoas/mapaVPPessoas.json');
@@ -17,6 +23,71 @@ class VpPessoasScene extends Phaser.Scene {
         this.load.audio('PessoasMusic', '../assets/sounds/VPpessoas.mp3')
 
         this.load.spritesheet("npcReceptor", "../assets/personagens/LiderReading.png", { 
+          frameWidth: 16,
+          frameHeight: 32,
+        });
+
+        this.load.spritesheet("npc11", "../assets/personagens/npc11.png", { 
+          frameWidth: 16,
+          frameHeight: 32,
+        });
+    
+        this.load.spritesheet("npc12", "../assets/personagens/npc12.png", { 
+          frameWidth: 16,
+          frameHeight: 32,
+        });
+    
+        this.load.spritesheet("npc13", "../assets/personagens/npc13.png", { 
+          frameWidth: 16,
+          frameHeight: 32,
+        });
+    
+        this.load.spritesheet("npc14", "../assets/personagens/npc14.png", { 
+          frameWidth: 16,
+          frameHeight: 32,
+        });
+    
+        this.load.spritesheet("npc15", "../assets/personagens/npc15.png", { 
+          frameWidth: 16,
+          frameHeight: 32,
+        });
+    
+        this.load.spritesheet("npc16", "../assets/personagens/npc16.png", { 
+          frameWidth: 16,
+          frameHeight: 32,
+        });
+
+        this.load.spritesheet("npc17", "../assets/personagens/npc17.png", { 
+          frameWidth: 16,
+          frameHeight: 32,
+        });
+
+        this.load.spritesheet("npc18", "../assets/personagens/npc18.png", { 
+          frameWidth: 16,
+          frameHeight: 32,
+        });
+
+        this.load.spritesheet("npc19", "../assets/personagens/npc19.png", { 
+          frameWidth: 16,
+          frameHeight: 32,
+        });
+
+        this.load.spritesheet("npc20", "../assets/personagens/npc20.png", { 
+          frameWidth: 16,
+          frameHeight: 32,
+        });
+
+        this.load.spritesheet("npc21", "../assets/personagens/npc21.png", { 
+          frameWidth: 16,
+          frameHeight: 32,
+        });
+
+        this.load.spritesheet("npc22", "../assets/personagens/npc22.png", { 
+          frameWidth: 16,
+          frameHeight: 32,
+        });
+
+        this.load.spritesheet("npc23", "../assets/personagens/npc23.png", { 
           frameWidth: 16,
           frameHeight: 32,
         });
@@ -63,7 +134,9 @@ class VpPessoasScene extends Phaser.Scene {
 
         this.createPlayer(width, height);
         this.createPlayerAnimations();
-
+        this.addNpc();
+        this.createNpcAnimations();
+        
         // Configura colisões do jogador com camadas selecionadas
         this.physics.add.collider(this.player, layer2);
         this.physics.add.collider(this.player, layer3);
@@ -75,6 +148,89 @@ class VpPessoasScene extends Phaser.Scene {
 
         // Adiciona os efeitos sonoros
         this.walkSound = this.sound.add('walkSound', {loop: false, volume: 10});
+    }
+
+    addNpc() {
+      //Adiciona a npc no jogo
+      this.npc11 = this.physics.add.sprite(width - 950, height - 200, 'npc11');
+      this.npc11.setScale(2.0);
+      this.npc11.setImmovable(true);
+      this.createNpcAnimations();
+      this.npc11.anims.play('Idle');
+  
+      this.npc12 = this.physics.add.sprite(width - 895, height - 105, 'npc12');
+      this.npc12.setScale(2.0);
+      this.npc12.setImmovable(true);
+      this.createNpcAnimations();
+      this.npc12.anims.play('npc12');
+  
+      this.npc13 = this.physics.add.sprite(width - 767, height - 105, 'npc13');
+      this.npc13.setScale(2.0);
+      this.npc13.setImmovable(true);
+      this.createNpcAnimations();
+      this.npc13.setFlipX(true);
+      this.npc13.anims.play('npc13');
+  
+      this.npc14 = this.physics.add.sprite(width - 655, height - 145, 'npc14');
+      this.npc14.setScale(2.0);
+      this.npc14.setImmovable(true);
+      this.createNpcAnimations();
+      this.npc14.play('npc14');
+  
+      this.npc15 = this.physics.add.sprite(width - 1135, height - 145, 'npc15');
+      this.npc15.setScale(2.0);
+      this.npc15.setImmovable(true);
+      this.createNpcAnimations();
+      this.npc15.anims.play('npc15');
+  
+      this.npc16 = this.physics.add.sprite(width - 710, height - 200, 'npc16');
+      this.npc16.setScale(2.0);
+      this.npc16.setImmovable(true);
+      this.createNpcAnimations();
+      this.npc16.anims.play('npc16');
+
+      this.npc17 = this.physics.add.sprite(width - 765, height - 250, 'npc17');
+      this.npc17.setScale(2.0);
+      this.npc17.setImmovable(true);
+      this.createNpcAnimations();
+      this.npc17.anims.play('npc17');
+
+      this.npc18 = this.physics.add.sprite(width - 820, height - 300, 'npc18');
+      this.npc18.setScale(2.0);
+      this.npc18.setImmovable(true);
+      this.createNpcAnimations();
+      this.npc18.anims.play('npc18');
+
+      this.npc19 = this.physics.add.sprite(width - 875, height - 350, 'npc19');
+      this.npc19.setScale(2.0);
+      this.npc19.setImmovable(true);
+      this.createNpcAnimations();
+      this.npc19.anims.play('npc19');
+
+      this.npc20 = this.physics.add.sprite(width - 930, height - 400, 'npc20');
+      this.npc20.setScale(2.0);
+      this.npc20.setImmovable(true);
+      this.createNpcAnimations();
+      this.npc20.anims.play('npc20');
+
+      this.npc21 = this.physics.add.sprite(width - 985, height - 450, 'npc21');
+      this.npc21.setScale(2.0);
+      this.npc21.setImmovable(true);
+      this.createNpcAnimations();
+      this.npc21.anims.play('npc21');
+
+      this.npc22 = this.physics.add.sprite(width - 1040, height - 500, 'npc22');
+      this.npc22.setScale(2.0);
+      this.npc22.setImmovable(true);
+      this.createNpcAnimations();
+      this.npc22.anims.play('npc22');
+
+      this.npc23 = this.physics.add.sprite(width - 1095, height - 550, 'npc23');
+      this.npc23.setScale(2.0);
+      this.npc23.setImmovable(true);
+      this.createNpcAnimations();
+      this.npc23.anims.play('npc23');
+    
     }
 
     update(){
