@@ -22,75 +22,34 @@ class VpPessoasScene extends Phaser.Scene {
         this.load.audio('walkSound', '../assets/sounds/753292__vrymaa__footsteps-high-heels-hardwood-walk-run (mp3cut.net).wav');
         this.load.audio('PessoasMusic', '../assets/sounds/VPpessoas.mp3')
 
-        this.load.spritesheet("npcReceptor", "../assets/personagens/LiderReading.png", { 
-          frameWidth: 16,
-          frameHeight: 32,
-        });
-
-        this.load.spritesheet("npc11", "../assets/personagens/npc11.png", { 
-          frameWidth: 16,
-          frameHeight: 32,
-        });
+        this.load.spritesheet("npcReceptor", "../assets/personagens/LiderReading.png", { frameWidth: 16, frameHeight: 32, });
+          
+        this.load.spritesheet("npc11", "../assets/personagens/npc11.png", { frameWidth: 16, frameHeight: 32,});
     
-        this.load.spritesheet("npc12", "../assets/personagens/npc12.png", { 
-          frameWidth: 16,
-          frameHeight: 32,
-        });
+        this.load.spritesheet("npc12", "../assets/personagens/npc12.png", { frameWidth: 16, frameHeight: 32,});
     
-        this.load.spritesheet("npc13", "../assets/personagens/npc13.png", { 
-          frameWidth: 16,
-          frameHeight: 32,
-        });
-    
-        this.load.spritesheet("npc14", "../assets/personagens/npc14.png", { 
-          frameWidth: 16,
-          frameHeight: 32,
-        });
-    
-        this.load.spritesheet("npc15", "../assets/personagens/npc15.png", { 
-          frameWidth: 16,
-          frameHeight: 32,
-        });
-    
-        this.load.spritesheet("npc16", "../assets/personagens/npc16.png", { 
-          frameWidth: 16,
-          frameHeight: 32,
-        });
+        this.load.spritesheet("npc13", "../assets/personagens/npc13.png", { frameWidth: 16, frameHeight: 32,});
+          
+        this.load.spritesheet("npc14", "../assets/personagens/npc14.png", { frameWidth: 16, frameHeight: 32,});
+          
+        this.load.spritesheet("npc15", "../assets/personagens/npc15.png", { frameWidth: 16, frameHeight: 32,});
 
-        this.load.spritesheet("npc17", "../assets/personagens/npc17.png", { 
-          frameWidth: 16,
-          frameHeight: 32,
-        });
+        this.load.spritesheet("npc16", "../assets/personagens/npc16.png", { frameWidth: 16, frameHeight: 32,});
 
-        this.load.spritesheet("npc18", "../assets/personagens/npc18.png", { 
-          frameWidth: 16,
-          frameHeight: 32,
-        });
+        this.load.spritesheet("npc17", "../assets/personagens/npc17.png", { frameWidth: 16, frameHeight: 32,});
 
-        this.load.spritesheet("npc19", "../assets/personagens/npc19.png", { 
-          frameWidth: 16,
-          frameHeight: 32,
-        });
+        this.load.spritesheet("npc18", "../assets/personagens/npc18.png", { frameWidth: 16, frameHeight: 32,});
 
-        this.load.spritesheet("npc20", "../assets/personagens/npc20.png", { 
-          frameWidth: 16,
-          frameHeight: 32,
-        });
+        this.load.spritesheet("npc19", "../assets/personagens/npc19.png", { frameWidth: 16, frameHeight: 32, });
 
-        this.load.spritesheet("npc21", "../assets/personagens/npc21.png", { 
-          frameWidth: 16,
-          frameHeight: 32,
-        });
+        this.load.spritesheet("npc20", "../assets/personagens/npc20.png", { frameWidth: 16, frameHeight: 32,});
 
-        this.load.spritesheet("npc22", "../assets/personagens/npc22.png", { 
-          frameWidth: 16,
-          frameHeight: 32,
-        });
+        this.load.spritesheet("npc21", "../assets/personagens/npc21.png", { frameWidth: 16, frameHeight: 32,});
 
-        this.load.spritesheet("npc23", "../assets/personagens/npc23.png", { 
-          frameWidth: 16,
-          frameHeight: 32,
-        });
+        this.load.spritesheet("npc22", "../assets/personagens/npc22.png", { frameWidth: 16, frameHeight: 32,});
+
+        this.load.spritesheet("npc23", "../assets/personagens/npc23.png", { frameWidth: 16, frameHeight: 32,});
+   
     }
 
     create() {
@@ -232,7 +191,100 @@ class VpPessoasScene extends Phaser.Scene {
       this.npc23.anims.play('npc23');
     
     }
+    
+    createNpcAnimations() { 
+        this.anims.create({
+          key: "npc11",
+          frames: this.anims.generateFrameNumbers('npc11', { start: 0, end: 5 }),
+          frameRate: 4,
+          repeat: -1,
+        });
 
+        this.anims.create({
+          key: "npc12",
+          frames: this.anims.generateFrameNumbers('npc12', { start: 0, end: 5 }),
+          frameRate: 4,
+          repeat: -1,
+        });
+
+        this.anims.create({
+          key: "npc13",
+          frames: this.anims.generateFrameNumbers('npc13', { start: 0, end: 5 }),
+          frameRate: 4,
+          repeat: -1,
+        });
+
+        this.anims.create({
+          key: "npc14",
+          frames: this.anims.generateFrameNumbers('npc14', { start: 0, end: 5 }),
+          frameRate: 4,
+          repeat: -1,
+        });
+
+        this.anims.create({
+          key: "npc15",
+          frames: this.anims.generateFrameNumbers('npc15', { start: 0, end: 5 }),
+          frameRate: 4,
+          repeat: -1,
+        });
+
+        this.anims.create({
+          key: "npc16",
+          frames: this.anims.generateFrameNumbers('npc16', { start: 0, end: 5 }),
+          frameRate: 4,
+          repeat: -1,
+        });
+
+        this.anims.create({
+          key: "npc17",
+          frames: this.anims.generateFrameNumbers('npc17', { start: 0, end: 5 }),
+          frameRate: 4,
+          repeat: -1,
+        });
+
+        this.anims.create({
+          key: "npc18",
+          frames: this.anims.generateFrameNumbers('npc18', { start: 0, end: 5 }),
+          frameRate: 4,
+          repeat: -1,
+        });
+
+        this.anims.create({
+          key: "npc19",
+          frames: this.anims.generateFrameNumbers('npc19', { start: 0, end: 5 }),
+          frameRate: 4,
+          repeat: -1,
+        });
+
+        this.anims.create({
+          key: "npc20",
+          frames: this.anims.generateFrameNumbers('npc20', { start: 0, end: 5 }),
+          frameRate: 4,
+          repeat: -1,
+        });
+
+        this.anims.create({
+          key: "npc21",
+          frames: this.anims.generateFrameNumbers('npc21', { start: 0, end: 5 }),
+          frameRate: 4,
+          repeat: -1,
+        });
+
+        this.anims.create({
+          key: "npc22",
+          frames: this.anims.generateFrameNumbers('npc22', { start: 0, end: 5 }),
+          frameRate: 4,
+          repeat: -1,
+        });
+
+        this.anims.create({
+          key: "npc23",
+          frames: this.anims.generateFrameNumbers('npc23', { start: 0, end: 5 }),
+          frameRate: 4,
+          repeat: -1,
+        });
+      }
+      
     update(){
         this.movePlayer();
     }
@@ -306,6 +358,8 @@ class VpPessoasScene extends Phaser.Scene {
           repeat: -1,
         });
       }
+
+      
 
       onShutdown() {
         // Salva o tempo atual da música e a para quando a cena é pausada ou encerrada
