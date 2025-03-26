@@ -72,7 +72,7 @@ class InitialScene extends Phaser.Scene {
     const height = this.scale.height;
 
     this.cameras.main.fadeIn(1000);
-
+//
     this.bgs = [];
     const speeds = [0.005, 0.05, 0.07, 0.08, 0.09, 0.1];
     for (let i = 0; i < 6; i++) {
