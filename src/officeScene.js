@@ -6,7 +6,41 @@ class OfficeScene extends Phaser.Scene {
 
   preload() {
     // Carrega imagens, spritesheets e demais ativos
-    this.load.spritesheet("player", "../assets/Player.png", {frameWidth: 32, frameHeight: 32,});
+    this.load.spritesheet("player", "../assets/personagens/skinsPlayer/player1all.png", {
+      frameWidth: 16,
+      frameHeight: 32,
+    });
+
+    this.load.spritesheet("npc7", "../assets/personagens/npc7.png", { 
+      frameWidth: 16,
+      frameHeight: 32,
+    });
+
+    this.load.spritesheet("npc3", "../assets/personagens/npc3Sit.png", { 
+      frameWidth: 16,
+      frameHeight: 32,
+    });
+
+    this.load.spritesheet("npc4", "../assets/personagens/npc4Sit.png", { 
+      frameWidth: 16,
+      frameHeight: 32,
+    });
+
+    this.load.spritesheet("npc2", "../assets/personagens/npc2Sit.png", { 
+      frameWidth: 16,
+      frameHeight: 32,
+    });
+
+    this.load.spritesheet("npc6", "../assets/personagens/npc6Sit.png", { 
+      frameWidth: 16,
+      frameHeight: 32,
+    });
+
+    this.load.spritesheet("npc10", "../assets/personagens/npc10Lift.png", { 
+      frameWidth: 16,
+      frameHeight: 32,
+    });
+
     this.load.image("telaComputador", "../assets/tela_computador.png");
     this.load.image("computador", "../assets/computador.png");
     this.load.spritesheet("indicator", "../assets/exclamaçãoRoxa.png", {frameWidth: 254, frameHeight: 305,});
@@ -19,7 +53,7 @@ class OfficeScene extends Phaser.Scene {
     this.load.image("personalizado_vivo", "../assets/mapaOffice/personalizado_vivo.png");
       
     // Demais ativos
-    this.load.image("vivita", "../assets/vivita.png");
+    this.load.image("vivita", "../assets/personagens/vivita.png");
     this.load.image("balaoTexto", "../assets/balaoTexto.png");
     this.load.image('keyE', '../assets/teclaE.png');  
 
@@ -122,6 +156,9 @@ class OfficeScene extends Phaser.Scene {
     this.createComputer(width, height);
     this.createPlayer(width, height);
     this.createPlayerAnimations();
+    this.addNpc();
+    this.createNpcAnimations();
+    this.lastPosition = "down"
 
     // Configura colisões do jogador com camadas selecionadas
     this.physics.add.collider(this.player, layer3);
@@ -129,6 +166,8 @@ class OfficeScene extends Phaser.Scene {
     this.physics.add.collider(this.player, layer8);
     this.physics.add.collider(this.player, layer9);
     this.physics.add.collider(this.player, layer10);
+    this.physics.add.collider(this.player, layer11);
+    this.physics.add.collider(this.player, this.npc7);
 
     // Define os limites do mundo com base na tela
     this.physics.world.setBounds(0, 0, width, height);
@@ -186,71 +225,112 @@ class OfficeScene extends Phaser.Scene {
   movePlayer() {
     const velocidade = 150;
     let movendo = false;
-
+  
     if (this.teclas.left.isDown) {
       this.player.setVelocityX(-velocidade);
+      this.lastPosition = "left"; 
       this.player.anims.play("walk_left", true);
-      this.player.setFlipX(true);
       movendo = true;
     } else if (this.teclas.right.isDown) {
       this.player.setVelocityX(velocidade);
+      this.lastPosition = "right";
       this.player.anims.play("walk_right", true);
-      this.player.setFlipX(false);
       movendo = true;
     } else {
       this.player.setVelocityX(0);
     }
-
+  
     if (this.teclas.up.isDown) {
       this.player.setVelocityY(-velocidade);
+      this.lastPosition = "up";
       this.player.anims.play("walk_up", true);
       movendo = true;
     } else if (this.teclas.down.isDown) {
       this.player.setVelocityY(velocidade);
+      this.lastPosition = "down";
       this.player.anims.play("walk_down", true);
       movendo = true;
     } else {
       this.player.setVelocityY(0);
     }
-
+  
+    // Se o personagem parou, inicia a animação de stop_* em loop
     if (!movendo) {
-      this.player.anims.stop();
+      switch (this.lastPosition) {
+        case "left":
+          this.player.anims.play("stop_left", true);
+          break;
+        case "right":
+          this.player.anims.play("stop_right", true);
+          break;
+        case "up":
+          this.player.anims.play("stop_up", true);
+          break;
+        case "down":
+        default:
+          this.player.anims.play("stop_down", true);
+          break;
+      }
       this.walkSound.stop();
     } else {
       if (!this.walkSound.isPlaying) {
-      this.walkSound.play();
+        this.walkSound.play();
       }
     }
   }
 
   createPlayer(width, height) {
     this.player = this.physics.add.sprite(width - 405, height - 100, "player");
-    this.player.setScale(2.5);
+    this.player.setScale(2);
   }
 
   createPlayerAnimations() {
     this.anims.create({
       key: "walk_down",
-      frames: this.anims.generateFrameNumbers("player", { start: 0, end: 5 }),
+      frames: this.anims.generateFrameNumbers("player", { start: 130, end: 135 }),
       frameRate: 10,
       repeat: -1,
     });
     this.anims.create({
       key: "walk_right",
-      frames: this.anims.generateFrameNumbers("player", { start: 6, end: 11 }),
+      frames: this.anims.generateFrameNumbers("player", { start: 112, end: 117 }),
       frameRate: 10,
       repeat: -1,
     });
     this.anims.create({
       key: "walk_up",
-      frames: this.anims.generateFrameNumbers("player", { start: 12, end: 17 }),
+      frames: this.anims.generateFrameNumbers("player", { start: 118, end: 123 }),
       frameRate: 10,
       repeat: -1,
     });
     this.anims.create({
       key: "walk_left",
-      frames: this.anims.generateFrameNumbers("player", { start: 6, end: 11 }),
+      frames: this.anims.generateFrameNumbers("player", { start: 124, end: 129 }),
       frameRate: 10,
+      repeat: -1,
+    });
+    this.anims.create({
+      key: "stop_down",
+      frames: this.anims.generateFrameNumbers("player", { start: 74, end: 79 }), 
+      frameRate: 5, // Mais lento
+      repeat: -1, // Loop infinito
+    });
+    this.anims.create({
+      key: "stop_right",
+      frames: this.anims.generateFrameNumbers("player", { start: 56, end: 61 }),
+      frameRate: 5,
+      repeat: -1,
+    });
+    this.anims.create({
+      key: "stop_up",
+      frames: this.anims.generateFrameNumbers("player", { start: 62, end: 67 }),
+      frameRate: 5,
+      repeat: -1,
+    });
+    this.anims.create({
+      key: "stop_left",
+      frames: this.anims.generateFrameNumbers("player", { start: 68, end: 73 }),
+      frameRate: 5,
       repeat: -1,
     });
   }
@@ -337,9 +417,104 @@ class OfficeScene extends Phaser.Scene {
     this.indicatorComputerActive = true;
   }
 
+  addNpc() {
+    //Adiciona a npc no jogo
+    this.npc7 = this.physics.add.sprite(width - 950, height - 200, 'npc7');
+    this.npc7.setScale(2.0);
+    this.npc7.setImmovable(true);
+    this.createNpcAnimations();
+    this.npc7.anims.play('Idle');
+
+    this.npc3 = this.physics.add.sprite(width - 895, height - 105, 'npc3');
+    this.npc3.setScale(2.0);
+    this.npc3.setImmovable(true);
+    this.createNpcAnimations();
+    this.npc3.anims.play('npc3');
+
+    this.npc4 = this.physics.add.sprite(width - 767, height - 105, 'npc4');
+    this.npc4.setScale(2.0);
+    this.npc4.setImmovable(true);
+    this.createNpcAnimations();
+    this.npc4.setFlipX(true);
+    this.npc4.anims.play('npc4');
+
+    this.npc2 = this.physics.add.sprite(width - 655, height - 145, 'npc2');
+    this.npc2.setScale(2.0);
+    this.npc2.setImmovable(true);
+    this.createNpcAnimations();
+    this.npc2.anims.play('npc2');
+
+    this.npc6 = this.physics.add.sprite(width - 1135, height - 145, 'npc6');
+    this.npc6.setScale(2.0);
+    this.npc6.setImmovable(true);
+    this.createNpcAnimations();
+    this.npc6.anims.play('npc6');
+
+    this.npc10 = this.physics.add.sprite(width - 710, height - 200, 'npc10');
+    this.npc10.setScale(2.0);
+    this.npc10.setImmovable(true);
+    this.createNpcAnimations();
+    this.npc10.anims.play('npc10');
+  }
+
+  createNpcAnimations() { 
+    this.anims.create({
+      key: "Idle",
+      frames: this.anims.generateFrameNumbers('npc7', { start: 18, end: 23 }),
+      frameRate: 4,
+      repeat: -1,
+    });
+
+    this.anims.create({
+      key: "npc3",
+      frames: this.anims.generateFrameNumbers('npc3', { start: 6, end: 11 }),
+      frameRate: 4,
+      repeat: -1,
+    });
+
+    this.anims.create({
+      key: "npc4",
+      frames: this.anims.generateFrameNumbers('npc4', { start: 6, end: 11 }),
+      frameRate: 4,
+      repeat: -1,
+    });
+
+    this.anims.create({
+      key: "npc2",
+      frames: this.anims.generateFrameNumbers('npc2', { start: 6, end: 11 }),
+      frameRate: 4,
+      repeat: -1,
+    });
+
+    this.anims.create({
+      key: "npc6",
+      frames: this.anims.generateFrameNumbers('npc6', { start: 6, end: 11 }),
+      frameRate: 4,
+      repeat: -1,
+    });
+
+    this.anims.create({
+      key: "npc10",
+      frames: this.anims.generateFrameNumbers('npc10', { start: 42, end: 55 }),
+      frameRate: 6,
+      repeat: -1,
+    });
+
+    this.anims.create({
+      key: "vivita",
+      frames: this.anims.generateFrameNumbers('vivita', { start: 18, end: 23 }),
+      frameRate: 6,
+      repeat: -1,
+    });
+  }
+
   
   addVivita(width, height) {
-    const vivita = this.add.image(width / 1.75, height / 3.2, "vivita").setScale(0.09);
+    const vivita = this.vivita = this.physics.add.sprite(width / 1.75, height / 3.2, 'vivita');
+      this.vivita.setScale(2.0);
+      this.vivita.setImmovable(true);
+      this.createNpcAnimations();
+      this.vivita.anims.play('vivita');
 
     this.exclamation = this.add.sprite(width / 1.75, height / 4.6, "indicator").setScale(0.2);
     this.exclamation.play("exclamando");

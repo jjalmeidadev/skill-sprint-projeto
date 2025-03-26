@@ -3,6 +3,12 @@ class VpPessoasScene extends Phaser.Scene {
       super({ key: 'vpPessoasScene' });
     }
 
+//lembrar de criar os personagens 11 12 13 14 15 16 17 18 19 20 21 22 23 e add no jogo 
+//6 sentados de frente
+//3 sentados pra direta e 4 pra esquerda
+//corrigir as coordenadas dos npcs
+//verificar as layers
+
     preload() {
         // Carrega o mapa do Tiled e os tilesets
         this.load.tilemapTiledJSON('vpPessoas', '../assets/mapaVPPessoas/mapaVPPessoas.json');
@@ -10,10 +16,27 @@ class VpPessoasScene extends Phaser.Scene {
         this.load.image('paredes', '../assets/mapaVPPessoas/paredes.png');    
 
         // Carrega imagens, spritesheets e demais ativos
-        this.load.spritesheet('player', '../assets/Player.png', { frameWidth: 32, frameHeight: 32 });
+        this.load.spritesheet('player', '../assets/personagens/skinsPlayer/player1all.png', { frameWidth: 16, frameHeight: 32 });
 
         // Carrega os efeitos sonoros
         this.load.audio('walkSound', '../assets/sounds/753292__vrymaa__footsteps-high-heels-hardwood-walk-run (mp3cut.net).wav');
+        this.load.audio('PessoasMusic', '../assets/sounds/VPpessoas.mp3')
+
+        this.load.spritesheet("npcReceptor", "../assets/personagens/LiderReading.png", { frameWidth: 16, frameHeight: 32, });         
+        this.load.spritesheet("npc11", "../assets/personagens/VPpessoas/npc11.png", { frameWidth: 16, frameHeight: 32,});    
+        this.load.spritesheet("npc12", "../assets/personagens/VPpessoas/npc12.png", { frameWidth: 16, frameHeight: 32,});   
+        this.load.spritesheet("npc13", "../assets/personagens/VPpessoas/npc13.png", { frameWidth: 16, frameHeight: 32,});        
+        this.load.spritesheet("npc14", "../assets/personagens/VPpessoas/npc14.png", { frameWidth: 16, frameHeight: 32,});      
+        this.load.spritesheet("npc15", "../assets/personagens/VPpessoas/npc15.png", { frameWidth: 16, frameHeight: 32,});
+        this.load.spritesheet("npc16", "../assets/personagens/VPpessoas/npc16.png", { frameWidth: 16, frameHeight: 32,});
+        this.load.spritesheet("npc17", "../assets/personagens/VPpessoas/npc17.png", { frameWidth: 16, frameHeight: 32,});
+        this.load.spritesheet("npc18", "../assets/personagens/VPpessoas/npc18.png", { frameWidth: 16, frameHeight: 32,});
+        this.load.spritesheet("npc19", "../assets/personagens/VPpessoas/npc19.png", { frameWidth: 16, frameHeight: 32, });
+        this.load.spritesheet("npc20", "../assets/personagens/VPpessoas/npc20.png", { frameWidth: 16, frameHeight: 32,});
+        this.load.spritesheet("npc21", "../assets/personagens/VPpessoas/npc21.png", { frameWidth: 16, frameHeight: 32,});
+        this.load.spritesheet("npc22", "../assets/personagens/VPpessoas/npc22.png", { frameWidth: 16, frameHeight: 32,});
+        this.load.spritesheet("npc23", "../assets/personagens/VPpessoas/npc23.png", { frameWidth: 16, frameHeight: 32,});
+
         this.load.audio('PessoasMusic', '../assets/sounds/VPpessoas.mp3');
         this.load.audio('indicatorSound', '../assets/sounds/497198_abacagi_bubble-pops (mp3cut.net).wav');
 
@@ -21,7 +44,7 @@ class VpPessoasScene extends Phaser.Scene {
         this.load.spritesheet('book', '../assets/assetsBookVPPessoas/book.png', {frameWidth: 835, frameHeight: 520});
 
         this.load.spritesheet("indicator", "../assets/exclamaçãoRoxa.png", {frameWidth: 254, frameHeight: 305,});
-        this.load.image('keyE', '../assets/teclaE.png');  
+        this.load.image('keyE', '../assets/teclaE.png');
     }
 
     create() {
@@ -65,7 +88,11 @@ class VpPessoasScene extends Phaser.Scene {
 
         this.createPlayer(width, height);
         this.createPlayerAnimations();
+        this.addNpc();
+        this.createNpcAnimations();
+        this.lastPsition = "down"; // O personagem começa olhando para baixo
 
+        
         // Configura colisões do jogador com camadas selecionadas
         this.physics.add.collider(this.player, layer2);
         this.physics.add.collider(this.player, layer3);
@@ -89,6 +116,192 @@ class VpPessoasScene extends Phaser.Scene {
         this.createTrash();
         this.createBook();
     }
+
+    addNpc() {
+      //Adiciona a npc no jogo
+      this.npc11 = this.physics.add.sprite(width - 950, height - 200, 'npc11');
+      this.npc11.setScale(2.0);
+      this.npc11.setImmovable(true);
+      this.createNpcAnimations();
+      this.npc11.anims.play('Idle');
+  
+      this.npc12 = this.physics.add.sprite(width - 895, height - 105, 'npc12');
+      this.npc12.setScale(2.0);
+      this.npc12.setImmovable(true);
+      this.createNpcAnimations();
+      this.npc12.anims.play('npc12');
+  
+      this.npc13 = this.physics.add.sprite(width - 767, height - 105, 'npc13');
+      this.npc13.setScale(2.0);
+      this.npc13.setImmovable(true);
+      this.createNpcAnimations();
+      this.npc13.setFlipX(true);
+      this.npc13.anims.play('npc13');
+  
+      this.npc14 = this.physics.add.sprite(width - 655, height - 145, 'npc14');
+      this.npc14.setScale(2.0);
+      this.npc14.setImmovable(true);
+      this.createNpcAnimations();
+      this.npc14.play('npc14');
+  
+      this.npc15 = this.physics.add.sprite(width - 1135, height - 145, 'npc15');
+      this.npc15.setScale(2.0);
+      this.npc15.setImmovable(true);
+      this.createNpcAnimations();
+      this.npc15.anims.play('npc15');
+  
+      this.npc16 = this.physics.add.sprite(width - 710, height - 200, 'npc16');
+      this.npc16.setScale(2.0);
+      this.npc16.setImmovable(true);
+      this.createNpcAnimations();
+      this.npc16.anims.play('npc16');
+
+      this.npc17 = this.physics.add.sprite(width - 765, height - 250, 'npc17');
+      this.npc17.setScale(2.0);
+      this.npc17.setImmovable(true);
+      this.createNpcAnimations();
+      this.npc17.anims.play('npc17');
+
+      this.npc18 = this.physics.add.sprite(width - 820, height - 300, 'npc18');
+      this.npc18.setScale(2.0);
+      this.npc18.setImmovable(true);
+      this.createNpcAnimations();
+      this.npc18.anims.play('npc18');
+
+      this.npc19 = this.physics.add.sprite(width - 875, height - 350, 'npc19');
+      this.npc19.setScale(2.0);
+      this.npc19.setImmovable(true);
+      this.createNpcAnimations();
+      this.npc19.anims.play('npc19');
+
+      this.npc20 = this.physics.add.sprite(width - 930, height - 400, 'npc20');
+      this.npc20.setScale(2.0);
+      this.npc20.setImmovable(true);
+      this.createNpcAnimations();
+      this.npc20.anims.play('npc20');
+
+      this.npc21 = this.physics.add.sprite(width - 985, height - 450, 'npc21');
+      this.npc21.setScale(2.0);
+      this.npc21.setImmovable(true);
+      this.createNpcAnimations();
+      this.npc21.anims.play('npc21');
+
+      this.npc22 = this.physics.add.sprite(width - 1040, height - 500, 'npc22');
+      this.npc22.setScale(2.0);
+      this.npc22.setImmovable(true);
+      this.createNpcAnimations();
+      this.npc22.anims.play('npc22');
+
+      this.npc23 = this.physics.add.sprite(width - 1095, height - 550, 'npc23');
+      this.npc23.setScale(2.0);
+      this.npc23.setImmovable(true);
+      this.createNpcAnimations();
+      this.npc23.anims.play('npc23');
+    
+    }
+    
+    createNpcAnimations() { 
+        this.anims.create({
+
+          //sentado direita 1: 280-285, sentado esquerda 1: 286-291
+          //setado direita 2: 336-341, sentado esquerda 2: 342-347
+          //no celular: 392-403
+          //lendo livro: 448-459
+          //idle direita: 56-62
+          //idle cima: 63-68
+          //idle esquerda: 69-74
+          //idle baixo: 75-80
+
+          key: "npc11",//sentado direita 1
+          frames: this.anims.generateFrameNumbers('npc11', { start: 280, end: 285 }),
+          frameRate: 4,
+          repeat: -1,
+        });
+
+        this.anims.create({
+          key: "npc12",//sentado direita 2
+          frames: this.anims.generateFrameNumbers('npc12', { start: 336, end: 341 }),
+          frameRate: 4,
+          repeat: -1,
+        });
+
+        this.anims.create({
+          key: "npc13",//sentado esquerda 1
+          frames: this.anims.generateFrameNumbers('npc13', { start: 286, end: 291 }),
+          frameRate: 4,
+          repeat: -1,
+        });
+
+        this.anims.create({
+          key: "npc14",//sentado esquerda 2
+          frames: this.anims.generateFrameNumbers('npc14', { start: 342, end: 347 }),
+          frameRate: 4,
+          repeat: -1,
+        });
+
+        this.anims.create({
+          key: "npc15",//no celular
+          frames: this.anims.generateFrameNumbers('npc15', { start: 392, end: 403 }),
+          frameRate: 4,
+          repeat: -1,
+        });
+
+        this.anims.create({
+          key: "npc16",//lendo livro
+          frames: this.anims.generateFrameNumbers('npc16', { start: 448, end: 459 }),
+          frameRate: 4,
+          repeat: -1,
+        });
+
+        this.anims.create({
+          key: "npc17",//idle baixo
+          frames: this.anims.generateFrameNumbers('npc17', { start: 75, end: 80 }),
+          frameRate: 4,
+          repeat: -1,
+        });
+
+        this.anims.create({
+          key: "npc18",//idle baixo
+          frames: this.anims.generateFrameNumbers('npc18', { start: 75, end: 80 }),
+          frameRate: 4,
+          repeat: -1,
+        });
+
+        this.anims.create({
+          key: "npc19",//idle baixo
+          frames: this.anims.generateFrameNumbers('npc19', { start: 75, end: 80 }),
+          frameRate: 4,
+          repeat: -1,
+        });
+
+        this.anims.create({
+          key: "npc20",
+          frames: this.anims.generateFrameNumbers('npc20', { start: 0, end: 5 }),
+          frameRate: 4,
+          repeat: -1,
+        });
+
+        this.anims.create({
+          key: "npc21",
+          frames: this.anims.generateFrameNumbers('npc21', { start: 0, end: 5 }),
+          frameRate: 4,
+          repeat: -1,
+        });
+
+        this.anims.create({
+          key: "npc22",
+          frames: this.anims.generateFrameNumbers('npc22', { start: 0, end: 5 }),
+          frameRate: 4,
+          repeat: -1,
+        });
+
+        this.anims.create({
+          key: "npc23",
+          frames: this.anims.generateFrameNumbers('npc23', { start: 0, end: 5 }),
+          frameRate: 4,
+          repeat: -1,
+        });
+      }
 
     update() {
       this.movePlayer();
@@ -145,43 +358,60 @@ class VpPessoasScene extends Phaser.Scene {
     movePlayer() {
       const velocidade = 150;
       let movendo = false;
-
+    
       if (this.teclas.left.isDown) {
         this.player.setVelocityX(-velocidade);
+        this.lastPosition = "left"; 
         this.player.anims.play("walk_left", true);
-        this.player.setFlipX(true);
         movendo = true;
       } else if (this.teclas.right.isDown) {
         this.player.setVelocityX(velocidade);
+        this.lastPosition = "right";
         this.player.anims.play("walk_right", true);
-        this.player.setFlipX(false);
         movendo = true;
       } else {
         this.player.setVelocityX(0);
       }
-
+    
       if (this.teclas.up.isDown) {
         this.player.setVelocityY(-velocidade);
+        this.lastPosition = "up";
         this.player.anims.play("walk_up", true);
         movendo = true;
       } else if (this.teclas.down.isDown) {
         this.player.setVelocityY(velocidade);
+        this.lastPosition = "down";
         this.player.anims.play("walk_down", true);
         movendo = true;
       } else {
         this.player.setVelocityY(0);
       }
-
+    
+      // Se o personagem parou, inicia a animação de stop_* em loop
       if (!movendo) {
-        this.player.anims.stop();
+        switch (this.lastPosition) {
+          case "left":
+            this.player.anims.play("stop_left", true);
+            break;
+          case "right":
+            this.player.anims.play("stop_right", true);
+            break;
+          case "up":
+            this.player.anims.play("stop_up", true);
+            break;
+          case "down":
+          default:
+            this.player.anims.play("stop_down", true);
+            break;
+        }
         this.walkSound.stop();
       } else {
         if (!this.walkSound.isPlaying) {
-        this.walkSound.play();
+          this.walkSound.play();
         }
       }
     }
-
+    
       createPlayer(width, height) {
         this.player = this.physics.add.sprite(width - 508, height - 660, 'player');
         this.player.setScale(2.5);
@@ -190,29 +420,58 @@ class VpPessoasScene extends Phaser.Scene {
       createPlayerAnimations() {
         this.anims.create({
           key: "walk_down",
-          frames: this.anims.generateFrameNumbers("player", { start: 0, end: 5 }),
+          frames: this.anims.generateFrameNumbers("player", { start: 130, end: 135 }),
           frameRate: 10,
           repeat: -1,
         });
         this.anims.create({
           key: "walk_right",
-          frames: this.anims.generateFrameNumbers("player", { start: 6, end: 11 }),
+          frames: this.anims.generateFrameNumbers("player", { start: 112, end: 117 }),
           frameRate: 10,
           repeat: -1,
         });
         this.anims.create({
           key: "walk_up",
-          frames: this.anims.generateFrameNumbers("player", { start: 12, end: 17 }),
+          frames: this.anims.generateFrameNumbers("player", { start: 118, end: 123 }),
           frameRate: 10,
           repeat: -1,
         });
         this.anims.create({
           key: "walk_left",
-          frames: this.anims.generateFrameNumbers("player", { start: 6, end: 11 }),
+          frames: this.anims.generateFrameNumbers("player", { start: 124, end: 129 }),
           frameRate: 10,
           repeat: -1,
         });
+        this.anims.create({
+          key: "stop_down",
+          frames: this.anims.generateFrameNumbers("player", { start: 74, end: 79 }), 
+          frameRate: 5, // Mais lento
+          repeat: -1, // Loop infinito
+        });
+        this.anims.create({
+          key: "stop_right",
+          frames: this.anims.generateFrameNumbers("player", { start: 56, end: 61 }),
+          frameRate: 5,
+          repeat: -1,
+        });
+        this.anims.create({
+          key: "stop_up",
+          frames: this.anims.generateFrameNumbers("player", { start: 62, end: 67 }),
+          frameRate: 5,
+          repeat: -1,
+        });
+        this.anims.create({
+          key: "stop_left",
+          frames: this.anims.generateFrameNumbers("player", { start: 68, end: 73 }),
+          frameRate: 5,
+          repeat: -1,
+        });
+        
+        
+        
       }
+
+      
 
       onShutdown() {
         // Salva o tempo atual da música e a para quando a cena é pausada ou encerrada
