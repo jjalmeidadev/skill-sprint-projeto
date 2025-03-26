@@ -93,7 +93,7 @@ class ElevadorScene extends Phaser.Scene {
     this.indicatorActive = true;
 
     // Criação dos elementos da cena
-    this.createPlayer();
+    this.createPlayer(width, height);
     this.createPlayerAnimations();
     this.createButtonOffice(width, height);
     this.createButtonPessoas(width, height);
@@ -249,18 +249,12 @@ class ElevadorScene extends Phaser.Scene {
     this.physics.add.collider(this.player, this.barreira3);
   }
 
-  createPlayer() {
-    // Cria o jogador
-    this.player = this.physics.add.sprite(width/2, height/2, "player");
+  createPlayer(width, height) {
+    this.player = this.physics.add.sprite(width / 2, height / 2, "player");
     this.player.setScale(6);
     this.player.setCollideWorldBounds(true);
     // Adicionar limites para o mundo do jogo
     this.physics.world.setBounds(0, 0, width, height);
-  }
-
-  createPlayer(width, height) {
-    this.player = this.physics.add.sprite(width - 405, height - 100, "player");
-    this.player.setScale(2);
   }
 
   createPlayerAnimations() {
