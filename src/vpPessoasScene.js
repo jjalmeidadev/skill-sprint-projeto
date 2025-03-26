@@ -113,44 +113,44 @@ class VpPessoasScene extends Phaser.Scene {
 
     addNpc() {
       //Adiciona a npc no jogo
-      this.npc11 = this.physics.add.sprite(width - 500, height - 400, 'npc11');
+      this.npc11 = this.physics.add.sprite(width - 1070, height - 185, 'npc11');
       this.npc11.setScale(2.0);
       this.npc11.setImmovable(true);
       this.createNpcAnimations();
       this.npc11.anims.play('Idle');
   
-      this.npc12 = this.physics.add.sprite(width - 530, height - 400, 'npc12');
+      this.npc12 = this.physics.add.sprite(width - 885, height - 265, 'npc12');
       this.npc12.setScale(2.0);
       this.npc12.setImmovable(true);
       this.createNpcAnimations();
       this.npc12.anims.play('npc12');
   
-      this.npc13 = this.physics.add.sprite(width - 560, height - 400, 'npc13');
+      this.npc13 = this.physics.add.sprite(width - 1070, height - 265, 'npc13');
       this.npc13.setScale(2.0);
       this.npc13.setImmovable(true);
       this.createNpcAnimations();
       this.npc13.setFlipX(true);
       this.npc13.anims.play('npc13');
   
-      this.npc14 = this.physics.add.sprite(width - 590, height - 400, 'npc14');
+      this.npc14 = this.physics.add.sprite(width - 655, height - 265, 'npc14');
       this.npc14.setScale(2.0);
       this.npc14.setImmovable(true);
       this.createNpcAnimations();
       this.npc14.play('npc14');
   
-      this.npc15 = this.physics.add.sprite(width - 620, height - 400, 'npc15');
+      this.npc15 = this.physics.add.sprite(width - 885, height - 185, 'npc15');
       this.npc15.setScale(2.0);
       this.npc15.setImmovable(true);
       this.createNpcAnimations();
       this.npc15.anims.play('npc15');
   
-      this.npc16 = this.physics.add.sprite(width - 650, height - 400, 'npc16');
+      this.npc16 = this.physics.add.sprite(width - 487, height - 200, 'npc16');
       this.npc16.setScale(2.0);
       this.npc16.setImmovable(true);
       this.createNpcAnimations();
       this.npc16.anims.play('npc16');
 
-      this.npc17 = this.physics.add.sprite(width - 670, height - 400, 'npc17');
+      this.npc17 = this.physics.add.sprite(width - 810, height - 624, 'npc17');
       this.npc17.setScale(2.0);
       this.npc17.setImmovable(true);
       this.createNpcAnimations();
@@ -186,7 +186,7 @@ class VpPessoasScene extends Phaser.Scene {
       this.createNpcAnimations();
       this.npc22.anims.play('npc22');
 
-      this.npc23 = this.physics.add.sprite(width - 650, height - 400, 'npc23');
+      this.npc23 = this.physics.add.sprite(width - 1200, height - 350, 'npc23');
       this.npc23.setScale(2.0);
       this.npc23.setImmovable(true);
       this.createNpcAnimations();
@@ -196,16 +196,6 @@ class VpPessoasScene extends Phaser.Scene {
     
     createNpcAnimations() { 
         this.anims.create({
-
-          //sentado direita 1: 280-285, sentado esquerda 1: 286-291
-          //setado direita 2: 336-341, sentado esquerda 2: 342-347
-          //no celular: 392-403
-          //lendo livro: 448-459
-          //idle direita: 56-62
-          //idle cima: 63-68
-          //idle esquerda: 69-74
-          //idle baixo: 75-80
-
           key: "npc11",//sentado direita 1
           frames: this.anims.generateFrameNumbers('npc11', { start: 0, end: 5 }),
           frameRate: 4,
