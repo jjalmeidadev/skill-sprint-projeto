@@ -453,7 +453,7 @@ A trilha sonora do jogo foi cuidadosamente escolhida para acompanhar a ambienta�
 Abaixo está a lista das músicas utilizadas em cada parte do jogo:
 | Cena                  | Descrição da Trilha                                                | Fonte / Link                                                 | Autor e Licença                            |
 |-----------------------|---------------------------------------------------------------------|--------------------------------------------------------------|---------------------------------------------|
-| Tela Inicial          | Trilha leve e acolhedora para recepcionar o jogador.               | Kevin MacLeod [Official] - Pixelland - incompetech.com" |Kevin MacLeod
+| Tela Inicial          | Trilha leve e acolhedora para recepcionar o jogador.               | https://www.youtube.com/watch?v=Z-bi29z4Z1k" |Kevin MacLeod  [Official] - Pixelland - incompetech.com
 | Cena 1 - Escritório   | Música tranquila e suave, ideal para um ambiente de trabalho.      | [YouTube - Calm Office Música para Trabalhar no Escritório | STUDIO LUZES DE PARÍS - "Carefree" |
 | Cena do Elevador      | Clássica música de elevador, divertida e temática.                 | [YouTube - Elevator Local Forecast - Elevator | Kevin MacLeod - "Elevator" |
 
