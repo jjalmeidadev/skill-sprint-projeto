@@ -267,12 +267,12 @@ class VpPessoasScene extends Phaser.Scene {
         this.indicatorTrash.play("exclamando");
       
         // Toca o som de alerta
-        this.indicatorSoundInstance = this.sound.add('indicatorSound', { loop: true, volume: 10 });
-        this.indicatorSoundInstance.play();
+        this.indicatorSoundTrash = this.sound.add('indicatorSound', { loop: true, volume: 10 });
+        this.indicatorSoundTrash.play();
       
         this.physics.add.overlap(this.player, this.indicatorTrash, () => {
           if (this.indicatorTrashActive) {
-            this.indicatorSoundInstance.stop();
+            this.indicatorSoundTrash.stop();
             this.indicatorTrash.destroy();
             this.indicatorTrashActive = false;
           }
@@ -288,12 +288,12 @@ class VpPessoasScene extends Phaser.Scene {
         this.indicatorBook.play("exclamando");
       
         // Toca o som de alerta
-        this.indicatorSoundInstance = this.sound.add('indicatorSound', { loop: true, volume: 10 });
-        this.indicatorSoundInstance.play();
+        this.indicatorSoundBook = this.sound.add('indicatorSound', { loop: true, volume: 10 });
+        this.indicatorSoundBook.play();
       
         this.physics.add.overlap(this.player, this.indicatorBook, () => {
           if (this.indicatorBookActive) {
-            this.indicatorSoundInstance.stop();
+            this.indicatorSoundBook.stop();
             this.indicatorBook.destroy();
             this.indicatorBookActive = false;
           }
