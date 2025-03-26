@@ -58,7 +58,7 @@ class OfficeScene extends Phaser.Scene {
     this.load.image("personalizado_vivo", "../assets/mapaOffice/personalizado_vivo.png");
       
     // Demais ativos
-    this.load.image("vivita", "../assets/vivita.png");
+    this.load.image("vivita", "../assets/personagens/vivita.png");
     this.load.image("balaoTexto", "../assets/balaoTexto.png");
 
     // Carrega o áudio da cena do escritório
@@ -179,6 +179,7 @@ class OfficeScene extends Phaser.Scene {
     this.createPlayerAnimations();
     this.addNpc();
     this.createNpcAnimations();
+    this.lastPosition = "down"
 
     // Configura colisões do jogador com camadas selecionadas
     this.physics.add.collider(this.player, layer3);
@@ -234,37 +235,56 @@ class OfficeScene extends Phaser.Scene {
   movePlayer() {
     const velocidade = 150;
     let movendo = false;
-
+  
     if (this.teclas.left.isDown) {
       this.player.setVelocityX(-velocidade);
+      this.lastPosition = "left"; 
       this.player.anims.play("walk_left", true);
       movendo = true;
     } else if (this.teclas.right.isDown) {
       this.player.setVelocityX(velocidade);
+      this.lastPosition = "right";
       this.player.anims.play("walk_right", true);
       movendo = true;
     } else {
       this.player.setVelocityX(0);
     }
-
+  
     if (this.teclas.up.isDown) {
       this.player.setVelocityY(-velocidade);
+      this.lastPosition = "up";
       this.player.anims.play("walk_up", true);
       movendo = true;
     } else if (this.teclas.down.isDown) {
       this.player.setVelocityY(velocidade);
+      this.lastPosition = "down";
       this.player.anims.play("walk_down", true);
       movendo = true;
     } else {
       this.player.setVelocityY(0);
     }
-
+  
+    // Se o personagem parou, inicia a animação de stop_* em loop
     if (!movendo) {
-      this.player.anims.stop();
+      switch (this.lastPosition) {
+        case "left":
+          this.player.anims.play("stop_left", true);
+          break;
+        case "right":
+          this.player.anims.play("stop_right", true);
+          break;
+        case "up":
+          this.player.anims.play("stop_up", true);
+          break;
+        case "down":
+        default:
+          this.player.anims.play("stop_down", true);
+          break;
+      }
       this.walkSound.stop();
     } else {
       if (!this.walkSound.isPlaying) {
-      this.walkSound.play();
+        this.walkSound.play();
       }
     }
   }
@@ -297,6 +317,30 @@ class OfficeScene extends Phaser.Scene {
       key: "walk_left",
       frames: this.anims.generateFrameNumbers("player", { start: 124, end: 129 }),
       frameRate: 10,
+      repeat: -1,
+    });
+    this.anims.create({
+      key: "stop_down",
+      frames: this.anims.generateFrameNumbers("player", { start: 74, end: 79 }), 
+      frameRate: 5, // Mais lento
+      repeat: -1, // Loop infinito
+    });
+    this.anims.create({
+      key: "stop_right",
+      frames: this.anims.generateFrameNumbers("player", { start: 56, end: 61 }),
+      frameRate: 5,
+      repeat: -1,
+    });
+    this.anims.create({
+      key: "stop_up",
+      frames: this.anims.generateFrameNumbers("player", { start: 62, end: 67 }),
+      frameRate: 5,
+      repeat: -1,
+    });
+    this.anims.create({
+      key: "stop_left",
+      frames: this.anims.generateFrameNumbers("player", { start: 68, end: 73 }),
+      frameRate: 5,
       repeat: -1,
     });
   }
@@ -471,6 +515,13 @@ class OfficeScene extends Phaser.Scene {
       frameRate: 6,
       repeat: -1,
     });
+
+    this.anims.create({
+      key: "vivita",
+      frames: this.anims.generateFrameNumbers('vivita', { start: 18, end: 23 }),
+      frameRate: 6,
+      repeat: -1,
+    });
   }
 
   showComputerScreen() {
@@ -483,9 +534,11 @@ class OfficeScene extends Phaser.Scene {
   }
 
   addVivita(width, height) {
-    const vivita = this.add
-      .image(width / 1.75, height / 3.2, "vivita")
-      .setScale(0.09);
+    const vivita = this.vivita = this.physics.add.sprite(width / 1.75, height / 3.2, 'vivita');
+      this.vivita.setScale(2.0);
+      this.vivita.setImmovable(true);
+      this.createNpcAnimations();
+      this.vivita.anims.play('vivita');
 
     this.exclamation = this.add
       .sprite(width / 1.75, height / 4.6, "indicator")

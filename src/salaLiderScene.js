@@ -105,6 +105,7 @@ class SalaLider extends Phaser.Scene {
     this.addLeader();
     this.createPlayer();
     this.createPlayerAnimations();
+    this.lastPosition = "down"
 
     // Configura colisões entre o jogador e algumas camadas selecionadas
     this.physics.add.collider(this.player, layer3);
@@ -125,37 +126,56 @@ class SalaLider extends Phaser.Scene {
     movePlayer() {
       const velocidade = 150;
       let movendo = false;
-
+    
       if (this.teclas.left.isDown) {
         this.player.setVelocityX(-velocidade);
+        this.lastPosition = "left"; 
         this.player.anims.play("walk_left", true);
         movendo = true;
       } else if (this.teclas.right.isDown) {
         this.player.setVelocityX(velocidade);
+        this.lastPosition = "right";
         this.player.anims.play("walk_right", true);
         movendo = true;
       } else {
         this.player.setVelocityX(0);
       }
-
+    
       if (this.teclas.up.isDown) {
         this.player.setVelocityY(-velocidade);
+        this.lastPosition = "up";
         this.player.anims.play("walk_up", true);
         movendo = true;
       } else if (this.teclas.down.isDown) {
         this.player.setVelocityY(velocidade);
+        this.lastPosition = "down";
         this.player.anims.play("walk_down", true);
         movendo = true;
       } else {
         this.player.setVelocityY(0);
       }
-
+    
+      // Se o personagem parou, inicia a animação de stop_* em loop
       if (!movendo) {
-        this.player.anims.stop();
+        switch (this.lastPosition) {
+          case "left":
+            this.player.anims.play("stop_left", true);
+            break;
+          case "right":
+            this.player.anims.play("stop_right", true);
+            break;
+          case "up":
+            this.player.anims.play("stop_up", true);
+            break;
+          case "down":
+          default:
+            this.player.anims.play("stop_down", true);
+            break;
+        }
         this.walkSound.stop();
       } else {
         if (!this.walkSound.isPlaying) {
-        this.walkSound.play();
+          this.walkSound.play();
         }
       }
     }
@@ -189,6 +209,30 @@ class SalaLider extends Phaser.Scene {
       key: "walk_left",
       frames: this.anims.generateFrameNumbers("player", { start: 124, end: 129 }),
       frameRate: 10,
+      repeat: -1,
+    });
+    this.anims.create({
+      key: "stop_down",
+      frames: this.anims.generateFrameNumbers("player", { start: 74, end: 79 }), 
+      frameRate: 5, // Mais lento
+      repeat: -1, // Loop infinito
+    });
+    this.anims.create({
+      key: "stop_right",
+      frames: this.anims.generateFrameNumbers("player", { start: 56, end: 61 }),
+      frameRate: 5,
+      repeat: -1,
+    });
+    this.anims.create({
+      key: "stop_up",
+      frames: this.anims.generateFrameNumbers("player", { start: 62, end: 67 }),
+      frameRate: 5,
+      repeat: -1,
+    });
+    this.anims.create({
+      key: "stop_left",
+      frames: this.anims.generateFrameNumbers("player", { start: 68, end: 73 }),
+      frameRate: 5,
       repeat: -1,
     });
   }

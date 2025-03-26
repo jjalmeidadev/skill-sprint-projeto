@@ -10,7 +10,7 @@ class VpNegociosScene extends Phaser.Scene {
         this.load.image('paredes', '../assets/mapaVPNegocios/paredes.png');
 
         // Carrega imagens, spritesheets e demais ativos
-        this.load.spritesheet('player', '../assets/Player.png', { frameWidth: 32, frameHeight: 32 });
+        this.load.spritesheet('player', '../assets/personagens/skinsPlayer/player1all.png', { frameWidth: 16, frameHeight: 32 });
 
         // Carrega os efeitos sonoros
         this.load.audio('walkSound', '../assets/sounds/753292__vrymaa__footsteps-high-heels-hardwood-walk-run (mp3cut.net).wav');
@@ -51,6 +51,7 @@ class VpNegociosScene extends Phaser.Scene {
 
         this.createPlayer(width, height);
         this.createPlayerAnimations();
+        this.lastPosition = "down"
 
         // Configura colisões do jogador com camadas selecionadas
         this.physics.add.collider(this.player, layer2);
@@ -72,39 +73,56 @@ class VpNegociosScene extends Phaser.Scene {
     movePlayer() {
       const velocidade = 150;
       let movendo = false;
-
+    
       if (this.teclas.left.isDown) {
         this.player.setVelocityX(-velocidade);
+        this.lastPosition = "left"; 
         this.player.anims.play("walk_left", true);
-        this.player.setFlipX(true);
         movendo = true;
       } else if (this.teclas.right.isDown) {
         this.player.setVelocityX(velocidade);
+        this.lastPosition = "right";
         this.player.anims.play("walk_right", true);
-        this.player.setFlipX(false);
         movendo = true;
       } else {
         this.player.setVelocityX(0);
       }
-
+    
       if (this.teclas.up.isDown) {
         this.player.setVelocityY(-velocidade);
+        this.lastPosition = "up";
         this.player.anims.play("walk_up", true);
         movendo = true;
       } else if (this.teclas.down.isDown) {
         this.player.setVelocityY(velocidade);
+        this.lastPosition = "down";
         this.player.anims.play("walk_down", true);
         movendo = true;
       } else {
         this.player.setVelocityY(0);
       }
-
+    
+      // Se o personagem parou, inicia a animação de stop_* em loop
       if (!movendo) {
-        this.player.anims.stop();
+        switch (this.lastPosition) {
+          case "left":
+            this.player.anims.play("stop_left", true);
+            break;
+          case "right":
+            this.player.anims.play("stop_right", true);
+            break;
+          case "up":
+            this.player.anims.play("stop_up", true);
+            break;
+          case "down":
+          default:
+            this.player.anims.play("stop_down", true);
+            break;
+        }
         this.walkSound.stop();
       } else {
         if (!this.walkSound.isPlaying) {
-        this.walkSound.play();
+          this.walkSound.play();
         }
       }
     }
@@ -117,27 +135,54 @@ class VpNegociosScene extends Phaser.Scene {
       createPlayerAnimations() {
         this.anims.create({
           key: "walk_down",
-          frames: this.anims.generateFrameNumbers("player", { start: 0, end: 5 }),
+          frames: this.anims.generateFrameNumbers("player", { start: 130, end: 135 }),
           frameRate: 10,
           repeat: -1,
         });
         this.anims.create({
           key: "walk_right",
-          frames: this.anims.generateFrameNumbers("player", { start: 6, end: 11 }),
+          frames: this.anims.generateFrameNumbers("player", { start: 112, end: 117 }),
           frameRate: 10,
           repeat: -1,
         });
         this.anims.create({
           key: "walk_up",
-          frames: this.anims.generateFrameNumbers("player", { start: 12, end: 17 }),
+          frames: this.anims.generateFrameNumbers("player", { start: 118, end: 123 }),
           frameRate: 10,
           repeat: -1,
         });
         this.anims.create({
           key: "walk_left",
-          frames: this.anims.generateFrameNumbers("player", { start: 6, end: 11 }),
+          frames: this.anims.generateFrameNumbers("player", { start: 124, end: 129 }),
           frameRate: 10,
           repeat: -1,
         });
+        this.anims.create({
+          key: "stop_down",
+          frames: this.anims.generateFrameNumbers("player", { start: 74, end: 79 }), 
+          frameRate: 5, // Mais lento
+          repeat: -1, // Loop infinito
+        });
+        this.anims.create({
+          key: "stop_right",
+          frames: this.anims.generateFrameNumbers("player", { start: 56, end: 61 }),
+          frameRate: 5,
+          repeat: -1,
+        });
+        this.anims.create({
+          key: "stop_up",
+          frames: this.anims.generateFrameNumbers("player", { start: 62, end: 67 }),
+          frameRate: 5,
+          repeat: -1,
+        });
+        this.anims.create({
+          key: "stop_left",
+          frames: this.anims.generateFrameNumbers("player", { start: 68, end: 73 }),
+          frameRate: 5,
+          repeat: -1,
+        });
+        
+        
+        
       }
 }
