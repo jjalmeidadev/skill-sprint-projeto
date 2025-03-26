@@ -224,6 +224,7 @@ class OfficeScene extends Phaser.Scene {
       this.buttonClick.play();
       this.scene.pause();
       this.scene.launch('curriculoScene');
+      this.salaLider();
     }
   }
 
