@@ -4,18 +4,9 @@ class SalaLider extends Phaser.Scene {
   }
   preload() {
     // Carrega a sprite do jogador e da exclamação
-    this.load.spritesheet("player", "../assets/Player.png", {
-      frameWidth: 32,
-      frameHeight: 32,
-    });
-    this.load.spritesheet("indicator", "../assets/exclamaçãoRoxa.png", {
-      frameWidth: 254,
-      frameHeight: 305,
-    });
-    this.load.spritesheet("leader", "../assets/personagens/LiderReading.png", {
-      frameWidth: 16,
-      frameHeight: 32,
-    });
+    this.load.spritesheet("player", "../assets/Player.png", {frameWidth: 32, frameHeight: 32, });
+    this.load.spritesheet("indicator", "../assets/exclamaçãoRoxa.png", { frameWidth: 254, frameHeight: 305, });
+    this.load.spritesheet("leader", "../assets/personagens/LiderReading.png", { frameWidth: 16, frameHeight: 32, });
 
     // Carrega o balão de texto
     this.load.image("textBalloon", "../assets/balaoTexto.png");
@@ -96,24 +87,12 @@ class SalaLider extends Phaser.Scene {
     const offsetY = height - 650; // Offset para centralizar o mapa
 
     // Adiciona as camadas do mapa
-    const layer1 = map
-      .createLayer("chao", tileset, offsetX, offsetY)
-      .setScale(5);
-    const layer2 = map
-      .createLayer("tapete", tileset, offsetX, offsetY)
-      .setScale(5);
-    const layer3 = map
-      .createLayer("parede", tileset, offsetX, offsetY)
-      .setScale(5);
-    const layer4 = map
-      .createLayer("mesa", tileset, offsetX, offsetY)
-      .setScale(5);
-    const layer5 = map
-      .createLayer("decoracao", tileset, offsetX, offsetY)
-      .setScale(5);
-    const layer6 = map
-      .createLayer("pertences", tileset, offsetX, offsetY)
-      .setScale(5);
+    const layer1 = map.createLayer("chao", tileset, offsetX, offsetY).setScale(5);
+    const layer2 = map.createLayer("tapete", tileset, offsetX, offsetY).setScale(5);  
+    const layer3 = map.createLayer("parede", tileset, offsetX, offsetY).setScale(5);
+    const layer4 = map.createLayer("mesa", tileset, offsetX, offsetY).setScale(5);  
+    const layer5 = map.createLayer("decoracao", tileset, offsetX, offsetY).setScale(5);  
+    const layer6 = map.createLayer("pertences", tileset, offsetX, offsetY).setScale(5);
 
     // Torna as colisões criadas no Tiled válidas no jogo
     layer1.setCollisionByProperty({ collider: true });

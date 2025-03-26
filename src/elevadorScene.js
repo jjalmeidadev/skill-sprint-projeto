@@ -43,10 +43,7 @@ class ElevadorScene extends Phaser.Scene {
     const width = this.scale.width;
     const height = this.scale.height;
 
-    this.excbubble = this.sound.add("excbubble", {
-      loop: false,
-      volume: 10,
-    });
+    this.excbubble = this.sound.add("excbubble", {loop: false, volume: 10,});
 
     //Audio toca sempre que a cena inicia
     this.excbubble.play();
@@ -61,10 +58,8 @@ class ElevadorScene extends Phaser.Scene {
     this.walkSound = this.sound.add('walkSound', {loop: false, volume: 2});
 
     // Inicia o áudio do elevador em loop
-    this.elevatorSound = this.sound.add("elevatorAudio", {
-      loop: true, // Configura para tocar em loop
-      volume: 0.5, // Define o volume da música
-    });
+    this.elevatorSound = this.sound.add("elevatorAudio", {loop: true, volume: 0.5,});
+    
     this.elevatorSound.play();
     
     // Cria a animação para o indicador (caso ainda não exista)
@@ -102,9 +97,7 @@ class ElevadorScene extends Phaser.Scene {
     });
 
     // Cria a sprite do indicador ("exclamando")
-    this.indicator = this.add
-      .sprite(width - 955, height - 660, "indicator")
-      .setScale(0.3);
+    this.indicator = this.add.sprite(width - 955, height - 660, "indicator").setScale(0.3);
     this.indicator.play("exclamando");
     this.indicatorActive = true;
 
@@ -225,45 +218,24 @@ class ElevadorScene extends Phaser.Scene {
   }
 
   createBarriers() {
-    this.barreira = this.add.rectangle( width - 760,
-      height - 40,
-      620,
-      120,
-      0xff0000,
-      0
-    );
+    this.barreira = this.add.rectangle( width - 760, height - 40, 620, 120, 0xff0000, 0 );
+
     this.physics.add.existing(this.barreira, true);
     this.physics.add.collider(this.player, this.barreira);
 
 
-    this.barreira1 = this.add.rectangle( width - 500,
-      height - 20,
-      20,
-      1400,
-      0xff0000,
-      0
-    );
+    this.barreira1 = this.add.rectangle( width - 500, height - 20, 20, 1400, 0xff0000, 0 );
+   
     this.physics.add.existing(this.barreira1, true);
     this.physics.add.collider(this.player, this.barreira1);
 
-    this.barreira2 = this.add.rectangle( width - 1100,
-      height - 20,
-      20,
-      1400,
-      0xff0000,
-      0
-    );
+    this.barreira2 = this.add.rectangle( width - 1100, height - 20, 20, 1400, 0xff0000, 0 );
+   
     this.physics.add.existing(this.barreira2, true);
     this.physics.add.collider(this.player, this.barreira2);
 
-    this.barreira3 = this.add.rectangle(
-      width - 610,
-      height - 610,
-      420,
-      20,
-      0xff0000,
-      0
-    );
+    this.barreira3 = this.add.rectangle( width - 610, height - 610, 420, 20, 0xff0000, 0 );
+   
     this.physics.add.existing(this.barreira3, true);
     this.physics.add.collider(this.player, this.barreira3);
   }
@@ -312,9 +284,7 @@ class ElevadorScene extends Phaser.Scene {
     this.painelinelev.setVisible(false);
 
     // Adiciona a sprite da exclamação
-    this.indicator = this.add
-      .sprite(width - 955, height - 660, "indicator")
-      .setScale(0.3);
+    this.indicator = this.add.sprite(width - 955, height - 660, "indicator").setScale(0.3);
     this.indicator.play("exclamando"); // Inicia a animação
     this.indicatorActive = true;
     if (this.indicatorActive) {
@@ -322,27 +292,14 @@ class ElevadorScene extends Phaser.Scene {
     }
 
     // Adiciona o botão interativo
-    this.botaoofficeel = this.add.image(
-      width - 905,
-      height - 160,
-      "botaooffice"
-    );
+    this.botaoofficeel = this.add.image(width - 905, height - 160, "botaooffice");
     this.botaoofficeel.setInteractive();
     this.botaoofficeel.setScale(1.2, 1.15);
     this.botaoofficeel.setVisible(false);
 
     // Adiciona um objeto invisível para verificar a proximidade
-    this.proximidade = this.add.rectangle(
-      width - 955,
-      height - 650,
-      105,
-      70,
-      0xff0000,
-      0
-    );
+    this.proximidade = this.add.rectangle(width - 955, height - 650, 105, 70, 0xff0000, 0);
     this.physics.add.existing(this.proximidade, true);
-
-    
 
     this.botaoofficeel.on("pointerdown", () => {
       this.buttonClick.play();
@@ -357,11 +314,8 @@ class ElevadorScene extends Phaser.Scene {
     this.botaopessoas = this.add.image(0, 0, "botaopessoas").setOrigin(0, 0);
     this.botaopessoas.setVisible(false);
 
-    this.botaopessoas = this.add.image(
-      width - 620,
-      height - 160,
-      "botaopessoas"
-    );
+    this.botaopessoas = this.add.image( width - 620, height - 160, "botaopessoas" );
+   
     this.botaopessoas.setInteractive();
     this.botaopessoas.setScale(1.2, 1.15);
     this.botaopessoas.setVisible(false);
@@ -376,16 +330,11 @@ class ElevadorScene extends Phaser.Scene {
 
   createButtonEstrategias(width, height) {
     // Botão Estratégias
-    this.botaoestrategias = this.add
-      .image(0, 0, "botaoestrategias")
-      .setOrigin(0, 0);
+    this.botaoestrategias = this.add.image(0, 0, "botaoestrategias").setOrigin(0, 0);
     this.botaoestrategias.setVisible(false);
 
-    this.botaoestrategias = this.add.image(
-      width - 620,
-      height - 392,
-      "botaoestrategias"
-    );
+    this.botaoestrategias = this.add.image( width - 620, height - 392, "botaoestrategias" );
+   
     this.botaoestrategias.setInteractive();
     this.botaoestrategias.setScale(1.2, 1.15);
     this.botaoestrategias.setVisible(false);
@@ -403,11 +352,8 @@ class ElevadorScene extends Phaser.Scene {
     this.botaonegocios = this.add.image(0, 0, "botaonegocios").setOrigin(0, 0);
     this.botaonegocios.setVisible(false);
 
-    this.botaonegocios = this.add.image(
-      width - 910,
-      height - 393,
-      "botaonegocios"
-    );
+    this.botaonegocios = this.add.image( width - 910, height - 393, "botaonegocios" );
+   
     this.botaonegocios.setInteractive();
     this.botaonegocios.setScale(1.2, 1.15);
     this.botaonegocios.setVisible(false);
@@ -440,11 +386,7 @@ class ElevadorScene extends Phaser.Scene {
     this.botaorelacoes = this.add.image(0, 0, "botaorelacoes").setOrigin(0, 0);
     this.botaorelacoes.setVisible(false);
 
-    this.botaorelacoes = this.add.image(
-      width - 610,
-      height - 605,
-      "botaorelacoes"
-    );
+    this.botaorelacoes = this.add.image( width - 610, height - 605, "botaorelacoes" );
     this.botaorelacoes.setInteractive();
     this.botaorelacoes.setScale(1.2, 1.15);
     this.botaorelacoes.setVisible(false);

@@ -6,22 +6,14 @@ class OfficeScene extends Phaser.Scene {
 
   preload() {
     // Carrega imagens, spritesheets e demais ativos
-    this.load.spritesheet("player", "../assets/Player.png", {
-      frameWidth: 32,
-      frameHeight: 32,
-    });
+    this.load.spritesheet("player", "../assets/Player.png", {frameWidth: 32, frameHeight: 32,});
     this.load.image("telaComputador", "../assets/tela_computador.png");
     this.load.image("computador", "../assets/computador.png");
-    this.load.spritesheet("indicator", "../assets/exclamaçãoRoxa.png", {
-      frameWidth: 254,
-      frameHeight: 305,
-    });
+    this.load.spritesheet("indicator", "../assets/exclamaçãoRoxa.png", {frameWidth: 254, frameHeight: 305,});
 
     // Carrega o mapa do Tiled e os tilesets
-    this.load.tilemapTiledJSON(
-      "escritorio",
-      "../assets/mapaOffice/mapaOffice.json"
-    );
+    this.load.tilemapTiledJSON("escritorio","../assets/mapaOffice/mapaOffice.json");
+
     this.load.image("decoracao", "../assets/mapaOffice/decoracao.png");
     this.load.image("paredes", "../assets/mapaOffice/paredes.png");
     this.load.image("personalizado_vivo", "../assets/mapaOffice/personalizado_vivo.png");
@@ -55,10 +47,10 @@ class OfficeScene extends Phaser.Scene {
     // Transição suave
     this.cameras.main.fadeIn(1000);
 
-      // Carrega os efeitos sonoros
-      this.buttonClick = this.sound.add('buttonSound', {loop: false, volume: 10});
-      this.indicatorSound = this.sound.add('indicatorSound', {loop: true, volume: 1.5});
-      this.walkSound = this.sound.add('walkSound', {loop: false, volume: 2});
+    // Carrega os efeitos sonoros
+    this.buttonClick = this.sound.add('buttonSound', {loop: false, volume: 10});
+    this.indicatorSound = this.sound.add('indicatorSound', {loop: true, volume: 1.5});
+    this.walkSound = this.sound.add('walkSound', {loop: false, volume: 2});
 
     // Cria e inicia a música; se houver um tempo salvo, retoma a partir dele
     const startTime = OfficeScene.lastMusicTime || 0;
@@ -97,40 +89,18 @@ class OfficeScene extends Phaser.Scene {
     //Cria as camadas
     const offsetX = width - 1270;
     const layer1 = map.createLayer("chao", tileset2, offsetX, 0).setScale(2.5);
-    const layer2 = map
-      .createLayer("chaoLider", tileset1, offsetX, 0)
-      .setScale(2.5);
-    const layer3 = map
-      .createLayer("parede", tileset2, offsetX, 0)
-      .setScale(2.5);
-    const layer4 = map
-      .createLayer("tapete", tileset3, offsetX, 0)
-      .setScale(2.5);
-    const layer5 = map
-      .createLayer("tapeteLider", tileset1, offsetX, 0)
-      .setScale(2.5);
-    const layer6 = map
-      .createLayer("acabamento", tileset2, offsetX, 0)
-      .setScale(2.5);
-    const layer7 = map
-      .createLayer("cadeira", tileset1, offsetX, 0)
-      .setScale(2.5);
-    const layer8 = map
-      .createLayer("cadeiraTras", tileset1, offsetX, 0)
-      .setScale(2.5);
-    const layer9 = map
-      .createLayer("quadro", tileset1, offsetX, 0)
-      .setScale(2.5);
+    const layer2 = map.createLayer("chaoLider", tileset1, offsetX, 0).setScale(2.5);
+    const layer3 = map.createLayer("parede", tileset2, offsetX, 0).setScale(2.5);
+    const layer4 = map.createLayer("tapete", tileset3, offsetX, 0).setScale(2.5);
+    const layer5 = map.createLayer("tapeteLider", tileset1, offsetX, 0).setScale(2.5);
+    const layer6 = map.createLayer("acabamento", tileset2, offsetX, 0).setScale(2.5);
+    const layer7 = map.createLayer("cadeira", tileset1, offsetX, 0).setScale(2.5);
+    const layer8 = map.createLayer("cadeiraTras", tileset1, offsetX, 0).setScale(2.5);
+    const layer9 = map.createLayer("quadro", tileset1, offsetX, 0).setScale(2.5);
     const layer10 = map.createLayer("sofa", tileset1, offsetX, 0).setScale(2.5);
-    const layer11 = map
-      .createLayer("planta", tileset1, offsetX, 0)
-      .setScale(2.5);
-    const layer12 = map
-      .createLayer("porta", tileset1, offsetX, 0)
-      .setScale(2.5);
-    const layer13 = map
-      .createLayer("decoracao", tileset1, offsetX, 0)
-      .setScale(2.5);
+    const layer11 = map.createLayer("planta", tileset1, offsetX, 0).setScale(2.5);
+    const layer12 = map.createLayer("porta", tileset1, offsetX, 0).setScale(2.5);
+    const layer13 = map.createLayer("decoracao", tileset1, offsetX, 0).setScale(2.5);
 
     //Ativa as colisões com base na propriedade 'collider' para todas as camadas
     layer1.setCollisionByProperty({ collider: true });
@@ -277,9 +247,7 @@ class OfficeScene extends Phaser.Scene {
   createButtonCima() {
     this.blockLoop = 1;
 
-    this.exclamacao = this.physics.add
-      .sprite(width - 435, height - 700, "indicator")
-      .setScale(0.2);
+    this.exclamacao = this.physics.add.sprite(width - 435, height - 700, "indicator").setScale(0.2);
     this.exclamacao.setImmovable(true);
     this.exclamacao.play("exclamando");
     this.indicatorActive = true;
@@ -289,17 +257,12 @@ class OfficeScene extends Phaser.Scene {
 
     this.bgelevoffice = this.add.image(0, 0, "bgElevOffice").setOrigin(0, 0);
     this.bgelevoffice.setDisplaySize(width, height);
-    this.painelelev = this.add
-      .image(width - 910, height - 600, "painelelev")
-      .setOrigin(0, 0);
+    this.painelelev = this.add.image(width - 910, height - 600, "painelelev").setOrigin(0, 0);
     this.bgelevoffice.setVisible(false);
     this.painelelev.setVisible(false);
 
-    this.botaoCima = this.add.image(
-      width - 680,
-      height - 400,
-      "botaoElevOffice"
-    );
+    this.botaoCima = this.add.image(width - 680, height - 400, "botaoElevOffice"); 
+  
     this.botaoCima.setInteractive();
     this.botaoCima.setScale(1);
     this.botaoCima.setVisible(false);
@@ -319,27 +282,21 @@ class OfficeScene extends Phaser.Scene {
   }
 
   createComputer(width, height) {
-    this.computador = this.add
-      .image(width - 1020, height - 100, "computador")
-      .setScale(0.09)
-      .setInteractive();
+    this.computador = this.add.image(width - 1020, height - 100, "computador").setScale(0.09);
+    this.computador.setInteractive();
     this.computador.setFlipX(true);
   }
 
   addIndicatorAndComputer() {
-    this.indicator = this.add
-      .sprite(width - 1020, height - 150, "indicator")
-      .setScale(0.2);
+    this.indicator = this.add.sprite(width - 1020, height - 150, "indicator").setScale(0.2);
     this.indicator.play("exclamando");
     this.indicatorActive = true;
     if(this.indicatorActive) {
       this.indicatorSound.play();
     }
 
-    this.computador = this.add
-      .image(width - 1020, height - 100, "computador")
-      .setScale(0.09)
-      .setInteractive();
+    this.computador = this.add.image(width - 1020, height - 100, "computador").setScale(0.09)
+    this.computador.setInteractive();
     this.computador.setFlipX(true);
 
     this.computador.on("pointerover", () => {
@@ -372,13 +329,9 @@ class OfficeScene extends Phaser.Scene {
   }
 
   addVivita(width, height) {
-    const vivita = this.add
-      .image(width / 1.75, height / 3.2, "vivita")
-      .setScale(0.09);
+    const vivita = this.add.image(width / 1.75, height / 3.2, "vivita").setScale(0.09);
 
-    this.exclamation = this.add
-      .sprite(width / 1.75, height / 4.6, "indicator")
-      .setScale(0.2);
+    this.exclamation = this.add.sprite(width / 1.75, height / 4.6, "indicator").setScale(0.2);
     this.exclamation.play("exclamando");
     this.indicatorActive = true;
     if(this.indicatorActive) {  

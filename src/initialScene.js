@@ -33,35 +33,17 @@ class InitialScene extends Phaser.Scene {
     this.load.image("titulo", "../assets/assetsBackground/titulo.png ");
 
     this.load.image("botaoJogar", "../assets/assets_botoes/botaoPlay.png");
-    this.load.image(
-      "botaoCreditos",
-      "../assets/assets_botoes/botaoCreditos.png"
-    );
+    this.load.image( "botaoCreditos", "../assets/assets_botoes/botaoCreditos.png" );
     this.load.image("botaoAjustes", "../assets/assets_botoes/botaoAjustes.png");
     this.load.image("layoutPlay", "../assets/assets_botoes/layoutPlay.png");
-    this.load.spritesheet("birdeaster", "../assets/passaroeaster.png", {
-      frameWidth: 75,
-      frameHeight: 92,
-    });
-    this.load.spritesheet("meteoro", "../assets/meteoroeaster.png", {
-      frameWidth: 499,
-      frameHeight: 500,
-    });
-    this.load.spritesheet("explosao", "../assets/explosaoeaster.png", {
-      frameWidth: 140,
-      frameHeight: 100,
-    });
+    this.load.spritesheet("birdeaster", "../assets/passaroeaster.png", { frameWidth: 75, frameHeight: 92, });
+    this.load.spritesheet("meteoro", "../assets/meteoroeaster.png", { frameWidth: 499, frameHeight: 500, });
+    this.load.spritesheet("explosao", "../assets/explosaoeaster.png", { frameWidth: 140, frameHeight: 100, });
 
     this.load.image("explobird", "../assets/explodebird.png");
     // Carrega o áudio da tela inicial
-    this.load.audio(
-      "initialMusic",
-      "../assets/Kevin MacLeod - Pixelland ♫ NO COPYRIGHT 8-bit Music.mp3"
-    );
-    this.load.audio(
-      "buttonSound",
-      "../assets/sounds/687107__aphom000__mouse-2-button-fast-click.wav"
-    );
+    this.load.audio( "initialMusic", "../assets/Kevin MacLeod - Pixelland ♫ NO COPYRIGHT 8-bit Music.mp3" );
+    this.load.audio( "buttonSound", "../assets/sounds/687107__aphom000__mouse-2-button-fast-click.wav" );
     this.load.audio("vineboom", "../assets/sounds/vineboom.mp3");
     this.load.audio("bumpvidro", "../assets/sounds/bumpvidro.mp3");
     this.load.audio("vidroslide", "../assets/sounds/vidroslide.mp3");
@@ -76,29 +58,19 @@ class InitialScene extends Phaser.Scene {
     this.bgs = [];
     const speeds = [0.005, 0.05, 0.07, 0.08, 0.09, 0.1];
     for (let i = 0; i < 6; i++) {
-      let bg = this.add
-        .tileSprite(0, 0, 576, 324, `bg0${i + 1}`)
-        .setOrigin(0, 0)
-        .setScale(2.8);
-
+      let bg = this.add.tileSprite(0, 0, 576, 324, `bg0${i + 1}`).setOrigin(0, 0).setScale(2.8);
       this.bgs.push({ sprite: bg, speed: speeds[i] });
     }
 
-    this.birdeaster = this.physics.add.sprite(
-      width - (width + 105),
-      height / 2.5,
-      "birdeaster"
-    );
+    this.birdeaster = this.physics.add.sprite(width - (width + 105), height / 2.5, "birdeaster" );
+
     const birdeaster = this.birdeaster;
     this.birdeaster.v0 = 0;
     this.birdeaster.a = 20;
     this.timeset = this.time.now;
 
-    this.meteoro = this.physics.add.sprite(
-      width + 5,
-      height - 1050,
-      "meteoro"
-    );
+    this.meteoro = this.physics.add.sprite( width + 5, height - 1050, "meteoro" );
+
     const meteoro = this.meteoro;
     this.meteoro.setFlipX(true);
     meteoro.setAngle(-20);
@@ -110,11 +82,8 @@ class InitialScene extends Phaser.Scene {
     this.birdeaster.body.setEnable(true);
     this.meteoro.body.setEnable(true);
 
-    this.explosao = this.physics.add.sprite(
-      width - 500,
-      height / 2,
-      "explosao"
-    );
+    this.explosao = this.physics.add.sprite( width - 500, height / 2, "explosao" );
+   
     const explosao = this.explosao;
     this.explosao.setScale(6);
     this.explosao.setCrop(70, 0, 500, 500);
@@ -155,15 +124,10 @@ class InitialScene extends Phaser.Scene {
     this.explosao.setVisible(false);
 
     // Inicia a música da tela inicial em loop
-    this.initialMusic = this.sound.add("initialMusic", {
-      loop: true,
-      volume: 2,
-    });
+    this.initialMusic = this.sound.add("initialMusic", { loop: true, volume: 2, });
     this.initialMusic.play();
 
-    this.explobird = this.add
-      .image(width - 300, height - 430, "explobird")
-      .setScale(0.5);
+    this.explobird = this.add.image(width - 300, height - 430, "explobird").setScale(0.5);
     this.explobird.setVisible(false);
     this.explobird.setDepth(1);
 
@@ -270,10 +234,7 @@ class InitialScene extends Phaser.Scene {
   }
 
   buttonSound() {
-    this.buttonClick = this.sound.add("buttonSound", {
-      loop: false,
-      volume: 10,
-    });
+    this.buttonClick = this.sound.add("buttonSound", {loop: false, volume: 10, });
     this.buttonClick.play();
   }
 
@@ -290,11 +251,7 @@ class InitialScene extends Phaser.Scene {
   }
 
   createButtonCreditos(width, height) {
-    const botaoCreditos = this.add.image(
-      width / 2,
-      height / 1.5,
-      "botaoCreditos"
-    );
+    const botaoCreditos = this.add.image(width / 2, height / 1.5, "botaoCreditos" );
     botaoCreditos.setInteractive();
     botaoCreditos.setScale(1);
     botaoCreditos.on("pointerdown", () => {
@@ -306,11 +263,7 @@ class InitialScene extends Phaser.Scene {
   }
 
   createButtonAjustes(width, height) {
-    const botaoAjustes = this.add.image(
-      width / 2,
-      height - 175,
-      "botaoAjustes"
-    );
+    const botaoAjustes = this.add.image( width / 2, height - 175, "botaoAjustes" );
     botaoAjustes.setInteractive();
     botaoAjustes.setScale(1);
     botaoAjustes.on("pointerdown", () => {
@@ -339,19 +292,11 @@ class InitialScene extends Phaser.Scene {
         let vbird = this.birdeaster.v0 + this.birdeaster.a * t;
 
         //Cálculo do deslocamento com x = x0 + V0t + 0.5at²
-        this.birdeaster.x =
-          width -
-          (width + 35) +
-          this.birdeaster.v0 * t +
-          0.5 * this.birdeaster.a * t * t;
-
-        // Cálculo da velocidade com V = delta S/t
+        this.birdeaster.x = width - (width + 35) + this.birdeaster.v0 * t + 0.5 * this.birdeaster.a * t * t; // Cálculo da velocidade com V = delta S/t
 
         this.meteoro.setVelocityX(-this.meteoro.dS / t);
 
-        // Cálculo da velocidade com V = v0 + at
-
-        this.meteoro.setVelocityY(this.meteoro.v0 + this.meteoro.a * t);
+        this.meteoro.setVelocityY(this.meteoro.v0 + this.meteoro.a * t); // Cálculo da velocidade com V = v0 + at
       }
     }
     if (this.meteoro.visible) {
