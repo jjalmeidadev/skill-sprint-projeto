@@ -192,3 +192,34 @@ class VpPessoasScene extends Phaser.Scene {
 
 // Propriedade estática para armazenar o tempo de reprodução da música
 VpPessoasScene.lastMusicTime = 0;
+
+class bookScene extends Phaser.Scene {
+    constructor() {
+        super({ key: 'bookScene' });
+    }
+
+    preload() {
+        this.load.image('arrowYellow', '../assets/assetsBookVPPessoas/arrow_yellow.png');
+        this.load.image('backgroundTable', '../assets/assetsBookVPPessoas/backgroundTable.png');
+        this.load.image('book', '../assets/assetsBookVPPessoas/caderno.png');
+        this.load.image('column1', '../assets/assetsBookVPPessoas/coluna1.png');
+        this.load.image('column2', '../assets/assetsBookVPPessoas/coluna2.png');
+        this.load.image('column3', '../assets/assetsBookVPPessoas/coluna3.png');
+        this.load.image('column4', '../assets/assetsBookVPPessoas/coluna4.png');
+        this.load.image('column5', '../assets/assetsBookVPPessoas/coluna5.png');
+        this.load.image('board', '../assets/assetsBookVPPessoas/prancheta.png');
+        this.load.image('answer1', '../assets/assetsBookVPPessoas/topico1.png');
+        this.load.image('answer2', '../assets/assetsBookVPPessoas/topico2.png');
+        this.load.image('answer3', '../assets/assetsBookVPPessoas/topico3.png');
+        this.load.image('answer4', '../assets/assetsBookVPPessoas/topico4.png');
+        this.load.image('answer5', '../assets/assetsBookVPPessoas/topico5.png');
+    }
+
+    create() {
+        const book = this.add.image(width / 2, height / 2, 'book');
+        book.setInteractive();
+        book.on('pointerdown', () => {
+            this.scene.switch('vpPessoasScene');
+        });
+    }
+}
