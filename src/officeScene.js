@@ -40,7 +40,11 @@ class OfficeScene extends Phaser.Scene {
       frameWidth: 16,
       frameHeight: 32,
     });
-
+   this.load.spritesheet("vivita", "../assets/personagens/vivita.png", {
+    frameWidth: 16,
+    frameHeight: 32,
+    });
+   
     this.load.image("telaComputador", "../assets/tela_computador.png");
     this.load.image("computador", "../assets/computador.png");
     this.load.spritesheet("indicator", "../assets/exclamaçãoRoxa.png", {frameWidth: 254, frameHeight: 305,});
@@ -53,7 +57,7 @@ class OfficeScene extends Phaser.Scene {
     this.load.image("personalizado_vivo", "../assets/mapaOffice/personalizado_vivo.png");
       
     // Demais ativos
-    this.load.image("vivita", "../assets/personagens/vivita.png");
+   
     this.load.image("balaoTexto", "../assets/balaoTexto.png");
     this.load.image('keyE', '../assets/teclaE.png');  
 
@@ -168,6 +172,7 @@ class OfficeScene extends Phaser.Scene {
     this.physics.add.collider(this.player, layer10);
     this.physics.add.collider(this.player, layer11);
     this.physics.add.collider(this.player, this.npc7);
+    this.physics.add.collider(this.player, this.vivita);
 
     // Define os limites do mundo com base na tela
     this.physics.world.setBounds(0, 0, width, height);
@@ -455,6 +460,12 @@ class OfficeScene extends Phaser.Scene {
     this.npc10.setImmovable(true);
     this.createNpcAnimations();
     this.npc10.anims.play('npc10');
+
+    this.vivita = this.physics.add.sprite(width / 1.75, height / 3.2, 'vivita');
+    this.vivita.setScale(2.0);
+    this.vivita.setImmovable(true);
+    this.createNpcAnimations();
+    this.vivita.anims.play('vivita');
   }
 
   createNpcAnimations() { 
@@ -510,11 +521,9 @@ class OfficeScene extends Phaser.Scene {
 
   
   addVivita(width, height) {
-    const vivita = this.vivita = this.physics.add.sprite(width / 1.75, height / 3.2, 'vivita');
-      this.vivita.setScale(2.0);
-      this.vivita.setImmovable(true);
-      this.createNpcAnimations();
-      this.vivita.anims.play('vivita');
+    const vivita = this.add
+    .image(width / 1.75, height / 3.2, "vivita")
+    .setScale(0.06);
 
     this.exclamation = this.add.sprite(width / 1.75, height / 4.6, "indicator").setScale(0.2);
     this.exclamation.play("exclamando");
@@ -532,8 +541,8 @@ class OfficeScene extends Phaser.Scene {
     this.input.keyboard.on('keydown-E', () => {
       this.indicatorActive = false;
       if (
-        Math.abs(this.player.x - vivita.x) <= 50 &&
-        Math.abs(this.player.y - vivita.y) <= 50 &&
+        Math.abs(this.player.x - vivita.x) <= 70 &&
+        Math.abs(this.player.y - vivita.y) <= 70 &&
         !this.vivitaInteracted
       ) {
         this.showVivitaInteraction();
