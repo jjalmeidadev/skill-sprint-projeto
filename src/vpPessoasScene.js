@@ -17,6 +17,7 @@ class VpPessoasScene extends Phaser.Scene {
         this.load.audio('PessoasMusic', '../assets/sounds/VPpessoas.mp3');
 
         this.load.spritesheet('trash', '../assets/trash.png', {frameWidth: 267, frameHeight: 343});
+        this.load.spritesheet('book', '../assets/assetsBookVPPessoas/book.png', {frameWidth: 835, frameHeight: 520});
     }
 
     create() {
@@ -74,6 +75,7 @@ class VpPessoasScene extends Phaser.Scene {
         this.walkSound = this.sound.add('walkSound', {loop: false, volume: 10});
 
         this.createTrash();
+        this.createBook();
     }
 
     update() {
@@ -86,12 +88,19 @@ class VpPessoasScene extends Phaser.Scene {
           this.trash.x, this.trash.y
         );
         this.canInteractWithTrash = dist < 50; // ajuste a distância conforme necessário
+        this.canInteractWithBook = dist < 400; // ajuste a distância conforme necessário
       }
     
       if (this.canInteractWithTrash && Phaser.Input.Keyboard.JustDown(this.teclas.interagir)) {
         this.buttonClick = this.sound.add('buttonSound', {loop: false, volume: 10});
         this.buttonClick.play();
         this.scene.switch('minigameTrashScene');
+      }
+
+      if (this.canInteractWithBook && Phaser.Input.Keyboard.JustDown(this.teclas.interagir)) {
+        this.buttonClick = this.sound.add('buttonSound', {loop: false, volume: 10});
+        this.buttonClick.play();
+        this.scene.switch('bookScene');
       }
     }
 
@@ -188,6 +197,20 @@ class VpPessoasScene extends Phaser.Scene {
         // Detectar quando sai da zona de interação (usando evento de update com verificação de distância)
         this.trash = trash; // Salva o objeto para usar no update
       }
+
+      createBook() {
+        const book = this.physics.add.sprite(width - 700, height - 250, 'book');
+        book.setScale(0.06);
+        book.setImmovable(true);
+      
+        // Apenas overlap é necessário para ativar a possibilidade de interação
+        this.physics.add.overlap(this.player, book, () => {
+          this.canInteractWithBook = true;
+        });
+      
+        // Detectar quando sai da zona de interação (usando evento de update com verificação de distância)
+        this.book = book; // Salva o objeto para usar no update
+      }
 }
 
 // Propriedade estática para armazenar o tempo de reprodução da música
@@ -201,7 +224,7 @@ class bookScene extends Phaser.Scene {
     preload() {
         this.load.image('arrowYellow', '../assets/assetsBookVPPessoas/arrow_yellow.png');
         this.load.image('backgroundTable', '../assets/assetsBookVPPessoas/backgroundTable.png');
-        this.load.image('book', '../assets/assetsBookVPPessoas/caderno.png');
+        this.load.image('bookTable', '../assets/assetsBookVPPessoas/caderno.png');
         this.load.image('column1', '../assets/assetsBookVPPessoas/coluna1.png');
         this.load.image('column2', '../assets/assetsBookVPPessoas/coluna2.png');
         this.load.image('column3', '../assets/assetsBookVPPessoas/coluna3.png');
@@ -213,13 +236,92 @@ class bookScene extends Phaser.Scene {
         this.load.image('answer3', '../assets/assetsBookVPPessoas/topico3.png');
         this.load.image('answer4', '../assets/assetsBookVPPessoas/topico4.png');
         this.load.image('answer5', '../assets/assetsBookVPPessoas/topico5.png');
+
+        this.load.audio('buttonSound', '../assets/sounds/687107__aphom000__mouse-2-button-fast-click.wav');
+        this.load.audio('soundPaper', '../assets/sounds/484957__spacejoe__page-turns-2 (mp3cut.net).wav');
     }
 
     create() {
-        const book = this.add.image(width / 2, height / 2, 'book');
-        book.setInteractive();
-        book.on('pointerdown', () => {
+        this.add.image(width / 2, height / 2, 'backgroundTable').setScale(0.7);
+        this.add.image(width - 960, height - 340, 'bookTable').setScale(0.7);
+
+        this.createArrow();
+        this.createColumns();
+        this.createBoard();
+    }
+
+    buttonSound() {
+      this.buttonClick = this.sound.add('buttonSound', {loop: false, volume: 10});
+      this.buttonClick.play();
+    }
+
+    soundPaper() {
+      this.pageTurn = this.sound.add('soundPaper', {loop: false, volume: 10});
+      this.pageTurn.play();
+    }
+
+    createArrow() {
+      const buttonArrow = this.add.image(width - 1200, height - 70, 'arrowYellow');
+        buttonArrow.setInteractive();
+        buttonArrow.setScale(0.8);
+        buttonArrow.on('pointerdown', () => {
+            this.buttonSound();
             this.scene.switch('vpPessoasScene');
         });
+    }
+
+    createColumns() {
+      const column1 = this.add.image(width - 1105, height - 490, 'column1').setScale(0.7);
+      const column2 = this.add.image(width - 1118, height - 430, 'column2').setScale(0.7);
+      const column3 = this.add.image(width - 1110, height - 355, 'column3').setScale(0.7);
+      const column4 = this.add.image(width - 1108, height - 275, 'column4').setScale(0.7);
+      const column5 = this.add.image(width - 1110, height - 200, 'column5').setScale(0.7);
+
+      const columns = [column1, column2, column3, column4, column5];
+
+      columns.forEach((column, index) => {
+      column.setInteractive();
+
+      column.on('pointerover', () => {
+        column.setScale(0.8); // Aumenta o tamanho ao passar o cursor
+      });
+
+      column.on('pointerout', () => {
+        column.setScale(0.7); // Volta ao tamanho normal ao tirar o cursor
+      });
+
+      column.on('pointerdown', () => {
+        this.column = index + 1; // Define a coluna selecionada
+        this.buttonSound();
+        this.createBoard(); // Atualiza o quadro com base na coluna selecionada
+      });
+      });
+    }
+
+    createBoard() {
+      this.add.image(width - 460, height - 377, 'board').setScale(0.7);
+
+      switch (this.column) {
+      case 1:
+        this.add.image(width - 460, height - 377, 'answer1').setScale(0.7);
+        this.soundPaper();
+        break;
+      case 2:
+        this.add.image(width - 460, height - 377, 'answer2').setScale(0.7);
+        this.soundPaper();
+        break;
+      case 3:
+        this.add.image(width - 460, height - 377, 'answer3').setScale(0.7);
+        this.soundPaper();
+        break;
+      case 4:
+        this.add.image(width - 460, height - 377, 'answer4').setScale(0.7);
+        this.soundPaper();
+        break;
+      case 5:
+        this.add.image(width - 460, height - 377, 'answer5').setScale(0.7);
+        this.soundPaper();
+        break;
+      }
     }
 }
