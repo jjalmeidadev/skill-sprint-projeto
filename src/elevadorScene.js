@@ -404,19 +404,26 @@ class ElevadorScene extends Phaser.Scene {
   }
 
   createButtonTech(width, height) {
-    // Botão Tech
-    this.botaotech = this.add.image(width - 906, height - 602, "botaotech");
-    this.botaotech.setInteractive(); // Torna o botão interativo (clicável)
-    this.botaotech.setScale(1.2, 1.15); //ajusta o tamanho do botão
-    this.botaotech.setVisible(false);
+  // Botão Tech
+  this.botaotech = this.add.image(0, 0, "botaotech").setOrigin(0, 0);
+  this.botaotech.setVisible(false);
 
-    this.botaotech.on("pointerdown", () => {
-      this.buttonClick.play();
-      this.shutdown();
-      this.scene.stop("elevadorScene");
-      this.scene.start("techScene");
-    });
-  }
+  this.botaotech = this.add.image(
+    width - 906,
+    height - 602,
+    "botaotech"
+  );
+  this.botaotech.setInteractive();
+  this.botaotech.setScale(1.2, 1.15);
+  this.botaotech.setVisible(false);
+
+  this.botaotech.on("pointerdown", () => {
+    this.buttonClick.play();
+    this.shutdown();
+    this.scene.stop("elevadorScene");
+    this.scene.start("vpTecnologiaScene");
+  });
+}
 
   createButtonRelacoes(width, height) {
     // Botão Relações
