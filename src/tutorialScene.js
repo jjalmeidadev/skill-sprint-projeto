@@ -307,7 +307,7 @@ class TutorialScene extends Phaser.Scene {
                 return;
             }
             //Qunado todas as falas finais forem exibidas, a cena é encerrada
-            this.scene.start('officeScene');
+            this.scene.start('officeScene2');
             return;
         }
 
