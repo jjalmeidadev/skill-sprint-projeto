@@ -67,7 +67,7 @@ Alta. As principais concorrentes da Vivo são Claro, TIM, e operadoras regionais
 
 A análise pode ser observada na imagem a seguir:
 
-<div align="Gráfico 5 forças de Porter">
+<div align="center">
   <sub>Gráfico 5 forças de Porter</sub><br>
   <img src="https://github.com/user-attachments/assets/336a1a10-0e58-4e68-a42a-e48d542db44b" width="900px" 
   alt="Gráfico 5 forças de Porter"><br>
@@ -81,7 +81,7 @@ A análise SWOT [12] é uma ferramenta estratégica usada para avaliar os pontos
 
 A Vivo, líder de mercado no Brasil, destaca-se pela forte presença em telefonia móvel, internet fixa (fibra óptica) e inovação com 5G. Sua dependência de grandes investimentos em infraestrutura e a intensa concorrência de operadoras como Claro e TIM representam fraquezas. Entretanto, as oportunidades incluem a expansão do 5G, IoT e a integração com *fintechs*, além de soluções digitais para empresas. As ameaças vêm da saturação do mercado móvel e de mudanças regulatórias. A Vivo precisa manter sua liderança diante de uma concorrência crescente e exigente, como é apresentado no esquema abaixo.
 
-<div align="Análise SWOT">
+<div align="center">
   <sub>Gráfico 5 forças de Porter</sub><br>
   <img src="https://github.com/user-attachments/assets/5d960390-b6ab-4ffc-a930-d2a29dda43d2" width="900px" 
   alt="Gráfico Análise SWOT"><br>
@@ -113,7 +113,7 @@ Com isso, esses são os princípios que guiam as tomadas de decisões e estraté
 
 O Value Proposition Canvas é uma ferramenta poderosa de planejamento estretégico dividida em dois blocos, Perfil do Cliente e Mapa de Valor, utilizada para desenvolver soluções e serviços eficazes voltados nas necessidades dos clientes. A ferramenta é projetada para promover o alinhamento e a compreensão profunda das dores do cliente, permitindo que a solução atenda da melhor forma a demanda do mercado. Sua utilização auxilia na melhoria contínua se moldando com base no feedback do cliente, a fim de entregar o melhor serviço além de potencializar o trabalho entregue por ter um direcionamento mais claro sobre o que será produzido.
 
-<div align="Análise SWOT">
+<div align="center">
   <sub>Canvas Proposta de Valor</sub><br>
   <img src="https://github.com/user-attachments/assets/e3d2265f-7577-46cf-81dc-b10dcd84a82d" width="900px" 
   alt="Canvas Proposta de Valor"><br>
@@ -582,7 +582,7 @@ Utilizando princípios de cinemática, desenvolvemos uma função que calcula ve
 
 Nosso objetivo foi monitorar e exibir no console as informações de movimento de um meteoro quando ele está visível no jogo (tela inicial). 
 
-<div align="Análise SWOT">
+<div align="center">
   <sub>GIF - Animação do Meteoro</sub><br>
   <img src="../assets/mu_muv.gif" width="900px" 
   alt="GIF - Animação do Meteoro"><br>
@@ -716,7 +716,7 @@ console.log(
 ```
 Exemplo real de saída no *console*:
 
-<div align="Análise SWOT">
+<div align="center">
   <sub>Impressão no Console </sub><br>
   <img src="../assets/Screenshot 2025-03-27 203409.png" width="900px" 
   alt="Animação do Meteoro"><br>
