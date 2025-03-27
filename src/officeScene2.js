@@ -381,47 +381,35 @@ class OfficeScene2 extends Phaser.Scene {
     createButtonCima() {
       this.blockLoop = 1;
     
-      // Cria o indicador do elevador
       this.indicatorElevator = this.physics.add.sprite(width - 435, height - 700, 'indicator');
       this.indicatorElevator.setScale(0.2);
       this.indicatorElevator.setImmovable(true);
       this.indicatorElevator.play("exclamando");
     
-      // Inicia o som e marca como ativo
+      console.log("Criando som do elevador...");
       this.indicatorSoundElevator = this.sound.add('indicatorSound', { loop: true, volume: 10 });
       this.indicatorSoundElevator.play();
       this.indicatorElevatorActive = true;
     
-      // Cria os elementos visuais, mas escondidos
-      this.bgelevoffice = this.add.image(0, 0, "bgElevOffice").setOrigin(0, 0);
-      this.bgelevoffice.setDisplaySize(width, height);
-      this.bgelevoffice.setVisible(false);
-    
-      this.painelelev = this.add.image(width - 910, height - 600, "painelelev").setOrigin(0, 0);
-      this.painelelev.setVisible(false);
-    
-      this.botaoCima = this.add.image(width - 740, height - 460, "botaoElevOffice");
-      this.botaoCima.setInteractive();
-      this.botaoCima.setScale(1);
-      this.botaoCima.setVisible(false);
-    
-      // Ação ao clicar no botão
-      this.botaoCima.on("pointerdown", () => {
-        this.scene.stop("officeScene");
-        this.scene.start("elevadorScene");
-      });
-    
-      // Overlap com o indicatorElevator
       this.physics.add.overlap(this.player, this.indicatorElevator, () => {
         if (this.indicatorElevatorActive) {
           this.indicatorSoundElevator.stop();
           this.indicatorElevator.destroy();
           this.indicatorElevatorActive = false;
     
-          // Mostra elementos na tela
-          this.bgelevoffice.setVisible(true);
-          this.painelelev.setVisible(true);
-          this.botaoCima.setVisible(true);
+          // Mostra o fundo e o painel do elevador
+          this.bgelevoffice = this.add.image(0, 0, "bgElevOffice").setOrigin(0, 0);
+          this.bgelevoffice.setDisplaySize(width, height);
+          this.painelelev = this.add.image(width - 910, height - 600, "painelelev").setOrigin(0, 0);
+    
+          this.botaoCima = this.add.image(width - 680, height - 400, "botaoElevOffice"); 
+          this.botaoCima.setInteractive();
+          this.botaoCima.setScale(1);
+    
+          this.botaoCima.on("pointerdown", () => {
+            this.scene.stop("officeScene2");
+            this.scene.start("elevadorScene");
+          });
         }
       });
     }
