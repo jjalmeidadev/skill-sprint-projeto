@@ -738,6 +738,9 @@ Os casos de teste descritos a seguir foram elaborados para avaliar os diferentes
 13 | O jogador está interagindo com um NPC | Pressionar a tecla "ENTER" para avançar o diálogo | Um som de efeito deve ser reproduzido ao avançar o diálogo  
 14 | O jogador chegou ao elevador | Entrar no elevador | O jogo deve carregar corretamente a nova cena "Elevador"  
 15 | O jogador está na cena do Elevador | Pressionar os botões do painel do elevador para escolher um andar | O jogo deve trocar para a cena correspondente ao andar selecionado  
+16 | O jogador entra na Cena 2 | Aguardar o carregamento da cena | A trilha sonora da Cena 2 deve começar a tocar e substituir a anterior  
+17 | O jogador está próximo a um lixo interativo na Cena 2 | Pressionar a tecla "E" | Um mini game deve iniciar na tela  
+18 | O jogador está próximo a um caderno interativo na Cena 2 | Pressionar a tecla "E" | O caderno deve abrir e exibir anotações na tela  
 
 
 Através desses testes, foi possível identificar pontos de melhoria, ajustar comportamentos inesperados e assegurar que a experiência do jogador seja fluida e intuitiva.
