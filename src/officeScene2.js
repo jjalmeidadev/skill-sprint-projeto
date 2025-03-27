@@ -3,6 +3,8 @@ class OfficeScene2 extends Phaser.Scene {
       super({ key: "officeScene2" });
       this.canMove = true;
       this.vivitaInteracted = false;
+      this.curriculoFinalizado = false;
+      this.salaLiderCriada = false;
     }
   
     preload() {
@@ -240,13 +242,23 @@ class OfficeScene2 extends Phaser.Scene {
       }
   
       // INTERAÇÃO COMPUTADOR
-      if (this.canInteractWithComputer && Phaser.Input.Keyboard.JustDown(this.teclas.interagir)) {
-        this.buttonClick = this.sound.add('buttonSound', { loop: false, volume: 10 });
-        this.buttonClick.play();
-        this.scene.pause();
-        this.scene.launch('curriculoScene');
-        this.salaLider();
-      }
+        if (this.canInteractWithComputer && Phaser.Input.Keyboard.JustDown(this.teclas.interagir)) {
+            this.buttonClick = this.sound.add('buttonSound', { loop: false, volume: 10 });
+            this.buttonClick.play();
+            this.scene.pause();
+            this.scene.launch('curriculoScene');
+            this.curriculoFinalizado = true; // Marca que o currículo foi finalizado
+        }
+
+        // Se o currículo já foi finalizado e o jogador saiu de perto do computador
+        if (
+            this.curriculoFinalizado &&
+            !this.canInteractWithComputer &&
+            !this.salaLiderCriada
+        ) {
+            this.salaLiderCriada = true;
+            this.salaLider();
+        }
     }
   
     movePlayer() {
@@ -633,9 +645,6 @@ class OfficeScene2 extends Phaser.Scene {
   
     salaLider() {
       if (this.inTransition) return;
-  
-      const width = this.scale.width;
-      const height = this.scale.height;
   
       this.exclamation = this.physics.add.sprite(width - 1200, height - 500, 'indicator').setScale(0.2);
       this.exclamation.play('exclamando');
