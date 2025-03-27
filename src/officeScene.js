@@ -238,7 +238,7 @@ class OfficeScene extends Phaser.Scene {
       this.player.anims.stop();
       this.walkSound.stop();
     } else {
-      if (!this.walkSound.isPlaying) {
+      if (moving) {
         this.walkSound.play();
       }
     }
@@ -369,6 +369,7 @@ class OfficeScene extends Phaser.Scene {
     this.indicatorSound.stop();
     this.buttonClick.play();
     this.indicator.destroy();
+    this.scene.get('officeScene').events.emit('stopWalkSound'); // Emite o evento
     this.scene.switch("curriculoScene");
     this.salaLider();
   }
@@ -445,6 +446,7 @@ class OfficeScene extends Phaser.Scene {
   }
 
   salaLider() {
+
     const width = this.scale.width;
     const height = this.scale.height;
 
@@ -458,13 +460,17 @@ class OfficeScene extends Phaser.Scene {
     this.physics.add.overlap(this.player, this.exclamation, () => {
       if (!this.inTransition) {
         this.inTransition = true;
+        this.walkSound.stop();
         this.returnedFromLeaderRoom = true;
+        this.scene.get('officeScene').events.emit('stopWalkSound'); // Emite o evento
         this.blockLoop = 0;
         this.exclamation.setVisible(false);
         this.activeIndicator = false;
         this.indicatorSound.stop(); // Para o som quando há overlap
+        this.walkSound.stop();
         this.events.emit('stopWalkSound'); // Para o som de passos quando há overlap
         this.scene.switch('salaLiderScene');
+        this.scene.get('officeScene').events.emit('stopWalkSound'); // Emite o evento
       }
     });
   }

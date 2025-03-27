@@ -347,5 +347,6 @@ class SalaLider extends Phaser.Scene {
 
     this.scene.get('officeScene').events.emit('stopWalkSound'); // Emite o evento
     this.scene.switch('officeScene'); // Retorna para a OfficeScene
+    this.scene.get('officeScene').events.emit('stopWalkSound'); // Emite o evento
   }
 }
