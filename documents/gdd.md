@@ -706,18 +706,17 @@ Esses avanços representam um passo importante em direção ao MVP final, e esta
 
 ## 4.4. Desenvolvimento final do MVP (sprint 4)
 
-**Desenvolvimento da Versão Final do Jogo**
+Durante a quarta sprint do nosso projeto, trabalhamos na implementação de novos mini games, na expansão dos mapas, na criação da tela inicial e na resolução de bugs que estavam comprometendo a execução do código. O objetivo principal foi entregar uma versão funcional e engajante do jogo, garantindo que todas as mecânicas essenciais estivessem implementadas.
 
-Durante a quarta sprint do nosso projeto, concentramos nossos esforços na implementação de novos mini games, na expansão dos mapas, na criação da tela inicial e na resolução de bugs que estavam comprometendo a execução do código. O objetivo principal foi entregar uma versão funcional e engajante do jogo, garantindo que todas as mecânicas essenciais estivessem implementadas.
+Durante um brainstorming, decidimos que o ambiente principal do jogo seria um prédio com seis andares, cada um representando uma Vice-Presidência (VP), com desafios e mini games exclusivos.
 
-Nosso jogo foi estruturado em um prédio de seis andares, representando diferentes Vice-Presidências (VPs), cada uma com seu próprio mini game, além de possibilitar o jogador de jogar todas as fases ou apenas uma. A progressão do jogador ocorre da seguinte forma:
+O jogador começa na Recepção (Primeiro Andar), onde responde a uma série de perguntas relacionadas à área em que deseja atuar. Com base nas respostas, a líder fornece um feedback e orienta a próxima etapa. A partir disso, ele avança pelos andares, passando pelas seguintes VP's:
 
-1. **Recepção (Primeiro Andar):** O jogador responde a uma série de perguntas relacionadas à área em que deseja atuar. Com base nas respostas, a líder fornece um feedback e orienta a próxima etapa.
-2. **VP de Pessoas (Segundo Andar):** Nesta fase, o jogador interage com desafios relacionados à gestão de pessoas, ajudando um colega de trabalho se acalmar através de um mini game.
-3. **VP de Negócios (Terceiro Andar):**  Nesta fase, o jogador tem a missão de ligar os fios e arrumar o banco de dados da empresa
-4. **VP de Estratégia (Quarto Andar):** O jogador
-5. **VP de Relações (Quinto Andar):** O jogador passa por um jantar e uma conversa muito impotante para o seu desenvolvimento de carreira.
-6. **VP de Tecnologia (Sexto Andar):** Fase final, onde o jogador aprende através de um mini game a difenrença entre upskilling e reskilling
+**VP de Pessoas (Segundo Andar):** Nesta fase, o jogador interage com desafios relacionados à gestão de pessoas, ajudando um colega de trabalho se acalmar através de um mini game.
+**VP de Negócios (Terceiro Andar):**  Nesta fase, o jogador tem a missão de ligar os fios e arrumar o banco de dados da empresa
+**VP de Estratégia (Quarto Andar):** O jogador
+**VP de Relações (Quinto Andar):** O jogador passa por um jantar e uma conversa muito impotante para o seu desenvolvimento de carreira.
+**VP de Tecnologia (Sexto Andar):** Fase final, onde o jogador aprende através de um mini game a difenrença entre upskilling e reskilling
 
 Cada fase do jogo conta com um mini game exclusivo e interativo, permitindo que o jogador aprenda e interaja com os personagens enquanto resolve tarefas desafiadoras.
 
