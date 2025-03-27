@@ -346,7 +346,7 @@ class SalaLider extends Phaser.Scene {
       if (this.walkSound.isPlaying) {
         this.walkSound.stop();
     }
-      this.scene.switch('officeScene'); // Troca para a cena do escritório
+      this.scene.switch('officeScene',  { stopWalkSound: true }); // Troca para a cena do escritório
     });
   }
 }

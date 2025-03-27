@@ -329,6 +329,11 @@ class CurriculoScene extends Phaser.Scene {
 
     create() {
 
+        this.events.on('stopWalkSound', () => { // Evento para parar o som de passos
+            if (window.walkSound) {
+                window.walkSound.stop();
+            }
+        });
 
         var width = 1520;
         var height = 753;

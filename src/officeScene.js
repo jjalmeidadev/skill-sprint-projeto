@@ -367,7 +367,7 @@ class OfficeScene extends Phaser.Scene {
     this.indicatorSound.stop();
     this.buttonClick.play();
     this.indicator.destroy();
-    this.scene.switch("curriculoScene", { stopWalkSound: true });
+    this.scene.switch("curriculoScene");
     this.salaLider();
   }
 
@@ -463,6 +463,7 @@ class OfficeScene extends Phaser.Scene {
             this.exclamation.setVisible(false);
             this.activeIndicator = false;
             this.indicatorSound.stop(); // Para o som quando há overlap
+            this.events.emit('stopWalkSound'); // Para o som de passos quando há overlap
             this.scene.switch('salaLiderScene');
         }
     });
