@@ -516,6 +516,7 @@ class OfficeScene extends Phaser.Scene {
       }
     });
   }
+  
   showVivitaInteraction() {
     this.exclamation.setVisible(false);
 

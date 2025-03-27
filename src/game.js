@@ -27,6 +27,7 @@ const config = {
       CutScene,
       TutorialScene,
       OfficeScene,
+      OfficeScene2,
       SalaLider,
       VpNegociosScene,
 
