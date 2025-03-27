@@ -159,7 +159,9 @@ R16 | O design visual do jogo utilizará uma paleta de cores consistente e coere
 R17 | Utilizaremos algumas movimentações bidimensionais de elementos gráficos no jogo, utilizando conhecimentos sobre vetores e cinemática.
 R18 | O jogo contará com um botão de ajustes que proporciona acessibilidade com filtro de daltonismo e ajuste de volume. 
 R19 | A terceira fase será na Vice-Presidência de Negócios e contará com 2 minigames dinâmicos (objetivo: preparar os jogadores para resolução de cases).
-R20 | A quarta fase será na Vice-Presidência de Estratégia e contará com 1 minigame (objetivo: ensinar a estruturar um plano de carreira).
+R20 | A quarta fase será na Vice-Presidência de Estratégia, Novos Negócios e Inteligência Artificial e contará com 1 minigame (objetivo: ensinar a estruturar um plano de carreira).
+R21 | A quinta fase será na Vice-Presidência de Relações Institucionais e terá 1 minigame (objetivo: orientar sobre feedbacks e acompanhamento de desempenho).
+R22 | A sexta e última fase do jogo será na Vice-Presidência de Tecnologia da Informação e terá 1 minigame (objetivo: incentivar o aprendizado contínuo - upskilling e reskilling).
 
 ## 1.3. Público-alvo do Projeto (sprint 2)
 
