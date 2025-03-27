@@ -3,12 +3,6 @@ class VpPessoasScene extends Phaser.Scene {
       super({ key: 'vpPessoasScene' });
     }
 
-//lembrar de criar os personagens 11 12 13 14 15 16 17 18 19 20 21 22 23 e add no jogo 
-//6 sentados de frente
-//3 sentados pra direta e 4 pra esquerda
-//corrigir as coordenadas dos npcs
-//verificar as layers
-
     preload() {
         // Carrega o mapa do Tiled e os tilesets
         this.load.tilemapTiledJSON('vpPessoas', '../assets/mapaVPPessoas/mapaVPPessoas.json');
@@ -21,6 +15,10 @@ class VpPessoasScene extends Phaser.Scene {
         // Carrega os efeitos sonoros
         this.load.audio('walkSound', '../assets/sounds/753292__vrymaa__footsteps-high-heels-hardwood-walk-run (mp3cut.net).wav');
         this.load.audio('PessoasMusic', '../assets/sounds/VPpessoas.mp3')
+        this.load.spritesheet("indicator", "../assets/exclamaçãoRoxa.png", {
+          frameWidth: 254,
+          frameHeight: 305,
+        });
 
         this.load.spritesheet("npcReceptor", "../assets/personagens/LiderReading.png", { frameWidth: 16, frameHeight: 32, });
           
@@ -44,12 +42,14 @@ class VpPessoasScene extends Phaser.Scene {
 
         //this.load.spritesheet("npc20", "../assets/personagens/VPpessoas/npc20.png", { frameWidth: 16, frameHeight: 32,});
 
-        this.load.spritesheet("npc21", "../assets/personagens/VPpessoas/npc21.png", { frameWidth: 16, frameHeight: 32,});
-
-        //this.load.spritesheet("npc22", "../assets/personagens/VPpessoas/npc22.png", { frameWidth: 16, frameHeight: 32,});
-
         this.load.spritesheet("npc23", "../assets/personagens/VPpessoas/npc23.png", { frameWidth: 16, frameHeight: 32,});
-   
+
+        this.load.spritesheet("npcMovel", "../assets/personagens/VPpessoas/npcMovel.png", { frameWidth: 16, frameHeight: 32,});
+
+        this.load.spritesheet("rafaela", "../assets/personagens/VPpessoas/npcRafaela.png", { frameWidth: 16, frameHeight: 32,});
+        
+        this.load.image("balaoTexto", "../assets/balaoTexto.png");
+        this.load.audio('indicatorSound', '../assets/sounds/497198_abacagi_bubble-pops (mp3cut.net).wav');
     }
 
     create() {
@@ -65,6 +65,7 @@ class VpPessoasScene extends Phaser.Scene {
         const layer4 = map.createLayer("sofaTras", tileset1, offsetX, 0).setScale(2.5);
         const layer5 = map.createLayer("armario", tileset1, offsetX, 0).setScale(2.5);
         const layer6 = map.createLayer("cadeira", tileset1, offsetX, 0).setScale(2.5);
+        this.addNpcLayer6();
         const layer7 = map.createLayer("mesa", tileset1, offsetX, 0).setScale(2.5);
         const layer8 = map.createLayer("elevador", tileset1, offsetX, 0).setScale(2.5);
         const layer9 = map.createLayer("planta", tileset1, offsetX, 0).setScale(2.5);
@@ -96,7 +97,8 @@ class VpPessoasScene extends Phaser.Scene {
         this.addNpc();
         this.createNpcAnimations();
         this.lastPsition = "down"; // O personagem começa olhando para baixo
-
+        this.createNpcMovel();
+        this.addRafaela(width, height);
         
         // Configura colisões do jogador com camadas selecionadas
         this.physics.add.collider(this.player, layer2);
@@ -106,91 +108,114 @@ class VpPessoasScene extends Phaser.Scene {
         this.physics.add.collider(this.player, layer6);
         this.physics.add.collider(this.player, layer7);
         this.physics.add.collider(this.player, layer9);
+        this.physics.add.collider(this.player, this.rafaela);
 
         // Adiciona os efeitos sonoros
+        this.buttonClick = this.sound.add('buttonSound', {loop: false, volume: 10});
+        this.indicatorSound = this.sound.add('indicatorSound', {loop: true, volume: 10});
         this.walkSound = this.sound.add('walkSound', {loop: false, volume: 10});
+   
+        this.anims.create({
+          key: "exclamando",
+          frames: this.anims.generateFrameNumbers("indicator", {start: 0, end: 1}),
+          //velocidade da animação
+          frameRate: 3,
+          repeat: -1,
+        });
+      }
+
+    createNpcMovel(){
+      this.npcMovel = this.physics.add.sprite(width - 380, height - 520, 'npcMovel'); // Posição inicial
+        this.npcMovel.setScale(3.0);
+        this.npcMovel.setImmovable(true);
+        this.createNpcAnimations();
+        this.npcMovel.anims.play('npcMovelWalk');
+
+        this.npcMovel.direcao = -1; // Começa indo para a esquerda
+        this.npcMovel.velocidade = 180; // Velocidade do deslocamento
+        this.npcMovel.posicaoInicial = this.npcMovel.x;
+        this.npcMovel.distanciaMaxima = 320;
+    }
+
+    addNpcLayer6() {
+      this.npc17 = this.physics.add.sprite(width - 810, height - 624, 'npc17');
+      this.npc17.setScale(3.0);
+      this.npc17.setImmovable(true);
+      this.createNpcAnimations();
+      this.npc17.anims.play('npc17');
+  
+      this.npc18 = this.physics.add.sprite(width - 970, height - 624, 'npc18');
+      this.npc18.setScale(3.0);
+      this.npc18.setImmovable(true);
+      this.createNpcAnimations();
+      this.npc18.anims.play('npc18'); 
+
+      this.npc19 = this.physics.add.sprite(width - 1130, height - 624, 'npc19');
+      this.npc19.setScale(3.0);
+      this.npc19.setImmovable(true);
+      this.createNpcAnimations();
+      this.npc19.anims.play('npc19');
     }
 
     addNpc() {
       //Adiciona a npc no jogo
       this.npc11 = this.physics.add.sprite(width - 1070, height - 185, 'npc11');
-      this.npc11.setScale(2.0);
+      this.npc11.setScale(2.5);
       this.npc11.setImmovable(true);
       this.createNpcAnimations();
       this.npc11.anims.play('Idle');
   
       this.npc12 = this.physics.add.sprite(width - 885, height - 265, 'npc12');
-      this.npc12.setScale(2.0);
+      this.npc12.setScale(2.5);
       this.npc12.setImmovable(true);
       this.createNpcAnimations();
       this.npc12.anims.play('npc12');
-  
+
       this.npc13 = this.physics.add.sprite(width - 1070, height - 265, 'npc13');
-      this.npc13.setScale(2.0);
+      this.npc13.setScale(2.5);
       this.npc13.setImmovable(true);
       this.createNpcAnimations();
       this.npc13.setFlipX(true);
       this.npc13.anims.play('npc13');
-  
+      
       this.npc14 = this.physics.add.sprite(width - 655, height - 265, 'npc14');
-      this.npc14.setScale(2.0);
+      this.npc14.setScale(2.5);
       this.npc14.setImmovable(true);
       this.createNpcAnimations();
       this.npc14.play('npc14');
   
       this.npc15 = this.physics.add.sprite(width - 885, height - 185, 'npc15');
-      this.npc15.setScale(2.0);
+      this.npc15.setScale(2.5);
       this.npc15.setImmovable(true);
       this.createNpcAnimations();
       this.npc15.anims.play('npc15');
   
       this.npc16 = this.physics.add.sprite(width - 487, height - 200, 'npc16');
-      this.npc16.setScale(2.0);
+      this.npc16.setScale(2.5);
       this.npc16.setImmovable(true);
       this.createNpcAnimations();
       this.npc16.anims.play('npc16');
-
-      this.npc17 = this.physics.add.sprite(width - 810, height - 624, 'npc17');
-      this.npc17.setScale(2.0);
-      this.npc17.setImmovable(true);
-      this.createNpcAnimations();
-      this.npc17.anims.play('npc17');
-      layer6.add(this.npc17);
       
-      this.npc18 = this.physics.add.sprite(width - 970, height - 624, 'npc18');
-      this.npc18.setScale(2.0);
-      this.npc18.setImmovable(true);
-      this.createNpcAnimations();
-      this.npc18.anims.play('npc18');
-      layer6.add(this.npc18);
-
-      this.npc19 = this.physics.add.sprite(width - 1130, height - 624, 'npc19');
-      this.npc19.setScale(2.0);
-      this.npc19.setImmovable(true);
-      this.createNpcAnimations();
-      this.npc19.anims.play('npc19');
-      layer6.add(this.npc19);
-
       //this.npc20 = this.physics.add.sprite(width - 770, height - 400, 'npc20');
       //this.npc20.setScale(2.0);
       //this.npc20.setImmovable(true);
       //this.createNpcAnimations();
       //this.npc20.anims.play('npc20');
 
-      this.npc21 = this.physics.add.sprite(width - 400, height - 650, 'npc21');
-      this.npc21.setScale(2.0);
-      this.npc21.setImmovable(true);
+      this.rafaela = this.physics.add.sprite(width - 400, height - 650, 'rafaela');
+      this.rafaela.setScale(2.5);
+      this.rafaela.setImmovable(true);
       this.createNpcAnimations();
-      this.npc21.anims.play('npc21');
+      this.rafaela.anims.play('rafaela');
 
-      //this.npc22 = this.physics.add.sprite(width - 830, height - 400, 'npc22');
-      //this.npc22.setScale(2.0);
-      //this.npc22.setImmovable(true);
+      //this.npcMovel = this.physics.add.sprite(width - 830, height - 400, 'npcMovel');
+      //this.npcMovel.setScale(2.0);
+      //this.npcMovel.setImmovable(true);
       //this.createNpcAnimations();
-      //this.npc22.anims.play('npc22');
+      //this.npcMovel.anims.play('npcMovel');
 
       this.npc23 = this.physics.add.sprite(width - 1200, height - 350, 'npc23');
-      this.npc23.setScale(2.0);
+      this.npc23.setScale(2.5);
       this.npc23.setImmovable(true);
       this.createNpcAnimations();
       this.npc23.anims.play('npc23');
@@ -201,7 +226,7 @@ class VpPessoasScene extends Phaser.Scene {
         this.anims.create({
           key: "npc11",//sentado direita 1
           frames: this.anims.generateFrameNumbers('npc11', { start: 0, end: 5 }),
-          frameRate: 4,
+          frameRate: 6,
           repeat: -1,
         });
 
@@ -269,15 +294,15 @@ class VpPessoasScene extends Phaser.Scene {
         //});
 
         this.anims.create({
-          key: "npc21",
-          frames: this.anims.generateFrameNumbers('npc21', { start: 0, end: 11 }),
+          key: "rafaela",
+          frames: this.anims.generateFrameNumbers('rafaela', { start: 0, end: 11 }),
           frameRate: 4,
           repeat: -1,
         });
 
         //this.anims.create({
-        //  key: "npc22",
-        //  frames: this.anims.generateFrameNumbers('npc22', { start: 18, end: 23 }),
+        //  key: "npcMovel",
+        //  frames: this.anims.generateFrameNumbers('npcMovel', { start: 18, end: 23 }),
         //  frameRate: 4,
         //  repeat: -1,
         //});
@@ -288,10 +313,20 @@ class VpPessoasScene extends Phaser.Scene {
           frameRate: 4,
           repeat: -1,
         });
+
+        this.anims.create({
+          key: "npcMovelWalk",
+          frames: this.anims.generateFrameNumbers('npcMovel', { start: 124, end: 129 }),
+          frameRate: 10,
+          repeat: -1,
+      });      
+      
       }
       
     update(){
         this.movePlayer();
+        this.moveNpcMovel();
+
     }
 
     movePlayer() {
@@ -410,15 +445,94 @@ class VpPessoasScene extends Phaser.Scene {
         
       }
 
-      
-
-      onShutdown() {
-        // Salva o tempo atual da música e a para quando a cena é pausada ou encerrada
-        if (this.PessoasMusic && this.PessoasMusic.isPlaying) {
-          VpPessoasScene.lastMusicTime = this.PessoasMusic.seek;
-          this.PessoasMusic.stop();
+      moveNpcMovel() {
+        this.npcMovel.x += this.npcMovel.direcao * this.npcMovel.velocidade * this.game.loop.delta / 1000;
+    
+        // Verifica se atingiu a distância máxima e inverte a direção
+        if (this.npcMovel.x <= this.npcMovel.posicaoInicial - this.npcMovel.distanciaMaxima) {
+            this.npcMovel.direcao = 1; // Muda para a direita
+            this.npcMovel.setFlipX(true);
+        } else if (this.npcMovel.x >= this.npcMovel.posicaoInicial) {
+            this.npcMovel.direcao = -1; // Muda para a esquerda
+            this.npcMovel.setFlipX(false);
         }
+    }
+    
+    addRafaela(width, height) {
+      const rafaela = this.add
+        .image(width - 400, height - 650, "rafaela")
+        .setScale(0.06);
+    
+      this.exclamation = this.add
+        .sprite(width - 400, height - 665, "indicator")
+        .setScale(0.2);
+      this.exclamation.play("exclamando");
+      this.indicatorActive = true;
+       if(this.indicatorActive) {  
+          this.indicatorSound.play();
+          this.walkSound.stop();
+        } 
+    
+      rafaela.setInteractive();
+      rafaela.on("pointerdown", () => {
+          this.showrafaelaInteraction();
+        });
+    
+      this.input.keyboard.on('keydown-E', () => {
+      this.indicatorActive = false;
+          if (
+            Math.abs(this.player.x - rafaela.x) <= 70 &&
+            Math.abs(this.player.y - rafaela.y) <= 70 &&
+            !this.rafaelaInteracted
+          ) {
+            this.showrafaelaInteraction();
+            this.rafaelaInteracted = true;
+            this.buttonClick.play();
+          }
+        });
       }
+    
+    showrafaelaInteraction() {
+        this.exclamation.setVisible(false);
+    
+        const speechrafaela = [
+          "bom dia gatinha!",
+          "mó saudade",
+          "fica comigo?",
+          "seloko compensa",
+        ];//add scipt
+
+        const width = this.scale.width;
+        const height = this.scale.height;
+        const balaoTexto = this.add.image(width - 390, height - 660, "balaoTexto");
+        const text = this.add.text(width - 400, height - 660, speechrafaela[0], {
+          fontSize: "16px",
+          fill: "#000000",
+          wordWrap: { width: balaoTexto.width - 20 },
+        });
+    
+        let currentSpeechIndex = 0;
+        this.input.keyboard.on("keydown-ENTER", () => {
+          currentSpeechIndex++;
+          if (currentSpeechIndex < speechrafaela.length) {
+            text.setText(speechrafaela[currentSpeechIndex]);
+            this.buttonClick.play();
+          } else {
+            balaoTexto.setVisible(false);
+            text.setVisible(false);
+            this.input.keyboard.off("keydown-ENTER");
+            this.addIndicatorAndComputer();
+          }
+        });
+      }
+      
+    onShutdown() {
+      // Salva o tempo atual da música e a para quando a cena é pausada ou encerrada
+        if (this.PessoasMusic && this.PessoasMusic.isPlaying) {
+     VpPessoasScene.lastMusicTime = this.PessoasMusic.seek;
+     this.PessoasMusic.stop();
+      }
+    }
 }
 
 // Propriedade estática para armazenar o tempo de reprodução da música
