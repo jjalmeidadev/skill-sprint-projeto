@@ -15,10 +15,7 @@ class VpPessoasScene extends Phaser.Scene {
         // Carrega os efeitos sonoros
         this.load.audio('walkSound', '../assets/sounds/753292__vrymaa__footsteps-high-heels-hardwood-walk-run (mp3cut.net).wav');
         this.load.audio('PessoasMusic', '../assets/sounds/VPpessoas.mp3')
-        this.load.spritesheet("indicator", "../assets/exclamaçãoRoxa.png", {
-          frameWidth: 254,
-          frameHeight: 305,
-        });
+        this.load.spritesheet("indicator", "../assets/exclamaçãoRoxa.png", {frameWidth: 254, frameHeight: 305,});
 
         this.load.spritesheet("npcReceptor", "../assets/personagens/LiderReading.png", { frameWidth: 16, frameHeight: 32, });
           
@@ -36,7 +33,7 @@ class VpPessoasScene extends Phaser.Scene {
 
         this.load.spritesheet("npc17", "../assets/personagens/VPpessoas/npc17.png", { frameWidth: 16, frameHeight: 32,});
 
-        this.load.spritesheet("npc18", "../assets/personagens/VPpessoas/npc18.png", { frameWidth: 16, frameHeight: 32,});
+        this.load.spritesheet("npc18", "../assets/personagens/VPpessoas/marimari.png", { frameWidth: 16, frameHeight: 32,});
 
         this.load.spritesheet("npc19", "../assets/personagens/VPpessoas/npc19.png", { frameWidth: 16, frameHeight: 32, });
 
@@ -114,19 +111,11 @@ class VpPessoasScene extends Phaser.Scene {
         this.buttonClick = this.sound.add('buttonSound', {loop: false, volume: 10});
         this.indicatorSound = this.sound.add('indicatorSound', {loop: true, volume: 10});
         this.walkSound = this.sound.add('walkSound', {loop: false, volume: 10});
-   
-        this.anims.create({
-          key: "exclamando",
-          frames: this.anims.generateFrameNumbers("indicator", {start: 0, end: 1}),
-          //velocidade da animação
-          frameRate: 3,
-          repeat: -1,
-        });
       }
 
     createNpcMovel(){
       this.npcMovel = this.physics.add.sprite(width - 380, height - 520, 'npcMovel'); // Posição inicial
-        this.npcMovel.setScale(3.0);
+        this.npcMovel.setScale(2.5);
         this.npcMovel.setImmovable(true);
         this.createNpcAnimations();
         this.npcMovel.anims.play('npcMovelWalk');
@@ -202,7 +191,7 @@ class VpPessoasScene extends Phaser.Scene {
       //this.createNpcAnimations();
       //this.npc20.anims.play('npc20');
 
-      this.rafaela = this.physics.add.sprite(width - 400, height - 650, 'rafaela');
+      this.rafaela = this.physics.add.sprite(width - 700, height - 600, 'rafaela');
       this.rafaela.setScale(2.5);
       this.rafaela.setImmovable(true);
       this.createNpcAnimations();
@@ -319,7 +308,15 @@ class VpPessoasScene extends Phaser.Scene {
           frames: this.anims.generateFrameNumbers('npcMovel', { start: 124, end: 129 }),
           frameRate: 10,
           repeat: -1,
-      });      
+      });    
+      
+      this.anims.create({
+        key: "exclamando",
+        frames: this.anims.generateFrameNumbers("indicator", {start: 0, end: 1}),
+        //velocidade da animação
+        frameRate: 3,
+        repeat: -1,
+      });
       
       }
       
@@ -386,12 +383,12 @@ class VpPessoasScene extends Phaser.Scene {
       }
     }
     
-      createPlayer(width, height) {
-        this.player = this.physics.add.sprite(width - 508, height - 660, 'player');
-        this.player.setScale(2.5);
-      }
+    createPlayer(width, height) {
+      this.player = this.physics.add.sprite(width - 508, height - 660, 'player');
+      this.player.setScale(2.5);
+    }
 
-      createPlayerAnimations() {
+    createPlayerAnimations() {
         this.anims.create({
           key: "walk_down",
           frames: this.anims.generateFrameNumbers("player", { start: 130, end: 135 }),
@@ -445,7 +442,7 @@ class VpPessoasScene extends Phaser.Scene {
         
       }
 
-      moveNpcMovel() {
+    moveNpcMovel() {
         this.npcMovel.x += this.npcMovel.direcao * this.npcMovel.velocidade * this.game.loop.delta / 1000;
     
         // Verifica se atingiu a distância máxima e inverte a direção
@@ -456,22 +453,16 @@ class VpPessoasScene extends Phaser.Scene {
             this.npcMovel.direcao = -1; // Muda para a esquerda
             this.npcMovel.setFlipX(false);
         }
-    }
+      }
     
     addRafaela(width, height) {
       const rafaela = this.add
-        .image(width - 400, height - 650, "rafaela")
+        .image(width - 700, height - 600, "rafaela")
         .setScale(0.06);
     
       this.exclamation = this.add
-        .sprite(width - 400, height - 665, "indicator")
+        .sprite(width - 700, height - 660, "indicator")
         .setScale(0.2);
-      this.exclamation.play("exclamando");
-      this.indicatorActive = true;
-       if(this.indicatorActive) {  
-          this.indicatorSound.play();
-          this.walkSound.stop();
-        } 
     
       rafaela.setInteractive();
       rafaela.on("pointerdown", () => {
@@ -490,7 +481,8 @@ class VpPessoasScene extends Phaser.Scene {
             this.buttonClick.play();
           }
         });
-      }
+      
+    }
     
     showrafaelaInteraction() {
         this.exclamation.setVisible(false);
@@ -504,8 +496,8 @@ class VpPessoasScene extends Phaser.Scene {
 
         const width = this.scale.width;
         const height = this.scale.height;
-        const balaoTexto = this.add.image(width - 390, height - 660, "balaoTexto");
-        const text = this.add.text(width - 400, height - 660, speechrafaela[0], {
+        const balaoTexto = this.add.image(width - 620, height - 690, "balaoTexto").setScale(0.9);
+        const text = this.add.text(width - 690, height - 740, speechrafaela[0], {
           fontSize: "16px",
           fill: "#000000",
           wordWrap: { width: balaoTexto.width - 20 },
@@ -537,3 +529,4 @@ class VpPessoasScene extends Phaser.Scene {
 
 // Propriedade estática para armazenar o tempo de reprodução da música
 VpPessoasScene.lastMusicTime = 0;
+
