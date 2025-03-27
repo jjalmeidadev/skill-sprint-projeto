@@ -417,7 +417,7 @@ class OfficeScene extends Phaser.Scene {
       "Vou te explicar o primeiro passo.",
       "Primeiro, você precisa criar seu currículo.",
       "Vá até o computador no escritório.",
-      "Preencha seu currículo e depois entregue-o na sala do líder.",
+      "Preencha seu currículo e depois entregue-o na sala da líder.",
       "Boa sorte!",
     ];
 
