@@ -18,11 +18,18 @@ class VpEstrategiaScene extends Phaser.Scene {
 
         // Carrega os efeitos sonoros
         this.load.audio('walkSound', '../assets/sounds/753292__vrymaa__footsteps-high-heels-hardwood-walk-run (mp3cut.net).wav');
+        this.load.audio("estrategyMusic", "../assets/Kevin-MacLeod-Itty-Bitty-8-Bit-♫-NO-COPYRIGHT-8-bit-Music.mp3");
     }
 
     create() {
         const width = this.cameras.main.width;
         const height = this.cameras.main.height;
+
+        // Cria e inicia a música; se houver um tempo salvo, retoma a partir dele
+        const startTime = VpEstrategiaScene.lastMusicTime || 0;
+        this.estrategyMusic = this.sound.add("estrategyMusic", { loop: true });
+        this.estrategyMusic.play({ seek: startTime });
+
 
         // Cria o mapa e as camadas
         const map = this.make.tilemap({ key: "map_estrategia", tileWidth: 25, tileHeight: 20 });
@@ -90,9 +97,12 @@ class VpEstrategiaScene extends Phaser.Scene {
                 "Acabamos de lançar um programa exclusivo",
                 "Queremos acelerar talentos como você!",
                 "Mas tem um porém...",
-                "As inscrições fecham em 24h, e só quem montar um plano estratégico para funcionários HOJE garante a vaga!",
+                "As inscrições fecham em 24h!",
+                "Só quem montar um plano estratégico para funcionários HOJE garante a vaga!",
                 "Você tem 2 minutos para ajudar três talentos a escolher seus próximos passos de carreira.",
-                "Planeje com cuidado! Cada decisão impacta o crescimento deles na empresa! Siga as exclamações."
+                "Planeje com cuidado!",
+                "Cada decisão impacta o crescimento deles na empresa!",
+                "Siga as exclamações para ajudá-los."
             ];
             this.iniciarDialogo(falasNpc); // Inicia o diálogo com as falas da NPC
         }
@@ -104,8 +114,8 @@ class VpEstrategiaScene extends Phaser.Scene {
         let indiceFalaAtual = 0;
 
         // Cria o balão de fala
-        const balaoTexto = this.add.image(this.npc.x, this.npc.y - 100, "balaoTexto").setOrigin(0.5).setScale(1);
-        const texto = this.add.text(this.npc.x, this.npc.y - 120, falasNpc[indiceFalaAtual], {
+        const balaoTexto = this.add.image(this.npc.x + 90, this.npc.y - 100, "balaoTexto").setOrigin(0.5).setScale(1);
+        const texto = this.add.text(this.npc.x + 100, this.npc.y - 120, falasNpc[indiceFalaAtual], {
             fontSize: "16px",
             fill: "#000000",
             wordWrap: { width: balaoTexto.width - 20 },
@@ -175,6 +185,14 @@ class VpEstrategiaScene extends Phaser.Scene {
         this.player.setScale(2.5);
     }
 
+    onShutdown() {
+        // Salva o tempo atual da música e a para quando a cena é pausada ou encerrada
+        if (this.PessoasMusic && this.PessoasMusic.isPlaying) {
+            VpPessoasScene.lastMusicTime = this.PessoasMusic.seek;
+            this.PessoasMusic.stop();
+        }
+    }
+
     createPlayerAnimations() {
         this.anims.create({
             key: "walk_down",
@@ -202,3 +220,6 @@ class VpEstrategiaScene extends Phaser.Scene {
         });
     }
 }
+
+// Propriedade estática para armazenar o tempo de reprodução da música
+VpPessoasScene.lastMusicTime = 0;
