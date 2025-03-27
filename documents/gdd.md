@@ -716,9 +716,9 @@ O jogador começa na Recepção (Primeiro Andar), onde responde a uma série de 
 
 **VP de Pessoas (Segundo Andar):** Nesta fase, o jogador interage com desafios relacionados à gestão de pessoas, ajudando um colega de trabalho se acalmar através de um mini game.
 
-**VP de Negócios (Terceiro Andar):**  Nesta fase, o jogador tem a missão de ligar os fios e arrumar o banco de dados da empresa.
+**VP de Negócios (Terceiro Andar):**  Nesta fase, o jogador tem a missão de ligar os fios e arrumar o banco de dados da empresa e colotar 5 chips para alcançar o 5G.
 
-**VP de Estratégia (Quarto Andar):** O jogador...
+**VP de Estratégia (Quarto Andar):** O jogador terá um mini game de arrastar palavras para criar um planejamento de carreira para 3 funcionários.
 
 **VP de Relações (Quinto Andar):** O jogador passa por um jantar e uma conversa muito impotante para o seu desenvolvimento de carreira.
 
