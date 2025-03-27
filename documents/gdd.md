@@ -626,7 +626,7 @@ A função verifica se o meteoro está visível (this.meteoro.visible === true) 
 | Posição Final X        | 1/3 da tela à direita.   | (largura_tela / 3)  |  width / 3
 | Posição Final Y       |  Perto da base da tela.   | (altura_tela - 100)  | height - 100
 
-Utilizamos as variáveis `height` e `width`, que são os valores do tamanho da largura e altura da tela do nosso jogo. O principal objetivo de utilizar esses valores variáveis é garantir responsividade. Ou seja, independemente do tamanho da tela da pessoa que jogar nosso jogo, a posição do meteoro e dos demais elementos na tela sempre será a mesma. 
+Utilizamos as variáveis `height` e `width`, que são os valores do tamanho da largura e altura da tela do nosso jogo. O principal objetivo de utilizar esses valores variáveis é garantir responsividade. Ou seja, a posição do meteoro e dos demais elementos permanece a mesma em diferentes dispositivos de diferentes tamanhos de tela.
 
 ##### **Detalhamento dos cálculos:**  
 
