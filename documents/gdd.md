@@ -713,10 +713,14 @@ Durante um brainstorming, decidimos que o ambiente principal do jogo seria um pr
 O jogador começa na Recepção (Primeiro Andar), onde responde a uma série de perguntas relacionadas à área em que deseja atuar. Com base nas respostas, a líder fornece um feedback e orienta a próxima etapa. A partir disso, ele avança pelos andares, passando pelas seguintes VP's:
 
 **VP de Pessoas (Segundo Andar):** Nesta fase, o jogador interage com desafios relacionados à gestão de pessoas, ajudando um colega de trabalho se acalmar através de um mini game.
-**VP de Negócios (Terceiro Andar):**  Nesta fase, o jogador tem a missão de ligar os fios e arrumar o banco de dados da empresa
-**VP de Estratégia (Quarto Andar):** O jogador
+
+**VP de Negócios (Terceiro Andar):**  Nesta fase, o jogador tem a missão de ligar os fios e arrumar o banco de dados da empresa.
+
+**VP de Estratégia (Quarto Andar):** O jogador...
+
 **VP de Relações (Quinto Andar):** O jogador passa por um jantar e uma conversa muito impotante para o seu desenvolvimento de carreira.
-**VP de Tecnologia (Sexto Andar):** Fase final, onde o jogador aprende através de um mini game a difenrença entre upskilling e reskilling
+
+**VP de Tecnologia (Sexto Andar):** Fase final, onde o jogador aprende através de um mini game a difenrença entre upskilling e reskilling.
 
 Cada fase do jogo conta com um mini game exclusivo e interativo, permitindo que o jogador aprenda e interaja com os personagens enquanto resolve tarefas desafiadoras.
 
