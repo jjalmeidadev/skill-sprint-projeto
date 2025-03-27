@@ -1,8 +1,7 @@
 class TutorialScene extends Phaser.Scene {
     constructor() {
-      // Chama o construtor da classe Phaser.Scene com a chave 'officeScene'
         super({ key: 'tutorialScene' });
-        
+
         //Lista de falas do vivinho(tutorial)
         this.introduction = [
             "Olá! Qual é o seu nome?",
@@ -11,7 +10,7 @@ class TutorialScene extends Phaser.Scene {
         ];
 
         //Lista das falas condicionais baseadas na resposta do jogador
-        this.conditionalQuestion = [
+        this.conditionalDialog = [
             "Vivinho: UAU! Que bom que você já sabe. Agora, quero te explicar uma coisa muito importante na sua jornada a partir de agora, o termo JOB ROTATION.",
             "Vivinho: Na Vivo, o termo JOB ROTATION se refere a uma estratégia de desenvolvimento profissional em que as pessoas estagiarias têm a oportunidade de atuar temporariamente em diferentes áreas da empresa.",
             "Vivinho: O principal objetivo desse programa é ampliar a visão sistêmica do negócio, desenvolver novas habilidades e preparar os funcionários para se tornarem futuros gestores e líderes.",
@@ -19,24 +18,24 @@ class TutorialScene extends Phaser.Scene {
         ];
 
         //Lista de falas finais do tutorial
-        this.final = [
+        this.finalDialog = [
             "Vivinho: Observe esse esquema. Note que um novo talento pode evoluir para diversos cargos e realizar o job rotation na Vivo. Vamos mergulhar nisso nos próximos níveis!",
             "Vivinho: Além disso, a Vivo usa a plataforma Gupy para gerenciar seus processos seletivos, permitindo que candidatos cadastrem currículos, participem de testes e acompanhem o andamento das vagas."
         ];
 
-        this.currentFinalLine = 0;//Controla a fala atual das falas finais
-        this.currentLine = 0;//Controla a fala atual do tutorial
-        this.selectedOption = false;//Controla se o jogador escolheu uma opção
-        this.showImage = false;//Controla se a imagem de sobreposição foi exibida
+        this.currentFinalIndex = 0; //Controla a fala atual das falas finais
+        this.currentDialogIndex = 0; //Controla a fala atual do tutorial
+        this.optionSelected = false; //Controla se o jogador escolheu uma opção
+        this.overlayVisible = false; //Controla se a imagem de sobreposição foi exibida
     }
 
     preload() {
         //Carrega as imagens e sons necessários para a cena
         this.load.image('vivinho', '../assets/vivinho.png');
-        this.load.image('botaoSim', '../assets/botao_sim.png');
-        this.load.image('botaoNao', '../assets/botao_nao.png');
+        this.load.image('buttonYes', '../assets/botao_sim.png');
+        this.load.image('buttonNo', '../assets/botao_nao.png');
         this.load.image('jobRotation', '../assets/planoCarreira.png');
-        this.load.font('FontePadrao', 'fonts/PixelifySans-VariableFont_wght.ttf');
+        this.load.font('defaultFont', 'fonts/PixelifySans-VariableFont_wght.ttf');
 
         this.load.tilemapTiledJSON('escritorio', '../assets/mapaOffice/mapaOffice.json');
         this.load.image('decoracao', '../assets/mapaOffice/decoracao.png');
@@ -93,10 +92,10 @@ class TutorialScene extends Phaser.Scene {
         this.showDialog();
 
         //Cria imagem sobreposta, mas deixa invisível
-        this.overlap = this.add.image(width / 2, height / 2 - 100, 'jobRotation');
-        this.overlap.setOrigin(0.5);
-        this.overlap.setScale(0.5);
-        this.overlap.setAlpha(0);
+        this.overlayImage = this.add.image(width / 2, height / 2 - 100, 'jobRotation');
+        this.overlayImage.setOrigin(0.5);
+        this.overlayImage.setScale(0.5);
+        this.overlayImage.setAlpha(0);
 
         //Adicionando um retângulo arredondado para o input de texto
         this.inputBackground = this.add.graphics();
@@ -106,10 +105,10 @@ class TutorialScene extends Phaser.Scene {
         this.inputBackground.strokeRoundedRect(width - 1000, height - 130, 500, 50, 10);
 
         //Placeholder do input de texto
-        const placeholderText = this.add.text(width - 990, height - 130, 'Digite seu nome aqui...', { font: '25px FontePadrao', fill: '#000000' });
+        const placeholderText = this.add.text(width - 990, height - 130, 'Digite seu nome aqui...', { font: '25px defaultFont', fill: '#000000' });
 
         //Adicionando o texto digitado
-        this.textEntry = this.add.text(width - 990, height - 130, '', { font: '25px FontePadrao', fill: '#000000' });
+        this.textEntry = this.add.text(width - 990, height - 130, '', { font: '25px defaultFont', fill: '#000000' });
 
         //Evento de teclado para o input de texto
         this.input.keyboard.on('keydown', event => {
@@ -131,7 +130,7 @@ class TutorialScene extends Phaser.Scene {
         //Adiciona interação com o botão ENTER para avançar o diálogo	
         this.input.keyboard.on('keydown-ENTER', () => {
             this.nextDialog();
-            this.buttonClick = this.sound.add('keySound', {loop: false, volume: 10});
+            this.buttonClick = this.sound.add('keySound', { loop: false, volume: 10 });
             this.buttonClick.play();
         });
     }
@@ -148,83 +147,56 @@ class TutorialScene extends Phaser.Scene {
         this.dialogBox.fillRoundedRect(x, y, dialogWidth, dialogHeight, 10);
 
         //Adiciona a imagem do personagem 
-        this.vivinhoSprite = this.add.image(x + 80, y + 40, 'vivinho').setScale(0.5);
+        this.characterSprite = this.add.image(x + 80, y + 40, 'vivinho').setScale(0.5);
 
         //Cria o texto da caixa de diálogo
         this.dialogText = this.add.text(x + 150, y + 30, '', {
             fontSize: '20px',
             color: '#000000',
-            fontFamily: 'FontePadrao',
+            fontFamily: 'defaultFont',
             wordWrap: { width: 600 }
         });
     }
-
-    //Cria o campo de entrada(imput) para o nome do jogador
-    //this.nome = document.CreateElement('input');
-    //this.nome.type = 'text';
-    //this.nome.placeholder = 'Digite seu nome aqui...';
-    //this.nome.style.position = 'absolute';
-    //this.nome.style.width = 200px;
-    //this.nome.style.height = 30px;
-    //this.nome.style.fontSize = 18px;
-    //this.nome.style.backgroundColor = '#ffffff';
-    //this.nome.style.border = '2px solid #ff9e0d';
-    //this.nome.style.borderRadius = 5px;
-    //this.nome.style.textAlign = 'center';
-    //this.nome.style.display = 'none';
-    //this.nome.style.fontFamily = 'FontePadrao';
-
-    //Document.body.appendChild(this.nome);
 
     showDialog() {
         const x = width / 2 - 100;
         const y = height / 1.2;
 
-        //if (this.currentLine === 0) {
-        //Exibe o campo de entrada para o nome do jogador
-        //    this.nome.style.display = 'block';
-        //this.nome.style.left = `${width-1000}px´;
-        //this.nome.style.top = `${height-300}px´;
-        //}else{
-        //Esconde o campo de entrada
-        //this.nome.style.display = 'none';
-        //}
-
-        if (this.currentLine === 1 && playerName) {
+        if (this.currentDialogIndex === 1 && playerName) {
             //Exibe a fala de boas-vindas com o nome do jogador
             this.dialogText.setText(`Prazer em te conhecer, ${playerName}! Eu sou o Vivinho!`);
-        } else if (this.currentLine === 2) {
+        } else if (this.currentDialogIndex === 2) {
             //Exibe a fala e cria botões de escolha
-            this.dialogText.setText(this.introduction[this.currentLine]);
+            this.dialogText.setText(this.introduction[this.currentDialogIndex]);
             this.createChoiceButtons();
-            this.selectedOption = false;
+            this.optionSelected = false;
             //Reseta para impedir que o jogador avance sem escolher uma opção
         } else {
             //Exibe a fala atual
-            this.dialogText.setText(this.introduction[this.currentLine]);
+            this.dialogText.setText(this.introduction[this.currentDialogIndex]);
         }
     }
 
     createChoiceButtons() {
-        if (this.botaoSim || this.botaoNao) return;
+        if (this.buttonYes || this.buttonNo) return;
 
         //Define a posição dos botões
         const x = width / 2 - 100;
         const y = height - 200;
 
         //Cria o botão SIM e NÃO
-        this.botaoSim = this.add.image(x, y + 125, 'botaoSim').setScale(0.6).setInteractive();
-        this.botaoNao = this.add.image(x + 200, y + 125, 'botaoNao').setScale(0.65).setInteractive();
+        this.buttonYes = this.add.image(x, y + 125, 'buttonYes').setScale(0.6).setInteractive();
+        this.buttonNo = this.add.image(x + 200, y + 125, 'buttonNo').setScale(0.65).setInteractive();
 
         //Define ação ao clicar nos botões
-        this.botaoSim.on('pointerdown', () => {
-            this.buttonClick = this.sound.add('buttonSound', {loop: false, volume: 10});
+        this.buttonYes.on('pointerdown', () => {
+            this.buttonClick = this.sound.add('buttonSound', { loop: false, volume: 10 });
             this.buttonClick.play();
             this.chooseOption(0)
         });
 
-        this.botaoNao.on('pointerdown', () => {
-            this.buttonClick = this.sound.add('buttonSound', {loop: false, volume: 10});
+        this.buttonNo.on('pointerdown', () => {
+            this.buttonClick = this.sound.add('buttonSound', { loop: false, volume: 10 });
             this.buttonClick.play();
             this.chooseOption(1)
         });
@@ -232,78 +204,78 @@ class TutorialScene extends Phaser.Scene {
 
     chooseOption(optionIndex) {
         //Destroi os botões de escolha
-        if (this.botaoSim) this.botaoSim.destroy();
-        if (this.botaoNao) this.botaoNao.destroy();
+        if (this.buttonYes) this.buttonYes.destroy();
+        if (this.buttonNo) this.buttonNo.destroy();
 
-        this.botaoSim = null;
-        this.botaoNao = null;
+        this.buttonYes = null;
+        this.buttonNo = null;
 
-        this.selectedOption = true;//Indica que o jogador escolheu uma opção
+        this.optionSelected = true; //Indica que o jogador escolheu uma opção
 
-        if (optionIndex === 1) {//Se o jogador escolheu NÃO
-            this.currentCondicionalLine = 1;//Começa a exibir as falas condicionais
-            this.dialogText.setText(this.conditionalQuestion[this.currentCondicionalLine]);
-        } else {//Se o jogador escolheu SIM
-            this.currentCondicionalLine = -1;//Evita o loop de exibição das falas condicionais
-            this.dialogText.setText(this.conditionalQuestion[0]);
-            this.simSelecionado = true;//Marca que o jogador escolheu SIM
-            this.showImage = false;//Esconde a imagem de sobreposição
+        if (optionIndex === 1) { //Se o jogador escolheu NÃO
+            this.currentConditionalIndex = 1; //Começa a exibir as falas condicionais
+            this.dialogText.setText(this.conditionalDialog[this.currentConditionalIndex]);
+        } else { //Se o jogador escolheu SIM
+            this.currentConditionalIndex = -1; //Evita o loop de exibição das falas condicionais
+            this.dialogText.setText(this.conditionalDialog[0]);
+            this.yesSelected = true; //Marca que o jogador escolheu SIM
+            this.overlayVisible = false; //Esconde a imagem de sobreposição
         }
     }
 
     nextDialog() {
-        if (this.currentLine === 0 && this.textEntry.text.trim() === "") {
-            return;//Se o nome não foi preenchido, não avança
+        if (this.currentDialogIndex === 0 && this.textEntry.text.trim() === "") {
+            return; //Se o nome não foi preenchido, não avança
         }
 
-        if (this.currentLine === 0) {
+        if (this.currentDialogIndex === 0) {
             playerName = this.textEntry.text.trim();
             this.textEntry.setVisible(false);
             this.inputBackground.setVisible(false);
         }
 
-        if (this.currentLine === 2 && !this.selectedOption) {
-            return;//Se o jogador não escolheu uma opção, não avança
+        if (this.currentDialogIndex === 2 && !this.optionSelected) {
+            return; //Se o jogador não escolheu uma opção, não avança
         }
-        
+
         //** Novo fluxo para "Sim" **: Primeiro ENTER exibe a imagem de sobreposição
-        if (this.simSelecionado) {
-            if (!this.showImage) {
-                this.dialogText.setText(this.final[0]);//Exibe a primeira fala da finalização
-                this.overlap.setAlpha(1);//Torna a imagem visível
-                this.showImage = true;//Marca que a imagem foi exibida
+        if (this.yesSelected) {
+            if (!this.overlayVisible) {
+                this.dialogText.setText(this.finalDialog[0]); //Exibe a primeira fala da finalização
+                this.overlayImage.setAlpha(1); //Torna a imagem visível
+                this.overlayVisible = true; //Marca que a imagem foi exibida
                 return;
             }
-            if (this.currentFinalLine < this.final.length - 1) {
-                this.currentFinalLine++;
-                this.dialogText.setText(this.final[this.currentFinalLine]);
+            if (this.currentFinalIndex < this.finalDialog.length - 1) {
+                this.currentFinalIndex++;
+                this.dialogText.setText(this.finalDialog[this.currentFinalIndex]);
                 return;
             }
-            this.scene.start('officeScene');//Segundo ENTER leva para a próxima cena
+            this.scene.start('officeScene'); //Segundo ENTER leva para a próxima cena
             return;
         }
 
         //Se o jogador escolheu NÃO, exibe as falas condicionais
-        if (this.selectedOption && this.currentCondicionalLine >= 0 && this.currentCondicionalLine < this.conditionalQuestion.length - 1) {
-            this.currentCondicionalLine++;
-            this.dialogText.setText(this.conditionalQuestion[this.currentCondicionalLine]);
+        if (this.optionSelected && this.currentConditionalIndex >= 0 && this.currentConditionalIndex < this.conditionalDialog.length - 1) {
+            this.currentConditionalIndex++;
+            this.dialogText.setText(this.conditionalDialog[this.currentConditionalIndex]);
             return;
         }
 
         //Se o jogador escolheu NÃO e chegou na última fala condicional, exibe as falas finais
-        if (this.selectedOption && this.currentCondicionalLine === this.conditionalQuestion.length - 1) {
-            this.dialogText.setText(this.final[0]);
-            this.overlap.setAlpha(1);
-            this.showImage = true;
-            this.currentCondicionalLine++;
+        if (this.optionSelected && this.currentConditionalIndex === this.conditionalDialog.length - 1) {
+            this.dialogText.setText(this.finalDialog[0]);
+            this.overlayImage.setAlpha(1);
+            this.overlayVisible = true;
+            this.currentConditionalIndex++;
             return;
         }
 
-        if (this.showImage && this.overlap.alpha === 1) {
+        if (this.overlayVisible && this.overlayImage.alpha === 1) {
             //Se a imagem de sobreposição foi exibida, exibe as falas finais
-            if (this.currentFinalLine < this.final.length - 1) {
-                this.currentFinalLine++;
-                this.dialogText.setText(this.final[this.currentFinalLine]);
+            if (this.currentFinalIndex < this.finalDialog.length - 1) {
+                this.currentFinalIndex++;
+                this.dialogText.setText(this.finalDialog[this.currentFinalIndex]);
                 return;
             }
             //Qunado todas as falas finais forem exibidas, a cena é encerrada
@@ -312,8 +284,8 @@ class TutorialScene extends Phaser.Scene {
         }
 
         //Avança o diálogo normalmente
-        this.currentLine++;
-        if (this.currentLine < this.introduction.length) {
+        this.currentDialogIndex++;
+        if (this.currentDialogIndex < this.introduction.length) {
             this.showDialog();
         }
     }

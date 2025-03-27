@@ -309,9 +309,6 @@ class CurriculoScene extends Phaser.Scene {
         this.canMove = true;
     }
 
-    // parando os sons da cena anterior
-    
-
     preload() {
         // Carrega as imagens
         this.load.image('primeiraTela', '../assets/primeiraTela.png');
@@ -331,13 +328,11 @@ class CurriculoScene extends Phaser.Scene {
     }
 
     create() {
-        if (this.walkSound && this.walkSound.isPlaying) {
-            this.walkSound.stop();
-        }
+
 
         var width = 1520;
         var height = 753;
-        
+
         // Imagem de fundo sem distorção
         const fundo = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, 'primeiraTela');
 
@@ -365,7 +360,7 @@ class CurriculoScene extends Phaser.Scene {
                     // Fade out na câmera
                     this.cameras.main.fadeOut(500, 0, 0, 0, () => {
                         // Efeito sonoro de clique
-                        this.cliqueSom = this.sound.add('cliqueSom', {loop: false, volume: 10});
+                        this.cliqueSom = this.sound.add('cliqueSom', { loop: false, volume: 10 });
                         this.cliqueSom.play();
 
                         this.scene.start('QuizVpPessoas');
@@ -395,7 +390,7 @@ class CurriculoScene extends Phaser.Scene {
                     // Fade out na câmera
                     this.cameras.main.fadeOut(500, 0, 0, 0, () => {
                         // Efeito sonoro de clique
-                        this.cliqueSom = this.sound.add('cliqueSom', {loop: false, volume: 10});
+                        this.cliqueSom = this.sound.add('cliqueSom', { loop: false, volume: 10 });
                         this.cliqueSom.play();
 
                         this.scene.start('QuizVpEstrategia');
@@ -425,7 +420,7 @@ class CurriculoScene extends Phaser.Scene {
                     // Fade out na câmera
                     this.cameras.main.fadeOut(500, 0, 0, 0, () => {
                         // Efeito sonoro de clique
-                        this.cliqueSom = this.sound.add('cliqueSom', {loop: false, volume: 10});
+                        this.cliqueSom = this.sound.add('cliqueSom', { loop: false, volume: 10 });
                         this.cliqueSom.play();
 
                         this.scene.start('QuizVpNegocios');
@@ -455,7 +450,7 @@ class CurriculoScene extends Phaser.Scene {
                     // Fade out na câmera
                     this.cameras.main.fadeOut(500, 0, 0, 0, () => {
                         // Efeito sonoro de clique
-                        this.cliqueSom = this.sound.add('cliqueSom', {loop: false, volume: 10});
+                        this.cliqueSom = this.sound.add('cliqueSom', { loop: false, volume: 10 });
                         this.cliqueSom.play();
 
                         this.scene.start('QuizVpRelacoes');
@@ -485,7 +480,7 @@ class CurriculoScene extends Phaser.Scene {
                     // Fade out na câmera
                     this.cameras.main.fadeOut(500, 0, 0, 0, () => {
                         // Efeito sonoro de clique
-                        this.cliqueSom = this.sound.add('cliqueSom', {loop: false, volume: 10});
+                        this.cliqueSom = this.sound.add('cliqueSom', { loop: false, volume: 10 });
                         this.cliqueSom.play();
 
                         this.scene.start('QuizVpTecnologia');
@@ -693,7 +688,7 @@ class QuizVpPessoas extends Phaser.Scene {
             botaoClicado.fillColor = 0x88FF88; // Verde claro
 
             // Efeito sonoro de correto
-            this.correto = this.sound.add('corretoSom', {loop: false, volume: 10});
+            this.correto = this.sound.add('corretoSom', { loop: false, volume: 10 });
             this.correto.play();
 
             // Atualizar pontuação e progresso
@@ -721,7 +716,7 @@ class QuizVpPessoas extends Phaser.Scene {
             botaoClicado.fillColor = 0xFF8888; // Vermelho claro
 
             // Efeito sonoro de errado
-            this.errado = this.sound.add('erradoSom', {loop: false, volume: 10});
+            this.errado = this.sound.add('erradoSom', { loop: false, volume: 10 });
             this.errado.play();
 
             // Exibir feedback explicativo
@@ -807,8 +802,8 @@ class QuizVpPessoas extends Phaser.Scene {
 
 //                     // Fade out e iniciar o quiz
 //                     this.cameras.main.fadeOut(500, 0, 0, 0, () => {
-                           //this.cliqueSom = this.sound.add('cliqueSom', {loop: false, volume: 10});
-                           //this.cliqueSom.play();
+//this.cliqueSom = this.sound.add('cliqueSom', {loop: false, volume: 10});
+//this.cliqueSom.play();
 //                         this.scene.start('QuizVpPessoas');
 //                     });
 //                 }
@@ -901,11 +896,11 @@ class CongratulationsSceneCurriculoVpPessoas extends Phaser.Scene {
                     // Fade out e iniciar o quiz
                     this.cameras.main.fadeOut(500, 0, 0, 0, () => {
                         // Efeito sonoro de clique
-                        this.cliqueSom = this.sound.add('cliqueSom', {loop: false, volume: 10});
+                        this.cliqueSom = this.sound.add('cliqueSom', { loop: false, volume: 10 });
                         this.cliqueSom.play();
 
                         this.scene.switch('officeScene');
-                    
+
                     });
                 }
             });
@@ -1124,7 +1119,7 @@ class QuizVpEstrategia extends Phaser.Scene {
             botaoClicado.fillColor = 0x88FF88; // Verde claro
 
             // Efeito sonoro de correto
-            this.correto = this.sound.add('corretoSom', {loop: false, volume: 10});
+            this.correto = this.sound.add('corretoSom', { loop: false, volume: 10 });
             this.correto.play();
 
             // Atualizar pontuação e progresso
@@ -1152,7 +1147,7 @@ class QuizVpEstrategia extends Phaser.Scene {
             botaoClicado.fillColor = 0xFF8888; // Vermelho claro
 
             // Efeito sonoro de errado
-            this.errado = this.sound.add('erradoSom', {loop: false, volume: 10});
+            this.errado = this.sound.add('erradoSom', { loop: false, volume: 10 });
             this.errado.play();
 
             // Exibir feedback explicativo
@@ -1330,7 +1325,7 @@ class CongratulationsSceneCurriculoVpEstrategia extends Phaser.Scene {
                     // Fade out e iniciar o quiz
                     this.cameras.main.fadeOut(500, 0, 0, 0, () => {
                         // Efeito sonoro de clique
-                        this.cliqueSom = this.sound.add('cliqueSom', {loop: false, volume: 10});
+                        this.cliqueSom = this.sound.add('cliqueSom', { loop: false, volume: 10 });
                         this.cliqueSom.play();
 
                         this.scene.switch('officeScene');
@@ -1549,7 +1544,7 @@ class QuizVpNegocios extends Phaser.Scene {
             botaoClicado.fillColor = 0x88FF88; // Verde claro
 
             // Efeito sonoro de correto
-            this.correto = this.sound.add('corretoSom', {loop: false, volume: 10});
+            this.correto = this.sound.add('corretoSom', { loop: false, volume: 10 });
             this.correto.play();
 
             // Atualizar pontuação e progresso
@@ -1577,7 +1572,7 @@ class QuizVpNegocios extends Phaser.Scene {
             botaoClicado.fillColor = 0xFF8888; // Vermelho claro
 
             // Efeito sonoro de errado
-            this.errado = this.sound.add('erradoSom', {loop: false, volume: 10});
+            this.errado = this.sound.add('erradoSom', { loop: false, volume: 10 });
             this.errado.play();
 
             // Exibir feedback explicativo
@@ -1755,7 +1750,7 @@ class CongratulationsSceneCurriculoVpNegocios extends Phaser.Scene {
                     // Fade out e iniciar o quiz
                     this.cameras.main.fadeOut(500, 0, 0, 0, () => {
                         // Efeito sonoro de clique
-                        this.cliqueSom = this.sound.add('cliqueSom', {loop: false, volume: 10});
+                        this.cliqueSom = this.sound.add('cliqueSom', { loop: false, volume: 10 });
                         this.cliqueSom.play();
 
                         this.scene.switch('officeScene');
@@ -1974,7 +1969,7 @@ class QuizVpRelacoes extends Phaser.Scene {
             botaoClicado.fillColor = 0x88FF88; // Verde claro
 
             // Efeito sonoro de correto
-            this.correto = this.sound.add('corretoSom', {loop: false, volume: 10});
+            this.correto = this.sound.add('corretoSom', { loop: false, volume: 10 });
             this.correto.play();
 
             // Atualizar pontuação e progresso
@@ -2002,7 +1997,7 @@ class QuizVpRelacoes extends Phaser.Scene {
             botaoClicado.fillColor = 0xFF8888; // Vermelho claro
 
             // Efeito sonoro de errado
-            this.errado = this.sound.add('erradoSom', {loop: false, volume: 10});
+            this.errado = this.sound.add('erradoSom', { loop: false, volume: 10 });
             this.errado.play();
 
             // Exibir feedback explicativo
@@ -2180,7 +2175,7 @@ class CongratulationsSceneCurriculoVpRelacoes extends Phaser.Scene {
                     // Fade out e iniciar o quiz
                     this.cameras.main.fadeOut(500, 0, 0, 0, () => {
                         // Efeito sonoro de clique
-                        this.cliqueSom = this.sound.add('cliqueSom', {loop: false, volume: 10});
+                        this.cliqueSom = this.sound.add('cliqueSom', { loop: false, volume: 10 });
                         this.cliqueSom.play();
 
                         this.scene.switch('officeScene');
@@ -2399,7 +2394,7 @@ class QuizVpTecnologia extends Phaser.Scene {
             botaoClicado.fillColor = 0x88FF88; // Verde claro
 
             // Efeito sonoro de correto
-            this.correto = this.sound.add('corretoSom', {loop: false, volume: 10});
+            this.correto = this.sound.add('corretoSom', { loop: false, volume: 10 });
             this.correto.play();
 
             // Atualizar pontuação e progresso
@@ -2427,7 +2422,7 @@ class QuizVpTecnologia extends Phaser.Scene {
             botaoClicado.fillColor = 0xFF8888; // Vermelho claro
 
             // Efeito sonoro de errado
-            this.errado = this.sound.add('erradoSom', {loop: false, volume: 10});
+            this.errado = this.sound.add('erradoSom', { loop: false, volume: 10 });
             this.errado.play();
 
             // Exibir feedback explicativo
@@ -2609,11 +2604,11 @@ class CongratulationsSceneCurriculoVpTecnologia extends Phaser.Scene {
                     // Fade out e iniciar o quiz
                     this.cameras.main.fadeOut(500, 0, 0, 0, () => {
                         // Efeito sonoro de clique
-                        this.cliqueSom = this.sound.add('cliqueSom', {loop: false, volume: 10});
+                        this.cliqueSom = this.sound.add('cliqueSom', { loop: false, volume: 10 });
                         this.cliqueSom.play();
 
                         this.scene.switch('officeScene');
-                    this.excbubble.play();
+                        this.excbubble.play();
 
                     });
                 }

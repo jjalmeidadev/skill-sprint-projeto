@@ -71,7 +71,7 @@ class OfficeScene extends Phaser.Scene {
 
     //cria a animação
     this.anims.create({
-      key: "exclamando",
+      key: "exclaiming",
       frames: this.anims.generateFrameNumbers("indicator", {start: 0, end: 1}),
       //velocidade da animação
       frameRate: 3,
@@ -367,7 +367,7 @@ class OfficeScene extends Phaser.Scene {
     this.indicatorSound.stop();
     this.buttonClick.play();
     this.indicator.destroy();
-    this.scene.switch("curriculoScene");
+    this.scene.switch("curriculoScene", { stopWalkSound: true });
     this.salaLider();
   }
 
@@ -412,7 +412,7 @@ class OfficeScene extends Phaser.Scene {
       "Olá! Você deve ser " + playerName + ", né?",
       "Fiquei sabendo que você quer mudar de carreira na Vivo.",
       "Vou te explicar o primeiro passo.",
-      "Primeiro, você precisa criar o seu currículo.",
+      "Primeiro, você precisa criar seu currículo.",
       "Vá até o computador no escritório.",
       "Preencha seu currículo e depois entregue-o na sala do líder.",
       "Boa sorte!",
