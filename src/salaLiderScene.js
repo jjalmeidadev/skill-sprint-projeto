@@ -343,10 +343,9 @@ class SalaLider extends Phaser.Scene {
     // Adiciona um overlap entre o player e a exclamation
     this.physics.add.overlap(this.player, this.exclamation, () => {
       this.indicatorActive = false;
-      if (this.walkSound.isPlaying) {
-        this.walkSound.stop();
-    }
-      this.scene.switch('officeScene',  { stopWalkSound: true }); // Troca para a cena do escritório
     });
+
+    this.scene.get('officeScene').events.emit('stopWalkSound'); // Emite o evento
+    this.scene.switch('officeScene'); // Retorna para a OfficeScene
   }
 }

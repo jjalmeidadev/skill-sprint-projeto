@@ -25,11 +25,11 @@ class OfficeScene extends Phaser.Scene {
     this.load.image("decoracao", "../assets/mapaOffice/decoracao.png");
     this.load.image("paredes", "../assets/mapaOffice/paredes.png");
     this.load.image("personalizado_vivo", "../assets/mapaOffice/personalizado_vivo.png");
-      
+
     // Demais ativos
     this.load.image("vivita", "../assets/vivita.png");
     this.load.image("speechBubble", "../assets/balaoTexto.png");
-  
+
 
     // Carrega o áudio da cena do escritório
     this.load.audio("officeMusic", "../assets/0320(1).MP3");
@@ -37,17 +37,19 @@ class OfficeScene extends Phaser.Scene {
     this.load.audio('indicatorSound', '../assets/sounds/497198_abacagi_bubble-pops (mp3cut.net).wav');
     this.load.audio('walkSound', '../assets/sounds/753292__vrymaa__footsteps-high-heels-hardwood-walk-run (mp3cut.net).wav');
 
-    
+
   }
 
   create() {
     //skip elevador
-   /* this.scene.start("elevadorScene");
-    return;*/
+    /* this.scene.start("elevadorScene");
+     return;*/
 
-    if (this.walkSound && this.walkSound.isPlaying) {
-      this.walkSound.stop();
-  }
+     this.events.on('stopWalkSound', () => {
+      if (this.walkSound && this.walkSound.isPlaying) {
+          this.walkSound.stop(); // Para o som de passos
+      }
+  });
 
     const width = this.scale.width;
     const height = this.scale.height;
@@ -55,10 +57,10 @@ class OfficeScene extends Phaser.Scene {
     // Transição suave
     this.cameras.main.fadeIn(1000);
 
-      // Carrega os efeitos sonoros
-      this.buttonClick = this.sound.add('buttonSound', {loop: false, volume: 10});
-      this.indicatorSound = this.sound.add('indicatorSound', {loop: true, volume: 1.5});
-      this.walkSound = this.sound.add('walkSound', {loop: false, volume: 2});
+    // Carrega os efeitos sonoros
+    this.buttonClick = this.sound.add('buttonSound', { loop: false, volume: 10 });
+    this.indicatorSound = this.sound.add('indicatorSound', { loop: true, volume: 1.5 });
+    this.walkSound = this.sound.add('walkSound', { loop: false, volume: 2 });
 
     // Cria e inicia a música; se houver um tempo salvo, retoma a partir dele
     const startTime = OfficeScene.lastMusicTime || 0;
@@ -72,7 +74,7 @@ class OfficeScene extends Phaser.Scene {
     //cria a animação
     this.anims.create({
       key: "exclaiming",
-      frames: this.anims.generateFrameNumbers("indicator", {start: 0, end: 1}),
+      frames: this.anims.generateFrameNumbers("indicator", { start: 0, end: 1 }),
       //velocidade da animação
       frameRate: 3,
       repeat: -1,
@@ -89,7 +91,7 @@ class OfficeScene extends Phaser.Scene {
     });
 
     // Cria o mapa e as camadas
-    const map = this.make.tilemap({key: "escritorio", tileWidth: 25, tileHeight: 20});
+    const map = this.make.tilemap({ key: "escritorio", tileWidth: 25, tileHeight: 20 });
     const tileset1 = map.addTilesetImage("decoracao");
     const tileset2 = map.addTilesetImage("paredes");
     const tileset3 = map.addTilesetImage("personalizado_vivo");
@@ -197,7 +199,7 @@ class OfficeScene extends Phaser.Scene {
       this.createUpButton();
     }
 
-    if(this.activeIndicator == false) {
+    if (this.activeIndicator == false) {
       this.indicatorSound.stop();
     }
   }
@@ -237,7 +239,7 @@ class OfficeScene extends Phaser.Scene {
       this.walkSound.stop();
     } else {
       if (!this.walkSound.isPlaying) {
-      this.walkSound.play();
+        this.walkSound.play();
       }
     }
   }
@@ -283,8 +285,8 @@ class OfficeScene extends Phaser.Scene {
     this.exclamation.setImmovable(true);
     this.exclamation.play("exclaiming");
     this.activeIndicator = true;
-    if(this.activeIndicator) {
-        this.indicatorSound.play();
+    if (this.activeIndicator) {
+      this.indicatorSound.play();
     }
 
     this.elevatorBackground = this.add.image(0, 0, "elevatorBackground").setOrigin(0, 0);
@@ -332,7 +334,7 @@ class OfficeScene extends Phaser.Scene {
       .setScale(0.2);
     this.indicator.play("exclaiming");
     this.activeIndicator = true;
-    if(this.activeIndicator) {
+    if (this.activeIndicator) {
       this.indicatorSound.play();
     }
 
@@ -381,10 +383,10 @@ class OfficeScene extends Phaser.Scene {
       .setScale(0.2);
     this.exclamation.play("exclaiming");
     this.activeIndicator = true;
-    if(this.activeIndicator) {  
+    if (this.activeIndicator) {
       this.indicatorSound.play();
       this.walkSound.stop();
-    } 
+    }
 
     vivita.setInteractive();
     vivita.on("pointerdown", () => {
@@ -443,31 +445,29 @@ class OfficeScene extends Phaser.Scene {
   }
 
   salaLider() {
-    if (this.inTransition) return;
-
     const width = this.scale.width;
     const height = this.scale.height;
 
     this.exclamation = this.physics.add.sprite(width - 1200, height - 500, 'indicator').setScale(0.2);
     this.exclamation.play('exclaiming');
-    
+
     this.activeIndicator = true;
-    this.indicatorSound = this.sound.add('indicatorSound', {loop: true, volume: 1.5});
+    this.indicatorSound = this.sound.add('indicatorSound', { loop: true, volume: 1.5 });
     this.indicatorSound.play();
 
     this.physics.add.overlap(this.player, this.exclamation, () => {
-        if (!this.inTransition) {
-            this.inTransition = true;
-            this.returnedFromLeaderRoom = true;
-            this.blockLoop = 0;
-            this.exclamation.setVisible(false);
-            this.activeIndicator = false;
-            this.indicatorSound.stop(); // Para o som quando há overlap
-            this.events.emit('stopWalkSound'); // Para o som de passos quando há overlap
-            this.scene.switch('salaLiderScene');
-        }
+      if (!this.inTransition) {
+        this.inTransition = true;
+        this.returnedFromLeaderRoom = true;
+        this.blockLoop = 0;
+        this.exclamation.setVisible(false);
+        this.activeIndicator = false;
+        this.indicatorSound.stop(); // Para o som quando há overlap
+        this.events.emit('stopWalkSound'); // Para o som de passos quando há overlap
+        this.scene.switch('salaLiderScene');
+      }
     });
-}
+  }
 }
 
 // Propriedade estática para armazenar o tempo de reprodução da música
