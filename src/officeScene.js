@@ -6,45 +6,14 @@ class OfficeScene extends Phaser.Scene {
 
   preload() {
     // Carrega imagens, spritesheets e demais ativos
-    this.load.spritesheet("player", "../assets/personagens/skinsPlayer/player1all.png", {
-      frameWidth: 16,
-      frameHeight: 32,
-    });
-
-    this.load.spritesheet("npc7", "../assets/personagens/npc7.png", { 
-      frameWidth: 16,
-      frameHeight: 32,
-    });
-
-    this.load.spritesheet("npc3", "../assets/personagens/npc3Sit.png", { 
-      frameWidth: 16,
-      frameHeight: 32,
-    });
-
-    this.load.spritesheet("npc4", "../assets/personagens/npc4Sit.png", { 
-      frameWidth: 16,
-      frameHeight: 32,
-    });
-
-    this.load.spritesheet("npc2", "../assets/personagens/npc2Sit.png", { 
-      frameWidth: 16,
-      frameHeight: 32,
-    });
-
-    this.load.spritesheet("npc6", "../assets/personagens/npc6Sit.png", { 
-      frameWidth: 16,
-      frameHeight: 32,
-    });
-
-    this.load.spritesheet("npc10", "../assets/personagens/npc10Lift.png", { 
-      frameWidth: 16,
-      frameHeight: 32,
-    });
-   this.load.spritesheet("vivita", "../assets/personagens/vivita.png", {
-    frameWidth: 16,
-    frameHeight: 32,
-    });
-   
+    this.load.spritesheet("player", "../assets/personagens/skinsPlayer/player1all.png", {frameWidth: 16, frameHeight: 32, });
+    this.load.spritesheet("npc7", "../assets/personagens/npc7.png", {frameWidth: 16, frameHeight: 32, });
+    this.load.spritesheet("npc3", "../assets/personagens/npc3Sit.png", {frameWidth: 16, frameHeight: 32, });
+    this.load.spritesheet("npc4", "../assets/personagens/npc4Sit.png", {frameWidth: 16, frameHeight: 32,});
+    this.load.spritesheet("npc2", "../assets/personagens/npc2Sit.png", {frameWidth: 16, frameHeight: 32, });
+    this.load.spritesheet("npc6", "../assets/personagens/npc6Sit.png", {frameWidth: 16, frameHeight: 32, });
+    this.load.spritesheet("npc10", "../assets/personagens/npc10Lift.png", {frameWidth: 16,  frameHeight: 32, });
+    this.load.spritesheet("vivita", "../assets/personagens/vivita.png", {frameWidth: 16, frameHeight: 32, });
     this.load.image("telaComputador", "../assets/tela_computador.png");
     this.load.image("computador", "../assets/computador.png");
     this.load.spritesheet("indicator", "../assets/exclamaçãoRoxa.png", {frameWidth: 254, frameHeight: 305,});
@@ -66,8 +35,6 @@ class OfficeScene extends Phaser.Scene {
     this.load.audio('keySound', '../assets/sounds/computer-keyboard-typing-290582 (mp3cut.net).mp3');
     this.load.audio('indicatorSound', '../assets/sounds/497198_abacagi_bubble-pops (mp3cut.net).wav');
     this.load.audio('walkSound', '../assets/sounds/753292__vrymaa__footsteps-high-heels-hardwood-walk-run (mp3cut.net).wav');
-
-    
   }
 
   create() {
@@ -78,9 +45,6 @@ class OfficeScene extends Phaser.Scene {
     if (this.walkSound && this.walkSound.isPlaying) {
       this.walkSound.stop();
   }
-
-    const width = this.scale.width;
-    const height = this.scale.height;
 
     // Transição suave
     this.cameras.main.fadeIn(1000);
