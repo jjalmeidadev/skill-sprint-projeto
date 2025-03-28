@@ -111,7 +111,7 @@ Com isso, esses são os princípios que guiam as tomadas de decisões e estraté
 
 ### 1.1.4. Proposta de Valor (sprint 4)
 
-O Value Proposition Canvas é uma ferramenta poderosa de planejamento estretégico dividida em dois blocos, Perfil do Cliente e Mapa de Valor, utilizada para desenvolver soluções e serviços eficazes voltados nas necessidades dos clientes. A ferramenta é projetada para promover o alinhamento e a compreensão profunda das dores do cliente, permitindo que a solução atenda da melhor forma a demanda do mercado. Sua utilização auxilia na melhoria contínua se moldando com base no feedback do cliente, a fim de entregar o melhor serviço além de potencializar o trabalho entregue por ter um direcionamento mais claro sobre o que será produzido.
+O Value Proposition Canvas [14] é uma ferramenta poderosa de planejamento estretégico dividida em dois blocos, Perfil do Cliente e Mapa de Valor, utilizada para desenvolver soluções e serviços eficazes voltados nas necessidades dos clientes. A ferramenta é projetada para promover o alinhamento e a compreensão profunda das dores do cliente, permitindo que a solução atenda da melhor forma a demanda do mercado. Sua utilização auxilia na melhoria contínua se moldando com base no feedback do cliente, a fim de entregar o melhor serviço além de potencializar o trabalho entregue por ter um direcionamento mais claro sobre o que será produzido.
 
 <div align="center">
   <sub>Canvas Proposta de Valor</sub><br>
@@ -127,7 +127,7 @@ O Value Proposition Canvas é uma ferramenta poderosa de planejamento estretégi
 
 ### 1.1.6. Matriz de Riscos (sprint 4)]
 
-A matriz de risco é uma ferramenta essencial para a gestão de riscos, permitindo a identificação, avaliação e priorização de ameaças e oportunidades que podem impactar os objetivos de um projeto ou organização. Ao classificar os riscos com base em sua probabilidade e impacto, a matriz oferece uma visão clara e estruturada, facilitando a tomada de decisões e a alocação de recursos para mitigação. Nesta seção, abordaremos os principais conceitos, critérios de avaliação e aplicações práticas da matriz de risco, demonstrando sua importância para uma gestão proativa e eficiente.
+A matriz de risco [15] é uma ferramenta essencial para a gestão de riscos, permitindo a identificação, avaliação e priorização de ameaças e oportunidades que podem impactar os objetivos de um projeto ou organização. Ao classificar os riscos com base em sua probabilidade e impacto, a matriz oferece uma visão clara e estruturada, facilitando a tomada de decisões e a alocação de recursos para mitigação. Nesta seção, abordaremos os principais conceitos, critérios de avaliação e aplicações práticas da matriz de risco, demonstrando sua importância para uma gestão proativa e eficiente.
 
 <div align="center">
   <sub>Matriz de Risco</sub><br>
@@ -164,7 +164,7 @@ A matriz de riscos apresentada permite uma visão estruturada das potenciais ame
 
 ### 1.1.7. Objetivos, Metas e Indicadores (sprint 4)
 
-As metas SMART são objetivos estruturados por cinco critérios fundamentais:
+As metas SMART [16] são objetivos estruturados por cinco critérios fundamentais:
 
 - Específicos (detalham exatamente o que será alcançado), Mensuráveis (com indicadores quantificáveis);
 - Alcançáveis (realistas com os recursos disponíveis), Relevantes (alinhados aos propósitos estratégicos);
@@ -179,7 +179,7 @@ Para garantir que o jogo cumpra seu propósito educacional e engajador, definimo
 | **Core Gameplay**    | Completar desenvolvimento das 4 últimas fases (Vice-Presidência de Negócios, Estratégia, Relações Institucionais e Tecnologia) | - 5/5 minigames funcionais<br>- 90% assets integrados<br>- 100% bugs críticos resolvidos | Sprint 5   |
 | **Testes**           | Realizar 5 sessões de teste com usuários                                   | - 5 relatórios de teste<br>- 90% bugs críticos resolvidos                         | Sprint 4    |
 
-Os KPIs são métricas quantificáveis e estratégicas que avaliam o sucesso de um projeto ou atividade em relação a seus objetivos-chave. No desenvolvimento do Skill Sprint, os KPIs servem como "termômetros" do progresso, medindo aspectos como desempenho técnico (ex.: tempo de carregamento ≤2s), qualidade (ex.: 90% dos bugs críticos resolvidos) e engajamento (ex.: 85% de conclusão de fases). Diferentemente de métricas genéricas, KPIs são selecionados por seu alinhamento direto com as metas SMART — como a taxa de integração de assets (90%) para validar a meta de finalização de fases — e são monitorados em intervalos regulares (diários/semanais) para permitir ajustes ágeis. Eles transformam dados brutos em insights acionáveis, ajudando a equipe a focar no que realmente importa para o sucesso do jogo.
+Os KPIs [17] são métricas quantificáveis e estratégicas que avaliam o sucesso de um projeto ou atividade em relação a seus objetivos-chave. No desenvolvimento do Skill Sprint, os KPIs servem como "termômetros" do progresso, medindo aspectos como desempenho técnico (ex.: tempo de carregamento ≤2s), qualidade (ex.: 90% dos bugs críticos resolvidos) e engajamento (ex.: 85% de conclusão de fases). Diferentemente de métricas genéricas, KPIs são selecionados por seu alinhamento direto com as metas SMART — como a taxa de integração de assets (90%) para validar a meta de finalização de fases — e são monitorados em intervalos regulares (diários/semanais) para permitir ajustes ágeis. Eles transformam dados brutos em insights acionáveis, ajudando a equipe a focar no que realmente importa para o sucesso do jogo.
 
 #### **Tabela Detalhada de KPIs**
 
@@ -235,11 +235,11 @@ O principal objetivo do Skill Sprint é proporcionar aos colaboradores da Vivo u
 
 No jogo, os participantes percorrem diferentes etapas do crescimento profissional, desde a candidatura a novas oportunidades até o planejamento contínuo de desenvolvimento, promovendo a cultura de mobilidade interna e aprendizado contínuo.
 
-Por meio de desafios dinâmicos e da prática do *job rotation* [15], os jogadores exploram novas áreas dentro da empresa, ampliando suas habilidades e alinhando-se aos valores e oportunidades da Vivo. Com essa abordagem gamificada, o Skill Sprint transforma o desenvolvimento de carreira em uma jornada envolvente e acessível, aumentando a adesão aos programas de capacitação e otimizando os recursos investidos em treinamentos tradicionais.
+Por meio de desafios dinâmicos e da prática do *job rotation* [18], os jogadores exploram novas áreas dentro da empresa, ampliando suas habilidades e alinhando-se aos valores e oportunidades da Vivo. Com essa abordagem gamificada, o Skill Sprint transforma o desenvolvimento de carreira em uma jornada envolvente e acessível, aumentando a adesão aos programas de capacitação e otimizando os recursos investidos em treinamentos tradicionais.
 
 Para avançar e concluir o jogo, o jogador deve:
 - Aprender os comandos de movimentação (teclas "A", "W", "S" e "D" do teclado) e interação com elementos (tecla “E”);
-- Interagir e seguir as instruções fornecidas pelos personagens (até o presente momento de ideação existem 3 NPCs [16]: Vivinho, Vivita e o líder);
+- Interagir e seguir as instruções fornecidas pelos personagens (até o presente momento de ideação existem 3 NPCs [19]: Vivinho, Vivita e o líder);
 - Finalizar as tarefas de cada fase do jogo, aprendendo sobre as oportunidades existentes em cada Vice-Presidência.
 
 Os objetivos de cada fase do jogo são:
@@ -247,7 +247,7 @@ Os objetivos de cada fase do jogo são:
 ##### Fase 1: Criação do Currículo no Escritório da Vivo
 - **Objetivo da fase:** Ensinar a criar um currículo atrativo e eficaz.
 - **Aprendizado:** Construção e otimização de currículo.
-- **Conteúdos:** Dicas de *layout*, palavras-chave, adaptação para ATS [17] (*Applicant Tracking System*), destaque de conquistas.
+- **Conteúdos:** Dicas de *layout*, palavras-chave, adaptação para ATS [20] (*Applicant Tracking System*), destaque de conquistas.
 - **Desafio (objetivo do jogador):** Cumprir a introdução ao jogo com Vivinho, seguir instruções da recepcionista (Vivita), criar o currículo no computador através das perguntas do *minigame* e entregá-lo à líder.
 
 ##### Fase 2: Entrevista de Processo Seletivo na Vice-Presidência de Pessoas
@@ -274,7 +274,7 @@ Os objetivos de cada fase do jogo são:
 - **Conteúdos:** Práticas para *feedback*, ciclo de desempenho, comunicação com liderança.
 - **Desafios (objetivo do jogador):** Simulação de conversa com o gestor, resolver dilemas de desempenho.
 
-##### Fase 6: Upskilling e Reskilling [18] na Vice-Presidência de Tecnologia da Informação
+##### Fase 6: Upskilling e Reskilling [21] na Vice-Presidência de Tecnologia da Informação
 - **Objetivo:** Incentivar o aprendizado contínuo.
 - **Aprendizado:** Desenvolvimento de novas habilidades para adaptação ao mercado.
 - **Conteúdos:** Diferença entre *upskilling* e *reskilling*, ferramentas de desenvolvimento.
@@ -284,11 +284,11 @@ Diante do exposto, entende-se que o jogo é estruturado de forma a contemplar o 
 
 ## 2.2. Características do Jogo (sprint 2)
 
-O jogo Skill Sprint se passa em um ambiente virtual que simula a jornada de desenvolvimento de carreira dentro da Vivo. Por ser um *serious game* [19], seu principal objetivo é utilizar a mecânica e a dinâmica dos jogos para promover aprendizado, treinamento ou conscientização em um contexto fora do entretenimento tradicional. Esses jogos são projetados para alcançar um objetivo educativo, como o desenvolvimento de habilidades, a simulação de situações reais, ou a transmissão de informações importantes de uma maneira envolvente e interativa. Enquanto os jogos tradicionais têm como foco a diversão e o entretenimento, os serious games buscam impactar positivamente a formação de uma pessoa ou de uma comunidade.
+O jogo Skill Sprint se passa em um ambiente virtual que simula a jornada de desenvolvimento de carreira dentro da Vivo. Por ser um *serious game* [23], seu principal objetivo é utilizar a mecânica e a dinâmica dos jogos para promover aprendizado, treinamento ou conscientização em um contexto fora do entretenimento tradicional. Esses jogos são projetados para alcançar um objetivo educativo, como o desenvolvimento de habilidades, a simulação de situações reais, ou a transmissão de informações importantes de uma maneira envolvente e interativa. Enquanto os jogos tradicionais têm como foco a diversão e o entretenimento, os serious games buscam impactar positivamente a formação de uma pessoa ou de uma comunidade.
 
 Dessa forma, o Skill Sprint desempenha o papel de um “jogo sério”, de cunho didático, de forma inspiradora e dinâmica. O personagem principal está no prédio empresarial da Vivo e é convidado a conhecer as Vice-Presidências da empresa após submeter seu currículo na sala do líder (1ª fase). O jogador explora diferentes setores e desafios do processo de candidatura para processos internos, como o momento de *feedback* com gestores, por exemplo, passando por processos de recrutamento, desenvolvimento profissional e aprendizado contínuo. Cada fase do jogo reflete um aspecto essencial desse processo, proporcionando uma experiência imersiva.
 
-Os jogadores enfrentam desafios interativos que representam situações reais do mercado de trabalho, incluindo a criação de currículo, participação em entrevistas, resolução de cases e planejamento de carreira. O jogo utiliza elementos de RPG [20] para permitir a evolução do personagem, incentivando a progressão baseada no aprendizado e na tomada de decisões estratégicas.
+Os jogadores enfrentam desafios interativos que representam situações reais do mercado de trabalho, incluindo a criação de currículo, participação em entrevistas, resolução de cases e planejamento de carreira. O jogo utiliza elementos de RPG [24] para permitir a evolução do personagem, incentivando a progressão baseada no aprendizado e na tomada de decisões estratégicas.
 
 A narrativa envolvente conduz os jogadores por um caminho estruturado de desenvolvimento profissional, utilizando NPCs carismáticos como guias e mentores. O enredo dinâmico reforça a importância da mobilidade interna e do aprendizado contínuo, destacando o papel da Vivo no crescimento de seus colaboradores.
 
@@ -312,13 +312,13 @@ O Skill Sprint é um jogo single-player, projetado para oferecer uma experiênci
 
 O desenvolvimento do Skill Sprint foi inspirado por títulos que combinam aprendizado e dinâmica de maneira eficaz. Algumas das principais referências incluem:
 
-- Pokémon [21]: A mecânica de evolução dos personagens e a exploração de diferentes mundos em Pokémon inspirou a estrutura de progressão de carreira no **Skill Sprint**. Assim como em Pokémon, os jogadores avançam ao completar desafios e aprimorar suas habilidades;
+- Pokémon [25]: A mecânica de evolução dos personagens e a exploração de diferentes mundos em Pokémon inspirou a estrutura de progressão de carreira no **Skill Sprint**. Assim como em Pokémon, os jogadores avançam ao completar desafios e aprimorar suas habilidades;
   
-- Stardew Valley [22]: A interação com NPCs e o desenvolvimento de atividades dentro de um ambiente dinâmico e imersivo, como visto em Stardew Valley, influenciaram a abordagem do Skill Sprint em termos de interação com personagens e tarefas dentro de cada fase do jogo;
+- Stardew Valley [26]: A interação com NPCs e o desenvolvimento de atividades dentro de um ambiente dinâmico e imersivo, como visto em Stardew Valley, influenciaram a abordagem do Skill Sprint em termos de interação com personagens e tarefas dentro de cada fase do jogo;
 
-- Undertale [23]: A forma como o jogo permite que o jogador afete profundamente o enredo e as relações com os personagens, dependendo de suas escolhas, influenciou a forma como os NPCs do Skill Sprint guiam e interagem com o jogador. Em Undertale, as interações com personagens não são apenas funcionais, mas emocionais, criando uma conexão mais profunda com o jogador — um aspecto que buscamos trazer para o Skill Sprint em suas interações e progressão dentro da jornada de desenvolvimento de carreira.
+- Undertale [27]: A forma como o jogo permite que o jogador afete profundamente o enredo e as relações com os personagens, dependendo de suas escolhas, influenciou a forma como os NPCs do Skill Sprint guiam e interagem com o jogador. Em Undertale, as interações com personagens não são apenas funcionais, mas emocionais, criando uma conexão mais profunda com o jogador — um aspecto que buscamos trazer para o Skill Sprint em suas interações e progressão dentro da jornada de desenvolvimento de carreira.
 
-- Meta Tower Game [24]:  O Meta Tower Game foi uma inspiração para o Skill Sprint, especialmente em relação à estrutura de fases e à abordagem educacional. No Meta Tower Game, os colaboradores da Meta exploram uma torre com seis andares, cada um representando uma etapa da jornada de contratação de fornecedores. Essa estrutura de fases temáticas, onde cada andar corresponde a um desafio específico, inspirou a organização do Skill Sprint em fases que representam diferentes aspectos do desenvolvimento de carreira na Vivo.
+- Meta Tower Game [28]:  O Meta Tower Game foi uma inspiração para o Skill Sprint, especialmente em relação à estrutura de fases e à abordagem educacional. No Meta Tower Game, os colaboradores da Meta exploram uma torre com seis andares, cada um representando uma etapa da jornada de contratação de fornecedores. Essa estrutura de fases temáticas, onde cada andar corresponde a um desafio específico, inspirou a organização do Skill Sprint em fases que representam diferentes aspectos do desenvolvimento de carreira na Vivo.
 
 Esses títulos ajudaram a moldar a estrutura do Skill Sprint, oferecendo um equilíbrio entre aprendizado, progressão de personagem e interatividade dentro de um cenário empresarial simulado.
 
@@ -372,7 +372,7 @@ Até o presente momento de desenvolvimento, idealizamos 2 NPCs: o Vivinho, a Viv
  
 - Vivita é uma NPC que fica na recepção e orienta o usuário a realizar a primeira tarefa do jogo, que é criar um currículo. Ela será responável por introduzir o usuário e dizer para ele qual o primeiro passo a ser dado para começar a jornada de *Job Rotation*.
 
-- A líder é a chefe que recebe o currículo de Skrill (personagem principal) e fornece o primeiro *feedback* ao jogador. Escolhemos uma mulher na liderança, porque evidenciamos que apenas 38% dos cargos de liderança no Brasil são representados por mulheres. [25]
+- A líder é a chefe que recebe o currículo de Skrill (personagem principal) e fornece o primeiro *feedback* ao jogador. Escolhemos uma mulher na liderança, porque evidenciamos que apenas 38% dos cargos de liderança no Brasil são representados por mulheres. [29]
   
 - Todos os NPCs serão desenhados com o intuito de trazer diversidade para o jogo, representando diferentes grupos étnicos, a comunidade LGBTQIA+ e pessoas com necessidades especiais.
 
@@ -392,7 +392,7 @@ Até o presente momento de desenvolvimento, idealizamos 2 NPCs: o Vivinho, a Viv
 
 ### 3.2.3. Diversidade e Representatividade dos Personagens
 
-No momento inicial de desenvolvimento do jogo, planejamos implementar um só personagem a fim de testarmos suas funcionalidades em si, as quais julgamos ser essenciais para nosso progresso. Quando melhor encaminhados, possuímos o objetivo de abranger a todas as etnias e características que compõem os grupos da população brasileira e, por consequência, a Vivo como negócio. Esta meta inclui representar populações numerosas e minorizadas de origens afro-descendentes (55,5% dos brasileiros) [26], amarelas (0,4%) e indígenas (0,8%), além de diferentes faixas etárias, gêneros (mulheres compõem 51,5%) [27] e condições de saúde (surdez, cegos, membros amputados e formas de paralisia, por exemplo). A representação da diversidade será realizada na customização de players (com traços e cosméticos) e/ou na composição de NPCs que farão parte das interações ao longo da jornada do colaborador nas fases.
+No momento inicial de desenvolvimento do jogo, planejamos implementar um só personagem a fim de testarmos suas funcionalidades em si, as quais julgamos ser essenciais para nosso progresso. Quando melhor encaminhados, possuímos o objetivo de abranger a todas as etnias e características que compõem os grupos da população brasileira e, por consequência, a Vivo como negócio. Esta meta inclui representar populações numerosas e minorizadas de origens afro-descendentes (55,5% dos brasileiros) [30], amarelas (0,4%) e indígenas (0,8%), além de diferentes faixas etárias, gêneros (mulheres compõem 51,5%) [31] e condições de saúde (surdez, cegos, membros amputados e formas de paralisia, por exemplo). A representação da diversidade será realizada na customização de players (com traços e cosméticos) e/ou na composição de NPCs que farão parte das interações ao longo da jornada do colaborador nas fases.
 
 Este plano se alinha com o foco da Vivo em formar um coletivo de colaboradores diversos, de maneira à fornecer oportunidades aos mais variados grupos em aspectos como desenvolvimento corporativo e atuação na sociedade através de seus amplos setores. Portanto, configura um fator essencial a ser trabalhado a fim de retratar a composição da empresa em um jogo.
 
@@ -1039,33 +1039,41 @@ _Incluir as principais referências de seu projeto, para que seu parceiro possa 
 
 [13] Missão da Vivo. Disponível em: <https://www.vivo.com.br/para-voce>. Acesso em: 27 fev. 2025.
 
-[14] Visão da Vivo. Disponível em: <https://www.vivo.com.br/para-voc>e. Acesso em: 27 fev. 2025.
+[14] Value Proposition Canvas. Disponível em: <https://g4educacao.com/blog/value-proposition-canvas>. Acesso em: 28 mar. 2025.
 
-[15] Job rotation: o que é, vantagens, desvantagens e como implementar. Disponível em: <https://gptw.com.br/conteudo/artigos/job-rotation/>. Acesso em: 21 fev. 2025.
+[15] Matriz de Risco. Disponível em: <https://www.espm.br/blog/matriz-de-risco-o-que-e-e-como-fazer/>. Acesso em: 28 mar. 2025.
 
-[16] Personagem não jogável. <https://pt.wikipedia.org/wiki/Personagem_n%C3%A3o_jog%C3%A1vel.> Acesso em: 21 fev. 2025.
+[16] Metas SMART. Disponível em: <https://mereo.com/blog/metas-smart/>. Acesso em: 28 mar. 2025.
 
-[17] Entenda o que é ATS e sua importância para o recrutamento moderno. <https://blog-forbusiness.vagas.com.br/o-que-e-ats/>. Acesso em: 21 fev. 2025.
+[17] O que são KPIs. Disponível em <https://www.rdstation.com/blog/marketing/kpis/>. Acesso em: 28 mar. 2025.
 
-[18] Upskilling E Reskilling: O Que É E Principais Diferenças. <https://blog-forbusiness.vagas.com.br/reskilling-upskilling/#:~:text=O%20upskilling%20tem%20o%20foco,coloc%C3%A1%2Dlo%20em%20outro%20posto>. Acesso em 21 fev. 2025.
+[18] Visão da Vivo. Disponível em: <https://www.vivo.com.br/para-voc>e. Acesso em: 27 fev. 2025.
 
-[19] O que são Serious Games: como desenvolver um serious game para suas necessidades de negócios em 6 passos. <https://www.startupmundi.com/o-que-sao-serious-games-com-desenvolver-um-serious-game-em-6-passos>. Acesso em 21 fev. 2025.
+[19] Job rotation: o que é, vantagens, desvantagens e como implementar. Disponível em: <https://gptw.com.br/conteudo/artigos/job-rotation/>. Acesso em: 21 fev. 2025.
 
-[20] Role-playing game. <https://pt.wikipedia.org/wiki/Role-playing_game.> Acesso em 21 fev. 2025.
+[20] Personagem não jogável. <https://pt.wikipedia.org/wiki/Personagem_n%C3%A3o_jog%C3%A1vel.> Acesso em: 21 fev. 2025.
 
-[21] Pokemon World Online. <https://pt.wikipedia.org/wiki/Role-playing_game.> Acesso em 21. fev 2025.
+[21] Entenda o que é ATS e sua importância para o recrutamento moderno. <https://blog-forbusiness.vagas.com.br/o-que-e-ats/>. Acesso em: 21 fev. 2025.
 
-[22] Stardew Valley. <https://www.stardewvalley.net/>. Acesso em 21 fev. 2025.
+[22] Upskilling E Reskilling: O Que É E Principais Diferenças. <https://blog-forbusiness.vagas.com.br/reskilling-upskilling/#:~:text=O%20upskilling%20tem%20o%20foco,coloc%C3%A1%2Dlo%20em%20outro%20posto>. Acesso em 21 fev. 2025.
 
-[23] Undertale. <https://undertale.com/>. Acesso em 21 fev. 2025.
+[23] O que são Serious Games: como desenvolver um serious game para suas necessidades de negócios em 6 passos. <https://www.startupmundi.com/o-que-sao-serious-games-com-desenvolver-um-serious-game-em-6-passos>. Acesso em 21 fev. 2025.
 
-[24] Meta Tower Game. <https://github.com/InteliProjects/2024-T0014-IN01-G02/tree/main>. Acesso em 21 fev. 2025.
+[24] Role-playing game. <https://pt.wikipedia.org/wiki/Role-playing_game.> Acesso em 21 fev. 2025.
 
-[25] Mulheres ocupam 38% dos cargos de liderança no Brasil e são mais bem avaliadas pelo time. Disponível em: <https://forbes.com.br/forbes-mulher/2024/03/mulheres-ocupam-38-dos-cargos-de-lideranca-no-brasil-e-sao-mais-bem-avaliadas-pelo-time/>. Acesso em: 21 fev. 2025.
+[25] Pokemon World Online. <https://pt.wikipedia.org/wiki/Role-playing_game.> Acesso em 21. fev 2025.
 
-[26] Cor ou raça. Disponível em: <https://www.ibge.gov.br/estatisticas/sociais/populacao/25844-desigualdades-sociais-por-cor-ou-raca.html>. Acesso em: 21 fev. 2025.
+[26] Stardew Valley. <https://www.stardewvalley.net/>. Acesso em 21 fev. 2025.
 
-[27] Indicadores sociais das mulheres no Brasil. Disponível em: <https://educa.ibge.gov.br/jovens/materias-especiais/21241-indicadores-sociais-das-mulheres-no-brasil.html>. Acesso em: 21 fev. 2025.
+[27] Undertale. <https://undertale.com/>. Acesso em 21 fev. 2025.
+
+[28] Meta Tower Game. <https://github.com/InteliProjects/2024-T0014-IN01-G02/tree/main>. Acesso em 21 fev. 2025.
+
+[29] Mulheres ocupam 38% dos cargos de liderança no Brasil e são mais bem avaliadas pelo time. Disponível em: <https://forbes.com.br/forbes-mulher/2024/03/mulheres-ocupam-38-dos-cargos-de-lideranca-no-brasil-e-sao-mais-bem-avaliadas-pelo-time/>. Acesso em: 21 fev. 2025.
+
+[30] Cor ou raça. Disponível em: <https://www.ibge.gov.br/estatisticas/sociais/populacao/25844-desigualdades-sociais-por-cor-ou-raca.html>. Acesso em: 21 fev. 2025.
+
+[31] Indicadores sociais das mulheres no Brasil. Disponível em: <https://educa.ibge.gov.br/jovens/materias-especiais/21241-indicadores-sociais-das-mulheres-no-brasil.html>. Acesso em: 21 fev. 2025.
 
 LUCK, Heloisa. Liderança em gestão escolar. 4. ed. Petrópolis: Vozes, 2010. <br>
 SOBRENOME, Nome. Título do livro: subtítulo do livro. Edição. Cidade de publicação: Nome da editora, Ano de publicação. <br>
