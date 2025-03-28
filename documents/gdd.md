@@ -125,49 +125,77 @@ O Value Proposition Canvas é uma ferramenta poderosa de planejamento estretégi
 
 *Descreva brevemente a solução desenvolvida para o parceiro de negócios. Descreva os aspectos essenciais para a criação de valor da ideia do produto com o objetivo de ajudar a entender melhor a realidade do cliente e entregar uma solução que está alinhado com o que ele espera. Observe a seção 2 e verifique que ali é possível trazer mais detalhes, portanto seja objetivo aqui. Atualize esta descrição até a entrega final, conforme desenvolvimento.*
 
-### 1.1.6. Matriz de Riscos (sprint 4)
-![Image](https://github.com/user-attachments/assets/7f8b53b2-27f3-4e46-984e-d9aea9dbd6e7)
-Bug no som de exclamação da sala do líder
- - Corrigir o áudio na engine de desenvolvimento e testar em diferentes dispositivos.
+### 1.1.6. Matriz de Riscos (sprint 4)]
+
+A matriz de risco é uma ferramenta essencial para a gestão de riscos, permitindo a identificação, avaliação e priorização de ameaças e oportunidades que podem impactar os objetivos de um projeto ou organização. Ao classificar os riscos com base em sua probabilidade e impacto, a matriz oferece uma visão clara e estruturada, facilitando a tomada de decisões e a alocação de recursos para mitigação. Nesta seção, abordaremos os principais conceitos, critérios de avaliação e aplicações práticas da matriz de risco, demonstrando sua importância para uma gestão proativa e eficiente.
+
+<div align="center">
+  <sub>Matriz de Risco</sub><br>
+  <img src="https://github.com/user-attachments/assets/7f8b53b2-27f3-4e46-984e-d9aea9dbd6e7" width="900px" 
+  alt="Matriz de Risco"><br>
+  <sup>Fonte: produzido pelo autor.</sup>
+</div>
+
+ Abaixo, ilustramos uma tabela onde listamos os principais riscos com seus respectivos planos de ação para mitigá-los, apresentando para cada um os impactos, probabilidades e respostas planejadas.
 
 
-Desinteresse por parte dos jogadores
- - Realizar testes com usuários e ajustar a dinâmica do jogo com base no feedback.
+| Risco | Tipo | Impacto | Probabilidade | Plano de Ação | Resposta |
+|-------|------|---------|--------------|---------------|----------|
+| **Bug no som de exclamação da sala do líder** | 🚫 Ameaça | Alto | 90% | Revisão imediata do sistema de áudio e testes específicos | Corrigir |
+| **Desinteresse por parte dos jogadores** | 🚫 Ameaça | Crítico | 90% | Implementar pesquisas de satisfação e ajustar mecânicas de engajamento | Mitigar |
+| **Jogo não contempla a diversidade** | 🚫 Ameaça | Alto | 90% | Consultoria com especialistas em DE&I; redesenho de personagens | Corrigir |
+| **Jogo não está concluído** | 🚫 Ameaça | Crítico | 90% | Revisão do cronograma e alocação de recursos extras | Mitigar |
+| **Compatibilidade com smartphones** | 🚫 Ameaça | Alto | 90% | Priorizar desenvolvimento mobile com testes em múltiplos dispositivos | Corrigir |
+| **Padronização dos assets do jogo** | ✅ Oportunidade | Alto | 90% | Criar guia de estilo e checklist para consistência visual | Explorar |
+| **Meta de representatividade no layout** | ✅ Oportunidade | Moderado | 90% | Incluir opções diversas de avatares e narrativas inclusivas | Explorar |
+| **Adicionar som de fala nos diálogos entre os personagens** | ✅ Oportunidade | Moderado | 90% | Pesquisar sons para vozes simbólicas no jogo | Explorar |
+| **Trilha sonora melhora imersão** | ✅ Oportunidade | Moderado | 90% | Pesquisar músicas de direito livre que proporcionem a ambientação que desejamos no jogo | Explorar |
+| **Risco de direitos autorais** | 🚫 Ameaça | Alto | 70% | Substituir músicas por trilhas licenciadas ou originais | Mitigar |
+| **Modo daltonismo** | ✅ Oportunidade | Moderado | 70% | Implementar filtros de cores e opções de acessibilidade | Explorar |
+| **Assets sem padronização** | 🚫 Ameaça | Moderado | 50% | Design system com templates aprovados | Corrigir |
+| **Empresa parceira não aprova dinâmica** | 🚫 Ameaça | Alto | 50% | Apresentar protótipo para validação antecipada | Mitigar |
+| **Simulação de situações reais** | ✅ Oportunidade | Alto | 50% | Colaboração com RH para cenários realistas | Explorar |
+| **Erros na documentação** | 🚫 Ameaça | Baixo | 30% | Revisão em pares e atualização contínua | Aceitar |
+| **Sons repetitivos** | 🚫 Ameaça | Moderado | 30% | Ampliar biblioteca de sons e implementar variações aleatórias | Corrigir |
+| **Mal funcionamento dos botões** | 🚫 Ameaça | Baixo | 10% | Testes de usabilidade em diferentes dispositivos | Aceitar |
+| **Gamificação em capacitação** | ✅ Oportunidade | Alto | 10% | Integrar com plataforma de treinamentos corporativos | Explorar |  
 
-
-Jogo não contempla a diversidade dos funcionários
- -Incluir representatividade nos personagens e opções de escolha inclusivas.
-
-
-O jogo não está concluído
- - Estabelecer cronograma com entregas parciais e checkpoints de progresso.
-
-
-O jogo não é compatível com smartphones
- - Implementar design responsivo e realizar testes em diferentes dispositivos móveis.
-
-
-Risco de direitos autorais por uso de trilha licenciada
- - Substituir trilhas por músicas royalty-free ou composições originais.
-
-
-Erro na documentação
- - Revisar a documentação com checklist e atribuir responsáveis por cada seção.
-
-
-Assets sem padronização
- - Criar guia de estilo visual e revisar todos os assets gráficos do jogo.
-
-
-Empresa parceira não aprova a dinâmica do jogo
- - Envolver a empresa parceira nas fases iniciais e validar conceitos com protótipos.
-
-
-*Registre na matriz os riscos identificados no projeto, visando avaliar situações que possam representar ameaças e oportunidades, bem como os impactos relevantes sobre o projeto. Apresente os riscos, ressaltando, para cada um, impactos e probabilidades com plano de ação e respostas.*
+A matriz de riscos apresentada permite uma visão estruturada das potenciais ameaças e oportunidades do projeto, com ações definidas para mitigar impactos negativos e aproveitar eventuais benefícios. Ao monitorar continuamente esses riscos e ajustar as estratégias conforme necessário, a equipe estará melhor preparada para garantir o sucesso do projeto, minimizando surpresas e aumentando as chances de entregas dentro do prazo, custo e qualidade esperados.
 
 ### 1.1.7. Objetivos, Metas e Indicadores (sprint 4)
 
-*Definição de metas SMART (específicas, mensuráveis, alcançáveis, relevantes e temporais) para seu projeto, com indicadores claros para mensuração*
+As metas SMART são são objetivos estruturados por cinco critérios fundamentais:
+
+- Específicos (detalham exatamente o que será alcançado), Mensuráveis (com indicadores quantificáveis);
+- Alcançáveis (realistas com os recursos disponíveis), Relevantes (alinhados aos propósitos estratégicos);
+- Temporais (com prazos definidos). No contexto do Skill Sprint, esse método garante que as metas de desenvolvimento do jogo — como a implementação de mecânicas ou a conclusão de fases — sejam claras, acompanháveis e vinculadas a resultados tangíveis (ex.: "90% dos assets integrados até a Sprint 4"). 
+
+A abordagem SMART transforma intenções vagas em ações concretas, facilitando a avaliação de progresso e o ajuste rápido de estratégias.
+
+Para garantir que o jogo cumpra seu propósito educacional e engajador, definimos metas SMART (Específicas, Mensuráveis, Alcançáveis, Relevantes e Temporais) alinhadas aos requisitos do projeto, a partir do desenvolvido até a sprint 4 e tendo como base os planos futuros para a sprint 5:
+
+| Categoria            | Meta SMART                                                                 | Indicadores (KPIs)                                                                 | Prazo       |
+|----------------------|---------------------------------------------------------------------------|-----------------------------------------------------------------------------------|-------------|
+| **Core Gameplay**    | Completar desenvolvimento das 4 últimas fases (Vice-Presidência de Negócios, Estratégia, Relações Institucionais e Tecnologia) | - 5/5 minigames funcionais<br>- 90% assets integrados<br>- 100% bugs críticos resolvidos | Sprint 5   |
+| **Performance**      | Reduzir tempo de carregamento entre cenas                                  | - Loading ≤2s<br>- Uso memória ≤150MB (-30%)                                      | Sprint 4    |                         | Sprint 4    |
+| **Testes**           | Realizar 5 sessões de teste com usuários                                   | - 5 relatórios de teste<br>- 90% bugs críticos resolvidos                         | Sprint 4    |
+
+Os KPIs são métricas quantificáveis e estratégicas que avaliam o sucesso de um projeto ou atividade em relação a seus objetivos-chave. No desenvolvimento do Skill Sprint, os KPIs servem como "termômetros" do progresso, medindo aspectos como desempenho técnico (ex.: tempo de carregamento ≤2s), qualidade (ex.: 90% dos bugs críticos resolvidos) e engajamento (ex.: 85% de conclusão de fases). Diferentemente de métricas genéricas, KPIs são selecionados por seu alinhamento direto com as metas SMART — como a taxa de integração de assets (90%) para validar a meta de finalização de fases — e são monitorados em intervalos regulares (diários/semanais) para permitir ajustes ágeis. Eles transformam dados brutos em insights acionáveis, ajudando a equipe a focar no que realmente importa para o sucesso do jogo.
+
+#### **Tabela Detalhada de KPIs**
+
+| KPI                          | Meta        | Unidade    | Frequência Medição | Responsável |
+|------------------------------|-------------|------------|--------------------|-------------|
+| Minigames funcionais         | 5           | unidades   | Semanal            |  Pessoa(s) responsável(is) por desenvolvimento na sprint em questão |
+|     |
+| Tempo de loading             | ≤2s         | segundos   | Por release        |  Pessoa(s) responsável(is) por desenvolvimento na sprint em questão |e |
+| Código documentado           | 100%        | porcentagem| Sprint             |  Pessoa(s) responsável(is) por documentação na sprint em questão |   |
+| Testes realizados            | 5           | unidades   | Sprint             |  Pessoa(s) responsável(is) pela seção de testes no GDD na sprint em questão |      |
+| Bugs críticos resolvidos     | 100%        | porcentagem| Diário             | Todos        |
+
+As metas SMART e os KPIs definidos para o Skill Sprint garantem que o jogo não apenas entregue uma experiência divertida, mas também cumpra seu papel estratégico na Vivo: transformar o desenvolvimento de carreira em uma jornada tangível e motivadora. Ao monitorar indicadores técnicos e também de engajamento, taxa de conclusão e satisfação (nos testes que almejamos realizar), a equipe poderá iterar rapidamente, ajustando mecânicas e conteúdos para maximizar o impacto do jogo na cultura de mobilidade interna da empresa.
+
+Assim como mencionamos na seção da desenvolvimento final do MVP, almejamos implementar uma tela de carregamento no jogo, para evitar que a tela fique vazia enquanto o computador carrega os arquivos, assets, entre outros.
 
 ## 1.2. Requisitos do Projeto (sprints 1 e 2)
 
@@ -917,8 +945,6 @@ Cada fase do jogo conta com um mini game exclusivo e interativo, permitindo que 
 Abaixo, estão alguns prints de tela para ilustrar o desenvolvimento da versão final do jogo:
 
 lembrar de inserir prints de tela aqui (sophia
-
-
 
 ## 4.5. Revisão do MVP (sprint 5)
 
