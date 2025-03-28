@@ -52,6 +52,7 @@ class VpPessoasScene extends Phaser.Scene {
 
         this.load.spritesheet("indicator", "../assets/exclamaçãoRoxa.png", {frameWidth: 254, frameHeight: 305,});
         this.load.image('keyE', '../assets/teclaE.png');
+        this.load.image('keyENTER', '../assets/keyEnter.png');
 
         this.load.spritesheet("npcMovel", "../assets/personagens/VPpessoas/npcMovel.png", { frameWidth: 16, frameHeight: 32,});
 
@@ -60,8 +61,8 @@ class VpPessoasScene extends Phaser.Scene {
         this.load.image("balaoTexto", "../assets/balaoTexto.png");
 
         this.load.image("bgElevPessoas", "../assets/bgelevadoroffice.png");
-    this.load.image("painelelev", "../assets/painelelevador.png");
-    this.load.image("botaoElevPesssoas", "../assets/botaocimaelevador.png");
+        this.load.image("painelelev", "../assets/painelelevador.png");
+        this.load.image("botaoElevPesssoas", "../assets/botaocimaelevador.png");
     }
 
     create() {
@@ -138,6 +139,12 @@ class VpPessoasScene extends Phaser.Scene {
         this.buttonClick = this.sound.add('buttonSound', {loop: false, volume: 10});
         this.indicatorSound = this.sound.add('indicatorSound', {loop: true, volume: 10});
         this.walkSound = this.sound.add('walkSound', {loop: false, volume: 10});
+
+        this.rafaelaInteracted = false;
+        this.keyENTER_Rafaela = null;
+
+        this.npcMovelInteracted = false;
+        this.keyENTER_NpcMovel = null;
       }
 
       createAnimsIndicator() {
@@ -392,6 +399,15 @@ class VpPessoasScene extends Phaser.Scene {
             this.keyENpcMovel.destroy();
             this.keyENpcMovel = null;
           }
+
+          if (this.keyENpcMovel) {
+            this.keyENpcMovel.destroy();
+            this.keyENpcMovel = null;
+          }
+      
+          if (!this.keyENTER_NpcMovel) {
+            this.keyENTER_NpcMovel = this.add.image(this.npcMovel.x - 20, this.npcMovel.y - 50, 'keyENTER').setScale(0.1).setDepth(1000);
+          }
       
           this.npcMovelInteracted = true;
           this.canInteractWithNpcMovel = false; // desativa flag
@@ -622,8 +638,14 @@ class VpPessoasScene extends Phaser.Scene {
           text.setVisible(false);
           balaoTexto.setVisible(false);
           this.input.keyboard.off("keydown-ENTER");
-          this.npcMovelInteractionFinished = true; // <- flag de controle
-          this.createBook(); // garante que o livro foi criado
+        
+          if (this.keyENTER_NpcMovel) {
+            this.keyENTER_NpcMovel.destroy();
+            this.keyENTER_NpcMovel = null;
+          }
+        
+          this.npcMovelInteractionFinished = true;
+          this.createBook();
           this.createIndicatorBook();
         }
       });
@@ -660,20 +682,21 @@ class VpPessoasScene extends Phaser.Scene {
         });
     
         this.input.keyboard.on('keydown-E', () => {
-          this.indicatorActive = false;
           if (
-            Math.abs(this.player.x - rafaela.x) <= 70 &&
-            Math.abs(this.player.y - rafaela.y) <= 70 &&
+            this.canInteractWithRafaela &&
             !this.rafaelaInteracted
           ) {
-            this.showrafaelaInteraction();
             this.rafaelaInteracted = true;
             this.buttonClick.play();
+            this.showrafaelaInteraction();
         
-            // Destroi a tecla E da Rafaela
             if (this.keyERafaela) {
               this.keyERafaela.destroy();
               this.keyERafaela = null;
+            }
+        
+            if (!this.keyENTER_Rafaela) {
+              this.keyENTER_Rafaela = this.add.image(this.rafaela.x, this.rafaela.y - 60, 'keyENTER').setScale(0.1).setDepth(1000);
             }
           }
         });
@@ -713,6 +736,12 @@ class VpPessoasScene extends Phaser.Scene {
             balaoTexto.setVisible(false);
             text.setVisible(false);
             this.input.keyboard.off("keydown-ENTER");
+          
+            if (this.keyENTER_Rafaela) {
+              this.keyENTER_Rafaela.destroy();
+              this.keyENTER_Rafaela = null;
+            }
+          
             this.showIndicatorTrash();
           }
         });
