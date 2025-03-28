@@ -685,6 +685,22 @@ class VpPessoasScene extends Phaser.Scene {
           this.keyEBook = null;
         }
       }
+
+  createButtonVoltar(width, height) {
+    const botaoVoltar = this.add.image(width - 435, height - 700, "keyE");
+     botaoVoltar.setScale(0.2);
+    
+        this.input.keyboard.on("keydown-E", () => {
+            const distancia = Phaser.Math.Distance.Between(
+                this.player.x, this.player.y, botaoVoltar.x, botaoVoltar.y
+            );
+    
+            if (distancia < 100) { // Ajuste o raio conforme necessário
+                this.scene.stop("vpPessoasScene");
+                this.scene.start("elevadorScene");
+            }
+        });
+    }
 }
 
 // Propriedade estática para armazenar o tempo de reprodução da música
@@ -800,3 +816,5 @@ class bookScene extends Phaser.Scene {
     }
   }
 }
+
+VpPessoasScene.lastMusicTime = 0;
