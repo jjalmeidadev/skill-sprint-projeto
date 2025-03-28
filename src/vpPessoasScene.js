@@ -335,16 +335,22 @@ class VpPessoasScene extends Phaser.Scene {
       }
 
       // LIVRO
-      if (this.book) {
+      if (this.book && this.npcMovelInteractionFinished) {
         const distBook = Phaser.Math.Distance.Between(
           this.player.x, this.player.y,
           this.book.x, this.book.y
         );
-        this.canInteractWithBook = distBook < 50;
+        this.canInteractWithBook = distBook < 100;
 
-        if (distBook >= 50 && this.keyEBook) {
-          this.keyEBook.destroy();
-          this.keyEBook = null;
+        if (this.canInteractWithBook) {
+          if (!this.keyEBook) {
+            this.keyEBook = this.add.image(this.book.x, this.book.y - 40, 'keyE').setScale(0.2);
+          }
+        } else {
+          if (this.keyEBook) {
+            this.keyEBook.destroy();
+            this.keyEBook = null;
+          }
         }
       }
 
@@ -358,18 +364,24 @@ class VpPessoasScene extends Phaser.Scene {
       }
 
 
-      if (this.canInteractWithBook && Phaser.Input.Keyboard.JustDown(this.teclas.interagir)) {
-        this.buttonClick = this.sound.add('buttonSound', { loop: false, volume: 10 });
+      if (this.canInteractWithBook && this.npcMovelInteractionFinished && Phaser.Input.Keyboard.JustDown(this.teclas.interagir)) {
         this.buttonClick.play();
         this.scene.pause();
         this.scene.launch('bookScene');
+        this.createButtonVoltar();
       }
 
       if (this.canInteractWithNpcMovel && Phaser.Input.Keyboard.JustDown(this.teclas.interagir)) {
-        this.keyENpcMovel.destroy();
-        this.keyENpcMovel = null;
-        this.npcMovelInteracted = true;
-        this.showNpcMovelInteraction();
+        if (!this.npcMovelInteracted) {
+          if (this.keyENpcMovel) {
+            this.keyENpcMovel.destroy();
+            this.keyENpcMovel = null;
+          }
+      
+          this.npcMovelInteracted = true;
+          this.canInteractWithNpcMovel = false; // desativa flag
+          this.showNpcMovelInteraction();
+        }
       }
 
       // RAFAELA
@@ -544,9 +556,9 @@ class VpPessoasScene extends Phaser.Scene {
 
     addNpcMovelFixo() {
       console.log("Adicionando NPC fixo");
-      this.npcMovel = this.physics.add.sprite(width - 500, height - 420, 'npcMovel'); 
+      this.npcMovel = this.physics.add.sprite(width - 720, height - 430, 'npcMovel'); 
       this.npcMovel.setScale(2.5);
-      this.npcMovel.setFlipX(false); // Vira o NPC para a esquerda
+      this.npcMovel.setFlipX(true); // Vira o NPC para a esquerda
       this.npcMovel.setImmovable(true);
       this.npcMovel.anims.stop(); // Não executa a animação de andar
     
@@ -563,15 +575,13 @@ class VpPessoasScene extends Phaser.Scene {
       this.indicatorNpcMovel.play("exclamando");
     
       this.physics.add.overlap(this.player, this.indicatorNpcMovel, () => {
-        if (!this.npcMovelInteracted) {
+        if (!this.npcMovelInteracted && !this.keyENpcMovel) {
           this.indicatorNpcMovel.destroy();
-    
-          if (!this.keyENpcMovel) {
-            this.keyENpcMovel = this.add.image(this.npcMovel.x, this.npcMovel.y - 40, 'keyE').setScale(0.2);
-          }
-    
+      
+          this.keyENpcMovel = this.add.image(this.npcMovel.x, this.npcMovel.y - 40, 'keyE').setScale(0.2);
           this.canInteractWithNpcMovel = true;
         }
+
       });
     }
 
@@ -582,9 +592,10 @@ class VpPessoasScene extends Phaser.Scene {
         "Vá até a mesa e pegue o caderno em cima dela, lá você encontrará dicas para ir bem em uma entrevista."
       ];
       const balaoTexto = this.add.image(this.npcMovel.x + 80, this.npcMovel.y - 80, "balaoTexto").setScale(0.9);
-      const text = this.add.text(this.npcMovel.x - 1, this.npcMovel.y - 130, falas[0], {
-        fontSize: "16px",
+      const text = this.add.text(this.npcMovel.x + 2, this.npcMovel.y - 140, falas[0], {
+        fontSize: "14px",
         fill: "#000000",
+        wordWrap: { width: balaoTexto.width - 20 },
       });
     
       let currentIndex = 0;
@@ -596,7 +607,9 @@ class VpPessoasScene extends Phaser.Scene {
           text.setVisible(false);
           balaoTexto.setVisible(false);
           this.input.keyboard.off("keydown-ENTER");
-          this.createIndicatorBook(); // Mostra o indicador do livro
+          this.npcMovelInteractionFinished = true; // <- flag de controle
+          this.createBook(); // garante que o livro foi criado
+          this.createIndicatorBook();
         }
       });
     }
@@ -722,7 +735,7 @@ class VpPessoasScene extends Phaser.Scene {
       }
 
       createBook() {
-        const book = this.physics.add.sprite(width - 700, height - 350, 'book');
+        const book = this.physics.add.sprite(width - 700, height - 250, 'book');
         book.setScale(0.06);
         book.setImmovable(true);
         //this.createIndicatorBook();
@@ -732,7 +745,7 @@ class VpPessoasScene extends Phaser.Scene {
           this.canInteractWithBook = true;
 
           if (!this.keyEBook) {
-            this.keyEBook = this.add.image(width - 700, height - 350, 'keyE').setScale(0.2);
+            this.keyEBook = this.add.image(width - 700, height - 250, 'keyE').setScale(0.2);
           }
         });
       
@@ -762,7 +775,7 @@ class VpPessoasScene extends Phaser.Scene {
       }
 
       createIndicatorBook() {
-        this.indicatorBook = this.physics.add.sprite(width - 700, height - 400, 'indicator');
+        this.indicatorBook = this.physics.add.sprite(width - 700, height - 300, 'indicator');
         this.indicatorBook.setScale(0.2);
         this.indicatorBook.setImmovable(true);
         this.indicatorBook.play("exclamando");
@@ -807,6 +820,17 @@ class VpPessoasScene extends Phaser.Scene {
             this.addNpcMovelFixo(); // Adiciona o novo NPC parado com botão
           }
         }
+      }
+
+      createButtonVoltar(width, height) {
+        const botaoVoltar = this.add.image(width - 740, height - 480, "keyE");
+        botaoVoltar.setInteractive();
+        botaoVoltar.setScale(0.2);
+        botaoVoltar.setDepth(1); // Coloca o botão acima de outros objetos
+        this.input.keyboard.on("keydown-E", () => {
+          this.scene.stop("vpPessoasScene");
+          this.scene.start("elevadorScene");
+       });
       }
 }
 
