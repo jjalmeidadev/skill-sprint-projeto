@@ -553,7 +553,6 @@ class OfficeScene2 extends Phaser.Scene {
             repeat: -1,
           });
     }
-
     
     addVivita() {
         const vivita = this.physics.add.sprite(width / 1.75, height / 3, "vivita");

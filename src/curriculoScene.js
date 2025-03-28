@@ -905,7 +905,7 @@ class CongratulationsSceneCurriculoVpPessoas extends Phaser.Scene {
                         this.cliqueSom.play();
 
                         this.scene.stop('CongratulationsSceneCurriculoVpPessoas');
-                        this.scene.resume('officeScene2');
+                        this.scene.resume('officeScene');
                     
                     });
                 }
@@ -1335,7 +1335,7 @@ class CongratulationsSceneCurriculoVpEstrategia extends Phaser.Scene {
                         this.cliqueSom.play();
 
                         this.scene.stop('CongratulationsSceneCurriculoVpEstrategia');
-                        this.scene.resume('officeScene2');
+                        this.scene.resume('officeScene');
                     });
                 }
             });
@@ -1761,7 +1761,7 @@ class CongratulationsSceneCurriculoVpNegocios extends Phaser.Scene {
                         this.cliqueSom.play();
 
                         this.scene.stop('CongratulationsSceneCurriculoVpNegocios');
-                        this.scene.resume('officeScene2');
+                        this.scene.resume('officeScene');
                     });
                 }
             });
@@ -2187,7 +2187,7 @@ class CongratulationsSceneCurriculoVpRelacoes extends Phaser.Scene {
                         this.cliqueSom.play();
 
                         this.scene.stop('CongratulationsSceneCurriculoVpRelacoes');
-                        this.scene.resume('officeScene2');
+                        this.scene.resume('officeScene');
                     });
                 }
             });
@@ -2617,7 +2617,7 @@ class CongratulationsSceneCurriculoVpTecnologia extends Phaser.Scene {
                         this.cliqueSom.play();
 
                         this.scene.stop('CongratulationsSceneCurriculoVpTecnologia');
-                        this.scene.resume('officeScene2');
+                        this.scene.resume('officeScene');
                         this.excbubble.play();
 
                     });
