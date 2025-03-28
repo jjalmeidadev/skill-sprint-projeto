@@ -405,15 +405,15 @@ class OfficeScene extends Phaser.Scene {
     this.painelelev = this.add.image(width - 910, height - 600, "painelelev").setOrigin(0, 0);
     this.bgelevoffice.setVisible(false);
     this.painelelev.setVisible(false);
-  
-    this.botaoCima = this.add.image(width - 680, height - 400, "botaoElevOffice"); 
-  
+
+    this.botaoCima = this.add.image(width - 740, height - 480, "botaoElevOffice"); 
+
     this.botaoCima.setInteractive();
     this.botaoCima.setScale(1);
     this.botaoCima.setVisible(true); // <--- Torna o botão visível
     this.bgelevoffice.setVisible(true);
     this.painelelev.setVisible(true);
-  
+
     this.botaoCima.on("pointerdown", () => {
       this.scene.stop("officeScene");
       this.scene.start("elevadorScene");
