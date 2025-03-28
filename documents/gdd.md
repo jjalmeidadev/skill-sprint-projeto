@@ -358,7 +358,7 @@ O Skill Sprint conta com um jogador principal chamado Skrill que será controlad
 
 <div align="center">
   <sub>Skrill, jogador principal</sub><br>
-  <img src="../assets/skrill.png" width="450px" 
+ <img scr="(https://github.com/user-attachments/assets/9a832a96-02f0-4c39-9985-c9456f95b68c)" whdth=900px"
   alt="Skrill, jogador principal"><br>
   <sup>Fonte: produzido pelos autores.</sup>
 </div>
@@ -942,7 +942,42 @@ Cada fase do jogo conta com um mini game exclusivo e interativo, permitindo que 
 
 Abaixo, estão alguns prints de tela para ilustrar o desenvolvimento da versão final do jogo:
 
-lembrar de inserir prints de tela aqui (sophia
+
+![Image](https://github.com/user-attachments/assets/ecddd8be-65dd-4509-ad8d-1c480695a2bb)
+ <sup>Fonte: elaborado pelos autores.</sup>
+</div>
+
+
+![Image](https://github.com/user-attachments/assets/de05d189-a0e8-421c-96a2-585aaaaebeb2)
+ <sup>Fonte: elaborado pelos autores.</sup>
+</div>
+
+![Image](https://github.com/user-attachments/assets/98231934-8026-4e9e-b34f-43b395ccee74)
+ <sup>Fonte: elaborado pelos autores.</sup>
+</div>
+
+
+![Image](https://github.com/user-attachments/assets/1db8b05c-9e23-49bb-99fb-adef43f1ed09)
+ <sup>Fonte: elaborado pelos autores.</sup>
+</div>
+
+
+![Image](https://github.com/user-attachments/assets/fcf6e4e1-7eee-44c8-9c09-a6d8262fbd18)
+ <sup>Fonte: elaborado pelos autores.</sup>
+</div>
+
+
+![Image](https://github.com/user-attachments/assets/f1051e60-12d0-4288-b7ff-51d1fa580495)
+ <sup>Fonte: elaborado pelos autores.</sup>
+</div>
+
+
+
+<img width="960" alt="Image" src="https://github.com/user-attachments/assets/e48bb6a3-459b-40d6-ad57-32af0b6d46b1" />
+ <sup>Fonte: elaborado pelos autores.</sup>
+</div>
+
+
 
 ## 4.5. Revisão do MVP (sprint 5)
 
