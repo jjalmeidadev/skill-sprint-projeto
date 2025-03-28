@@ -44,6 +44,8 @@ class TutorialScene extends Phaser.Scene {
 
         this.load.audio('keySound', '../assets/sounds/computer-keyboard-typing-290582 (mp3cut.net).mp3');
         this.load.audio('buttonSound', '../assets/sounds/687107__aphom000__mouse-2-button-fast-click.wav');
+
+        this.load.image('keyENTER', '../assets/keyEnter.png');  
     }
 
     create() {
@@ -125,6 +127,14 @@ class TutorialScene extends Phaser.Scene {
             } else {
                 placeholderText.setVisible(true);
             }
+
+            if (this.textEntry.text.length > 0) {
+                placeholderText.setVisible(false);
+                this.keyEnterIcon.setVisible(true); // Mostra a tecla ENTER
+            } else {
+                placeholderText.setVisible(true);
+                this.keyEnterIcon.setVisible(false); // Esconde novamente
+            }
         });
 
         //Adiciona interação com o botão ENTER para avançar o diálogo	
@@ -133,6 +143,8 @@ class TutorialScene extends Phaser.Scene {
             this.buttonClick = this.sound.add('keySound', { loop: false, volume: 10 });
             this.buttonClick.play();
         });
+
+        this.keyEnterIcon.setVisible(false);
     }
 
     createDialogBox() {
@@ -156,23 +168,28 @@ class TutorialScene extends Phaser.Scene {
             fontFamily: 'defaultFont',
             wordWrap: { width: 600 }
         });
+
+        // Adiciona a tecla ENTER no canto inferior direito da caixa de diálogo
+        this.keyEnterIcon = this.add.image(x + dialogWidth - 40, y + dialogHeight - 33, 'keyENTER');
+        this.keyEnterIcon.setScale(0.12).setDepth(1000);
     }
 
     showDialog() {
         const x = width / 2 - 100;
         const y = height / 1.2;
-
+    
         if (this.currentDialogIndex === 1 && playerName) {
-            //Exibe a fala de boas-vindas com o nome do jogador
             this.dialogText.setText(`Prazer em te conhecer, ${playerName}! Eu sou o Vivinho!`);
         } else if (this.currentDialogIndex === 2) {
-            //Exibe a fala e cria botões de escolha
             this.dialogText.setText(this.introduction[this.currentDialogIndex]);
             this.createChoiceButtons();
             this.optionSelected = false;
-            //Reseta para impedir que o jogador avance sem escolher uma opção
+    
+            // Esconde a tecla ENTER quando aparecem os botões SIM/NÃO
+            if (this.keyEnterIcon) {
+                this.keyEnterIcon.setVisible(false);
+            }
         } else {
-            //Exibe a fala atual
             this.dialogText.setText(this.introduction[this.currentDialogIndex]);
         }
     }
@@ -225,25 +242,26 @@ class TutorialScene extends Phaser.Scene {
 
     nextDialog() {
         if (this.currentDialogIndex === 0 && this.textEntry.text.trim() === "") {
-            return; //Se o nome não foi preenchido, não avança
+            return; // Se o nome não foi preenchido, não avança
         }
-
+    
         if (this.currentDialogIndex === 0) {
             playerName = this.textEntry.text.trim();
             this.textEntry.setVisible(false);
             this.inputBackground.setVisible(false);
+            this.keyEnterIcon.setVisible(false);
         }
-
+    
         if (this.currentDialogIndex === 2 && !this.optionSelected) {
-            return; //Se o jogador não escolheu uma opção, não avança
+            return; // Se o jogador não escolheu uma opção, não avança
         }
-
-        //** Novo fluxo para "Sim" **: Primeiro ENTER exibe a imagem de sobreposição
+    
+        // Novo fluxo para "Sim"
         if (this.yesSelected) {
             if (!this.overlayVisible) {
-                this.dialogText.setText(this.finalDialog[0]); //Exibe a primeira fala da finalização
-                this.overlayImage.setAlpha(1); //Torna a imagem visível
-                this.overlayVisible = true; //Marca que a imagem foi exibida
+                this.dialogText.setText(this.finalDialog[0]);
+                this.overlayImage.setAlpha(1);
+                this.overlayVisible = true;
                 return;
             }
             if (this.currentFinalIndex < this.finalDialog.length - 1) {
@@ -251,18 +269,17 @@ class TutorialScene extends Phaser.Scene {
                 this.dialogText.setText(this.finalDialog[this.currentFinalIndex]);
                 return;
             }
-            this.scene.start('officeScene'); //Segundo ENTER leva para a próxima cena
+            this.scene.start('officeScene');
             return;
         }
-
-        //Se o jogador escolheu NÃO, exibe as falas condicionais
+    
+        // Fluxo para "Não"
         if (this.optionSelected && this.currentConditionalIndex >= 0 && this.currentConditionalIndex < this.conditionalDialog.length - 1) {
             this.currentConditionalIndex++;
             this.dialogText.setText(this.conditionalDialog[this.currentConditionalIndex]);
             return;
         }
-
-        //Se o jogador escolheu NÃO e chegou na última fala condicional, exibe as falas finais
+    
         if (this.optionSelected && this.currentConditionalIndex === this.conditionalDialog.length - 1) {
             this.dialogText.setText(this.finalDialog[0]);
             this.overlayImage.setAlpha(1);
@@ -270,22 +287,26 @@ class TutorialScene extends Phaser.Scene {
             this.currentConditionalIndex++;
             return;
         }
-
+    
         if (this.overlayVisible && this.overlayImage.alpha === 1) {
-            //Se a imagem de sobreposição foi exibida, exibe as falas finais
             if (this.currentFinalIndex < this.finalDialog.length - 1) {
                 this.currentFinalIndex++;
                 this.dialogText.setText(this.finalDialog[this.currentFinalIndex]);
                 return;
             }
-            //Qunado todas as falas finais forem exibidas, a cena é encerrada
             this.scene.start('officeScene2');
             return;
         }
-
-        //Avança o diálogo normalmente
+    
+        // Avança o diálogo normalmente
         this.currentDialogIndex++;
         if (this.currentDialogIndex < this.introduction.length) {
+    
+            // Aqui está o ponto certo para esconder o ENTER na fala 2
+            if (this.currentDialogIndex === 2 && this.keyEnterIcon) {
+                this.keyEnterIcon.setVisible(false);
+            }
+    
             this.showDialog();
         }
     }
