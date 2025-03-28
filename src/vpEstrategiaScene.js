@@ -15,7 +15,7 @@ class VpEstrategiaScene extends Phaser.Scene {
         // Carrega imagens, spritesheets e demais ativos
         this.load.spritesheet('player', '../assets/Player.png', { frameWidth: 32, frameHeight: 32 });
         this.load.image('npc', '../assets/viviane_lider.png');
-
+        this.load.image('keyE', '../assets/teclaE.png');
         // Carrega os efeitos sonoros
         this.load.audio('walkSound', '../assets/sounds/753292__vrymaa__footsteps-high-heels-hardwood-walk-run (mp3cut.net).wav');
         this.load.audio("estrategyMusic", "../assets/Kevin-MacLeod-Itty-Bitty-8-Bit-♫-NO-COPYRIGHT-8-bit-Music.mp3");
@@ -51,7 +51,7 @@ class VpEstrategiaScene extends Phaser.Scene {
 
         this.createPlayer(width, height);
         this.createPlayerAnimations();
-
+        this.createButtonVoltar(width, height);
         // Configura colisões do jogador com camadas selecionadas
         this.physics.add.collider(this.player, layer2);
         this.physics.add.collider(this.player, layer4);
@@ -147,42 +147,60 @@ class VpEstrategiaScene extends Phaser.Scene {
     movePlayer() {
         const velocidade = 150;
         let movendo = false;
-
+      
         if (this.teclas.left.isDown) {
-            this.player.setVelocityX(-velocidade);
-            this.player.anims.play("walk_left", true);
-            this.player.setFlipX(true);
-            movendo = true;
+          this.player.setVelocityX(-velocidade);
+          this.lastPosition = "left"; 
+          this.player.anims.play("walk_left", true);
+          movendo = true;
         } else if (this.teclas.right.isDown) {
-            this.player.setVelocityX(velocidade);
-            this.player.anims.play("walk_right", true);
-            this.player.setFlipX(false);
-            movendo = true;
+          this.player.setVelocityX(velocidade);
+          this.lastPosition = "right";
+          this.player.anims.play("walk_right", true);
+          movendo = true;
         } else {
-            this.player.setVelocityX(0);
+          this.player.setVelocityX(0);
         }
-
+      
         if (this.teclas.up.isDown) {
-            this.player.setVelocityY(-velocidade);
-            this.player.anims.play("walk_up", true);
-            movendo = true;
+          this.player.setVelocityY(-velocidade);
+          this.lastPosition = "up";
+          this.player.anims.play("walk_up", true);
+          movendo = true;
         } else if (this.teclas.down.isDown) {
-            this.player.setVelocityY(velocidade);
-            this.player.anims.play("walk_down", true);
-            movendo = true;
+          this.player.setVelocityY(velocidade);
+          this.lastPosition = "down";
+          this.player.anims.play("walk_down", true);
+          movendo = true;
         } else {
-            this.player.setVelocityY(0);
+          this.player.setVelocityY(0);
         }
-
+      
+        // Se o personagem parou, inicia a animação de stop_* em loop
         if (!movendo) {
-            this.player.anims.stop();
-            this.walkSound.stop();
+          switch (this.lastPosition) {
+            case "left":
+              this.player.anims.play("stop_left", true);
+              break;
+            case "right":
+              this.player.anims.play("stop_right", true);
+              break;
+            case "up":
+              this.player.anims.play("stop_up", true);
+              break;
+            case "down":
+            default:
+              this.player.anims.play("stop_down", true);
+              break;
+          }
+          this.walkSound.stop();
         } else {
-            if (!this.walkSound.isPlaying) {
-                this.walkSound.play();
-            }
+          if (!this.walkSound.isPlaying) {
+            this.walkSound.play();
+          }
         }
-    }
+      }
+  
 
     createPlayer(width, height) {
         this.player = this.physics.add.sprite(width - 670, height - 660, 'player');
@@ -199,31 +217,73 @@ class VpEstrategiaScene extends Phaser.Scene {
 
     createPlayerAnimations() {
         this.anims.create({
-            key: "walk_down",
-            frames: this.anims.generateFrameNumbers("player", { start: 0, end: 5 }),
+          key: "walk_down",
+            frames: this.anims.generateFrameNumbers("player", { start: 130, end: 135 }),
             frameRate: 10,
-            repeat: -1,
+             repeat: -1,
         });
         this.anims.create({
-            key: "walk_right",
-            frames: this.anims.generateFrameNumbers("player", { start: 6, end: 11 }),
-            frameRate: 10,
-            repeat: -1,
+           key: "walk_right",
+             frames: this.anims.generateFrameNumbers("player", { start: 112, end: 117 }),
+             frameRate: 10,
+          repeat: -1,
         });
         this.anims.create({
-            key: "walk_up",
-            frames: this.anims.generateFrameNumbers("player", { start: 12, end: 17 }),
+           key: "walk_up",
+            frames: this.anims.generateFrameNumbers("player", { start: 118, end: 123 }),
             frameRate: 10,
-            repeat: -1,
+          repeat: -1,
+         });
+        this.anims.create({
+          key: "walk_left",
+            frames: this.anims.generateFrameNumbers("player", { start: 124, end: 129 }),
+            frameRate: 10,
+          repeat: -1,
         });
         this.anims.create({
-            key: "walk_left",
-            frames: this.anims.generateFrameNumbers("player", { start: 6, end: 11 }),
-            frameRate: 10,
-            repeat: -1,
+          key: "stop_down",
+            frames: this.anims.generateFrameNumbers("player", { start: 74, end: 79 }), 
+            frameRate: 5, // Mais lento
+          repeat: -1, // Loop infinito
+        });
+        this.anims.create({
+          key: "stop_right",
+           frames: this.anims.generateFrameNumbers("player", { start: 56, end: 61 }),
+           frameRate: 5,
+          repeat: -1,
+        });
+        this.anims.create({
+          key: "stop_up",
+            frames: this.anims.generateFrameNumbers("player", { start: 62, end: 67 }),
+            frameRate: 5,
+          repeat: -1,
+        });
+        this.anims.create({
+          key: "stop_left",
+            frames: this.anims.generateFrameNumbers("player", { start: 68, end: 73 }),
+            frameRate: 5,
+          repeat: -1,
+        });
+               
+      }
+
+      createButtonVoltar(width, height) {
+        const botaoVoltar = this.add.image(width - 700, height - 680, "keyE");
+        botaoVoltar.setScale(0.2);
+    
+        this.input.keyboard.on("keydown-E", () => {
+            const distancia = Phaser.Math.Distance.Between(
+                this.player.x, this.player.y, botaoVoltar.x, botaoVoltar.y
+            );
+    
+            if (distancia < 100) { // Ajuste o raio conforme necessário
+                this.scene.stop("VpEstrategiaScene");
+                this.scene.start("elevadorScene");
+            }
         });
     }
+    
 }
 
-// Propriedade estática para armazenar o tempo de reprodução da música
-VpPessoasScene.lastMusicTime = 0;
+// Propriedade estática para armazenar o tempo de reprodução da músic
+VpEstrategiaScene.lastMusicTime = 0;

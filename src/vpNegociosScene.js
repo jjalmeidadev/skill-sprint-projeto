@@ -162,13 +162,20 @@ class VpNegociosScene extends Phaser.Scene {
 
   createButtonVoltar(width, height) {
     const botaoVoltar = this.add.image(width - 670, height - 680, "keyE");
-    botaoVoltar.setInteractive();
     botaoVoltar.setScale(0.2);
+
     this.input.keyboard.on("keydown-E", () => {
-      this.scene.stop("vpNegociosScene");
-      this.scene.start("elevadorScene");
+        const distancia = Phaser.Math.Distance.Between(
+            this.player.x, this.player.y, botaoVoltar.x, botaoVoltar.y
+        );
+
+        if (distancia < 100) { // Ajuste o raio conforme necessário
+            this.scene.stop("vpNegociosScene");
+            this.scene.start("elevadorScene");
+        }
     });
-  }
+}
+
 
   createPlayerAnimations() {
     this.anims.create({
@@ -222,3 +229,4 @@ class VpNegociosScene extends Phaser.Scene {
            
   }
 }
+
