@@ -368,7 +368,7 @@ class VpPessoasScene extends Phaser.Scene {
           this.book.x, this.book.y
         );
         this.canInteractWithBook = distBook < 100;
-
+      
         if (this.canInteractWithBook) {
           if (!this.keyEBook) {
             this.keyEBook = this.add.image(this.book.x, this.book.y - 40, 'keyE').setScale(0.2);
@@ -377,6 +377,12 @@ class VpPessoasScene extends Phaser.Scene {
           if (this.keyEBook) {
             this.keyEBook.destroy();
             this.keyEBook = null;
+      
+            // Quando o jogador se afasta do livro e já leu o conteúdo
+            const bookRead = this.registry.get('bookRead');
+            if (bookRead && !this.botaoVoltar) {
+              this.createButtonVoltar();
+            }
           }
         }
       }
@@ -752,9 +758,9 @@ class VpPessoasScene extends Phaser.Scene {
         });
       }
 
-      showIndicatorTrash() {
-        this.createIndicatorTrash(); // Ativa o indicador e som do lixo
-      }
+    showIndicatorTrash() {
+      this.createIndicatorTrash(); // Ativa o indicador e som do lixo
+    }
       
     onShutdown() {
       // Salva o tempo atual da música e a para quando a cena é pausada ou encerrada
@@ -764,139 +770,138 @@ class VpPessoasScene extends Phaser.Scene {
         }
       }
 
-      createTrash() {
-        const trash = this.physics.add.sprite(width - 735, height - 570, 'trash');
-        trash.setScale(0.1);
-        trash.setImmovable(true);
-        //this.createIndicatorTrash();
-      
-        // Apenas overlap é necessário para ativar a possibilidade de interação
-        this.physics.add.overlap(this.player, trash, () => {
-          this.canInteractWithTrash = true;
-        
-          if (!this.keyETrash) {
-            this.keyETrash = this.add.image(width - 735, height - 610, 'keyE').setScale(0.2);
-          }
-        });
-      
-        // Detectar quando sai da zona de interação (usando evento de update com verificação de distância)
-        this.trash = trash; // Salva o objeto para usar no update
-      }
-
-      createBook() {
-        const book = this.physics.add.sprite(width - 700, height - 250, 'book');
-        book.setScale(0.06);
-        book.setImmovable(true);
-        //this.createIndicatorBook();
-      
-        // Apenas overlap é necessário para ativar a possibilidade de interação
-        this.physics.add.overlap(this.player, book, () => {
-          this.canInteractWithBook = true;
-
-          if (!this.keyEBook) {
-            this.keyEBook = this.add.image(width - 700, height - 250, 'keyE').setScale(0.2);
-          }
-        });
-      
-        // Detectar quando sai da zona de interação (usando evento de update com verificação de distância)
-        this.book = book; // Salva o objeto para usar no update
-      }
-
-      createIndicatorTrash() {
-        this.indicatorTrash = this.physics.add.sprite(width - 740, height - 630, 'indicator');
-        this.indicatorTrash.setScale(0.2);
-        this.indicatorTrash.setImmovable(true);
-        this.indicatorTrash.play("exclamando");
-      
-        // Toca o som de alerta
-        this.indicatorSoundTrash = this.sound.add('indicatorSound', { loop: true, volume: 10 });
-        this.indicatorSoundTrash.play();
-      
-        this.physics.add.overlap(this.player, this.indicatorTrash, () => {
-          if (this.indicatorTrashActive) {
-            this.indicatorSoundTrash.stop();
-            this.indicatorTrash.destroy();
-            this.indicatorTrashActive = false;
-          }
-        });
-      
-        this.indicatorTrashActive = true; // Flag de controle
-      }
-
-      createIndicatorBook() {
-        this.indicatorBook = this.physics.add.sprite(width - 700, height - 300, 'indicator');
-        this.indicatorBook.setScale(0.2);
-        this.indicatorBook.setImmovable(true);
-        this.indicatorBook.play("exclamando");
-      
-        // Toca o som de alerta
-        this.indicatorSoundBook = this.sound.add('indicatorSound', { loop: true, volume: 10 });
-        this.indicatorSoundBook.play();
-      
-        this.physics.add.overlap(this.player, this.indicatorBook, () => {
-          if (this.indicatorBookActive) {
-            this.indicatorSoundBook.stop();
-            this.indicatorBook.destroy();
-            this.indicatorBookActive = false;
-          }
-        });
-      
-        this.indicatorBookActive = true; // Flag de controle
-      }
-
-      resume() {
-        if (this.keyETrash) {
-          this.keyETrash.destroy();
-          this.keyETrash = null;
-        }
-      
-        if (this.keyEBook) {
-          this.keyEBook.destroy();
-          this.keyEBook = null;
-        }
-      
-        // FLAG para detectar retorno do Trash
-        if (this.rafaelaInteracted && !this.returnedFromTrash) {
-          this.returnedFromTrash = true;
-      
-          if (this.npcMovel) {
-            this.npcMovel.destroy(); // Destrói o NPC que estava andando
-            this.npcMovel = null;
-          }
-      
-          if (!this.npcMovelFixedCreated) {
-            this.npcMovelFixedCreated = true;
-            this.addNpcMovelFixo(); // Adiciona o novo NPC parado com botão
-          }
-        }
-      }
-
-      createButtonVoltar(width, height) {
-        const botaoVoltar = this.add.image(width - 740, height - 480, "keyE");
-        botaoVoltar.setInteractive();
-        botaoVoltar.setScale(0.2);
-        botaoVoltar.setDepth(1); // Coloca o botão acima de outros objetos
-        this.input.keyboard.on("keydown-E", () => {
-          this.scene.stop("vpPessoasScene");
-          this.scene.start("elevadorScene");
-       });
-      }
-
-  createButtonVoltar(width, height) {
-    const botaoVoltar = this.add.image(width - 435, height - 700, "keyE");
-     botaoVoltar.setScale(0.2);
+    createTrash() {
+      const trash = this.physics.add.sprite(width - 735, height - 570, 'trash');
+      trash.setScale(0.1);
+      trash.setImmovable(true);
+      //this.createIndicatorTrash();
     
-        this.input.keyboard.on("keydown-E", () => {
-            const distancia = Phaser.Math.Distance.Between(
-                this.player.x, this.player.y, botaoVoltar.x, botaoVoltar.y
-            );
+      // Apenas overlap é necessário para ativar a possibilidade de interação
+      this.physics.add.overlap(this.player, trash, () => {
+        this.canInteractWithTrash = true;
+      
+        if (!this.keyETrash) {
+          this.keyETrash = this.add.image(width - 735, height - 610, 'keyE').setScale(0.2);
+        }
+      });
     
-            if (distancia < 100) { // Ajuste o raio conforme necessário
-                this.scene.stop("vpPessoasScene");
-                this.scene.start("elevadorScene");
-            }
-        });
+      // Detectar quando sai da zona de interação (usando evento de update com verificação de distância)
+      this.trash = trash; // Salva o objeto para usar no update
     }
+
+    createBook() {
+      const book = this.physics.add.sprite(width - 700, height - 250, 'book');
+      book.setScale(0.06);
+      book.setImmovable(true);
+      //this.createIndicatorBook();
+    
+      // Apenas overlap é necessário para ativar a possibilidade de interação
+      this.physics.add.overlap(this.player, book, () => {
+        this.canInteractWithBook = true;
+
+        if (!this.keyEBook) {
+          this.keyEBook = this.add.image(width - 700, height - 250, 'keyE').setScale(0.2);
+        }
+      });
+    
+      // Detectar quando sai da zona de interação (usando evento de update com verificação de distância)
+      this.book = book; // Salva o objeto para usar no update
+    }
+
+    createIndicatorTrash() {
+      this.indicatorTrash = this.physics.add.sprite(width - 740, height - 630, 'indicator');
+      this.indicatorTrash.setScale(0.2);
+      this.indicatorTrash.setImmovable(true);
+      this.indicatorTrash.play("exclamando");
+    
+      // Toca o som de alerta
+      this.indicatorSoundTrash = this.sound.add('indicatorSound', { loop: true, volume: 10 });
+      this.indicatorSoundTrash.play();
+    
+      this.physics.add.overlap(this.player, this.indicatorTrash, () => {
+        if (this.indicatorTrashActive) {
+          this.indicatorSoundTrash.stop();
+          this.indicatorTrash.destroy();
+          this.indicatorTrashActive = false;
+        }
+      });
+    
+      this.indicatorTrashActive = true; // Flag de controle
+    }
+
+    createIndicatorBook() {
+      this.indicatorBook = this.physics.add.sprite(width - 700, height - 300, 'indicator');
+      this.indicatorBook.setScale(0.2);
+      this.indicatorBook.setImmovable(true);
+      this.indicatorBook.play("exclamando");
+    
+      // Toca o som de alerta
+      this.indicatorSoundBook = this.sound.add('indicatorSound', { loop: true, volume: 10 });
+      this.indicatorSoundBook.play();
+    
+      this.physics.add.overlap(this.player, this.indicatorBook, () => {
+        if (this.indicatorBookActive) {
+          this.indicatorSoundBook.stop();
+          this.indicatorBook.destroy();
+          this.indicatorBookActive = false;
+        }
+      });
+    
+      this.indicatorBookActive = true; // Flag de controle
+    }
+
+    createButtonVoltar() {
+      console.log("Adicionando botão de voltar");
+          if (this.botaoVoltar) return; // impede criar mais de uma vez
+        
+          this.botaoVoltar = this.add.image(width - 508, height - 660, "keyE");
+          this.botaoVoltar.setScale(0.2);
+          this.botaoVoltar.setDepth(1000); // Coloca o botão acima de outros objetos
+        
+          this.input.keyboard.on("keydown-E", () => {
+            const distancia = Phaser.Math.Distance.Between(
+              this.player.x, this.player.y,
+              this.botaoVoltar.x, this.botaoVoltar.y
+            );
+        
+            if (distancia < 100) {
+              this.scene.stop("vpPessoasScene");
+              this.scene.start("elevadorScene");
+            }
+          });
+      }
+
+    resume() {
+      if (this.keyETrash) {
+        this.keyETrash.destroy();
+        this.keyETrash = null;
+      }
+    
+      if (this.keyEBook) {
+        this.keyEBook.destroy();
+        this.keyEBook = null;
+      }
+    
+      if (this.rafaelaInteracted && !this.returnedFromTrash) {
+        this.returnedFromTrash = true;
+    
+        if (this.npcMovel) {
+          this.npcMovel.destroy();
+          this.npcMovel = null;
+        }
+    
+        if (!this.npcMovelFixedCreated) {
+          this.npcMovelFixedCreated = true;
+          this.addNpcMovelFixo();
+        }
+      }
+    
+      // Se o livro foi lido pela primeira vez, ativa a tecla "E" do elevador
+      const bookRead = this.registry.get('bookRead');
+      if (bookRead && !this.botaoVoltar) {
+        this.createButtonVoltar();
+      }
+    }    
 }
 
 // Propriedade estática para armazenar o tempo de reprodução da música
@@ -948,13 +953,22 @@ class bookScene extends Phaser.Scene {
 
   createArrow() {
     const buttonArrow = this.add.image(width - 1200, height - 70, 'arrowYellow');
-      buttonArrow.setInteractive();
-      buttonArrow.setScale(0.8);
-      buttonArrow.on('pointerdown', () => {
-          this.buttonSound();
-          this.scene.stop('bookScene');
-          this.scene.resume('vpPessoasScene');
-      });
+    buttonArrow.setInteractive();
+    buttonArrow.setScale(0.8);
+    buttonArrow.on('pointerdown', () => {
+      this.buttonSound();
+  
+      // Sinaliza que o livro foi lido
+      this.registry.set('bookRead', true);
+  
+      this.scene.stop('bookScene');
+
+      // Acessa a cena principal e chama o método resume() manualmente
+      const cenaPrincipal = this.scene.get('vpPessoasScene');
+      cenaPrincipal.resume(); // <-- chama o método que você criou
+
+      this.scene.resume('vpPessoasScene'); // <-- retoma a cena visualmente
+    });
   }
 
   createColumns() {
