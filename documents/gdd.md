@@ -67,11 +67,11 @@ Alta. As principais concorrentes da Vivo são Claro, TIM, e operadoras regionais
 
 A análise pode ser observada na imagem a seguir:
 
-<div align="Gráfico 5 forças de Porter">
+<div align="center">
   <sub>Gráfico 5 forças de Porter</sub><br>
   <img src="https://github.com/user-attachments/assets/336a1a10-0e58-4e68-a42a-e48d542db44b" width="900px" 
   alt="Gráfico 5 forças de Porter"><br>
-  <sup>Fonte: profuzido pelo autor.</sup>
+  <sup>Fonte: produzido pelo autor.</sup>
 </div>
 
 
@@ -81,11 +81,11 @@ A análise SWOT [12] é uma ferramenta estratégica usada para avaliar os pontos
 
 A Vivo, líder de mercado no Brasil, destaca-se pela forte presença em telefonia móvel, internet fixa (fibra óptica) e inovação com 5G. Sua dependência de grandes investimentos em infraestrutura e a intensa concorrência de operadoras como Claro e TIM representam fraquezas. Entretanto, as oportunidades incluem a expansão do 5G, IoT e a integração com *fintechs*, além de soluções digitais para empresas. As ameaças vêm da saturação do mercado móvel e de mudanças regulatórias. A Vivo precisa manter sua liderança diante de uma concorrência crescente e exigente, como é apresentado no esquema abaixo.
 
-<div align="Análise SWOT">
+<div align="center">
   <sub>Gráfico 5 forças de Porter</sub><br>
   <img src="https://github.com/user-attachments/assets/5d960390-b6ab-4ffc-a930-d2a29dda43d2" width="900px" 
   alt="Gráfico Análise SWOT"><br>
-  <sup>Fonte: profuzido pelo autor.</sup>
+  <sup>Fonte: produzido pelo autor.</sup>
 </div>
 
 ### 1.1.3. Missão / Visão / Valores (sprint 2)
@@ -113,11 +113,11 @@ Com isso, esses são os princípios que guiam as tomadas de decisões e estraté
 
 O Value Proposition Canvas é uma ferramenta poderosa de planejamento estretégico dividida em dois blocos, Perfil do Cliente e Mapa de Valor, utilizada para desenvolver soluções e serviços eficazes voltados nas necessidades dos clientes. A ferramenta é projetada para promover o alinhamento e a compreensão profunda das dores do cliente, permitindo que a solução atenda da melhor forma a demanda do mercado. Sua utilização auxilia na melhoria contínua se moldando com base no feedback do cliente, a fim de entregar o melhor serviço além de potencializar o trabalho entregue por ter um direcionamento mais claro sobre o que será produzido.
 
-<div align="Análise SWOT">
+<div align="center">
   <sub>Canvas Proposta de Valor</sub><br>
   <img src="https://github.com/user-attachments/assets/e3d2265f-7577-46cf-81dc-b10dcd84a82d" width="900px" 
   alt="Canvas Proposta de Valor"><br>
-  <sup>Fonte: profuzido pelo autor.</sup>
+  <sup>Fonte: produzido pelo autor.</sup>
 </div>
 
 
@@ -126,6 +126,42 @@ O Value Proposition Canvas é uma ferramenta poderosa de planejamento estretégi
 *Descreva brevemente a solução desenvolvida para o parceiro de negócios. Descreva os aspectos essenciais para a criação de valor da ideia do produto com o objetivo de ajudar a entender melhor a realidade do cliente e entregar uma solução que está alinhado com o que ele espera. Observe a seção 2 e verifique que ali é possível trazer mais detalhes, portanto seja objetivo aqui. Atualize esta descrição até a entrega final, conforme desenvolvimento.*
 
 ### 1.1.6. Matriz de Riscos (sprint 4)
+![Image](https://github.com/user-attachments/assets/7f8b53b2-27f3-4e46-984e-d9aea9dbd6e7)
+Bug no som de exclamação da sala do líder
+ ➤ Corrigir o áudio na engine de desenvolvimento e testar em diferentes dispositivos.
+
+
+Desinteresse por parte dos jogadores
+ ➤ Realizar testes com usuários e ajustar a dinâmica do jogo com base no feedback.
+
+
+Jogo não contempla a diversidade dos funcionários
+ ➤ Incluir representatividade nos personagens e opções de escolha inclusivas.
+
+
+O jogo não está concluído
+ ➤ Estabelecer cronograma com entregas parciais e checkpoints de progresso.
+
+
+O jogo não é compatível com smartphones
+ ➤ Implementar design responsivo e realizar testes em diferentes dispositivos móveis.
+
+
+Risco de direitos autorais por uso de trilha licenciada
+ ➤ Substituir trilhas por músicas royalty-free ou composições originais.
+
+
+Erro na documentação
+ ➤ Revisar a documentação com checklist e atribuir responsáveis por cada seção.
+
+
+Assets sem padronização
+ ➤ Criar guia de estilo visual e revisar todos os assets gráficos do jogo.
+
+
+Empresa parceira não aprova a dinâmica do jogo
+ ➤ Envolver a empresa parceira nas fases iniciais e validar conceitos com protótipos.
+
 
 *Registre na matriz os riscos identificados no projeto, visando avaliar situações que possam representar ameaças e oportunidades, bem como os impactos relevantes sobre o projeto. Apresente os riscos, ressaltando, para cada um, impactos e probabilidades com plano de ação e respostas.*
 
@@ -574,7 +610,166 @@ Essas mecânicas são a base da jogabilidade do Skill Sprint, garantindo que o j
 
 ## 3.8. Implementação Matemática de Animação/Movimento (sprint 4)
 
-*Descreva aqui a função que implementa a movimentação/animação de personagens ou elementos gráficos no seu jogo. Sua função deve se basear em alguma formulação matemática (e.g. fórmula de aceleração). A explicação do funcionamento desta função deve conter notação matemática formal de fórmulas/equações. Se necessário, crie subseções para sua descrição.*
+Em Skill Sprint, a movimentação de elementos é essencial para garantir uma experiência de jogo dinâmica e desafiadora. A seção 3.8 deste documento detalha a implementação do sistema de movimento bidimensional, que combina Movimento Uniforme (MU) e Movimento Uniformemente Variado (MUV) para criar uma trajetória fluida. 
+
+Utilizando princípios de cinemática, desenvolvemos uma função que calcula velocidade e aceleração em tempo real, garantindo que o movimento do elemento animado siga uma base matemática sólida.
+
+#### 3.8.1 Objetivo da Função  
+
+Nosso objetivo foi monitorar e exibir no console as informações de movimento de um meteoro quando ele está visível no jogo (tela inicial). 
+
+<div align="center">
+  <sub>GIF - Animação do Meteoro</sub><br>
+  <img src="../assets/mu_muv.gif" width="900px" 
+  alt="GIF - Animação do Meteoro"><br>
+  <sup>Fonte: produzido pelo autor.</sup>
+</div>
+
+A função aplica princípios de cinemática para calcular:
+
+1. Posição atual nos eixos X e Y
+2. Velocidade atual nos eixos X e Y
+
+A função verifica se o meteoro está visível (this.meteoro.visible === true) e, caso positivo, imprime no console quatro informações críticas sobre seu movimento, calculadas através das equações de cinemática:
+
+```javascript 
+ if (this.meteoro.visible === true) {
+        console.log(
+          "A posição do meteoro no eixo X é: " +
+            // Utilizando S(t) = S₀ + v.t em MU
+            (this.meteoro.x + this.meteoro.v0x * this.meteoro.duracao) +
+            " A posição do meteoro no eixo Y é: " +
+            // Utilizando S(t) = S₀ + V₀.t + (a.t²)/2
+          (this.meteoro.y + this.meteoro.v0y * this.meteoro.duracao +
+            (this.meteoro.a * this.meteoro.duracao ** 2) / 2) +
+            // Utilizando velocidade com V = delta S/t
+            "A velocidade do meteoro no eixo X é: " +
+            ((this.meteoro.dS / this.meteoro.duracao) * speedMultiplier) +
+            // Utilizando velocidade com V = v0 + at
+            " A velocidade do meteoro no eixo Y é: " +
+            (this.meteoro.v0y + this.meteoro.a * this.meteoro.duracao)
+        );
+      }
+```
+
+#### 3.8.2 Formulação Matemática  
+##### **Parâmetros de Entrada**  
+|Parâmetro      | Descrição                          | Valor na Prática (Jogo)     |      Valor  no Código        |
+|--------------|------------------------------------|---------------|---------------------|
+| Tempo Total (T) | Duração da animação convertida pela engine.       | 2 segundos   | 480 (unidades)
+| Posição Inicial X | Fora da tela à direita.         | (largura_tela + 200)   | width + 200
+| Posição Inicial Y       | Acima da área jogável.         | (altura_tela - 900)  |  height - 900
+| Posição Final X        | 1/3 da tela à direita.   | (largura_tela / 3)  |  width / 3
+| Posição Final Y       |  Perto da base da tela.   | (altura_tela - 100)  | height - 100
+
+Utilizamos as variáveis `height` e `width`, que são os valores do tamanho da largura e altura da tela do nosso jogo. O principal objetivo de utilizar esses valores variáveis é garantir responsividade. Ou seja, a posição do meteoro e dos demais elementos permanece a mesma em diferentes dispositivos de diferentes tamanhos de tela.
+
+##### **Detalhamento dos cálculos:**  
+
+##### 1. Posição no Eixo X (Movimento Uniforme - MU)
+```javascript
+this.meteoro.x + this.meteoro.v0x * this.meteoro.duracao
+```
+Fórmula Física:
+
+$$ S(t) = S_0 + v \cdot t $$
+
+`S(t):` Posição atual no eixo X.
+
+`S₀ (this.meteoro.x):` Posição inicial.
+
+`v (this.meteoro.v0x):` Velocidade constante.
+
+`t (this.meteoro.duracao):` Tempo decorrido.
+
+`S(t):` Posição atual no eixo X.
+
+`S₀ (this.meteoro.x):` Posição inicial.
+
+`v (this.meteoro.v0x):` Velocidade constante.
+
+`t (this.meteoro.duracao):` Tempo decorrido.
+
+##### 2. Posição no Eixo Y (Movimento Uniformemente Variado - MUV)
+```javascript
+
+this.meteoro.y + this.meteoro.v0y * this.meteoro.duracao + (this.meteoro.a * this.meteoro.duracao ** 2) / 2
+```
+Fórmula Física:
+
+$$ S(t) = S_0 + v_0 \cdot t + \frac{a \cdot t^2}{2} $$
+
+`S(t):` Posição atual no eixo Y.
+
+`S₀ (this.meteoro.y):` Posição inicial.
+
+`v₀ (this.meteoro.v0y):` Velocidade inicial.
+
+`a (this.meteoro.a):` Aceleração.
+
+##### 3. Velocidade no Eixo X (MU)
+```javascript
+(this.meteoro.dS / this.meteoro.duracao) * speedMultiplier
+```
+Fórmula Física:
+
+$$ v = \frac{\Delta S}{\Delta t} \times \text{multiplicador} $$
+
+`ΔS (this.meteoro.dS):` Variação de posição (deslocamento).
+
+`Δt (this.meteoro.duracao):` Tempo total.
+
+`speedMultiplier:` Fator de ajuste de velocidade.
+
+##### 4. Velocidade no Eixo Y (MUV)
+```javascript
+this.meteoro.v0y + this.meteoro.a * this.meteoro.duracao
+```
+$$ v(t) = v_0 + a \cdot t $$
+
+`v(t):` Velocidade instantânea no eixo Y.
+
+`v₀ (this.meteoro.v0y):` Velocidade inicial.
+
+`a (this.meteoro.a):` Aceleração.
+
+#### 3.8.3 Saída do Console
+
+O código imprime no console um relatório completo com os seguintes dados a cada frame em que o meteoro está visível:
+
+```javascript
+console.log(
+  "A posição do meteoro no eixo X é: " +
+  (this.meteoro.x + this.meteoro.v0x * this.meteoro.duracao) +
+  " A posição do meteoro no eixo Y é: " +
+  (this.meteoro.y + this.meteoro.v0y * this.meteoro.duracao +
+    (this.meteoro.a * this.meteoro.duracao ** 2) / 2) +
+  "A velocidade do meteoro no eixo X é: " +
+  ((this.meteoro.dS / this.meteoro.duracao) * speedMultiplier) +
+  " A velocidade do meteoro no eixo Y é: " +
+  (this.meteoro.v0y + this.meteoro.a * this.meteoro.duracao)
+);
+```
+Exemplo real de saída no *console*:
+
+<div align="center">
+  <sub>Impressão no Console </sub><br>
+  <img src="../assets/Screenshot 2025-03-27 203409.png" width="900px" 
+  alt="Animação do Meteoro"><br>
+  <sup>Fonte: produzido pelo autor.</sup>
+</div>
+
+#####  Link para o arquivo .js: <https://github.com/Inteli-College/2025-1A-T18-IN01-G03/blob/main/src/initialScene.js> 
+
+##### Linhas da função implementada:
+- Configuração Inicial do Meteoro (linhas 91-108)
+- Aplicação dos Cálculos no Update (linhas 316-343)
+- Calcula aceleração (a) baseada na cinemática (linha 108)
+- Aplica velocidade X (MU) usando dS/duracao (linha 320)
+- Aplica velocidade Y (MUV) usando v0y + a*t (linha 325)
+- Gera logs com os cálculos completos (linhas 330-343)
+
+Em conclusão, a implementação do movimento eleva a qualidade da *gameplay*, proporcionando um momento divertido ao jogador, que encontra um *easter egg* (elemento surpresa) na tela inicial do jogo. Ao utilizar MU no eixo X e MUV no eixo Y, criamos uma movimentação limpa e baseada nos princípios cinemáticos.
 
 # <a name="c4"></a>4. Desenvolvimento do Jogo
 
