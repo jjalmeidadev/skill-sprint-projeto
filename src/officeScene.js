@@ -5,7 +5,6 @@ class OfficeScene extends Phaser.Scene {
   }
 
   preload() {
-    // Carrega imagens, spritesheets e demais ativos
     this.load.spritesheet("player", "../assets/personagens/skinsPlayer/player1all.png", {frameWidth: 16, frameHeight: 32, });
     this.load.spritesheet("npc7", "../assets/personagens/npc7.png", {frameWidth: 16, frameHeight: 32, });
     this.load.spritesheet("npc3", "../assets/personagens/npc3Sit.png", {frameWidth: 16, frameHeight: 32, });
@@ -17,6 +16,17 @@ class OfficeScene extends Phaser.Scene {
     this.load.image("telaComputador", "../assets/tela_computador.png");
     this.load.image("computador", "../assets/computador.png");
     this.load.spritesheet("indicator", "../assets/exclamaçãoRoxa.png", {frameWidth: 254, frameHeight: 305,});
+    // Carrega imagens, spritesheets e demais ativos
+    this.load.spritesheet("player", "../assets/Player.png", {
+      frameWidth: 32,
+      frameHeight: 32,
+    });
+    this.load.image("telaComputador", "../assets/tela_computador.png");
+    this.load.image("computador", "../assets/computador.png");
+    this.load.spritesheet("indicator", "../assets/exclamaçãoRoxa.png", {
+      frameWidth: 254,
+      frameHeight: 305,
+    });
 
     // Carrega o mapa do Tiled e os tilesets
     this.load.tilemapTiledJSON("escritorio","../assets/mapaOffice/mapaOffice.json");
@@ -24,27 +34,35 @@ class OfficeScene extends Phaser.Scene {
     this.load.image("decoracao", "../assets/mapaOffice/decoracao.png");
     this.load.image("paredes", "../assets/mapaOffice/paredes.png");
     this.load.image("personalizado_vivo", "../assets/mapaOffice/personalizado_vivo.png");
-      
+
     // Demais ativos
-   
+    this.load.image("vivita", "../assets/vivita.png");
     this.load.image("balaoTexto", "../assets/balaoTexto.png");
     this.load.image('keyE', '../assets/teclaE.png');  
+  
 
     // Carrega o áudio da cena do escritório
     this.load.audio("officeMusic", "../assets/0320(1).MP3");
     this.load.audio('keySound', '../assets/sounds/computer-keyboard-typing-290582 (mp3cut.net).mp3');
     this.load.audio('indicatorSound', '../assets/sounds/497198_abacagi_bubble-pops (mp3cut.net).wav');
     this.load.audio('walkSound', '../assets/sounds/753292__vrymaa__footsteps-high-heels-hardwood-walk-run (mp3cut.net).wav');
+
+    
   }
 
   create() {
     //skip elevador
-   /* this.scene.start("elevadorScene");
-    return;*/
+    /* this.scene.start("elevadorScene");
+     return;*/
 
-    if (this.walkSound && this.walkSound.isPlaying) {
-      this.walkSound.stop();
-  }
+     this.events.on('stopWalkSound', () => {
+      if (this.walkSound && this.walkSound.isPlaying) {
+          this.walkSound.stop(); // Para o som de passos
+      }
+  });
+
+    const width = this.scale.width;
+    const height = this.scale.height;
 
     // Transição suave
     this.cameras.main.fadeIn(1000);
@@ -65,25 +83,25 @@ class OfficeScene extends Phaser.Scene {
 
     //cria a animação
     this.anims.create({
-      key: "exclamando",
-      frames: this.anims.generateFrameNumbers("indicator", {start: 0, end: 1}),
+      key: "exclaiming",
+      frames: this.anims.generateFrameNumbers("indicator", { start: 0, end: 1 }),
       //velocidade da animação
       frameRate: 3,
       repeat: -1,
     });
 
     // Configuração do teclado
-    this.teclas = this.input.keyboard.addKeys({
+    this.keys = this.input.keyboard.addKeys({
       up: Phaser.Input.Keyboard.KeyCodes.W,
       down: Phaser.Input.Keyboard.KeyCodes.S,
       left: Phaser.Input.Keyboard.KeyCodes.A,
       right: Phaser.Input.Keyboard.KeyCodes.D,
-      interagir: Phaser.Input.Keyboard.KeyCodes.E,
+      interact: Phaser.Input.Keyboard.KeyCodes.E,
       ENTER: Phaser.Input.Keyboard.KeyCodes.ENTER,
     });
 
     // Cria o mapa e as camadas
-    const map = this.make.tilemap({key: "escritorio", tileWidth: 25, tileHeight: 20});
+    const map = this.make.tilemap({ key: "escritorio", tileWidth: 25, tileHeight: 20 });
     const tileset1 = map.addTilesetImage("decoracao");
     const tileset2 = map.addTilesetImage("paredes");
     const tileset3 = map.addTilesetImage("personalizado_vivo");
@@ -105,19 +123,19 @@ class OfficeScene extends Phaser.Scene {
     const layer13 = map.createLayer("decoracao", tileset1, offsetX, 0).setScale(2.5);
 
     //Ativa as colisões com base na propriedade 'collider' para todas as camadas
-    layer1.setCollisionByProperty({ collider: true });
-    layer2.setCollisionByProperty({ collider: true });
-    layer3.setCollisionByProperty({ collider: true });
-    layer4.setCollisionByProperty({ collider: true });
-    layer5.setCollisionByProperty({ collider: true });
-    layer6.setCollisionByProperty({ collider: true });
-    layer7.setCollisionByProperty({ collider: true });
-    layer8.setCollisionByProperty({ collider: true });
-    layer9.setCollisionByProperty({ collider: true });
-    layer10.setCollisionByProperty({ collider: true });
-    layer11.setCollisionByProperty({ collider: true });
-    layer12.setCollisionByProperty({ collider: true });
-    layer13.setCollisionByProperty({ collider: true });
+    floorLayer.setCollisionByProperty({ collider: true });
+    leaderFloorLayer.setCollisionByProperty({ collider: true });
+    wallLayer.setCollisionByProperty({ collider: true });
+    carpetLayer.setCollisionByProperty({ collider: true });
+    leaderCarpetLayer.setCollisionByProperty({ collider: true });
+    finishLayer.setCollisionByProperty({ collider: true });
+    chairLayer.setCollisionByProperty({ collider: true });
+    backChairLayer.setCollisionByProperty({ collider: true });
+    frameLayer.setCollisionByProperty({ collider: true });
+    sofaLayer.setCollisionByProperty({ collider: true });
+    plantLayer.setCollisionByProperty({ collider: true });
+    doorLayer.setCollisionByProperty({ collider: true });
+    decorationLayer.setCollisionByProperty({ collider: true });
 
     // Cria os elementos da cena
     this.addVivita(width, height);
@@ -142,7 +160,7 @@ class OfficeScene extends Phaser.Scene {
     this.physics.world.setBounds(0, 0, width, height);
 
     // Texto para depuração, exibindo as coordenadas do jogador
-    this.coordText = this.add.text(20, 20, "", {
+    this.debugText = this.add.text(20, 20, "", {
       fontSize: "16px",
       fill: "#ffffff",
     });
@@ -160,11 +178,11 @@ class OfficeScene extends Phaser.Scene {
     this.movePlayer();
 
     // Se o jogador retornou da sala do líder, cria o botão do elevador
-    if (this.returnedFromSalaLider && this.blockLoop === 0) {
-      this.createButtonCima();
+    if (this.returnedFromLeaderRoom && this.blockLoop === 0) {
+      this.createUpButton();
     }
 
-    if(this.indicatorActive == false) {
+    if (this.activeIndicator == false) {
       this.indicatorSound.stop();
     }
 
@@ -219,7 +237,7 @@ class OfficeScene extends Phaser.Scene {
       this.player.setVelocityY(velocidade);
       this.lastPosition = "down";
       this.player.anims.play("walk_down", true);
-      movendo = true;
+      moving = true;
     } else {
       this.player.setVelocityY(0);
     }
@@ -279,30 +297,6 @@ class OfficeScene extends Phaser.Scene {
       frameRate: 10,
       repeat: -1,
     });
-    this.anims.create({
-      key: "stop_down",
-      frames: this.anims.generateFrameNumbers("player", { start: 74, end: 79 }), 
-      frameRate: 5, // Mais lento
-      repeat: -1, // Loop infinito
-    });
-    this.anims.create({
-      key: "stop_right",
-      frames: this.anims.generateFrameNumbers("player", { start: 56, end: 61 }),
-      frameRate: 5,
-      repeat: -1,
-    });
-    this.anims.create({
-      key: "stop_up",
-      frames: this.anims.generateFrameNumbers("player", { start: 62, end: 67 }),
-      frameRate: 5,
-      repeat: -1,
-    });
-    this.anims.create({
-      key: "stop_left",
-      frames: this.anims.generateFrameNumbers("player", { start: 68, end: 73 }),
-      frameRate: 5,
-      repeat: -1,
-    });
   }
 
   createButtonCima() {
@@ -328,15 +322,15 @@ class OfficeScene extends Phaser.Scene {
     this.botaoCima.setScale(1);
     this.botaoCima.setVisible(false);
 
-    this.botaoCima.on("pointerdown", () => {
+    this.upButton.on("pointerdown", () => {
       // Troca para a cena 'elevadorScene' – nesse caso, o OfficeScene será encerrada
       this.scene.stop("officeScene");
-      this.scene.start("elevadorScene");
+      this.scene.start("elevatorScene");
     });
 
     // Ao sobrepor o jogador na exclamação, vamos chamar onShutdown() antes de mudar para 'buttonElevatorScene'
-    this.physics.add.overlap(this.player, this.exclamacao, () => {
-      this.indicatorActive = false;
+    this.physics.add.overlap(this.player, this.exclamation, () => {
+      this.activeIndicator = false;
       this.onShutdown(); // Salva o tempo e para a música
       this.scene.switch("buttonElevatorScene");
     });
@@ -432,6 +426,15 @@ class OfficeScene extends Phaser.Scene {
     this.createNpcAnimations();
     this.vivita.anims.play('vivita');
   }
+  showComputerScreen() {
+    this.activeIndicator = false;
+    this.indicatorSound.stop();
+    this.buttonClick.play();
+    this.indicator.destroy();
+    this.scene.get('officeScene').events.emit('stopWalkSound'); // Emite o evento
+    this.scene.switch("curriculoScene");
+    this.salaLider();
+  }
 
   createNpcAnimations() { 
     this.anims.create({
@@ -496,7 +499,7 @@ class OfficeScene extends Phaser.Scene {
     if(this.indicatorActive) {  
       this.indicatorSound.play();
       this.walkSound.stop();
-    } 
+    }
 
     vivita.setInteractive();
     vivita.on("pointerdown", () => {
@@ -504,7 +507,7 @@ class OfficeScene extends Phaser.Scene {
     });
 
     this.input.keyboard.on('keydown-E', () => {
-      this.indicatorActive = false;
+      this.activeIndicator = false;
       if (
         Math.abs(this.player.x - vivita.x) <= 70 &&
         Math.abs(this.player.y - vivita.y) <= 70 &&
@@ -520,11 +523,11 @@ class OfficeScene extends Phaser.Scene {
   showVivitaInteraction() {
     this.exclamation.setVisible(false);
 
-    const speechVivita = [
+    const vivitaDialogues = [
       "Olá! Você deve ser " + playerName + ", né?",
       "Fiquei sabendo que você quer mudar de carreira na Vivo.",
       "Vou te explicar o primeiro passo.",
-      "Primeiro, você precisa criar o seu currículo.",
+      "Primeiro, você precisa criar seu currículo.",
       "Vá até o computador no escritório.",
       "Preencha seu currículo e depois entregue-o na sala do líder.",
       "Boa sorte!",
@@ -532,21 +535,21 @@ class OfficeScene extends Phaser.Scene {
 
     const width = this.scale.width;
     const height = this.scale.height;
-    const balaoTexto = this.add.image(width / 1.55, height / 4.8, "balaoTexto");
-    const text = this.add.text(width / 1.68, height / 7, speechVivita[0], {
+    const speechBubble = this.add.image(width / 1.55, height / 4.8, "speechBubble");
+    const text = this.add.text(width / 1.68, height / 7, vivitaDialogues[0], {
       fontSize: "16px",
       fill: "#000000",
-      wordWrap: { width: balaoTexto.width - 20 },
+      wordWrap: { width: speechBubble.width - 20 },
     });
 
-    let currentSpeechIndex = 0;
+    let currentDialogueIndex = 0;
     this.input.keyboard.on("keydown-ENTER", () => {
-      currentSpeechIndex++;
-      if (currentSpeechIndex < speechVivita.length) {
-        text.setText(speechVivita[currentSpeechIndex]);
+      currentDialogueIndex++;
+      if (currentDialogueIndex < vivitaDialogues.length) {
+        text.setText(vivitaDialogues[currentDialogueIndex]);
         this.buttonClick.play();
       } else {
-        balaoTexto.setVisible(false);
+        speechBubble.setVisible(false);
         text.setVisible(false);
         this.input.keyboard.off("keydown-ENTER");
         this.addComputer();
@@ -555,27 +558,31 @@ class OfficeScene extends Phaser.Scene {
   }
 
   salaLider() {
-    if (this.inTransition) return;
 
     const width = this.scale.width;
     const height = this.scale.height;
 
     this.exclamation = this.physics.add.sprite(width - 1200, height - 500, 'indicator').setScale(0.2);
-    this.exclamation.play('exclamando');
-    
-    this.indicatorActive = true;
-    this.indicatorSound = this.sound.add('indicatorSound', {loop: true, volume: 1.5});
+    this.exclamation.play('exclaiming');
+
+    this.activeIndicator = true;
+    this.indicatorSound = this.sound.add('indicatorSound', { loop: true, volume: 1.5 });
     this.indicatorSound.play();
 
     this.physics.add.overlap(this.player, this.exclamation, () => {
         if (!this.inTransition) {
             this.inTransition = true;
+            this.walkSound.stop();
             this.returnedFromSalaLider = true;
+            this.scene.get('officeScene').events.emit('stopWalkSound');
             this.blockLoop = 0;
             this.exclamation.setVisible(false);
             this.indicatorActive = false;
             this.indicatorSound.stop(); // Para o som quando há overlap
-            this.scene.switch('salaLiderScene');
+            this.walkSound.stop();
+          this.events.emit('stopWalkSound'); // Para o som de passos quando há overlap
+          this.scene.switch('salaLiderScene');
+          this.scene.get('officeScene').events.emit('stopWalkSound');
         }
     }); 
   }

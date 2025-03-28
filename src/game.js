@@ -58,7 +58,8 @@ const config = {
       
       buttonElevatorScene,
       ElevadorScene, 
-      GameplayTutorialScene
+      GameplayTutorialScene,
+      VpTecnologiaScene
       
     ], // Lista das cenas do jogo
   };

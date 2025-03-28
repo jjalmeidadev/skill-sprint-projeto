@@ -1,12 +1,10 @@
-
 class ElevadorScene extends Phaser.Scene {
   constructor() {
     // Chama o construtor da classe Phaser.Scene com a chave 'elevadorScene'
     super({ key: "elevadorScene" });
     this.canMove = true; // Controla se o jogador pode se mover
-    this.painelinelevShown = false;
+    this.panelElevShown = false;
   }
-
 
   preload() {
     // Carrega as imagens e spritesheets necessárias para a cena
@@ -36,7 +34,7 @@ class ElevadorScene extends Phaser.Scene {
     this.load.audio('indicatorSound', '../assets/sounds/497198_abacagi_bubble-pops (mp3cut.net).wav');
     this.load.audio('buttonSound', '../assets/sounds/687107__aphom000__mouse-2-button-fast-click.wav');
     this.load.audio('walkSound', '../assets/sounds/753292__vrymaa__footsteps-high-heels-hardwood-walk-run (mp3cut.net).wav');
-    this.load.audio("excbubble", "../assets/sounds/somexclamacao.wav");
+    this.load.audio("excBubble", "../assets/sounds/somexclamacao.wav");
   }
 
   create() {
@@ -45,27 +43,27 @@ class ElevadorScene extends Phaser.Scene {
 
     this.excbubble = this.sound.add("excbubble", {loop: false, volume: 10,});
 
-    //Audio toca sempre que a cena inicia
-    this.excbubble.play();
+    // Audio toca sempre que a cena inicia
+    this.excBubble.play();
 
     // Registra os eventos para pausar o áudio sempre que a cena for interrompida
     this.events.on("shutdown", this.shutdown, this);
     this.events.on("pause", this.shutdown, this);
 
     // Adiciona os efeitos sonoros
-    this.buttonClick = this.sound.add('buttonSound', {loop: false, volume: 10});
-    this.indicatorSound = this.sound.add('indicatorSound', {loop: true, volume: 1.5});
-    this.walkSound = this.sound.add('walkSound', {loop: false, volume: 2});
+    this.buttonClick = this.sound.add('buttonSound', { loop: false, volume: 10 });
+    this.indicatorSound = this.sound.add('indicatorSound', { loop: true, volume: 1.5 });
+    this.walkSound = this.sound.add('walkSound', { loop: false, volume: 2 });
 
     // Inicia o áudio do elevador em loop
     this.elevatorSound = this.sound.add("elevatorAudio", {loop: true, volume: 0.5,});
     
     this.elevatorSound.play();
     
-    // Cria a animação para o indicador (caso ainda não exista)
-    if (!this.anims.exists("exclamando")) {
+    // Creates the animation for the indicator (if it doesn't already exist)
+    if (!this.anims.exists("exclaiming")) {
       this.anims.create({
-        key: "exclamando",
+        key: "exclaiming",
         frames: this.anims.generateFrameNumbers("indicator", {
           start: 0,
           end: 1,
@@ -75,19 +73,19 @@ class ElevadorScene extends Phaser.Scene {
       });
     }
 
-    this.cameras.main.fadeIn(1000); // Efeito de transição para a cena
+    this.cameras.main.fadeIn(1000); // Transition effect for the scene
 
-    // Seleciona aleatoriamente uma das imagens de fundo carregadas
-    const backgrounds = ["backgroundelev"];
+    // Randomly selects one of the loaded background images
+    const backgrounds = ["backgroundElev"];
     const randomBackground = Phaser.Math.RND.pick(backgrounds);
     this.background = this.add.image(0, 0, randomBackground).setOrigin(0, 0);
     this.background.setDisplaySize(width, height);
 
-    //Passa comerciais aleatorios na tv
-    const videos = ["videoelev1", "videoelev2", "videoelev3"];
+    // Plays random commercials on the TV
+    const videos = ["videoElev1", "videoElev2", "videoElev3"];
     const randomVideo = Phaser.Math.RND.pick(videos);
     this.video = this.add.video(width - 561, height - 594, randomVideo).setOrigin(0.5);
-    this.video.setDisplaySize(width/45, height/31)
+    this.video.setDisplaySize(width / 45, height / 31);
     this.video.setAngle(32.7);
     this.video.play(false);
     this.video.on('complete', () => {
@@ -105,78 +103,76 @@ class ElevadorScene extends Phaser.Scene {
     this.createPlayer(width, height);
     this.createPlayerAnimations();
     this.createButtonOffice(width, height);
-    this.createButtonPessoas(width, height);
-    this.createButtonEstrategias(width, height);
-    this.createButtonNegocios(width, height);
+    this.createButtonPeople(width, height);
+    this.createButtonStrategies(width, height);
+    this.createButtonBusiness(width, height);
     this.createButtonTech(width, height);
-    this.createButtonRelacoes(width, height);
+    this.createButtonRelations(width, height);
     this.createBarriers();
     this.lastPosition = "up"
 
-    // this.createButtonCima(); // Commented out as the method is not defined
+    // this.createButtonUp(); // Commented out as the method is not defined
 
-    // Configuração do teclado (WASD + E para interação)
-    this.teclas = this.input.keyboard.addKeys({
+    // Keyboard configuration (WASD + E for interaction)
+    this.keys = this.input.keyboard.addKeys({
       up: Phaser.Input.Keyboard.KeyCodes.W,
       down: Phaser.Input.Keyboard.KeyCodes.S,
       left: Phaser.Input.Keyboard.KeyCodes.A,
       right: Phaser.Input.Keyboard.KeyCodes.D,
     });
 
-    // Define os limites do mundo do jogo
+    // Sets the game world boundaries
     this.physics.world.setBounds(0, 0, width, height);
-
   }
 
   update() {
-    // Atualiza a posição do jogador
+    // Updates the player's position
     this.movePlayer();
 
     const width = this.scale.width;
     const height = this.scale.height;
     const closeToButtons =
-      Math.abs(this.player.x - this.proximidade.x) <= 50 &&
-      Math.abs(this.player.y - this.proximidade.y) <= 50;
+      Math.abs(this.player.x - this.proximity.x) <= 50 &&
+      Math.abs(this.player.y - this.proximity.y) <= 50;
 
     if (closeToButtons) {
-      if (!this.painelinelevShown) {
+      if (!this.panelElevShown) {
         this.indicatorSound.stop();
-        this.indicator.setVisible(false); // Esconde o indicador apenas na primeira vez
-        this.painelinelevShown = true; // Marca que o painel já foi mostrado pelo menos uma vez
+        this.indicator.setVisible(false); // Hides the indicator only the first time
+        this.panelElevShown = true; // Marks that the panel has been shown at least once
       }
 
-      // Exibe o painel e os botões quando perto
-      this.painelinelev.setVisible(true);
-      this.botaoofficeel.setVisible(true);
-      this.botaopessoas.setVisible(true);
-      this.botaoestrategias.setVisible(true);
-      this.botaonegocios.setVisible(true);
-      this.botaotech.setVisible(true);
-      this.botaorelacoes.setVisible(true);
+      // Displays the panel and buttons when nearby
+      this.panelElev.setVisible(true);
+      this.buttonOfficeEl.setVisible(true);
+      this.buttonPeople.setVisible(true);
+      this.buttonStrategies.setVisible(true);
+      this.buttonBusiness.setVisible(true);
+      this.buttonTech.setVisible(true);
+      this.buttonRelations.setVisible(true);
     } else {
-      // Esconde o painel e os botões quando longe
-      this.painelinelev.setVisible(false);
-      this.botaoofficeel.setVisible(false);
-      this.botaopessoas.setVisible(false);
-      this.botaoestrategias.setVisible(false);
-      this.botaonegocios.setVisible(false);
-      this.botaotech.setVisible(false);
-      this.botaorelacoes.setVisible(false);
+      // Hides the panel and buttons when far away
+      this.panelElev.setVisible(false);
+      this.buttonOfficeEl.setVisible(false);
+      this.buttonPeople.setVisible(false);
+      this.buttonStrategies.setVisible(false);
+      this.buttonBusiness.setVisible(false);
+      this.buttonTech.setVisible(false);
+      this.buttonRelations.setVisible(false);
 
-      // O indicador só reaparece se o painel nunca tiver sido mostrado
-      if (!this.painelinelevShown) {
+      // The indicator only reappears if the panel has never been shown
+      if (!this.panelElevShown) {
         this.indicator.setVisible(true);
       }
     }
   }
 
   shutdown() {
-    // Interrompe o áudio do elevador ao encerrar ou pausar a cena
+    // Stops the elevator audio when the scene ends or pauses
     if (this.elevatorSound && this.elevatorSound.isPlaying) {
       this.elevatorSound.stop();
     }
   }
-
 
   movePlayer() {
     const velocidade = 150;
@@ -205,7 +201,7 @@ class ElevadorScene extends Phaser.Scene {
       this.player.setVelocityY(velocidade);
       this.lastPosition = "down";
       this.player.anims.play("walk_down", true);
-      movendo = true;
+      moving = true;
     } else {
       this.player.setVelocityY(0);
     }
@@ -262,7 +258,7 @@ class ElevadorScene extends Phaser.Scene {
     this.player = this.physics.add.sprite(width / 2, height / 2, "player");
     this.player.setScale(6);
     this.player.setCollideWorldBounds(true);
-    // Adicionar limites para o mundo do jogo
+    // Adds boundaries for the game world
     this.physics.world.setBounds(0, 0, width, height);
   }
 
@@ -321,10 +317,10 @@ class ElevadorScene extends Phaser.Scene {
   }
 
   createButtonOffice(width, height) {
-    // Cria o painel e a área de proximidade
-    this.painelinelev = this.add.image(0, 0, "painelinelev").setOrigin(0, 0);
-    this.painelinelev.setDisplaySize(width, height);
-    this.painelinelev.setVisible(false);
+    // Creates the panel and proximity area
+    this.panelElev = this.add.image(0, 0, "panelElev").setOrigin(0, 0);
+    this.panelElev.setDisplaySize(width, height);
+    this.panelElev.setVisible(false);
 
     // Adiciona a sprite da exclamação
     this.indicator = this.add.sprite(width - 955, height - 660, "indicator").setScale(0.3);
@@ -344,7 +340,7 @@ class ElevadorScene extends Phaser.Scene {
     this.proximidade = this.add.rectangle(width - 955, height - 650, 105, 70, 0xff0000, 0);
     this.physics.add.existing(this.proximidade, true);
 
-    this.botaoofficeel.on("pointerdown", () => {
+    this.buttonOfficeEl.on("pointerdown", () => {
       this.buttonClick.play();
       this.shutdown();
       this.scene.stop("elevadorScene");
@@ -352,10 +348,10 @@ class ElevadorScene extends Phaser.Scene {
     });
   }
 
-  createButtonPessoas(width, height) {
-    // Botão Pessoas
-    this.botaopessoas = this.add.image(0, 0, "botaopessoas").setOrigin(0, 0);
-    this.botaopessoas.setVisible(false);
+  createButtonPeople(width, height) {
+    // Button People
+    this.buttonPeople = this.add.image(0, 0, "buttonPeople").setOrigin(0, 0);
+    this.buttonPeople.setVisible(false);
 
     this.botaopessoas = this.add.image( width - 620, height - 160, "botaopessoas" );
    
@@ -363,7 +359,7 @@ class ElevadorScene extends Phaser.Scene {
     this.botaopessoas.setScale(1.2, 1.15);
     this.botaopessoas.setVisible(false);
 
-    this.botaopessoas.on("pointerdown", () => {
+    this.buttonPeople.on("pointerdown", () => {
       this.buttonClick.play();
       this.shutdown();
       this.scene.stop("elevadorScene");
@@ -382,7 +378,7 @@ class ElevadorScene extends Phaser.Scene {
     this.botaoestrategias.setScale(1.2, 1.15);
     this.botaoestrategias.setVisible(false);
 
-    this.botaoestrategias.on("pointerdown", () => {
+    this.buttonStrategies.on("pointerdown", () => {
       this.buttonClick.play();
       this.shutdown();
       this.scene.stop("elevadorScene");
@@ -390,10 +386,10 @@ class ElevadorScene extends Phaser.Scene {
     });
   }
 
-  createButtonNegocios(width, height) {
-    // Botão Negócios
-    this.botaonegocios = this.add.image(0, 0, "botaonegocios").setOrigin(0, 0);
-    this.botaonegocios.setVisible(false);
+  createButtonBusiness(width, height) {
+    // Button Business
+    this.buttonBusiness = this.add.image(0, 0, "buttonBusiness").setOrigin(0, 0);
+    this.buttonBusiness.setVisible(false);
 
     this.botaonegocios = this.add.image( width - 910, height - 393, "botaonegocios" );
    
@@ -401,7 +397,7 @@ class ElevadorScene extends Phaser.Scene {
     this.botaonegocios.setScale(1.2, 1.15);
     this.botaonegocios.setVisible(false);
 
-    this.botaonegocios.on("pointerdown", () => {
+    this.buttonBusiness.on("pointerdown", () => {
       this.buttonClick.play();
       this.shutdown();
       this.scene.stop("elevadorScene");
@@ -410,36 +406,39 @@ class ElevadorScene extends Phaser.Scene {
   }
 
   createButtonTech(width, height) {
-    // Botão Tech
-    this.botaotech = this.add.image(width - 906, height - 602, "botaotech");
-    this.botaotech.setInteractive(); // Torna o botão interativo (clicável)
-    this.botaotech.setScale(1.2, 1.15); //ajusta o tamanho do botão
-    this.botaotech.setVisible(false);
+    // Button Tech
+    this.buttonTech = this.add.image(0, 0, "buttonTech").setOrigin(0, 0);
+    this.buttonTech.setVisible(false);
 
-    this.botaotech.on("pointerdown", () => {
+    this.buttonTech = this.add.image(width - 906, height - 602, "buttonTech");
+    this.buttonTech.setInteractive();
+    this.buttonTech.setScale(1.2, 1.15);
+    this.buttonTech.setVisible(false);
+
+    this.buttonTech.on("pointerdown", () => {
       this.buttonClick.play();
       this.shutdown();
       this.scene.stop("elevadorScene");
-      this.scene.start("techScene");
+      this.scene.start("vpTecnologiaScene");
     });
   }
 
-  createButtonRelacoes(width, height) {
-    // Botão Relações
-    this.botaorelacoes = this.add.image(0, 0, "botaorelacoes").setOrigin(0, 0);
-    this.botaorelacoes.setVisible(false);
+  createButtonRelations(width, height) {
+    // Button Relations
+    this.buttonRelations = this.add.image(0, 0, "buttonRelations").setOrigin(0, 0);
+    this.buttonRelations.setVisible(false);
 
     this.botaorelacoes = this.add.image( width - 610, height - 605, "botaorelacoes" );
     this.botaorelacoes.setInteractive();
     this.botaorelacoes.setScale(1.2, 1.15);
     this.botaorelacoes.setVisible(false);
 
-    this.botaorelacoes.on("pointerdown", () => {
+    this.buttonRelations.on("pointerdown", () => {
       this.buttonClick.play();
       this.shutdown();
       this.scene.stop("elevadorScene");
       this.scene.start("relacoesScene");
     });
-  };
+  }
 }
 

@@ -9,15 +9,14 @@ class InitialScene extends Phaser.Scene {
       physics: {
         default: "arcade",
         arcade: {
-          debug: false, // Set to true to see hitboxes
+          debug: false, 
           gravity: { y: 0 },
-          fps: 60, // Force constant frame updates
-          fixedStep: true, // Ensures physics runs at a fixed time step
+          fps: 60, 
+          fixedStep: true, 
         },
       },
       scene: InitialScene,
     };
-
   }
 
   preload() {
@@ -54,7 +53,7 @@ class InitialScene extends Phaser.Scene {
     const height = this.scale.height;
 
     this.cameras.main.fadeIn(1000);
-//
+    //
     this.bgs = [];
     const speeds = [0.005, 0.05, 0.07, 0.08, 0.09, 0.1];
     for (let i = 0; i < 6; i++) {
@@ -75,9 +74,18 @@ class InitialScene extends Phaser.Scene {
     this.meteoro.setFlipX(true);
     meteoro.setAngle(-20);
     this.meteoro.setScale(0.4);
-    this.meteoro.dS = 35;
-    this.meteoro.v0 = 0;
-    this.meteoro.a = 9;
+  
+    this.meteoro.duracao = 480; //segundos
+
+    this.meteoro.xf = width / 3;
+    this.meteoro.x0 = width + 200;
+    this.meteoro.dS = this.meteoro.xf - this.meteoro.x0;
+    this.meteoro.v0y = 200;
+    this.meteoro.v0x = 0;
+    this.meteoro.yf = height - 100;
+    this.meteoro.y0 = height - 900;
+    this.meteoro.a =
+      (2 * (this.meteoro.yf - this.meteoro.y)) / this.meteoro.duracao ** 2;
 
     this.birdeaster.body.setEnable(true);
     this.meteoro.body.setEnable(true);
@@ -150,7 +158,6 @@ class InitialScene extends Phaser.Scene {
       this.birdeaster,
       this.meteoro,
       (birdeaster, meteoro) => {
-        console.log("Colisão detectada dentro da função anônima!");
         this.collision(birdeaster, meteoro);
       },
       null,
@@ -159,7 +166,6 @@ class InitialScene extends Phaser.Scene {
   }
 
   collision = (birdeaster, meteoro) => {
-    console.log("Colisão detectada!");
     birdeaster.setVelocity(0, 0);
     meteoro.setVelocity(0, 0);
 
@@ -174,7 +180,7 @@ class InitialScene extends Phaser.Scene {
 
     this.explosao.setActive(true);
     this.explosao.setVisible(true);
-    this.sound.play("vineboom", { volume: 0.03 });
+    this.sound.play("vineboom", { volume: 0.3 });
     this.explosao.anims.play("explosao", true);
     this.explosao.on("animationcomplete", () => {
       this.explosao.setVisible(false);
@@ -184,6 +190,7 @@ class InitialScene extends Phaser.Scene {
     ];
     this.explobird.setVisible(true);
 
+    //Aumento gradual do pássaro
     for (let i = 0; i < size.length; i++) {
       this.time.delayedCall(i * 100, () => {
         this.tweens1 = this.tweens.add({
@@ -193,17 +200,18 @@ class InitialScene extends Phaser.Scene {
           ease: "Linear",
         });
       });
-      // Rotate the explobird smoothly
+
+      //Rotação do pássaro
       this.tweens2 = this.tweens.add({
         targets: this.explobird,
-        angle: 300, // Rotate 360 degrees
-        duration: 1300, // Duration of the rotation in milliseconds
-        ease: "Linear", // Easing function
-        repeat: 0, // Repeat indefinitely
+        angle: 300, 
+        duration: 1300, 
+        ease: "Linear", 
+        repeat: 0, 
       });
     }
 
-    // Set tweens3 only once
+ //Trajeto do pássaro até o vidro do computador
     this.tweens3 = this.tweens.add({
       targets: this.explobird,
       x: this.explobird.x - 600,
@@ -212,9 +220,10 @@ class InitialScene extends Phaser.Scene {
       ease: "Linear",
     });
 
+    // Toca o som de arraste no vidro
     this.tweens3.on("complete", () => {
       this.sound.stopByKey("vidroslide");
-      this.sound.play("vidroslide", { volume: 2 });
+      this.sound.play("vidroslide", { volume: 3 });
       this.vidroslidePlayed = true;
 
       this.tweens4 = this.tweens.add({
@@ -283,7 +292,7 @@ class InitialScene extends Phaser.Scene {
 
     // Verificar se 10 segundos passaram
     if (time - this.timeset >= 10000) {
-      if ((this.birdeaster, this.meteoro)) {
+      if ((this.birdeaster)) {
         this.birdeaster.anims.play("fly", true);
 
         let t = Math.max(time - this.timeset - 10000) / 1000; // Conversão pra segundos e subtração de 30
@@ -294,22 +303,35 @@ class InitialScene extends Phaser.Scene {
         //Cálculo do deslocamento com x = x0 + V0t + 0.5at²
         this.birdeaster.x = width - (width + 35) + this.birdeaster.v0 * t + 0.5 * this.birdeaster.a * t * t; // Cálculo da velocidade com V = delta S/t
 
-        this.meteoro.setVelocityX(-this.meteoro.dS / t);
+        var speedMultiplier = 100;
+        this.meteoro.setVelocityX(
+          (this.meteoro.dS / this.meteoro.duracao) * speedMultiplier
+        );
 
-        this.meteoro.setVelocityY(this.meteoro.v0 + this.meteoro.a * t); // Cálculo da velocidade com V = v0 + at
+        // Cálculo da velocidade com V = v0 + at
+
+        this.meteoro.setVelocityY(
+          this.meteoro.v0y + this.meteoro.a * this.meteoro.duracao
+        );
       }
     }
-    if (this.meteoro.visible) {
-      console.log(
-        "A posição do meteoro no eixo X é: " +
-          this.meteoro.x +
-          " A posição do meteoro no eixo Y é: " +
-          this.meteoro.y +
-          "A velocidade do meteoro no eixo X é: " +
-          this.meteoro.body.velocity.x +
-          " A velocidade do meteoro no eixo Y é: " +
-          this.meteoro.body.velocity.y
-      );
-    }
+
+      if (this.meteoro.visible === true) {
+        console.log(
+          "A posição do meteoro no eixo X é: " +
+            // Utilizando S(t) = S₀ + v.t em MU
+            (this.meteoro.x + this.meteoro.v0x * this.meteoro.duracao) +
+            " A posição do meteoro no eixo Y é: " +
+            // Utilizando S(t) = S₀ + V₀.t + (a.t²)/2
+          (this.meteoro.y + this.meteoro.v0y * this.meteoro.duracao +
+            (this.meteoro.a * this.meteoro.duracao ** 2) / 2) +
+            // Utilizando velocidade com V = delta S/t
+            "A velocidade do meteoro no eixo X é: " +
+            ((this.meteoro.dS / this.meteoro.duracao) * speedMultiplier) +
+            // Utilizando velocidade com V = v0 + at
+            " A velocidade do meteoro no eixo Y é: " +
+            (this.meteoro.v0y + this.meteoro.a * this.meteoro.duracao)
+        );
+      }
   }
 }

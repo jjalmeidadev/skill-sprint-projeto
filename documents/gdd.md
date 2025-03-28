@@ -159,7 +159,9 @@ R16 | O design visual do jogo utilizará uma paleta de cores consistente e coere
 R17 | Utilizaremos algumas movimentações bidimensionais de elementos gráficos no jogo, utilizando conhecimentos sobre vetores e cinemática.
 R18 | O jogo contará com um botão de ajustes que proporciona acessibilidade com filtro de daltonismo e ajuste de volume. 
 R19 | A terceira fase será na Vice-Presidência de Negócios e contará com 2 minigames dinâmicos (objetivo: preparar os jogadores para resolução de cases).
-R20 | A quarta fase será na Vice-Presidência de Estratégia e contará com 1 minigame (objetivo: ensinar a estruturar um plano de carreira).
+R20 | A quarta fase será na Vice-Presidência de Estratégia, Novos Negócios e Inteligência Artificial e contará com 1 minigame (objetivo: ensinar a estruturar um plano de carreira).
+R21 | A quinta fase será na Vice-Presidência de Relações Institucionais e terá 1 minigame (objetivo: orientar sobre feedbacks e acompanhamento de desempenho).
+R22 | A sexta e última fase do jogo será na Vice-Presidência de Tecnologia da Informação e terá 1 minigame (objetivo: incentivar o aprendizado contínuo - upskilling e reskilling).
 
 ## 1.3. Público-alvo do Projeto (sprint 2)
 
@@ -706,7 +708,29 @@ Esses avanços representam um passo importante em direção ao MVP final, e esta
 
 ## 4.4. Desenvolvimento final do MVP (sprint 4)
 
-*Descreva e ilustre aqui o desenvolvimento da versão final do jogo, explicando brevemente o que foi entregue em termos de MVP. Utilize prints de tela para ilustrar. Indique as eventuais dificuldades e planos futuros.*
+Durante a quarta sprint do nosso projeto, trabalhamos na implementação de novos mini games, na expansão dos mapas, na criação da tela inicial e na resolução de bugs que estavam comprometendo a execução do código. O objetivo principal foi entregar uma versão funcional e engajante do jogo, garantindo que todas as mecânicas essenciais estivessem implementadas.
+
+Durante um brainstorming, decidimos que o ambiente principal do jogo seria um prédio com seis andares, cada um representando uma Vice-Presidência (VP), com desafios e mini games exclusivos.
+
+O jogador começa na Recepção (Primeiro Andar), onde responde a uma série de perguntas relacionadas à área em que deseja atuar. Com base nas respostas, a líder fornece um feedback e orienta a próxima etapa. A partir disso, ele avança pelos andares, passando pelas seguintes VP's:
+
+**VP de Pessoas (Segundo Andar):** Nesta fase, o jogador interage com desafios relacionados à gestão de pessoas, ajudando um colega de trabalho se acalmar através de um mini game.
+
+**VP de Negócios (Terceiro Andar):**  Nesta fase, o jogador tem a missão de ligar os fios e arrumar o banco de dados da empresa e colotar 5 chips para alcançar o 5G.
+
+**VP de Estratégia (Quarto Andar):** O jogador terá um mini game de arrastar palavras para criar um planejamento de carreira para 3 funcionários.
+
+**VP de Relações (Quinto Andar):** O jogador passa por um jantar e uma conversa muito impotante para o seu desenvolvimento de carreira.
+
+**VP de Tecnologia (Sexto Andar):** Fase final, onde o jogador aprende através de um mini game a difenrença entre upskilling e reskilling.
+
+Cada fase do jogo conta com um mini game exclusivo e interativo, permitindo que o jogador aprenda e interaja com os personagens enquanto resolve tarefas desafiadoras.
+
+Abaixo, estão alguns prints de tela para ilustrar o desenvolvimento da versão final do jogo:
+
+lembrar de inserir prints de tela aqui (sophia
+
+
 
 ## 4.5. Revisão do MVP (sprint 5)
 
@@ -738,6 +762,9 @@ Os casos de teste descritos a seguir foram elaborados para avaliar os diferentes
 13 | O jogador está interagindo com um NPC | Pressionar a tecla "ENTER" para avançar o diálogo | Um som de efeito deve ser reproduzido ao avançar o diálogo  
 14 | O jogador chegou ao elevador | Entrar no elevador | O jogo deve carregar corretamente a nova cena "Elevador"  
 15 | O jogador está na cena do Elevador | Pressionar os botões do painel do elevador para escolher um andar | O jogo deve trocar para a cena correspondente ao andar selecionado  
+16 | O jogador entra na "VP Pessoas"| Aguardar o carregamento da cena | A trilha sonora da Cena 2 deve começar a tocar e substituir a anterior  
+17 | O jogador está próximo a um lixo interativo na "VP Pessoas"| Pressionar a tecla "E" | Um mini game deve iniciar na tela  
+18 | O jogador está próximo a um caderno interativo na "VP Pessoas" | Pressionar a tecla "E" | O caderno deve abrir e exibir anotações na tela  
 
 
 Através desses testes, foi possível identificar pontos de melhoria, ajustar comportamentos inesperados e assegurar que a experiência do jogador seja fluida e intuitiva.
