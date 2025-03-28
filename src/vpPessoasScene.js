@@ -145,6 +145,10 @@ class VpPessoasScene extends Phaser.Scene {
 
         this.npcMovelInteracted = false;
         this.keyENTER_NpcMovel = null;
+
+        //da zoom na tela do jogo e faz visao do personagem 
+        this.cameras.main.startFollow(this.player);
+        this.cameras.main.setZoom(2);
       }
 
       createAnimsIndicator() {
@@ -157,6 +161,7 @@ class VpPessoasScene extends Phaser.Scene {
           repeat: -1,
         });
       }
+      
     createNpcMovel(){
       this.npcMovel = this.physics.add.sprite(width - 380, height - 520, 'npcMovel'); // Posição inicial
         this.npcMovel.setScale(2.5);

@@ -96,6 +96,10 @@ class OfficeScene extends Phaser.Scene {
         this.officeMusic.play({ seek: OfficeScene.lastMusicTime || 0 });
       }
     });
+
+    //da zoom na tela do jogo e faz visao do personagem 
+    this.cameras.main.startFollow(this.player);
+    this.cameras.main.setZoom(1.5);
   }
 
   createCollisions() {
@@ -400,13 +404,17 @@ class OfficeScene extends Phaser.Scene {
   }
 
   createButtonCima() {
-    this.bgelevoffice = this.add.image(0, 0, "bgElevOffice").setOrigin(0, 0);
+    // Para de seguir o player e remove o zoom
+    this.cameras.main.stopFollow();
+    this.cameras.main.setZoom(1.2);
+
+    this.bgelevoffice = this.add.image(width - 1300, height - 1000, "bgElevOffice").setOrigin(0, 0);
     this.bgelevoffice.setDisplaySize(width, height);
-    this.painelelev = this.add.image(width - 910, height - 600, "painelelev").setOrigin(0, 0);
+    this.painelelev = this.add.image(width - 610, height - 800, "painelelev").setOrigin(0, 0);
     this.bgelevoffice.setVisible(false);
     this.painelelev.setVisible(false);
 
-    this.botaoCima = this.add.image(width - 740, height - 480, "botaoElevOffice"); 
+    this.botaoCima = this.add.image(width - 440, height - 670, "botaoElevOffice"); 
 
     this.botaoCima.setInteractive();
     this.botaoCima.setScale(1);

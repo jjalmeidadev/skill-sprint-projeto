@@ -79,8 +79,8 @@ class VpNegociosScene extends Phaser.Scene {
 
 
       //da zoom na tela do jogo e faz visao do personagem 
-        this.cameras.main.startFollow(player);
-        this.cameras.main.setZoom(1.5);
+        this.cameras.main.startFollow(this.player);
+        this.cameras.main.setZoom(2);
     }
 
     update(){
