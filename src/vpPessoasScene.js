@@ -1,6 +1,9 @@
 class VpPessoasScene extends Phaser.Scene {
     constructor() {
       super({ key: 'vpPessoasScene' });
+
+      this.minigameComplete = false;
+      this.npcMovelFixedCreated = false;
     }
 
     preload() {
@@ -204,12 +207,6 @@ class VpPessoasScene extends Phaser.Scene {
       this.createNpcAnimations();
       this.npc16.anims.play('npc16');
 
-      this.rafaela = this.physics.add.sprite(width - 700, height - 600, 'rafaela');
-      this.rafaela.setScale(2.5);
-      this.rafaela.setImmovable(true);
-      this.createNpcAnimations();
-      this.rafaela.anims.play('rafaela');
-
       //this.npcMovel = this.physics.add.sprite(width - 830, height - 400, 'npcMovel');
       //this.npcMovel.setScale(2.0);
       //this.npcMovel.setImmovable(true);
@@ -296,13 +293,6 @@ class VpPessoasScene extends Phaser.Scene {
         //});
 
         this.anims.create({
-          key: "rafaela",
-          frames: this.anims.generateFrameNumbers('rafaela', { start: 0, end: 11 }),
-          frameRate: 4,
-          repeat: -1,
-        });
-
-        this.anims.create({
           key: "npc23",
           frames: this.anims.generateFrameNumbers('npc23', { start: 0, end: 11 }),
           frameRate: 4,
@@ -364,13 +354,55 @@ class VpPessoasScene extends Phaser.Scene {
         this.buttonClick.play();
         this.scene.pause();
         this.scene.launch('minigameTrashScene');
+        this.minigameComplete = true;
       }
+
 
       if (this.canInteractWithBook && Phaser.Input.Keyboard.JustDown(this.teclas.interagir)) {
         this.buttonClick = this.sound.add('buttonSound', { loop: false, volume: 10 });
         this.buttonClick.play();
         this.scene.pause();
         this.scene.launch('bookScene');
+      }
+
+      if (this.canInteractWithNpcMovel && Phaser.Input.Keyboard.JustDown(this.teclas.interagir)) {
+        this.keyENpcMovel.destroy();
+        this.keyENpcMovel = null;
+        this.npcMovelInteracted = true;
+        this.showNpcMovelInteraction();
+      }
+
+      // RAFAELA
+      if (this.rafaela && this.indicatorRafaelaActive) {
+        const distRafaela = Phaser.Math.Distance.Between(this.player.x, this.player.y, this.rafaela.x, this.rafaela.y);
+        this.canInteractWithRafaela = distRafaela < 70;
+      
+        if (this.canInteractWithRafaela) {
+          if (this.indicatorSoundRafaela && this.indicatorSoundRafaela.isPlaying) {
+            this.indicatorSoundRafaela.stop();
+          }
+      
+          if (this.exclamation) {
+            this.exclamation.destroy();
+          }
+      
+          this.indicatorRafaelaActive = false;
+      
+          if (!this.keyERafaela) {
+            this.keyERafaela = this.add.image(this.rafaela.x, this.rafaela.y - 60, 'keyE').setScale(0.2);
+          }
+        } else {
+          if (this.keyERafaela) {
+            this.keyERafaela.destroy();
+            this.keyERafaela = null;
+          }
+        }
+      }
+
+      if (this.returnedFromTrash) {
+        // Desativa o movimento
+        this.npcMovel.anims.stop(); // Para a animação de andar
+        this.npcMovel.setFlipX(false); // Direção neutra
       }
     }
 
@@ -496,34 +528,111 @@ class VpPessoasScene extends Phaser.Scene {
       }
 
     moveNpcMovel() {
-        this.npcMovel.x += this.npcMovel.direcao * this.npcMovel.velocidade * this.game.loop.delta / 1000;
-    
-        // Verifica se atingiu a distância máxima e inverte a direção
-        if (this.npcMovel.x <= this.npcMovel.posicaoInicial - this.npcMovel.distanciaMaxima) {
-            this.npcMovel.direcao = 1; // Muda para a direita
-            this.npcMovel.setFlipX(true);
-        } else if (this.npcMovel.x >= this.npcMovel.posicaoInicial) {
-            this.npcMovel.direcao = -1; // Muda para a esquerda
-            this.npcMovel.setFlipX(false);
-        }
+      // Se o jogador já voltou do Trash, não move mais o NPC
+      if (this.returnedFromTrash) return;
+
+      this.npcMovel.x += this.npcMovel.direcao * this.npcMovel.velocidade * this.game.loop.delta / 1000;
+
+      if (this.npcMovel.x <= this.npcMovel.posicaoInicial - this.npcMovel.distanciaMaxima) {
+        this.npcMovel.direcao = 1;
+        this.npcMovel.setFlipX(true);
+      } else if (this.npcMovel.x >= this.npcMovel.posicaoInicial) {
+        this.npcMovel.direcao = -1;
+        this.npcMovel.setFlipX(false);
       }
+    }
+
+    addNpcMovelFixo() {
+      console.log("Adicionando NPC fixo");
+      this.npcMovel = this.physics.add.sprite(width - 500, height - 420, 'npcMovel'); 
+      this.npcMovel.setScale(2.5);
+      this.npcMovel.setFlipX(false); // Vira o NPC para a esquerda
+      this.npcMovel.setImmovable(true);
+      this.npcMovel.anims.stop(); // Não executa a animação de andar
+    
+      // Aqui você pode até definir uma animação idle, se quiser, ou deixar sem animação
+      // this.npcMovel.anims.play('npcMovelIdle');
+    
+      this.createIndicatorNpcMovel(); // Ativa o indicador
+    }
+
+    createIndicatorNpcMovel() {
+      this.indicatorNpcMovel = this.physics.add.sprite(this.npcMovel.x, this.npcMovel.y - 50, 'indicator');
+      this.indicatorNpcMovel.setScale(0.2);
+      this.indicatorNpcMovel.setImmovable(true);
+      this.indicatorNpcMovel.play("exclamando");
+    
+      this.physics.add.overlap(this.player, this.indicatorNpcMovel, () => {
+        if (!this.npcMovelInteracted) {
+          this.indicatorNpcMovel.destroy();
+    
+          if (!this.keyENpcMovel) {
+            this.keyENpcMovel = this.add.image(this.npcMovel.x, this.npcMovel.y - 40, 'keyE').setScale(0.2);
+          }
+    
+          this.canInteractWithNpcMovel = true;
+        }
+      });
+    }
+
+    showNpcMovelInteraction() {
+      const falas = [
+        "Nossa, muito obrigado, isso significava muito para mim!", 
+        "Como recompensa eu vou mostrar as minhas anotações que irão te ajudar a se preparar para uma entrevista.", 
+        "Vá até a mesa e pegue o caderno em cima dela, lá você encontrará dicas para ir bem em uma entrevista."
+      ];
+      const balaoTexto = this.add.image(this.npcMovel.x + 80, this.npcMovel.y - 80, "balaoTexto").setScale(0.9);
+      const text = this.add.text(this.npcMovel.x - 1, this.npcMovel.y - 130, falas[0], {
+        fontSize: "16px",
+        fill: "#000000",
+      });
+    
+      let currentIndex = 0;
+      this.input.keyboard.on("keydown-ENTER", () => {
+        currentIndex++;
+        if (currentIndex < falas.length) {
+          text.setText(falas[currentIndex]);
+        } else {
+          text.setVisible(false);
+          balaoTexto.setVisible(false);
+          this.input.keyboard.off("keydown-ENTER");
+          this.createIndicatorBook(); // Mostra o indicador do livro
+        }
+      });
+    }
+
+    createRafaelaAnimations() {
+      this.anims.create({
+        key: "rafaela",
+        frames: this.anims.generateFrameNumbers('rafaela', { start: 0, end: 11 }),
+        frameRate: 4,
+        repeat: -1,
+      });
+    }
     
     addRafaela(width, height) {
-      const rafaela = this.add
-        .image(width - 700, height - 600, "rafaela")
-        .setScale(0.06);
-    
-      this.exclamation = this.add
-        .sprite(width - 700, height - 660, "indicator")
-        .setScale(0.2);
+      const rafaela = this.physics.add.sprite(width - 400, height - 600, 'rafaela');
+      rafaela.setScale(2.5);
+      rafaela.setImmovable(true);
+      this.rafaela = rafaela; // Salva a referência do sprite de Rafaela
+      this.createRafaelaAnimations();
+      this.rafaela.anims.play('rafaela');
+
+      this.exclamation = this.physics.add.sprite(width - 400, height - 660, "indicator").setScale(0.2);
+      this.exclamation.play("exclamando");
+
+      this.indicatorSoundRafaela = this.sound.add('indicatorSound', { loop: true, volume: 10 });
+      this.indicatorSoundRafaela.play();
+
+      this.indicatorRafaelaActive = true; // Controle para não tocar várias vezes
     
       rafaela.setInteractive();
       rafaela.on("pointerdown", () => {
           this.showrafaelaInteraction();
         });
     
-      this.input.keyboard.on('keydown-E', () => {
-      this.indicatorActive = false;
+        this.input.keyboard.on('keydown-E', () => {
+          this.indicatorActive = false;
           if (
             Math.abs(this.player.x - rafaela.x) <= 70 &&
             Math.abs(this.player.y - rafaela.y) <= 70 &&
@@ -532,26 +641,36 @@ class VpPessoasScene extends Phaser.Scene {
             this.showrafaelaInteraction();
             this.rafaelaInteracted = true;
             this.buttonClick.play();
+        
+            // Destroi a tecla E da Rafaela
+            if (this.keyERafaela) {
+              this.keyERafaela.destroy();
+              this.keyERafaela = null;
+            }
           }
         });
       
+        
     }
     
     showrafaelaInteraction() {
         this.exclamation.setVisible(false);
     
         const speechrafaela = [
-          "bom dia gatinha!",
-          "mó saudade",
-          "fica comigo?",
-          "seloko compensa",
+          "Olá! Bem-Vindo a Vice-Presidência de Pessoas", 
+          "aqui você irá aprender a lidar com colaboradores e receber dicas para uma entrevista.",
+          "Você pode notar que o Rodrigo está tendo uma crise", 
+          "isso porque jogaram o porta retratos dele no lixo, você poderia ajudá-lo?",
+          "Basta ir até a lixeira, coletar a imagem rasgada e melhorar o humor de Rodrigo com as carinhas felizes.",
+          "Boa Sorte!",
         ];//add scipt
 
         const width = this.scale.width;
         const height = this.scale.height;
-        const balaoTexto = this.add.image(width - 620, height - 690, "balaoTexto").setScale(0.9);
-        const text = this.add.text(width - 690, height - 740, speechrafaela[0], {
-          fontSize: "16px",
+        const balaoTexto = this.add.image(width - 500, height - 680, "balaoTexto").setScale(0.9);
+        balaoTexto.setFlipX(true); // Inverte a imagem para ficar do lado certo
+        const text = this.add.text(width - 580, height - 737, speechrafaela[0], {
+          fontSize: "14px",
           fill: "#000000",
           wordWrap: { width: balaoTexto.width - 20 },
         });
@@ -566,9 +685,13 @@ class VpPessoasScene extends Phaser.Scene {
             balaoTexto.setVisible(false);
             text.setVisible(false);
             this.input.keyboard.off("keydown-ENTER");
-            this.addIndicatorAndComputer();
+            this.showIndicatorTrash();
           }
         });
+      }
+
+      showIndicatorTrash() {
+        this.createIndicatorTrash(); // Ativa o indicador e som do lixo
       }
       
     onShutdown() {
@@ -583,7 +706,7 @@ class VpPessoasScene extends Phaser.Scene {
         const trash = this.physics.add.sprite(width - 735, height - 570, 'trash');
         trash.setScale(0.1);
         trash.setImmovable(true);
-        this.createIndicatorTrash();
+        //this.createIndicatorTrash();
       
         // Apenas overlap é necessário para ativar a possibilidade de interação
         this.physics.add.overlap(this.player, trash, () => {
@@ -602,7 +725,7 @@ class VpPessoasScene extends Phaser.Scene {
         const book = this.physics.add.sprite(width - 700, height - 350, 'book');
         book.setScale(0.06);
         book.setImmovable(true);
-        this.createIndicatorBook();
+        //this.createIndicatorBook();
       
         // Apenas overlap é necessário para ativar a possibilidade de interação
         this.physics.add.overlap(this.player, book, () => {
@@ -664,10 +787,25 @@ class VpPessoasScene extends Phaser.Scene {
           this.keyETrash.destroy();
           this.keyETrash = null;
         }
-
+      
         if (this.keyEBook) {
           this.keyEBook.destroy();
           this.keyEBook = null;
+        }
+      
+        // FLAG para detectar retorno do Trash
+        if (this.rafaelaInteracted && !this.returnedFromTrash) {
+          this.returnedFromTrash = true;
+      
+          if (this.npcMovel) {
+            this.npcMovel.destroy(); // Destrói o NPC que estava andando
+            this.npcMovel = null;
+          }
+      
+          if (!this.npcMovelFixedCreated) {
+            this.npcMovelFixedCreated = true;
+            this.addNpcMovelFixo(); // Adiciona o novo NPC parado com botão
+          }
         }
       }
 }

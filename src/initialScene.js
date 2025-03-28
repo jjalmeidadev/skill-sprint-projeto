@@ -255,7 +255,7 @@ class InitialScene extends Phaser.Scene {
       this.buttonSound();
       this.shutdown();
       this.scene.stop("initialScene");
-      this.scene.start("officeScene");
+      this.scene.start("vpPessoasScene");
     });
   }
 

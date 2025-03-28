@@ -421,7 +421,11 @@ class CongratulationsMinigameScene extends Phaser.Scene {
         buttonBack.on('pointerdown', () => {
             this.buttonSound();
             this.scene.stop('congratulationsMinigameScene');
-            this.scene.resume('vpPessoasScene');
+            
+            // Obtém a cena 'vpPessoasScene' e chama o método resume manualmente
+            const vpScene = this.scene.get('vpPessoasScene');
+            vpScene.resume(); // chama o método resume definido por você
+            this.scene.resume('vpPessoasScene'); // resume o fluxo normal da cena
         });
     }
 }
