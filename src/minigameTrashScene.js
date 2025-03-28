@@ -78,7 +78,7 @@ class MinigameTrashScene extends Phaser.Scene {
     update() {
         let movendo = false; // Inicializa a variável de movimento
 
-        if (this.vivinho === 3 && this.happiness === 5) {
+        if (this.vivinho === 3 && this.happiness >= 5) {
             this.time.delayedCall(200, () => {
                 this.scene.start('congratulationsMinigameScene');
             });
@@ -131,6 +131,9 @@ class MinigameTrashScene extends Phaser.Scene {
             this.smile.setVisible(true); // Torna a carinha visível
             this.smile.enableBody(true, 1500, posY, true, true); // Ativa o corpo físico da carinha
         });
+
+        this.collected = this.sound.add('collectSound', { loop: false, volume: 10 });
+        this.collected.play();
     }
 
     addHead() {
