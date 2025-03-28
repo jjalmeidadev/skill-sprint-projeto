@@ -31,6 +31,8 @@ class SalaLider extends Phaser.Scene {
     this.load.audio('talkSound', '../assets/sounds/talkSound.wav');
     this.load.audio("officeMusic", "../assets/0320(1).MP3");
 
+    this.load.image('keyE', '../assets/teclaE.png');
+    this.load.image('keyENTER', '../assets/keyEnter.png'); 
   }
 
   create() {
@@ -73,12 +75,23 @@ class SalaLider extends Phaser.Scene {
     // Evento para a tecla 'E'
     this.input.keyboard.on('keydown-E', () => {
       if (
-        Math.abs(this.player.x - this.leader.x) <= 150 &&
-        Math.abs(this.player.y - this.leader.y) <= 150 &&
-        !this.leaderInteracted // Verifica se a interação já ocorreu
+        this.canInteractWithLeader &&
+        !this.leaderInteracted
       ) {
-        this.showLeaderInteraction(); // Chama a função de interação com a líder
-        this.leaderInteracted = true; // Marca que a interação ocorreu
+        this.showLeaderInteraction();
+        this.buttonClick.play();
+        this.leaderInteracted = true;
+    
+        // Remove tecla E
+        if (this.keyELeader) {
+          this.keyELeader.destroy();
+          this.keyELeader = null;
+        }
+    
+        // Mostra tecla ENTER acima da líder
+        if (!this.keyENTERLeader) {
+          this.keyENTERLeader = this.add.image(this.leader.x, this.leader.y - 50, 'keyENTER').setScale(0.1).setDepth(1000);
+        }
       }
     });
 
@@ -125,6 +138,8 @@ class SalaLider extends Phaser.Scene {
 
     this.createLeaderAnimations();
     this.addLeader();
+    this.canInteractWithLeader = false;
+
     this.createPlayer();
     this.createPlayerAnimations();
 
@@ -141,6 +156,24 @@ class SalaLider extends Phaser.Scene {
 
     if (this.indicatorActive == false) {
       this.indicatorSound.stop();
+    }
+
+    if (
+      Math.abs(this.player.x - this.leader.x) <= 100 &&
+      Math.abs(this.player.y - this.leader.y) <= 100 &&
+      !this.leaderInteracted
+    ) {
+      this.canInteractWithLeader = true;
+    
+      if (!this.keyELeader) {
+        this.keyELeader = this.add.image(this.leader.x, this.leader.y - 50, 'keyE').setScale(0.2).setDepth(1000);
+      }
+    } else {
+      this.canInteractWithLeader = false;
+      if (this.keyELeader) {
+        this.keyELeader.destroy();
+        this.keyELeader = null;
+      }
     }
   }
 
@@ -292,20 +325,23 @@ class SalaLider extends Phaser.Scene {
     });
 
     // Adiciona um evento para a tecla 'E'
-    this.input.keyboard.on('keydown-E', () => {
-      this.indicatorActive = false;
-      // Verifica se o jogador está próximo da leader
-      if (
-        Math.abs(this.player.x - this.leader.x) <= 150 &&
-        Math.abs(this.player.y - this.leader.y) <= 150 &&
-        !this.leaderInteracted // Verifica se a interação já ocorreu
-      ) {
-        // Chama a função de interação com a leader
-        this.showLeaderInteraction();
-        this.buttonClick.play();
-        this.leaderInteracted = true; // Marca que a interação ocorreu
+    if (
+      this.canInteractWithLeader &&
+      !this.leaderInteracted
+    ) {
+      this.showLeaderInteraction();
+      this.buttonClick.play();
+      this.leaderInteracted = true;
+    
+      // Remove a tecla E e adiciona ENTER
+      if (this.keyELeader) {
+        this.keyELeader.destroy();
+        this.keyELeader = null;
       }
-    });
+      if (!this.keyENTERLeader) {
+        this.keyENTERLeader = this.add.image(this.leader.x, this.leader.y - 50, 'keyENTER').setScale(0.1).setDepth(1000);
+      }
+    }
   }
 
   showLeaderInteraction() {
@@ -346,9 +382,16 @@ class SalaLider extends Phaser.Scene {
         textBalloon.setVisible(false);
         text.setVisible(false);
         this.input.keyboard.off('keydown-ENTER');
+        
+        if (this.keyENTERLeader) {
+          this.keyENTERLeader.destroy();
+          this.keyENTERLeader = null;
+        }
+      
         this.showIndicatorToReturn();
       }
     });
+
   }
 
   showIndicatorToReturn() {
