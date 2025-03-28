@@ -371,10 +371,11 @@ Nesta seção, vamos explorar os personagens que habitam o universo do nosso jog
 
 O Skill Sprint conta com um jogador principal chamado Skrill que será controlado pelo colaborador da Vivo pelas teclas WASD e utilizará a tecla E pra interagir com objetos/personagens durante a jornada do jogo. Existe também o Vivinho, que é um personagem com o como objetivo de guiar o usuário durante as fases e ensiná-lo a realizar os cases. A Vivita é uma NPC que fica na recepção e orienta o colaborador a realizar a primeira tarefa, que é criar um currículo. Ela será responsável por introduzir o usuário e informar qual o primeiro passo a ser dado para começar a jornada de Job Rotation. Todos os NPCs serão desenhados com o intuito de trazer diversidade, remetento aos valores da Vivo. Planejamos representar diferentes grupos étnicos, a comunidade LGBTQIA+, pessoas negras, mulheres em cargos de liderança e também pessoas com necessidades especiais.
 
+
 <div align="center">
-  <sub>Skrill, jogador principal</sub><br>
- <img scr="../assets/Screenshot 2025-03-28 184937.png" whdth=900px"
-  alt="Skrill, jogador principal"><br>
+  <sub>Vivinho</sub><br>
+  <img src="../assets/Screenshot 2025-03-28 184937.png" width="450px" 
+  alt="Vivinho"><br>
   <sup>Fonte: produzido pelos autores.</sup>
 </div>
 
