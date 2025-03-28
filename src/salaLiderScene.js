@@ -62,7 +62,7 @@ class SalaLider extends Phaser.Scene {
     this.leaderInteracted = false; // Variável para controlar se a interação já ocorreu
 
     // Configuração do teclado (WASD + E para interação)
-    this.keyboards = this.input.keyboard.addKeys({
+    this.teclas = this.input.keyboard.addKeys({
       up: Phaser.Input.Keyboard.KeyCodes.W,
       down: Phaser.Input.Keyboard.KeyCodes.S,
       left: Phaser.Input.Keyboard.KeyCodes.A,
@@ -146,42 +146,59 @@ class SalaLider extends Phaser.Scene {
 
   movePlayer() {
     const velocidade = 150;
-    let movendo = false;
-
-    if (this.keyboards.left.isDown) {
-      this.player.setVelocityX(-velocidade);
-      this.player.anims.play("walk_left", true);
-      this.player.setFlipX(true);
-      movendo = true;
-    } else if (this.keyboards.right.isDown) {
-      this.player.setVelocityX(velocidade);
-      this.player.anims.play("walk_right", true);
-      this.player.setFlipX(false);
-      movendo = true;
-    } else {
-      this.player.setVelocityX(0);
-    }
-
-    if (this.keyboards.up.isDown) {
-      this.player.setVelocityY(-velocidade);
-      this.player.anims.play("walk_up", true);
-      movendo = true;
-    } else if (this.keyboards.down.isDown) {
-      this.player.setVelocityY(velocidade);
-      this.player.anims.play("walk_down", true);
-      movendo = true;
-    } else {
-      this.player.setVelocityY(0);
-    }
-
-    if (!movendo) {
-      this.player.anims.stop();
-      this.walkSound.stop();
-    } else {
-      if (!this.walkSound.isPlaying) {
-        this.walkSound.play();
+      let movendo = false;
+    
+      if (this.teclas.left.isDown) {
+        this.player.setVelocityX(-velocidade);
+        this.lastPosition = "left"; 
+        this.player.anims.play("walk_left", true);
+        movendo = true;
+      } else if (this.teclas.right.isDown) {
+        this.player.setVelocityX(velocidade);
+        this.lastPosition = "right";
+        this.player.anims.play("walk_right", true);
+        movendo = true;
+      } else {
+        this.player.setVelocityX(0);
       }
-    }
+    
+      if (this.teclas.up.isDown) {
+        this.player.setVelocityY(-velocidade);
+        this.lastPosition = "up";
+        this.player.anims.play("walk_up", true);
+        movendo = true;
+      } else if (this.teclas.down.isDown) {
+        this.player.setVelocityY(velocidade);
+        this.lastPosition = "down";
+        this.player.anims.play("walk_down", true);
+        movendo = true;
+      } else {
+        this.player.setVelocityY(0);
+      }
+    
+      // Se o personagem parou, inicia a animação de stop_* em loop
+      if (!movendo) {
+        switch (this.lastPosition) {
+          case "left":
+            this.player.anims.play("stop_left", true);
+            break;
+          case "right":
+            this.player.anims.play("stop_right", true);
+            break;
+          case "up":
+            this.player.anims.play("stop_up", true);
+            break;
+          case "down":
+          default:
+            this.player.anims.play("stop_down", true);
+            break;
+        }
+        this.walkSound.stop();
+      } else {
+        if (!this.walkSound.isPlaying) {
+          this.walkSound.play();
+        }
+      }
   }
 
   createPlayer() {
@@ -191,32 +208,52 @@ class SalaLider extends Phaser.Scene {
   }
 
   createPlayerAnimations() {
-    // Define as animações do jogador
     this.anims.create({
       key: "walk_down",
-      frames: this.anims.generateFrameNumbers("player", { start: 0, end: 5 }),
+      frames: this.anims.generateFrameNumbers("player", { start: 130, end: 135 }),
       frameRate: 10,
       repeat: -1,
     });
-
     this.anims.create({
       key: "walk_right",
-      frames: this.anims.generateFrameNumbers("player", { start: 6, end: 11 }),
+      frames: this.anims.generateFrameNumbers("player", { start: 112, end: 117 }),
       frameRate: 10,
       repeat: -1,
     });
-
     this.anims.create({
       key: "walk_up",
-      frames: this.anims.generateFrameNumbers("player", { start: 12, end: 17 }),
+      frames: this.anims.generateFrameNumbers("player", { start: 118, end: 123 }),
       frameRate: 10,
       repeat: -1,
     });
-
     this.anims.create({
       key: "walk_left",
-      frames: this.anims.generateFrameNumbers("player", { start: 6, end: 11 }),
+      frames: this.anims.generateFrameNumbers("player", { start: 124, end: 129 }),
       frameRate: 10,
+      repeat: -1,
+    });
+    this.anims.create({
+      key: "stop_down",
+      frames: this.anims.generateFrameNumbers("player", { start: 74, end: 79 }), 
+      frameRate: 5, // Mais lento
+      repeat: -1, // Loop infinito
+    });
+    this.anims.create({
+      key: "stop_right",
+      frames: this.anims.generateFrameNumbers("player", { start: 56, end: 61 }),
+      frameRate: 5,
+      repeat: -1,
+    });
+    this.anims.create({
+      key: "stop_up",
+      frames: this.anims.generateFrameNumbers("player", { start: 62, end: 67 }),
+      frameRate: 5,
+      repeat: -1,
+    });
+    this.anims.create({
+      key: "stop_left",
+      frames: this.anims.generateFrameNumbers("player", { start: 68, end: 73 }),
+      frameRate: 5,
       repeat: -1,
     });
   }
@@ -272,9 +309,10 @@ class SalaLider extends Phaser.Scene {
   }
 
   showLeaderInteraction() {
-    this.exclamation.setVisible(false); // Remove a exclamação
 
-    var leaderDialog = [
+    this.exclamation.setVisible(false); // Remove a exclamação
+  
+    const leaderDialog = [
       'Olá, ' + playerName + '! Tudo bem?',
       'Ah, então quer dizer que você quer migrar para uma nova VP? Que alegria!',
       'Vou analisar seu currículo.',
@@ -282,48 +320,56 @@ class SalaLider extends Phaser.Scene {
       'Seu currículo está uma maravilha! Seguiu todas as diretrizes!',
       'Vá até o elevador para conhecer as áreas internas da vivo!'
     ];
-
+  
     let currentDialogIndex = 0;
-    const audio = this.sound.add('talkSound', { volume: 1 });
-    let textBalloon, text;
-
-    // Adiciona o balão de fala
-    if (!textBalloon) {
-      textBalloon = this.add.image(width - 730, height - 420, 'textBalloon');
-      textBalloon.setFlipX(true);
-      textBalloon.setVisible(true);
-
-      // Adiciona a caixa de texto dentro do balão
-      text = this.add.text(width - 815, height - 480, leaderDialog[0], {
-        fontSize: '16px',
-        fill: '#000000',
-        wordWrap: { width: textBalloon.width - 20 }
-      });
-      text.setVisible(true);
-
-      // Inicia o áudio ao começar o diálogo
-      audio.play();
-    }
-
-    // Evento para avançar o diálogo com "ENTER"
+    let textBalloon = this.add.image(width - 730, height - 420, 'textBalloon');
+    textBalloon.setFlipX(true).setVisible(true);
+  
+    let text = this.add.text(width - 815, height - 480, leaderDialog[0], {
+      fontSize: '16px',
+      fill: '#000000',
+      wordWrap: { width: textBalloon.width - 20 }
+    });
+    text.setVisible(true);
+  
     this.input.keyboard.on('keydown-ENTER', () => {
-      if (!textBalloon || !text) return; // Se o diálogo não começou, ignora
-
+      if (!textBalloon || !text) return;
+  
       currentDialogIndex++;
-
+  
       if (currentDialogIndex < leaderDialog.length) {
-        audio.stop(); // Para o áudio antes de reiniciar
-        audio.play(); // Toca novamente para a nova fala
-
-        text.setText(leaderDialog[currentDialogIndex]); // Atualiza o texto
+  
+        text.setText(leaderDialog[currentDialogIndex]);
         this.buttonClick.play();
       } else {
         // Finaliza o diálogo
         textBalloon.setVisible(false);
         text.setVisible(false);
-        audio.stop(); // Para o áudio ao final
-        this.input.keyboard.off('keydown-ENTER'); // Desativa ENTER após o diálogo
-        this.backToOffice();
+        this.input.keyboard.off('keydown-ENTER');
+        this.showIndicatorToReturn();
+      }
+    });
+  }
+
+  showIndicatorToReturn() {
+    // Adiciona o indicador de retorno
+    this.exclamation = this.physics.add.sprite(width - 1050, height - 230, 'indicator').setScale(0.3);
+    this.exclamation.setImmovable(true);
+    this.exclamation.play('exclamando');
+    this.indicatorActive = true;
+  
+    if (this.indicatorActive) {
+      this.indicatorSound = this.sound.add('indicatorSound', { loop: true, volume: 1.5 });
+      this.indicatorSound.play();
+    }
+  
+    this.physics.add.overlap(this.player, this.exclamation, () => {
+      if (this.indicatorActive) {
+        this.indicatorSound.stop();
+        this.scene.get('officeScene').events.emit('stopWalkSound');
+        this.scene.switch('officeScene');
+        this.scene.get('officeScene').events.emit('stopWalkSound');
+        this.indicatorActive = false;
       }
     });
   }

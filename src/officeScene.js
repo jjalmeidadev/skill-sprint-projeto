@@ -5,6 +5,8 @@ class OfficeScene extends Phaser.Scene {
     this.vivitaInteracted = false;
     this.curriculoFinalizado = false;
     this.salaLiderCriada = false;
+    this.elevatorIndicatorCreated = false;
+    this.botaoCimaCriado = false;
   }
 
   preload() {
@@ -66,7 +68,9 @@ class OfficeScene extends Phaser.Scene {
     // Carrega os efeitos sonoros
     this.buttonClick = this.sound.add('buttonSound', {loop: false, volume: 10});
     this.indicatorSound = this.sound.add('indicatorSound', {loop: true, volume: 1.5});
-    this.walkSound = this.sound.add('walkSound', {loop: false, volume: 2});
+    if (!this.walkSound) {
+      this.walkSound = this.sound.add('walkSound', { loop: false, volume: 2 });
+    }
 
     this.createMap(); // Criação do mapa e camadas
     this.createKeys(); // Configuração do teclado
@@ -86,6 +90,12 @@ class OfficeScene extends Phaser.Scene {
 
     this.createCollisions(); // Configura colisões do jogador com camadas selecionadas
 
+    this.events.on('resume', () => {
+      if (!this.officeMusic || !this.officeMusic.isPlaying) {
+        this.officeMusic = this.sound.add("officeMusic", { loop: true });
+        this.officeMusic.play({ seek: OfficeScene.lastMusicTime || 0 });
+      }
+    });
   }
 
   createCollisions() {
@@ -191,8 +201,9 @@ class OfficeScene extends Phaser.Scene {
     this.movePlayer();
 
     // Se o jogador retornou da sala do líder, cria o botão do elevador
-    if (this.returnedFromSalaLider && this.blockLoop === 0) {
-      this.createButtonCima();
+    if (this.returnedFromSalaLider && !this.elevatorIndicatorCreated) {
+      this.createElevatorIndicator();
+      this.elevatorIndicatorCreated = true;
     }
 
     if (this.activeIndicator == false) {
@@ -322,12 +333,14 @@ class OfficeScene extends Phaser.Scene {
             this.player.anims.play("stop_down", true);
             break;
         }
-        this.walkSound.stop();
-      } else {
-        if (!this.walkSound.isPlaying) {
-          this.walkSound.play();
+        if (this.walkSound && this.walkSound.isPlaying) {
+          this.walkSound.stop();
         }
-      }
+      } else {
+        if (this.walkSound && !this.walkSound.isPlaying) {
+          this.walkSound.play();
+        }    
+    }
   }
 
   createPlayer(width, height) {
@@ -387,39 +400,43 @@ class OfficeScene extends Phaser.Scene {
   }
 
   createButtonCima() {
-    this.blockLoop = 1;
-
-    this.exclamacao = this.physics.add.sprite(width - 435, height - 700, "indicator").setScale(0.2);
-    this.exclamacao.setImmovable(true);
-    this.exclamacao.play("exclamando");
-    this.indicatorActive = true;
-    if(this.indicatorActive) {
-        this.indicatorSound.play();
-    }
-
     this.bgelevoffice = this.add.image(0, 0, "bgElevOffice").setOrigin(0, 0);
     this.bgelevoffice.setDisplaySize(width, height);
     this.painelelev = this.add.image(width - 910, height - 600, "painelelev").setOrigin(0, 0);
     this.bgelevoffice.setVisible(false);
     this.painelelev.setVisible(false);
-
+  
     this.botaoCima = this.add.image(width - 680, height - 400, "botaoElevOffice"); 
   
     this.botaoCima.setInteractive();
     this.botaoCima.setScale(1);
-    this.botaoCima.setVisible(false);
-
+    this.botaoCima.setVisible(true); // <--- Torna o botão visível
+    this.bgelevoffice.setVisible(true);
+    this.painelelev.setVisible(true);
+  
     this.botaoCima.on("pointerdown", () => {
-      // Troca para a cena 'elevadorScene' – nesse caso, o OfficeScene será encerrada
       this.scene.stop("officeScene");
-      this.scene.start("elevatorScene");
+      this.scene.start("elevadorScene");
     });
+  }
 
-    // Ao sobrepor o jogador na exclamação, vamos chamar onShutdown() antes de mudar para 'buttonElevatorScene'
-    this.physics.add.overlap(this.player, this.exclamation, () => {
-      this.activeIndicator = false;
-      this.onShutdown(); // Salva o tempo e para a música
-      this.scene.switch("buttonElevatorScene");
+  createElevatorIndicator() {
+    this.elevatorIndicator = this.physics.add.sprite(width - 435, height - 700, "indicator").setScale(0.2);
+    this.elevatorIndicator.setImmovable(true);
+    this.elevatorIndicator.play("exclamando");
+
+    this.indicatorActive = true;
+    if (this.indicatorActive) {
+      this.indicatorSound.play();
+    }
+
+    this.physics.add.overlap(this.player, this.elevatorIndicator, () => {
+      if (!this.botaoCimaCriado) {
+        this.createButtonCima();
+        this.botaoCimaCriado = true;
+        this.indicatorSound.stop();
+        this.elevatorIndicator.destroy();
+      }
     });
   }
 
@@ -652,6 +669,7 @@ class OfficeScene extends Phaser.Scene {
   }
 
   salaLider() {
+    if (this.inTransition) return;
 
     this.exclamation = this.physics.add.sprite(width - 1200, height - 500, 'indicator').setScale(0.2);
     this.exclamation.play('exclamando');
