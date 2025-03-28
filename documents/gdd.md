@@ -358,7 +358,7 @@ O Skill Sprint conta com um jogador principal chamado Skrill que será controlad
 
 <div align="center">
   <sub>Skrill, jogador principal</sub><br>
- ![Image](https://github.com/user-attachments/assets/9a832a96-02f0-4c39-9985-c9456f95b68c)
+ <img scr="(https://github.com/user-attachments/assets/9a832a96-02f0-4c39-9985-c9456f95b68c)" whdth=900px"
   alt="Skrill, jogador principal"><br>
   <sup>Fonte: produzido pelos autores.</sup>
 </div>
