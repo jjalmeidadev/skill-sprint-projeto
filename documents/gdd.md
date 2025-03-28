@@ -164,7 +164,7 @@ A matriz de riscos apresentada permite uma visão estruturada das potenciais ame
 
 ### 1.1.7. Objetivos, Metas e Indicadores (sprint 4)
 
-As metas SMART são são objetivos estruturados por cinco critérios fundamentais:
+As metas SMART são objetivos estruturados por cinco critérios fundamentais:
 
 - Específicos (detalham exatamente o que será alcançado), Mensuráveis (com indicadores quantificáveis);
 - Alcançáveis (realistas com os recursos disponíveis), Relevantes (alinhados aos propósitos estratégicos);
@@ -177,7 +177,6 @@ Para garantir que o jogo cumpra seu propósito educacional e engajador, definimo
 | Categoria            | Meta SMART                                                                 | Indicadores (KPIs)                                                                 | Prazo       |
 |----------------------|---------------------------------------------------------------------------|-----------------------------------------------------------------------------------|-------------|
 | **Core Gameplay**    | Completar desenvolvimento das 4 últimas fases (Vice-Presidência de Negócios, Estratégia, Relações Institucionais e Tecnologia) | - 5/5 minigames funcionais<br>- 90% assets integrados<br>- 100% bugs críticos resolvidos | Sprint 5   |
-| **Performance**      | Reduzir tempo de carregamento entre cenas                                  | - Loading ≤2s<br>- Uso memória ≤150MB (-30%)                                      | Sprint 4    |                         | Sprint 4    |
 | **Testes**           | Realizar 5 sessões de teste com usuários                                   | - 5 relatórios de teste<br>- 90% bugs críticos resolvidos                         | Sprint 4    |
 
 Os KPIs são métricas quantificáveis e estratégicas que avaliam o sucesso de um projeto ou atividade em relação a seus objetivos-chave. No desenvolvimento do Skill Sprint, os KPIs servem como "termômetros" do progresso, medindo aspectos como desempenho técnico (ex.: tempo de carregamento ≤2s), qualidade (ex.: 90% dos bugs críticos resolvidos) e engajamento (ex.: 85% de conclusão de fases). Diferentemente de métricas genéricas, KPIs são selecionados por seu alinhamento direto com as metas SMART — como a taxa de integração de assets (90%) para validar a meta de finalização de fases — e são monitorados em intervalos regulares (diários/semanais) para permitir ajustes ágeis. Eles transformam dados brutos em insights acionáveis, ajudando a equipe a focar no que realmente importa para o sucesso do jogo.
@@ -187,15 +186,12 @@ Os KPIs são métricas quantificáveis e estratégicas que avaliam o sucesso de 
 | KPI                          | Meta        | Unidade    | Frequência Medição | Responsável |
 |------------------------------|-------------|------------|--------------------|-------------|
 | Minigames funcionais         | 5           | unidades   | Semanal            |  Pessoa(s) responsável(is) por desenvolvimento na sprint em questão |
-|     |
-| Tempo de loading             | ≤2s         | segundos   | Por release        |  Pessoa(s) responsável(is) por desenvolvimento na sprint em questão |e |
-| Código documentado           | 100%        | porcentagem| Sprint             |  Pessoa(s) responsável(is) por documentação na sprint em questão |   |
+| Código documentado           | 100%        | porcentagem| Semanal             |  Pessoa(s) responsável(is) por documentação na sprint em questão |   |
 | Testes realizados            | 5           | unidades   | Sprint             |  Pessoa(s) responsável(is) pela seção de testes no GDD na sprint em questão |      |
 | Bugs críticos resolvidos     | 100%        | porcentagem| Diário             | Todos        |
 
 As metas SMART e os KPIs definidos para o Skill Sprint garantem que o jogo não apenas entregue uma experiência divertida, mas também cumpra seu papel estratégico na Vivo: transformar o desenvolvimento de carreira em uma jornada tangível e motivadora. Ao monitorar indicadores técnicos e também de engajamento, taxa de conclusão e satisfação (nos testes que almejamos realizar), a equipe poderá iterar rapidamente, ajustando mecânicas e conteúdos para maximizar o impacto do jogo na cultura de mobilidade interna da empresa.
 
-Assim como mencionamos na seção da desenvolvimento final do MVP, almejamos implementar uma tela de carregamento no jogo, para evitar que a tela fique vazia enquanto o computador carrega os arquivos, assets, entre outros.
 
 ## 1.2. Requisitos do Projeto (sprints 1 e 2)
 
@@ -602,7 +598,7 @@ O diagrama de cenas, portanto, evoluiu de uma estrutura simples para uma mais de
 
 Neste segmento, serão apresentadas as diretrizes que o personagem precisará seguir para avançar nas etapas do jogo, comumente chamadas de *"primary quests"* ou missões principais. Essas normas são essenciais para garantir que o jogador compreenda os desafios propostos e consiga progredir de maneira estruturada dentro da narrativa.
 
-A proposta central do jogo é retratar diferentes cenários dentro do amplo ecossistema da empresa Vivo, onde cada ambiente representa um cargo ou função específica. O(a) protagonista, que acaba de ingressar na companhia, passará por essas experiências por meio do conceito de *"job rotation"*, explorando e aprendendo sobre cada função conforme avança nos desafios.
+A proposta central do jogo é retratar diferentes cenários dentro do amplo ecossistema da empresa Vivo, onde cada ambiente representa um cargo ou função específica. O protagonista, que acaba de ingressar na companhia, passará por diversas experiências, explorando e aprendendo sobre cada função conforme avança nos desafios.
 
 **A jornada do jogador seguirá os seguintes passos:**
 
@@ -634,7 +630,7 @@ Uso de Objetos: Em determinados momentos, como na criação do currículo, o jog
 **Considerações sobre Design:**
 As mecânicas foram projetadas para serem simples, mas eficazes, garantindo que jogadores de diferentes níveis de experiência possam se adaptar rapidamente. A combinação de movimentação fluida, interações intuitivas e feedback visual claro contribui para uma experiência de jogo agradável e acessível. Além disso, a escolha de comandos básicos e amplamente conhecidos (como WASD e ENTER) reduz a curva de aprendizado, permitindo que o jogador foque na narrativa e nos desafios propostos.
 
-Essas mecânicas são a base da jogabilidade do Skill Sprint, garantindo que o jogador tenha controle total sobre suas ações enquanto explora o mundo do jogo e avança em sua jornada de desenvolvimento profissional.
+Essas mecânicas são a base da jogabilidade do Skill Sprint, garantindo que o jogador tenha controle total sobre suas ações enquanto explora o mundo do jogo e avança em sua jornada de desenvolvimento profissional. Por exemplo, o jogador pode optar por mudar de sala e níveis em qualquer momento de jogo, de forma que nenhum dos níveis possuem uma ordem fixa de jogabilidade. Ou seja, o jogador tem total liberdade para escolher que nível e quais *minigames* deseja jogar.
 
 ## 3.8. Implementação Matemática de Animação/Movimento (sprint 4)
 
@@ -850,23 +846,23 @@ Durante a sprint 3, enfrentamos desafios significativos devido ao curto prazo de
 
 Na sprint planning, definimos uma série de metas para esta etapa, das quais destacamos:
 
-**Tela de Tutorial:** Desenvolvemos uma tela inicial que explica os comandos básicos do jogo, como movimentação (WASD) e interação com objetos (Tecla E). Isso foi crucial para garantir que os jogadores entendam como navegar e interagir com o ambiente desde o início.
+**Tela de Tutorial:** Desenvolvemos uma tela inicial que explica os comandos básicos do jogo, como movimentação (WASD) e interação com objetos (Tecla E) (R01). Isso foi crucial para garantir que os jogadores entendam como navegar e interagir com o ambiente desde o início.
 
-**Finalização do Minigame da Primeira Fase:** Concluímos o minigame de criação do currículo, que é o foco da primeira fase. Agora, o jogador pode interagir com o computador e responder perguntas personalizadas de acordo com a Vice-Presidência escolhida de forma alinhada com os objetivos de aprendizado do jogo.
+**Finalização do Minigame da Primeira Fase:** Concluímos o minigame de criação do currículo, que é o foco da primeira fase (R06). Agora, o jogador pode interagir com o computador e responder perguntas personalizadas de acordo com a Vice-Presidência escolhida de forma alinhada com os objetivos de aprendizado do jogo.
 
-**Implementação da Vivita (Primeira NPC):** A Vivita, a recepcionista que guia o jogador na primeira fase, foi implementada no mapa. Ela fornece instruções iniciais e contextualiza a missão de criação do currículo, tornando a experiência mais imersiva e orientada.
+**Implementação da Vivita (Primeira NPC):** A Vivita, a recepcionista que guia o jogador na primeira fase, foi implementada no mapa. Ela fornece instruções iniciais e contextualiza a missão de criação do currículo, tornando a experiência mais imersiva e orientada (R04).
 
-**Design da Sala do Elevador:** Criamos o ambiente do elevador, que servirá como ponto de transição entre as fases. Esse espaço foi projetado para ser intuitivo e funcional, permitindo que o jogador navegue entre os diferentes andares que representam as Vice-Presidências da Vivo.
+**Design da Sala do Elevador:** Criamos o ambiente do elevador, que servirá como ponto de transição entre as fases. Esse espaço foi projetado para ser intuitivo e funcional, permitindo que o jogador navegue entre os diferentes andares que representam as Vice-Presidências da Vivo. (R14)
 
-**Sala da Líder:** Criamos a cena da sala da líder, onde o jogador entregará seu currículo para feedback. No momento, planejamos implementar a líder (NPC) na próxima sprint. No entrega dessa sprint, colocamos a Vivita como NPC.
+**Sala da Líder:** Criamos a cena da sala da líder (R13), onde o jogador entregará seu currículo para feedback. No momento, planejamos implementar a líder (NPC) na próxima sprint. No entrega dessa sprint, colocamos a Vivita como NPC.
 
-**HUDs**: Heads-Up Displays (em português, "Mostradores de Dados no Campo de Visão"), são sistemas de exibição de informações que permitem ao usuário visualizar dados sem precisar desviar o olhar de sua linha de visão principal. Nós implementamos alguns no nosso mapa, em especial na tela da recepção. Planejamos explorar mais essa funcionalidade para fornecer um maior poder de tomada de decisão, engajando o jogador a sempre entender o que ele está fazendo e o que ele precisará fazer no jogo (as missões). Nessa sprint 3, o HUD que desenvolvemos foi uma exclamação vermelha. Ela sinaliza os objetos interagíveis e as próximas missões do jogador.
+**HUDs**: Heads-Up Displays (em português, "Mostradores de Dados no Campo de Visão"), são sistemas de exibição de informações que permitem ao usuário visualizar dados sem precisar desviar o olhar de sua linha de visão principal. Nós implementamos alguns no nosso mapa, em especial na tela da recepção. Planejamos explorar mais essa funcionalidade para fornecer um maior poder de tomada de decisão, engajando o jogador a sempre entender o que ele está fazendo e o que ele precisará fazer no jogo (as missões). Nessa sprint 3, o HUD que desenvolvemos foi uma exclamação vermelha. Ela sinaliza os objetos interagíveis e as próximas missões do jogador. (R16)
 
-**Regras e Mecânicas no GDD:** Preenchemos as seções do Game Design Document (GDD) relacionadas às regras e mecânicas do jogo. Essa documentação foi essencial para aprimorar nosso entendimento sobre o design do jogo e garantir que a experiência do jogador esteja alinhada com os objetivos propostos.
+**Regras e Mecânicas no GDD:** Preenchemos as seções do Game Design Document (GDD) relacionadas às regras e mecânicas do jogo. Essa documentação foi essencial para aprimorar nosso entendimento sobre o design do jogo e garantir que a experiência do jogador esteja alinhada com os objetivos propostos. (R08)
 
-**Atualização do Readme:** O repositório do projeto foi atualizado com um tutorial de acesso ao jogo e um histórico de versões. Essas informações são fundamentais para facilitar o uso do código aberto e permitir que outros desenvolvedores contribuam ou entendam o progresso do projeto.
+**Atualização do Readme:** O repositório do projeto foi atualizado com um tutorial de acesso ao jogo e um histórico de versões. Essas informações são fundamentais para facilitar o uso do código aberto e permitir que outros desenvolvedores contribuam ou entendam o progresso do projeto. (R11)
 
-**Padronização de Commits e Priorização de Tarefas:** Implementamos regras de commit, onde cada membro da equipe descreve claramente as alterações realizadas. Além disso, adotamos o diagrama de matriz-esforço no nosso Kanban, que foi instrumental para priorizar tarefas e garantir que os esforços da equipe fossem direcionados para as atividades mais críticas durante a sprint curta.
+**Padronização de Commits e Priorização de Tarefas:** Implementamos regras de commit, onde cada membro da equipe descreve claramente as alterações realizadas. Além disso, adotamos o diagrama de matriz-esforço no nosso Kanban, que foi instrumental para priorizar tarefas e garantir que os esforços da equipe fossem direcionados para as atividades mais críticas durante a sprint curta. 
 
 Apesar de algumas cenas ainda não estarem totalmente conectadas, os frutos desta sprint foram satisfatórios. A interface do jogo evoluiu significativamente, e agora temos uma base sólida que já parece jogável. A primeira fase está mais próxima da visão final, com elementos como a Vivita, o minigame de currículo e o elevador já implementados.
 
@@ -954,21 +950,20 @@ lembrar de inserir prints de tela aqui (sophia
 
 ## 5.1. Casos de Teste (sprints 2 a 4)
 
-*Descreva nesta seção os casos de teste comuns que podem ser executados a qualquer momento para testar o funcionamento e integração das partes do jogo. Utilize tabelas para facilitar a organização.*
 
 Os casos de teste descritos a seguir foram elaborados para avaliar os diferentes aspectos do jogo, desde a mecânica até a interação do jogador com os elementos do cenário. O objetivo é garantir que todas as funcionalidades implementadas no Skill Sprint estejam funcionando corretamente e integradas de forma eficaz.
 
-*Exemplo de tabela*
+
 \# | pré-condição | descrição do teste | pós-condição 
 --- | --- | --- | --- 
 1 | O personagem deve estar próximo a um computador interativo |Pressionar a tecla "E"	 | A tela do computador deve abrir no jogo
-2 | O jogo está rodando e o personagem pode se mover | Pressionar as teclas WASD | O personagem deve se mover
+2 | O jogo está rodando e o personagem pode se mover | Pressionar as teclas W, A, S ou D | O personagem deve se mover: tecla W para cima, tecla A para a esquerda, tecla S para baixo e tecla D para a direita
 3 | O jogo está na tela inicial|Clicar no botão "Jogar" |O jogo deve iniciar e levar o jogador para a cutscene
 4 |A tela do quiz está aberta	|	Selecionar uma das alternativas|A alternativa escolhida deve mudar de cor (verde se correta, vermelha se errada)
 5 |O jogo está na tela inicial|Clicar no botão "Créditos"|Aparecerá uma tela mostrando o grupo responsável pelo projeto
 6 |A cutscene se encerra|O jogo termina de carregar|Aparece o tutorial
 7 |O jogo foi iniciado|Aguardar a tela de nome aparecer|A caixa de texto para digitar o nome está visível
-8 |A caixa de texto está visível|Digitar um nome e confirmar|O nome digitado deve ser armazenado e utilizado no jogo
+8 |A caixa de texto está visível na primeira fala do personagem Vivinho na tela de tutorial do jogo |Digitar um nome e confirmar pressionando a tecla Enter|O nome digitado deve ser armazenado e utilizado nas falas dos NPCs durante o jogo
 9 |O jogador está próximo do NPC|Pressionar a tecla "E"|Um diálogo deve aparecer na tela iniciando a interação com o NPC|
 10 | O jogo foi iniciado | Aguardar na tela inicial | A trilha sonora específica da tela inicial deve começar a tocar  
 11 | O jogador entrou na Cena 1 | Aguardar alguns segundos | A trilha sonora da Cena 1 deve começar 
@@ -981,7 +976,7 @@ Os casos de teste descritos a seguir foram elaborados para avaliar os diferentes
 18 | O jogador está próximo a um caderno interativo na "VP Pessoas" | Pressionar a tecla "E" | O caderno deve abrir e exibir anotações na tela  
 
 
-Através desses testes, foi possível identificar pontos de melhoria, ajustar comportamentos inesperados e assegurar que a experiência do jogador seja fluida e intuitiva.
+Através desses testes, é possível identificar pontos de melhoria, ajustar comportamentos inesperados e assegurar que a experiência do jogador seja fluida e intuitiva.
 
 No futuro, planejamos expandir os casos de teste para cobrir novas funcionalidades, melhorar o design do nosso jogo (padronizar de acordo com a paleta de cores) e realizar a refatoração do código (reutilizar elementos e torná-lo mais oganizado e inteligente). Dessa forma, garantiremos que o Skill Sprint continue evoluindo e oferecendo uma experiência cada vez mais envolvente e alinhada com os objetivos de aprendizado e desenvolvimento profissional propostos.
 
