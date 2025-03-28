@@ -128,39 +128,39 @@ O Value Proposition Canvas é uma ferramenta poderosa de planejamento estretégi
 ### 1.1.6. Matriz de Riscos (sprint 4)
 ![Image](https://github.com/user-attachments/assets/7f8b53b2-27f3-4e46-984e-d9aea9dbd6e7)
 Bug no som de exclamação da sala do líder
- ➤ Corrigir o áudio na engine de desenvolvimento e testar em diferentes dispositivos.
+ - Corrigir o áudio na engine de desenvolvimento e testar em diferentes dispositivos.
 
 
 Desinteresse por parte dos jogadores
- ➤ Realizar testes com usuários e ajustar a dinâmica do jogo com base no feedback.
+ - Realizar testes com usuários e ajustar a dinâmica do jogo com base no feedback.
 
 
 Jogo não contempla a diversidade dos funcionários
- ➤ Incluir representatividade nos personagens e opções de escolha inclusivas.
+ -Incluir representatividade nos personagens e opções de escolha inclusivas.
 
 
 O jogo não está concluído
- ➤ Estabelecer cronograma com entregas parciais e checkpoints de progresso.
+ - Estabelecer cronograma com entregas parciais e checkpoints de progresso.
 
 
 O jogo não é compatível com smartphones
- ➤ Implementar design responsivo e realizar testes em diferentes dispositivos móveis.
+ - Implementar design responsivo e realizar testes em diferentes dispositivos móveis.
 
 
 Risco de direitos autorais por uso de trilha licenciada
- ➤ Substituir trilhas por músicas royalty-free ou composições originais.
+ - Substituir trilhas por músicas royalty-free ou composições originais.
 
 
 Erro na documentação
- ➤ Revisar a documentação com checklist e atribuir responsáveis por cada seção.
+ - Revisar a documentação com checklist e atribuir responsáveis por cada seção.
 
 
 Assets sem padronização
- ➤ Criar guia de estilo visual e revisar todos os assets gráficos do jogo.
+ - Criar guia de estilo visual e revisar todos os assets gráficos do jogo.
 
 
 Empresa parceira não aprova a dinâmica do jogo
- ➤ Envolver a empresa parceira nas fases iniciais e validar conceitos com protótipos.
+ - Envolver a empresa parceira nas fases iniciais e validar conceitos com protótipos.
 
 
 *Registre na matriz os riscos identificados no projeto, visando avaliar situações que possam representar ameaças e oportunidades, bem como os impactos relevantes sobre o projeto. Apresente os riscos, ressaltando, para cada um, impactos e probabilidades com plano de ação e respostas.*
