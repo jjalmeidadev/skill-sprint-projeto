@@ -76,6 +76,11 @@ class VpNegociosScene extends Phaser.Scene {
         this.walkSound = this.sound.add('walkSound', {loop: false, volume: 2});
         this.indicatorSound = this.sound.add('indicatorSound', {loop: true, volume: 1.5});
         this.buttonClick = this.sound.add('buttonSound', {loop: false, volume: 10});
+
+
+      //da zoom na tela do jogo e faz visao do personagem 
+        this.cameras.main.startFollow(player);
+        this.cameras.main.setZoom(1.5);
     }
 
     update(){
