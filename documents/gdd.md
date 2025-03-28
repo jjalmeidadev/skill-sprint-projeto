@@ -682,13 +682,6 @@ $$ S(t) = S_0 + v \cdot t $$
 
 `t (this.meteoro.duracao):` Tempo decorrido.
 
-`S(t):` Posição atual no eixo X.
-
-`S₀ (this.meteoro.x):` Posição inicial.
-
-`v (this.meteoro.v0x):` Velocidade constante.
-
-`t (this.meteoro.duracao):` Tempo decorrido.
 
 ##### 2. Posição no Eixo Y (Movimento Uniformemente Variado - MUV)
 ```javascript
