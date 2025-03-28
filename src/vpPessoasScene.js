@@ -135,6 +135,10 @@ class VpPessoasScene extends Phaser.Scene {
         this.buttonClick = this.sound.add('buttonSound', {loop: false, volume: 10});
         this.indicatorSound = this.sound.add('indicatorSound', {loop: true, volume: 10});
         this.walkSound = this.sound.add('walkSound', {loop: false, volume: 10});
+
+        //da zoom na tela do jogo e faz visao do personagem 
+      this.cameras.main.startFollow(this.player);
+      this.cameras.main.setZoom(1.5);
       }
 
       createAnimsIndicator() {

@@ -96,6 +96,12 @@ class OfficeScene extends Phaser.Scene {
         this.officeMusic.play({ seek: OfficeScene.lastMusicTime || 0 });
       }
     });
+
+
+  //da zoom na tela do jogo e faz visao do personagem 
+  this.cameras.main.startFollow(this.player);
+  this.cameras.main.setZoom(1.5);
+
   }
 
   createCollisions() {
