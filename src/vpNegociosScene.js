@@ -1,6 +1,7 @@
 class VpNegociosScene extends Phaser.Scene {
     constructor() {
       super({ key: 'vpNegociosScene' });
+      
     }
 
     preload() {
@@ -14,6 +15,13 @@ class VpNegociosScene extends Phaser.Scene {
 
         // Carrega os efeitos sonoros
         this.load.audio('walkSound', '../assets/sounds/753292__vrymaa__footsteps-high-heels-hardwood-walk-run (mp3cut.net).wav');
+        this.load.spritesheet("indicator", "../assets/exclamaçãoRoxa.png", {frameWidth: 254, frameHeight: 305,});
+        this.load.image('keyE', '../assets/teclaE.png');
+        this.load.audio('indicatorSound', '../assets/sounds/497198_abacagi_bubble-pops (mp3cut.net).wav');
+
+        this.load.image("bgElevNegocios", "../assets/bgelevadoroffice.png");
+        this.load.image("painelelev", "../assets/painelelevador.png");
+        this.load.image("botaoElevNegocios", "../assets/botaocimaelevador.png");
     }
 
     create() {
@@ -51,7 +59,9 @@ class VpNegociosScene extends Phaser.Scene {
 
         this.createPlayer(width, height);
         this.createPlayerAnimations();
+        this.createAnimsIndicator();
         this.lastPosition = "down"
+        this.createButtonVoltar(width, height);
 
         // Configura colisões do jogador com camadas selecionadas
         this.physics.add.collider(this.player, layer2);
@@ -64,6 +74,8 @@ class VpNegociosScene extends Phaser.Scene {
 
         // Adiciona os efeitos sonoros
         this.walkSound = this.sound.add('walkSound', {loop: false, volume: 2});
+        this.indicatorSound = this.sound.add('indicatorSound', {loop: true, volume: 1.5});
+        this.buttonClick = this.sound.add('buttonSound', {loop: false, volume: 10});
     }
 
     update(){
@@ -127,62 +139,81 @@ class VpNegociosScene extends Phaser.Scene {
       }
     }
 
-      createPlayer(width, height) {
-        this.player = this.physics.add.sprite(width - 670, height - 660, 'player');
-        this.player.setScale(2.5);
-      }
+   createPlayer(width, height) {
+    this.player = this.physics.add.sprite(width - 670, height - 660, 'player');
+    this.player.setScale(2.5);
+   }
 
-      createPlayerAnimations() {
-        this.anims.create({
-          key: "walk_down",
-          frames: this.anims.generateFrameNumbers("player", { start: 130, end: 135 }),
-          frameRate: 10,
-          repeat: -1,
-        });
-        this.anims.create({
-          key: "walk_right",
-          frames: this.anims.generateFrameNumbers("player", { start: 112, end: 117 }),
-          frameRate: 10,
-          repeat: -1,
-        });
-        this.anims.create({
-          key: "walk_up",
-          frames: this.anims.generateFrameNumbers("player", { start: 118, end: 123 }),
-          frameRate: 10,
-          repeat: -1,
-        });
-        this.anims.create({
-          key: "walk_left",
-          frames: this.anims.generateFrameNumbers("player", { start: 124, end: 129 }),
-          frameRate: 10,
-          repeat: -1,
-        });
-        this.anims.create({
-          key: "stop_down",
-          frames: this.anims.generateFrameNumbers("player", { start: 74, end: 79 }), 
-          frameRate: 5, // Mais lento
-          repeat: -1, // Loop infinito
-        });
-        this.anims.create({
-          key: "stop_right",
-          frames: this.anims.generateFrameNumbers("player", { start: 56, end: 61 }),
-          frameRate: 5,
-          repeat: -1,
-        });
-        this.anims.create({
-          key: "stop_up",
-          frames: this.anims.generateFrameNumbers("player", { start: 62, end: 67 }),
-          frameRate: 5,
-          repeat: -1,
-        });
-        this.anims.create({
-          key: "stop_left",
-          frames: this.anims.generateFrameNumbers("player", { start: 68, end: 73 }),
-          frameRate: 5,
-          repeat: -1,
-        });
-        
-        
-        
-      }
+  createAnimsIndicator() {
+    //cria a animação
+    this.anims.create({
+     key: "exclamando",
+      frames: this.anims.generateFrameNumbers("indicator", {start: 0, end: 1}),
+       //velocidade da animação
+      frameRate: 3,
+      repeat: -1,
+   });
+  }
+
+  createButtonVoltar(width, height) {
+    const botaoVoltar = this.add.image(width - 670, height - 680, "keyE");
+    botaoVoltar.setInteractive();
+    botaoVoltar.setScale(0.2);
+    this.input.keyboard.on("keydown-E", () => {
+      this.scene.stop("vpNegociosScene");
+      this.scene.start("elevadorScene");
+    });
+  }
+
+  createPlayerAnimations() {
+    this.anims.create({
+      key: "walk_down",
+        frames: this.anims.generateFrameNumbers("player", { start: 130, end: 135 }),
+        frameRate: 10,
+         repeat: -1,
+    });
+    this.anims.create({
+       key: "walk_right",
+         frames: this.anims.generateFrameNumbers("player", { start: 112, end: 117 }),
+         frameRate: 10,
+      repeat: -1,
+    });
+    this.anims.create({
+       key: "walk_up",
+        frames: this.anims.generateFrameNumbers("player", { start: 118, end: 123 }),
+        frameRate: 10,
+      repeat: -1,
+     });
+    this.anims.create({
+      key: "walk_left",
+        frames: this.anims.generateFrameNumbers("player", { start: 124, end: 129 }),
+        frameRate: 10,
+      repeat: -1,
+    });
+    this.anims.create({
+      key: "stop_down",
+        frames: this.anims.generateFrameNumbers("player", { start: 74, end: 79 }), 
+        frameRate: 5, // Mais lento
+      repeat: -1, // Loop infinito
+    });
+    this.anims.create({
+      key: "stop_right",
+       frames: this.anims.generateFrameNumbers("player", { start: 56, end: 61 }),
+       frameRate: 5,
+      repeat: -1,
+    });
+    this.anims.create({
+      key: "stop_up",
+        frames: this.anims.generateFrameNumbers("player", { start: 62, end: 67 }),
+        frameRate: 5,
+      repeat: -1,
+    });
+    this.anims.create({
+      key: "stop_left",
+        frames: this.anims.generateFrameNumbers("player", { start: 68, end: 73 }),
+        frameRate: 5,
+      repeat: -1,
+    });
+           
+  }
 }

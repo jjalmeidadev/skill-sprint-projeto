@@ -706,3 +706,5 @@ class OfficeScene extends Phaser.Scene {
 
 // Propriedade estática para armazenar o tempo de reprodução da música
 OfficeScene.lastMusicTime = 0;
+
+
