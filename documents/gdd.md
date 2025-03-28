@@ -376,13 +376,13 @@ O Skill Sprint conta com um jogador principal chamado Skrill que será controlad
   <sub>Vivinho</sub><br>
   <img src="../assets/Screenshot 2025-03-28 184937.png" width="450px" 
   alt="Vivinho"><br>
-  <sup>Fonte: produzido pelos autores.</sup>
+  <sup>Fonte: domínio gratuito.</sup>
 </div>
 
 
 ### 3.2.2. Non-Playable Characters (NPC)
 
-Até o presente momento de desenvolvimento, idealizamos 2 NPCs: o Vivinho, a Vivita e a líder.
+Até o presente momento de desenvolvimento, idealizamos 3 NPCs: o Vivinho, a Vivita e a líder.
 
 - Vivinho é um personagem que tem como objetivo guiar o usuário durante as fases e ensiná-lo a concluir as fases do jogo através de caixas de diálogo e instruções.
  
@@ -396,14 +396,16 @@ Até o presente momento de desenvolvimento, idealizamos 2 NPCs: o Vivinho, a Viv
   <sub>Vivinho</sub><br>
   <img src="https://github.com/user-attachments/assets/50594d55-2807-4a2d-8dd0-89d618be81c5" width="450px" 
   alt="Vivinho"><br>
-  <sup>Fonte: produzido pelos autores.</sup>
+  <sup>Fonte: Vivo.</sup>
 </div>
+
+
 
 <div align="center">
   <sub>Vivita</sub><br>
-  <img src="https://github.com/user-attachments/assets/d1ada40a-0ed9-4092-b54a-d63624349d15" width="450px" 
+  <img src="../assets/vivita_gdd_01.png" width="450px" 
   alt="Vivita"><br>
-  <sup>Fonte: produzido pelos autores.</sup>
+  <sup>Fonte: domínio gratuito.</sup>
 </div>
 
 ### 3.2.3. Diversidade e Representatividade dos Personagens
