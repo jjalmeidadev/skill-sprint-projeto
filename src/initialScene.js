@@ -68,24 +68,27 @@ class InitialScene extends Phaser.Scene {
     this.birdeaster.a = 20;
     this.timeset = this.time.now;
 
-    this.meteoro = this.physics.add.sprite( width + 5, height - 1050, "meteoro" );
+     this.meteoro = this.physics.add.sprite(
+       width + 200,
+       height - 900,
+       "meteoro"
+     );
+     const meteoro = this.meteoro;
+     this.meteoro.setFlipX(true);
+     meteoro.setAngle(-20);
+     this.meteoro.setScale(0.4);
 
-    const meteoro = this.meteoro;
-    this.meteoro.setFlipX(true);
-    meteoro.setAngle(-20);
-    this.meteoro.setScale(0.4);
-  
-    this.meteoro.duracao = 480; //segundos
+     this.meteoro.duracao = 480; //segundos
 
-    this.meteoro.xf = width / 3;
-    this.meteoro.x0 = width + 200;
-    this.meteoro.dS = this.meteoro.xf - this.meteoro.x0;
-    this.meteoro.v0y = 200;
-    this.meteoro.v0x = 0;
-    this.meteoro.yf = height - 100;
-    this.meteoro.y0 = height - 900;
-    this.meteoro.a =
-      (2 * (this.meteoro.yf - this.meteoro.y)) / this.meteoro.duracao ** 2;
+     this.meteoro.xf = width / 3;
+     this.meteoro.x0 = width + 200;
+     this.meteoro.dS = this.meteoro.xf - this.meteoro.x0;
+     this.meteoro.v0y = 200;
+     this.meteoro.v0x = 0;
+     this.meteoro.yf = height - 100;
+     this.meteoro.y0 = height - 900;
+     this.meteoro.a =
+       (2 * (this.meteoro.yf - this.meteoro.y)) / this.meteoro.duracao ** 2;
 
     this.birdeaster.body.setEnable(true);
     this.meteoro.body.setEnable(true);
@@ -302,19 +305,25 @@ class InitialScene extends Phaser.Scene {
 
         //Cálculo do deslocamento com x = x0 + V0t + 0.5at²
         this.birdeaster.x = width - (width + 35) + this.birdeaster.v0 * t + 0.5 * this.birdeaster.a * t * t; // Cálculo da velocidade com V = delta S/t
-
-        var speedMultiplier = 100;
-        this.meteoro.setVelocityX(
-          (this.meteoro.dS / this.meteoro.duracao) * speedMultiplier
-        );
-
-        // Cálculo da velocidade com V = v0 + at
-
-        this.meteoro.setVelocityY(
-          this.meteoro.v0y + this.meteoro.a * this.meteoro.duracao
-        );
       }
     }
+
+     if (time - this.timeset >= 19000) {
+       if (this.meteoro) {
+         // Cálculo da velocidade com V = delta S/t
+
+         var speedMultiplier = 100;
+         this.meteoro.setVelocityX(
+           (this.meteoro.dS / this.meteoro.duracao) * speedMultiplier
+         );
+
+         // Cálculo da velocidade com V = v0 + at
+
+         this.meteoro.setVelocityY(
+           this.meteoro.v0y + this.meteoro.a * this.meteoro.duracao
+         );
+       }
+     }
 
       if (this.meteoro.visible === true) {
         console.log(
