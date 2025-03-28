@@ -58,6 +58,10 @@ class VpPessoasScene extends Phaser.Scene {
         this.load.spritesheet("rafaela", "../assets/personagens/VPpessoas/npcRafaela.png", { frameWidth: 16, frameHeight: 32,});
         
         this.load.image("balaoTexto", "../assets/balaoTexto.png");
+
+        this.load.image("bgElevPessoas", "../assets/bgelevadoroffice.png");
+    this.load.image("painelelev", "../assets/painelelevador.png");
+    this.load.image("botaoElevPesssoas", "../assets/botaocimaelevador.png");
     }
 
     create() {
@@ -107,6 +111,7 @@ class VpPessoasScene extends Phaser.Scene {
         this.lastPsition = "down"; // O personagem começa olhando para baixo
         this.createNpcMovel();
         this.addRafaela(width, height);
+        this.createAnimsIndicator();
         
         // Configura colisões do jogador com camadas selecionadas
         this.physics.add.collider(this.player, layer2);
@@ -135,6 +140,16 @@ class VpPessoasScene extends Phaser.Scene {
         this.walkSound = this.sound.add('walkSound', {loop: false, volume: 10});
       }
 
+      createAnimsIndicator() {
+        //cria a animação
+        this.anims.create({
+          key: "exclamando",
+          frames: this.anims.generateFrameNumbers("indicator", {start: 0, end: 1}),
+          //velocidade da animação
+          frameRate: 3,
+          repeat: -1,
+        });
+      }
     createNpcMovel(){
       this.npcMovel = this.physics.add.sprite(width - 380, height - 520, 'npcMovel'); // Posição inicial
         this.npcMovel.setScale(2.5);
