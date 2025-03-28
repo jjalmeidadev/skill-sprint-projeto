@@ -511,14 +511,22 @@ Pensamos em customizar as fases de acordo com elementos que remetam às Vice-Pre
 
 ### 3.3.5. Trilha sonora (sprint 4)
 
-A trilha sonora do jogo foi cuidadosamente escolhida para acompanhar a ambientação de cada cena, contribuindo para a imersão do jogador. As músicas variam conforme o ambiente e a atmosfera desejada, indo desde tons mais leves e relaxantes até sons temáticos específicos como música de elevador.
-Abaixo está a lista das músicas utilizadas em cada parte do jogo:
+A trilha sonora do jogo foi cuidadosamente escolhida para acompanhar a ambientação de cada cena, contribuindo para a imersão do jogador. As músicas variam conforme o ambiente e a atmosfera desejada, indo desde tons mais leves e relaxantes até sons temáticos específicos como, por exemplo, a música do elevador.
+
+Abaixo está a lista das músicas utilizadas em cada parte do jogo, além dos efeitos sonoros:
+
 | Cena                | Descrição da Trilha                                                | Fonte / Link                                                                 | Autor e Licença                                     |
 |---------------------|---------------------------------------------------------------------|------------------------------------------------------------------------------|------------------------------------------------------|
 | Tela Inicial        | Trilha leve e acolhedora para recepcionar o jogador.               | https://www.youtube.com/watch?v=Z-bi29z4Z1k                                  | Kevin MacLeod [Official] - Pixelland - incompetech.com |
 | Cena 1 - Escritório | Música tranquila e suave, ideal para um ambiente de trabalho.      | [YouTube - Calm Office Música para Trabalhar no Escritório](https://www.youtube.com/watch?v=QZbuj3RJcjI) | STUDIO LUZES DE PARÍS - "Carefree"                   |
 | Cena do Elevador    | Clássica música de elevador, divertida e temática.                 | [YouTube - Elevator Local Forecast - Elevator](https://www.youtube.com/watch?v=VnQ1j6gG3LU) | Kevin MacLeod - "Elevator"                          |
-
+| Vice-Presidência de Pessoas    | Música ambiente da fase de VP de Pessoas, que cria uma atmosfera animada e desafiadora ao mesmo tempo.                 | <https://freesound.org/people/DominikBraun/sounds/483502/> | DominikBraun - Freesound                          |
+| Vice-Presidência de Estratégia    | Música animada e que motiva a socialização (objetivo do minigame desta fase).                | <https://www.youtube.com/watch?v=DzFXGsRvSwA&list=PLwJjxqYuirCLkq42mGw4XKGQlpZSfxsYd&index=15> | Kevin MacLeod   |
+| Efeito: personagem andando   |  O áudio apresenta a movimentação básica do personagem, com a finalidade de sinalizar seus passos em meio às fases situadas no prédio da Vivo para o jogador.              | <https://freesound.org/people/Vrymaa/sounds/753292/> | Vrymaa - Freesound                          |
+| Efeito: botão   |  Representa o click padronizado de todos os botões presentes no jogo, como o de “Jogar” na tela inicial, por exemplo. Tem a finalidade de tornar a navegação no jogo um processo dinâmico.                | <https://freesound.org/people/aphom000/sounds/687107/> | aphom000 - Freesound                          |
+| Efeito: escolha correta no quiz  |    Representa os acertos no minigame/quiz de formulação de currículo na fase do escritório. Tem como principal objetivo fornecer feedback sonoro do desempenho do jogador.            | <https://freesound.org/people/unadamlar/sounds/476178/ > | unadamlar - Freesound                         |
+| Efeito: escolha incorreta no quiz  | Representa as escolhas das respostas erradas no minigame/quiz do currículo. Assim como o som de acertos, esse efeito sonoro tem como finalidade fornecer um feedback ao jogador.                | <https://freesound.org/people/Producing_RayLite/sounds/700641/> | Producing_RayLite - Freesound                        |
+| Efeito: HUD exclamação  | Utilizado para o alerta à storyline/progressão do jogo, de maneira a identificar o caminho que o player deve percorrer inicialmente para o entendimento de como o mesmo funciona.                 | <https://freesound.org/people/Abacagi/sounds/497198/> |  Abacagi - Freesound                         |
 
 *Exemplo de tabela*
 \# | titulo | ocorrência | autoria
@@ -565,19 +573,13 @@ O Gameflow de Skill Print pode ser observado a seguir:
 
 <div align="center">
   <sub>Diagrama de Cenas</sub><br>
- 
- ![Image](https://github.com/user-attachments/assets/e5c2d30d-10b0-4523-8660-6ef98265b399)
+  <img src="https://github.com/user-attachments/assets/e5c2d30d-10b0-4523-8660-6ef98265b399" width="900px" 
+  alt="Diagrama de Cenas"><br>
+  <sup>Fonte: produzido pelos autores.</sup>
+</div>
 
+Link de acesso:  <https://github.com/user-attachments/assets/e5c2d30d-10b0-4523-8660-6ef98265b399>
 
-Link de acesso:  (file:///C:/Users/Inteli/Downloads/DIAGRAMA%20DE%20CENAS.pdf)
-
-
-
-  <sup>Fonte: produzido pelos autores. </sup>
-</div> 
-
-
->
 
 Além do *Gameflow* desenvolvido no Canva, o rascunho do diagrama de cenas foi desenvolvido para visualizar e organizar a estrutura inicial do jogo, especialmente a primeira fase, que serve como ponto de partida para a experiência do jogador. Esse diagrama foi criado para mapear o fluxo de interações, desde a tela inicial até a conclusão das tarefas na fase de criação do currículo. Ele demonstra como o jogador navega pelo ambiente.
 
