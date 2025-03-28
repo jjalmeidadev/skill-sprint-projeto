@@ -378,12 +378,12 @@ class CongratulationsMinigameScene extends Phaser.Scene {
         this.load.image('congratulation', '../assets/assetsTrash/parabens.png');
         this.load.image('vivinhoComplete', '../assets/assetsTrash/moldura.png');
         this.load.image('buttonBack', '../assets/assetsTrash/buttonBack.png');
-        this.load.image('background', '../assets/assetsTrash/mapaVPPessoas.png');
+        //this.load.image('background', '../assets/assetsTrash/mapaVPPessoas.png');
         this.load.audio('buttonSound', '../assets/sounds/687107__aphom000__mouse-2-button-fast-click.wav');
     }
 
     create() {
-        this.add.image(width / 2, height - 355, 'background').setScale(2.5);
+        //this.add.image(width / 2, height - 355, 'background').setScale(2.5);
         this.addCongratulation();
         this.addVivinhoComplete();
         this.createButtonBack();
