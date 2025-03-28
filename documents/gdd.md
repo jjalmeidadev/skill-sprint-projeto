@@ -123,9 +123,24 @@ O Value Proposition Canvas [14] é uma ferramenta poderosa de planejamento estre
 
 ### 1.1.5. Descrição da Solução Desenvolvida (sprint 4)
 
-*Descreva brevemente a solução desenvolvida para o parceiro de negócios. Descreva os aspectos essenciais para a criação de valor da ideia do produto com o objetivo de ajudar a entender melhor a realidade do cliente e entregar uma solução que está alinhado com o que ele espera. Observe a seção 2 e verifique que ali é possível trazer mais detalhes, portanto seja objetivo aqui. Atualize esta descrição até a entrega final, conforme desenvolvimento.*
+O Skill Sprint surge como resposta a um desafio estratégico enfrentado pela Vivo: como engajar seus colaboradores em programas de desenvolvimento profissional que, em formatos tradicionais, muitas vezes falham em despertar interesse e participação ativa. Este *serious game* inovador foi concebido para transformar positivamente a experiência de aprendizado corporativo, convertendo processos burocráticos de gestão de carreira em uma jornada interativa e envolvente.
 
-### 1.1.6. Matriz de Riscos (sprint 4)]
+Baseado nos princípios do Value Proposition Canvas, o jogo foi meticulosamente desenvolvido para abordar as principais dificuldades identificadas entre os colaboradores: a complexidade dos processos de *job rotation* (e progressão de carreira), a falta de clareza sobre oportunidades internas e a desconexão com métodos convencionais de capacitação. Através de uma narrativa imersiva, os participantes vivenciam na prática todas as etapas do desenvolvimento profissional - desde a elaboração de currículos até resolução de cases e planejamento de trajetória.
+
+O verdadeiro diferencial do Skill Sprint está em sua capacidade de materializar conceitos abstratos em experiências concretas. Ao simular o ambiente das diferentes Vice-Presidências da Vivo, o jogo permite que os colaboradores explorem diversas áreas de atuação, enfrentando desafios profissionais reais em um contexto seguro e dinâmico. Essa abordagem visa resultar em um aumento na compreensão sobre mobilidade interna e engajamento.
+
+Totalmente alinhado aos valores corporativos da Vivo, o Skill Sprint estabelece uma conexão direta entre aprendizado e aplicação prática. Colaboradores que completam a jornada do jogo não apenas assimilam conceitos, mas desenvolvem a confiança necessária para buscar ativamente novas oportunidades dentro da organização. O que antes era visto como obrigação burocrática se transforma em uma experiência motivadora de crescimento profissional.
+
+<div align="center">
+  <sub>GIF - Personagem Principal no elevador que toca diferentes propagandas da Vivo, gerando uma imersão na cultura da empresa parceira.</sub><br>
+  <img src="../assets/Recording 2025-03-28 074805.gif" width="900px" 
+  alt="Gif - Elevador"><br>
+  <sup>Fonte: produzido pelo autor.</sup>
+</div>
+
+Por fim, com sua combinação única de jogabilidade, aprendizagem prática e inteligência estratégica, o Skill Sprint representa uma transformação na forma como a Vivo desenvolve seus talentos, criando um ecossistema onde desenvolvimento profissional e resultados empresariais se reforçam mutuamente, impulsionando tanto o crescimento individual quanto o sucesso organizacional.
+
+### 1.1.6. Matriz de Riscos (sprint 4)
 
 A matriz de risco [15] é uma ferramenta essencial para a gestão de riscos, permitindo a identificação, avaliação e priorização de ameaças e oportunidades que podem impactar os objetivos de um projeto ou organização. Ao classificar os riscos com base em sua probabilidade e impacto, a matriz oferece uma visão clara e estruturada, facilitando a tomada de decisões e a alocação de recursos para mitigação. Nesta seção, abordaremos os principais conceitos, critérios de avaliação e aplicações práticas da matriz de risco, demonstrando sua importância para uma gestão proativa e eficiente.
 
@@ -528,12 +543,6 @@ Abaixo está a lista das músicas utilizadas em cada parte do jogo, além dos ef
 | Efeito: escolha incorreta no quiz  | Representa as escolhas das respostas erradas no minigame/quiz do currículo. Assim como o som de acertos, esse efeito sonoro tem como finalidade fornecer um feedback ao jogador.                | <https://freesound.org/people/Producing_RayLite/sounds/700641/> | Producing_RayLite - Freesound                        |
 | Efeito: HUD exclamação  | Utilizado para o alerta à storyline/progressão do jogo, de maneira a identificar o caminho que o player deve percorrer inicialmente para o entendimento de como o mesmo funciona.                 | <https://freesound.org/people/Abacagi/sounds/497198/> |  Abacagi - Freesound                         |
 
-*Exemplo de tabela*
-\# | titulo | ocorrência | autoria
---- | --- | --- | ---
-1 | tema de abertura | tela de início | própria
-2 | tema de combate | cena de combate com inimigos comuns | Hans Zimmer
-3 | ... 
 
 ## 3.4. Inventário e Bestiário (sprint 3)
 
