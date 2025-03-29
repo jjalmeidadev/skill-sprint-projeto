@@ -371,17 +371,18 @@ Nesta seção, vamos explorar os personagens que habitam o universo do nosso jog
 
 O Skill Sprint conta com um jogador principal chamado Skrill que será controlado pelo colaborador da Vivo pelas teclas WASD e utilizará a tecla E pra interagir com objetos/personagens durante a jornada do jogo. Existe também o Vivinho, que é um personagem com o como objetivo de guiar o usuário durante as fases e ensiná-lo a realizar os cases. A Vivita é uma NPC que fica na recepção e orienta o colaborador a realizar a primeira tarefa, que é criar um currículo. Ela será responsável por introduzir o usuário e informar qual o primeiro passo a ser dado para começar a jornada de Job Rotation. Todos os NPCs serão desenhados com o intuito de trazer diversidade, remetento aos valores da Vivo. Planejamos representar diferentes grupos étnicos, a comunidade LGBTQIA+, pessoas negras, mulheres em cargos de liderança e também pessoas com necessidades especiais.
 
+
 <div align="center">
-  <sub>Skrill, jogador principal</sub><br>
- <img scr="(https://github.com/user-attachments/assets/9a832a96-02f0-4c39-9985-c9456f95b68c)" whdth=900px"
-  alt="Skrill, jogador principal"><br>
-  <sup>Fonte: produzido pelos autores.</sup>
+  <sub>Vivinho</sub><br>
+  <img src="../assets/Screenshot 2025-03-28 184937.png" width="450px" 
+  alt="Vivinho"><br>
+  <sup>Fonte: domínio gratuito.</sup>
 </div>
 
 
 ### 3.2.2. Non-Playable Characters (NPC)
 
-Até o presente momento de desenvolvimento, idealizamos 2 NPCs: o Vivinho, a Vivita e a líder.
+Até o presente momento de desenvolvimento, idealizamos 3 NPCs: o Vivinho, a Vivita e a líder.
 
 - Vivinho é um personagem que tem como objetivo guiar o usuário durante as fases e ensiná-lo a concluir as fases do jogo através de caixas de diálogo e instruções.
  
@@ -395,14 +396,16 @@ Até o presente momento de desenvolvimento, idealizamos 2 NPCs: o Vivinho, a Viv
   <sub>Vivinho</sub><br>
   <img src="https://github.com/user-attachments/assets/50594d55-2807-4a2d-8dd0-89d618be81c5" width="450px" 
   alt="Vivinho"><br>
-  <sup>Fonte: produzido pelos autores.</sup>
+  <sup>Fonte: Vivo.</sup>
 </div>
+
+
 
 <div align="center">
   <sub>Vivita</sub><br>
-  <img src="https://github.com/user-attachments/assets/d1ada40a-0ed9-4092-b54a-d63624349d15" width="450px" 
+  <img src="../assets/vivita_gdd_01.png" width="450px" 
   alt="Vivita"><br>
-  <sup>Fonte: produzido pelos autores.</sup>
+  <sup>Fonte: domínio gratuito.</sup>
 </div>
 
 ### 3.2.3. Diversidade e Representatividade dos Personagens

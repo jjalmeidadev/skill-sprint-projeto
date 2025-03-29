@@ -1,305 +1,305 @@
 // Dados do Quiz VP Pessoas
-const perguntasPessoas = [
+const peopleQuestions = [
     {
-        pergunta: "O setor de Pessoas da Vivo valoriza currículos bem organizados e fáceis de ler. Qual das seguintes práticas melhora a estrutura do seu currículo?",
-        alternativas: [
+        question: "O setor de Pessoas da Vivo valoriza currículos bem organizados e fáceis de ler. Qual das seguintes práticas melhora a estrutura do seu currículo?",
+        options: [
             "Usar parágrafos longos para descrever cada experiência.",
             "Utilizar marcadores para destacar conquistas e habilidades.",
             "Incluir informações detalhadas sobre sua vida pessoal.",
             "Adicionar todas as experiências desde o primeiro emprego, sem priorizar as mais recentes."
         ],
-        correta: 1,
+        correct: 1,
         feedback: "Pense novamente! Um currículo bem estruturado facilita a leitura e destaca suas conquistas de forma clara. Qual alternativa faz isso melhor?"
     },
     {
-        pergunta: "Qual a importância de destacar soft skills no currículo?",
-        alternativas: [
+        question: "Qual a importância de destacar soft skills no currículo?",
+        options: [
             "São irrelevantes, apenas habilidades técnicas importam.",
             "Demonstram como o candidato se adapta e interage no ambiente de trabalho.",
             "Devem ser listadas de forma genérica, sem exemplos práticos.",
             "Devem substituir as experiências profissionais."
         ],
-        correta: 1,
+        correct: 1,
         feedback: "Reflita! Soft skills mostram como você se relaciona e se adapta no trabalho. Qual alternativa destaca isso de forma mais eficaz?"
     },
     {
-        pergunta: "Como adaptar o currículo para ser aprovado por um sistema ATS (Applicant Tracking System)?",
-        alternativas: [
+        question: "Como adaptar o currículo para ser aprovado por um sistema ATS (Applicant Tracking System)?",
+        options: [
             "Usando palavras-chave da descrição da vaga.",
             "Criando um design altamente visual e colorido.",
             "Usando apenas tópicos genéricos sobre experiências.",
             "Evitando títulos claros para as seções."
         ],
-        correta: 0,
+        correct: 0,
         feedback: "Pense melhor! Sistemas ATS buscam palavras-chave específicas. Qual alternativa reflete essa necessidade?"
     },
     {
-        pergunta: "O que é essencial para um currículo ser bem avaliado por um recrutador?",
-        alternativas: [
+        question: "O que é essencial para um currículo ser bem avaliado por um recrutador?",
+        options: [
             "Um layout sofisticado e cheio de imagens.",
             "Listar apenas experiências, sem detalhar conquistas.",
             "Destacar resultados e competências alinhadas à vaga.",
             "Usar um texto longo e detalhado para cada experiência."
         ],
-        correta: 2,
+        correct: 2,
         feedback: "Reflita! Recrutadores valorizam resultados e competências alinhadas à vaga. Qual alternativa destaca isso?"
     },
     {
-        pergunta: "Qual erro pode prejudicar um candidato ao enviar um currículo?",
-        alternativas: [
+        question: "Qual erro pode prejudicar um candidato ao enviar um currículo?",
+        options: [
             "Usar um e-mail profissional no contato.",
             "Adaptar o currículo para cada vaga.",
             "Expor informações de contato.",
             "Deixar informações desatualizadas ou incorretas."
         ],
-        correta: 3,
+        correct: 3,
         feedback: "Pense novamente! Informações desatualizadas ou incorretas podem prejudicar sua candidatura. Qual alternativa reflete isso?"
     }
 ];
 
 // Dados do Quiz VP Estratégia
-const perguntasEstrategia = [
+const strategyQuestions = [
     {
-        pergunta: "A inteligência artificial é usada por sistemas de recrutamento (ATS) para filtrar currículos. Qual das seguintes abordagens ajuda seu currículo a ser bem classificado nesses sistemas?",
-        alternativas: [
+        question: "A inteligência artificial é usada por sistemas de recrutamento (ATS) para filtrar currículos. Qual das seguintes abordagens ajuda seu currículo a ser bem classificado nesses sistemas?",
+        options: [
             "Inserir palavras-chave relevantes da vaga na seção de habilidades e experiência.",
             "Utilizar fontes decorativas e imagens para destacar sua personalidade.",
             "Escrever um currículo genérico sem adaptação para cada vaga.",
             "Enviar o currículo no corpo do e-mail ao invés de um arquivo estruturado."
         ],
-        correta: 0,
+        correct: 0,
         feedback: "Reflita! Sistemas ATS priorizam palavras-chave relevantes. Qual alternativa melhor atende a essa necessidade?"
     },
     {
-        pergunta: "O que pode tornar um candidato mais atrativo para uma vaga estratégica?",
-        alternativas: [
+        question: "O que pode tornar um candidato mais atrativo para uma vaga estratégica?",
+        options: [
             "Demonstrar capacidade analítica e experiência em inovação.",
             "Usar um currículo sem foco e cheio de informações irrelevantes.",
             "Esconder experiências passadas para parecer mais flexível.",
             "Ignorar a personalização do currículo para cada oportunidade."
         ],
-        correta: 0,
+        correct: 0,
         feedback: "Pense novamente! Capacidade analítica e inovação são essenciais para vagas estratégicas. Qual alternativa destaca isso?"
     },
     {
-        pergunta: "Como destacar projetos de inovação no currículo?",
-        alternativas: [
+        question: "Como destacar projetos de inovação no currículo?",
+        options: [
             "Explicando a abordagem e os resultados obtidos.",
             "Apenas listando o nome dos projetos sem detalhes.",
             "Omitindo informações sobre desafios e aprendizados.",
             "Exagerando nos resultados para parecer mais impactante."
         ],
-        correta: 0,
+        correct: 0,
         feedback: "Reflita! Projetos de inovação devem ser claros e objetivos. Qual alternativa melhor descreve isso?"
     },
     {
-        pergunta: "Qual habilidade é essencial para atuar em novos negócios e IA?",
-        alternativas: [
+        question: "Qual habilidade é essencial para atuar em novos negócios e IA?",
+        options: [
             "Capacidade de adaptação e pensamento estratégico.",
             "Apenas habilidades operacionais sem visão de longo prazo.",
             "Criatividade sem aplicação prática.",
             "Exclusivamente experiência acadêmica sem prática no mercado."
         ],
-        correta: 0,
+        correct: 0,
         feedback: "Pense melhor! Adaptação e pensamento estratégico são cruciais. Qual alternativa reflete isso?"
     },
     {
-        pergunta: "Como um candidato pode demonstrar conhecimento em inteligência artificial no currículo?",
-        alternativas: [
+        question: "Como um candidato pode demonstrar conhecimento em inteligência artificial no currículo?",
+        options: [
             "Mencionando cursos, projetos e experiência na área.",
             "Apenas citando que tem interesse no assunto.",
             "Ignorando certificações para não parecer muito técnico.",
             "Evitando mencionar IA caso não tenha experiência direta."
         ],
-        correta: 0,
+        correct: 0,
         feedback: "Reflita! Cursos, projetos e experiência são fundamentais para demonstrar conhecimento. Qual alternativa destaca isso?"
     }
 ];
 
 // Dados do Quiz VP Negócios
-const perguntasNegocios = [
+const businessQuestions = [
     {
-        pergunta: "Você deseja atuar na VP de Negócios da Vivo e percebe que a vaga enfatiza habilidades analíticas e gestão de projetos. Como você pode personalizar seu currículo para aumentar suas chances?",
-        alternativas: [
+        question: "Você deseja atuar na VP de Negócios da Vivo e percebe que a vaga enfatiza habilidades analíticas e gestão de projetos. Como você pode personalizar seu currículo para aumentar suas chances?",
+        options: [
             "Destacar experiências passadas que demonstram suas habilidades analíticas e projetos liderados.",
             "Manter um currículo genérico para que sirva para qualquer vaga.",
             "Adicionar certificações e cursos, mesmo que não tenham relação com a vaga.",
             "Escrever experiências apenas com as funções desempenhadas, sem resultados obtidos."
         ],
-        correta: 0,
+        correct: 0,
         feedback: "Reflita! Destacar habilidades analíticas e projetos liderados é essencial. Qual alternativa reflete isso?"
     },
     {
-        pergunta: "O que é essencial para um currículo focado em vendas e negócios?",
-        alternativas: [
+        question: "O que é essencial para um currículo focado em vendas e negócios?",
+        options: [
             "Destacar metas atingidas e impacto nos resultados.",
             "Apenas listar as empresas onde trabalhou sem detalhes.",
             "Usar um layout criativo sem estrutura clara.",
             "Omitir informações sobre clientes e mercado."
         ],
-        correta: 0,
+        correct: 0,
         feedback: "Pense novamente! Metas atingidas e impacto nos resultados são fundamentais. Qual alternativa reflete isso?"
     },
     {
-        pergunta: "Como descrever a experiência em negociação e vendas no currículo?",
-        alternativas: [
+        question: "Como descrever a experiência em negociação e vendas no currículo?",
+        options: [
             "Demonstrando crescimento de receita e estratégias aplicadas.",
             "Apenas mencionando que trabalhou com vendas.",
             "Excluindo informações sobre indicadores de performance.",
             "Utilizando frases genéricas sem exemplos concretos."
         ],
-        correta: 0,
+        correct: 0,
         feedback: "Reflita! Crescimento de receita e estratégias aplicadas são essenciais. Qual alternativa reflete isso?"
     },
     {
-        pergunta: "Qual erro pode prejudicar um candidato na área comercial ao montar seu currículo?",
-        alternativas: [
+        question: "Qual erro pode prejudicar um candidato na área comercial ao montar seu currículo?",
+        options: [
             "Excluir números e métricas de performance.",
             "Destacar networking e relacionamento com clientes.",
             "Demonstrar experiência com estratégias de mercado.",
             "Incluir cases de sucesso relevantes."
         ],
-        correta: 0,
+        correct: 0,
         feedback: "Pense novamente! Números e métricas são fundamentais para demonstrar resultados. Qual alternativa reflete isso?"
     },
     {
-        pergunta: "Qual é um diferencial para um currículo na área de negócios?",
-        alternativas: [
+        question: "Qual é um diferencial para um currículo na área de negócios?",
+        options: [
             "Experiência em estratégias de crescimento e desenvolvimento de mercado.",
             "Listar apenas habilidades técnicas.",
             "Ignorar a importância de soft skills.",
             "Criar um currículo genérico sem adaptações para a vaga."
         ],
-        correta: 0,
+        correct: 0,
         feedback: "Reflita! Estratégias de crescimento e desenvolvimento de mercado são diferenciais. Qual alternativa reflete isso?"
     }
 ];
 
 // Dados do Quiz VP Relações Institucionais
-const perguntasRelacoes = [
+const relationsQuestions = [
     {
-        pergunta: "Um currículo eficaz precisa de uma comunicação clara e objetiva. Qual das opções abaixo é a melhor forma de descrever uma experiência profissional?",
-        alternativas: [
+        question: "Um currículo eficaz precisa de uma comunicação clara e objetiva. Qual das opções abaixo é a melhor forma de descrever uma experiência profissional?",
+        options: [
             '"Trabalhei na empresa X e fiz muitas atividades na área de marketing."',
             '"Responsável por marketing na empresa X, onde aumentei o engajamento digital em 40% por meio de campanhas estratégicas."',
             '"Atuei no setor de marketing, onde fazia postagens nas redes sociais."',
             '"Tenho experiência com marketing e sou uma pessoa criativa e proativa."'
         ],
-        correta: 1,
+        correct: 1,
         feedback: "Reflita! Descrever conquistas e resultados é essencial. Qual alternativa reflete isso?"
     },
     {
-        pergunta: "Qual fator é mais relevante em um currículo para uma vaga em sustentabilidade?",
-        alternativas: [
+        question: "Qual fator é mais relevante em um currículo para uma vaga em sustentabilidade?",
+        options: [
             "Experiência com projetos ESG e impacto social.",
             "Uso de palavras-chave sem relevância para a área.",
             "Apenas a formação acadêmica sem experiências práticas.",
             "Omitir participação em iniciativas ambientais."
         ],
-        correta: 0,
+        correct: 0,
         feedback: "Pense novamente! Projetos ESG e impacto social são altamente valorizados. Qual alternativa reflete isso?"
     },
     {
-        pergunta: "Como destacar experiência com relações institucionais no currículo?",
-        alternativas: [
+        question: "Como destacar experiência com relações institucionais no currículo?",
+        options: [
             "Mencionando atuação com stakeholders e projetos de impacto.",
             "Apenas listando cargos sem descrição das atividades.",
             "Evitando detalhar parcerias estratégicas.",
             "Omitindo participação em políticas públicas e regulamentações."
         ],
-        correta: 0,
+        correct: 0,
         feedback: "Reflita! Atuação com stakeholders e projetos de impacto são essenciais. Qual alternativa reflete isso?"
     },
     {
-        pergunta: "Qual das seguintes ações melhora um currículo para a área de sustentabilidade?",
-        alternativas: [
+        question: "Qual das seguintes ações melhora um currículo para a área de sustentabilidade?",
+        options: [
             "Incluir certificações e especializações relevantes.",
             "Usar um layout poluído e desorganizado.",
             "Ignorar experiências de voluntariado e impacto social.",
             "Excluir informações sobre engajamento com ONGs."
         ],
-        correta: 0,
+        correct: 0,
         feedback: "Pense novamente! Certificações e especializações relevantes são diferenciais. Qual alternativa reflete isso?"
     },
     {
-        pergunta: "O que um recrutador dessa área (VP de Relações Institucionais e Sustentabilidade) espera ver no currículo?",
-        alternativas: [
+        question: "O que um recrutador dessa área (VP de Relações Institucionais e Sustentabilidade) espera ver no currículo?",
+        options: [
             "Experiência com responsabilidade social e desenvolvimento sustentável.",
             "Apenas conhecimentos básicos sobre meio ambiente.",
             "Um currículo genérico, sem foco na área.",
             "Um documento com muitas páginas e informações irrelevantes."
         ],
-        correta: 0,
+        correct: 0,
         feedback: "Reflita! Experiência com responsabilidade social e desenvolvimento sustentável é essencial. Qual alternativa reflete isso?"
     }
 ];
 
 // Dados do Quiz VP Tecnologia
-const perguntasTecnologia = [
+const technologyQuestions = [
     {
-        pergunta: "O design do seu currículo pode influenciar na forma como ele é lido pelos sistemas automatizados (ATS). Qual das opções abaixo representa a melhor prática?",
-        alternativas: [
+        question: "O design do seu currículo pode influenciar na forma como ele é lido pelos sistemas automatizados (ATS). Qual das opções abaixo representa a melhor prática?",
+        options: [
             "Usar tabelas e colunas para organizar informações de forma estilizada.",
             "Criar um currículo em formato de imagem ou PDF com elementos gráficos.",
             "Manter um layout limpo, com formatação simples e sem uso excessivo de cores ou gráficos.",
             "Utilizar fontes incomuns para destacar seu diferencial."
         ],
-        correta: 2,
+        correct: 2,
         feedback: "Pense novamente! Um layout limpo e simples é mais eficaz para sistemas ATS. Qual alternativa reflete isso?"
     },
     {
-        pergunta: "Qual é um elemento essencial para um currículo na área de TI?",
-        alternativas: [
+        question: "Qual é um elemento essencial para um currículo na área de TI?",
+        options: [
             "Projetos desenvolvidos e conhecimento em tecnologias específicas.",
             "Apenas a lista de empresas onde trabalhou.",
             "Um design extremamente visual e sem estrutura clara.",
             "Ignorar certificações para focar apenas em experiência prática."
         ],
-        correta: 0,
+        correct: 0,
         feedback: "Reflita! Projetos desenvolvidos e conhecimento em tecnologias específicas são essenciais. Qual alternativa reflete isso?"
     },
     {
-        pergunta: "Como um profissional de TI pode demonstrar experiência prática no currículo?",
-        alternativas: [
+        question: "Como um profissional de TI pode demonstrar experiência prática no currículo?",
+        options: [
             "Destacando projetos, certificações e metodologias utilizadas.",
             "Apenas mencionando que tem habilidades técnicas.",
             "Omitindo informações sobre ferramentas e tecnologias.",
             "Evitando links para portfólios ou GitHub."
         ],
-        correta: 0,
+        correct: 0,
         feedback: "Pense novamente! Projetos, certificações e metodologias são fundamentais. Qual alternativa reflete isso?"
     },
     {
-        pergunta: "Qual a melhor maneira de destacar conhecimento em cibersegurança no currículo?",
-        alternativas: [
+        question: "Qual a melhor maneira de destacar conhecimento em cibersegurança no currículo?",
+        options: [
             "Citando certificações como CISSP e projetos na área.",
             "Apenas mencionando interesse no tema.",
             "Excluindo informações sobre vulnerabilidades tratadas.",
             "Usando frases vagas sem comprovação de conhecimento."
         ],
-        correta: 0,
+        correct: 0,
         feedback: "Reflita! Certificações e projetos são essenciais para destacar conhecimento. Qual alternativa reflete isso?"
     },
     {
-        pergunta: "Qual erro deve ser evitado ao criar um currículo para a área de TI?",
-        alternativas: [
+        question: "Qual erro deve ser evitado ao criar um currículo para a área de TI?",
+        options: [
             "Listar todas as tecnologias já utilizadas sem organização.",
             "Incluir certificações e cursos relevantes.",
             "Organizar a experiência de forma cronológica e clara.",
             "Excluir informações sobre impacto dos projetos."
         ],
-        correta: 0,
+        correct: 0,
         feedback: "Pense novamente! Listar tecnologias sem organização torna o currículo confuso. Qual alternativa reflete isso?"
     }
 ];
 
 // Variáveis globais
-let perguntaAtual = 0;
-let progresso = 0;
-let pontuacao = 0;
-const TEMPO_POR_PERGUNTA = 30; // Segundos para responder
-let tempoRestante = TEMPO_POR_PERGUNTA;
-let temporizador;
+let currentQuestion = 0;
+let progress = 0;
+let score = 0;
+const TIME_PER_QUESTION = 30; // Segundos para responder
+let remainingTime = TIME_PER_QUESTION;
+let timer;
 
 // Classe para a cena inicial do currículo
 class CurriculoScene extends Phaser.Scene {
@@ -311,20 +311,20 @@ class CurriculoScene extends Phaser.Scene {
 
     preload() {
         // Carrega as imagens
-        this.load.image('primeiraTela', '../assets/primeiraTela.png');
-        this.load.image('botao01', '../assets/botao_vp_pessoas.png');
-        this.load.image('botao02', '../assets/botao_vp_estrategia.png');
-        this.load.image('botao03', '../assets/botao_vp_negocios.png');
-        this.load.image('botao04', '../assets/botao_vp_relacoes.png');
-        this.load.image('botao05', '../assets/botao_vp_tecnologia.png');
+        this.load.image('firstScreen', '../assets/primeiraTela.png');
+        this.load.image('button01', '../assets/botao_vp_pessoas.png');
+        this.load.image('button02', '../assets/botao_vp_estrategia.png');
+        this.load.image('button03', '../assets/botao_vp_negocios.png');
+        this.load.image('button04', '../assets/botao_vp_relacoes.png');
+        this.load.image('button05', '../assets/botao_vp_tecnologia.png');
 
         // Carrega a fonte
-        this.load.font('FontePadrao', 'fonts/PixelifySans-VariableFont_wght.ttf');
+        this.load.font('font', 'fonts/PixelifySans-VariableFont_wght.ttf');
 
         // Carrega os efeitos sonoros
-        this.load.audio('corretoSom', '../assets/sounds/476178__unadamlar__correct-choice.wav');
-        this.load.audio('erradoSom', '../assets/sounds/700641__producing_raylite__incorrect-buzzer.wav');
-        this.load.audio('cliqueSom', '../assets/sounds/687107__aphom000__mouse-2-button-fast-click.wav');
+        this.load.audio('correctSound', '../assets/sounds/476178__unadamlar__correct-choice.wav');
+        this.load.audio('wrongSound', '../assets/sounds/700641__producing_raylite__incorrect-buzzer.wav');
+        this.load.audio('clickSound', '../assets/sounds/687107__aphom000__mouse-2-button-fast-click.wav');
     }
 
     create() {
@@ -339,25 +339,25 @@ class CurriculoScene extends Phaser.Scene {
         var height = 753;
 
         // Imagem de fundo sem distorção
-        const fundo = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, 'primeiraTela');
+        const background = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, 'firstScreen');
 
         // Ajusta a escala para cobrir a tela mantendo a proporção
-        this.scaleBackgroundImage(fundo);
+        this.scaleBackgroundImage(background);
 
         // Botão interativo com animação (fase Pessoas)
-        const botaoVpPessoas = this.add.image(
+        const buttonVpPeople = this.add.image(
             width - 1020, height - 370,
-            'botao01'
+            'button01'
         ).setInteractive().setScale(0.23);
 
-        botaoVpPessoas.on('pointerout', () => {
-            botaoVpPessoas.setScale(0.23);
+        buttonVpPeople.on('pointerout', () => {
+            buttonVpPeople.setScale(0.23);
         });
 
         // Efeito de piscar ao clicar
-        botaoVpPessoas.on('pointerdown', () => {
+        buttonVpPeople.on('pointerdown', () => {
             this.tweens.add({
-                targets: botaoVpPessoas,
+                targets: buttonVpPeople,
                 alpha: 0.6,
                 duration: 100,
                 yoyo: true,
@@ -365,8 +365,8 @@ class CurriculoScene extends Phaser.Scene {
                     // Fade out na câmera
                     this.cameras.main.fadeOut(500, 0, 0, 0, () => {
                         // Efeito sonoro de clique
-                        this.cliqueSom = this.sound.add('cliqueSom', { loop: false, volume: 10 });
-                        this.cliqueSom.play();
+                        this.clickSound = this.sound.add('clickSound', { loop: false, volume: 10 });
+                        this.clickSound.play();
 
                         this.scene.start('QuizVpPessoas');
                     });
@@ -375,19 +375,19 @@ class CurriculoScene extends Phaser.Scene {
         });
 
         // Botão interativo com animação (fase Estratégia)
-        const botaoVpEstrategia = this.add.image(
+        const buttonVpStrategy = this.add.image(
             width - 750, height - 370,
-            'botao02'
+            'button02'
         ).setInteractive().setScale(0.23);
 
-        botaoVpEstrategia.on('pointerout', () => {
-            botaoVpEstrategia.setScale(0.23);
+        buttonVpStrategy.on('pointerout', () => {
+            buttonVpStrategy.setScale(0.23);
         });
 
         // Efeito de piscar ao clicar
-        botaoVpEstrategia.on('pointerdown', () => {
+        buttonVpStrategy.on('pointerdown', () => {
             this.tweens.add({
-                targets: botaoVpEstrategia,
+                targets: buttonVpStrategy,
                 alpha: 0.6,
                 duration: 100,
                 yoyo: true,
@@ -395,8 +395,8 @@ class CurriculoScene extends Phaser.Scene {
                     // Fade out na câmera
                     this.cameras.main.fadeOut(500, 0, 0, 0, () => {
                         // Efeito sonoro de clique
-                        this.cliqueSom = this.sound.add('cliqueSom', { loop: false, volume: 10 });
-                        this.cliqueSom.play();
+                        this.clickSound = this.sound.add('clickSound', { loop: false, volume: 10 });
+                        this.clickSound.play();
 
                         this.scene.start('QuizVpEstrategia');
                     });
@@ -405,19 +405,19 @@ class CurriculoScene extends Phaser.Scene {
         });
 
         // Botão interativo com animação (fase Negócios)
-        const botaoVpNegocios = this.add.image(
+        const buttonVpBusiness = this.add.image(
             width - 480, height - 370,
-            'botao03'
+            'button03'
         ).setInteractive().setScale(0.23);
 
-        botaoVpNegocios.on('pointerout', () => {
-            botaoVpNegocios.setScale(0.23);
+        buttonVpBusiness.on('pointerout', () => {
+            buttonVpBusiness.setScale(0.23);
         });
 
         // Efeito de piscar ao clicar
-        botaoVpNegocios.on('pointerdown', () => {
+        buttonVpBusiness.on('pointerdown', () => {
             this.tweens.add({
-                targets: botaoVpNegocios,
+                targets: buttonVpBusiness,
                 alpha: 0.6,
                 duration: 100,
                 yoyo: true,
@@ -425,8 +425,8 @@ class CurriculoScene extends Phaser.Scene {
                     // Fade out na câmera
                     this.cameras.main.fadeOut(500, 0, 0, 0, () => {
                         // Efeito sonoro de clique
-                        this.cliqueSom = this.sound.add('cliqueSom', { loop: false, volume: 10 });
-                        this.cliqueSom.play();
+                        this.clickSound = this.sound.add('clickSound', { loop: false, volume: 10 });
+                        this.clickSound.play();
 
                         this.scene.start('QuizVpNegocios');
                     });
@@ -435,19 +435,19 @@ class CurriculoScene extends Phaser.Scene {
         });
 
         // Botão interativo com animação (fase Relações)
-        const botaoVpRelacoes = this.add.image(
+        const buttonVpRelations = this.add.image(
             width - 1020, height - 270,
-            'botao04'
+            'button04'
         ).setInteractive().setScale(0.23);
 
-        botaoVpRelacoes.on('pointerout', () => {
-            botaoVpRelacoes.setScale(0.23);
+        buttonVpRelations.on('pointerout', () => {
+            buttonVpRelations.setScale(0.23);
         });
 
         // Efeito de piscar ao clicar
-        botaoVpRelacoes.on('pointerdown', () => {
+        buttonVpRelations.on('pointerdown', () => {
             this.tweens.add({
-                targets: botaoVpRelacoes,
+                targets: buttonVpRelations,
                 alpha: 0.6,
                 duration: 100,
                 yoyo: true,
@@ -455,8 +455,8 @@ class CurriculoScene extends Phaser.Scene {
                     // Fade out na câmera
                     this.cameras.main.fadeOut(500, 0, 0, 0, () => {
                         // Efeito sonoro de clique
-                        this.cliqueSom = this.sound.add('cliqueSom', { loop: false, volume: 10 });
-                        this.cliqueSom.play();
+                        this.clickSound = this.sound.add('clickSound', { loop: false, volume: 10 });
+                        this.clickSound.play();
 
                         this.scene.start('QuizVpRelacoes');
                     });
@@ -465,19 +465,19 @@ class CurriculoScene extends Phaser.Scene {
         });
 
         // Botão interativo com animação (fase Tecnologia)
-        const botaoVpTecnologia = this.add.image(
+        const buttonVpTechnology = this.add.image(
             width - 750, height - 270,
-            'botao05'
+            'button05'
         ).setInteractive().setScale(0.23);
 
-        botaoVpTecnologia.on('pointerout', () => {
-            botaoVpTecnologia.setScale(0.23);
+        buttonVpTechnology.on('pointerout', () => {
+            buttonVpTechnology.setScale(0.23);
         });
 
         // Efeito de piscar ao clicar
-        botaoVpTecnologia.on('pointerdown', () => {
+        buttonVpTechnology.on('pointerdown', () => {
             this.tweens.add({
-                targets: botaoVpTecnologia,
+                targets: buttonVpTechnology,
                 alpha: 0.6,
                 duration: 100,
                 yoyo: true,
@@ -485,8 +485,8 @@ class CurriculoScene extends Phaser.Scene {
                     // Fade out na câmera
                     this.cameras.main.fadeOut(500, 0, 0, 0, () => {
                         // Efeito sonoro de clique
-                        this.cliqueSom = this.sound.add('cliqueSom', { loop: false, volume: 10 });
-                        this.cliqueSom.play();
+                        this.clickSound = this.sound.add('clickSound', { loop: false, volume: 10 });
+                        this.clickSound.play();
 
                         this.scene.start('QuizVpTecnologia');
                     });
@@ -514,14 +514,14 @@ class CurriculoScene extends Phaser.Scene {
 class QuizVpPessoas extends Phaser.Scene {
     constructor() {
         super({ key: 'QuizVpPessoas' });
-        this.textosPergunta = []; // Armazena os textos da pergunta e alternativas
-        this.botoesAlternativas = []; // Armazena os botões das alternativas
+        this.questionTexts = []; // Armazena os textos da pergunta e alternativas
+        this.optionButtons = []; // Armazena os botões das alternativas
     }
 
     preload() {
         // Carrega os recursos para o quiz
-        this.load.font('FontePadrao', 'fonts/PixelifySans-VariableFont_wght.ttf');
-        this.load.image('TelaQuiz', '../assets/TelaQuiz.png');
+        this.load.font('font', 'fonts/PixelifySans-VariableFont_wght.ttf');
+        this.load.image('QuizScreen', '../assets/TelaQuiz.png');
     }
 
     create() {
@@ -529,13 +529,13 @@ class QuizVpPessoas extends Phaser.Scene {
         this.cameras.main.fadeIn(1000);
 
         // Adicionar a imagem de fundo sem distorção
-        const fundo = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, 'TelaQuiz');
-        this.scaleBackgroundImage(fundo);
+        const background = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, 'QuizScreen');
+        this.scaleBackgroundImage(background);
 
         // Criar elementos de interface
-        this.criarBarraProgresso();
-        this.criarContadorPergunta();
-        this.mostrarPergunta();
+        this.createProgressBar();
+        this.createQuestionCounter();
+        this.showQuestion();
     }
 
     scaleBackgroundImage(image) {
@@ -550,94 +550,94 @@ class QuizVpPessoas extends Phaser.Scene {
         image.setScale(scale);
     }
 
-    criarContadorPergunta() {
+    createQuestionCounter() {
         // Mostrar número da pergunta atual/total
-        this.textoPerguntaNumero = this.add.text(
+        this.questionCounterText = this.add.text(
             this.sys.game.config.width - 150,
             50,
-            `Pergunta ${perguntaAtual + 1}/${perguntasPessoas.length}`,
-            { fontSize: '20px', fill: '#000', fontFamily: 'FontePadrao' }
+            `Question ${currentQuestion + 1}/${peopleQuestions.length}`,
+            { fontSize: '20px', fill: '#000', fontFamily: 'font' }
         ).setOrigin(0.5);
     }
 
-    criarBarraProgresso() {
+    createProgressBar() {
         // Container para a barra de progresso
         const progressBarContainer = this.add.rectangle(100, 50, 300, 24, 0xDDDDDD)
             .setOrigin(0, 0.5)
             .setStrokeStyle(2, 0x000000);
 
         // Barra de progresso roxa    
-        this.barraProgresso = this.add.rectangle(102, 50, 0, 20, 0xB600B9)
+        this.progressBar = this.add.rectangle(102, 50, 0, 20, 0xB600B9)
             .setOrigin(0, 0.5);
 
         // Texto de progresso    
-        this.textoProgresso = this.add.text(
+        this.progressText = this.add.text(
             420,
             50,
-            `${progresso}%`,
-            { fontSize: '20px', fill: '#000', fontFamily: 'FontePadrao', fontWeight: 'bold' }
+            `${progress}%`,
+            { fontSize: '20px', fill: '#000', fontFamily: 'font', fontWeight: 'bold' }
         ).setOrigin(0, 0.5);
     }
 
-    atualizarBarraProgresso() {
+    updateProgressBar() {
         // Atualizando a barra de progresso do quiz
-        const larguraMaxima = 296;
-        const novaLargura = (progresso / 100) * larguraMaxima;
+        const maxWidth = 296;
+        const newWidth = (progress / 100) * maxWidth;
 
         // Animar a barra de progresso
         this.tweens.add({
-            targets: this.barraProgresso,
-            width: novaLargura,
+            targets: this.progressBar,
+            width: newWidth,
             duration: 500,
             ease: 'Power2'
         });
 
-        this.textoProgresso.setText(`${progresso}%`);
+        this.progressText.setText(`${progress}%`);
     }
 
-    limparElementos() {
+    clearElements() {
         // Remove os textos da pergunta e alternativas
-        this.textosPergunta.forEach(texto => texto.destroy());
-        this.textosPergunta = [];
+        this.questionTexts.forEach(text => text.destroy());
+        this.questionTexts = [];
 
         // Remove os botões das alternativas
-        this.botoesAlternativas.forEach(botao => botao.destroy());
-        this.botoesAlternativas = [];
+        this.optionButtons.forEach(button => button.destroy());
+        this.optionButtons = [];
     }
 
-    mostrarPergunta() {
+    showQuestion() {
         // Limpa os elementos antigos
-        this.limparElementos();
+        this.clearElements();
 
         // Atualiza o contador de perguntas
-        this.textoPerguntaNumero.setText(`Pergunta ${perguntaAtual + 1}/${perguntasPessoas.length}`);
+        this.questionCounterText.setText(`Question ${currentQuestion + 1}/${peopleQuestions.length}`);
 
-        const pergunta = perguntasPessoas[perguntaAtual];
+        const question = peopleQuestions[currentQuestion];
 
         // Exibindo a pergunta
-        const textoPergunta = this.add.text(
+        const questionText = this.add.text(
             this.sys.game.config.width / 2,
             100,
-            pergunta.pergunta,
+            question.question,
             {
                 fontSize: '22px',
                 fill: '#B600B9',
-                fontFamily: 'FontePadrao',
+                fontFamily: 'font',
                 fontWeight: 'bold',
                 wordWrap: { width: this.sys.game.config.width - 150 },
                 align: 'center'
             }
         ).setOrigin(0.5);
 
-        this.textosPergunta.push(textoPergunta);
+        this.questionTexts.push(questionText);
 
         // Exibindo alternativas
         const startY = 200;
         const spacing = 50;
 
-        pergunta.alternativas.forEach((alternativa, index) => {
+        question.options.forEach((option, index) => {
             // Container da alternativa (retângulo)
-            const botaoContainer = this.add.rectangle(
+            const buttonContainer = this.add.rectangle(
                 this.sys.game.config.width / 2,
                 startY + (index * spacing),
                 this.sys.game.config.width - 200,
@@ -647,92 +647,92 @@ class QuizVpPessoas extends Phaser.Scene {
                 .setInteractive();
 
             // Efeitos de hover
-            botaoContainer.on('pointerover', () => {
-                botaoContainer.fillColor = 0xDDDDDD;
-                botaoContainer.setScale(1.02);
+            buttonContainer.on('pointerover', () => {
+                buttonContainer.fillColor = 0xDDDDDD;
+                buttonContainer.setScale(1.02);
             });
 
-            botaoContainer.on('pointerout', () => {
-                botaoContainer.fillColor = 0xEAE8E8;
-                botaoContainer.setScale(1);
+            buttonContainer.on('pointerout', () => {
+                buttonContainer.fillColor = 0xEAE8E8;
+                buttonContainer.setScale(1);
             });
 
             // Evento de clique
-            botaoContainer.on('pointerdown', () => {
-                this.verificarResposta(index, botaoContainer);
+            buttonContainer.on('pointerdown', () => {
+                this.checkAnswer(index, buttonContainer);
             });
 
             // Texto da alternativa
-            const textoAlternativa = this.add.text(
+            const optionText = this.add.text(
                 this.sys.game.config.width / 2,
                 startY + (index * spacing),
-                `${index + 1}. ${alternativa}`,
+                `${index + 1}. ${option}`,
                 {
                     fontSize: '18px',
                     fill: '#000',
-                    fontFamily: 'FontePadrao',
+                    fontFamily: 'font',
                     wordWrap: { width: this.sys.game.config.width - 220 }
                 }
             ).setOrigin(0.5);
 
-            this.textosPergunta.push(textoAlternativa);
-            this.botoesAlternativas.push(botaoContainer);
+            this.questionTexts.push(optionText);
+            this.optionButtons.push(buttonContainer);
         });
     }
 
-    verificarResposta(resposta, botaoClicado) {
+    checkAnswer(answer, clickedButton) {
         // Desativar interação com todos os botões
-        this.botoesAlternativas.forEach(botao => {
-            botao.disableInteractive();
+        this.optionButtons.forEach(button => {
+            button.disableInteractive();
         });
 
-        const pergunta = perguntasPessoas[perguntaAtual]; // Substitua por perguntasEstrategia, perguntasNegocios, etc., conforme a cena
+        const question = peopleQuestions[currentQuestion]; // Substitua por perguntasEstrategia, perguntasNegocios, etc., conforme a cena
 
-        if (resposta === pergunta.correta) {
+        if (answer === question.correct) {
             // Resposta correta
-            botaoClicado.fillColor = 0x88FF88; // Verde claro
+            clickedButton.fillColor = 0x88FF88; // Verde claro
 
             // Efeito sonoro de correto
-            this.correto = this.sound.add('corretoSom', { loop: false, volume: 10 });
-            this.correto.play();
+            this.correct = this.sound.add('correctSound', { loop: false, volume: 10 });
+            this.correct.play();
 
             // Atualizar pontuação e progresso
-            pontuacao += 100; // Pontuação fixa por resposta correta
-            progresso += 20;
+            score += 100; // Pontuação fixa por resposta correta
+            progress += 20;
 
             // Esperar um momento antes de seguir
             this.time.delayedCall(1500, () => {
-                perguntaAtual++;
-                this.atualizarBarraProgresso();
+                currentQuestion++;
+                this.updateProgressBar();
 
-                if (perguntaAtual < perguntasPessoas.length) {
+                if (currentQuestion < peopleQuestions.length) {
                     // Próxima pergunta com transição
                     this.cameras.main.fadeOut(300, 0, 0, 0, () => {
                         this.cameras.main.fadeIn(300);
-                        this.mostrarPergunta();
+                        this.showQuestion();
                     });
                 } else {
                     // Quiz completo
-                    this.scene.start('CongratulationsSceneCurriculoVpPessoas', { pontuacao: pontuacao });
+                    this.scene.start('CongratulationsSceneResumeVpPeople', { score: score });
                 }
             });
         } else {
             // Resposta incorreta
-            botaoClicado.fillColor = 0xFF8888; // Vermelho claro
+            clickedButton.fillColor = 0xFF8888; // Vermelho claro
 
             // Efeito sonoro de errado
-            this.errado = this.sound.add('erradoSom', { loop: false, volume: 10 });
-            this.errado.play();
+            this.wrong = this.sound.add('wrongSound', { loop: false, volume: 10 });
+            this.wrong.play();
 
             // Exibir feedback explicativo
             const feedbackText = this.add.text(
                 this.sys.game.config.width / 2,
                 this.sys.game.config.height / 2 + 50,
-                pergunta.feedback, // Adicione a propriedade `feedback` ao objeto da pergunta
+                question.feedback, // Adicione a propriedade `feedback` ao objeto da pergunta
                 {
                     fontSize: '20px',
                     fill: '#FF888',
-                    fontFamily: 'FontePadrao',
+                    fontFamily: 'font',
                     wordWrap: { width: this.sys.game.config.width - 100 },
                     align: 'center'
                 }
@@ -741,104 +741,12 @@ class QuizVpPessoas extends Phaser.Scene {
             // Esperar um momento antes de permitir nova tentativa
             this.time.delayedCall(3000, () => {
                 feedbackText.destroy(); // Remove o feedback
-                this.mostrarPergunta(); // Volta para a mesma pergunta
+                this.showQuestion(); // Volta para a mesma pergunta
             });
         }
     }
 }
 
-// // Classe para a cena de Game Over
-// class GameOverSceneCurriculo extends Phaser.Scene {
-//     constructor() {
-//         super({ key: 'GameOverSceneCurriculo' });
-//     }
-
-//     init(data) {
-//         this.motivoGameOver = data.motivo || 'errou';
-//     }
-
-//     preload() {
-//         // Carregando recursos
-//         this.load.image('fundoGameOver', '../assets/gameover_curriculo.png');
-//     }
-
-//     create() {
-//         // Transição de entrada
-//         this.cameras.main.fadeIn(1000, 0, 0, 0);
-
-//         // Imagem de fundo sem distorção
-//         const fundo = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, 'fundoGameOver');
-//         this.scaleBackgroundImage(fundo);
-
-//         // Botão de texto para reiniciar
-//         const botaoReiniciar = this.add.rectangle(
-//             this.sys.game.config.width / 2,
-//             510,
-//             250,
-//             60,
-//             0xB600B9
-//         ).setStrokeStyle(2, 0x880088)
-//             .setInteractive();
-
-//         // Efeitos do botão
-//         botaoReiniciar.on('pointerover', () => {
-//             botaoReiniciar.fillColor = 0xC30DC7;
-//             botaoReiniciar.setScale(1.05);
-//         });
-
-//         botaoReiniciar.on('pointerout', () => {
-//             botaoReiniciar.fillColor = 0xB600B9;
-//             botaoReiniciar.setScale(1);
-//         });
-
-//         // Evento de clique
-//         botaoReiniciar.on('pointerdown', () => {
-//             // Efeito de click
-//             this.tweens.add({
-//                 targets: botaoReiniciar,
-//                 scale: 0.95,
-//                 duration: 100,
-//                 yoyo: true,
-//                 onComplete: () => {
-//                     // Reiniciar variáveis
-//                     perguntaAtual = 0;
-//                     progresso = 0;
-//                     pontuacao = 0;
-
-//                     // Fade out e iniciar o quiz
-//                     this.cameras.main.fadeOut(500, 0, 0, 0, () => {
-//this.cliqueSom = this.sound.add('cliqueSom', {loop: false, volume: 10});
-//this.cliqueSom.play();
-//                         this.scene.start('QuizVpPessoas');
-//                     });
-//                 }
-//             });
-//         });
-
-//         // Texto do botão
-//         this.add.text(
-//             this.sys.game.config.width / 2,
-//             510,
-//             'TENTAR NOVAMENTE',
-//             {
-//                 fontSize: '22px',
-//                 fill: '#FFF',
-//                 fontFamily: 'FontePadrao'
-//             }
-//         ).setOrigin(0.5);
-//     }
-
-//     scaleBackgroundImage(image) {
-//         // Centraliza a imagem
-//         image.setOrigin(0.5);
-
-//         // Mantém a proporção e cobre a tela
-//         const scaleX = this.cameras.main.width / image.width;
-//         const scaleY = this.cameras.main.height / image.height;
-//         const scale = Math.max(scaleX, scaleY);
-//         image.setScale(scale);
-//     }
-// }
 
 // Classe para a cena de parabéns
 class CongratulationsSceneCurriculoVpPessoas extends Phaser.Scene {
@@ -847,24 +755,24 @@ class CongratulationsSceneCurriculoVpPessoas extends Phaser.Scene {
     }
 
     init(data) {
-        this.pontuacaoFinal = data.pontuacao || 0;
+        this.finalScore = data.score || 0;
     }
 
     preload() {
         // Carregando recursos
-        this.load.image('fundoCongratulationsVpPessoas', '../assets/parabens_cv_vpdepessoas.png');
+        this.load.image('backgroundCongratulationsVpPeople', '../assets/parabens_cv_vpdepessoas.png');
     }
 
     create() {
         // Transição de entrada com efeito
         this.cameras.main.fadeIn(1000, 0, 0, 0);
 
-        // Imagem de fundo sem distorção
-        const fundo = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, 'fundoCongratulationsVpPessoas');
-        this.scaleBackgroundImage(fundo);
+        // Img de fundo sem distorção
+        const background = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, 'backgroundCongratulationsVpPeople');
+        this.scaleBackgroundImage(background);
 
         // Botão de texto para voltar
-        const botaoVoltar = this.add.rectangle(
+        const returnButton = this.add.rectangle(
             this.sys.game.config.width / 2,
             510,
             250,
@@ -874,39 +782,39 @@ class CongratulationsSceneCurriculoVpPessoas extends Phaser.Scene {
             .setInteractive();
 
         // Efeitos do botão
-        botaoVoltar.on('pointerover', () => {
-            botaoVoltar.fillColor = 0xC30DC7;
-            botaoVoltar.setScale(1.05);
+        returnButton.on('pointerover', () => {
+            returnButton.fillColor = 0xC30DC7;
+            returnButton.setScale(1.05);
         });
 
-        botaoVoltar.on('pointerout', () => {
-            botaoVoltar.fillColor = 0xB600B9;
-            botaoVoltar.setScale(1);
+        returnButton.on('pointerout', () => {
+            returnButton.fillColor = 0xB600B9;
+            returnButton.setScale(1);
         });
 
-        // Evento de clique
-        botaoVoltar.on('pointerdown', () => {
-            // Efeito de click
+        //Evento de clique
+        returnButton.on('pointerdown', () => {
+            // Efeito de clique
             this.tweens.add({
-                targets: botaoVoltar,
+                targets: returnButton,
                 scale: 0.95,
                 duration: 100,
                 yoyo: true,
                 onComplete: () => {
                     // Reiniciar variáveis
-                    perguntaAtual = 0;
-                    progresso = 0;
-                    pontuacao = 0;
+                    currentQuestion = 0;
+                    progress = 0;
+                    score = 0;
 
                     // Fade out e iniciar o quiz
                     this.cameras.main.fadeOut(500, 0, 0, 0, () => {
                         // Efeito sonoro de clique
-                        this.cliqueSom = this.sound.add('cliqueSom', { loop: false, volume: 10 });
-                        this.cliqueSom.play();
+                        this.clickSound = this.sound.add('clickSound', { loop: false, volume: 10 });
+                        this.clickSound.play();
 
                         this.scene.stop('CongratulationsSceneCurriculoVpPessoas');
                         this.scene.resume('officeScene');
-                    
+
                     });
                 }
             });
@@ -920,14 +828,14 @@ class CongratulationsSceneCurriculoVpPessoas extends Phaser.Scene {
             {
                 fontSize: '22px',
                 fill: '#000',
-                fontFamily: 'FontePadrao'
+                fontFamily: 'font'
             }
         ).setOrigin(0.5);
     }
 
 
 
-    // Complete the scaleBackgroundImage method
+    // Completando o método
     scaleBackgroundImage(image) {
         // Centraliza a imagem
         image.setOrigin(0.5);
@@ -946,28 +854,28 @@ class CongratulationsSceneCurriculoVpPessoas extends Phaser.Scene {
 class QuizVpEstrategia extends Phaser.Scene {
     constructor() {
         super({ key: 'QuizVpEstrategia' });
-        this.textosPergunta = []; // Armazena os textos da pergunta e alternativas
-        this.botoesAlternativas = []; // Armazena os botões das alternativas
+        this.questionTexts = []; // Armazena perguntas e alternativas
+        this.optionButtons = []; // Armazena alternativas
     }
 
     preload() {
-        // Carrega os recursos para o quiz
-        this.load.font('FontePadrao', 'fonts/PixelifySans-VariableFont_wght.ttf');
-        this.load.image('TelaQuiz', '../assets/TelaQuiz.png');
+        // Carregando recursos para o jogo
+        this.load.font('font', 'fonts/PixelifySans-VariableFont_wght.ttf');
+        this.load.image('QuizScreen', '../assets/TelaQuiz.png');
     }
 
     create() {
         // Transição suave
         this.cameras.main.fadeIn(1000);
 
-        // Adicionar a imagem de fundo sem distorção
-        const fundo = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, 'TelaQuiz');
-        this.scaleBackgroundImage(fundo);
+        // Adicionar imagem de fundo sem distorção
+        const background = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, 'QuizScreen');
+        this.scaleBackgroundImage(background);
 
-        // Criar elementos de interface
-        this.criarBarraProgresso();
-        this.criarContadorPergunta();
-        this.mostrarPergunta();
+        // Cria elementos na interface
+        this.createProgressBar();
+        this.createQuestionCounter();
+        this.showQuestion();
     }
 
     scaleBackgroundImage(image) {
@@ -982,94 +890,94 @@ class QuizVpEstrategia extends Phaser.Scene {
         image.setScale(scale);
     }
 
-    criarContadorPergunta() {
-        // Mostrar número da pergunta atual/total
-        this.textoPerguntaNumero = this.add.text(
+    createQuestionCounter() {
+        // Mostra número da pergunta atual/total
+        this.questionCounterText = this.add.text(
             this.sys.game.config.width - 150,
             50,
-            `Pergunta ${perguntaAtual + 1}/${perguntasEstrategia.length}`,
-            { fontSize: '20px', fill: '#000', fontFamily: 'FontePadrao' }
+            `Question ${currentQuestion + 1}/${strategyQuestions.length}`,
+            { fontSize: '20px', fill: '#000', fontFamily: 'font' }
         ).setOrigin(0.5);
     }
 
-    criarBarraProgresso() {
+    createProgressBar() {
         // Container para a barra de progresso
         const progressBarContainer = this.add.rectangle(100, 50, 300, 24, 0xDDDDDD)
             .setOrigin(0, 0.5)
             .setStrokeStyle(2, 0x000000);
 
-        // Barra de progresso roxa    
-        this.barraProgresso = this.add.rectangle(102, 50, 0, 20, 0xB600B9)
+        // Barra de progresso roxa
+        this.progressBar = this.add.rectangle(102, 50, 0, 20, 0xB600B9)
             .setOrigin(0, 0.5);
 
-        // Texto de progresso    
-        this.textoProgresso = this.add.text(
+        // Texto de progresso
+        this.progressText = this.add.text(
             420,
             50,
-            `${progresso}%`,
-            { fontSize: '20px', fill: '#000', fontFamily: 'FontePadrao', fontWeight: 'bold' }
+            `${progress}%`,
+            { fontSize: '20px', fill: '#000', fontFamily: 'font', fontWeight: 'bold' }
         ).setOrigin(0, 0.5);
     }
 
-    atualizarBarraProgresso() {
+    updateProgressBar() {
         // Atualizando a barra de progresso do quiz
-        const larguraMaxima = 296;
-        const novaLargura = (progresso / 100) * larguraMaxima;
+        const maxWidth = 296;
+        const newWidth = (progress / 100) * maxWidth;
 
         // Animar a barra de progresso
         this.tweens.add({
-            targets: this.barraProgresso,
-            width: novaLargura,
+            targets: this.progressBar,
+            width: newWidth,
             duration: 500,
             ease: 'Power2'
         });
 
-        this.textoProgresso.setText(`${progresso}%`);
+        this.progressText.setText(`${progress}%`);
     }
 
-    limparElementos() {
-        // Remove os textos da pergunta e alternativas
-        this.textosPergunta.forEach(texto => texto.destroy());
-        this.textosPergunta = [];
+    clearElements() {
+        // Remove os textos das perguntas e alternativas
+        this.questionTexts.forEach(text => text.destroy());
+        this.questionTexts = [];
 
         // Remove os botões das alternativas
-        this.botoesAlternativas.forEach(botao => botao.destroy());
-        this.botoesAlternativas = [];
+        this.optionButtons.forEach(button => button.destroy());
+        this.optionButtons = [];
     }
 
-    mostrarPergunta() {
+    showQuestion() {
         // Limpa os elementos antigos
-        this.limparElementos();
+        this.clearElements();
 
         // Atualiza o contador de perguntas
-        this.textoPerguntaNumero.setText(`Pergunta ${perguntaAtual + 1}/${perguntasEstrategia.length}`);
+        this.questionCounterText.setText(`Question ${currentQuestion + 1}/${strategyQuestions.length}`);
 
-        const pergunta = perguntasEstrategia[perguntaAtual];
+        const question = strategyQuestions[currentQuestion];
 
-        // Exibindo a pergunta
-        const textoPergunta = this.add.text(
+        // Mostrando a pergunta
+        const questionText = this.add.text(
             this.sys.game.config.width / 2,
             100,
-            pergunta.pergunta,
+            question.question,
             {
                 fontSize: '22px',
                 fill: '#B600B9',
-                fontFamily: 'FontePadrao',
+                fontFamily: 'font',
                 fontWeight: 'bold',
                 wordWrap: { width: this.sys.game.config.width - 150 },
                 align: 'center'
             }
         ).setOrigin(0.5);
 
-        this.textosPergunta.push(textoPergunta);
+        this.questionTexts.push(questionText);
 
-        // Exibindo alternativas
+        // Mostrando alternativas
         const startY = 200;
         const spacing = 50;
 
-        pergunta.alternativas.forEach((alternativa, index) => {
+        question.options.forEach((option, index) => {
             // Container da alternativa (retângulo)
-            const botaoContainer = this.add.rectangle(
+            const buttonContainer = this.add.rectangle(
                 this.sys.game.config.width / 2,
                 startY + (index * spacing),
                 this.sys.game.config.width - 200,
@@ -1079,196 +987,105 @@ class QuizVpEstrategia extends Phaser.Scene {
                 .setInteractive();
 
             // Efeitos de hover
-            botaoContainer.on('pointerover', () => {
-                botaoContainer.fillColor = 0xDDDDDD;
-                botaoContainer.setScale(1.02);
+            buttonContainer.on('pointerover', () => {
+                buttonContainer.fillColor = 0xDDDDDD;
+                buttonContainer.setScale(1.02);
             });
 
-            botaoContainer.on('pointerout', () => {
-                botaoContainer.fillColor = 0xEAE8E8;
-                botaoContainer.setScale(1);
+            buttonContainer.on('pointerout', () => {
+                buttonContainer.fillColor = 0xEAE8E8;
+                buttonContainer.setScale(1);
             });
 
             // Evento de clique
-            botaoContainer.on('pointerdown', () => {
-                this.verificarResposta(index, botaoContainer);
+            buttonContainer.on('pointerdown', () => {
+                this.checkAnswer(index, buttonContainer);
             });
 
             // Texto da alternativa
-            const textoAlternativa = this.add.text(
+            const optionText = this.add.text(
                 this.sys.game.config.width / 2,
                 startY + (index * spacing),
-                `${index + 1}. ${alternativa}`,
+                `${index + 1}. ${option}`,
                 {
                     fontSize: '18px',
                     fill: '#000',
-                    fontFamily: 'FontePadrao',
+                    fontFamily: 'font',
                     wordWrap: { width: this.sys.game.config.width - 220 }
                 }
             ).setOrigin(0.5);
 
-            this.textosPergunta.push(textoAlternativa);
-            this.botoesAlternativas.push(botaoContainer);
+            this.questionTexts.push(optionText);
+            this.optionButtons.push(buttonContainer);
         });
     }
 
-    verificarResposta(resposta, botaoClicado) {
+    checkAnswer(answer, clickedButton) {
         // Desativar interação com todos os botões
-        this.botoesAlternativas.forEach(botao => {
-            botao.disableInteractive();
+        this.optionButtons.forEach(button => {
+            button.disableInteractive();
         });
 
-        const pergunta = perguntasEstrategia[perguntaAtual];
+        const question = strategyQuestions[currentQuestion];
 
-        if (resposta === pergunta.correta) {
+        if (answer === question.correct) {
             // Resposta correta
-            botaoClicado.fillColor = 0x88FF88; // Verde claro
+            clickedButton.fillColor = 0x88FF88; // Verde claro
 
             // Efeito sonoro de correto
-            this.correto = this.sound.add('corretoSom', { loop: false, volume: 10 });
-            this.correto.play();
+            this.correct = this.sound.add('correctSound', { loop: false, volume: 10 });
+            this.correct.play();
 
             // Atualizar pontuação e progresso
-            pontuacao += 100; // Pontuação fixa por resposta correta
-            progresso += 20;
+            score += 100; // Score fixo para acertos
+            progress += 20;
 
             // Esperar um momento antes de seguir
             this.time.delayedCall(1500, () => {
-                perguntaAtual++;
-                this.atualizarBarraProgresso();
+                currentQuestion++;
+                this.updateProgressBar();
 
-                if (perguntaAtual < perguntasEstrategia.length) {
+                if (currentQuestion < strategyQuestions.length) {
                     // Próxima pergunta com transição
                     this.cameras.main.fadeOut(300, 0, 0, 0, () => {
                         this.cameras.main.fadeIn(300);
-                        this.mostrarPergunta();
+                        this.showQuestion();
                     });
                 } else {
                     // Quiz completo
-                    this.scene.start('CongratulationsSceneCurriculoVpEstrategia', { pontuacao: pontuacao });
+                    this.scene.start('CongratulationsSceneCurriculoVpEstrategia', { score: score });
                 }
             });
         } else {
             // Resposta incorreta
-            botaoClicado.fillColor = 0xFF8888; // Vermelho claro
+            clickedButton.fillColor = 0xFF8888; // Vermelho claro
 
             // Efeito sonoro de errado
-            this.errado = this.sound.add('erradoSom', { loop: false, volume: 10 });
-            this.errado.play();
+            this.wrong = this.sound.add('wrongSound', { loop: false, volume: 10 });
+            this.wrong.play();
 
             // Exibir feedback explicativo
             const feedbackText = this.add.text(
                 this.sys.game.config.width / 2,
                 this.sys.game.config.height / 2 + 50,
-                pergunta.feedback, // Adicione a propriedade `feedback` ao objeto da pergunta
+                question.feedback, // Adicione a propriedade `feedback` ao objeto da pergunta
                 {
                     fontSize: '20px',
                     fill: '#FF888',
-                    fontFamily: 'FontePadrao',
+                    fontFamily: 'font',
                     wordWrap: { width: this.sys.game.config.width - 100 },
                     align: 'center'
                 }
             ).setOrigin(0.5);
 
-            // Esperar um momento antes de permitir nova tentativa
+            // Espera um momento antes de liberar uma nova tentativa
             this.time.delayedCall(3000, () => {
-                feedbackText.destroy(); // Remove o feedback
-                this.mostrarPergunta(); // Volta para a mesma pergunta
+                feedbackText.destroy(); // Remove feedback
+                this.showQuestion(); // Volta para a mesma pergunta
             });
         }
     }
 }
-
-// // Classe para a cena de Game Over de Estratégia
-// class GameOverSceneCurriculoEstrategia extends Phaser.Scene {
-//     constructor() {
-//         super({ key: 'GameOverSceneCurriculoEstrategia' });
-//     }
-
-//     init(data) {
-//         this.motivoGameOver = data.motivo || 'errou';
-//     }
-
-//     preload() {
-//         // Carregando recursos
-//         this.load.image('fundoGameOver', '../assets/gameover_curriculo.png');
-//     }
-
-//     create() {
-//         // Transição de entrada
-//         this.cameras.main.fadeIn(1000, 0, 0, 0);
-
-//         // Imagem de fundo sem distorção
-//         const fundo = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, 'fundoGameOver');
-//         this.scaleBackgroundImage(fundo);
-
-//         // Botão de texto para reiniciar
-//         const botaoReiniciar = this.add.rectangle(
-//             this.sys.game.config.width / 2,
-//             510,
-//             250,
-//             60,
-//             0xB600B9
-//         ).setStrokeStyle(2, 0x880088)
-//             .setInteractive();
-
-//         // Efeitos do botão
-//         botaoReiniciar.on('pointerover', () => {
-//             botaoReiniciar.fillColor = 0xC30DC7;
-//             botaoReiniciar.setScale(1.05);
-//         });
-
-//         botaoReiniciar.on('pointerout', () => {
-//             botaoReiniciar.fillColor = 0xB600B9;
-//             botaoReiniciar.setScale(1);
-//         });
-
-//         // Evento de clique
-//         botaoReiniciar.on('pointerdown', () => {
-//             // Efeito de click
-//             this.tweens.add({
-//                 targets: botaoReiniciar,
-//                 scale: 0.95,
-//                 duration: 100,
-//                 yoyo: true,
-//                 onComplete: () => {
-//                     // Reiniciar variáveis
-//                     perguntaAtual = 0;
-//                     progresso = 0;
-//                     pontuacao = 0;
-
-//                     // Fade out e iniciar o quiz
-//                     this.cameras.main.fadeOut(500, 0, 0, 0, () => {
-//                         this.scene.start('QuizVpEstrategia');
-//                     });
-//                 }
-//             });
-//         });
-
-//         // Texto do botão
-//         this.add.text(
-//             this.sys.game.config.width / 2,
-//             510,
-//             'TENTAR NOVAMENTE',
-//             {
-//                 fontSize: '22px',
-//                 fill: '#FFF',
-//                 fontFamily: 'FontePadrao'
-//             }
-//         ).setOrigin(0.5);
-//     }
-
-//     scaleBackgroundImage(image) {
-//         // Centraliza a imagem
-//         image.setOrigin(0.5);
-
-//         // Mantém a proporção e cobre a tela
-//         const scaleX = this.cameras.main.width / image.width;
-//         const scaleY = this.cameras.main.height / image.height;
-//         const scale = Math.max(scaleX, scaleY);
-//         image.setScale(scale);
-//     }
-// }
 
 // Classe para a cena de parabéns de Estratégia
 class CongratulationsSceneCurriculoVpEstrategia extends Phaser.Scene {
@@ -1277,12 +1094,12 @@ class CongratulationsSceneCurriculoVpEstrategia extends Phaser.Scene {
     }
 
     init(data) {
-        this.pontuacaoFinal = data.pontuacao || 0;
+        this.finalScore = data.score || 0;
     }
 
     preload() {
         // Carregando recursos
-        this.load.image('fundoCongratulationsVpEstrategia', '../assets/parabens_cv_vpdeestrategia.png');
+        this.load.image('backgroundCongratulationsVpEstrategia', '../assets/parabens_cv_vpdeestrategia.png');
     }
 
     create() {
@@ -1290,11 +1107,11 @@ class CongratulationsSceneCurriculoVpEstrategia extends Phaser.Scene {
         this.cameras.main.fadeIn(1000, 0, 0, 0);
 
         // Imagem de fundo sem distorção
-        const fundo = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, 'fundoCongratulationsVpEstrategia');
-        this.scaleBackgroundImage(fundo);
+        const background = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, 'backgroundCongratulationsVpEstrategia');
+        this.scaleBackgroundImage(background);
 
         // Botão de texto para voltar
-        const botaoVoltar = this.add.rectangle(
+        const returnButton = this.add.rectangle(
             width / 2,
             height - 210,
             250,
@@ -1304,35 +1121,35 @@ class CongratulationsSceneCurriculoVpEstrategia extends Phaser.Scene {
             .setInteractive();
 
         // Efeitos do botão
-        botaoVoltar.on('pointerover', () => {
-            botaoVoltar.fillColor = 0xC30DC7;
-            botaoVoltar.setScale(1.05);
+        returnButton.on('pointerover', () => {
+            returnButton.fillColor = 0xC30DC7;
+            returnButton.setScale(1.05);
         });
 
-        botaoVoltar.on('pointerout', () => {
-            botaoVoltar.fillColor = 0xB600B9;
-            botaoVoltar.setScale(1);
+        returnButton.on('pointerout', () => {
+            returnButton.fillColor = 0xB600B9;
+            returnButton.setScale(1);
         });
 
         // Evento de clique
-        botaoVoltar.on('pointerdown', () => {
-            // Efeito de click
+        returnButton.on('pointerdown', () => {
+            // Efeito de clique
             this.tweens.add({
-                targets: botaoVoltar,
+                targets: returnButton,
                 scale: 0.95,
                 duration: 100,
                 yoyo: true,
                 onComplete: () => {
                     // Reiniciar variáveis
-                    perguntaAtual = 0;
-                    progresso = 0;
-                    pontuacao = 0;
+                    currentQuestion = 0;
+                    progress = 0;
+                    score = 0;
 
                     // Fade out e iniciar o quiz
                     this.cameras.main.fadeOut(500, 0, 0, 0, () => {
                         // Efeito sonoro de clique
-                        this.cliqueSom = this.sound.add('cliqueSom', { loop: false, volume: 10 });
-                        this.cliqueSom.play();
+                        this.clickSound = this.sound.add('clickSound', { loop: false, volume: 10 });
+                        this.clickSound.play();
 
                         this.scene.stop('CongratulationsSceneCurriculoVpEstrategia');
                         this.scene.resume('officeScene');
@@ -1349,11 +1166,11 @@ class CongratulationsSceneCurriculoVpEstrategia extends Phaser.Scene {
             {
                 fontSize: '22px',
                 fill: '#000',
-                fontFamily: 'FontePadrao'
+                fontFamily: 'font'
             }
         ).setOrigin(0.5);
     }
-    // Complete the scaleBackgroundImage method
+    // Completando o método
     scaleBackgroundImage(image) {
         // Centraliza a imagem
         image.setOrigin(0.5);
@@ -1372,28 +1189,28 @@ class CongratulationsSceneCurriculoVpEstrategia extends Phaser.Scene {
 class QuizVpNegocios extends Phaser.Scene {
     constructor() {
         super({ key: 'QuizVpNegocios' });
-        this.textosPergunta = []; // Armazena os textos da pergunta e alternativas
-        this.botoesAlternativas = []; // Armazena os botões das alternativas
+        this.questionTexts = []; // Armazena os textos das perguntas e alternativas 
+        this.optionButtons = []; // Armazena alternativas 
     }
 
     preload() {
         // Carrega os recursos para o quiz
-        this.load.font('FontePadrao', 'fonts/PixelifySans-VariableFont_wght.ttf');
-        this.load.image('TelaQuiz', '../assets/TelaQuiz.png');
+        this.load.font('font', 'fonts/PixelifySans-VariableFont_wght.ttf');
+        this.load.image('QuizScreen', '../assets/TelaQuiz.png');
     }
 
     create() {
         // Transição suave
         this.cameras.main.fadeIn(1000);
 
-        // Adicionar a imagem de fundo sem distorção
-        const fundo = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, 'TelaQuiz');
-        this.scaleBackgroundImage(fundo);
+        // Coloca imagem de fundo sem distorção
+        const background = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, 'QuizScreen');
+        this.scaleBackgroundImage(background);
 
-        // Criar elementos de interface
-        this.criarBarraProgresso();
-        this.criarContadorPergunta();
-        this.mostrarPergunta();
+        // Cria elementos da interface
+        this.createProgressBar();
+        this.createQuestionCounter();
+        this.showQuestion();
     }
 
     scaleBackgroundImage(image) {
@@ -1408,94 +1225,94 @@ class QuizVpNegocios extends Phaser.Scene {
         image.setScale(scale);
     }
 
-    criarContadorPergunta() {
+    createQuestionCounter() {
         // Mostrar número da pergunta atual/total
-        this.textoPerguntaNumero = this.add.text(
+        this.questionCounterText = this.add.text(
             this.sys.game.config.width - 150,
             50,
-            `Pergunta ${perguntaAtual + 1}/${perguntasNegocios.length}`,
-            { fontSize: '20px', fill: '#000', fontFamily: 'FontePadrao' }
+            `Question ${currentQuestion + 1}/${businessQuestions.length}`,
+            { fontSize: '20px', fill: '#000', fontFamily: 'font' }
         ).setOrigin(0.5);
     }
 
-    criarBarraProgresso() {
+    createProgressBar() {
         // Container para a barra de progresso
         const progressBarContainer = this.add.rectangle(100, 50, 300, 24, 0xDDDDDD)
             .setOrigin(0, 0.5)
             .setStrokeStyle(2, 0x000000);
 
-        // Barra de progresso roxa    
-        this.barraProgresso = this.add.rectangle(102, 50, 0, 20, 0xB600B9)
+        // Barra de progresso roxa
+        this.progressBar = this.add.rectangle(102, 50, 0, 20, 0xB600B9)
             .setOrigin(0, 0.5);
 
-        // Texto de progresso    
-        this.textoProgresso = this.add.text(
+        // Texto de progresso   
+        this.progressText = this.add.text(
             420,
             50,
-            `${progresso}%`,
-            { fontSize: '20px', fill: '#000', fontFamily: 'FontePadrao', fontWeight: 'bold' }
+            `${progress}%`,
+            { fontSize: '20px', fill: '#000', fontFamily: 'font', fontWeight: 'bold' }
         ).setOrigin(0, 0.5);
     }
 
-    atualizarBarraProgresso() {
+    updateProgressBar() {
         // Atualizando a barra de progresso do quiz
-        const larguraMaxima = 296;
-        const novaLargura = (progresso / 100) * larguraMaxima;
+        const maxWidth = 296;
+        const newWidth = (progress / 100) * maxWidth;
 
         // Animar a barra de progresso
         this.tweens.add({
-            targets: this.barraProgresso,
-            width: novaLargura,
+            targets: this.progressBar,
+            width: newWidth,
             duration: 500,
             ease: 'Power2'
         });
 
-        this.textoProgresso.setText(`${progresso}%`);
+        this.progressText.setText(`${progress}%`);
     }
 
-    limparElementos() {
-        // Remove os textos da pergunta e alternativas
-        this.textosPergunta.forEach(texto => texto.destroy());
-        this.textosPergunta = [];
+    clearElements() {
+        // Remove os textos das perguntas e alternativas 
+        this.questionTexts.forEach(text => text.destroy());
+        this.questionTexts = [];
 
-        // Remove os botões das alternativas
-        this.botoesAlternativas.forEach(botao => botao.destroy());
-        this.botoesAlternativas = [];
+        // Remove alternativas 
+        this.optionButtons.forEach(button => button.destroy());
+        this.optionButtons = [];
     }
 
-    mostrarPergunta() {
+    showQuestion() {
         // Limpa os elementos antigos
-        this.limparElementos();
+        this.clearElements();
 
         // Atualiza o contador de perguntas
-        this.textoPerguntaNumero.setText(`Pergunta ${perguntaAtual + 1}/${perguntasNegocios.length}`);
+        this.questionCounterText.setText(`Question ${currentQuestion + 1}/${businessQuestions.length}`);
 
-        const pergunta = perguntasNegocios[perguntaAtual];
+        const question = businessQuestions[currentQuestion];
 
         // Exibindo a pergunta
-        const textoPergunta = this.add.text(
+        const questionText = this.add.text(
             this.sys.game.config.width / 2,
             100,
-            pergunta.pergunta,
+            question.question,
             {
                 fontSize: '22px',
                 fill: '#B600B9',
-                fontFamily: 'FontePadrao',
+                fontFamily: 'font',
                 fontWeight: 'bold',
                 wordWrap: { width: this.sys.game.config.width - 150 },
                 align: 'center'
             }
         ).setOrigin(0.5);
 
-        this.textosPergunta.push(textoPergunta);
+        this.questionTexts.push(questionText);
 
         // Exibindo alternativas
         const startY = 200;
         const spacing = 50;
 
-        pergunta.alternativas.forEach((alternativa, index) => {
+        question.options.forEach((option, index) => {
             // Container da alternativa (retângulo)
-            const botaoContainer = this.add.rectangle(
+            const buttonContainer = this.add.rectangle(
                 this.sys.game.config.width / 2,
                 startY + (index * spacing),
                 this.sys.game.config.width - 200,
@@ -1505,222 +1322,131 @@ class QuizVpNegocios extends Phaser.Scene {
                 .setInteractive();
 
             // Efeitos de hover
-            botaoContainer.on('pointerover', () => {
-                botaoContainer.fillColor = 0xDDDDDD;
-                botaoContainer.setScale(1.02);
+            buttonContainer.on('pointerover', () => {
+                buttonContainer.fillColor = 0xDDDDDD;
+                buttonContainer.setScale(1.02);
             });
 
-            botaoContainer.on('pointerout', () => {
-                botaoContainer.fillColor = 0xEAE8E8;
-                botaoContainer.setScale(1);
+            buttonContainer.on('pointerout', () => {
+                buttonContainer.fillColor = 0xEAE8E8;
+                buttonContainer.setScale(1);
             });
 
             // Evento de clique
-            botaoContainer.on('pointerdown', () => {
-                this.verificarResposta(index, botaoContainer);
+            buttonContainer.on('pointerdown', () => {
+                this.checkAnswer(index, buttonContainer);
             });
 
-            // Texto da alternativa
-            const textoAlternativa = this.add.text(
+            // Texto das alternativas
+            const optionText = this.add.text(
                 this.sys.game.config.width / 2,
                 startY + (index * spacing),
-                `${index + 1}. ${alternativa}`,
+                `${index + 1}. ${option}`,
                 {
                     fontSize: '18px',
                     fill: '#000',
-                    fontFamily: 'FontePadrao',
+                    fontFamily: 'font',
                     wordWrap: { width: this.sys.game.config.width - 220 }
                 }
             ).setOrigin(0.5);
 
-            this.textosPergunta.push(textoAlternativa);
-            this.botoesAlternativas.push(botaoContainer);
+            this.questionTexts.push(optionText);
+            this.optionButtons.push(buttonContainer);
         });
     }
 
-    verificarResposta(resposta, botaoClicado) {
+    checkAnswer(answer, clickedButton) {
         // Desativar interação com todos os botões
-        this.botoesAlternativas.forEach(botao => {
-            botao.disableInteractive();
+        this.optionButtons.forEach(button => {
+            button.disableInteractive();
         });
 
-        const pergunta = perguntasNegocios[perguntaAtual];
+        const question = businessQuestions[currentQuestion];
 
-        if (resposta === pergunta.correta) {
+        if (answer === question.correct) {
             // Resposta correta
-            botaoClicado.fillColor = 0x88FF88; // Verde claro
+            clickedButton.fillColor = 0x88FF88; // Verde claro
 
             // Efeito sonoro de correto
-            this.correto = this.sound.add('corretoSom', { loop: false, volume: 10 });
-            this.correto.play();
+            this.correct = this.sound.add('correctSound', { loop: false, volume: 10 });
+            this.correct.play();
 
             // Atualizar pontuação e progresso
-            pontuacao += 100; // Pontuação fixa por resposta correta
-            progresso += 20;
+            score += 100; // Score fixo para cada pergunta acertada
+            progress += 20;
 
-            // Esperar um momento antes de seguir
+            // Esperar um momento antes de prosseguir
             this.time.delayedCall(1500, () => {
-                perguntaAtual++;
-                this.atualizarBarraProgresso();
+                currentQuestion++;
+                this.updateProgressBar();
 
-                if (perguntaAtual < perguntasNegocios.length) {
+                if (currentQuestion < businessQuestions.length) {
                     // Próxima pergunta com transição
                     this.cameras.main.fadeOut(300, 0, 0, 0, () => {
                         this.cameras.main.fadeIn(300);
-                        this.mostrarPergunta();
+                        this.showQuestion();
                     });
                 } else {
                     // Quiz completo
-                    this.scene.start('CongratulationsSceneCurriculoVpNegocios', { pontuacao: pontuacao });
+                    this.scene.start('CongratulationsSceneCurriculoVpNegocios', { score: score });
                 }
             });
         } else {
-            // Resposta incorreta
-            botaoClicado.fillColor = 0xFF8888; // Vermelho claro
+            // Resposta errada
+            clickedButton.fillColor = 0xFF8888; // Light red
 
-            // Efeito sonoro de errado
-            this.errado = this.sound.add('erradoSom', { loop: false, volume: 10 });
-            this.errado.play();
+            //Efeito sonoro de errado
+            this.wrong = this.sound.add('wrongSound', { loop: false, volume: 10 });
+            this.wrong.play();
 
-            // Exibir feedback explicativo
+            // Mostrar feedback explanatório
             const feedbackText = this.add.text(
                 this.sys.game.config.width / 2,
                 this.sys.game.config.height / 2 + 50,
-                pergunta.feedback, // Adicione a propriedade `feedback` ao objeto da pergunta
+                question.feedback, // Adiciona a propriedade feedback para o objeto question
                 {
                     fontSize: '20px',
                     fill: '#FF888',
-                    fontFamily: 'FontePadrao',
+                    fontFamily: 'font',
                     wordWrap: { width: this.sys.game.config.width - 100 },
                     align: 'center'
                 }
             ).setOrigin(0.5);
 
-            // Esperar um momento antes de permitir nova tentativa
+            // Espera um momento antes de liberar uma nova tentativa
             this.time.delayedCall(3000, () => {
-                feedbackText.destroy(); // Remove o feedback
-                this.mostrarPergunta(); // Volta para a mesma pergunta
+                feedbackText.destroy(); // Remove feedback
+                this.showQuestion(); // Volta para a mesma pergunta
             });
         }
     }
 }
 
-// // Classe para a cena de Game Over de Negócios
-// class GameOverSceneCurriculoNegocios extends Phaser.Scene {
-//     constructor() {
-//         super({ key: 'GameOverSceneCurriculoNegocios' });
-//     }
-
-//     init(data) {
-//         this.motivoGameOver = data.motivo || 'errou';
-//     }
-
-//     preload() {
-//         // Carregando recursos
-//         this.load.image('fundoGameOver', '../assets/gameover_curriculo.png');
-//     }
-
-//     create() {
-//         // Transição de entrada
-//         this.cameras.main.fadeIn(1000, 0, 0, 0);
-
-//         // Imagem de fundo sem distorção
-//         const fundo = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, 'fundoGameOver');
-//         this.scaleBackgroundImage(fundo);
-
-//         // Botão de texto para reiniciar
-//         const botaoReiniciar = this.add.rectangle(
-//             this.sys.game.config.width / 2,
-//             510,
-//             250,
-//             60,
-//             0xB600B9
-//         ).setStrokeStyle(2, 0x880088)
-//             .setInteractive();
-
-//         // Efeitos do botão
-//         botaoReiniciar.on('pointerover', () => {
-//             botaoReiniciar.fillColor = 0xC30DC7;
-//             botaoReiniciar.setScale(1.05);
-//         });
-
-//         botaoReiniciar.on('pointerout', () => {
-//             botaoReiniciar.fillColor = 0xB600B9;
-//             botaoReiniciar.setScale(1);
-//         });
-
-//         // Evento de clique
-//         botaoReiniciar.on('pointerdown', () => {
-//             // Efeito de click
-//             this.tweens.add({
-//                 targets: botaoReiniciar,
-//                 scale: 0.95,
-//                 duration: 100,
-//                 yoyo: true,
-//                 onComplete: () => {
-//                     // Reiniciar variáveis
-//                     perguntaAtual = 0;
-//                     progresso = 0;
-//                     pontuacao = 0;
-
-//                     // Fade out e iniciar o quiz
-//                     this.cameras.main.fadeOut(500, 0, 0, 0, () => {
-//                         this.scene.start('QuizVpNegocios');
-//                     });
-//                 }
-//             });
-//         });
-
-//         // Texto do botão
-//         this.add.text(
-//             this.sys.game.config.width / 2,
-//             510,
-//             'TENTAR NOVAMENTE',
-//             {
-//                 fontSize: '22px',
-//                 fill: '#FFF',
-//                 fontFamily: 'FontePadrao'
-//             }
-//         ).setOrigin(0.5);
-//     }
-
-//     scaleBackgroundImage(image) {
-//         // Centraliza a imagem
-//         image.setOrigin(0.5);
-
-//         // Mantém a proporção e cobre a tela
-//         const scaleX = this.cameras.main.width / image.width;
-//         const scaleY = this.cameras.main.height / image.height;
-//         const scale = Math.max(scaleX, scaleY);
-//         image.setScale(scale);
-//     }
-// }
-
-// Classe para a cena de parabéns de Negócios
+// Class for the congratulations scene for Business
 class CongratulationsSceneCurriculoVpNegocios extends Phaser.Scene {
     constructor() {
         super({ key: 'CongratulationsSceneCurriculoVpNegocios' });
     }
 
     init(data) {
-        this.pontuacaoFinal = data.pontuacao || 0;
+        this.finalScore = data.score || 0;
     }
 
     preload() {
         // Carregando recursos
-        this.load.image('fundoCongratulationsVpNegocios', '../assets/parabens_cv_vpdenegocios.png');
+        this.load.image('backgroundCongratulationsVpNegocios', '../assets/parabens_cv_vpdenegocios.png');
     }
 
     create() {
-        // Transição de entrada com efeito
+        // Transição suave
         this.cameras.main.fadeIn(1000, 0, 0, 0);
 
         // Imagem de fundo sem distorção
-        const fundo = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, 'fundoCongratulationsVpNegocios');
-        this.scaleBackgroundImage(fundo);
+        const background = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, 'backgroundCongratulationsVpNegocios');
+        this.scaleBackgroundImage(background);
 
-        // Botão de texto para voltar
-        const botaoVoltar = this.add.rectangle(
+        // Texto do botão de volta
+        const returnButton = this.add.rectangle(
             this.sys.game.config.width / 2,
             510,
             250,
@@ -1730,35 +1456,35 @@ class CongratulationsSceneCurriculoVpNegocios extends Phaser.Scene {
             .setInteractive();
 
         // Efeitos do botão
-        botaoVoltar.on('pointerover', () => {
-            botaoVoltar.fillColor = 0xC30DC7;
-            botaoVoltar.setScale(1.05);
+        returnButton.on('pointerover', () => {
+            returnButton.fillColor = 0xC30DC7;
+            returnButton.setScale(1.05);
         });
 
-        botaoVoltar.on('pointerout', () => {
-            botaoVoltar.fillColor = 0xB600B9;
-            botaoVoltar.setScale(1);
+        returnButton.on('pointerout', () => {
+            returnButton.fillColor = 0xB600B9;
+            returnButton.setScale(1);
         });
 
         // Evento de clique
-        botaoVoltar.on('pointerdown', () => {
-            // Efeito de click
+        returnButton.on('pointerdown', () => {
+            // Efeito de clique
             this.tweens.add({
-                targets: botaoVoltar,
+                targets: returnButton,
                 scale: 0.95,
                 duration: 100,
                 yoyo: true,
                 onComplete: () => {
-                    // Reiniciar variáveis
-                    perguntaAtual = 0;
-                    progresso = 0;
-                    pontuacao = 0;
+                    // Reiniciando variáveis
+                    currentQuestion = 0;
+                    progress = 0;
+                    score = 0;
 
-                    // Fade out e iniciar o quiz
+                    // Fade out e começar o quiz
                     this.cameras.main.fadeOut(500, 0, 0, 0, () => {
-                        // Efeito sonoro de clique
-                        this.cliqueSom = this.sound.add('cliqueSom', { loop: false, volume: 10 });
-                        this.cliqueSom.play();
+                        // Som do efeito de clique
+                        this.clickSound = this.sound.add('clickSound', { loop: false, volume: 10 });
+                        this.clickSound.play();
 
                         this.scene.stop('CongratulationsSceneCurriculoVpNegocios');
                         this.scene.resume('officeScene');
@@ -1771,20 +1497,20 @@ class CongratulationsSceneCurriculoVpNegocios extends Phaser.Scene {
         this.add.text(
             this.sys.game.config.width / 2,
             510,
-            'VOLTAR AO ESCRITÓRIO',
+            'Voltar ao escritório',
             {
                 fontSize: '22px',
                 fill: '#000',
-                fontFamily: 'FontePadrao'
+                fontFamily: 'font'
             }
         ).setOrigin(0.5);
     }
-    // Complete the scaleBackgroundImage method
+    // Completando o método
     scaleBackgroundImage(image) {
-        // Centraliza a imagem
+        // Centralizando a imagem
         image.setOrigin(0.5);
 
-        // Mantém a proporção e cobre a tela
+        // Manter proporção e cobrir a tela
         const scaleX = this.cameras.main.width / image.width;
         const scaleY = this.cameras.main.height / image.height;
         const scale = Math.max(scaleX, scaleY);
@@ -1794,39 +1520,39 @@ class CongratulationsSceneCurriculoVpNegocios extends Phaser.Scene {
 
 }
 
-// Classe para a cena do Quiz de Relações
+// Class for the Quiz scene for Relations
 class QuizVpRelacoes extends Phaser.Scene {
     constructor() {
         super({ key: 'QuizVpRelacoes' });
-        this.textosPergunta = []; // Armazena os textos da pergunta e alternativas
-        this.botoesAlternativas = []; // Armazena os botões das alternativas
+        this.questionTexts = []; // Guarda perguntas e alternativas
+        this.optionButtons = []; // Guarda alternativas 
     }
 
     preload() {
-        // Carrega os recursos para o quiz
-        this.load.font('FontePadrao', 'fonts/PixelifySans-VariableFont_wght.ttf');
-        this.load.image('TelaQuiz', '../assets/TelaQuiz.png');
+        // Carrega recursos para o quiz
+        this.load.font('font', 'fonts/PixelifySans-VariableFont_wght.ttf');
+        this.load.image('QuizScreen', '../assets/TelaQuiz.png');
     }
 
     create() {
-        // Transição suave
+        // Transição suave 
         this.cameras.main.fadeIn(1000);
 
-        // Adicionar a imagem de fundo sem distorção
-        const fundo = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, 'TelaQuiz');
-        this.scaleBackgroundImage(fundo);
+        // Colocar imagem de fundo sem distorção
+        const background = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, 'QuizScreen');
+        this.scaleBackgroundImage(background);
 
-        // Criar elementos de interface
-        this.criarBarraProgresso();
-        this.criarContadorPergunta();
-        this.mostrarPergunta();
+        // Criar elementos da interface
+        this.createProgressBar();
+        this.createQuestionCounter();
+        this.showQuestion();
     }
 
     scaleBackgroundImage(image) {
-        // Centraliza a imagem
+        // Centralizando a imagem
         image.setOrigin(0.5);
 
-        // Mantém a proporção e cobre a tela
+        // Manter proporção e cobrir a tela
         const scaleX = this.cameras.main.width / image.width;
         const scaleY = this.cameras.main.height / image.height;
         const scale = Math.max(scaleX, scaleY);
@@ -1834,94 +1560,94 @@ class QuizVpRelacoes extends Phaser.Scene {
         image.setScale(scale);
     }
 
-    criarContadorPergunta() {
-        // Mostrar número da pergunta atual/total
-        this.textoPerguntaNumero = this.add.text(
+    createQuestionCounter() {
+        // Mostrar atual/ total número de perguntas
+        this.questionCounterText = this.add.text(
             this.sys.game.config.width - 150,
             50,
-            `Pergunta ${perguntaAtual + 1}/${perguntasRelacoes.length}`,
-            { fontSize: '20px', fill: '#000', fontFamily: 'FontePadrao' }
+            `Question ${currentQuestion + 1}/${relationsQuestions.length}`,
+            { fontSize: '20px', fill: '#000', fontFamily: 'font' }
         ).setOrigin(0.5);
     }
 
-    criarBarraProgresso() {
-        // Container para a barra de progresso
+    createProgressBar() {
+        // Container for the progress bar
         const progressBarContainer = this.add.rectangle(100, 50, 300, 24, 0xDDDDDD)
             .setOrigin(0, 0.5)
             .setStrokeStyle(2, 0x000000);
 
-        // Barra de progresso roxa    
-        this.barraProgresso = this.add.rectangle(102, 50, 0, 20, 0xB600B9)
+        // Barra de progresso roxa   
+        this.progressBar = this.add.rectangle(102, 50, 0, 20, 0xB600B9)
             .setOrigin(0, 0.5);
 
-        // Texto de progresso    
-        this.textoProgresso = this.add.text(
+        // Texto de progresso   
+        this.progressText = this.add.text(
             420,
             50,
-            `${progresso}%`,
-            { fontSize: '20px', fill: '#000', fontFamily: 'FontePadrao', fontWeight: 'bold' }
+            `${progress}%`,
+            { fontSize: '20px', fill: '#000', fontFamily: 'font', fontWeight: 'bold' }
         ).setOrigin(0, 0.5);
     }
 
-    atualizarBarraProgresso() {
-        // Atualizando a barra de progresso do quiz
-        const larguraMaxima = 296;
-        const novaLargura = (progresso / 100) * larguraMaxima;
+    updateProgressBar() {
+        // Atualizando a barra de progresso
+        const maxWidth = 296;
+        const newWidth = (progress / 100) * maxWidth;
 
-        // Animar a barra de progresso
+        // Animando a barra de progresso
         this.tweens.add({
-            targets: this.barraProgresso,
-            width: novaLargura,
+            targets: this.progressBar,
+            width: newWidth,
             duration: 500,
             ease: 'Power2'
         });
 
-        this.textoProgresso.setText(`${progresso}%`);
+        this.progressText.setText(`${progress}%`);
     }
 
-    limparElementos() {
-        // Remove os textos da pergunta e alternativas
-        this.textosPergunta.forEach(texto => texto.destroy());
-        this.textosPergunta = [];
+    clearElements() {
+        // Remover perguntas e alternativas
+        this.questionTexts.forEach(text => text.destroy());
+        this.questionTexts = [];
 
-        // Remove os botões das alternativas
-        this.botoesAlternativas.forEach(botao => botao.destroy());
-        this.botoesAlternativas = [];
+        // Remover alternativas
+        this.optionButtons.forEach(button => button.destroy());
+        this.optionButtons = [];
     }
 
-    mostrarPergunta() {
-        // Limpa os elementos antigos
-        this.limparElementos();
+    showQuestion() {
+        // Limpar elementos antigos
+        this.clearElements();
 
-        // Atualiza o contador de perguntas
-        this.textoPerguntaNumero.setText(`Pergunta ${perguntaAtual + 1}/${perguntasRelacoes.length}`);
+        // Atualiza o contador de questões
+        this.questionCounterText.setText(`Question ${currentQuestion + 1}/${relationsQuestions.length}`);
 
-        const pergunta = perguntasRelacoes[perguntaAtual];
+        const question = relationsQuestions[currentQuestion];
 
-        // Exibindo a pergunta
-        const textoPergunta = this.add.text(
+        // Mostrando a pergunta/questão
+        const questionText = this.add.text(
             this.sys.game.config.width / 2,
             100,
-            pergunta.pergunta,
+            question.question,
             {
                 fontSize: '22px',
                 fill: '#B600B9',
-                fontFamily: 'FontePadrao',
+                fontFamily: 'font',
                 fontWeight: 'bold',
                 wordWrap: { width: this.sys.game.config.width - 150 },
                 align: 'center'
             }
         ).setOrigin(0.5);
 
-        this.textosPergunta.push(textoPergunta);
+        this.questionTexts.push(questionText);
 
-        // Exibindo alternativas
+        // Mostrando alternativas
         const startY = 200;
         const spacing = 50;
 
-        pergunta.alternativas.forEach((alternativa, index) => {
+        question.options.forEach((option, index) => {
             // Container da alternativa (retângulo)
-            const botaoContainer = this.add.rectangle(
+            const buttonContainer = this.add.rectangle(
                 this.sys.game.config.width / 2,
                 startY + (index * spacing),
                 this.sys.game.config.width - 200,
@@ -1930,223 +1656,133 @@ class QuizVpRelacoes extends Phaser.Scene {
             ).setStrokeStyle(2, 0x444444)
                 .setInteractive();
 
-            // Efeitos de hover
-            botaoContainer.on('pointerover', () => {
-                botaoContainer.fillColor = 0xDDDDDD;
-                botaoContainer.setScale(1.02);
+            // Efeito de hover 
+            buttonContainer.on('pointerover', () => {
+                buttonContainer.fillColor = 0xDDDDDD;
+                buttonContainer.setScale(1.02);
             });
 
-            botaoContainer.on('pointerout', () => {
-                botaoContainer.fillColor = 0xEAE8E8;
-                botaoContainer.setScale(1);
+            buttonContainer.on('pointerout', () => {
+                buttonContainer.fillColor = 0xEAE8E8;
+                buttonContainer.setScale(1);
             });
 
             // Evento de clique
-            botaoContainer.on('pointerdown', () => {
-                this.verificarResposta(index, botaoContainer);
+            buttonContainer.on('pointerdown', () => {
+                this.checkAnswer(index, buttonContainer);
             });
 
-            // Texto da alternativa
-            const textoAlternativa = this.add.text(
+            // Texto das alternativas
+            const optionText = this.add.text(
                 this.sys.game.config.width / 2,
                 startY + (index * spacing),
-                `${index + 1}. ${alternativa}`,
+                `${index + 1}. ${option}`,
                 {
                     fontSize: '18px',
                     fill: '#000',
-                    fontFamily: 'FontePadrao',
+                    fontFamily: 'font',
                     wordWrap: { width: this.sys.game.config.width - 220 }
                 }
             ).setOrigin(0.5);
 
-            this.textosPergunta.push(textoAlternativa);
-            this.botoesAlternativas.push(botaoContainer);
+            this.questionTexts.push(optionText);
+            this.optionButtons.push(buttonContainer);
         });
     }
 
-    verificarResposta(resposta, botaoClicado) {
+    checkAnswer(answer, clickedButton) {
         // Desativar interação com todos os botões
-        this.botoesAlternativas.forEach(botao => {
-            botao.disableInteractive();
+        this.optionButtons.forEach(button => {
+            button.disableInteractive();
         });
 
-        const pergunta = perguntasRelacoes[perguntaAtual];
+        const question = relationsQuestions[currentQuestion];
 
-        if (resposta === pergunta.correta) {
+        if (answer === question.correct) {
             // Resposta correta
-            botaoClicado.fillColor = 0x88FF88; // Verde claro
+            clickedButton.fillColor = 0x88FF88; // Verde claro
 
             // Efeito sonoro de correto
-            this.correto = this.sound.add('corretoSom', { loop: false, volume: 10 });
-            this.correto.play();
+            this.correct = this.sound.add('correctSound', { loop: false, volume: 10 });
+            this.correct.play();
 
             // Atualizar pontuação e progresso
-            pontuacao += 100; // Pontuação fixa por resposta correta
-            progresso += 20;
+            score += 100; // Score fixo para cada pergunta acertada
+            progress += 20;
 
-            // Esperar um momento antes de seguir
+            // Esperar um momento antes de prosseguir
             this.time.delayedCall(1500, () => {
-                perguntaAtual++;
-                this.atualizarBarraProgresso();
+                currentQuestion++;
+                this.updateProgressBar();
 
-                if (perguntaAtual < perguntasRelacoes.length) {
+                if (currentQuestion < relationsQuestions.length) {
                     // Próxima pergunta com transição
                     this.cameras.main.fadeOut(300, 0, 0, 0, () => {
                         this.cameras.main.fadeIn(300);
-                        this.mostrarPergunta();
+                        this.showQuestion();
                     });
                 } else {
                     // Quiz completo
-                    this.scene.start('CongratulationsSceneCurriculoVpRelacoes', { pontuacao: pontuacao });
+                    this.scene.start('CongratulationsSceneCurriculoVpRelacoes', { score: score });
                 }
             });
         } else {
-            // Resposta incorreta
-            botaoClicado.fillColor = 0xFF8888; // Vermelho claro
+            // Resposta errada
+            clickedButton.fillColor = 0xFF8888; // Light red
 
-            // Efeito sonoro de errado
-            this.errado = this.sound.add('erradoSom', { loop: false, volume: 10 });
-            this.errado.play();
+            //Efeito sonoro de errado
+            this.wrong = this.sound.add('wrongSound', { loop: false, volume: 10 });
+            this.wrong.play();
 
-            // Exibir feedback explicativo
+            // Mostrar feedback explanatório
             const feedbackText = this.add.text(
                 this.sys.game.config.width / 2,
                 this.sys.game.config.height / 2 + 50,
-                pergunta.feedback, // Adicione a propriedade `feedback` ao objeto da pergunta
+                question.feedback, // Adiciona a propriedade feedback para o objeto question
                 {
                     fontSize: '20px',
                     fill: '#FF888',
-                    fontFamily: 'FontePadrao',
+                    fontFamily: 'font',
                     wordWrap: { width: this.sys.game.config.width - 100 },
                     align: 'center'
                 }
             ).setOrigin(0.5);
 
-            // Esperar um momento antes de permitir nova tentativa
+            // Espera um momento antes de liberar uma nova tentativa
             this.time.delayedCall(3000, () => {
-                feedbackText.destroy(); // Remove o feedback
-                this.mostrarPergunta(); // Volta para a mesma pergunta
+                feedbackText.destroy(); // Remove feedback
+                this.showQuestion(); // Volta para a mesma pergunta
             });
         }
     }
 }
 
-// // Classe para a cena de Game Over de Relações
-// class GameOverSceneCurriculoRelacoes extends Phaser.Scene {
-//     constructor() {
-//         super({ key: 'GameOverSceneCurriculoRelacoes' });
-//     }
 
-//     init(data) {
-//         this.motivoGameOver = data.motivo || 'errou';
-//     }
-
-//     preload() {
-//         // Carregando recursos
-//         this.load.image('fundoGameOver', '../assets/gameover_curriculo.png');
-//     }
-
-//     create() {
-//         // Transição de entrada
-//         this.cameras.main.fadeIn(1000, 0, 0, 0);
-
-//         // Imagem de fundo sem distorção
-//         const fundo = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, 'fundoGameOver');
-//         this.scaleBackgroundImage(fundo);
-
-//         // Botão de texto para reiniciar
-//         const botaoReiniciar = this.add.rectangle(
-//             this.sys.game.config.width / 2,
-//             510,
-//             250,
-//             60,
-//             0xB600B9
-//         ).setStrokeStyle(2, 0x880088)
-//             .setInteractive();
-
-//         // Efeitos do botão
-//         botaoReiniciar.on('pointerover', () => {
-//             botaoReiniciar.fillColor = 0xC30DC7;
-//             botaoReiniciar.setScale(1.05);
-//         });
-
-//         botaoReiniciar.on('pointerout', () => {
-//             botaoReiniciar.fillColor = 0xB600B9;
-//             botaoReiniciar.setScale(1);
-//         });
-
-//         // Evento de clique
-//         botaoReiniciar.on('pointerdown', () => {
-//             // Efeito de click
-//             this.tweens.add({
-//                 targets: botaoReiniciar,
-//                 scale: 0.95,
-//                 duration: 100,
-//                 yoyo: true,
-//                 onComplete: () => {
-//                     // Reiniciar variáveis
-//                     perguntaAtual = 0;
-//                     progresso = 0;
-//                     pontuacao = 0;
-
-//                     // Fade out e iniciar o quiz
-//                     this.cameras.main.fadeOut(500, 0, 0, 0, () => {
-//                         this.scene.start('QuizVpRelacoes');
-//                     });
-//                 }
-//             });
-//         });
-
-//         // Texto do botão
-//         this.add.text(
-//             this.sys.game.config.width / 2,
-//             510,
-//             'TENTAR NOVAMENTE',
-//             {
-//                 fontSize: '22px',
-//                 fill: '#FFF',
-//                 fontFamily: 'FontePadrao'
-//             }
-//         ).setOrigin(0.5);
-//     }
-
-//     scaleBackgroundImage(image) {
-//         // Centraliza a imagem
-//         image.setOrigin(0.5);
-
-//         // Mantém a proporção e cobre a tela
-//         const scaleX = this.cameras.main.width / image.width;
-//         const scaleY = this.cameras.main.height / image.height;
-//         const scale = Math.max(scaleX, scaleY);
-//         image.setScale(scale);
-//     }
-// }
-
-// Classe para a cena de parabéns de Relações
+// Cena de Parabéns da Vp de Relações
 class CongratulationsSceneCurriculoVpRelacoes extends Phaser.Scene {
     constructor() {
         super({ key: 'CongratulationsSceneCurriculoVpRelacoes' });
     }
 
     init(data) {
-        this.pontuacaoFinal = data.pontuacao || 0;
+        this.finalScore = data.score || 0;
     }
 
     preload() {
         // Carregando recursos
-        this.load.image('fundoCongratulationsVpRelacoes', '../assets/parabens_cv_vpderelacoes.png');
+        this.load.image('backgroundCongratulationsVpRelacoes', '../assets/parabens_cv_vpderelacoes.png');
     }
 
     create() {
-        // Transição de entrada com efeito
+        // Transição suave
         this.cameras.main.fadeIn(1000, 0, 0, 0);
 
         // Imagem de fundo sem distorção
-        const fundo = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, 'fundoCongratulationsVpRelacoes');
-        this.scaleBackgroundImage(fundo);
+        const background = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, 'backgroundCongratulationsVpRelacoes');
+        this.scaleBackgroundImage(background);
 
-        // Botão de texto para voltar
-        const botaoVoltar = this.add.rectangle(
+        // Texto do botão de volta
+        const returnButton = this.add.rectangle(
             width / 2,
             height - 210,
             250,
@@ -2156,35 +1792,35 @@ class CongratulationsSceneCurriculoVpRelacoes extends Phaser.Scene {
             .setInteractive();
 
         // Efeitos do botão
-        botaoVoltar.on('pointerover', () => {
-            botaoVoltar.fillColor = 0xC30DC7;
-            botaoVoltar.setScale(1.05);
+        returnButton.on('pointerover', () => {
+            returnButton.fillColor = 0xC30DC7;
+            returnButton.setScale(1.05);
         });
 
-        botaoVoltar.on('pointerout', () => {
-            botaoVoltar.fillColor = 0xB600B9;
-            botaoVoltar.setScale(1);
+        returnButton.on('pointerout', () => {
+            returnButton.fillColor = 0xB600B9;
+            returnButton.setScale(1);
         });
 
         // Evento de clique
-        botaoVoltar.on('pointerdown', () => {
-            // Efeito de click
+        returnButton.on('pointerdown', () => {
+            // Efeito de clique
             this.tweens.add({
-                targets: botaoVoltar,
+                targets: returnButton,
                 scale: 0.95,
                 duration: 100,
                 yoyo: true,
                 onComplete: () => {
-                    // Reiniciar variáveis
-                    perguntaAtual = 0;
-                    progresso = 0;
-                    pontuacao = 0;
+                    // Reiniciando variáveis
+                    currentQuestion = 0;
+                    progress = 0;
+                    score = 0;
 
-                    // Fade out e iniciar o quiz
+                    // Fade out e começar o quiz
                     this.cameras.main.fadeOut(500, 0, 0, 0, () => {
-                        // Efeito sonoro de clique
-                        this.cliqueSom = this.sound.add('cliqueSom', { loop: false, volume: 10 });
-                        this.cliqueSom.play();
+                        // Som do efeito de clique
+                        this.clickSound = this.sound.add('clickSound', { loop: false, volume: 10 });
+                        this.clickSound.play();
 
                         this.scene.stop('CongratulationsSceneCurriculoVpRelacoes');
                         this.scene.resume('officeScene');
@@ -2197,20 +1833,20 @@ class CongratulationsSceneCurriculoVpRelacoes extends Phaser.Scene {
         this.add.text(
             width / 2,
             height - 210,
-            'VOLTAR AO ESCRITÓRIO',
+            'Voltar ao escritório',
             {
                 fontSize: '22px',
                 fill: '#000',
-                fontFamily: 'FontePadrao'
+                fontFamily: 'font'
             }
         ).setOrigin(0.5);
     }
-    // Complete the scaleBackgroundImage method
+    // Completando o método
     scaleBackgroundImage(image) {
-        // Centraliza a imagem
+        // Centralizando a imagem
         image.setOrigin(0.5);
 
-        // Mantém a proporção e cobre a tela
+        // Manter proporção e cobrir a tela
         const scaleX = this.cameras.main.width / image.width;
         const scaleY = this.cameras.main.height / image.height;
         const scale = Math.max(scaleX, scaleY);
@@ -2220,39 +1856,39 @@ class CongratulationsSceneCurriculoVpRelacoes extends Phaser.Scene {
 
 }
 
-// Classe para a cena do Quiz de Tecnologia
+// Cena do Quiz da VP de Tecnologia
 class QuizVpTecnologia extends Phaser.Scene {
     constructor() {
         super({ key: 'QuizVpTecnologia' });
-        this.textosPergunta = []; // Armazena os textos da pergunta e alternativas
-        this.botoesAlternativas = []; // Armazena os botões das alternativas
+        this.questionTexts = []; // Guarda perguntas e alternativas
+        this.optionButtons = []; // Guarda alternativas 
     }
 
     preload() {
-        // Carrega os recursos para o quiz
-        this.load.font('FontePadrao', 'fonts/PixelifySans-VariableFont_wght.ttf');
-        this.load.image('TelaQuiz', '../assets/TelaQuiz.png');
+        // Carrega recursos para o quiz
+        this.load.font('font', 'fonts/PixelifySans-VariableFont_wght.ttf');
+        this.load.image('QuizScreen', '../assets/TelaQuiz.png');
     }
 
     create() {
-        // Transição suave
+        // Transição suave 
         this.cameras.main.fadeIn(1000);
 
-        // Adicionar a imagem de fundo sem distorção
-        const fundo = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, 'TelaQuiz');
-        this.scaleBackgroundImage(fundo);
+        // Colocar imagem de fundo sem distorção
+        const background = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, 'QuizScreen');
+        this.scaleBackgroundImage(background);
 
-        // Criar elementos de interface
-        this.criarBarraProgresso();
-        this.criarContadorPergunta();
-        this.mostrarPergunta();
+        // Criar elementos da interface
+        this.createProgressBar();
+        this.createQuestionCounter();
+        this.showQuestion();
     }
 
     scaleBackgroundImage(image) {
-        // Centraliza a imagem
+        // Centralizando a imagem
         image.setOrigin(0.5);
 
-        // Mantém a proporção e cobre a tela
+        // Manter proporção e cobrir a tela
         const scaleX = this.cameras.main.width / image.width;
         const scaleY = this.cameras.main.height / image.height;
         const scale = Math.max(scaleX, scaleY);
@@ -2260,94 +1896,94 @@ class QuizVpTecnologia extends Phaser.Scene {
         image.setScale(scale);
     }
 
-    criarContadorPergunta() {
-        // Mostrar número da pergunta atual/total
-        this.textoPerguntaNumero = this.add.text(
+    createQuestionCounter() {
+        // Mostrar atual/ total número de perguntas
+        this.questionCounterText = this.add.text(
             this.sys.game.config.width - 150,
             50,
-            `Pergunta ${perguntaAtual + 1}/${perguntasTecnologia.length}`,
-            { fontSize: '20px', fill: '#000', fontFamily: 'FontePadrao' }
+            `Question ${currentQuestion + 1}/${technologyQuestions.length}`,
+            { fontSize: '20px', fill: '#000', fontFamily: 'font' }
         ).setOrigin(0.5);
     }
 
-    criarBarraProgresso() {
-        // Container para a barra de progresso
+    createProgressBar() {
+        // Container for the progress bar
         const progressBarContainer = this.add.rectangle(100, 50, 300, 24, 0xDDDDDD)
             .setOrigin(0, 0.5)
             .setStrokeStyle(2, 0x000000);
 
-        // Barra de progresso roxa    
-        this.barraProgresso = this.add.rectangle(102, 50, 0, 20, 0xB600B9)
+        // Barra de progresso roxa   
+        this.progressBar = this.add.rectangle(102, 50, 0, 20, 0xB600B9)
             .setOrigin(0, 0.5);
 
-        // Texto de progresso    
-        this.textoProgresso = this.add.text(
+        // Texto de progresso   
+        this.progressText = this.add.text(
             420,
             50,
-            `${progresso}%`,
-            { fontSize: '20px', fill: '#000', fontFamily: 'FontePadrao', fontWeight: 'bold' }
+            `${progress}%`,
+            { fontSize: '20px', fill: '#000', fontFamily: 'font', fontWeight: 'bold' }
         ).setOrigin(0, 0.5);
     }
 
-    atualizarBarraProgresso() {
-        // Atualizando a barra de progresso do quiz
-        const larguraMaxima = 296;
-        const novaLargura = (progresso / 100) * larguraMaxima;
+    updateProgressBar() {
+        // Atualizando a barra de progresso
+        const maxWidth = 296;
+        const newWidth = (progress / 100) * maxWidth;
 
-        // Animar a barra de progresso
+        // Animando a barra de progresso
         this.tweens.add({
-            targets: this.barraProgresso,
-            width: novaLargura,
+            targets: this.progressBar,
+            width: newWidth,
             duration: 500,
             ease: 'Power2'
         });
 
-        this.textoProgresso.setText(`${progresso}%`);
+        this.progressText.setText(`${progress}%`);
     }
 
-    limparElementos() {
-        // Remove os textos da pergunta e alternativas
-        this.textosPergunta.forEach(texto => texto.destroy());
-        this.textosPergunta = [];
+    clearElements() {
+        // Remover perguntas e alternativas
+        this.questionTexts.forEach(text => text.destroy());
+        this.questionTexts = [];
 
-        // Remove os botões das alternativas
-        this.botoesAlternativas.forEach(botao => botao.destroy());
-        this.botoesAlternativas = [];
+        // Remover alternativas
+        this.optionButtons.forEach(button => button.destroy());
+        this.optionButtons = [];
     }
 
-    mostrarPergunta() {
-        // Limpa os elementos antigos
-        this.limparElementos();
+    showQuestion() {
+        // Limpar elementos antigos
+        this.clearElements();
 
-        // Atualiza o contador de perguntas
-        this.textoPerguntaNumero.setText(`Pergunta ${perguntaAtual + 1}/${perguntasTecnologia.length}`);
+        // Atualiza o contador de questões
+        this.questionCounterText.setText(`Question ${currentQuestion + 1}/${technologyQuestions.length}`);
 
-        const pergunta = perguntasTecnologia[perguntaAtual];
+        const question = technologyQuestions[currentQuestion];
 
-        // Exibindo a pergunta
-        const textoPergunta = this.add.text(
+        // Mostrando a pergunta/questão
+        const questionText = this.add.text(
             this.sys.game.config.width / 2,
             100,
-            pergunta.pergunta,
+            question.question,
             {
                 fontSize: '22px',
                 fill: '#B600B9',
-                fontFamily: 'FontePadrao',
+                fontFamily: 'font',
                 fontWeight: 'bold',
                 wordWrap: { width: this.sys.game.config.width - 150 },
                 align: 'center'
             }
         ).setOrigin(0.5);
 
-        this.textosPergunta.push(textoPergunta);
+        this.questionTexts.push(questionText);
 
-        // Exibindo alternativas
+        // Mostrando alternativas
         const startY = 200;
         const spacing = 50;
 
-        pergunta.alternativas.forEach((alternativa, index) => {
+        question.options.forEach((option, index) => {
             // Container da alternativa (retângulo)
-            const botaoContainer = this.add.rectangle(
+            const buttonContainer = this.add.rectangle(
                 this.sys.game.config.width / 2,
                 startY + (index * spacing),
                 this.sys.game.config.width - 200,
@@ -2356,227 +1992,137 @@ class QuizVpTecnologia extends Phaser.Scene {
             ).setStrokeStyle(2, 0x444444)
                 .setInteractive();
 
-            // Efeitos de hover
-            botaoContainer.on('pointerover', () => {
-                botaoContainer.fillColor = 0xDDDDDD;
-                botaoContainer.setScale(1.02);
+            // Efeito de hover 
+            buttonContainer.on('pointerover', () => {
+                buttonContainer.fillColor = 0xDDDDDD;
+                buttonContainer.setScale(1.02);
             });
 
-            botaoContainer.on('pointerout', () => {
-                botaoContainer.fillColor = 0xEAE8E8;
-                botaoContainer.setScale(1);
+            buttonContainer.on('pointerout', () => {
+                buttonContainer.fillColor = 0xEAE8E8;
+                buttonContainer.setScale(1);
             });
 
             // Evento de clique
-            botaoContainer.on('pointerdown', () => {
-                this.verificarResposta(index, botaoContainer);
+            buttonContainer.on('pointerdown', () => {
+                this.checkAnswer(index, buttonContainer);
             });
 
-            // Texto da alternativa
-            const textoAlternativa = this.add.text(
+            // Texto das alternativas
+            const optionText = this.add.text(
                 this.sys.game.config.width / 2,
                 startY + (index * spacing),
-                `${index + 1}. ${alternativa}`,
+                `${index + 1}. ${option}`,
                 {
                     fontSize: '18px',
                     fill: '#000',
-                    fontFamily: 'FontePadrao',
+                    fontFamily: 'font',
                     wordWrap: { width: this.sys.game.config.width - 220 }
                 }
             ).setOrigin(0.5);
 
-            this.textosPergunta.push(textoAlternativa);
-            this.botoesAlternativas.push(botaoContainer);
+            this.questionTexts.push(optionText);
+            this.optionButtons.push(buttonContainer);
         });
     }
 
-    verificarResposta(resposta, botaoClicado) {
+    checkAnswer(answer, clickedButton) {
         // Desativar interação com todos os botões
-        this.botoesAlternativas.forEach(botao => {
-            botao.disableInteractive();
+        this.optionButtons.forEach(button => {
+            button.disableInteractive();
         });
 
-        const pergunta = perguntasTecnologia[perguntaAtual];
+        const question = technologyQuestions[currentQuestion];
 
-        if (resposta === pergunta.correta) {
+        if (answer === question.correct) {
             // Resposta correta
-            botaoClicado.fillColor = 0x88FF88; // Verde claro
+            clickedButton.fillColor = 0x88FF88; // Verde claro
 
             // Efeito sonoro de correto
-            this.correto = this.sound.add('corretoSom', { loop: false, volume: 10 });
-            this.correto.play();
+            this.correct = this.sound.add('correctSound', { loop: false, volume: 10 });
+            this.correct.play();
 
             // Atualizar pontuação e progresso
-            pontuacao += 100; // Pontuação fixa por resposta correta
-            progresso += 20;
+            score += 100; // Score fixo para cada pergunta acertada
+            progress += 20;
 
-            // Esperar um momento antes de seguir
+            // Esperar um momento antes de prosseguir
             this.time.delayedCall(1500, () => {
-                perguntaAtual++;
-                this.atualizarBarraProgresso();
+                currentQuestion++;
+                this.updateProgressBar();
 
-                if (perguntaAtual < perguntasTecnologia.length) {
+                if (currentQuestion < technologyQuestions.length) {
                     // Próxima pergunta com transição
                     this.cameras.main.fadeOut(300, 0, 0, 0, () => {
                         this.cameras.main.fadeIn(300);
-                        this.mostrarPergunta();
+                        this.showQuestion();
                     });
                 } else {
                     // Quiz completo
-                    this.scene.start('CongratulationsSceneCurriculoVpTecnologia', { pontuacao: pontuacao });
+                    this.scene.start('CongratulationsSceneCurriculoVpTecnologia', { score: score });
                 }
             });
         } else {
-            // Resposta incorreta
-            botaoClicado.fillColor = 0xFF8888; // Vermelho claro
+            // Resposta errada
+            clickedButton.fillColor = 0xFF8888; // Light red
 
-            // Efeito sonoro de errado
-            this.errado = this.sound.add('erradoSom', { loop: false, volume: 10 });
-            this.errado.play();
+            //Efeito sonoro de errado
+            this.wrong = this.sound.add('wrongSound', { loop: false, volume: 10 });
+            this.wrong.play();
 
-            // Exibir feedback explicativo
+            // Mostrar feedback explanatório
             const feedbackText = this.add.text(
                 this.sys.game.config.width / 2,
                 this.sys.game.config.height / 2 + 50,
-                pergunta.feedback, // Adicione a propriedade `feedback` ao objeto da pergunta
+                question.feedback, // Adiciona a propriedade feedback para o objeto question
                 {
                     fontSize: '20px',
                     fill: '#FF888',
-                    fontFamily: 'FontePadrao',
+                    fontFamily: 'font',
                     wordWrap: { width: this.sys.game.config.width - 100 },
                     align: 'center'
                 }
             ).setOrigin(0.5);
 
-            // Esperar um momento antes de permitir nova tentativa
+            // Espera um momento antes de liberar uma nova tentativa
             this.time.delayedCall(3000, () => {
-                feedbackText.destroy(); // Remove o feedback
-                this.mostrarPergunta(); // Volta para a mesma pergunta
+                feedbackText.destroy(); // Remove feedback
+                this.showQuestion(); // Volta para a mesma pergunta
             });
         }
     }
 }
 
-// // Classe para a cena de Game Over de Tecnologia
-// class GameOverSceneCurriculoTecnologia extends Phaser.Scene {
-//     constructor() {
-//         super({ key: 'GameOverSceneCurriculoTecnologia' });
-//     }
 
-//     init(data) {
-//         this.motivoGameOver = data.motivo || 'errou';
-//     }
-
-//     preload() {
-//         // Carregando recursos
-//         this.load.image('fundoGameOver', '../assets/gameover_curriculo.png');
-//     }
-
-//     create() {
-//         // Transição de entrada
-//         this.cameras.main.fadeIn(1000, 0, 0, 0);
-
-//         // Imagem de fundo sem distorção
-//         const fundo = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, 'fundoGameOver');
-//         this.scaleBackgroundImage(fundo);
-
-//         // Botão de texto para reiniciar
-//         const botaoReiniciar = this.add.rectangle(
-//             this.sys.game.config.width / 2,
-//             510,
-//             250,
-//             60,
-//             0xB600B9
-//         ).setStrokeStyle(2, 0x880088)
-//             .setInteractive();
-
-//         // Efeitos do botão
-//         botaoReiniciar.on('pointerover', () => {
-//             botaoReiniciar.fillColor = 0xC30DC7;
-//             botaoReiniciar.setScale(1.05);
-//         });
-
-//         botaoReiniciar.on('pointerout', () => {
-//             botaoReiniciar.fillColor = 0xB600B9;
-//             botaoReiniciar.setScale(1);
-//         });
-
-//         // Evento de clique
-//         botaoReiniciar.on('pointerdown', () => {
-//             // Efeito de click
-//             this.tweens.add({
-//                 targets: botaoReiniciar,
-//                 scale: 0.95,
-//                 duration: 100,
-//                 yoyo: true,
-//                 onComplete: () => {
-//                     // Reiniciar variáveis
-//                     perguntaAtual = 0;
-//                     progresso = 0;
-//                     pontuacao = 0;
-
-//                     // Fade out e iniciar o quiz
-//                     this.cameras.main.fadeOut(500, 0, 0, 0, () => {
-//                         this.scene.start('QuizVpTecnologia');
-//                     });
-//                 }
-//             });
-//         });
-
-//         // Texto do botão
-//         this.add.text(
-//             this.sys.game.config.width / 2,
-//             510,
-//             'TENTAR NOVAMENTE',
-//             {
-//                 fontSize: '22px',
-//                 fill: '#FFF',
-//                 fontFamily: 'FontePadrao'
-//             }
-//         ).setOrigin(0.5);
-//     }
-
-//     scaleBackgroundImage(image) {
-//         // Centraliza a imagem
-//         image.setOrigin(0.5);
-
-//         // Mantém a proporção e cobre a tela
-//         const scaleX = this.cameras.main.width / image.width;
-//         const scaleY = this.cameras.main.height / image.height;
-//         const scale = Math.max(scaleX, scaleY);
-//         image.setScale(scale);
-//     }
-// }
-
-// Classe para a cena de parabéns de Tecnologia
+// Cena de Parabéns da VP de tecnologia
 class CongratulationsSceneCurriculoVpTecnologia extends Phaser.Scene {
     constructor() {
         super({ key: 'CongratulationsSceneCurriculoVpTecnologia' });
     }
 
     init(data) {
-        this.pontuacaoFinal = data.pontuacao || 0;
+        this.finalScore = data.score || 0;
     }
 
     preload() {
         // Carregando recursos
-        this.load.image('fundoCongratulationsVpTecnologia', '../assets/parabens_cv_vpdetecnologia.png');
-        this.load.audio("excbubble", "../assets/sounds/somexclamacao.wav");
+        this.load.image('backgroundCongratulationsVpTecnologia', '../assets/parabens_cv_vpdetecnologia.png');
+        this.load.audio("exclamationBubble", "../assets/sounds/somexclamacao.wav");
 
     }
 
     create() {
-        // Transição de entrada com efeito
+        // Transição suave
         this.cameras.main.fadeIn(1000, 0, 0, 0);
 
-        this.excbubble = this.sound.add("excbubble");
+        this.exclamationBubble = this.sound.add("exclamationBubble");
 
         // Imagem de fundo sem distorção
-        const fundo = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, 'fundoCongratulationsVpTecnologia');
-        this.scaleBackgroundImage(fundo);
+        const background = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, 'backgroundCongratulationsVpTecnologia');
+        this.scaleBackgroundImage(background);
 
-        // Botão de texto para voltar
-        const botaoVoltar = this.add.rectangle(
+        // Texto do botão de volta
+        const returnButton = this.add.rectangle(
             width / 2,
             height - 210,
             250,
@@ -2586,39 +2132,39 @@ class CongratulationsSceneCurriculoVpTecnologia extends Phaser.Scene {
             .setInteractive();
 
         // Efeitos do botão
-        botaoVoltar.on('pointerover', () => {
-            botaoVoltar.fillColor = 0xC30DC7;
-            botaoVoltar.setScale(1.05);
+        returnButton.on('pointerover', () => {
+            returnButton.fillColor = 0xC30DC7;
+            returnButton.setScale(1.05);
         });
 
-        botaoVoltar.on('pointerout', () => {
-            botaoVoltar.fillColor = 0xB600B9;
-            botaoVoltar.setScale(1);
+        returnButton.on('pointerout', () => {
+            returnButton.fillColor = 0xB600B9;
+            returnButton.setScale(1);
         });
 
         // Evento de clique
-        botaoVoltar.on('pointerdown', () => {
-            // Efeito de click
+        returnButton.on('pointerdown', () => {
+            // Efeito de clique
             this.tweens.add({
-                targets: botaoVoltar,
+                targets: returnButton,
                 scale: 0.95,
                 duration: 100,
                 yoyo: true,
                 onComplete: () => {
-                    // Reiniciar variáveis
-                    perguntaAtual = 0;
-                    progresso = 0;
-                    pontuacao = 0;
+                    // Reiniciando variáveis
+                    currentQuestion = 0;
+                    progress = 0;
+                    score = 0;
 
-                    // Fade out e iniciar o quiz
+                    // Fade out e começar o quiz
                     this.cameras.main.fadeOut(500, 0, 0, 0, () => {
-                        // Efeito sonoro de clique
-                        this.cliqueSom = this.sound.add('cliqueSom', { loop: false, volume: 10 });
-                        this.cliqueSom.play();
+                        // Som do efeito de clique
+                        this.clickSound = this.sound.add('clickSound', { loop: false, volume: 10 });
+                        this.clickSound.play();
 
                         this.scene.stop('CongratulationsSceneCurriculoVpTecnologia');
                         this.scene.resume('officeScene');
-                        this.excbubble.play();
+                        this.exclamationBubble.play();
 
                     });
                 }
@@ -2629,20 +2175,20 @@ class CongratulationsSceneCurriculoVpTecnologia extends Phaser.Scene {
         this.add.text(
             width / 2,
             height - 210,
-            'VOLTAR AO ESCRITÓRIO',
+            'Voltar ao escritório',
             {
                 fontSize: '22px',
                 fill: '#000',
-                fontFamily: 'FontePadrao'
+                fontFamily: 'font'
             }
         ).setOrigin(0.5);
     }
-    // Complete the scaleBackgroundImage method
+    // Completando o método
     scaleBackgroundImage(image) {
-        // Centraliza a imagem
+        // Centralizando a imagem
         image.setOrigin(0.5);
 
-        // Mantém a proporção e cobre a tela
+        // Manter proporção e cobrir a tela
         const scaleX = this.cameras.main.width / image.width;
         const scaleY = this.cameras.main.height / image.height;
         const scale = Math.max(scaleX, scaleY);

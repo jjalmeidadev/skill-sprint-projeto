@@ -112,7 +112,7 @@ class VpEstrategiaScene extends Phaser.Scene {
         fill: "#000000", // Define a cor do texto
         wordWrap: { width: balloonText.width - 20 }, // Define a largura máxima para quebra de linha
         align: "center", // Centraliza o texto
-        fontFamily: "FontePadrao" // Define a fonte do texto
+        fontFamily: "font" // Define a fonte do texto
       }).setOrigin(0.5); // Centraliza o texto no balão
 
       const nextSpeech = () => {
