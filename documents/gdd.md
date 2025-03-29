@@ -135,7 +135,7 @@ Totalmente alinhado aos valores corporativos da Vivo, o Skill Sprint estabelece 
 
 <div align="center">
   <sub>GIF - Personagem Principal no elevador que toca diferentes propagandas da Vivo, gerando uma imersão na cultura da empresa parceira.</sub><br>
-  <img src="../assets/Recording 2025-03-28 074805.gif" width="450px" 
+  <img src="../assets/Recording 2025-03-28 074805.gif" width="700px" 
   alt="Gif - Elevador"><br>
   <sup>Fonte: produzido pelo autor.</sup>
 </div>
@@ -995,7 +995,7 @@ Abaixo, estão algumas capturas de tela para ilustrar o desenvolvimento do MVP (
 
 <div align="center">
   <sub>Mapa da VP de Pessoas: desenvolvido na Sprint 4.</sub><br>
-  <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/194311190/428142280-e48bb6a3-459b-40d6-ad57-32af0b6d46b1.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=REDACTED_FOR_PUBLIC_RELEASE%2F20250329%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250329T012445Z&X-Amz-Expires=300&X-Amz-Signature=313c713c0f267a7b0414fb824a22330fdedca37cbd312dc03f0f906b58a98c01&X-Amz-SignedHeaders=host" width="900px" 
+  <img src="../assets/vppessoas.png" width="900px" 
   alt="Título"><br>
   <sup>Fonte: elaborado pelos autores.</sup>
 </div>
@@ -1018,7 +1018,7 @@ Nessa sprint, também mudamos o comportamento da câmera no jogo, que agora acom
 
 <div align="center">
   <sub>Mudança no comportamento da câmera: desenvolvida na Sprint 4.</sub><br>
-  <img src="../assets/gif_camera.gif" width="450px" 
+  <img src="../assets/gif_camera.gif" width="700px" 
   alt="Título"><br>
   <sup>Fonte: elaborado pelos autores.</sup>
 </div>
