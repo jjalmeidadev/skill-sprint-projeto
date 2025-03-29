@@ -955,7 +955,7 @@ O jogador começa na Recepção (Primeiro Andar), onde responde a uma série de 
 
 Cada fase do jogo conta com um mini game exclusivo e interativo, permitindo que o jogador aprenda e interaja com os personagens enquanto resolve tarefas desafiadoras.
 
-Abaixo, estão alguns prints de tela para ilustrar o desenvolvimento do MVP (Mínimo Produto Viável) do jogo:
+Abaixo, estão algumas capturas de tela para ilustrar o desenvolvimento do MVP (Mínimo Produto Viável) do jogo:
 
 
 <div align="center">
