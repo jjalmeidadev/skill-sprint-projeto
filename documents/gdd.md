@@ -120,10 +120,12 @@ O Value Proposition Canvas [14] é uma ferramenta poderosa de planejamento estre
   <sup>Fonte: produzido pelo autor.</sup>
 </div>
 
+O Value Proposition Canvas do jogo Skill Sprint destaca uma solução inovadora que combina jogabilidade e simulação prática para transformar o processo seletivo burocrático e demorado da Vivo em uma experiência dinâmica e educativa, alinhada à cultura da empresa. O jogo oferece um aprendizado interativo por meio de níveis dinâmicos, NPCs de suporte e roteiros graduais, enquanto proporciona valor aos candidatos e colaboradores ao prepará-los para processos seletivos internos e desenvolvimento de carreira. A proposta é tornar o recrutamento mais eficiente e engajador, reforçando os valores da Vivo e promovendo oportunidades de crescimento interno.
+
 
 ### 1.1.5. Descrição da Solução Desenvolvida (sprint 4)
 
-O Skill Sprint surge como resposta a um desafio estratégico enfrentado pela Vivo: como engajar seus colaboradores em programas de desenvolvimento profissional que, em formatos tradicionais, muitas vezes falham em despertar interesse e participação ativa. Este *serious game* inovador foi concebido para transformar positivamente a experiência de aprendizado corporativo, convertendo processos burocráticos de gestão de carreira em uma jornada interativa e envolvente.
+O Skill Sprint surge como resposta a um desafio estratégico enfrentado pela Vivo: "como engajar seus colaboradores em programas de desenvolvimento profissional que, em formatos tradicionais, muitas vezes falham em despertar interesse e participação ativa?" Este *serious game* inovador foi concebido para transformar positivamente a experiência de aprendizado corporativo, convertendo processos burocráticos de gestão de carreira em uma jornada interativa e envolvente.
 
 Baseado nos princípios do Value Proposition Canvas, o jogo foi meticulosamente desenvolvido para abordar as principais dificuldades identificadas entre os colaboradores: a complexidade dos processos de *job rotation* (e progressão de carreira), a falta de clareza sobre oportunidades internas e a desconexão com métodos convencionais de capacitação. Através de uma narrativa imersiva, os participantes vivenciam na prática todas as etapas do desenvolvimento profissional - desde a elaboração de currículos até resolução de cases e planejamento de trajetória.
 
@@ -133,7 +135,7 @@ Totalmente alinhado aos valores corporativos da Vivo, o Skill Sprint estabelece 
 
 <div align="center">
   <sub>GIF - Personagem Principal no elevador que toca diferentes propagandas da Vivo, gerando uma imersão na cultura da empresa parceira.</sub><br>
-  <img src="../assets/Recording 2025-03-28 074805.gif" width="900px" 
+  <img src="../assets/Recording 2025-03-28 074805.gif" width="450px" 
   alt="Gif - Elevador"><br>
   <sup>Fonte: produzido pelo autor.</sup>
 </div>
@@ -158,21 +160,20 @@ A matriz de risco [15] é uma ferramenta essencial para a gestão de riscos, per
 |-------|------|---------|--------------|---------------|----------|
 | **Bug no som de exclamação da sala do líder** | 🚫 Ameaça | Alto | 90% | Revisão imediata do sistema de áudio e testes específicos | Corrigir |
 | **Desinteresse por parte dos jogadores** | 🚫 Ameaça | Crítico | 90% | Implementar pesquisas de satisfação e ajustar mecânicas de engajamento | Mitigar |
-| **Jogo não contempla a diversidade** | 🚫 Ameaça | Alto | 90% | Consultoria com especialistas em DE&I; redesenho de personagens | Corrigir |
-| **Jogo não está concluído** | 🚫 Ameaça | Crítico | 90% | Revisão do cronograma e alocação de recursos extras | Mitigar |
-| **Compatibilidade com smartphones** | 🚫 Ameaça | Alto | 90% | Priorizar desenvolvimento mobile com testes em múltiplos dispositivos | Corrigir |
+| **Jogo não contempla a diversidade** | 🚫 Ameaça | Alto | 90% | Pesquisar formas de implementar uma maior representatividade no jogo | Corrigir |
+| **Jogo não está concluído** | 🚫 Ameaça | Crítico | 90% | Revisão do backlog e foco no escopo considerando o tempo da sprint 5 | Mitigar |
+| **Compatibilidade com smartphones** | 🚫 Ameaça | Alto | 90% | Analisar a possibilidade de priorizar o desenvolvimento mobile com testes em múltiplos dispositivos | Explorar |
 | **Padronização dos assets do jogo** | ✅ Oportunidade | Alto | 90% | Criar guia de estilo e checklist para consistência visual | Explorar |
 | **Meta de representatividade no layout** | ✅ Oportunidade | Moderado | 90% | Incluir opções diversas de avatares e narrativas inclusivas | Explorar |
 | **Adicionar som de fala nos diálogos entre os personagens** | ✅ Oportunidade | Moderado | 90% | Pesquisar sons para vozes simbólicas no jogo | Explorar |
 | **Trilha sonora melhora imersão** | ✅ Oportunidade | Moderado | 90% | Pesquisar músicas de direito livre que proporcionem a ambientação que desejamos no jogo | Explorar |
 | **Risco de direitos autorais** | 🚫 Ameaça | Alto | 70% | Substituir músicas por trilhas licenciadas ou originais | Mitigar |
 | **Modo daltonismo** | ✅ Oportunidade | Moderado | 70% | Implementar filtros de cores e opções de acessibilidade | Explorar |
-| **Assets sem padronização** | 🚫 Ameaça | Moderado | 50% | Design system com templates aprovados | Corrigir |
+| **Assets sem padronização** | 🚫 Ameaça | Moderado | 50% | Design system com templates coerentes | Corrigir |
 | **Empresa parceira não aprova dinâmica** | 🚫 Ameaça | Alto | 50% | Apresentar protótipo para validação antecipada | Mitigar |
-| **Simulação de situações reais** | ✅ Oportunidade | Alto | 50% | Colaboração com RH para cenários realistas | Explorar |
 | **Erros na documentação** | 🚫 Ameaça | Baixo | 30% | Revisão em pares e atualização contínua | Aceitar |
-| **Sons repetitivos** | 🚫 Ameaça | Moderado | 30% | Ampliar biblioteca de sons e implementar variações aleatórias | Corrigir |
-| **Mal funcionamento dos botões** | 🚫 Ameaça | Baixo | 10% | Testes de usabilidade em diferentes dispositivos | Aceitar |
+| **Sons repetitivos** | 🚫 Ameaça | Moderado | 30% | Ampliar biblioteca de sons e implementar variações aleatórias | Explorar |
+| **Mal funcionamento dos botões** | 🚫 Ameaça | Baixo | 10% | Testes de usabilidade em diferentes dispositivos | Corrigir |
 | **Gamificação em capacitação** | ✅ Oportunidade | Alto | 10% | Integrar com plataforma de treinamentos corporativos | Explorar |  
 
 A matriz de riscos apresentada permite uma visão estruturada das potenciais ameaças e oportunidades do projeto, com ações definidas para mitigar impactos negativos e aproveitar eventuais benefícios. Ao monitorar continuamente esses riscos e ajustar as estratégias conforme necessário, a equipe estará melhor preparada para garantir o sucesso do projeto, minimizando surpresas e aumentando as chances de entregas dentro do prazo, custo e qualidade esperados.
@@ -181,20 +182,22 @@ A matriz de riscos apresentada permite uma visão estruturada das potenciais ame
 
 As metas SMART [16] são objetivos estruturados por cinco critérios fundamentais:
 
-- Específicos (detalham exatamente o que será alcançado), Mensuráveis (com indicadores quantificáveis);
-- Alcançáveis (realistas com os recursos disponíveis), Relevantes (alinhados aos propósitos estratégicos);
-- Temporais (com prazos definidos). No contexto do Skill Sprint, esse método garante que as metas de desenvolvimento do jogo — como a implementação de mecânicas ou a conclusão de fases — sejam claras, acompanháveis e vinculadas a resultados tangíveis (ex.: "90% dos assets integrados até a Sprint 4"). 
+- Específicos (detalham exatamente o que será alcançado);
+- Mensuráveis (com indicadores quantificáveis);
+- Alcançáveis (realistas com os recursos disponíveis);
+- Relevantes (alinhados aos propósitos estratégicos);
+- Temporais (com prazos definidos).
+ 
+ No contexto do Skill Sprint, esse método garante que as metas de desenvolvimento do jogo — como a implementação de mecânicas ou a conclusão de fases — sejam claras, acompanháveis e vinculadas a resultados tangíveis.
 
-A abordagem SMART transforma intenções vagas em ações concretas, facilitando a avaliação de progresso e o ajuste rápido de estratégias.
-
-Para garantir que o jogo cumpra seu propósito educacional e engajador, definimos metas SMART (Específicas, Mensuráveis, Alcançáveis, Relevantes e Temporais) alinhadas aos requisitos do projeto, a partir do desenvolvido até a sprint 4 e tendo como base os planos futuros para a sprint 5:
+Para garantir que o jogo cumpra seu propósito educacional e engajador, definimos metas SMART (Específicas, Mensuráveis, Alcançáveis, Relevantes e Temporais) alinhadas aos requisitos do projeto, tendo como base os planos futuros para a sprint 5:
 
 | Categoria            | Meta SMART                                                                 | Indicadores (KPIs)                                                                 | Prazo       |
 |----------------------|---------------------------------------------------------------------------|-----------------------------------------------------------------------------------|-------------|
 | **Core Gameplay**    | Completar desenvolvimento das 4 últimas fases (Vice-Presidência de Negócios, Estratégia, Relações Institucionais e Tecnologia) | - 5/5 minigames funcionais<br>- 90% assets integrados<br>- 100% bugs críticos resolvidos | Sprint 5   |
 | **Testes**           | Realizar 5 sessões de teste com usuários                                   | - 5 relatórios de teste<br>- 90% bugs críticos resolvidos                         | Sprint 4    |
 
-Os KPIs [17] são métricas quantificáveis e estratégicas que avaliam o sucesso de um projeto ou atividade em relação a seus objetivos-chave. No desenvolvimento do Skill Sprint, os KPIs servem como "termômetros" do progresso, medindo aspectos como desempenho técnico (ex.: tempo de carregamento ≤2s), qualidade (ex.: 90% dos bugs críticos resolvidos) e engajamento (ex.: 85% de conclusão de fases). Diferentemente de métricas genéricas, KPIs são selecionados por seu alinhamento direto com as metas SMART — como a taxa de integração de assets (90%) para validar a meta de finalização de fases — e são monitorados em intervalos regulares (diários/semanais) para permitir ajustes ágeis. Eles transformam dados brutos em insights acionáveis, ajudando a equipe a focar no que realmente importa para o sucesso do jogo.
+Os KPIs [17] são métricas quantificáveis e estratégicas que avaliam o sucesso de um projeto ou atividade em relação a seus objetivos-chave. No desenvolvimento do Skill Sprint, os KPIs servem como "termômetros" do progresso, medindo aspectos como desempenho técnico, qualidade e engajamento. Diferentemente de métricas genéricas, KPIs são selecionados por seu alinhamento direto com as metas SMART, para validar a meta de finalização de fases — e são monitorados em intervalos regulares (diários/semanais) para permitir ajustes ágeis. 
 
 #### **Tabela Detalhada de KPIs**
 
@@ -936,7 +939,7 @@ Esses avanços representam um passo importante em direção ao MVP final, e esta
 
 Durante a quarta sprint do nosso projeto, trabalhamos na implementação de novos mini games, na expansão dos mapas, na criação da tela inicial e na resolução de bugs que estavam comprometendo a execução do código. O objetivo principal foi entregar uma versão funcional e engajante do jogo, garantindo que todas as mecânicas essenciais estivessem implementadas.
 
-Durante um brainstorming, decidimos que o ambiente principal do jogo seria um prédio com seis andares, cada um representando uma Vice-Presidência (VP), com desafios e mini games exclusivos.
+Recaptulamos planos anteriores de desenvolvimento e avançamos em diversos planejamentos. Durante um *brainstorming*, decidimos que o ambiente principal do jogo seria um prédio com seis andares, cada um representando uma Vice-Presidência (VP), com desafios e mini games exclusivos.
 
 O jogador começa na Recepção (Primeiro Andar), onde responde a uma série de perguntas relacionadas à área em que deseja atuar. Com base nas respostas, a líder fornece um feedback e orienta a próxima etapa. A partir disso, ele avança pelos andares, passando pelas seguintes VP's:
 
@@ -952,43 +955,77 @@ O jogador começa na Recepção (Primeiro Andar), onde responde a uma série de 
 
 Cada fase do jogo conta com um mini game exclusivo e interativo, permitindo que o jogador aprenda e interaja com os personagens enquanto resolve tarefas desafiadoras.
 
-Abaixo, estão alguns prints de tela para ilustrar o desenvolvimento da versão final do jogo:
+Abaixo, estão alguns prints de tela para ilustrar o desenvolvimento do MVP (Mínimo Produto Viável) do jogo:
 
 
-![Image](https://github.com/user-attachments/assets/ecddd8be-65dd-4509-ad8d-1c480695a2bb)
- <sup>Fonte: elaborado pelos autores.</sup>
+<div align="center">
+  <sub>Tela de ajustes: desenvolvida na Sprint 4.</sub><br>
+  <img src="https://github.com/user-attachments/assets/ecddd8be-65dd-4509-ad8d-1c480695a2bb" width="900px" 
+  alt="Título"><br>
+  <sup>Fonte: elaborado pelos autores.</sup>
+</div>
+
+<div align="center">
+  <sub>Mapa da VP de Tecnologia: desenvolvido na Sprint 4.</sub><br>
+  <img src="https://github.com/user-attachments/assets/de05d189-a0e8-421c-96a2-585aaaaebeb2" width="900px" 
+  alt="Título"><br>
+  <sup>Fonte: elaborado pelos autores.</sup>
+</div>
+
+<div align="center">
+  <sub>Mapa da VP de Negócios: desenvolvido na Sprint 4.</sub><br>
+  <img src="https://github.com/user-attachments/assets/98231934-8026-4e9e-b34f-43b395ccee74" width="900px" 
+  alt="Título"><br>
+  <sup>Fonte: elaborado pelos autores.</sup>
+</div>
+
+<div align="center">
+  <sub>Mapa da VP de Estratégia: desenvolvido na Sprint 4.</sub><br>
+  <img src="https://github.com/user-attachments/assets/1db8b05c-9e23-49bb-99fb-adef43f1ed09" width="900px" 
+  alt="Título"><br>
+  <sup>Fonte: elaborado pelos autores.</sup>
+</div>
+
+<div align="center">
+  <sub>Tela Inicial melhorada: desenvolvida na Sprint 4.</sub><br>
+  <img src="https://github.com/user-attachments/assets/f1051e60-12d0-4288-b7ff-51d1fa580495" width="900px" 
+  alt="Título"><br>
+  <sup>Fonte: elaborado pelos autores.</sup>
+</div>
+
+<div align="center">
+  <sub>Mapa da VP de Pessoas: desenvolvido na Sprint 4.</sub><br>
+  <img src="https://github.com/user-attachments/assets/f1051e60-12d0-4288-b7ff-51d1fa580495" width="900px" 
+  alt="Título"><br>
+  <sup>Fonte: elaborado pelos autores.</sup>
+</div>
+
+<div align="center">
+  <sub>Minigame VP de Pessoas: desenvolvido na Sprint 4.</sub><br>
+  <img src="../assets/minigame_vppessoas.png" width="900px" 
+  alt="Título"><br>
+  <sup>Fonte: elaborado pelos autores.</sup>
+</div>
+
+<div align="center">
+  <sub>Minigame educativo - VP de Pessoas: desenvolvido na Sprint 4.</sub><br>
+  <img src="../assets/vppessoas_entrevista.png" width="900px" 
+  alt="Título"><br>
+  <sup>Fonte: elaborado pelos autores.</sup>
+</div>
+
+Nessa sprint, também mudamos o comportamento da câmera no jogo, que agora acompanha o jogador:
+
+<div align="center">
+  <sub>Mudança no comportamento da câmera: desenvolvida na Sprint 4.</sub><br>
+  <img src="../assets/gif_camera.gif" width="450px" 
+  alt="Título"><br>
+  <sup>Fonte: elaborado pelos autores.</sup>
 </div>
 
 
-![Image](https://github.com/user-attachments/assets/de05d189-a0e8-421c-96a2-585aaaaebeb2)
- <sup>Fonte: elaborado pelos autores.</sup>
-</div>
 
-![Image](https://github.com/user-attachments/assets/98231934-8026-4e9e-b34f-43b395ccee74)
- <sup>Fonte: elaborado pelos autores.</sup>
-</div>
-
-
-![Image](https://github.com/user-attachments/assets/1db8b05c-9e23-49bb-99fb-adef43f1ed09)
- <sup>Fonte: elaborado pelos autores.</sup>
-</div>
-
-
-![Image](https://github.com/user-attachments/assets/fcf6e4e1-7eee-44c8-9c09-a6d8262fbd18)
- <sup>Fonte: elaborado pelos autores.</sup>
-</div>
-
-
-![Image](https://github.com/user-attachments/assets/f1051e60-12d0-4288-b7ff-51d1fa580495)
- <sup>Fonte: elaborado pelos autores.</sup>
-</div>
-
-
-
-<img width="960" alt="Image" src="https://github.com/user-attachments/assets/e48bb6a3-459b-40d6-ad57-32af0b6d46b1" />
- <sup>Fonte: elaborado pelos autores.</sup>
-</div>
-
+Na próxima sprint, planejamos corrigir bugs da implementação dos sons no jogo e finalizar os minigames da VP de Negócios, Estratégia, Relações e Tecnologia. 
 
 
 ## 4.5. Revisão do MVP (sprint 5)
