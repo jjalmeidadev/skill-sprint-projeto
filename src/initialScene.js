@@ -1,346 +1,322 @@
 class InitialScene extends Phaser.Scene {
   constructor() {
-    super({ key: "initialScene" });
-    this.vidroslidePlayed = false;
+    super({ key: "initialScene" }); 
+    this.vidroSlidePlayed = false; // Inicializa uma variável para rastrear se o som de "vidroslide" já foi tocado
     const config = {
-      type: Phaser.AUTO,
-      width: 800,
-      height: 600,
+      type: Phaser.AUTO, // Define o tipo de renderização como automático (Phaser escolhe entre WebGL e Canvas)
+      width: 800, // Define a largura da tela do jogo
+      height: 600, // Define a altura da tela do jogo
       physics: {
-        default: "arcade",
+        default: "arcade", // Define o sistema de física padrão como "arcade"
         arcade: {
-          debug: false, 
-          gravity: { y: 0 },
-          fps: 60, 
-          fixedStep: true, 
+          debug: false, // Desativa o modo de depuração para o sistema de física arcade
+          gravity: { y: 0 }, // Define a gravidade no eixo Y como 0 (sem gravidade)
+          fps: 60, // Define a taxa de quadros por segundo como 60
+          fixedStep: true, // Habilita o uso de passos fixos para a simulação de física
         },
       },
-      scene: InitialScene,
+      scene: InitialScene, // Define a cena inicial do jogo como "InitialScene"
     };
   }
 
   preload() {
-    // Carrega os ativos visuais
-    this.load.image("bg01", "../assets/assetsBackground/1.png");
-    this.load.image("bg02", "../assets/assetsBackground/2.png");
-    this.load.image("bg03", "../assets/assetsBackground/3.png");
-    this.load.image("bg04", "../assets/assetsBackground/4.png");
-    this.load.image("bg05", "../assets/assetsBackground/5.png");
-    this.load.image("bg06", "../assets/assetsBackground/6.png");
-    this.load.image("vivinho", "../assets/vivinho.png");
+    this.load.image("bg01", "../assets/assetsBackground/1.png"); // Carrega a imagem de fundo da camada 1
+    this.load.image("bg02", "../assets/assetsBackground/2.png"); // Carrega a imagem de fundo da camada 2
+    this.load.image("bg03", "../assets/assetsBackground/3.png"); // Carrega a imagem de fundo da camada 3
+    this.load.image("bg04", "../assets/assetsBackground/4.png"); // Carrega a imagem de fundo da camada 4
+    this.load.image("bg05", "../assets/assetsBackground/5.png"); // Carrega a imagem de fundo da camada 5
+    this.load.image("bg06", "../assets/assetsBackground/6.png"); // Carrega a imagem de fundo da camada 6
 
-    this.load.image("titulo", "../assets/assetsBackground/titulo.png ");
+    this.load.image("vivinho", "../assets/vivinho.png"); // Carrega a imagem do personagem "vivinho"
+    this.load.image("title", "../assets/assetsBackground/titulo.png "); // Carrega a imagem do título da tela inicial
 
-    this.load.image("botaoJogar", "../assets/assets_botoes/botaoPlay.png");
-    this.load.image( "botaoCreditos", "../assets/assets_botoes/botaoCreditos.png" );
-    this.load.image("botaoAjustes", "../assets/assets_botoes/botaoAjustes.png");
-    this.load.image("layoutPlay", "../assets/assets_botoes/layoutPlay.png");
-    this.load.spritesheet("birdeaster", "../assets/passaroeaster.png", { frameWidth: 75, frameHeight: 92, });
-    this.load.spritesheet("meteoro", "../assets/meteoroeaster.png", { frameWidth: 499, frameHeight: 500, });
-    this.load.spritesheet("explosao", "../assets/explosaoeaster.png", { frameWidth: 140, frameHeight: 100, });
+    this.load.image("buttonPlay", "../assets/assets_botoes/botaoPlay.png"); // Carrega a imagem do botão "Jogar"
+    this.load.image("buttonCredits", "../assets/assets_botoes/botaoCreditos.png"); // Carrega a imagem do botão "Créditos"
+    this.load.image("buttonSettings", "../assets/assets_botoes/botaoAjustes.png"); // Carrega a imagem do botão "Ajustes"
+    this.load.image("layoutPlay", "../assets/assets_botoes/layoutPlay.png"); // Carrega a imagem do layout do botão "Play"
 
-    this.load.image("explobird", "../assets/explodebird.png");
-    // Carrega o áudio da tela inicial
-    this.load.audio( "initialMusic", "../assets/Kevin MacLeod - Pixelland ♫ NO COPYRIGHT 8-bit Music.mp3" );
-    this.load.audio( "buttonSound", "../assets/sounds/687107__aphom000__mouse-2-button-fast-click.wav" );
-    this.load.audio("vineboom", "../assets/sounds/vineboom.mp3");
-    this.load.audio("bumpvidro", "../assets/sounds/bumpvidro.mp3");
-    this.load.audio("vidroslide", "../assets/sounds/vidroslide.mp3");
+    this.load.spritesheet("birdEaster", "../assets/passaroeaster.png", { frameWidth: 75, frameHeight: 92 }); // Carrega o spritesheet do pássaro "birdeaster" com dimensões de cada frame
+    this.load.spritesheet("meteor", "../assets/meteoroeaster.png", { frameWidth: 499, frameHeight: 500 }); // Carrega o spritesheet do meteoro com dimensões de cada frame
+    this.load.spritesheet("explosion", "../assets/explosaoeaster.png", { frameWidth: 140, frameHeight: 100 }); // Carrega o spritesheet da explosão com dimensões de cada frame
+
+    this.load.image("exploBird", "../assets/explodebird.png"); // Carrega a imagem do pássaro explodido
+
+    this.load.audio("initialMusic", "../assets/Kevin MacLeod - Pixelland ♫ NO COPYRIGHT 8-bit Music.mp3"); // Carrega o áudio da música inicial em loop
+    this.load.audio("buttonSound", "../assets/sounds/687107__aphom000__mouse-2-button-fast-click.wav"); // Carrega o som do clique do botão
+    this.load.audio("vineBoom", "../assets/sounds/vineboom.mp3"); // Carrega o som do efeito "vineboom"
+    this.load.audio("bumpVidro", "../assets/sounds/bumpvidro.mp3"); // Carrega o som de impacto no vidro
+    this.load.audio("vidroSlide", "../assets/sounds/vidroslide.mp3"); // Carrega o som de arraste no vidro
   }
 
   create() {
-    const width = this.scale.width;
-    const height = this.scale.height;
+    const width = this.scale.width; // Obtém a largura da tela
+    const height = this.scale.height; // Obtém a altura da tela
 
-    this.cameras.main.fadeIn(1000);
-    //
-    this.bgs = [];
-    const speeds = [0.005, 0.05, 0.07, 0.08, 0.09, 0.1];
+    this.cameras.main.fadeIn(1000); // Aplica um efeito de fade-in na câmera principal
+
+    this.bgs = []; // Cria um array para armazenar os fundos
+    const speeds = [0.005, 0.05, 0.07, 0.08, 0.09, 0.1]; // Define as velocidades de movimento dos fundos
     for (let i = 0; i < 6; i++) {
-      let bg = this.add.tileSprite(0, 0, 576, 324, `bg0${i + 1}`).setOrigin(0, 0).setScale(2.8);
-      this.bgs.push({ sprite: bg, speed: speeds[i] });
+      let bg = this.add.tileSprite(0, 0, 576, 324, `bg0${i + 1}`).setOrigin(0, 0).setScale(2.8); // Adiciona um fundo com tileSprite
+      this.bgs.push({ sprite: bg, speed: speeds[i] }); // Adiciona o fundo e sua velocidade ao array
     }
 
-    this.birdeaster = this.physics.add.sprite(width - (width + 105), height / 2.5, "birdeaster" );
+    this.birdEaster = this.physics.add.sprite(width - (width + 105), height / 2.5, "birdEaster"); // Adiciona o sprite do pássaro "birdEaster"
 
-    const birdeaster = this.birdeaster;
-    this.birdeaster.v0 = 0;
-    this.birdeaster.a = 20;
-    this.timeset = this.time.now;
+    const birdEaster = this.birdEaster; // Referência ao pássaro
+    this.birdEaster.v0 = 0; // Velocidade inicial do pássaro
+    this.birdEaster.a = 20; // Aceleração do pássaro
+    this.timeset = this.time.now; // Armazena o tempo atual
 
-     this.meteoro = this.physics.add.sprite(
-       width + 200,
-       height - 900,
-       "meteoro"
-     );
-     const meteoro = this.meteoro;
-     this.meteoro.setFlipX(true);
-     meteoro.setAngle(-20);
-     this.meteoro.setScale(0.4);
+    this.meteor = this.physics.add.sprite(width + 200, height - 900, "meteor"); // Adiciona o sprite do meteoro
+    const meteor = this.meteor; // Referência ao meteoro
+    this.meteor.setFlipX(true); // Inverte o sprite horizontalmente
+    meteor.setAngle(-20); // Define o ângulo inicial do meteoro
+    this.meteor.setScale(0.4); // Reduz o tamanho do meteoro
 
-     this.meteoro.duracao = 480; //segundos
+    this.meteor.duration = 480; // Define a duração do movimento do meteoro em segundos
 
-     this.meteoro.xf = width / 3;
-     this.meteoro.x0 = width + 200;
-     this.meteoro.dS = this.meteoro.xf - this.meteoro.x0;
-     this.meteoro.v0y = 200;
-     this.meteoro.v0x = 0;
-     this.meteoro.yf = height - 100;
-     this.meteoro.y0 = height - 900;
-     this.meteoro.a =
-       (2 * (this.meteoro.yf - this.meteoro.y)) / this.meteoro.duracao ** 2;
+    this.meteor.xf = width / 3; // Posição final no eixo X
+    this.meteor.x0 = width + 200; // Posição inicial no eixo X
+    this.meteor.dS = this.meteor.xf - this.meteor.x0; // Deslocamento no eixo X
+    this.meteor.v0y = 200; // Velocidade inicial no eixo Y
+    this.meteor.v0x = 0; // Velocidade inicial no eixo X
+    this.meteor.yf = height - 100; // Posição final no eixo Y
+    this.meteor.y0 = height - 900; // Posição inicial no eixo Y
+    this.meteor.a = (2 * (this.meteor.yf - this.meteor.y)) / this.meteor.duration ** 2; // Calcula a aceleração no eixo Y
 
-    this.birdeaster.body.setEnable(true);
-    this.meteoro.body.setEnable(true);
+    this.birdEaster.body.setEnable(true); // Habilita o corpo físico do pássaro
+    this.meteor.body.setEnable(true); // Habilita o corpo físico do meteoro
 
-    this.explosao = this.physics.add.sprite( width - 500, height / 2, "explosao" );
-   
-    const explosao = this.explosao;
-    this.explosao.setScale(6);
-    this.explosao.setCrop(70, 0, 500, 500);
+    this.explosion = this.physics.add.sprite(width - 500, height / 2, "explosion"); // Adiciona o sprite da explosão
+
+    const explosion = this.explosion; // Referência à explosão
+    explosion.setScale(6); // Define o tamanho da explosão
+    explosion.setCrop(70, 0, 500, 500); // Recorta a explosão para ajustar sua área visível
 
     this.anims.create({
-      key: "fly",
-      frames: this.anims.generateFrameNumbers("birdeaster", {
-        start: 0,
-        end: 7,
-      }),
-      frameRate: 10,
-      repeat: -1,
+      key: "fly", // Nome da animação
+      frames: this.anims.generateFrameNumbers("birdEaster", { start: 0, end: 7 }), // Define os frames da animação
+      frameRate: 10, // Taxa de quadros por segundo
+      repeat: -1, // Repetição infinita
     });
 
-    birdeaster.anims.play("fly", true);
+    birdEaster.anims.play("fly", true); // Inicia a animação de voo do pássaro
 
     this.anims.create({
-      key: "fall",
-      frames: this.anims.generateFrameNumbers("meteoro", {
-        start: 0,
-        end: 7,
-      }),
-      frameRate: 10,
-      repeat: -1,
+      key: "fall", // Nome da animação
+      frames: this.anims.generateFrameNumbers("meteor", { start: 0, end: 7 }), // Define os frames da animação
+      frameRate: 10, // Taxa de quadros por segundo
+      repeat: -1, // Repetição infinita
     });
 
-    meteoro.anims.play("fall", true);
+    meteor.anims.play("fall", true); // Inicia a animação de queda do meteoro
 
     this.anims.create({
-      key: "explosao",
-      frames: this.anims.generateFrameNumbers("explosao", {
-        start: 0,
-        end: 7,
-      }),
-      frameRate: 10,
-      repeat: 0,
+      key: "explosion", // Nome da animação
+      frames: this.anims.generateFrameNumbers("explosion", { start: 0, end: 7 }), // Define os frames da animação
+      frameRate: 10, // Taxa de quadros por segundo
+      repeat: 0, // Não repete
     });
-    this.explosao.setVisible(false);
+    this.explosion.setVisible(false); // Torna a explosão invisível inicialmente
 
-    // Inicia a música da tela inicial em loop
-    this.initialMusic = this.sound.add("initialMusic", { loop: true, volume: 2, });
-    this.initialMusic.play();
+    this.initialMusic = this.sound.add("initialMusic", { loop: true, volume: 2 }); // Adiciona a música inicial com loop
+    this.initialMusic.play(); // Toca a música inicial
 
-    this.explobird = this.add.image(width - 300, height - 430, "explobird").setScale(0.5);
-    this.explobird.setVisible(false);
-    this.explobird.setDepth(1);
+    this.exploBird = this.add.image(width - 300, height - 430, "exploBird").setScale(0.5); // Adiciona o sprite do pássaro explodido
+    this.exploBird.setVisible(false); // Torna o pássaro explodido invisível inicialmente
+    this.exploBird.setDepth(1); // Define a profundidade do pássaro explodido
 
-    // Registra os eventos para pausar a música ao sair/pausar a cena
-    this.events.on("shutdown", this.shutdown, this);
-    this.events.on("pause", this.shutdown, this);
+    this.events.on("shutdown", this.shutdown, this); // Registra o evento para encerrar a música ao sair da cena
+    this.events.on("pause", this.shutdown, this); // Registra o evento para pausar a música ao pausar a cena
 
-    // Adiciona a imagem de fundo e ajusta seu tamanho
-    this.add.image(width / 2, height / 4, "titulo").setScale(2.0);
-    this.add.image(width / 2, height - 250, "layoutPlay").setScale(1.0);
+    this.add.image(width / 2, height / 4, "title").setScale(2.0); // Adiciona a imagem do título
+    this.add.image(width / 2, height - 250, "layoutPlay").setScale(1.0); // Adiciona a imagem do layout do botão "Play"
 
-    this.add.image(width - 100, height - 100, "vivinho").setScale(0.75);
+    this.add.image(width - 100, height - 100, "vivinho").setScale(0.75); // Adiciona a imagem do personagem "vivinho"
 
-    // Cria os botões da tela inicial
-    this.createButtonJogar(width, height);
-    this.createButtonCreditos(width, height);
-    this.createButtonAjustes(width, height);
+    this.createButtonPlay(width, height); // Cria o botão "Jogar"
+    this.createButtonCredits(width, height); // Cria o botão "Créditos"
+    this.createButtonSettings(width, height); // Cria o botão "Ajustes"
 
     this.physics.add.collider(
-      this.birdeaster,
-      this.meteoro,
-      (birdeaster, meteoro) => {
-        this.collision(birdeaster, meteoro);
+      this.birdEaster, // Primeiro objeto da colisão
+      this.meteor, // Segundo objeto da colisão
+      (birdEaster, meteor) => {
+        this.collision(birdEaster, meteor); // Chama a função de colisão ao detectar colisão
       },
-      null,
-      this
+      null, // Sem condições adicionais
+      this // Contexto da cena
     );
   }
 
-  collision = (birdeaster, meteoro) => {
-    birdeaster.setVelocity(0, 0);
-    meteoro.setVelocity(0, 0);
+  collision = (birdEaster, meteor) => {
+    birdEaster.setVelocity(0, 0); // Para o movimento do pássaro
+    meteor.setVelocity(0, 0); // Para o movimento do meteoro
 
-    // Efeito de mexer a cam
+    // Efeito de mexer a câmera (comentado)
     // this.cameras.main.shake(300, 0.01);
 
-    birdeaster.setActive(false); // Deixa inativo
-    birdeaster.setVisible(false); // Deixar invisível
+    birdEaster.setActive(false); // Desativa o pássaro
+    birdEaster.setVisible(false); // Torna o pássaro invisível
 
-    meteoro.setActive(false); // Deixa inativo
-    meteoro.setVisible(false); // Deixar invisível
+    meteor.setActive(false); // Desativa o meteoro
+    meteor.setVisible(false); // Torna o meteoro invisível
 
-    this.explosao.setActive(true);
-    this.explosao.setVisible(true);
-    this.sound.play("vineboom", { volume: 0.3 });
-    this.explosao.anims.play("explosao", true);
-    this.explosao.on("animationcomplete", () => {
-      this.explosao.setVisible(false);
+    this.explosion.setActive(true); // Ativa a explosão
+    this.explosion.setVisible(true); // Torna a explosão visível
+    this.sound.play("vineBoom", { volume: 0.3 }); // Toca o som "vineBoom" com volume reduzido
+    this.explosion.anims.play("explosion", true); // Inicia a animação da explosão
+    this.explosion.on("animationcomplete", () => {
+      this.explosion.setVisible(false); // Torna a explosão invisível após a animação
     });
-    let size = [
-      1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2.0, 2.1, 2.2, 2.3, 2.4, 2.5,
-    ];
-    this.explobird.setVisible(true);
 
-    //Aumento gradual do pássaro
-    for (let i = 0; i < size.length; i++) {
+    let size = [ // Define os tamanhos para o aumento gradual do pássaro
+      1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2.0, 2.1, 2.2, 2.3, 2.4, 2.5,
+    ]; 
+
+    this.exploBird.setVisible(true); // Torna o pássaro explodido visível
+
+    for (let i = 0; i < size.length; i++) { // Aumento gradual do pássaro
       this.time.delayedCall(i * 100, () => {
         this.tweens1 = this.tweens.add({
-          targets: this.explobird,
-          scale: size[i],
-          duration: 430,
-          ease: "Linear",
+          targets: this.exploBird, // Alvo da animação
+          scale: size[i], // Define o tamanho atual do pássaro
+          duration: 430, // Duração da animação
+          ease: "Linear", // Tipo de interpolação linear
         });
       });
 
-      //Rotação do pássaro
-      this.tweens2 = this.tweens.add({
-        targets: this.explobird,
-        angle: 300, 
-        duration: 1300, 
-        ease: "Linear", 
-        repeat: 0, 
+      this.tweens2 = this.tweens.add({ // Rotação do pássaro
+        targets: this.exploBird, // Alvo da animação
+        angle: 300, // Define o ângulo de rotação
+        duration: 1300, // Duração da animação
+        ease: "Linear", // Tipo de interpolação linear
+        repeat: 0, // Não repete
       });
     }
 
- //Trajeto do pássaro até o vidro do computador
-    this.tweens3 = this.tweens.add({
-      targets: this.explobird,
-      x: this.explobird.x - 600,
-      y: this.explobird.y - 5,
-      duration: 1800,
-      ease: "Linear",
+    this.tweens3 = this.tweens.add({ // Trajeto do pássaro até o vidro do computador
+      targets: this.exploBird, // Alvo da animação
+      x: this.exploBird.x - 600, // Define a posição final no eixo X
+      y: this.exploBird.y - 5, // Define a posição final no eixo Y
+      duration: 1800, // Duração da animação
+      ease: "Linear", // Tipo de interpolação linear
     });
 
-    // Toca o som de arraste no vidro
-    this.tweens3.on("complete", () => {
-      this.sound.stopByKey("vidroslide");
-      this.sound.play("vidroslide", { volume: 3 });
-      this.vidroslidePlayed = true;
+    this.tweens3.on("complete", () => { // Toca o som de arraste no vidro
+      this.sound.stopByKey("vidroSlide"); // Para o som "vidroSlide" se já estiver tocando
+      this.sound.play("vidroSlide", { volume: 3 }); // Toca o som "vidroSlide" com volume aumentado
+      this.vidroSlidePlayed = true; // Marca que o som foi tocado
 
       this.tweens4 = this.tweens.add({
-        targets: this.explobird,
-        y: this.explobird.y + 2000,
-        duration: 7000,
-        ease: "Linear",
+        targets: this.exploBird, // Alvo da animação
+        y: this.exploBird.y + 2000, // Move o pássaro para fora da tela no eixo Y
+        duration: 7000, // Duração da animação
+        ease: "Linear", // Tipo de interpolação linear
       });
     });
   };
 
   shutdown() {
-    // Interrompe a música ao encerrar ou pausar a cena
-    if (this.initialMusic && this.initialMusic.isPlaying) {
-      this.initialMusic.stop();
+    if (this.initialMusic && this.initialMusic.isPlaying) { // Interrompe a música ao encerrar ou pausar a cena
+      this.initialMusic.stop(); // Para a música inicial se estiver tocando
     }
   }
 
   buttonSound() {
-    this.buttonClick = this.sound.add("buttonSound", {loop: false, volume: 10, });
-    this.buttonClick.play();
+    this.buttonClick = this.sound.add("buttonSound", { loop: false, volume: 10 }); // Adiciona o som de clique do botão com volume alto
+    this.buttonClick.play(); // Toca o som de clique do botão
   }
 
-  createButtonJogar(width, height) {
-    const botaoJogar = this.add.image(width / 2, height / 2 + 50, "botaoJogar");
-    botaoJogar.setInteractive();
-    botaoJogar.setScale(1);
-    botaoJogar.on("pointerdown", () => {
-      this.buttonSound();
-      this.shutdown();
-      this.scene.stop("initialScene");
-      this.scene.start("cutScene");
+  createButtonPlay(width, height) {
+    const buttonPlay = this.add.image(width / 2, height / 2 + 50, "buttonPlay"); // Adiciona a imagem do botão "Jogar" na posição especificada
+    buttonPlay.setInteractive(); // Torna o botão interativo
+    buttonPlay.setScale(1); // Define o tamanho do botão
+    buttonPlay.on("pointerdown", () => {
+      this.buttonSound(); // Toca o som de clique do botão
+      this.shutdown(); // Para a música inicial
+      this.scene.stop("initialScene"); // Para a cena inicial
+      this.scene.start("cutScene"); // Inicia a cena "cutScene"
     });
   }
 
-  createButtonCreditos(width, height) {
-    const botaoCreditos = this.add.image(width / 2, height / 1.5, "botaoCreditos" );
-    botaoCreditos.setInteractive();
-    botaoCreditos.setScale(1);
-    botaoCreditos.on("pointerdown", () => {
-      this.buttonSound();
-      this.shutdown();
-      this.scene.stop("initialScene");
-      this.scene.switch("creditosScene");
+  createButtonCredits(width, height) {
+    const buttonCredits = this.add.image(width / 2, height / 1.5, "buttonCredits"); // Adiciona a imagem do botão "Créditos" na posição especificada
+    buttonCredits.setInteractive(); // Torna o botão interativo
+    buttonCredits.setScale(1); // Define o tamanho do botão
+    buttonCredits.on("pointerdown", () => {
+      this.buttonSound(); // Toca o som de clique do botão
+      this.shutdown(); // Para a música inicial
+      this.scene.stop("initialScene"); // Para a cena inicial
+      this.scene.switch("creditosScene"); // Alterna para a cena "creditosScene"
     });
   }
 
-  createButtonAjustes(width, height) {
-    const botaoAjustes = this.add.image( width / 2, height - 175, "botaoAjustes" );
-    botaoAjustes.setInteractive();
-    botaoAjustes.setScale(1);
-    botaoAjustes.on("pointerdown", () => {
-      this.buttonSound();
-      this.shutdown();
-      this.scene.stop("initialScene");
-      this.scene.start("ajusteScene");
+  createButtonSettings(width, height) {
+    const buttonSettings = this.add.image(width / 2, height - 175, "buttonSettings"); // Adiciona a imagem do botão "Ajustes" na posição especificada
+    buttonSettings.setInteractive(); // Torna o botão interativo
+    buttonSettings.setScale(1); // Define o tamanho do botão
+    buttonSettings.on("pointerdown", () => {
+      this.buttonSound(); // Toca o som de clique do botão
+      this.shutdown(); // Para a música inicial
+      this.scene.stop("initialScene"); // Para a cena inicial
+      this.scene.start("ajusteScene"); // Inicia a cena "ajusteScene"
     });
   }
 
   update(time, delta) {
     this.bgs.forEach((layer) => {
-      layer.sprite.tilePositionX += layer.speed;
+      layer.sprite.tilePositionX += layer.speed; // Move o fundo horizontalmente com base na velocidade de cada camada
     });
 
-    let t = (time - this.timeset) / 1000; // Converter para segundos
+    let t = (time - this.timeset) / 1000; // Converte o tempo decorrido desde o início para segundos
 
-    // Verificar se 10 segundos passaram
-    if (time - this.timeset >= 10000) {
-      if ((this.birdeaster)) {
-        this.birdeaster.anims.play("fly", true);
+    if (time - this.timeset >= 10000) { // Verifica se 10 segundos se passaram
+      if (this.birdEaster) {
+        this.birdEaster.anims.play("fly", true); // Reproduz a animação de voo do pássaro
 
-        let t = Math.max(time - this.timeset - 10000) / 1000; // Conversão pra segundos e subtração de 30
+        let t = Math.max(time - this.timeset - 10000) / 1000; // Converte o tempo decorrido após 10 segundos para segundos
 
         // Cálculo da velocidade com V = v0 + at
-        let vbird = this.birdeaster.v0 + this.birdeaster.a * t;
+        let vbird = this.birdEaster.v0 + this.birdEaster.a * t; // Calcula a velocidade do pássaro com base na aceleração e tempo
 
-        //Cálculo do deslocamento com x = x0 + V0t + 0.5at²
-        this.birdeaster.x = width - (width + 35) + this.birdeaster.v0 * t + 0.5 * this.birdeaster.a * t * t; // Cálculo da velocidade com V = delta S/t
+        // Cálculo do deslocamento com x = x0 + V0t + 0.5at²
+        this.birdEaster.x = width - (width + 35) + this.birdEaster.v0 * t + 0.5 * this.birdEaster.a * t * t; // Atualiza a posição X do pássaro
       }
     }
 
-     if (time - this.timeset >= 19000) {
-       if (this.meteoro) {
-         // Cálculo da velocidade com V = delta S/t
+    if (time - this.timeset >= 19000) {
+      if (this.meteor) {
+        var speedMultiplier = 100; // Multiplicador de velocidade para ajustar a escala
+        this.meteor.setVelocityX(
+          // Cálculo da velocidade com V = delta S/t
+          (this.meteor.dS / this.meteor.duration) * speedMultiplier // Define a velocidade no eixo X com base no deslocamento e duração
+        );
 
-         var speedMultiplier = 100;
-         this.meteoro.setVelocityX(
-           (this.meteoro.dS / this.meteoro.duracao) * speedMultiplier
-         );
-
-         // Cálculo da velocidade com V = v0 + at
-
-         this.meteoro.setVelocityY(
-           this.meteoro.v0y + this.meteoro.a * this.meteoro.duracao
-         );
-       }
-     }
-
-      if (this.meteoro.visible === true) {
-        console.log(
-          "A posição do meteoro no eixo X é: " +
-            // Utilizando S(t) = S₀ + v.t em MU
-            (this.meteoro.x + this.meteoro.v0x * this.meteoro.duracao) +
-            " A posição do meteoro no eixo Y é: " +
-            // Utilizando S(t) = S₀ + V₀.t + (a.t²)/2
-          (this.meteoro.y + this.meteoro.v0y * this.meteoro.duracao +
-            (this.meteoro.a * this.meteoro.duracao ** 2) / 2) +
-            // Utilizando velocidade com V = delta S/t
-            "A velocidade do meteoro no eixo X é: " +
-            ((this.meteoro.dS / this.meteoro.duracao) * speedMultiplier) +
-            // Utilizando velocidade com V = v0 + at
-            " A velocidade do meteoro no eixo Y é: " +
-            (this.meteoro.v0y + this.meteoro.a * this.meteoro.duracao)
+        this.meteor.setVelocityY(
+           // Cálculo da velocidade com V = v0 + at
+          this.meteor.v0y + this.meteor.a * this.meteor.duration // Define a velocidade no eixo Y com base na aceleração e tempo
         );
       }
+    }
+
+    if (this.meteor.visible === true) { // Verifica se o meteoro está visível na cena
+      console.log( // Atualiza a posição do meteoro no console
+        "A posição do meteoro no eixo X é: " +
+          // Utilizando S(t) = S₀ + v.t em MU
+          (this.meteor.x + this.meteor.v0x * this.meteor.duration) + // Calcula a posição X do meteoro com base na velocidade inicial e tempo
+          " A posição do meteoro no eixo Y é: " +
+          // Utilizando S(t) = S₀ + V₀.t + (a.t²)/2
+          (this.meteor.y + this.meteor.v0y * this.meteor.duration +
+            (this.meteor.a * this.meteor.duration ** 2) / 2) + // Calcula a posição Y do meteoro com base na velocidade inicial, aceleração e tempo
+          // Utilizando velocidade com V = delta S/t
+          "A velocidade do meteoro no eixo X é: " +
+          ((this.meteor.dS / this.meteor.duration) * speedMultiplier) + // Calcula a velocidade no eixo X com base no deslocamento e duração
+          // Utilizando velocidade com V = v0 + at
+          " A velocidade do meteoro no eixo Y é: " +
+          (this.meteor.v0y + this.meteor.a * this.meteor.duration) // Calcula a velocidade no eixo Y com base na aceleração e tempo
+      );
+    }
   }
 }

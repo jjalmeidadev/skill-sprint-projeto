@@ -7,66 +7,57 @@ class GameplayTutorialScene extends Phaser.Scene {
     }
 
     preload() {
-        // Carrega a fonte
-        this.load.font('FontePadrao', 'fonts/PixelifySans-VariableFont_wght.ttf');
+        this.load.font('font', 'fonts/PixelifySans-VariableFont_wght.ttf'); // Carrega a fonte
+ 
+        this.load.image('introduction', '../assets/tutorial de jogabilidade.png'); // Carrega a imagem de introdução
 
-        // Carregar a imagem de introdução
-        this.load.image('introducao', '../assets/tutorial de jogabilidade.png');
-
-        // Efeito sonoro de clique
-        this.load.audio('buttonSound', '../assets/sounds/687107__aphom000__mouse-2-button-fast-click.wav');
-        this.load.audio('keySound', '../assets/sounds/computer-keyboard-typing-290582 (mp3cut.net).mp3');
+        this.load.audio('buttonSound', '../assets/sounds/687107__aphom000__mouse-2-button-fast-click.wav'); // Efeito sonoro de clique
+        this.load.audio('keySound', '../assets/sounds/computer-keyboard-typing-290582 (mp3cut.net).mp3'); // Efeito sonoros de tecla
     }
 
-    create() {
-        // Definir a cor de fundo diretamente no método create
-        this.cameras.main.setBackgroundColor('#61088d');
+    create() { 
+        this.cameras.main.setBackgroundColor('#61088d'); // Define a cor de fundo diretamente no método create
         
-        this.cameras.main.fadeIn(1000); // Efeito de transição para a cena
+        this.cameras.main.fadeIn(1000); // Aplica um efeito de transição de fade-in ao iniciar a cena
 
-        const { width, height } = this.scale; // Obter dimensões da tela
-        const tutorialImg = this.add.image(width / 2, height / 2, 'introducao').setOrigin(0.5); // Posicionamento da imagem
+        const { width, height } = this.scale; // Obtém as dimensões da tela (largura e altura)
+        const tutorialImg = this.add.image(width / 2, height / 2, 'introduction').setOrigin(0.5); // Adiciona a imagem de introdução centralizada na tela
 
-        // Ajuste de escala para manter as proporções corretas
-        const scaleX = width / tutorialImg.width;
-        const scaleY = height / tutorialImg.height;
-        const scale = Math.min(scaleX, scaleY);
-        tutorialImg.setScale(scale);
+        const scaleX = width / tutorialImg.width; // Calcula a escala horizontal
+        const scaleY = height / tutorialImg.height; // Calcula a escala vertical
+        const scale = Math.min(scaleX, scaleY); // Escolhe a menor escala para manter a proporção
+        tutorialImg.setScale(scale); // Aplica a escala calculada à imagem
 
-        // Função para iniciar a próxima cena (quando o jogador clica ou aperta ENTER)
-        const startNextScene = () => {
-            this.cameras.main.fadeOut(1000); // Efeito de transição para sair da cena
-            this.cameras.main.once('camerafadeoutcomplete', () => {
-                this.scene.start('tutorialScene'); // Troca para a cena principal do jogo
+        const startNextScene = () => { // Função para iniciar a próxima cena (quando o jogador clica ou aperta ENTER)
+            this.cameras.main.fadeOut(1000); // Aplica um efeito de transição de fade-out ao sair da cena
+            this.cameras.main.once('camerafadeoutcomplete', () => { // Aguarda o término do fade-out
+                this.scene.start('tutorialScene'); // Inicia a próxima cena chamada 'tutorialScene'
             });
         };
 
-        // Detectar clique na tela
-        this.input.on('pointerdown', () => {
-            this.buttonClick = this.sound.add('buttonSound', {loop: false, volume: 10});
-            this.buttonClick.play(); // Tocar o som do botão
-            startNextScene();
+        this.input.on('pointerdown', () => { // Detecta clique na tela
+            this.buttonClick = this.sound.add('buttonSound', {loop: false, volume: 10}); // Adiciona o som de clique do botão
+            this.buttonClick.play(); // Reproduz o som do botão
+            startNextScene(); // Chama a função para iniciar a próxima cena
         });
 
-        // Detectar a tecla ENTER para avançar
-        this.input.keyboard.on('keydown-ENTER', () => {
-            this.buttonClick = this.sound.add('keySound', {loop: false, volume: 10});
-            this.buttonClick.play(); // Tocar o som do botão
-            startNextScene();
+        this.input.keyboard.on('keydown-ENTER', () => { // Detecta a tecla ENTER para avançar
+            this.buttonClick = this.sound.add('keySound', {loop: false, volume: 10}); // Adiciona o som de pressionar a tecla
+            this.buttonClick.play(); // Reproduz o som da tecla
+            startNextScene(); // Chama a função para iniciar a próxima cena
         });
 
-        // Texto de instrução para o jogador
-        this.add.text(
-            width / 2, // Posicionamento centralizado
-            height - 100, // A 100px do fundo
-            'Clique ou pressione ENTER para continuar', // Texto de instrução
+        this.add.text( // Adiciona um texto de instrução para o jogador
+            width / 2, // Define a posição horizontal centralizada
+            height - 100, // Define a posição vertical a 100px do fundo da tela
+            'Clique ou pressione ENTER para continuar', // Define o texto de instrução
             { 
-                fontSize: '24px', 
-                fill: '#000000',
-                fontFamily: '"FontePadrao", Arial, sans-serif', // Fonte personalizada
-                backgroundColor: '#ffffff', // Fundo do texto para maior visibilidade
-                padding: { x: 10, y: 5 } // Espaçamento do texto
+                fontSize: '24px', // Define o tamanho da fonte
+                fill: '#000000', // Define a cor do texto
+                fontFamily: '"font", Arial, sans-serif', // Define a fonte personalizada
+                backgroundColor: '#ffffff', // Define a cor de fundo do texto para maior visibilidade
+                padding: { x: 10, y: 5 } // Define o espaçamento interno do texto
             }
-        ).setOrigin(0.5); // Centraliza o texto
+        ).setOrigin(0.5); // Centraliza o texto em relação ao ponto de origem
     }
 }

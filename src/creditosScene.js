@@ -4,28 +4,23 @@ class CreditosScene extends Phaser.Scene {
     }
 
     preload() {
-        // Carrega as imagens para a tela creditos
-        this.load.image('backgroundCreditos', '../assets/créditos.png');
-        this.load.image('arrow', '../assets/seta.png');
+        this.load.image('backgroundCreditos', '../assets/créditos.png'); // Carrega a imagem de fundo
+        this.load.image('arrow', '../assets/seta.png'); // Carrega a imagem da seta
     }
 
     create() {
-        // Adiciona a imagem de fundo
-        this.add.image(width/2, height/2, 'backgroundCreditos').setScale(0.7);
-        
-        // Chama a função que cria a seta
-        this.createSeta();
+        this.add.image(width/2, height/2, 'backgroundCreditos').setScale(0.7); // Adiciona a imagem de fundo
+
+        this.createArrow(); // Chama a função que cria a seta
     }
 
-    createSeta() {
-        // Adiciona o botão 'Seta' na posição especificada
-        const arrow = this.add.image(width - 1300, height - 700, 'arrow');
+    createArrow() {
+        const arrow = this.add.image(width - 1300, height - 700, 'arrow'); // Adiciona o botão 'Seta' na posição especificada
         arrow.setInteractive(); // Torna o botão interativo (clicável)
         arrow.setScale(1); // Ajusta o tamanho do botão
-        arrow.on('pointerdown', () => {
-            // Quando clica na seta, volta para tela inicial
-            this.scene.stop('creditosScene');
-            this.scene.start('initialScene');
+        arrow.on('pointerdown', () => { // Adiciona um evento de clique no botão
+            this.scene.stop('creditosScene'); // Para a cena de créditos
+            this.scene.start('initialScene'); // Inicia a cena inicial
         });
     }
 }

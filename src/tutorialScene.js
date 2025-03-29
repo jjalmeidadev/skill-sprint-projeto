@@ -30,213 +30,192 @@ class TutorialScene extends Phaser.Scene {
     }
 
     preload() {
-        //Carrega as imagens e sons necessários para a cena
-        this.load.image('vivinho', '../assets/vivinho.png');
-        this.load.image('buttonYes', '../assets/botao_sim.png');
-        this.load.image('buttonNo', '../assets/botao_nao.png');
-        this.load.image('jobRotation', '../assets/planoCarreira.png');
-        this.load.font('defaultFont', 'fonts/PixelifySans-VariableFont_wght.ttf');
+        this.load.image('vivinho', '../assets/vivinho.png'); // Carrega a imagem do personagem Vivinho
+        this.load.image('buttonYes', '../assets/botao_sim.png'); // Carrega a imagem do botão "Sim"
+        this.load.image('buttonNo', '../assets/botao_nao.png'); // Carrega a imagem do botão "Não"
+        this.load.image('jobRotation', '../assets/planoCarreira.png'); // Carrega a imagem do plano de carreira (Job Rotation)
+        this.load.font('font', 'fonts/PixelifySans-VariableFont_wght.ttf'); // Carrega a fonte personalizada para o texto
 
-        this.load.tilemapTiledJSON('escritorio', '../assets/mapaOffice/mapaOffice.json');
-        this.load.image('decoracao', '../assets/mapaOffice/decoracao.png');
-        this.load.image('paredes', '../assets/mapaOffice/paredes.png');
-        this.load.image('personalizado_vivo', '../assets/mapaOffice/personalizado_vivo.png');
+        this.load.tilemapTiledJSON('escritorio', '../assets/mapaOffice/mapaOffice.json'); // Carrega o mapa do escritório em formato JSON
+        this.load.image('decoracao', '../assets/mapaOffice/decoracao.png'); // Carrega a imagem de decoração do mapa
+        this.load.image('paredes', '../assets/mapaOffice/paredes.png'); // Carrega a imagem das paredes do mapa
+        this.load.image('personalizado_vivo', '../assets/mapaOffice/personalizado_vivo.png'); // Carrega a imagem personalizada da Vivo para o mapa
 
-        this.load.audio('keySound', '../assets/sounds/computer-keyboard-typing-290582 (mp3cut.net).mp3');
-        this.load.audio('buttonSound', '../assets/sounds/687107__aphom000__mouse-2-button-fast-click.wav');
+        this.load.audio('keySound', '../assets/sounds/computer-keyboard-typing-290582 (mp3cut.net).mp3'); // Carrega o som de digitação no teclado
+        this.load.audio('buttonSound', '../assets/sounds/687107__aphom000__mouse-2-button-fast-click.wav'); // Carrega o som de clique do botão
 
-        this.load.image('keyENTER', '../assets/keyEnter.png');  
+        this.load.image('keyENTER', '../assets/keyEnter.png'); // Carrega a imagem da tecla ENTER
     }
 
     create() {
-        //Transição de entrada
-        this.cameras.main.fadeIn(1000, 0, 0, 0);
+        this.cameras.main.fadeIn(1000, 0, 0, 0); //Transição de entrada
 
-        //Cria mapa do tiled
-        const map = this.make.tilemap({ key: "escritorio", tileWidth: 25, tileHeight: 20 });
-        const tileset1 = map.addTilesetImage("decoracao");
-        const tileset2 = map.addTilesetImage("paredes");
-        const tileset3 = map.addTilesetImage("personalizado_vivo");
+        const map = this.make.tilemap({ key: "escritorio", tileWidth: 25, tileHeight: 20 }); // Cria o mapa do escritório com base no arquivo JSON
+        const tileset1 = map.addTilesetImage("decoracao"); // Adiciona o tileset de decoração
+        const tileset2 = map.addTilesetImage("paredes"); // Adiciona o tileset de paredes
+        const tileset3 = map.addTilesetImage("personalizado_vivo"); // Adiciona o tileset personalizado da Vivo
 
-        //Cria as camadas do mapa
-        const offsetX = width - 1270;
-        const layer1 = map.createLayer("chao", tileset2, offsetX, 0).setScale(2.5);
-        const layer2 = map.createLayer("chaoLider", tileset1, offsetX, 0).setScale(2.5);
-        const layer3 = map.createLayer("parede", tileset2, offsetX, 0).setScale(2.5);
-        const layer4 = map.createLayer("tapete", tileset3, offsetX, 0).setScale(2.5);
-        const layer5 = map.createLayer("tapeteLider", tileset1, offsetX, 0).setScale(2.5);
-        const layer6 = map.createLayer("acabamento", tileset2, offsetX, 0).setScale(2.5);
-        const layer7 = map.createLayer("cadeira", tileset1, offsetX, 0).setScale(2.5);
-        const layer8 = map.createLayer("cadeiraTras", tileset1, offsetX, 0).setScale(2.5);
-        const layer9 = map.createLayer("quadro", tileset1, offsetX, 0).setScale(2.5);
-        const layer10 = map.createLayer("sofa", tileset1, offsetX, 0).setScale(2.5);
-        const layer11 = map.createLayer("planta", tileset1, offsetX, 0).setScale(2.5);
-        const layer12 = map.createLayer("porta", tileset1, offsetX, 0).setScale(2.5);
-        const layer13 = map.createLayer("decoracao", tileset1, offsetX, 0).setScale(2.5);
+        const offsetX = width - 1270; // Define a posição do x para as camadas
+        const layer1 = map.createLayer("chao", tileset2, offsetX, 0).setScale(2.5); // Cria a camada de chão
+        const layer2 = map.createLayer("chaoLider", tileset1, offsetX, 0).setScale(2.5); // Cria a camada de chão do líder
+        const layer3 = map.createLayer("parede", tileset2, offsetX, 0).setScale(2.5); // Cria a camada de paredes
+        const layer4 = map.createLayer("tapete", tileset3, offsetX, 0).setScale(2.5); // Cria a camada de tapete
+        const layer5 = map.createLayer("tapeteLider", tileset1, offsetX, 0).setScale(2.5); // Cria a camada de tapete do líder
+        const layer6 = map.createLayer("acabamento", tileset2, offsetX, 0).setScale(2.5); // Cria a camada de acabamento
+        const layer7 = map.createLayer("cadeira", tileset1, offsetX, 0).setScale(2.5); // Cria a camada de cadeiras
+        const layer8 = map.createLayer("cadeiraTras", tileset1, offsetX, 0).setScale(2.5); // Cria a camada de cadeiras traseiras
+        const layer9 = map.createLayer("quadro", tileset1, offsetX, 0).setScale(2.5); // Cria a camada de quadros
+        const layer10 = map.createLayer("sofa", tileset1, offsetX, 0).setScale(2.5); // Cria a camada de sofás
+        const layer11 = map.createLayer("planta", tileset1, offsetX, 0).setScale(2.5); // Cria a camada de plantas
+        const layer12 = map.createLayer("porta", tileset1, offsetX, 0).setScale(2.5); // Cria a camada de portas
+        const layer13 = map.createLayer("decoracao", tileset1, offsetX, 0).setScale(2.5); // Cria a camada de decoração
 
-        //Deixa o collider criado no tiled ativo
-        layer1.setCollisionByProperty({ collider: true });
-        layer2.setCollisionByProperty({ collider: true });
-        layer3.setCollisionByProperty({ collider: true });
-        layer4.setCollisionByProperty({ collider: true });
-        layer5.setCollisionByProperty({ collider: true });
-        layer6.setCollisionByProperty({ collider: true });
-        layer7.setCollisionByProperty({ collider: true });
-        layer8.setCollisionByProperty({ collider: true });
-        layer9.setCollisionByProperty({ collider: true });
-        layer10.setCollisionByProperty({ collider: true });
-        layer11.setCollisionByProperty({ collider: true });
-        layer12.setCollisionByProperty({ collider: true });
-        layer13.setCollisionByProperty({ collider: true });
+        layer1.setCollisionByProperty({ collider: true }); // Ativa colisão para a camada de chão
+        layer2.setCollisionByProperty({ collider: true }); // Ativa colisão para a camada de chão do líder
+        layer3.setCollisionByProperty({ collider: true }); // Ativa colisão para a camada de paredes
+        layer4.setCollisionByProperty({ collider: true }); // Ativa colisão para a camada de tapete
+        layer5.setCollisionByProperty({ collider: true }); // Ativa colisão para a camada de tapete do líder
+        layer6.setCollisionByProperty({ collider: true }); // Ativa colisão para a camada de acabamento
+        layer7.setCollisionByProperty({ collider: true }); // Ativa colisão para a camada de cadeiras
+        layer8.setCollisionByProperty({ collider: true }); // Ativa colisão para a camada de cadeiras traseiras
+        layer9.setCollisionByProperty({ collider: true }); // Ativa colisão para a camada de quadros
+        layer10.setCollisionByProperty({ collider: true }); // Ativa colisão para a camada de sofás
+        layer11.setCollisionByProperty({ collider: true }); // Ativa colisão para a camada de plantas
+        layer12.setCollisionByProperty({ collider: true }); // Ativa colisão para a camada de portas
+        layer13.setCollisionByProperty({ collider: true }); // Ativa colisão para a camada de decoração
 
-        //Cria a caixa de dialogo e exibe a primeira fala
-        this.createDialogBox();
-        this.showDialog();
+        this.createDialogBox(); // Cria a caixa de diálogo
+        this.showDialog(); // Exibe a primeira fala do diálogo
 
-        //Cria imagem sobreposta, mas deixa invisível
-        this.overlayImage = this.add.image(width / 2, height / 2 - 100, 'jobRotation');
-        this.overlayImage.setOrigin(0.5);
-        this.overlayImage.setScale(0.5);
-        this.overlayImage.setAlpha(0);
+        this.overlayImage = this.add.image(width / 2, height / 2 - 100, 'jobRotation'); // Adiciona a imagem de sobreposição
+        this.overlayImage.setOrigin(0.5); // Centraliza a origem da imagem
+        this.overlayImage.setScale(0.5); // Redimensiona a imagem
+        this.overlayImage.setAlpha(0); // Torna a imagem invisível inicialmente
 
-        //Adicionando um retângulo arredondado para o input de texto
-        this.inputBackground = this.add.graphics();
-        this.inputBackground.fillStyle(0xffffff);
-        this.inputBackground.fillRoundedRect(width - 1000, height - 130, 500, 50, 10);
-        this.inputBackground.lineStyle(2, 0xffff00, 1);
-        this.inputBackground.strokeRoundedRect(width - 1000, height - 130, 500, 50, 10);
+        this.inputBackground = this.add.graphics(); // Cria um gráfico para o fundo do input
+        this.inputBackground.fillStyle(0xffffff); // Define a cor de preenchimento como branco
+        this.inputBackground.fillRoundedRect(width - 1000, height - 130, 500, 50, 10); // Desenha um retângulo arredondado
+        this.inputBackground.lineStyle(2, 0xffff00, 1); // Define a borda do retângulo como amarela
+        this.inputBackground.strokeRoundedRect(width - 1000, height - 130, 500, 50, 10); // Desenha a borda do retângulo arredondado
 
-        //Placeholder do input de texto
-        const placeholderText = this.add.text(width - 990, height - 130, 'Digite seu nome aqui...', { font: '25px defaultFont', fill: '#000000' });
+        const placeholderText = this.add.text(width - 990, height - 130, 'Digite seu nome aqui...', { font: '25px font', fill: '#000000' }); // Adiciona um texto de placeholder para o input
 
-        //Adicionando o texto digitado
-        this.textEntry = this.add.text(width - 990, height - 130, '', { font: '25px defaultFont', fill: '#000000' });
+        this.textEntry = this.add.text(width - 990, height - 130, '', { font: '25px font', fill: '#000000' }); // Adiciona o texto que será digitado pelo jogador
 
-        //Evento de teclado para o input de texto
-        this.input.keyboard.on('keydown', event => {
-            if (event.keyCode === 8 && this.textEntry.text.length > 0) {
-                this.textEntry.text = this.textEntry.text.substr(0, this.textEntry.text.length - 1);
+        this.input.keyboard.on('keydown', event => { // Adiciona um evento para capturar as teclas pressionadas
+            if (event.keyCode === 8 && this.textEntry.text.length > 0) { // Verifica se a tecla Backspace foi pressionada
+                this.textEntry.text = this.textEntry.text.substr(0, this.textEntry.text.length - 1); // Remove o último caractere do texto
             }
-            else if (event.keyCode === 32 || (event.keyCode >= 48 && event.keyCode <= 90)) {
-                this.textEntry.text += event.key;
+            else if (event.keyCode === 32 || (event.keyCode >= 48 && event.keyCode <= 90)) { // Verifica se a tecla pressionada é um caractere válido
+                this.textEntry.text += event.key; // Adiciona o caractere ao texto
             }
 
             //Remover o placeholder quando o jogador começar a digitar
-            if (this.textEntry.text.length > 0) {
-                placeholderText.setVisible(false);
+            if (this.textEntry.text.length > 0) { // Verifica se o texto não está vazio
+                placeholderText.setVisible(false); // Esconde o texto de placeholder
             } else {
-                placeholderText.setVisible(true);
+                placeholderText.setVisible(true); // Mostra o texto de placeholder
             }
 
-            if (this.textEntry.text.length > 0) {
-                placeholderText.setVisible(false);
+            if (this.textEntry.text.length > 0) { // Verifica se o texto não está vazio
+                placeholderText.setVisible(false); // Esconde o texto de placeholder
                 this.keyEnterIcon.setVisible(true); // Mostra a tecla ENTER
             } else {
-                placeholderText.setVisible(true);
-                this.keyEnterIcon.setVisible(false); // Esconde novamente
+                placeholderText.setVisible(true); // Mostra o texto de placeholder
+                this.keyEnterIcon.setVisible(false); // Esconde novamente a tecla ENTER
             }
         });
 
-        //Adiciona interação com o botão ENTER para avançar o diálogo	
-        this.input.keyboard.on('keydown-ENTER', () => {
-            this.nextDialog();
-            this.buttonClick = this.sound.add('keySound', { loop: false, volume: 10 });
-            this.buttonClick.play();
+        this.input.keyboard.on('keydown-ENTER', () => { // Adiciona um evento para capturar a tecla ENTER
+            this.nextDialog(); // Avança para o próximo diálogo
+            this.buttonClick = this.sound.add('keySound', { loop: false, volume: 10 }); // Adiciona o som de clique da tecla
+            this.buttonClick.play(); // Reproduz o som de clique
         });
 
-        this.keyEnterIcon.setVisible(false);
+        this.keyEnterIcon.setVisible(false); // Esconde a tecla ENTER inicialmente
     }
 
     createDialogBox() {
-        const dialogWidth = width / 2;
-        const dialogHeight = height / 5;
-        const x = this.cameras.main.width / 2 - dialogWidth / 2;
-        const y = this.cameras.main.height - dialogHeight - 50;
+        const dialogWidth = width / 2; // Define a largura da caixa de diálogo como metade da largura da tela
+        const dialogHeight = height / 5; // Define a altura da caixa de diálogo como um quinto da altura da tela
+        const x = this.cameras.main.width / 2 - dialogWidth / 2; // Calcula a posição X centralizada para a caixa de diálogo
+        const y = this.cameras.main.height - dialogHeight - 50; // Calcula a posição Y para posicionar a caixa de diálogo na parte inferior da tela
 
-        //Cria o fundo da caixa de diálogo
-        this.dialogBox = this.add.graphics();
-        this.dialogBox.fillStyle(0xff9e0d, 1);
-        this.dialogBox.fillRoundedRect(x, y, dialogWidth, dialogHeight, 10);
+        this.dialogBox = this.add.graphics(); // Adiciona um gráfico para desenhar a caixa de diálogo
+        this.dialogBox.fillStyle(0xff9e0d, 1); // Define a cor de preenchimento da caixa de diálogo como laranja
+        this.dialogBox.fillRoundedRect(x, y, dialogWidth, dialogHeight, 10); // Desenha um retângulo arredondado para a caixa de diálogo
 
-        //Adiciona a imagem do personagem 
-        this.characterSprite = this.add.image(x + 80, y + 40, 'vivinho').setScale(0.5);
+        this.characterSprite = this.add.image(x + 80, y + 40, 'vivinho').setScale(0.5); // Adiciona a imagem do personagem Vivinho na caixa de diálogo
 
-        //Cria o texto da caixa de diálogo
-        this.dialogText = this.add.text(x + 150, y + 30, '', {
-            fontSize: '20px',
-            color: '#000000',
-            fontFamily: 'defaultFont',
-            wordWrap: { width: 600 }
+        this.dialogText = this.add.text(x + 150, y + 30, '', { // Adiciona um texto vazio na caixa de diálogo
+            fontSize: '20px', // Define o tamanho da fonte do texto
+            color: '#000000', // Define a cor do texto como preto
+            fontFamily: 'font', // Define a fonte personalizada
+            wordWrap: { width: 600 } // Define a largura máxima para quebra automática de linha
         });
 
-        // Adiciona a tecla ENTER no canto inferior direito da caixa de diálogo
-        this.keyEnterIcon = this.add.image(x + dialogWidth - 40, y + dialogHeight - 33, 'keyENTER');
-        this.keyEnterIcon.setScale(0.12).setDepth(1000);
+        this.keyEnterIcon = this.add.image(x + dialogWidth - 40, y + dialogHeight - 33, 'keyENTER'); // Adiciona a imagem da tecla ENTER
+        this.keyEnterIcon.setScale(0.12).setDepth(1000); // Redimensiona a tecla ENTER e define sua profundidade para estar acima de outros elementos
     }
 
     showDialog() {
-        const x = width / 2 - 100;
-        const y = height / 1.2;
+        const x = width / 2 - 100; // Define a posição X para centralizar o texto
+        const y = height / 1.2; // Define a posição Y para posicionar o texto na parte inferior da tela
     
-        if (this.currentDialogIndex === 1 && playerName) {
-            this.dialogText.setText(`Prazer em te conhecer, ${playerName}! Eu sou o Vivinho!`);
-        } else if (this.currentDialogIndex === 2) {
-            this.dialogText.setText(this.introduction[this.currentDialogIndex]);
-            this.createChoiceButtons();
-            this.optionSelected = false;
+        if (this.currentDialogIndex === 1 && playerName) { // Verifica se está na segunda fala e se o nome do jogador foi definido
+            this.dialogText.setText(`Prazer em te conhecer, ${playerName}! Eu sou o Vivinho!`); // Exibe uma mensagem personalizada com o nome do jogador
+        } else if (this.currentDialogIndex === 2) { // Verifica se está na terceira fala
+            this.dialogText.setText(this.introduction[this.currentDialogIndex]); // Exibe a fala correspondente da introdução
+            this.createChoiceButtons(); // Cria os botões de escolha (SIM/NÃO)
+            this.optionSelected = false; // Reseta o estado de seleção de opção
     
-            // Esconde a tecla ENTER quando aparecem os botões SIM/NÃO
-            if (this.keyEnterIcon) {
-                this.keyEnterIcon.setVisible(false);
+            if (this.keyEnterIcon) { // Verifica se a tecla ENTER foi criada
+                this.keyEnterIcon.setVisible(false); // Esconde a tecla ENTER
             }
         } else {
-            this.dialogText.setText(this.introduction[this.currentDialogIndex]);
+            this.dialogText.setText(this.introduction[this.currentDialogIndex]); // Exibe a fala correspondente da introdução
         }
     }
 
     createChoiceButtons() {
-        if (this.buttonYes || this.buttonNo) return;
+        if (this.buttonYes || this.buttonNo) return; // Se os botões já existem, não cria novamente
 
-        //Define a posição dos botões
-        const x = width / 2 - 100;
-        const y = height - 200;
+        const x = width / 2 - 100; // Calcula a posição X para centralizar os botões
+        const y = height - 200; // Calcula a posição Y para posicionar os botões na parte inferior da tela
 
-        //Cria o botão SIM e NÃO
-        this.buttonYes = this.add.image(x, y + 125, 'buttonYes').setScale(0.6).setInteractive();
-        this.buttonNo = this.add.image(x + 200, y + 125, 'buttonNo').setScale(0.65).setInteractive();
+        this.buttonYes = this.add.image(x, y + 125, 'buttonYes').setScale(0.6).setInteractive(); // Adiciona o botão "Sim" e o torna interativo
+        this.buttonNo = this.add.image(x + 200, y + 125, 'buttonNo').setScale(0.65).setInteractive(); // Adiciona o botão "Não" e o torna interativo
 
-        //Define ação ao clicar nos botões
-        this.buttonYes.on('pointerdown', () => {
-            this.buttonClick = this.sound.add('buttonSound', { loop: false, volume: 10 });
-            this.buttonClick.play();
-            this.chooseOption(0)
+        this.buttonYes.on('pointerdown', () => { // Adiciona um evento de clique ao botão "Sim"
+            this.buttonClick = this.sound.add('buttonSound', { loop: false, volume: 10 }); // Adiciona o som de clique
+            this.buttonClick.play(); // Reproduz o som de clique
+            this.chooseOption(0); // Chama a função para processar a escolha "Sim"
         });
 
-        this.buttonNo.on('pointerdown', () => {
-            this.buttonClick = this.sound.add('buttonSound', { loop: false, volume: 10 });
-            this.buttonClick.play();
-            this.chooseOption(1)
+        this.buttonNo.on('pointerdown', () => { // Adiciona um evento de clique ao botão "Não"
+            this.buttonClick = this.sound.add('buttonSound', { loop: false, volume: 10 }); // Adiciona o som de clique
+            this.buttonClick.play(); // Reproduz o som de clique
+            this.chooseOption(1); // Chama a função para processar a escolha "Não"
         });
     }
 
     chooseOption(optionIndex) {
-        //Destroi os botões de escolha
-        if (this.buttonYes) this.buttonYes.destroy();
-        if (this.buttonNo) this.buttonNo.destroy();
+        if (this.buttonYes) this.buttonYes.destroy(); // Remove o botão "Sim" da tela
+        if (this.buttonNo) this.buttonNo.destroy(); // Remove o botão "Não" da tela
 
-        this.buttonYes = null;
-        this.buttonNo = null;
+        this.buttonYes = null; // Reseta a referência do botão "Sim"
+        this.buttonNo = null; // Reseta a referência do botão "Não"
 
-        this.optionSelected = true; //Indica que o jogador escolheu uma opção
+        this.optionSelected = true; // Indica que o jogador escolheu uma opção
 
-        if (optionIndex === 1) { //Se o jogador escolheu NÃO
-            this.currentConditionalIndex = 1; //Começa a exibir as falas condicionais
-            this.dialogText.setText(this.conditionalDialog[this.currentConditionalIndex]);
-        } else { //Se o jogador escolheu SIM
-            this.currentConditionalIndex = -1; //Evita o loop de exibição das falas condicionais
-            this.dialogText.setText(this.conditionalDialog[0]);
-            this.yesSelected = true; //Marca que o jogador escolheu SIM
-            this.overlayVisible = false; //Esconde a imagem de sobreposição
+        if (optionIndex === 1) { // Se o jogador escolheu "Não"
+            this.currentConditionalIndex = 1; // Começa a exibir as falas condicionais a partir do índice 1
+            this.dialogText.setText(this.conditionalDialog[this.currentConditionalIndex]); // Atualiza o texto do diálogo com a fala condicional
+        } else { // Se o jogador escolheu "Sim"
+            this.currentConditionalIndex = -1; // Evita o loop de exibição das falas condicionais
+            this.dialogText.setText(this.conditionalDialog[0]); // Atualiza o texto do diálogo com a primeira fala condicional
+            this.yesSelected = true; // Marca que o jogador escolheu "Sim"
+            this.overlayVisible = false; // Esconde a imagem de sobreposição
         }
     }
 
@@ -246,10 +225,10 @@ class TutorialScene extends Phaser.Scene {
         }
     
         if (this.currentDialogIndex === 0) {
-            playerName = this.textEntry.text.trim();
-            this.textEntry.setVisible(false);
-            this.inputBackground.setVisible(false);
-            this.keyEnterIcon.setVisible(false);
+            playerName = this.textEntry.text.trim(); // Salva o nome do jogador
+            this.textEntry.setVisible(false); // Esconde o campo de entrada de texto
+            this.inputBackground.setVisible(false); // Esconde o fundo do campo de entrada
+            this.keyEnterIcon.setVisible(false); // Esconde o ícone da tecla ENTER
         }
     
         if (this.currentDialogIndex === 2 && !this.optionSelected) {
@@ -259,55 +238,53 @@ class TutorialScene extends Phaser.Scene {
         // Novo fluxo para "Sim"
         if (this.yesSelected) {
             if (!this.overlayVisible) {
-                this.dialogText.setText(this.finalDialog[0]);
-                this.overlayImage.setAlpha(1);
-                this.overlayVisible = true;
+                this.dialogText.setText(this.finalDialog[0]); // Exibe a primeira fala final
+                this.overlayImage.setAlpha(1); // Torna a imagem de sobreposição visível
+                this.overlayVisible = true; // Marca que a imagem de sobreposição está visível
                 return;
             }
             if (this.currentFinalIndex < this.finalDialog.length - 1) {
-                this.currentFinalIndex++;
-                this.dialogText.setText(this.finalDialog[this.currentFinalIndex]);
+                this.currentFinalIndex++; // Avança para a próxima fala final
+                this.dialogText.setText(this.finalDialog[this.currentFinalIndex]); // Atualiza o texto do diálogo com a próxima fala final
                 return;
             }
-            this.scene.start('officeScene');
+            this.scene.start('officeScene'); // Vai para a cena "officeScene"
             return;
         }
     
         // Fluxo para "Não"
         if (this.optionSelected && this.currentConditionalIndex >= 0 && this.currentConditionalIndex < this.conditionalDialog.length - 1) {
-            this.currentConditionalIndex++;
-            this.dialogText.setText(this.conditionalDialog[this.currentConditionalIndex]);
+            this.currentConditionalIndex++; // Avança para a próxima fala condicional
+            this.dialogText.setText(this.conditionalDialog[this.currentConditionalIndex]); // Atualiza o texto do diálogo com a próxima fala condicional
             return;
         }
     
         if (this.optionSelected && this.currentConditionalIndex === this.conditionalDialog.length - 1) {
-            this.dialogText.setText(this.finalDialog[0]);
-            this.overlayImage.setAlpha(1);
-            this.overlayVisible = true;
-            this.currentConditionalIndex++;
+            this.dialogText.setText(this.finalDialog[0]); // Exibe a primeira fala final
+            this.overlayImage.setAlpha(1); // Torna a imagem de sobreposição visível
+            this.overlayVisible = true; // Marca que a imagem de sobreposição está visível
+            this.currentConditionalIndex++; // Incrementa o índice condicional para evitar repetição
             return;
         }
     
         if (this.overlayVisible && this.overlayImage.alpha === 1) {
             if (this.currentFinalIndex < this.finalDialog.length - 1) {
-                this.currentFinalIndex++;
-                this.dialogText.setText(this.finalDialog[this.currentFinalIndex]);
+                this.currentFinalIndex++; // Avança para a próxima fala final
+                this.dialogText.setText(this.finalDialog[this.currentFinalIndex]); // Atualiza o texto do diálogo com a próxima fala final
                 return;
             }
-            this.scene.start('officeScene2');
+            this.scene.start('officeScene2'); // Vai para a cena "officeScene2"
             return;
         }
     
-        // Avança o diálogo normalmente
-        this.currentDialogIndex++;
+        this.currentDialogIndex++; // Incrementa o índice do diálogo atual
         if (this.currentDialogIndex < this.introduction.length) {
     
-            // Aqui está o ponto certo para esconder o ENTER na fala 2
             if (this.currentDialogIndex === 2 && this.keyEnterIcon) {
-                this.keyEnterIcon.setVisible(false);
+                this.keyEnterIcon.setVisible(false); // Esconde o ícone da tecla ENTER na fala 2
             }
     
-            this.showDialog();
+            this.showDialog(); // Exibe o próximo diálogo
         }
     }
 }
