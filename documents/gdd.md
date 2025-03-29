@@ -995,7 +995,7 @@ Abaixo, estão algumas capturas de tela para ilustrar o desenvolvimento do MVP (
 
 <div align="center">
   <sub>Mapa da VP de Pessoas: desenvolvido na Sprint 4.</sub><br>
-  <img src="https://github.com/user-attachments/assets/f1051e60-12d0-4288-b7ff-51d1fa580495" width="900px" 
+  <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/194311190/428142280-e48bb6a3-459b-40d6-ad57-32af0b6d46b1.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=REDACTED_FOR_PUBLIC_RELEASE%2F20250329%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250329T012445Z&X-Amz-Expires=300&X-Amz-Signature=313c713c0f267a7b0414fb824a22330fdedca37cbd312dc03f0f906b58a98c01&X-Amz-SignedHeaders=host" width="900px" 
   alt="Título"><br>
   <sup>Fonte: elaborado pelos autores.</sup>
 </div>
