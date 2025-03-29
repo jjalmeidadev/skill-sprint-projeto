@@ -4,33 +4,26 @@ class buttonElevatorScene extends Phaser.Scene {
     }
 
     preload() {
-        // Carrega os assets do primeiro botão do elevador
-        this.load.image('buttonElevOffice', '../assets/botaocimaelevador.png');
-        this.load.image('bgElevOffice', '../assets/bgelevadoroffice.png');
-        this.load.image('displayelev', '../assets/painelelevador.png');
+        this.load.image('buttonElevOffice', '../assets/botaocimaelevador.png'); // Carrega a imagem do botão do elevador
+        this.load.image('bgElevOffice', '../assets/bgelevadoroffice.png'); // Carrega a imagem de fundo do elevador
+        this.load.image('displayElev', '../assets/painelelevador.png'); // Carrega a imagem do painel do elevador
 
-        // Carrega os efeitos sonoros
-        this.load.audio('buttonSound', '../assets/sounds/687107__aphom000__mouse-2-button-fast-click.wav');
-
-        // Adiciona os efeitos sonoros
-        this.buttonClick = this.sound.add('buttonSound', {loop: false, volume: 10});
+        this.load.audio('buttonSound', '../assets/sounds/687107__aphom000__mouse-2-button-fast-click.wav'); // Efeito sonoro do botão
+        this.buttonClick = this.sound.add('buttonSound', {loop: false, volume: 10}); // Efeito sonoro do botão
     }
 
     create() {
-        this.sound.stopAll();
+        this.sound.stopAll(); // Para garantir que o som não fique tocando em segundo plano
 
-        // Adiciona o fundo e o painel do elevador
-        this.bgelevoffice = this.add.image(width / 2, height / 2, "bgElevOffice");
-        this.painelelev = this.add.image(width / 2, height / 2, "displayelev");
+        this.bgElevOffice = this.add.image(width / 2, height / 2, "bgElevOffice");  // Adiciona a imagem de fundo do elevador
+        this.displayElev = this.add.image(width / 2, height / 2, "displayElev"); // Adiciona a imagem do painel do elevador
 
-        // Adiciona o botão e configura para ser interativo
-        this.buttonUP = this.add.image(width /2, height - 470, "buttonElevOffice"); 
+        this.buttonUP = this.add.image(width /2, height - 470, "buttonElevOffice"); // Adiciona a imagem do botão do elevador
         this.buttonUP.setInteractive(); // Torna o botão interativo (clicável)
         this.buttonUP.setScale(1); // Ajusta o tamanho do botão
 
-        // Adiciona a interação para mudar de cena ao clicar no botão
-        this.buttonUP.on("pointerdown", () => {
-            this.buttonClick.play();
+        this.buttonUP.on("pointerdown", () => { // Adiciona o evento de clique
+            this.buttonClick.play(); // Toca o som do botão
             this.scene.start("elevadorScene"); // Troca para a cena do elevador
         });
     }

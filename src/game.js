@@ -1,68 +1,61 @@
 
-// Configuração do jogo Phaser
-const config = {
-    type: Phaser.AUTO, // Tipo de renderização (AUTO permite que o Phaser escolha entre WebGL e Canvas)
-    width: width, // Largura do jogo igual à largura da janela do navegador
-    height: height, // Altura do jogo igual à altura da janela do navegador
-    pixelArt: true,
-    backgroundColor: 0x2f052f,
-    scale: {
-      mode: Phaser.Scale.FIT,  // Mantém a proporção e ajusta o jogo à tela sem cortar
-      width: width, // Mantém a largura fixa
-      height: height, // Mantém a altura fixa
-      parent: 'game-container'  // Define um contêiner HTML específico
-    },
-    physics: {
-        default: 'arcade', // Define o sistema de física padrão como 'arcade'
-        arcade: {
-            gravity: { y: 0 }, // Define a gravidade no eixo Y como 0 (sem gravidade)
-            debug: false, // Desativa o modo de depuração da física
-        }
-    },
+const config = { // Configuração do jogo Phaser
+  type: Phaser.AUTO, // Define o tipo de renderização (Phaser.AUTO escolhe automaticamente entre WebGL e Canvas)
+  width: width, // Define a largura do jogo com base na largura da janela do navegador
+  height: height, // Define a altura do jogo com base na altura da janela do navegador
+  pixelArt: true, // Ativa o modo pixel art para gráficos retro
+  backgroundColor: 0x2f052f, // Define a cor de fundo do jogo como um tom específico de roxo
+  scale: {
+    mode: Phaser.Scale.FIT,  // Ajusta o jogo para caber na tela mantendo a proporção
+    width: width, // Define a largura fixa do jogo
+    height: height, // Define a altura fixa do jogo
+    parent: 'game-container'  // Especifica o ID do contêiner HTML onde o jogo será renderizado
+  },
+  physics: {
+    default: 'arcade', // Define o sistema de física padrão como 'arcade'
+    arcade: {
+      gravity: { y: 0 }, // Define a gravidade no eixo Y como 0 (sem gravidade)
+      debug: false, // Desativa o modo de depuração da física para evitar sobrecarga visual
+    }
+  },
+  scene: [ // Lista de cenas do jogo
+    InitialScene, // Cena inicial do jogo
+    AjusteScene, // Cena de ajustes ou configurações
+    CreditosScene, // Cena de créditos do jogo
+
+    CutScene, // Cena de transição ou narrativa
+    GameplayTutorialScene, // Cena de tutorial de gameplay
+    TutorialScene, // Cena de tutorial para ensinar o jogador
     
-    scene: [
-      InitialScene,
-      AjusteScene,
-      CreditosScene,
-      CutScene,
-      TutorialScene,
-      OfficeScene,
-      OfficeScene2,
-      SalaLider,
-      VpNegociosScene,
+    OfficeScene, // Cena do escritório 
+    CurriculoScene, // Cena relacionada ao currículo
+    QuizVpPessoas, // Cena de quiz do VP de Pessoas
+    CongratulationsSceneCurriculoVpPessoas, // Cena de parabéns após o currículo do VP de Pessoas
+    QuizVpEstrategia, // Cena de quiz do VP de Estratégia
+    CongratulationsSceneCurriculoVpEstrategia, // Cena de parabéns após o currículo do VP de Estratégia
+    QuizVpNegocios, // Cena de quiz do VP de Negócios
+    CongratulationsSceneCurriculoVpNegocios, // Cena de parabéns após o currículo do VP de Negócios
+    QuizVpRelacoes, // Cena de quiz do VP de Relações
+    CongratulationsSceneCurriculoVpRelacoes, // Cena de parabéns após o currículo do VP de Relações
+    QuizVpTecnologia, // Cena de quiz do VP de Tecnologia
+    CongratulationsSceneCurriculoVpTecnologia, // Cena de parabéns após o currículo do VP de Tecnologia  
+    SalaLider, // Cena da sala do líder
 
-      VpPessoasScene,
-      MinigameTrashScene,
-      GameOverMinigameTrashScene,
-      CongratulationsMinigameScene,
-      bookScene,
+    buttonElevatorScene, // Cena do botão do elevador
+    ElevadorScene, // Cena do elevador
 
-      VpEstrategiaScene,
+    VpPessoasScene, // Cena do VP de Pessoas
+    MinigameTrashScene, // Cena de minigame relacionado a lixo
+    GameOverMinigameTrashScene, // Cena de game over do minigame de lixo
+    CongratulationsMinigameScene, // Cena de parabéns após completar o minigame
+    bookScene, // Cena relacionada a um livro
+    
+    VpNegociosScene, // Cena do VP de Negócios
 
-      CurriculoScene,
-      QuizVpPessoas,
-      // GameOverSceneCurriculo,
-      CongratulationsSceneCurriculoVpPessoas,
-      QuizVpEstrategia,
-      // GameOverSceneCurriculoEstrategia,
-      CongratulationsSceneCurriculoVpEstrategia,
-      QuizVpNegocios,
-      // GameOverSceneCurriculoNegocios,
-      CongratulationsSceneCurriculoVpNegocios,
-      QuizVpRelacoes,
-      // GameOverSceneCurriculoRelacoes,
-      CongratulationsSceneCurriculoVpRelacoes,
-      QuizVpTecnologia,
-      // GameOverSceneCurriculoTecnologia,
-      CongratulationsSceneCurriculoVpTecnologia,
-      
-      buttonElevatorScene,
-      ElevadorScene, 
-      GameplayTutorialScene,
-      VpTecnologiaScene
-      
-    ], // Lista das cenas do jogo
-  };
+    VpEstrategiaScene, // Cena do VP de Estratégia
+
+    VpTecnologiaScene, // Cena do VP de Tecnologia
+  ], 
+};
   
-  // Criação de uma nova instância do jogo Phaser com a configuração especificada
-  const game = new Phaser.Game(config);
+  const game = new Phaser.Game(config); // Criação de uma nova instância do jogo Phaser com a configuração especificada
