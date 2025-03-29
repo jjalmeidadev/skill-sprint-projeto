@@ -124,7 +124,7 @@ class VpEstrategiaScene extends Phaser.Scene {
             fill: "#000000",
             wordWrap: { width: balaoTexto.width - 20 },
             align: "center",
-            fontFamily: "FontePadrao"
+            fontFamily: "font"
         }).setOrigin(0.5);
 
         // Avança as falas ao pressionar Enter
