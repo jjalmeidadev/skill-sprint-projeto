@@ -11,6 +11,10 @@ class VpNegociosScene extends Phaser.Scene {
 
         this.load.spritesheet('player', '../assets/personagens/skinsPlayer/player1all.png', { frameWidth: 16, frameHeight: 32 }); // Carrega o spritesheet do jogador com dimensões de cada frame
         this.load.spritesheet("indicator", "../assets/exclamaçãoRoxa.png", {frameWidth: 254, frameHeight: 305,}); // Carrega o spritesheet do indicador de exclamação
+        this.load.spritesheet('chip', '../assets/minigameVpNegocios/chip.png', {frameWidth: 520, frameHeight: 520}); // Carrega o spritesheet do chip
+
+        this.load.spritesheet("npc14", "../assets/personagens/VPpessoas/npc14.png", { frameWidth: 16, frameHeight: 32 }); // Carrega o spritesheet do NPC 14
+        this.load.spritesheet("npc15", "../assets/personagens/VPpessoas/npc15.png", { frameWidth: 16, frameHeight: 32 }); // Carrega o spritesheet do NPC 15
         
         this.load.audio('indicatorSound', '../assets/sounds/497198_abacagi_bubble-pops (mp3cut.net).wav'); // Carrega o som do indicador de interação
         this.load.audio('walkSound', '../assets/sounds/753292__vrymaa__footsteps-high-heels-hardwood-walk-run (mp3cut.net).wav'); // Carrega o som de passos
@@ -57,8 +61,11 @@ class VpNegociosScene extends Phaser.Scene {
       this.createAnimsIndicator(); // Cria a animação do indicador
       this.lastPosition = "down"; // Define a posição inicial do jogador como "down"
       this.createButtonBack(width, height); // Cria o botão de retorno
+      this.createChips(); // Cria os chips 
+      this.addNpc(); // Cria os NPCs no mapa
 
       this.physics.add.collider(this.player, layer2); // Colisão com a camada "parede"
+      this.physics.add.collider(this.player, layer3); // Colisão com a camada "acabamento"
       this.physics.add.collider(this.player, layer4); // Colisão com a camada "cadeiraTras"
       this.physics.add.collider(this.player, layer5); // Colisão com a camada "cadeira"
       this.physics.add.collider(this.player, layer6); // Colisão com a camada "mesa"
@@ -166,7 +173,7 @@ class VpNegociosScene extends Phaser.Scene {
       });
     }
 
-  createPlayerAnimations() {
+    createPlayerAnimations() {
     this.anims.create({
       key: "walk_down", // Define a animação para andar para baixo
         frames: this.anims.generateFrameNumbers("player", { start: 130, end: 135 }), // Define os quadros da animação para andar para baixo
@@ -215,6 +222,68 @@ class VpNegociosScene extends Phaser.Scene {
         frameRate: 5, // Define uma taxa de quadros mais lenta
       repeat: -1, // Faz a animação repetir indefinidamente
     });
-  }
+    }
+
+
+    addNpc() {
+      this.npc14 = this.physics.add.sprite(width - 470, height - 360, 'npc14'); // Adiciona o NPC 14 na posição especificada
+      this.npc14.setScale(2.5); // Define o tamanho do NPC 14
+      this.npc14.setImmovable(true); // Define o NPC 14 como imóvel para colisões
+      this.createNpcAnimations(); // Cria as animações do NPC 14
+      this.npc14.play('npc14'); // Inicia a animação "npc14" para o NPC 14
+
+      this.npc15 = this.physics.add.sprite(width - 550, height - 360, 'npc15'); // Adiciona o NPC 15 na posição especificada
+      this.npc15.setScale(2.5); // Define o tamanho do NPC 15
+      this.npc15.setImmovable(true); // Define o NPC 15 como imóvel para colisões
+      this.createNpcAnimations(); // Cria as animações do NPC 15
+      this.npc15.anims.play('npc15'); // Inicia a animação "npc15" para o NPC 15
+    }
+
+    createNpcAnimations() { 
+      this.anims.create({
+        key: "npc14", // Nome da animação para o NPC 14
+        frames: this.anims.generateFrameNumbers('npc14', { start: 6, end: 11 }), // Define os frames da animação
+        frameRate: 4, // Velocidade da animação
+        repeat: -1, // Repetição infinita
+      });
+
+      this.anims.create({
+        key: "npc15", // Nome da animação para o NPC 15
+        frames: this.anims.generateFrameNumbers('npc15', { start: 0, end: 5 }), // Define os frames da animação
+        frameRate: 4, // Velocidade da animação
+        repeat: -1, // Repetição infinita
+      });
+    }  
+
+    createCollisionNpc() {
+      this.physics.add.collider(this.player, this.npc14) // Colisão com o "NPC 14"
+      this.physics.add.collider(this.player, this.npc15) // Colisão com o "NPC 15"
+    }
+
+    createChips() {
+      this.chips = this.physics.add.group(); // Cria um grupo para os chips
+
+      // Adiciona 5 chips em posições fixas
+      const chipPositions = [
+        { x: width - 850, y: height - 270 }, // Chip da planta
+        { x: width - 720, y: height - 130 }, // Chip na mesa esquerda inferior
+        { x: width - 510, y: height - 340 }, // Chip na rodinha dos NPCs
+        { x: width - 370, y: height - 50 }, // Chip na direita perto da parede
+        { x: width - 370, y: height - 320 } // Chip na salinha do 5G
+      ];
+
+      chipPositions.forEach(pos => {
+        const chip = this.chips.create(pos.x, pos.y, 'chip'); // Cria um chip na posição especificada
+        chip.setScale(0.06); // Ajusta o tamanho do chip
+      });
+
+      // Adiciona o overlap entre o jogador e os chips
+      this.physics.add.overlap(this.player, this.chips, this.collectChip, null, this);
+    }
+
+    collectChip(player, chip) {
+      chip.destroy(); // Remove o chip coletado
+      // Aqui você pode adicionar lógica adicional, como aumentar a pontuação ou tocar um som
+    }
 }
 

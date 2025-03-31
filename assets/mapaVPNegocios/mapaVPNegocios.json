@@ -458,7 +458,7 @@
                         {
                          "name":"collider",
                          "type":"bool",
-                         "value":false
+                         "value":true
                         }]
                 }, 
                 {
@@ -467,7 +467,7 @@
                         {
                          "name":"collider",
                          "type":"bool",
-                         "value":true
+                         "value":false
                         }]
                 }, 
                 {
