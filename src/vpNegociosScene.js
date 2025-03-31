@@ -88,13 +88,13 @@ class VpNegociosScene extends Phaser.Scene {
       this.cameras.main.startFollow(this.player); // Faz a câmera seguir o jogador
       this.cameras.main.setZoom(2); // Define o nível de zoom da câmera
 
-      this.chipText = this.add.text(width - 470, height - 370, `Chips: ${this.collectedChips}`, {
+      this.chipText = this.add.text(width - 350, height - 200, `Chips: ${this.collectedChips}`, {
         fontSize: '20px',
         fill: '#ffffff',
         fontFamily: 'Arial',
         backgroundColor: 'rgba(0, 0, 0, 0.5)',
         padding: { x: 10, y: 5 }
-      }).setScrollFactor(0).setScrollFactor(0).setDepth(1000);
+      }).setDepth(1000);
     }
 
     update() {
