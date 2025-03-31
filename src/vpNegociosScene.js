@@ -88,13 +88,15 @@ class VpNegociosScene extends Phaser.Scene {
       this.cameras.main.startFollow(this.player); // Faz a câmera seguir o jogador
       this.cameras.main.setZoom(2); // Define o nível de zoom da câmera
 
-      this.chipText = this.add.text(width - 350, height - 200, `Chips: ${this.collectedChips}`, {
-        fontSize: '20px',
+      this.chipText = this.add.text(width - 429, height - 230, `${this.collectedChips}/5`, {
+        fontSize: '14px',
         fill: '#ffffff',
         fontFamily: 'Arial',
-        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+        //backgroundColor: 'rgba(0, 0, 0, 0.5)',
         padding: { x: 10, y: 5 }
       }).setDepth(1000);
+
+      this.add.image(width - 410, height - 245, 'chip').setScale(0.03);
     }
 
     update() {
@@ -347,7 +349,7 @@ class VpNegociosScene extends Phaser.Scene {
     collectChip(player, chip) {
       chip.destroy(); // Remove o chip coletado
       this.collectedChips += 1; // Incrementa o contador
-      this.chipText.setText(`Chips: ${this.collectedChips}`); // Atualiza o texto na tela
+      this.chipText.setText(`${this.collectedChips}/5`); // Atualiza o texto na tela
     }
     
     createNpc15Chip() {
