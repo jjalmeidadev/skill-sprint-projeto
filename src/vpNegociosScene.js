@@ -19,13 +19,18 @@ class VpNegociosScene extends Phaser.Scene {
         this.load.audio('indicatorSound', '../assets/sounds/497198_abacagi_bubble-pops (mp3cut.net).wav'); // Carrega o som do indicador de interação
         this.load.audio('walkSound', '../assets/sounds/753292__vrymaa__footsteps-high-heels-hardwood-walk-run (mp3cut.net).wav'); // Carrega o som de passos
 
-        this.load.image('keyE', '../assets/teclaE.png'); // Carrega a imagem da tecla "E"
+        this.load.image('keyE', '../assets/teclaE.png'); // Carrega a imagem da tecla "E" para interação
+        this.load.image('keyENTER', '../assets/keyEnter.png'); // Carrega a imagem da tecla "ENTER" para interação
+        this.load.image("balloonText", "../assets/balaoTexto.png"); // Carrega a imagem do balão de texto
+
         this.load.image("bgElevNegocios", "../assets/bgelevadoroffice.png"); // Carrega a imagem de fundo do elevador
         this.load.image("panelElev", "../assets/painelelevador.png"); // Carrega a imagem do painel do elevador
         this.load.image("buttonElevNegocios", "../assets/botaocimaelevador.png"); // Carrega a imagem do botão do elevador
     }
 
     create() {
+      this.collectedChips = 0; // contador inicial
+
       const map = this.make.tilemap({ key: "vpNegocios", tileWidth: 25, tileHeight: 20 }); // Cria o mapa
       const tileset1 = map.addTilesetImage("decoracao"); // Adiciona o tileset de decoração ao mapa
       const tileset2 = map.addTilesetImage("paredes"); // Adiciona o tileset de paredes ao mapa
@@ -56,6 +61,7 @@ class VpNegociosScene extends Phaser.Scene {
       ENTER: Phaser.Input.Keyboard.KeyCodes.ENTER // Tecla ENTER para ações adicionais
       });
 
+      
       this.createPlayer(width, height); // Cria o jogador na posição inicial
       this.createPlayerAnimations(); // Cria as animações do jogador
       this.createAnimsIndicator(); // Cria a animação do indicador
@@ -72,6 +78,7 @@ class VpNegociosScene extends Phaser.Scene {
       this.physics.add.collider(this.player, layer7); // Colisão com a camada "servidor"
       this.physics.add.collider(this.player, layer8); // Colisão com a camada "sofa"
       this.physics.add.collider(this.player, layer9); // Colisão com a camada "planta"
+      const layer12 = map.createLayer("batente", tileset2, offsetX, 0).setScale(2.5); // Cria a camada "batente" depois de criar o player
 
       this.walkSound = this.sound.add('walkSound', {loop: false, volume: 2}); // Som de passos
       this.indicatorSound = this.sound.add('indicatorSound', {loop: true, volume: 1.5}); // Som do indicador de interação
@@ -80,10 +87,35 @@ class VpNegociosScene extends Phaser.Scene {
       // Dá zoom na tela do jogo e faz a câmera seguir o personagem
       this.cameras.main.startFollow(this.player); // Faz a câmera seguir o jogador
       this.cameras.main.setZoom(2); // Define o nível de zoom da câmera
+
+      this.chipText = this.add.text(width - 470, height - 370, `Chips: ${this.collectedChips}`, {
+        fontSize: '20px',
+        fill: '#ffffff',
+        fontFamily: 'Arial',
+        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+        padding: { x: 10, y: 5 }
+      }).setScrollFactor(0).setScrollFactor(0).setDepth(1000);
     }
 
-    update() { 
-      this.movePlayer(); // Atualiza o movimento do jogador
+    update() {
+      this.movePlayer();
+    
+      if (this.canInteractWithNpc15 && Phaser.Input.Keyboard.JustDown(this.keys.interagir)) {
+        if (!this.npc15Interacted) {
+          if (this.keyENpc15) {
+            this.keyENpc15.destroy();
+            this.keyENpc15 = null;
+          }
+    
+          if (!this.keyEnterNpc15) {
+            this.keyEnterNpc15 = this.add.image(this.npc15.x - 20, this.npc15.y - 50, 'keyENTER').setScale(0.1).setDepth(1000);
+          }
+    
+          this.npc15Interacted = true;
+          this.canInteractWithNpc15 = false;
+          this.npc15Question(); // Chama o diálogo com o NPC
+        }
+      }
     }
 
     movePlayer() {
@@ -226,17 +258,19 @@ class VpNegociosScene extends Phaser.Scene {
 
 
     addNpc() {
-      this.npc14 = this.physics.add.sprite(width - 470, height - 360, 'npc14'); // Adiciona o NPC 14 na posição especificada
+      this.npc14 = this.physics.add.sprite(width - 470, height - 370, 'npc14'); // Adiciona o NPC 14 na posição especificada
       this.npc14.setScale(2.5); // Define o tamanho do NPC 14
       this.npc14.setImmovable(true); // Define o NPC 14 como imóvel para colisões
       this.createNpcAnimations(); // Cria as animações do NPC 14
       this.npc14.play('npc14'); // Inicia a animação "npc14" para o NPC 14
 
-      this.npc15 = this.physics.add.sprite(width - 550, height - 360, 'npc15'); // Adiciona o NPC 15 na posição especificada
+      this.npc15 = this.physics.add.sprite(width - 550, height - 370, 'npc15'); // Adiciona o NPC 15 na posição especificada
       this.npc15.setScale(2.5); // Define o tamanho do NPC 15
       this.npc15.setImmovable(true); // Define o NPC 15 como imóvel para colisões
       this.createNpcAnimations(); // Cria as animações do NPC 15
       this.npc15.anims.play('npc15'); // Inicia a animação "npc15" para o NPC 15
+      this.createIndicatorNpc15(); // Ativa o indicador para o NPC
+      this.createCollisionNpc();
     }
 
     createNpcAnimations() { 
@@ -260,16 +294,45 @@ class VpNegociosScene extends Phaser.Scene {
       this.physics.add.collider(this.player, this.npc15) // Colisão com o "NPC 15"
     }
 
+    createIndicatorNpc15() {
+      this.indicatorNpc15 = this.physics.add.sprite(this.npc15.x, this.npc15.y - 50, 'indicator');
+      this.indicatorNpc15.setScale(0.2);
+      this.indicatorNpc15.setImmovable(true);
+      this.indicatorNpc15.play("exclaiming");
+    
+      this.physics.add.overlap(this.player, this.npc15, () => {
+        if (!this.npc15Interacted && !this.keyENpc15) {
+          if (this.indicatorNpc15) {
+            this.indicatorNpc15.destroy();
+            this.indicatorNpc15 = null;
+          }
+    
+          this.keyENpc15 = this.add.image(this.npc15.x, this.npc15.y - 40, 'keyE').setScale(0.2).setDepth(1000);
+          this.canInteractWithNpc15 = true;
+        }
+      });
+    
+      // Remove a tecla E se o player se afasta
+      this.physics.add.overlap(this.player, this.npc15, null, (player, npc) => {
+        const distance = Phaser.Math.Distance.Between(player.x, player.y, npc.x, npc.y);
+        if (distance > 100 && this.keyENpc15) {
+          this.keyENpc15.destroy();
+          this.keyENpc15 = null;
+          this.canInteractWithNpc15 = false;
+        }
+        return true;
+      }, this);
+    }
+
     createChips() {
       this.chips = this.physics.add.group(); // Cria um grupo para os chips
 
       // Adiciona 5 chips em posições fixas
       const chipPositions = [
-        { x: width - 850, y: height - 270 }, // Chip da planta
-        { x: width - 720, y: height - 130 }, // Chip na mesa esquerda inferior
-        { x: width - 510, y: height - 340 }, // Chip na rodinha dos NPCs
-        { x: width - 370, y: height - 50 }, // Chip na direita perto da parede
-        { x: width - 370, y: height - 320 } // Chip na salinha do 5G
+        { x: width - 850, y: height - 270 }, // Chip da planta - primeiro
+        { x: width - 720, y: height - 130 }, // Chip na mesa esquerda inferior - segundo
+        { x: width - 370, y: height - 50 }, // Chip na direita perto da parede - terceiro
+        { x: width - 370, y: height - 320 } // Chip na salinha do 5G - quinto
       ];
 
       chipPositions.forEach(pos => {
@@ -283,7 +346,56 @@ class VpNegociosScene extends Phaser.Scene {
 
     collectChip(player, chip) {
       chip.destroy(); // Remove o chip coletado
-      // Aqui você pode adicionar lógica adicional, como aumentar a pontuação ou tocar um som
+      this.collectedChips += 1; // Incrementa o contador
+      this.chipText.setText(`Chips: ${this.collectedChips}`); // Atualiza o texto na tela
+    }
+    
+    createNpc15Chip() {
+      this.chips = this.physics.add.group(); // Cria um grupo para os chips
+
+      // Adiciona o quarto chip em posição fixa
+      const chipPosition = { x: width - 470, y: height - 310 }; // Chip na rodinha dos NPCs - quarto
+      const chip = this.chips.create(chipPosition.x, chipPosition.y, 'chip'); // Cria o chip na posição especificada
+      chip.setScale(0.06); // Ajusta o tamanho do chip
+
+      // Adiciona o overlap entre o jogador e o chip
+      this.physics.add.overlap(this.player, this.chips, this.collectChip, null, this);
+    }
+
+    npc15Question() {
+      const speech = [
+        "Nossa, muito obrigado, isso significava muito para mim!",
+        "Como recompensa eu vou mostrar as minhas anotações que irão te ajudar a se preparar para uma entrevista.",
+        "Vá até a mesa e pegue o caderno em cima dela, lá você encontrará dicas para ir bem em uma entrevista."
+      ];
+    
+      const balloonText = this.add.image(this.npc15.x + 80, this.npc15.y - 80, "balloonText").setScale(0.9);
+      const text = this.add.text(this.npc15.x + 2, this.npc15.y - 140, speech[0], {
+        fontSize: "14px",
+        fill: "#000000",
+        wordWrap: { width: balloonText.width - 20 },
+      });
+    
+      let currentIndex = 0;
+    
+      const enterNpc15 = () => {
+        currentIndex++;
+        if (currentIndex < speech.length) {
+          text.setText(speech[currentIndex]);
+        } else {
+          text.setVisible(false);
+          balloonText.setVisible(false);
+          this.input.keyboard.off("keydown-ENTER", enterNpc15);
+    
+          if (this.keyEnterNpc15) {
+            this.keyEnterNpc15.destroy();
+            this.keyEnterNpc15 = null;
+            this.createNpc15Chip();
+          }
+        }
+      };
+    
+      this.input.keyboard.on("keydown-ENTER", enterNpc15);
     }
 }
 
