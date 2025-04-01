@@ -79,10 +79,10 @@ Para executar seu respectivo código, siga o passo a passo abaixo:
 
 ## 🗃 Histórico de lançamentos
 
-* 0.5.0 - XX/XX/2025
+* 0.5.0 - 10/04/2025
     * 
-* 0.4.0 - XX/XX/2025
-    * 
+* 0.4.0 - 28/03/2025: Expandimos o jogo com 6 andares temáticos, cada um com minigames exclusivos (gestão de pessoas, negócios, estratégia, relações e tecnologia). Implementamos a tela inicial revisada e corrigimos bugs críticos. Próximos passos: polir transições, balancear minigames e corrigir feedbacks visuais/sonoros.
+  
 * 0.3.0 - 14/03/2025: Durante o desenvolvimento intermediário, implementamos a tela de tutorial, finalizamos o minigame de criação do currículo (R06), desenvolvemos o design da sala do elevador e adicionamos a Vivita, a primeira NPC, ao mapa. Apesar de algumas cenas ainda não estarem totalmente conectadas, a interface evoluiu significativamente, e a primeira fase está mais próxima da visão final. 
   
 * 0.2.0 - 28/02/2025: Durante o desenvolvimento básico, implementamos a interação com o computador para iniciar o mini game de criação de currículo (R06), criamos o cenário da sala da líder, elaboramos perguntas condicionais e aprimoramos os designs gráficos com concept arts e personagens principais. Alteramos as teclas de movimentação para WASD (R01) e personalizamos o personagem principal.

@@ -9,7 +9,7 @@ class CutScene extends Phaser.Scene {
 
     create() {   
         this.cutScene = this.add.video(width / 2, height / 2, 'cutScene').setOrigin(0.5); // Adiciona o vídeo à cena, centralizando-o na tela   
-        this.cutScene.setScale(0.5); // Define a escala do vídeo para 50% do tamanho original
+        this.cutScene.setScale(0.4); // Define a escala do vídeo para 50% do tamanho original
         
         this.playCutScene(); // Chama o método para reproduzir a cutscene
     }

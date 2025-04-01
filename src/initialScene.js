@@ -120,7 +120,7 @@ class InitialScene extends Phaser.Scene {
     });
     this.explosion.setVisible(false); // Torna a explosão invisível inicialmente
 
-    this.initialMusic = this.sound.add("initialMusic", { loop: true, volume: 2 }); // Adiciona a música inicial com loop
+    this.initialMusic = this.sound.add("initialMusic", { loop: true, volume: 0.5 }); // Adiciona a música inicial com loop
     this.initialMusic.play(); // Toca a música inicial
 
     this.exploBird = this.add.image(width - 300, height - 430, "exploBird").setScale(0.5); // Adiciona o sprite do pássaro explodido
@@ -165,7 +165,7 @@ class InitialScene extends Phaser.Scene {
 
     this.explosion.setActive(true); // Ativa a explosão
     this.explosion.setVisible(true); // Torna a explosão visível
-    this.sound.play("vineBoom", { volume: 0.3 }); // Toca o som "vineBoom" com volume reduzido
+    this.sound.play("vineBoom", { volume: 0.7 }); // Toca o som "vineBoom" com volume reduzido
     this.explosion.anims.play("explosion", true); // Inicia a animação da explosão
     this.explosion.on("animationcomplete", () => {
       this.explosion.setVisible(false); // Torna a explosão invisível após a animação
@@ -206,7 +206,7 @@ class InitialScene extends Phaser.Scene {
 
     this.tweens3.on("complete", () => { // Toca o som de arraste no vidro
       this.sound.stopByKey("vidroSlide"); // Para o som "vidroSlide" se já estiver tocando
-      this.sound.play("vidroSlide", { volume: 3 }); // Toca o som "vidroSlide" com volume aumentado
+      this.sound.play("vidroSlide", { volume: 8 }); // Toca o som "vidroSlide" com volume aumentado
       this.vidroSlidePlayed = true; // Marca que o som foi tocado
 
       this.tweens4 = this.tweens.add({
