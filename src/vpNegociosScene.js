@@ -11,17 +11,30 @@ class VpNegociosScene extends Phaser.Scene {
 
         this.load.spritesheet('player', '../assets/personagens/skinsPlayer/player1all.png', { frameWidth: 16, frameHeight: 32 }); // Carrega o spritesheet do jogador com dimensões de cada frame
         this.load.spritesheet("indicator", "../assets/exclamaçãoRoxa.png", {frameWidth: 254, frameHeight: 305,}); // Carrega o spritesheet do indicador de exclamação
+        this.load.spritesheet('chip', '../assets/minigameVpNegocios/chip.png', {frameWidth: 520, frameHeight: 520}); // Carrega o spritesheet do chip
+        this.load.spritesheet('letterA', '../assets/minigameVpNegocios/letterA.png', {frameWidth: 267, frameHeight: 288}); // Carrega o spritesheet da Letra A
+        this.load.spritesheet('letterB', '../assets/minigameVpNegocios/letterB.png', {frameWidth: 233, frameHeight: 291}); // Carrega o spritesheet da letra B
+
+        this.load.spritesheet("npc14", "../assets/personagens/VPpessoas/npc14.png", { frameWidth: 16, frameHeight: 32 }); // Carrega o spritesheet do NPC 14
+        this.load.spritesheet("npc15", "../assets/personagens/VPpessoas/npc15.png", { frameWidth: 16, frameHeight: 32 }); // Carrega o spritesheet do NPC 15
         
         this.load.audio('indicatorSound', '../assets/sounds/497198_abacagi_bubble-pops (mp3cut.net).wav'); // Carrega o som do indicador de interação
         this.load.audio('walkSound', '../assets/sounds/753292__vrymaa__footsteps-high-heels-hardwood-walk-run (mp3cut.net).wav'); // Carrega o som de passos
+        this.load.audio('correctSound', '../assets/sounds/476178__unadamlar__correct-choice.wav'); // Carrega o som de resposta correta
+        this.load.audio('wrongSound', '../assets/sounds/700641__producing_raylite__incorrect-buzzer.wav'); // Carrega o som de resposta errada
 
-        this.load.image('keyE', '../assets/teclaE.png'); // Carrega a imagem da tecla "E"
+        this.load.image('keyE', '../assets/teclaE.png'); // Carrega a imagem da tecla "E" para interação
+        this.load.image('keyENTER', '../assets/keyEnter.png'); // Carrega a imagem da tecla "ENTER" para interação
+        this.load.image("balloonText", "../assets/balaoTexto.png"); // Carrega a imagem do balão de texto
+
         this.load.image("bgElevNegocios", "../assets/bgelevadoroffice.png"); // Carrega a imagem de fundo do elevador
         this.load.image("panelElev", "../assets/painelelevador.png"); // Carrega a imagem do painel do elevador
         this.load.image("buttonElevNegocios", "../assets/botaocimaelevador.png"); // Carrega a imagem do botão do elevador
     }
 
     create() {
+      this.collectedChips = 0; // contador inicial
+
       const map = this.make.tilemap({ key: "vpNegocios", tileWidth: 25, tileHeight: 20 }); // Cria o mapa
       const tileset1 = map.addTilesetImage("decoracao"); // Adiciona o tileset de decoração ao mapa
       const tileset2 = map.addTilesetImage("paredes"); // Adiciona o tileset de paredes ao mapa
@@ -52,19 +65,24 @@ class VpNegociosScene extends Phaser.Scene {
       ENTER: Phaser.Input.Keyboard.KeyCodes.ENTER // Tecla ENTER para ações adicionais
       });
 
+      
       this.createPlayer(width, height); // Cria o jogador na posição inicial
       this.createPlayerAnimations(); // Cria as animações do jogador
       this.createAnimsIndicator(); // Cria a animação do indicador
       this.lastPosition = "down"; // Define a posição inicial do jogador como "down"
       this.createButtonBack(width, height); // Cria o botão de retorno
+      this.createChips(); // Cria os chips 
+      this.addNpc(); // Cria os NPCs no mapa
 
       this.physics.add.collider(this.player, layer2); // Colisão com a camada "parede"
+      this.physics.add.collider(this.player, layer3); // Colisão com a camada "acabamento"
       this.physics.add.collider(this.player, layer4); // Colisão com a camada "cadeiraTras"
       this.physics.add.collider(this.player, layer5); // Colisão com a camada "cadeira"
       this.physics.add.collider(this.player, layer6); // Colisão com a camada "mesa"
       this.physics.add.collider(this.player, layer7); // Colisão com a camada "servidor"
       this.physics.add.collider(this.player, layer8); // Colisão com a camada "sofa"
       this.physics.add.collider(this.player, layer9); // Colisão com a camada "planta"
+      const layer12 = map.createLayer("batente", tileset2, offsetX, 0).setScale(2.5); // Cria a camada "batente" depois de criar o player
 
       this.walkSound = this.sound.add('walkSound', {loop: false, volume: 2}); // Som de passos
       this.indicatorSound = this.sound.add('indicatorSound', {loop: true, volume: 1.5}); // Som do indicador de interação
@@ -73,10 +91,37 @@ class VpNegociosScene extends Phaser.Scene {
       // Dá zoom na tela do jogo e faz a câmera seguir o personagem
       this.cameras.main.startFollow(this.player); // Faz a câmera seguir o jogador
       this.cameras.main.setZoom(2); // Define o nível de zoom da câmera
+
+      this.chipText = this.add.text(width - 429, height - 230, `${this.collectedChips}/5`, {
+        fontSize: '14px',
+        fill: '#ffffff',
+        fontFamily: 'Arial',
+        //backgroundColor: 'rgba(0, 0, 0, 0.5)',
+        padding: { x: 10, y: 5 }
+      }).setDepth(1000);
+
+      this.add.image(width - 410, height - 245, 'chip').setScale(0.03);
     }
 
-    update() { 
-      this.movePlayer(); // Atualiza o movimento do jogador
+    update() {
+      this.movePlayer();
+    
+      if (this.canInteractWithNpc15 && Phaser.Input.Keyboard.JustDown(this.keys.interagir)) {
+        if (!this.npc15Interacted) {
+          if (this.keyENpc15) {
+            this.keyENpc15.destroy();
+            this.keyENpc15 = null;
+          }
+    
+          if (!this.keyEnterNpc15) {
+            this.keyEnterNpc15 = this.add.image(this.npc15.x - 20, this.npc15.y - 50, 'keyENTER').setScale(0.1).setDepth(1000);
+          }
+    
+          this.npc15Interacted = true;
+          this.canInteractWithNpc15 = false;
+          this.npc15Question(); // Chama o diálogo com o NPC
+        }
+      }
     }
 
     movePlayer() {
@@ -166,7 +211,7 @@ class VpNegociosScene extends Phaser.Scene {
       });
     }
 
-  createPlayerAnimations() {
+    createPlayerAnimations() {
     this.anims.create({
       key: "walk_down", // Define a animação para andar para baixo
         frames: this.anims.generateFrameNumbers("player", { start: 130, end: 135 }), // Define os quadros da animação para andar para baixo
@@ -215,6 +260,258 @@ class VpNegociosScene extends Phaser.Scene {
         frameRate: 5, // Define uma taxa de quadros mais lenta
       repeat: -1, // Faz a animação repetir indefinidamente
     });
-  }
+    }
+
+
+    addNpc() {
+      this.npc14 = this.physics.add.sprite(width - 470, height - 370, 'npc14'); // Adiciona o NPC 14 na posição especificada
+      this.npc14.setScale(2.5); // Define o tamanho do NPC 14
+      this.npc14.setImmovable(true); // Define o NPC 14 como imóvel para colisões
+      this.createNpcAnimations(); // Cria as animações do NPC 14
+      this.npc14.play('npc14'); // Inicia a animação "npc14" para o NPC 14
+
+      this.npc15 = this.physics.add.sprite(width - 550, height - 370, 'npc15'); // Adiciona o NPC 15 na posição especificada
+      this.npc15.setScale(2.5); // Define o tamanho do NPC 15
+      this.npc15.setImmovable(true); // Define o NPC 15 como imóvel para colisões
+      this.createNpcAnimations(); // Cria as animações do NPC 15
+      this.npc15.anims.play('npc15'); // Inicia a animação "npc15" para o NPC 15
+      this.createIndicatorNpc15(); // Ativa o indicador para o NPC
+      this.createCollisionNpc();
+    }
+
+    createNpcAnimations() { 
+      this.anims.create({
+        key: "npc14", // Nome da animação para o NPC 14
+        frames: this.anims.generateFrameNumbers('npc14', { start: 6, end: 11 }), // Define os frames da animação
+        frameRate: 4, // Velocidade da animação
+        repeat: -1, // Repetição infinita
+      });
+
+      this.anims.create({
+        key: "npc15", // Nome da animação para o NPC 15
+        frames: this.anims.generateFrameNumbers('npc15', { start: 0, end: 5 }), // Define os frames da animação
+        frameRate: 4, // Velocidade da animação
+        repeat: -1, // Repetição infinita
+      });
+    }  
+
+    createCollisionNpc() {
+      this.physics.add.collider(this.player, this.npc14) // Colisão com o "NPC 14"
+      this.physics.add.collider(this.player, this.npc15) // Colisão com o "NPC 15"
+    }
+
+    createIndicatorNpc15() {
+      this.indicatorNpc15 = this.physics.add.sprite(this.npc15.x, this.npc15.y - 50, 'indicator');
+      this.indicatorNpc15.setScale(0.2);
+      this.indicatorNpc15.setImmovable(true);
+      this.indicatorNpc15.play("exclaiming");
+    
+      this.physics.add.overlap(this.player, this.npc15, () => {
+        if (!this.npc15Interacted && !this.keyENpc15) {
+          if (this.indicatorNpc15) {
+            this.indicatorNpc15.destroy();
+            this.indicatorNpc15 = null;
+          }
+    
+          this.keyENpc15 = this.add.image(this.npc15.x, this.npc15.y - 40, 'keyE').setScale(0.2).setDepth(1000);
+          this.canInteractWithNpc15 = true;
+        }
+      });
+    
+      // Remove a tecla E se o player se afasta
+      this.physics.add.overlap(this.player, this.npc15, null, (player, npc) => {
+        const distance = Phaser.Math.Distance.Between(player.x, player.y, npc.x, npc.y);
+        if (distance > 100 && this.keyENpc15) {
+          this.keyENpc15.destroy();
+          this.keyENpc15 = null;
+          this.canInteractWithNpc15 = false;
+        }
+        return true;
+      }, this);
+    }
+
+    createChips() {
+      this.chips = this.physics.add.group(); // Cria um grupo para os chips
+
+      // Adiciona 5 chips em posições fixas
+      const chipPositions = [
+        { x: width - 850, y: height - 270 }, // Chip da planta - primeiro
+        { x: width - 720, y: height - 130 }, // Chip na mesa esquerda inferior - segundo
+        { x: width - 370, y: height - 50 }, // Chip na direita perto da parede - terceiro
+        { x: width - 370, y: height - 320 } // Chip na salinha do 5G - quinto
+      ];
+
+      chipPositions.forEach(pos => {
+        const chip = this.chips.create(pos.x, pos.y, 'chip'); // Cria um chip na posição especificada
+        chip.setScale(0.06); // Ajusta o tamanho do chip
+      });
+
+      // Adiciona o overlap entre o jogador e os chips
+      this.physics.add.overlap(this.player, this.chips, this.collectChip, null, this);
+    }
+
+    collectChip(player, chip) {
+      chip.destroy(); // Remove o chip coletado
+      this.collectedChips += 1; // Incrementa o contador
+      this.chipText.setText(`${this.collectedChips}/5`); // Atualiza o texto na tela
+    }
+    
+    createNpc15Chip() {
+      this.chips = this.physics.add.group(); // Cria um grupo para os chips
+
+      // Adiciona o quarto chip em posição fixa
+      const chipPosition = { x: width - 470, y: height - 310 }; // Chip na rodinha dos NPCs - quarto
+      const chip = this.chips.create(chipPosition.x, chipPosition.y, 'chip'); // Cria o chip na posição especificada
+      chip.setScale(0.06); // Ajusta o tamanho do chip
+
+      // Adiciona o overlap entre o jogador e o chip
+      this.physics.add.overlap(this.player, this.chips, this.collectChip, null, this);
+    }
+
+    npc15Question() {
+      const speech = [
+        "Olá, seja Bem-Vindo a área da B2B da Vivo!",
+        "Aqui você vai conhecer os conceitos de B2B e B2C.",
+        "Vamos começar coletando os chips de internet para desbloquear os 5G mais rápido do Brasil!",
+        "Mas antes eu tenho uma pergunta para você:",
+        "Você sabe quais são os principais serviços oferecidos pela Vivo para clientes B2C?"
+      ];
+    
+      const balloonText = this.add.image(this.npc15.x + 50, this.npc15.y - 50, "balloonText").setScale(0.8);
+      const text = this.add.text(this.npc15.x - 15, this.npc15.y - 100, speech[0], {
+        fontSize: "10px",
+        fill: "#000000",
+        wordWrap: { width: balloonText.width - 35 },
+      });
+    
+      let currentIndex = 0;
+    
+      const enterNpc15 = () => {
+        currentIndex++;
+        if (currentIndex < speech.length) {
+          text.setText(speech[currentIndex]);
+        } else {
+          text.setVisible(false);
+          balloonText.setVisible(false);
+          this.input.keyboard.off("keydown-ENTER", enterNpc15);
+    
+          if (this.keyEnterNpc15) {
+            this.keyEnterNpc15.destroy();
+            this.keyEnterNpc15 = null;
+            this.createQuestions();
+            //this.createNpc15Chip();
+          }
+        }
+      };
+    
+      this.input.keyboard.on("keydown-ENTER", enterNpc15);
+    }
+
+    createQuestions() {
+      const letterA = this.physics.add.sprite(width - 590, height - 330, 'letterA');
+      letterA.setScale(0.1);
+      letterA.setImmovable();
+
+      const letterB = this.physics.add.sprite(width - 510, height - 330, 'letterB');
+      letterB.setScale(0.1);
+      letterB.setImmovable();
+
+      const showText = (text, x, y) => {
+      const balloonText = this.add.image(x, y, "balloonText").setScale(0.8);
+      const displayedText = this.add.text(x - 70, y - 52, text, {
+        fontSize: "10px",
+        fill: "#000000",
+        wordWrap: { width: balloonText.width - 35 },
+      });
+
+      return { balloonText, displayedText };
+      };
+
+      let activeTextA = null;
+      let activeTextB = null;
+
+      this.physics.add.overlap(this.player, letterA, () => {
+      if (!this.keyEnterLetterA && !activeTextA) {
+        const { balloonText, displayedText } = showText(
+        "Planos de celular pré e pós-pago, internet banda larga residencial(Vivo Fibra), TV por assinatura, serviços digitais(Vivo Play) e apps de streaming.",
+        letterA.x + 80,
+        letterA.y - 80
+        );
+
+        activeTextA = { balloonText, displayedText };
+
+        this.keyEnterLetterA = this.add.image(letterA.x, letterA.y - 40, 'keyENTER').setScale(0.06).setDepth(1000);
+
+        const enterLetterA = () => {
+        balloonText.destroy();
+        displayedText.destroy();
+        this.keyEnterLetterA.destroy();
+        this.keyEnterLetterA = null;
+        activeTextA = null;
+        this.input.keyboard.off("keydown-ENTER", enterLetterA);
+        this.correct = this.sound.add('correctSound', { loop: false, volume: 10 });
+        this.correct.play();
+        this.createNpc15Chip();
+        };
+
+        this.input.keyboard.on("keydown-ENTER", enterLetterA);
+      }
+      });
+
+      this.physics.add.overlap(this.player, letterB, () => {
+      if (!this.keyEnterLetterB && !activeTextB) {
+        const { balloonText, displayedText } = showText(
+        "Soluções de conectividade corporativa, serviços em nuvem, redes privadas, IoT empresarial e consultoria em transformação digital.",
+        letterB.x + 80,
+        letterB.y - 80
+        );
+
+        activeTextB = { balloonText, displayedText };
+
+        this.keyEnterLetterB = this.add.image(letterB.x, letterB.y - 40, 'keyENTER').setScale(0.06).setDepth(1000);
+
+        const enterLetterB = () => {
+        balloonText.destroy();
+        displayedText.destroy();
+        this.keyEnterLetterB.destroy();
+        this.keyEnterLetterB = null;
+        activeTextB = null;
+        this.input.keyboard.off("keydown-ENTER", enterLetterB);
+        this.wrong = this.sound.add('wrongSound', { loop: false, volume: 10 });
+        this.wrong.play();
+        };
+
+        this.input.keyboard.on("keydown-ENTER", enterLetterB);
+      }
+      });
+
+      this.physics.add.overlap(this.player, letterA, null, (player, letter) => {
+      const distance = Phaser.Math.Distance.Between(player.x, player.y, letter.x, letter.y);
+      if (distance > 45 && activeTextA) {
+        activeTextA.balloonText.destroy();
+        activeTextA.displayedText.destroy();
+        activeTextA = null;
+        if (this.keyEnterLetterA) {
+        this.keyEnterLetterA.destroy();
+        this.keyEnterLetterA = null;
+        }
+      }
+      return true;
+      }, this);
+
+      this.physics.add.overlap(this.player, letterB, null, (player, letter) => {
+      const distance = Phaser.Math.Distance.Between(player.x, player.y, letter.x, letter.y);
+      if (distance > 45 && activeTextB) {
+        activeTextB.balloonText.destroy();
+        activeTextB.displayedText.destroy();
+        activeTextB = null;
+        if (this.keyEnterLetterB) {
+        this.keyEnterLetterB.destroy();
+        this.keyEnterLetterB = null;
+        }
+      }
+      return true;
+      }, this);
+    }
 }
 
