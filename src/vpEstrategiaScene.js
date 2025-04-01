@@ -252,19 +252,29 @@ class VpEstrategiaScene extends Phaser.Scene {
            
       }
 
-      createButtonBack(width, height) {
-        const buttonBack = this.add.image(width - 700, height - 680, "keyE"); // Adiciona a imagem do botão de retorno na posição especificada
-        buttonBack.setScale(0.2); // Ajusta o tamanho da imagem do botão de retorno
-        
-        this.input.keyboard.on("keydown-E", () => { // Adiciona um evento para a tecla "E"
-        const distance = Phaser.Math.Distance.Between( // Calcula a distância entre o jogador e o botão de retorno
-            this.player.x, this.player.y, buttonBack.x, buttonBack.y // Coordenadas do jogador e do botão
-        );
-        
-        if (distance < 100) { // Verifica se o jogador está próximo o suficiente do botão (raio de 100)
+      createButtonBack() {
+        console.log("Adicionando botão de voltar"); // Loga no console que o botão de voltar está sendo adicionado
+        this.buttonBack = this.add.image(width - 808, height - 660, "keyE"); // Adiciona o botão de voltar na posição especificada
+        this.buttonBack.setScale(0.2); // Define o tamanho do botão de voltar
+        this.buttonBack.setDepth(1000); // Coloca o botão acima de outros objetos
+      
+        this.input.keyboard.on("keydown-E", () => { // Adiciona evento para a tecla "E"
+          const distancia = Phaser.Math.Distance.Between(
+            this.player.x, this.player.y, // Posição do jogador
+            this.buttonBack.x, this.buttonBack.y // Posição do botão de voltar
+          );
+      
+          if (distancia < 100) { // Verifica se o jogador está próximo do botão de voltar
+            // Pausa todos os sons ativos na cena
+            this.sound.sounds.forEach(sound => {
+              if (sound.isPlaying) {
+                sound.pause();
+              }
+            });
+      
             this.scene.stop("VpEstrategiaScene"); // Para a cena atual
             this.scene.start("elevadorScene"); // Inicia a cena do elevador
-        }
+          }
         });
       }
 }

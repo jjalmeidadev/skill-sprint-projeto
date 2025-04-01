@@ -117,7 +117,7 @@ class ElevadorScene extends Phaser.Scene {
 
     if (closeToButtons) { // Se o jogador estiver próximo dos botões
       if (!this.panelElevShown) { // Se o painel do elevador ainda não foi mostrado      
-        this.indicatorSound.stop(); // Para o som do indicador
+        this.indicatorSound.destroy(); // Para o som do indicador
         this.indicator.setVisible(false); // Esconde o indicador (apenas na primeira vez)
         this.panelElevShown = true; // Marca que o painel foi mostrado pelo menos uma vez
       }

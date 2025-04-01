@@ -151,18 +151,28 @@ class VpNegociosScene extends Phaser.Scene {
     }
 
     createButtonBack(width, height) {
-      const buttonBack = this.add.image(width - 670, height - 680, "keyE"); // Adiciona a imagem da tecla "E" na posição especificada
-      buttonBack.setScale(0.2); // Reduz o tamanho da imagem para 20% do tamanho original
+      console.log("Adicionando botão de voltar"); // Loga no console que o botão de voltar está sendo adicionado
+      this.buttonBack = this.add.image(width - 670, height - 680, "keyE"); // Adiciona a imagem da tecla "E" na posição especificada
+      this.buttonBack.setScale(0.2); // Reduz o tamanho da imagem para 20% do tamanho original
+      this.buttonBack.setDepth(1000); // Coloca o botão acima de outros objetos
 
       this.input.keyboard.on("keydown-E", () => { // Adiciona um evento para quando a tecla "E" for pressionada
           const distance = Phaser.Math.Distance.Between( // Calcula a distância entre o jogador e o botão
-              this.player.x, this.player.y, buttonBack.x, buttonBack.y // Coordenadas do jogador e do botão
+              this.player.x, this.player.y, 
+              this. buttonBack.x, this.buttonBack.y // Coordenadas do jogador e do botão
           );
 
           if (distance < 100) { // Verifica se o jogador está dentro de um raio de 100 pixels do botão
-              this.scene.stop("vpNegociosScene"); // Para a cena atual "vpNegociosScene"
-              this.scene.start("elevadorScene"); // Inicia a cena "elevadorScene"
-          }
+            // Pausa todos os sons ativos na cena
+            this.sound.sounds.forEach(sound => {
+              if (sound.isPlaying) {
+                sound.pause();
+            }
+          });
+            
+            this.scene.stop("vpNegociosScene"); // Para a cena atual "vpNegociosScene"
+            this.scene.start("elevadorScene"); // Inicia a cena "elevadorScene"
+        }
       });
     }
 

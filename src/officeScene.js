@@ -73,6 +73,7 @@ class OfficeScene extends Phaser.Scene {
     this.createComputer(width, height); // Adiciona o computador ao jogo
     this.lastPosition = "down"; // Define a posição inicial do jogador como "para baixo"
     this.createCollisions(); // Configura colisões do jogador com camadas selecionadas
+    this.createButtonBack();//adiciona botão do elevador 
 
     this.events.on('resume', () => { // Evento para retomar a música ao retornar à cena
       if (!this.officeMusic || !this.officeMusic.isPlaying) { // Verifica se a música não está tocando
@@ -368,6 +369,7 @@ class OfficeScene extends Phaser.Scene {
     });
   }
 
+
   createUpButton() {
     this.cameras.main.stopFollow(); // Para a câmera de seguir o jogador
     this.cameras.main.setZoom(1.2); // Define o nível de zoom da câmera
@@ -375,6 +377,9 @@ class OfficeScene extends Phaser.Scene {
     this.bgElevOffice = this.add.image(width - 1300, height - 1000, "bgElevOffice").setOrigin(0, 0); // Adiciona a imagem de fundo do elevador
     this.bgElevOffice.setDisplaySize(width, height); // Ajusta o tamanho da imagem de fundo para preencher a tela
     this.panelElev = this.add.image(width - 610, height - 800, "panelElev").setOrigin(0, 0); // Adiciona a imagem do painel do elevador
+    if (this.createUpButtonExecuted) return; // Verifica se o método já foi executado
+    this.createUpButtonExecuted = true; // Marca o método como executado
+
     this.bgElevOffice.setVisible(false); // Inicialmente, oculta o fundo do elevador
     this.panelElev.setVisible(false); // Inicialmente, oculta o painel do elevador
 
@@ -408,6 +413,7 @@ class OfficeScene extends Phaser.Scene {
         this.buttonUpCreated = true; // Marca que o botão foi criado
         this.indicatorSound.stop(); // Para o som do indicador
         this.elevatorIndicator.destroy(); // Remove o indicador do elevador
+        this.walkSound.stop();// Para o som de passos
       }
     });
   }
