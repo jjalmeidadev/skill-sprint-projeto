@@ -357,6 +357,7 @@ class VpNegociosScene extends Phaser.Scene {
     }
     
     createNpc15Chip() {
+      console.log("chip criado");
       if (this.npc15ChipCollected) return; // Impede a criação do chip se ele já foi criado ou coletado
   
       const chipPosition = { x: width - 470, y: height - 310 }; // Posição fixa do chip do NPC 15
