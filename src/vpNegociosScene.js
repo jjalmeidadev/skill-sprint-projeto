@@ -357,8 +357,13 @@ class VpNegociosScene extends Phaser.Scene {
     }
     
     createNpc15Chip() {
-      console.log("chip criado");
-      if (this.npc15ChipCollected) return; // Impede a criação do chip se ele já foi criado ou coletado
+      // Verifica se o chip já foi criado ou coletado
+      if (this.npc15ChipCollected || this.npc15ChipCreated) return;
+  
+      console.log("Chip do NPC 15 criado");
+  
+      // Marca que o chip foi criado
+      this.npc15ChipCreated = true;
   
       const chipPosition = { x: width - 470, y: height - 310 }; // Posição fixa do chip do NPC 15
       const chip = this.chips.create(chipPosition.x, chipPosition.y, 'chip'); // Cria o chip
@@ -519,7 +524,11 @@ class VpNegociosScene extends Phaser.Scene {
                           feedbackText.destroy();
                           feedbackKeyEnter.destroy(); // Destroi a tecla ENTER
                           this.input.keyboard.off("keydown-ENTER", advanceFeedback);
-                          this.createNpc15Chip(); // Cria o chip do NPC 15
+                          
+                          // Cria o chip do NPC 15 apenas se ele ainda não foi criado
+                        if (!this.npc15ChipCollected) {
+                          this.createNpc15Chip();
+                        }
                       }
                   };
   
