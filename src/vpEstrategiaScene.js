@@ -21,6 +21,10 @@ class VpEstrategiaScene extends Phaser.Scene {
     this.load.spritesheet('npcIdle', '../assets/personagens/skinsPlayer/Player4Idle.png', { frameWidth: 16, frameHeight: 32 }); // Carrega o spritesheet do NPC 1
   }
 
+  init(data) {
+    this.showThankYou = data && data.showThankYou;
+  }
+
   create() {
     const width = this.cameras.main.width; // Obtém a largura da câmera principal
     const height = this.cameras.main.height; // Obtém a altura da câmera principal
@@ -78,52 +82,62 @@ class VpEstrategiaScene extends Phaser.Scene {
       ENTER: Phaser.Input.Keyboard.KeyCodes.ENTER // Tecla Enter para avançar diálogos
     });
 
+    this.keyEnter = this.add.image(0, 0, 'keyEnter').setScale(0.2);
+    this.keyEnter.setVisible(false); // Inicialmente oculta a imagem da tecla Enter
+
     this.exclamation = this.physics.add.sprite(this.npc.x, this.npc.y - 80, "indicator").setScale(0.3);
     this.exclamation.play("exclaiming"); // Reproduz a animação da exclamação
     this.exclamation.setImmovable(true); // Define que a exclamação não pode ser movida
 
     this.physics.add.overlap(this.player, this.exclamation, () => {
-      if (!this.activeDialogue) { // Verifica se o diálogo não está ativo
+      if (!this.activeDialogue && this.keyEnter) { // Certifica-se de que this.keyEnter está definido
         this.keyEnter.setVisible(true); // Exibe a tecla Enter
         this.startDialogue([
-          "Olá! Que bom que você chegou!", // Primeira fala
-          "Bem-vindo à sala da VP de Estratégia!", // Segunda fala
-          "Meu nome é Viviane e sou líder de carreiras aqui na Vivo.", // Terceira fala
-          "Estamos em um momento único na empresa!", // Quarta fala
-          "Acabamos de lançar um programa exclusivo", // Quinta fala
-          "Queremos acelerar talentos como você!", // Sexta fala
-          "Mas tem um porém...", // Sétima fala
-          "As inscrições fecham em 24h!", // Oitava fala
-          "Só quem montar um plano estratégico para funcionários HOJE garante a vaga!", // Nona fala
-          "Você tem 2 minutos para ajudar três talentos a escolher seus próximos passos de carreira.", // Décima fala
-          "Planeje com cuidado!", // Décima primeira fala
-          "Cada decisão impacta o crescimento deles na empresa!", // Décima segunda fala
-          "Siga as exclamações para ajudá-los." // Décima terceira fala
-        ]);
-        this.exclamation.destroy(); // Remove a exclamação após a interação
+          "Olá! Que bom que você chegou!",
+          "Bem-vindo à sala da VP de Estratégia!",
+          "Meu nome é Viviane e sou líder de carreiras aqui na Vivo.",
+          "Estamos em um momento único na empresa!",
+          "Acabamos de lançar um programa exclusivo.",
+          "Queremos acelerar talentos como você!",
+          "Mas tem um porém...",
+          "As inscrições fecham em 24h!",
+          "Só quem montar um plano estratégico para funcionários HOJE garante a vaga!",
+          "Você tem 2 minutos para ajudar três talentos a escolher seus próximos passos de carreira.",
+          "Planeje com cuidado!",
+          "Cada decisão impacta o crescimento deles na empresa!",
+          "Siga as exclamações para ajudá-los."
+        ], this.npc); // Passa a NPC principal como referência
+
+        this.exclamation.destroy(); // Remove a exclamação da NPC principal
       }
     });
 
     if (!this.anims.exists('npc_idle')) {
       this.anims.create({
         key: 'npc_idle',
-        frames: this.anims.generateFrameNumbers('npcIdle', { start: 18, end: 23 }), // Define os frames da animação
+        frames: this.anims.generateFrameNumbers('npcIdle', { start: 18, end: 23 }), // Corrected frames for npcIdle animation
         frameRate: 5, // Taxa de quadros por segundo
         repeat: -1 // Faz a animação repetir indefinidamente
       });
     }
-
-    this.physics.add.collider(this.player, this.npcIdle); // Adiciona colisão entre o jogador e o NPC
 
     this.npcIdle = this.physics.add.sprite(this.npc.x + 200, this.npc.y + 30, 'npcIdle'); // Adiciona o NPC na cena
     this.npcIdle.setScale(2.5); // Ajusta o tamanho do NPC
     this.npcIdle.play('npc_idle'); // Reproduz a animação IDLE
     this.npcIdle.body.immovable = true; // Faz o NPC ficar parado
 
-    this.physics.add.collider(this.player, this.npcIdle); // Adiciona colisão entre o jogador e o NPC Idle
+    // Add delayed thank you check after npcIdle is created
+    if (this.showThankYou) {
+      this.time.delayedCall(500, () => {
+        this.startDialogue(["Muito obrigado!"], this.npcIdle);
+      });
+    }
 
-    this.keyEnter = this.add.image(this.npc.x - 50, this.npc.y, 'keyEnter').setScale(0.1);
-    this.keyEnter.setVisible(false); // Deixa a tecla Enter invisível inicialmente
+    // Adiciona a tecla Enter ao npcIdle
+    this.keyEnterIdle = this.add.image(this.npcIdle.x + 50, this.npcIdle.y - 100, 'keyEnter').setScale(0.2);
+    this.keyEnterIdle.setVisible(false); // Deixa a tecla Enter invisível inicialmente
+
+    this.physics.add.collider(this.player, this.npcIdle); // Adiciona colisão entre o jogador e o NPC
 
     this.walkSound = this.sound.add('walkSound', { loop: false, volume: 2 }); // Adiciona o som de passos com volume ajustado
 
@@ -133,62 +147,58 @@ class VpEstrategiaScene extends Phaser.Scene {
     this.exclamationIdle = this.physics.add.sprite(this.npcIdle.x, this.npcIdle.y - 80, "indicator").setScale(0.3);
     this.exclamationIdle.play("exclaiming");
     this.exclamationIdle.setImmovable(true);
-
-    this.keyEnterIdle = this.add.image(this.npcIdle.x + 50, this.npcIdle.y - 100, 'keyEnter').setScale(0.2);
-    this.keyEnterIdle.setVisible(false);
+    this.exclamationIdle.setVisible(false); // Deixa a exclamação invisível inicialmente
 
     // Interação com o npcIdle
     this.physics.add.overlap(this.player, this.exclamationIdle, () => {
-      if (!this.activeDialogue) {
-        this.keyEnterIdle.setVisible(true);
+      if (!this.activeDialogue && this.keyEnterIdle) { // Check if this.keyEnterIdle is defined
+        this.keyEnterIdle.setVisible(true); // Exibe a tecla Enter ao interagir com o npcIdle
         this.startDialogue([
-          "Obrigado por ajudar os talentos!",
-          "Agora, siga para o próximo desafio!"
-        ]);
+          `E aí, ${this.nome}!`,
+          'Sou o Carlos do time comercial.',
+          'Tenho vontade de virar gestor, mas não sei qual o caminho certo aqui na Vivo.',
+          'Você entende como funciona Carreira em Y? Pode me dar uma força?'
+        ], this.npcIdle); // Passa o npcIdle como referência
 
-        this.exclamationIdle.destroy();
-        this.keyEnterIdle.setVisible(false);
+        this.exclamationIdle.destroy(); // Remove a exclamação do npcIdle
+        this.keyEnterIdle.setVisible(false); // Oculta a tecla Enter após o início do diálogo
       }
     });
-
-
-
 
     // Dá zoom na tela do jogo e faz a câmera seguir o personagem
     this.cameras.main.startFollow(this.player); // Faz a câmera seguir o jogador
     this.cameras.main.setZoom(2); // Define o nível de zoom da câmera
-
-
-
   }
 
   update() {
     this.movePlayer(); // Atualiza o movimento do jogador
 
-
     const distance = Phaser.Math.Distance.Between(this.player.x, this.player.y, this.npc.x, this.npc.y);// Verifica se o jogador está próximo da NPC
-
   }
 
-  startDialogue(speechNpc) {
+  startDialogue(speechNpc, npc) {
+    if (!npc) {
+      console.error("NPC não definido ao iniciar o diálogo.");
+      return;
+    }
+
     this.activeDialogue = true; // Impede que o diálogo seja iniciado novamente enquanto está ativo
-
-
 
     let indexCurrentSpeech = 0; // Índice da fala atual
 
-    const balloonText = this.add.image(this.npc.x + 90, this.npc.y - 100, "balloonText").setOrigin(0.5).setScale(1); // Adiciona a imagem do balão de fala acima da NPC
-    const text = this.add.text(this.npc.x + 90, this.npc.y - 120, speechNpc[indexCurrentSpeech], { // Adiciona o texto inicial da fala
-      fontSize: "16px", // Define o tamanho da fonte
-      fill: "#000000", // Define a cor do texto
-      wordWrap: { width: balloonText.width - 20 }, // Define a largura máxima para quebra de linha
-      align: "center", // Centraliza o texto
-      fontFamily: "font" // Define a fonte do texto
-    }).setOrigin(0.5); // Centraliza o texto no balão
+    // Posiciona o balão de fala com base no NPC (principal ou npcIdle)
+    const balloonText = this.add.image(npc.x + 90, npc.y - 100, "balloonText").setOrigin(0.5).setScale(1);
+    const text = this.add.text(npc.x + 90, npc.y - 120, speechNpc[indexCurrentSpeech], {
+      fontSize: "16px",
+      fill: "#000000",
+      wordWrap: { width: balloonText.width - 20 },
+      align: "center",
+      fontFamily: "font"
+    }).setOrigin(0.5);
 
     const nextSpeech = () => {
-      indexCurrentSpeech++; // Incrementa o índice da fala atual
-      if (indexCurrentSpeech < speechNpc.length) { // Verifica se ainda há falas restantes
+      indexCurrentSpeech++;
+      if (indexCurrentSpeech < speechNpc.length) {
         text.setText(speechNpc[indexCurrentSpeech]); // Atualiza o texto com a próxima fala
       } else {
         balloonText.destroy(); // Remove o balão de fala
@@ -196,6 +206,16 @@ class VpEstrategiaScene extends Phaser.Scene {
         this.input.keyboard.off("keydown-ENTER", nextSpeech); // Remove o evento de tecla
         this.keyEnter.setVisible(false); // Oculta a tecla Enter
         this.activeDialogue = false; // Permite iniciar outro diálogo no futuro
+
+        // Exibe a exclamação do npcIdle após o diálogo com a NPC principal
+        if (npc === this.npc) {
+          this.exclamationIdle.setVisible(true); // Torna a exclamação do npcIdle visível
+        }
+
+        // Muda para a cena "minigameEstrategiaCarlos" após o diálogo com o npcIdle
+        if (npc === this.npcIdle) {
+          this.scene.switch("minigameEstrategiaCarlos"); // Muda para a cena do minigame
+        }
       }
     };
 
@@ -343,3 +363,337 @@ class VpEstrategiaScene extends Phaser.Scene {
 
 // Propriedade estática para armazenar o tempo de reprodução da músic
 VpEstrategiaScene.lastMusicTime = 0;
+
+class minigameEstrategiaCarlos extends Phaser.Scene {
+  constructor() {
+    super({ key: "minigameEstrategiaCarlos" });
+    this.currentNPC = 0; // Track current NPC (0: Ana, 1: Carlos, 2: Mariana)
+    this.npcData = [
+      {
+        name: 'Carlos',
+        elements: [
+          { text: 'Entrar como Analista Comercial', color: 0x4444ff },
+          { text: 'Virar Coordenador de Vendas', color: 0xffff44 },
+          { text: 'Fazer treinamento de liderança', color: 0x44ff44 },
+          { text: 'Virar Gerente (Carreira em Y)', color: 0x9944ff }
+        ],
+        feedback: 'Correto! Esta é a Carreira em Y - Gerencial: Analista → Coordenador → Gerente. Aqui, você ganha bônus por resultados (PLR) e lidera equipes. A Vivo prioriza líderes internos com treinamentos específicos.'
+      }
+    ];
+  }
+
+  preload() {
+    this.load.audio('success', '../assets/sounds/success.mp3');
+    this.load.audio('error', '../assets/sounds/error.mp3');
+    this.load.image('background', '../assets/background_career.png');
+    this.load.image('arrow', '../assets/arrow.png');
+  }
+
+  create() {
+    // Get game dimensions
+    this.gameWidth = this.cameras.main.width;
+    this.gameHeight = this.cameras.main.height;
+    this.createGameElements();
+  }
+
+  createGameElements() {
+    // Set background color
+    this.cameras.main.setBackgroundColor('#E6E6E6');
+
+    const currentNPCData = this.npcData[this.currentNPC];
+
+    // Centered header - adjusted for full screen
+    const headerBg = this.add.rectangle(this.gameWidth / 2, 80, this.gameWidth * 0.8, 120, 0x000000, 0.1);
+
+    this.add.text(this.gameWidth / 2, 90, `Organize a carreira de ${currentNPCData.name}`, {
+      fontSize: '32px',
+      fill: '#000000',
+      fontStyle: 'bold',
+      fontFamily: 'font'
+    }).setOrigin(0.5);
+
+    // Centered instructions - adjusted position
+    this.add.text(this.gameWidth / 2, 160, 'Arraste os elementos na ordem correta do início ao fim da carreira', {
+      fontSize: '20px',
+      fill: '#000000',
+      fontFamily: 'font'
+    }).setOrigin(0.5);
+
+    // Create centered drop zones - adjusted for full width
+    this.dropZones = [];
+    const zoneWidth = 200;
+    const totalWidth = zoneWidth * 4;
+    const spacing = 50;
+    const startX = (this.gameWidth - (totalWidth + spacing * 3)) / 2;
+
+    for (let i = 0; i < 4; i++) {
+      const x = startX + (zoneWidth + spacing) * i + zoneWidth / 2;
+      const y = this.gameHeight / 2 - 50;
+
+      if (i < 3) {
+        const arrow = this.add.image(x + zoneWidth / 2 + spacing / 2, y, 'arrow').setScale(0.4);
+        arrow.setTint(0x000000);
+      }
+
+      const zone = this.add.rectangle(x, y, zoneWidth, 120, 0xE6E6E6, 0.8);
+      zone.setStrokeStyle(2, 0x8950FC);
+      zone.setInteractive();
+      zone.correctIndex = i;
+
+      this.add.text(x, y - 80, `${i + 1}`, {
+        fontSize: '32px',
+        fill: '#000000',
+        fontStyle: 'bold'
+      }).setOrigin(0.5);
+
+      this.dropZones.push(zone);
+    }
+
+    // Create centered draggable elements - adjusted positions
+    const shuffledElements = Phaser.Utils.Array.Shuffle([...currentNPCData.elements]);
+
+    this.dragElements = shuffledElements.map((element, index) => {
+      const x = startX + (zoneWidth + spacing) * index + zoneWidth / 2;
+      const y = this.gameHeight - 150;
+
+      const background = this.add.rectangle(0, 0, zoneWidth, 120, 0x8950FC);
+      background.setStrokeStyle(2, 0x6B3FCC);
+
+      const text = this.add.text(0, 0, element.text, {
+        fontSize: '18px',
+        fill: '#FFFFFF',
+        align: 'center',
+        fontFamily: 'font',
+        wordWrap: { width: zoneWidth - 20 }
+      }).setOrigin(0.5);
+
+      const container = this.add.container(x, y, [background, text]);
+      container.setSize(zoneWidth, 120);
+      container.setInteractive({ draggable: true });
+      container.originalIndex = currentNPCData.elements.indexOf(element);
+      container.originalX = x;
+      container.originalY = y;
+
+      // Hover effect
+      container.on('pointerover', () => {
+        this.tweens.add({
+          targets: container,
+          scaleX: 1.05,
+          scaleY: 1.05,
+          duration: 100
+        });
+      });
+
+      container.on('pointerout', () => {
+        this.tweens.add({
+          targets: container,
+          scaleX: 1,
+          scaleY: 1,
+          duration: 100
+        });
+      });
+
+      return container;
+    });
+
+    // Setup drag events
+    this.input.on('dragstart', (pointer, gameObject) => {
+      gameObject.setDepth(1);
+    });
+
+    this.input.on('drag', (pointer, gameObject, dragX, dragY) => {
+      gameObject.x = dragX;
+      gameObject.y = dragY;
+    });
+
+    this.input.on('dragend', (pointer, gameObject) => {
+      gameObject.setDepth(0);
+      const dropZone = this.findOverlappingZone(gameObject);
+
+      if (dropZone) {
+        if (dropZone.correctIndex === gameObject.originalIndex) {
+          gameObject.x = dropZone.x;
+          gameObject.y = dropZone.y;
+          gameObject.input.draggable = false;
+          this.showPositionSuccess(gameObject); // Mostra feedback de sucesso
+          this.checkCompletion();
+        } else {
+          this.showPositionError(gameObject); // Mostra feedback de posição incorreta
+          this.tweens.add({
+            targets: gameObject,
+            x: gameObject.originalX,
+            y: gameObject.originalY,
+            duration: 300,
+            ease: 'Back.easeOut'
+          });
+        }
+      } else {
+        this.tweens.add({
+          targets: gameObject,
+          x: gameObject.originalX,
+          y: gameObject.originalY,
+          duration: 300,
+          ease: 'Back.easeOut'
+        });
+      }
+    });
+  }
+
+
+  showPositionError(gameObject) {
+    if (this.positionErrorContainer) {
+      this.positionErrorContainer.destroy(); // Remove qualquer contêiner de erro existente
+    }
+
+    // Cria o contêiner de erro
+    this.positionErrorContainer = this.add.container(400, 200);
+
+    const errorBg = this.add.rectangle(0, 0, 400, 60, 0xFF0000, 0.2); // Fundo do erro
+    errorBg.setStrokeStyle(2, 0xFF0000); // Borda vermelha
+
+    const errorText = this.add.text(0, 0, 'Posição incorreta!', {
+      fontSize: '20px',
+      fill: '#CC0000',
+      fontFamily: 'font'
+    }).setOrigin(0.5); // Texto centralizado
+
+    this.positionErrorContainer.add([errorBg, errorText]); // Adiciona o fundo e o texto ao contêiner
+
+    // Animação para desaparecer o contêiner de erro após 2 segundos
+    this.tweens.add({
+      targets: this.positionErrorContainer,
+      alpha: 0, // Reduz a opacidade para 0
+      y: 180, // Move o contêiner ligeiramente para cima
+      duration: 500, // Duração da animação (0.5 segundos)
+      delay: 1500, // Espera 1.5 segundos antes de iniciar a animação
+      ease: 'Power2', // Tipo de animação
+      onComplete: () => {
+        this.positionErrorContainer.destroy(); // Remove o contêiner de erro após a animação
+      }
+    });
+  }
+
+
+
+  showPositionSuccess(gameObject) {
+    if (this.positionSuccessContainer) {
+      this.positionSuccessContainer.destroy();
+    }
+
+    this.positionSuccessContainer = this.add.container(400, 200);
+
+    const successBg = this.add.rectangle(0, 0, 400, 60, 0x00FF00, 0.2);
+    successBg.setStrokeStyle(2, 0x00FF00);
+
+    const successText = this.add.text(0, 0, 'Posição correta!', {
+      fontSize: '20px',
+      fill: '#00AA00',
+      fontFamily: 'font'
+    }).setOrigin(0.5);
+
+    this.positionSuccessContainer.add([successBg, successText]);
+
+    this.tweens.add({
+      targets: this.positionSuccessContainer,
+      alpha: 0,
+      y: 180,
+      duration: 500,
+      delay: 1500, // Total of 2 seconds (1.5s delay + 0.5s fade)
+      ease: 'Power2',
+      onComplete: () => this.positionSuccessContainer.destroy()
+    });
+  }
+
+  showSuccess() {
+    // Clear any existing feedback
+    if (this.feedbackContainer) {
+      this.feedbackContainer.destroy();
+    }
+
+    // Cria o fundo da tela de feedback em tela cheia
+    const overlay = this.add.rectangle(400, 300, 800, 600, 0x000000, 0.7); // Fundo preto translúcido
+    this.feedbackContainer = this.add.container(400, 300);
+
+    // Ajusta o fundo do feedback para ocupar a tela inteira
+    const feedbackBg = this.add.rectangle(0, 0, this.gameWidth, this.gameHeight, 0x8950FC, 0.9); // Fundo roxo translúcido
+    feedbackBg.setStrokeStyle(4, 0x6B3FCC); // Borda roxa
+
+    // Centraliza o texto de feedback
+    const feedbackText = this.add.text(0, 0, this.npcData[this.currentNPC].feedback, {
+      fontSize: '32px', // Aumenta o tamanho da fonte para tela cheia
+      fill: '#FFFFFF',
+      align: 'center',
+      fontFamily: 'font',
+      wordWrap: { width: this.gameWidth - 100 } // Ajusta a largura do texto para caber na tela
+    }).setOrigin(0.5); // Centraliza o texto
+
+    // Adiciona os elementos ao contêiner
+    this.feedbackContainer.add([feedbackBg, feedbackText]);
+
+    // Configura o tempo de exibição e a transição
+    this.time.delayedCall(3000, () => { // Exibe o feedback por 3 segundos
+      this.tweens.add({
+        targets: [overlay, this.feedbackContainer],
+        alpha: 0, // Reduz a opacidade para 0
+        duration: 500, // Duração da animação (0.5 segundos)
+        onComplete: () => {
+          overlay.destroy(); // Remove o fundo
+          this.feedbackContainer.destroy(); // Remove o contêiner de feedback
+          this.scene.switch('VpEstrategiaScene', { showThankYou: true }); // Retorna para a cena principal com diálogo final
+        }
+      });
+    });
+  }
+
+  showError(gameObject) {
+    if (this.errorContainer) {
+      this.errorContainer.destroy(); // Remove qualquer contêiner de erro existente
+    }
+
+    // Cria o contêiner de erro
+    this.errorContainer = this.add.container(400, 200);
+
+    const errorBg = this.add.rectangle(0, 0, 400, 60, 0xFF0000, 0.2); // Fundo do erro
+    errorBg.setStrokeStyle(2, 0xFF0000); // Borda vermelha
+
+    const errorText = this.add.text(0, 0, 'Ordem incorreta! Tente novamente.', {
+      fontSize: '20px',
+      fill: '#CC0000',
+      fontFamily: 'font'
+    }).setOrigin(0.5); // Texto centralizado
+
+    this.errorContainer.add([errorBg, errorText]); // Adiciona o fundo e o texto ao contêiner
+    this.sound.play('error'); // Toca o som de erro
+
+    // Animação para desaparecer o contêiner de erro após 2 segundos
+    this.tweens.add({
+      targets: this.errorContainer,
+      alpha: 0, // Reduz a opacidade para 0
+      y: 180, // Move o contêiner ligeiramente para cima
+      duration: 500, // Duração da animação (0.5 segundos)
+      delay: 1500, // Espera 1.5 segundos antes de iniciar a animação
+      ease: 'Power2', // Tipo de animação
+      onComplete: () => {
+        this.errorContainer.destroy(); // Remove o contêiner de erro após a animação
+      }
+    });
+  }
+
+  findOverlappingZone(gameObject) {
+    return this.dropZones.find(zone => {
+      const distance = Phaser.Math.Distance.Between(gameObject.x, gameObject.y, zone.x, zone.y);
+      return distance < 50;
+    });
+  }
+
+  checkCompletion() {
+    const allCorrect = this.dragElements.every(element => {
+      const dropZone = this.findOverlappingZone(element);
+      return dropZone && dropZone.correctIndex === element.originalIndex;
+    });
+
+    if (allCorrect) {
+      this.showSuccess();
+    }
+  }
+}

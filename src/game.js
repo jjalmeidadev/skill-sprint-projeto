@@ -52,7 +52,8 @@ const config = { // Configuração do jogo Phaser
     
     VpNegociosScene, // Cena do VP de Negócios
 
-    VpEstrategiaScene, // Cena do VP de Estratégia
+    VpEstrategiaScene,
+    minigameEstrategiaCarlos, // Cena do VP de Estratégia
 
     VpTecnologiaScene, // Cena do VP de Tecnologia
   ], 
