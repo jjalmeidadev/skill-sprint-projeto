@@ -12,12 +12,16 @@ class VpNegociosScene extends Phaser.Scene {
         this.load.spritesheet('player', '../assets/personagens/skinsPlayer/player1all.png', { frameWidth: 16, frameHeight: 32 }); // Carrega o spritesheet do jogador com dimensões de cada frame
         this.load.spritesheet("indicator", "../assets/exclamaçãoRoxa.png", {frameWidth: 254, frameHeight: 305,}); // Carrega o spritesheet do indicador de exclamação
         this.load.spritesheet('chip', '../assets/minigameVpNegocios/chip.png', {frameWidth: 520, frameHeight: 520}); // Carrega o spritesheet do chip
+        this.load.spritesheet('letterA', '../assets/minigameVpNegocios/letterA.png', {frameWidth: 267, frameHeight: 288}); // Carrega o spritesheet da Letra A
+        this.load.spritesheet('letterB', '../assets/minigameVpNegocios/letterB.png', {frameWidth: 233, frameHeight: 291}); // Carrega o spritesheet da letra B
 
         this.load.spritesheet("npc14", "../assets/personagens/VPpessoas/npc14.png", { frameWidth: 16, frameHeight: 32 }); // Carrega o spritesheet do NPC 14
         this.load.spritesheet("npc15", "../assets/personagens/VPpessoas/npc15.png", { frameWidth: 16, frameHeight: 32 }); // Carrega o spritesheet do NPC 15
         
         this.load.audio('indicatorSound', '../assets/sounds/497198_abacagi_bubble-pops (mp3cut.net).wav'); // Carrega o som do indicador de interação
         this.load.audio('walkSound', '../assets/sounds/753292__vrymaa__footsteps-high-heels-hardwood-walk-run (mp3cut.net).wav'); // Carrega o som de passos
+        this.load.audio('correctSound', '../assets/sounds/476178__unadamlar__correct-choice.wav'); // Carrega o som de resposta correta
+        this.load.audio('wrongSound', '../assets/sounds/700641__producing_raylite__incorrect-buzzer.wav'); // Carrega o som de resposta errada
 
         this.load.image('keyE', '../assets/teclaE.png'); // Carrega a imagem da tecla "E" para interação
         this.load.image('keyENTER', '../assets/keyEnter.png'); // Carrega a imagem da tecla "ENTER" para interação
@@ -366,16 +370,18 @@ class VpNegociosScene extends Phaser.Scene {
 
     npc15Question() {
       const speech = [
-        "Nossa, muito obrigado, isso significava muito para mim!",
-        "Como recompensa eu vou mostrar as minhas anotações que irão te ajudar a se preparar para uma entrevista.",
-        "Vá até a mesa e pegue o caderno em cima dela, lá você encontrará dicas para ir bem em uma entrevista."
+        "Olá, seja Bem-Vindo a área da B2B da Vivo!",
+        "Aqui você vai conhecer os conceitos de B2B e B2C.",
+        "Vamos começar coletando os chips de internet para desbloquear os 5G mais rápido do Brasil!",
+        "Mas antes eu tenho uma pergunta para você:",
+        "Você sabe quais são os principais serviços oferecidos pela Vivo para clientes B2C?"
       ];
     
-      const balloonText = this.add.image(this.npc15.x + 80, this.npc15.y - 80, "balloonText").setScale(0.9);
-      const text = this.add.text(this.npc15.x + 2, this.npc15.y - 140, speech[0], {
-        fontSize: "14px",
+      const balloonText = this.add.image(this.npc15.x + 50, this.npc15.y - 50, "balloonText").setScale(0.8);
+      const text = this.add.text(this.npc15.x - 15, this.npc15.y - 100, speech[0], {
+        fontSize: "10px",
         fill: "#000000",
-        wordWrap: { width: balloonText.width - 20 },
+        wordWrap: { width: balloonText.width - 35 },
       });
     
       let currentIndex = 0;
@@ -392,12 +398,120 @@ class VpNegociosScene extends Phaser.Scene {
           if (this.keyEnterNpc15) {
             this.keyEnterNpc15.destroy();
             this.keyEnterNpc15 = null;
-            this.createNpc15Chip();
+            this.createQuestions();
+            //this.createNpc15Chip();
           }
         }
       };
     
       this.input.keyboard.on("keydown-ENTER", enterNpc15);
+    }
+
+    createQuestions() {
+      const letterA = this.physics.add.sprite(width - 590, height - 330, 'letterA');
+      letterA.setScale(0.1);
+      letterA.setImmovable();
+
+      const letterB = this.physics.add.sprite(width - 510, height - 330, 'letterB');
+      letterB.setScale(0.1);
+      letterB.setImmovable();
+
+      const showText = (text, x, y) => {
+      const balloonText = this.add.image(x, y, "balloonText").setScale(0.8);
+      const displayedText = this.add.text(x - 70, y - 52, text, {
+        fontSize: "10px",
+        fill: "#000000",
+        wordWrap: { width: balloonText.width - 35 },
+      });
+
+      return { balloonText, displayedText };
+      };
+
+      let activeTextA = null;
+      let activeTextB = null;
+
+      this.physics.add.overlap(this.player, letterA, () => {
+      if (!this.keyEnterLetterA && !activeTextA) {
+        const { balloonText, displayedText } = showText(
+        "Planos de celular pré e pós-pago, internet banda larga residencial(Vivo Fibra), TV por assinatura, serviços digitais(Vivo Play) e apps de streaming.",
+        letterA.x + 80,
+        letterA.y - 80
+        );
+
+        activeTextA = { balloonText, displayedText };
+
+        this.keyEnterLetterA = this.add.image(letterA.x, letterA.y - 40, 'keyENTER').setScale(0.06).setDepth(1000);
+
+        const enterLetterA = () => {
+        balloonText.destroy();
+        displayedText.destroy();
+        this.keyEnterLetterA.destroy();
+        this.keyEnterLetterA = null;
+        activeTextA = null;
+        this.input.keyboard.off("keydown-ENTER", enterLetterA);
+        this.correct = this.sound.add('correctSound', { loop: false, volume: 10 });
+        this.correct.play();
+        this.createNpc15Chip();
+        };
+
+        this.input.keyboard.on("keydown-ENTER", enterLetterA);
+      }
+      });
+
+      this.physics.add.overlap(this.player, letterB, () => {
+      if (!this.keyEnterLetterB && !activeTextB) {
+        const { balloonText, displayedText } = showText(
+        "Soluções de conectividade corporativa, serviços em nuvem, redes privadas, IoT empresarial e consultoria em transformação digital.",
+        letterB.x + 80,
+        letterB.y - 80
+        );
+
+        activeTextB = { balloonText, displayedText };
+
+        this.keyEnterLetterB = this.add.image(letterB.x, letterB.y - 40, 'keyENTER').setScale(0.06).setDepth(1000);
+
+        const enterLetterB = () => {
+        balloonText.destroy();
+        displayedText.destroy();
+        this.keyEnterLetterB.destroy();
+        this.keyEnterLetterB = null;
+        activeTextB = null;
+        this.input.keyboard.off("keydown-ENTER", enterLetterB);
+        this.wrong = this.sound.add('wrongSound', { loop: false, volume: 10 });
+        this.wrong.play();
+        };
+
+        this.input.keyboard.on("keydown-ENTER", enterLetterB);
+      }
+      });
+
+      this.physics.add.overlap(this.player, letterA, null, (player, letter) => {
+      const distance = Phaser.Math.Distance.Between(player.x, player.y, letter.x, letter.y);
+      if (distance > 45 && activeTextA) {
+        activeTextA.balloonText.destroy();
+        activeTextA.displayedText.destroy();
+        activeTextA = null;
+        if (this.keyEnterLetterA) {
+        this.keyEnterLetterA.destroy();
+        this.keyEnterLetterA = null;
+        }
+      }
+      return true;
+      }, this);
+
+      this.physics.add.overlap(this.player, letterB, null, (player, letter) => {
+      const distance = Phaser.Math.Distance.Between(player.x, player.y, letter.x, letter.y);
+      if (distance > 45 && activeTextB) {
+        activeTextB.balloonText.destroy();
+        activeTextB.displayedText.destroy();
+        activeTextB = null;
+        if (this.keyEnterLetterB) {
+        this.keyEnterLetterB.destroy();
+        this.keyEnterLetterB = null;
+        }
+      }
+      return true;
+      }, this);
     }
 }
 
