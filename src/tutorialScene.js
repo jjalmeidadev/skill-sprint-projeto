@@ -225,66 +225,66 @@ class TutorialScene extends Phaser.Scene {
         }
     
         if (this.currentDialogIndex === 0) {
-            playerName = this.textEntry.text.trim(); // Salva o nome do jogador
-            this.textEntry.setVisible(false); // Esconde o campo de entrada de texto
-            this.inputBackground.setVisible(false); // Esconde o fundo do campo de entrada
-            this.keyEnterIcon.setVisible(false); // Esconde o ícone da tecla ENTER
+            playerName = this.textEntry.text.trim();
+            this.textEntry.setVisible(false);
+            this.inputBackground.setVisible(false);
+            this.keyEnterIcon.setVisible(false);
         }
     
         if (this.currentDialogIndex === 2 && !this.optionSelected) {
-            return; // Se o jogador não escolheu uma opção, não avança
+            return;
         }
     
-        // Novo fluxo para "Sim"
+        // Diálogo da opção "Sim"
         if (this.yesSelected) {
             if (!this.overlayVisible) {
-                this.dialogText.setText(this.finalDialog[0]); // Exibe a primeira fala final
-                this.overlayImage.setAlpha(1); // Torna a imagem de sobreposição visível
-                this.overlayVisible = true; // Marca que a imagem de sobreposição está visível
+                this.dialogText.setText(this.finalDialog[0]);
+                this.overlayImage.setAlpha(1);
+                this.overlayVisible = true;
                 return;
             }
             if (this.currentFinalIndex < this.finalDialog.length - 1) {
-                this.currentFinalIndex++; // Avança para a próxima fala final
-                this.dialogText.setText(this.finalDialog[this.currentFinalIndex]); // Atualiza o texto do diálogo com a próxima fala final
+                this.currentFinalIndex++;
+                this.dialogText.setText(this.finalDialog[this.currentFinalIndex]);
                 return;
             }
-            this.scene.start('officeScene'); // Vai para a cena "officeScene"
+            this.scene.start('officeScene'); // Vai para a mesma cena para ambos
             return;
         }
     
-        // Fluxo para "Não"
+        // Diálogo da opção "Não"
         if (this.optionSelected && this.currentConditionalIndex >= 0 && this.currentConditionalIndex < this.conditionalDialog.length - 1) {
-            this.currentConditionalIndex++; // Avança para a próxima fala condicional
-            this.dialogText.setText(this.conditionalDialog[this.currentConditionalIndex]); // Atualiza o texto do diálogo com a próxima fala condicional
+            this.currentConditionalIndex++;
+            this.dialogText.setText(this.conditionalDialog[this.currentConditionalIndex]);
             return;
         }
     
+        // Final do diálogo "Não", transição para o finalDialog
         if (this.optionSelected && this.currentConditionalIndex === this.conditionalDialog.length - 1) {
-            this.dialogText.setText(this.finalDialog[0]); // Exibe a primeira fala final
-            this.overlayImage.setAlpha(1); // Torna a imagem de sobreposição visível
-            this.overlayVisible = true; // Marca que a imagem de sobreposição está visível
-            this.currentConditionalIndex++; // Incrementa o índice condicional para evitar repetição
+            this.dialogText.setText(this.finalDialog[0]);
+            this.overlayImage.setAlpha(1);
+            this.overlayVisible = true;
+            this.currentConditionalIndex++; // Marca que entrou nessa fase
             return;
         }
     
+        // Exibe falas finais depois da tela de job rotation
         if (this.overlayVisible && this.overlayImage.alpha === 1) {
             if (this.currentFinalIndex < this.finalDialog.length - 1) {
-                this.currentFinalIndex++; // Avança para a próxima fala final
-                this.dialogText.setText(this.finalDialog[this.currentFinalIndex]); // Atualiza o texto do diálogo com a próxima fala final
+                this.currentFinalIndex++;
+                this.dialogText.setText(this.finalDialog[this.currentFinalIndex]);
                 return;
             }
-            this.scene.start('officeScene2'); // Vai para a cena "officeScene2"
+            this.scene.start('officeScene'); // Unificado para ir sempre para officeScene
             return;
         }
     
-        this.currentDialogIndex++; // Incrementa o índice do diálogo atual
+        this.currentDialogIndex++;
         if (this.currentDialogIndex < this.introduction.length) {
-    
             if (this.currentDialogIndex === 2 && this.keyEnterIcon) {
-                this.keyEnterIcon.setVisible(false); // Esconde o ícone da tecla ENTER na fala 2
+                this.keyEnterIcon.setVisible(false);
             }
-    
-            this.showDialog(); // Exibe o próximo diálogo
+            this.showDialog();
         }
     }
 }
