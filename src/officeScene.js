@@ -389,6 +389,7 @@ class OfficeScene extends Phaser.Scene {
     this.upButton.on("pointerdown", () => { // Adiciona um evento ao clicar no botão
       this.scene.stop("officeScene"); // Para a cena atual (escritório)
       this.scene.start("elevadorScene"); // Inicia a cena do elevador
+      this.officeMusic.stop();
     });
   }
 
