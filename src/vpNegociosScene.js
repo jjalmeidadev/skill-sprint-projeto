@@ -17,8 +17,9 @@ class VpNegociosScene extends Phaser.Scene {
 
         this.load.spritesheet("npc14", "../assets/personagens/VPpessoas/npc14.png", { frameWidth: 16, frameHeight: 32 }); // Carrega o spritesheet do NPC 14
         this.load.spritesheet("npc15", "../assets/personagens/VPpessoas/npc15.png", { frameWidth: 16, frameHeight: 32 }); // Carrega o spritesheet do NPC 15
-        
-        this.load.audio('indicatorSound', '../assets/sounds/497198_abacagi_bubble-pops (mp3cut.net).wav'); // Carrega o som do indicador de interação
+        this.load.spritesheet("npc10", "../assets/personagens/npc10Lift.png", {frameWidth: 16,  frameHeight: 32, }); // Carrega o spritesheet do NPC 10 no elevador
+
+        //this.load.audio('indicatorSound', '../assets/sounds/497198_abacagi_bubble-pops (mp3cut.net).wav'); // Carrega o som do indicador de interação
         this.load.audio('walkSound', '../assets/sounds/753292__vrymaa__footsteps-high-heels-hardwood-walk-run (mp3cut.net).wav'); // Carrega o som de passos
         this.load.audio('correctSound', '../assets/sounds/476178__unadamlar__correct-choice.wav'); // Carrega o som de resposta correta
         this.load.audio('wrongSound', '../assets/sounds/700641__producing_raylite__incorrect-buzzer.wav'); // Carrega o som de resposta errada
@@ -28,7 +29,7 @@ class VpNegociosScene extends Phaser.Scene {
         this.load.image("balloonText", "../assets/balaoTexto.png"); // Carrega a imagem do balão de texto
         this.load.image('locker', '../assets/minigameVpNegocios/locker.png'); // Carrega a imagem do cadeado
         this.load.image('congratulations5G', '../assets/minigameVpNegocios/congratulations5G.png'); // Carrega a image de parabens por coletar os 5 chips
-
+        this.load.image('crashedWire', '../assets/assetsWires/crashedWire.png'); // Carrega a imagem dos fios quebrados
         this.load.image("bgElevNegocios", "../assets/bgelevadoroffice.png"); // Carrega a imagem de fundo do elevador
         this.load.image("panelElev", "../assets/painelelevador.png"); // Carrega a imagem do painel do elevador
         this.load.image("buttonElevNegocios", "../assets/botaocimaelevador.png"); // Carrega a imagem do botão do elevador
@@ -87,7 +88,7 @@ class VpNegociosScene extends Phaser.Scene {
       const layer12 = map.createLayer("batente", tileset2, offsetX, 0).setScale(2.5); // Cria a camada "batente" depois de criar o player
 
       this.walkSound = this.sound.add('walkSound', {loop: false, volume: 2}); // Som de passos
-      this.indicatorSound = this.sound.add('indicatorSound', {loop: true, volume: 1.5}); // Som do indicador de interação
+      //this.indicatorSound = this.sound.add('indicatorSound', {loop: true, volume: 1.5}); // Som do indicador de interação
       this.buttonClick = this.sound.add('buttonSound', {loop: false, volume: 10}); // Som do clique do botão
 
       // Dá zoom na tela do jogo e faz a câmera seguir o personagem
@@ -104,6 +105,7 @@ class VpNegociosScene extends Phaser.Scene {
 
       this.add.image(width - 410, height - 245, 'chip').setScale(0.03);
       this.createLocker();
+      this.createServer();
     }
 
     update() {
@@ -292,6 +294,13 @@ class VpNegociosScene extends Phaser.Scene {
       this.npc15.anims.play('npc15'); // Inicia a animação "npc15" para o NPC 15
       this.createIndicatorNpc15(); // Ativa o indicador para o NPC
       //this.createCollisionNpc();
+
+      this.npc10 = this.physics.add.sprite( width - 380, height - 580, 'npc10'); // Cria o sprite da NPC 10 na posição especificada
+      this.npc10.setScale(2.5); // Define a escala do sprite da NPC 10
+      this.npc10.setImmovable(true); // Define a NPC 10 como imóvel
+      this.createNpcAnimations(); // Cria as animações para os NPCs
+      this.npc10.anims.play('npc10'); // Reproduz a animação "npc10" para a NPC 10
+      this.createIndicatorNpc10();
     }
 
     createNpcAnimations() { 
@@ -308,11 +317,103 @@ class VpNegociosScene extends Phaser.Scene {
         frameRate: 4, // Velocidade da animação
         repeat: -1, // Repetição infinita
       });
+
+      this.anims.create({ // Cria a animação "npc10" para a NPC 10
+        key: "npc10", // Nome da animação
+        frames: this.anims.generateFrameNumbers('npc10', { start: 42, end: 55 }), // Define os quadros da animação
+        frameRate: 6, // Velocidade da animação (quadros por segundo)
+        repeat: -1, // Faz a animação repetir indefinidamente
+      });
     }  
 
     createCollisionNpc() {
       this.physics.add.collider(this.player, this.npc14) // Colisão com o "NPC 14"
       this.physics.add.collider(this.player, this.npc15) // Colisão com o "NPC 15"
+    }
+
+    createServer() {
+      this.crashedWire = this.add.image(width - 1170, height - 215, 'crashedWire').setScale(0.06);
+    }
+
+    createIndicatorNpc10() {
+      this.indicatorNpc10 = this.physics.add.sprite(this.npc10.x, this.npc10.y - 50, 'indicator');
+      this.indicatorNpc10.setScale(0.2);
+      this.indicatorNpc10.setImmovable(true);
+      this.indicatorNpc10.play("exclaiming");
+  
+      this.physics.add.overlap(this.player, this.npc10, () => {
+          if (!this.npc10Interacted && !this.keyENpc10 && !this.Npc10ChipCollected) {
+              if (this.indicatorNpc10) {
+                  this.indicatorNpc10.destroy();
+                  this.indicatorNpc10 = null;
+              }
+  
+              this.keyENpc10 = this.add.image(this.npc10.x, this.npc10.y - 40, 'keyE').setScale(0.2).setDepth(1000);
+              this.canInteractWithNpc10 = true;
+          }
+      });
+  
+      // Remove a tecla E se o player se afasta
+      this.physics.add.overlap(this.player, this.npc10, null, (player, npc) => {
+          const distance = Phaser.Math.Distance.Between(player.x, player.y, npc.x, npc.y);
+          if (distance > 100 && this.keyENpc10) {
+              this.keyENpc10.destroy();
+              this.keyENpc10 = null;
+              this.canInteractWithNpc10 = false;
+          }
+          return true;
+      }, this);
+  
+      // Adiciona a interação com o NPC 10
+      this.input.keyboard.on("keydown-E", () => {
+          if (this.canInteractWithNpc10) {
+              this.canInteractWithNpc10 = false;
+  
+              if (this.keyENpc10) {
+                  this.keyENpc10.destroy(); // Remove a tecla E
+                  this.keyENpc10 = null;
+              }
+  
+              this.npc10Interacted = true; // Marca que o NPC 10 foi interagido
+              this.showNpc10Dialog(); // Chama o método para exibir o diálogo
+          }
+      });
+    }
+
+    showNpc10Dialog() {
+      const speech = [
+          "Olá! Bem-vindo à área de negócios!",
+          "Aqui você pode aprender mais sobre os serviços oferecidos.",
+          "Explore o ambiente e colete os chips para desbloquear novas informações!"
+      ];
+
+      const dialogBalloon = this.add.image(this.npc10.x + 50, this.npc10.y - 50, "balloonText").setScale(0.8);
+      const dialogText = this.add.text(this.npc10.x - 15, this.npc10.y - 100, speech[0], {
+          fontSize: "10px",
+          fill: "#000000",
+          wordWrap: { width: dialogBalloon.width - 50 },
+      });
+
+      // Adiciona a tecla ENTER ao lado do balão de diálogo
+      const keyEnter = this.add.image(this.npc10.x - 40, this.npc10.y - 40, 'keyENTER').setScale(0.06).setDepth(1000);
+
+      let currentIndex = 0;
+
+      const advanceDialog = () => {
+          currentIndex++;
+          if (currentIndex < speech.length) {
+              dialogText.setText(speech[currentIndex]); // Atualiza o texto do diálogo
+          } else {
+              // Remove o balão de diálogo e a tecla ENTER
+              dialogBalloon.destroy();
+              dialogText.destroy();
+              keyEnter.destroy();
+              this.input.keyboard.off("keydown-ENTER", advanceDialog);
+          }
+      };
+
+      // Adiciona o evento para avançar o diálogo com a tecla ENTER
+      this.input.keyboard.on("keydown-ENTER", advanceDialog);
     }
 
     createIndicatorNpc15() {
