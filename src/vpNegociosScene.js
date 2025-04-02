@@ -26,6 +26,8 @@ class VpNegociosScene extends Phaser.Scene {
         this.load.image('keyE', '../assets/teclaE.png'); // Carrega a imagem da tecla "E" para interação
         this.load.image('keyENTER', '../assets/keyEnter.png'); // Carrega a imagem da tecla "ENTER" para interação
         this.load.image("balloonText", "../assets/balaoTexto.png"); // Carrega a imagem do balão de texto
+        this.load.image('locker', '../assets/minigameVpNegocios/locker.png'); // Carrega a imagem do cadeado
+        this.load.image('congratulations5G', '../assets/minigameVpNegocios/congratulations5G.png'); // Carrega a image de parabens por coletar os 5 chips
 
         this.load.image("bgElevNegocios", "../assets/bgelevadoroffice.png"); // Carrega a imagem de fundo do elevador
         this.load.image("panelElev", "../assets/painelelevador.png"); // Carrega a imagem do painel do elevador
@@ -101,6 +103,7 @@ class VpNegociosScene extends Phaser.Scene {
       }).setDepth(1000);
 
       this.add.image(width - 410, height - 245, 'chip').setScale(0.03);
+      this.createLocker();
     }
 
     update() {
@@ -122,6 +125,16 @@ class VpNegociosScene extends Phaser.Scene {
           this.npc15Question(); // Chama o diálogo com o NPC
         }
       }
+
+      if(this.collectedChips === 4) {
+        this.locker.destroy();
+      }
+
+          // Verifica se o jogador coletou todos os 5 chips
+    if (this.collectedChips === 5 && !this.congratulationsShown) {
+      this.showCongratulations(); // Exibe a imagem de parabéns
+      this.congratulationsShown = true; // Garante que a imagem será exibida apenas uma vez
+  }
     }
 
     movePlayer() {
@@ -419,223 +432,244 @@ class VpNegociosScene extends Phaser.Scene {
     this.input.keyboard.on("keydown-ENTER", enterNpc15);
   }
 
-    createOptions() {
-      const letterA = this.physics.add.sprite(width - 590, height - 330, 'letterA');
-      letterA.setScale(0.1);
-      letterA.setImmovable();
-  
-      const letterB = this.physics.add.sprite(width - 510, height - 330, 'letterB');
-      letterB.setScale(0.1);
-      letterB.setImmovable();
-  
-      const showText = (text, x, y) => {
-          const balloonText = this.add.image(x, y, "balloonText").setScale(0.8);
-          const displayedText = this.add.text(x - 70, y - 52, text, {
-              fontSize: "10px",
-              fill: "#000000",
-              wordWrap: { width: balloonText.width - 40 },
-          });
-  
-          return { balloonText, displayedText };
-      };
-  
-      let activeTextA = null;
-      let activeTextB = null;
-  
-      const destroyOptions = () => {
-          if (letterA) letterA.destroy();
-          if (letterB) letterB.destroy();
-          if (activeTextA) {
-              activeTextA.balloonText.destroy();
-              activeTextA.displayedText.destroy();
-          }
-          if (activeTextB) {
-              activeTextB.balloonText.destroy();
-              activeTextB.displayedText.destroy();
-          }
-          if (this.keyEnterLetterA) this.keyEnterLetterA.destroy();
-          if (this.keyEnterLetterB) this.keyEnterLetterB.destroy();
-      };
-  
-      this.physics.add.overlap(this.player, letterA, () => {
-          if (!this.keyEnterLetterA && !activeTextA) {
-              const { balloonText, displayedText } = showText(
-                  "Planos de celular pré e pós-pago, internet banda larga residencial(Vivo Fibra), TV por assinatura, serviços digitais(Vivo Play) e apps de streaming.",
-                  letterA.x + 80,
-                  letterA.y - 80
-              );
-  
-              activeTextA = { balloonText, displayedText };
-  
-              this.keyEnterLetterA = this.add.image(letterA.x, letterA.y - 40, 'keyENTER').setScale(0.06).setDepth(1000);
-  
-              const enterLetterA = () => {
-                  if (activeTextA && activeTextA.balloonText) {
-                      activeTextA.balloonText.destroy();
-                  }
-                  if (activeTextA && activeTextA.displayedText) {
-                      activeTextA.displayedText.destroy();
-                  }
-  
-                  if (this.keyEnterLetterA) {
-                      this.keyEnterLetterA.destroy();
-                      this.keyEnterLetterA = null;
-                  }
-  
-                  activeTextA = null;
-  
-                  this.input.keyboard.off("keydown-ENTER", enterLetterA);
-  
-                  this.correct = this.sound.add('correctSound', { loop: false, volume: 10 });
-                  this.input.keyboard.off("keydown-ENTER", enterLetterA);
-  
-                  // Reproduz o som de resposta correta
-                  this.correct = this.sound.add('correctSound', { loop: false, volume: 10 });
-                  this.correct.play();
-  
-                  // Destroi as opções
-                  destroyOptions();
-  
-                  // Feedback do NPC 15 com múltiplas falas
-                  const feedbackSpeech = [
-                      "Correto! Esses são exatamente os serviços focados no consumidor final, que é o público-alvo do modelo B2C (business to consumer).",
-                      "Como recompensa vou te entregar um chip para te ajudar nessa aventura."
-                  ];
-  
-                  const feedbackBalloon = this.add.image(this.npc15.x + 50, this.npc15.y - 50, "balloonText").setScale(0.8);
-                  const feedbackText = this.add.text(this.npc15.x - 15, this.npc15.y - 100, feedbackSpeech[0], {
-                      fontSize: "10px",
-                      fill: "#000000",
-                      wordWrap: { width: feedbackBalloon.width - 50 },
-                  });
-  
-                  // Adiciona a tecla ENTER ao lado do balão de feedback
-                  const feedbackKeyEnter = this.add.image(this.npc15.x - 40, this.npc15.y - 40, 'keyENTER').setScale(0.06).setDepth(1000);
-  
-                  let feedbackIndex = 0;
-  
-                  const advanceFeedback = () => {
-                      feedbackIndex++;
-                      if (feedbackIndex < feedbackSpeech.length) {
-                          feedbackText.setText(feedbackSpeech[feedbackIndex]);
-                      } else {
-                          // Remove o feedback e a tecla ENTER, e cria o chip do NPC 15
-                          feedbackBalloon.destroy();
-                          feedbackText.destroy();
-                          feedbackKeyEnter.destroy(); // Destroi a tecla ENTER
-                          this.input.keyboard.off("keydown-ENTER", advanceFeedback);
-                          
-                          // Cria o chip do NPC 15 apenas se ele ainda não foi criado
-                        if (!this.npc15ChipCollected) {
-                          this.createNpc15Chip();
-                        }
+  createOptions() {
+    const letterA = this.physics.add.sprite(width - 590, height - 330, 'letterA');
+    letterA.setScale(0.1);
+    letterA.setImmovable();
+
+    const letterB = this.physics.add.sprite(width - 510, height - 330, 'letterB');
+    letterB.setScale(0.1);
+    letterB.setImmovable();
+
+    const showText = (text, x, y) => {
+        const balloonText = this.add.image(x, y, "balloonText").setScale(0.8);
+        const displayedText = this.add.text(x - 70, y - 52, text, {
+            fontSize: "10px",
+            fill: "#000000",
+            wordWrap: { width: balloonText.width - 40 },
+        });
+
+        return { balloonText, displayedText };
+    };
+
+    let activeTextA = null;
+    let activeTextB = null;
+
+    const destroyOptions = () => {
+        if (letterA) letterA.destroy();
+        if (letterB) letterB.destroy();
+        if (activeTextA) {
+            activeTextA.balloonText.destroy();
+            activeTextA.displayedText.destroy();
+        }
+        if (activeTextB) {
+            activeTextB.balloonText.destroy();
+            activeTextB.displayedText.destroy();
+        }
+        if (this.keyEnterLetterA) this.keyEnterLetterA.destroy();
+        if (this.keyEnterLetterB) this.keyEnterLetterB.destroy();
+    };
+
+    this.physics.add.overlap(this.player, letterA, () => {
+        if (!this.keyEnterLetterA && !activeTextA) {
+            const { balloonText, displayedText } = showText(
+                "Planos de celular pré e pós-pago, internet banda larga residencial(Vivo Fibra), TV por assinatura, serviços digitais(Vivo Play) e apps de streaming.",
+                letterA.x + 80,
+                letterA.y - 80
+            );
+
+            activeTextA = { balloonText, displayedText };
+
+            this.keyEnterLetterA = this.add.image(letterA.x, letterA.y - 40, 'keyENTER').setScale(0.06).setDepth(1000);
+
+            const enterLetterA = () => {
+                if (activeTextA && activeTextA.balloonText) {
+                    activeTextA.balloonText.destroy();
+                }
+                if (activeTextA && activeTextA.displayedText) {
+                    activeTextA.displayedText.destroy();
+                }
+
+                if (this.keyEnterLetterA) {
+                    this.keyEnterLetterA.destroy();
+                    this.keyEnterLetterA = null;
+                }
+
+                activeTextA = null;
+
+                this.input.keyboard.off("keydown-ENTER", enterLetterA);
+
+                this.correct = this.sound.add('correctSound', { loop: false, volume: 10 });
+                this.input.keyboard.off("keydown-ENTER", enterLetterA);
+
+                // Reproduz o som de resposta correta
+                this.correct = this.sound.add('correctSound', { loop: false, volume: 10 });
+                this.correct.play();
+
+                // Destroi as opções
+                destroyOptions();
+
+                // Feedback do NPC 15 com múltiplas falas
+                const feedbackSpeech = [
+                    "Correto! Esses são exatamente os serviços focados no consumidor final, que é o público-alvo do modelo B2C (business to consumer).",
+                    "Como recompensa vou te entregar um chip para te ajudar nessa aventura."
+                ];
+
+                const feedbackBalloon = this.add.image(this.npc15.x + 50, this.npc15.y - 50, "balloonText").setScale(0.8);
+                const feedbackText = this.add.text(this.npc15.x - 15, this.npc15.y - 100, feedbackSpeech[0], {
+                    fontSize: "10px",
+                    fill: "#000000",
+                    wordWrap: { width: feedbackBalloon.width - 50 },
+                });
+
+                // Adiciona a tecla ENTER ao lado do balão de feedback
+                const feedbackKeyEnter = this.add.image(this.npc15.x - 40, this.npc15.y - 40, 'keyENTER').setScale(0.06).setDepth(1000);
+
+                let feedbackIndex = 0;
+
+                const advanceFeedback = () => {
+                    feedbackIndex++;
+                    if (feedbackIndex < feedbackSpeech.length) {
+                        feedbackText.setText(feedbackSpeech[feedbackIndex]);
+                    } else {
+                        // Remove o feedback e a tecla ENTER, e cria o chip do NPC 15
+                        feedbackBalloon.destroy();
+                        feedbackText.destroy();
+                        feedbackKeyEnter.destroy(); // Destroi a tecla ENTER
+                        this.input.keyboard.off("keydown-ENTER", advanceFeedback);
+                        
+                        // Cria o chip do NPC 15 apenas se ele ainda não foi criado
+                      if (!this.npc15ChipCollected) {
+                        this.createNpc15Chip();
                       }
-                  };
-  
-                  this.input.keyboard.on("keydown-ENTER", advanceFeedback);
-              };
-  
-              this.input.keyboard.on("keydown-ENTER", enterLetterA);
-          }
-      });
-  
-      this.physics.add.overlap(this.player, letterB, () => {
-          if (!this.keyEnterLetterB && !activeTextB) {
-              const { balloonText, displayedText } = showText(
-                  "Soluções de conectividade corporativa, serviços em nuvem, redes privadas, IoT empresarial e consultoria em transformação digital.",
-                  letterB.x + 80,
-                  letterB.y - 80
-              );
-  
-              activeTextB = { balloonText, displayedText };
-  
-              this.keyEnterLetterB = this.add.image(letterB.x, letterB.y - 40, 'keyENTER').setScale(0.06).setDepth(1000);
-  
-              const enterLetterB = () => {
-                  if (activeTextB && activeTextB.balloonText) {
-                      activeTextB.balloonText.destroy();
-                  }
-                  if (activeTextB && activeTextB.displayedText) {
-                      activeTextB.displayedText.destroy();
-                  }
-  
-                  if (this.keyEnterLetterB) {
-                      this.keyEnterLetterB.destroy();
-                      this.keyEnterLetterB = null;
-                  }
-  
-                  activeTextB = null;
-  
-                  this.input.keyboard.off("keydown-ENTER", enterLetterB);
-  
-                  this.wrong = this.sound.add('wrongSound', { loop: false, volume: 10 });
-                  this.wrong.play();
-  
-                  destroyOptions();
-  
-                  const feedbackSpeech = [
-                      "Incorreto. Esses serviços são voltados para empresas e fazem parte do modelo B2B (business to business), não para o consumidor final.",
-                      "Tente novamente e escolha a opção correta!"
-                  ];
-  
-                  const feedbackBalloon = this.add.image(this.npc15.x + 50, this.npc15.y - 50, "balloonText").setScale(0.8);
-                  const feedbackText = this.add.text(this.npc15.x - 15, this.npc15.y - 100, feedbackSpeech[0], {
-                      fontSize: "10px",
-                      fill: "#000000",
-                      wordWrap: { width: feedbackBalloon.width - 50 },
-                  });
-  
-                  const feedbackKeyEnter = this.add.image(this.npc15.x - 40, this.npc15.y - 40, 'keyENTER').setScale(0.06).setDepth(1000);
-  
-                  let feedbackIndex = 0;
-  
-                  const advanceFeedback = () => {
-                      feedbackIndex++;
-                      if (feedbackIndex < feedbackSpeech.length) {
-                          feedbackText.setText(feedbackSpeech[feedbackIndex]);
-                      } else {
-                          feedbackBalloon.destroy();
-                          feedbackText.destroy();
-                          feedbackKeyEnter.destroy();
-                          this.input.keyboard.off("keydown-ENTER", advanceFeedback);
-                          this.createOptions(); // Recria as opções sem criar o chip
-                      }
-                  };
-  
-                  this.input.keyboard.on("keydown-ENTER", advanceFeedback);
-              };
-  
-              this.input.keyboard.on("keydown-ENTER", enterLetterB);
-          }
-      });
-  
-      this.physics.add.overlap(this.player, letterA, null, (player, letter) => {
-          const distance = Phaser.Math.Distance.Between(player.x, player.y, letter.x, letter.y);
-          if (distance > 30 && activeTextA) {
-              activeTextA.balloonText.destroy();
-              activeTextA.displayedText.destroy();
-              activeTextA = null;
-              if (this.keyEnterLetterA) {
-                  this.keyEnterLetterA.destroy();
-                  this.keyEnterLetterA = null;
-              }
-          }
-          return true;
-      }, this);
-  
-      this.physics.add.overlap(this.player, letterB, null, (player, letter) => {
-          const distance = Phaser.Math.Distance.Between(player.x, player.y, letter.x, letter.y);
-          if (distance > 30 && activeTextB) {
-              activeTextB.balloonText.destroy();
-              activeTextB.displayedText.destroy();
-              activeTextB = null;
-              if (this.keyEnterLetterB) {
-                  this.keyEnterLetterB.destroy();
-                  this.keyEnterLetterB = null;
-              }
-          }
-          return true;
-      }, this);
+                    }
+                };
+
+                this.input.keyboard.on("keydown-ENTER", advanceFeedback);
+            };
+
+            this.input.keyboard.on("keydown-ENTER", enterLetterA);
+        }
+    });
+
+    this.physics.add.overlap(this.player, letterB, () => {
+        if (!this.keyEnterLetterB && !activeTextB) {
+            const { balloonText, displayedText } = showText(
+                "Soluções de conectividade corporativa, serviços em nuvem, redes privadas, IoT empresarial e consultoria em transformação digital.",
+                letterB.x + 80,
+                letterB.y - 80
+            );
+
+            activeTextB = { balloonText, displayedText };
+
+            this.keyEnterLetterB = this.add.image(letterB.x, letterB.y - 40, 'keyENTER').setScale(0.06).setDepth(1000);
+
+            const enterLetterB = () => {
+                if (activeTextB && activeTextB.balloonText) {
+                    activeTextB.balloonText.destroy();
+                }
+                if (activeTextB && activeTextB.displayedText) {
+                    activeTextB.displayedText.destroy();
+                }
+
+                if (this.keyEnterLetterB) {
+                    this.keyEnterLetterB.destroy();
+                    this.keyEnterLetterB = null;
+                }
+
+                activeTextB = null;
+
+                this.input.keyboard.off("keydown-ENTER", enterLetterB);
+
+                this.wrong = this.sound.add('wrongSound', { loop: false, volume: 10 });
+                this.wrong.play();
+
+                destroyOptions();
+
+                const feedbackSpeech = [
+                    "Incorreto. Esses serviços são voltados para empresas e fazem parte do modelo B2B (business to business), não para o consumidor final.",
+                    "Tente novamente e escolha a opção correta!"
+                ];
+
+                const feedbackBalloon = this.add.image(this.npc15.x + 50, this.npc15.y - 50, "balloonText").setScale(0.8);
+                const feedbackText = this.add.text(this.npc15.x - 15, this.npc15.y - 100, feedbackSpeech[0], {
+                    fontSize: "10px",
+                    fill: "#000000",
+                    wordWrap: { width: feedbackBalloon.width - 50 },
+                });
+
+                const feedbackKeyEnter = this.add.image(this.npc15.x - 40, this.npc15.y - 40, 'keyENTER').setScale(0.06).setDepth(1000);
+
+                let feedbackIndex = 0;
+
+                const advanceFeedback = () => {
+                    feedbackIndex++;
+                    if (feedbackIndex < feedbackSpeech.length) {
+                        feedbackText.setText(feedbackSpeech[feedbackIndex]);
+                    } else {
+                        feedbackBalloon.destroy();
+                        feedbackText.destroy();
+                        feedbackKeyEnter.destroy();
+                        this.input.keyboard.off("keydown-ENTER", advanceFeedback);
+                        this.createOptions(); // Recria as opções sem criar o chip
+                        this.npc15ChipCollected = false;
+                        this.npc15ChipCreated = false;
+                    }
+                };
+
+                this.input.keyboard.on("keydown-ENTER", advanceFeedback);
+            };
+
+            this.input.keyboard.on("keydown-ENTER", enterLetterB);
+        }
+    });
+
+    this.physics.add.overlap(this.player, letterA, null, (player, letter) => {
+        const distance = Phaser.Math.Distance.Between(player.x, player.y, letter.x, letter.y);
+        if (distance > 30 && activeTextA) {
+            activeTextA.balloonText.destroy();
+            activeTextA.displayedText.destroy();
+            activeTextA = null;
+            if (this.keyEnterLetterA) {
+                this.keyEnterLetterA.destroy();
+                this.keyEnterLetterA = null;
+            }
+        }
+        return true;
+    }, this);
+
+    this.physics.add.overlap(this.player, letterB, null, (player, letter) => {
+        const distance = Phaser.Math.Distance.Between(player.x, player.y, letter.x, letter.y);
+        if (distance > 30 && activeTextB) {
+            activeTextB.balloonText.destroy();
+            activeTextB.displayedText.destroy();
+            activeTextB = null;
+            if (this.keyEnterLetterB) {
+                this.keyEnterLetterB.destroy();
+                this.keyEnterLetterB = null;
+            }
+        }
+        return true;
+    }, this);
+  }
+
+  createLocker() {
+    this.locker = this.physics.add.sprite(width - 370, height - 220, 'locker').setScale(0.09);
+    this.locker.setImmovable(true); // Define o locker como imóvel para colisões
+    this.physics.add.collider(this.player, this.locker, () => {
+      console.log("Player colidiu com o locker!");
+      // Adicione aqui qualquer lógica adicional para a colisão
+    });
+  }
+
+  showCongratulations() {
+    const congratulationsImage = this.add.image(this.player.x, this.player.y - 150, 'congratulations5G').setDepth(1000);
+    congratulationsImage.setScale(0.3); // Ajusta o tamanho da imagem, se necessário
+
+    // Remove a imagem de parabéns após 3 segundos
+    this.time.delayedCall(3000, () => {
+        congratulationsImage.destroy();
+    });
   }
 }
 
