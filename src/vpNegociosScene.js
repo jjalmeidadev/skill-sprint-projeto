@@ -155,14 +155,16 @@ class VpNegociosScene extends Phaser.Scene {
       buttonBack.setScale(0.2); // Reduz o tamanho da imagem para 20% do tamanho original
 
       this.input.keyboard.on("keydown-E", () => { // Adiciona um evento para quando a tecla "E" for pressionada
-          const distance = Phaser.Math.Distance.Between( // Calcula a distância entre o jogador e o botão
-              this.player.x, this.player.y, buttonBack.x, buttonBack.y // Coordenadas do jogador e do botão
-          );
+      const distance = Phaser.Math.Distance.Between( // Calcula a distância entre o jogador e o botão
+      this.player.x, this.player.y, buttonBack.x, buttonBack.y // Coordenadas do jogador e do botão
+      );
 
-          if (distance < 100) { // Verifica se o jogador está dentro de um raio de 100 pixels do botão
-              this.scene.stop("vpNegociosScene"); // Para a cena atual "vpNegociosScene"
-              this.scene.start("elevadorScene"); // Inicia a cena "elevadorScene"
-          }
+      if (distance < 100) { // Verifica se o jogador está dentro de um raio de 100 pixels do botão
+      // Pausa todos os sons da cena
+      this.sound.stopAll();
+      this.scene.stop("vpNegociosScene"); // Para a cena atual "vpNegociosScene"
+      this.scene.start("elevadorScene"); // Inicia a cena "elevadorScene"
+      }
       });
     }
 

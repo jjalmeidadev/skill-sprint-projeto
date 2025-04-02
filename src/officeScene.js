@@ -73,6 +73,7 @@ class OfficeScene extends Phaser.Scene {
     this.createComputer(width, height); // Adiciona o computador ao jogo
     this.lastPosition = "down"; // Define a posição inicial do jogador como "para baixo"
     this.createCollisions(); // Configura colisões do jogador com camadas selecionadas
+    this.createButtonBack(width, height);//cria botão de voltar pro elevador 
 
     this.events.on('resume', () => { // Evento para retomar a música ao retornar à cena
       if (!this.officeMusic || !this.officeMusic.isPlaying) { // Verifica se a música não está tocando
@@ -661,6 +662,26 @@ class OfficeScene extends Phaser.Scene {
             this.scene.get('officeScene').events.emit('stopWalkSound'); // Emite novamente o evento para parar o som de passos na cena do escritório
         }
     }); 
+  }
+  
+  
+  createButtonBack(width, height) {
+    const buttonBack = this.add.image(width - 435, height - 700, "keyE"); // Adiciona a imagem do botão de retorno na posição especificada
+    buttonBack.setScale(0.2); // Ajusta o tamanho da imagem do botão de retorno
+  
+    this.input.keyboard.on("keydown-E", () => { // Adiciona um evento para a tecla "E"
+    const distance = Phaser.Math.Distance.Between( // Calcula a distância entre o jogador e o botão de retorno
+        this.player.x, this.player.y, buttonBack.x, buttonBack.y // Coordenadas do jogador e do botão
+    );
+    
+    if (distance < 100) { // Verifica se o jogador está próximo o suficiente do botão (raio de 100)
+      // Pausa todos os sons da cena
+      this.sound.stopAll();
+
+      this.scene.stop("vpTecnologiaScene"); // Para a cena atual
+      this.scene.start("elevadorScene"); // Inicia a cena do elevador
+    }
+    });
   }
 
   resume() {

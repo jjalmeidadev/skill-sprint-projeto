@@ -37,6 +37,7 @@ class VpTecnologiaScene extends Phaser.Scene {
 
     this.createPlayer(width, height); // Cria o jogador
     this.createPlayerAnimations(); // Cria as animações do jogador
+    this.createButtonBack(width, height);//cria botão de voltar
 
     this.physics.add.collider(this.player, layer1); // Configura colisão com a camada de piso e paredes
     this.physics.add.collider(this.player, layer3); // Configura colisão com a camada de paredes
@@ -130,5 +131,24 @@ class VpTecnologiaScene extends Phaser.Scene {
       this.walkSound.play(); // Toca o som de passos
       }
     }
+  }
+
+  createButtonBack(width, height) {
+    const buttonBack = this.add.image(width - 700, height - 680, "keyE"); // Adiciona a imagem do botão de retorno na posição especificada
+    buttonBack.setScale(0.2); // Ajusta o tamanho da imagem do botão de retorno
+    
+    this.input.keyboard.on("keydown-E", () => { // Adiciona um evento para a tecla "E"
+    const distance = Phaser.Math.Distance.Between( // Calcula a distância entre o jogador e o botão de retorno
+        this.player.x, this.player.y, buttonBack.x, buttonBack.y // Coordenadas do jogador e do botão
+    );
+    
+    if (distance < 100) { // Verifica se o jogador está próximo o suficiente do botão (raio de 100)
+      // Pausa todos os sons da cena
+      this.sound.stopAll();
+
+      this.scene.stop("vpTecnologiaScene"); // Para a cena atual
+      this.scene.start("elevadorScene"); // Inicia a cena do elevador
+    }
+    });
   }
 }
