@@ -22,7 +22,7 @@ class VpEstrategiaScene extends Phaser.Scene {
   }
 
   init(data) {
-    this.showThankYou = data && data.showThankYou;
+    this.showThankYou = data && data.showThankYou; // Flag to show "Obrigado!" dialogue
   }
 
   create() {
@@ -102,7 +102,7 @@ class VpEstrategiaScene extends Phaser.Scene {
           "Mas tem um porém...",
           "As inscrições fecham em 24h!",
           "Só quem montar um plano estratégico para funcionários HOJE garante a vaga!",
-          "Você tem 2 minutos para ajudar três talentos a escolher seus próximos passos de carreira.",
+          "Você tem 2 minutos para ajudar três talentos a escolherem seus próximos passos de carreira.",
           "Planeje com cuidado!",
           "Cada decisão impacta o crescimento deles na empresa!",
           "Siga as exclamações para ajudá-los."
@@ -126,14 +126,13 @@ class VpEstrategiaScene extends Phaser.Scene {
     this.npcIdle.play('npc_idle'); // Reproduz a animação IDLE
     this.npcIdle.body.immovable = true; // Faz o NPC ficar parado
 
-    // Add delayed thank you check after npcIdle is created
+    // Show "Obrigado!" dialogue immediately after returning from minigame
     if (this.showThankYou) {
       this.time.delayedCall(500, () => {
-        this.startDialogue(["Muito obrigado!"], this.npcIdle);
+        this.startDialogue(["Obrigado!"], this.npcIdle); // Trigger dialogue
       });
     }
 
-    // Adiciona a tecla Enter ao npcIdle
     this.keyEnterIdle = this.add.image(this.npcIdle.x + 50, this.npcIdle.y - 100, 'keyEnter').setScale(0.2);
     this.keyEnterIdle.setVisible(false); // Deixa a tecla Enter invisível inicialmente
 
@@ -372,12 +371,12 @@ class minigameEstrategiaCarlos extends Phaser.Scene {
       {
         name: 'Carlos',
         elements: [
-          { text: 'Entrar como Analista Comercial', color: 0x4444ff },
-          { text: 'Virar Coordenador de Vendas', color: 0xffff44 },
-          { text: 'Fazer treinamento de liderança', color: 0x44ff44 },
-          { text: 'Virar Gerente (Carreira em Y)', color: 0x9944ff }
+          { text: 'Entrar como Analista Comercial', color: 0x000000 },
+          { text: 'Virar Coordenador de Vendas', color: 0x000000 },
+          { text: 'Fazer treinamento de liderança', color: 0x000000 },
+          { text: 'Virar Gerente (Carreira em Y)', color: 0x000000 }
         ],
-        feedback: 'Correto! Esta é a Carreira em Y - Gerencial: Analista → Coordenador → Gerente. Aqui, você ganha bônus por resultados (PLR) e lidera equipes. A Vivo prioriza líderes internos com treinamentos específicos.'
+        feedback: 'Certíssimo! Este é o caminho do líder na Vivo: Analista → Coordenador → Gerente. Você ganha bônus por resultados (PLR) e acesso a treinamentos exclusivos para crescer na empresa.'
       }
     ];
   }
@@ -413,7 +412,7 @@ class minigameEstrategiaCarlos extends Phaser.Scene {
     }).setOrigin(0.5);
 
     // Centered instructions - adjusted position
-    this.add.text(this.gameWidth / 2, 160, 'Arraste os elementos na ordem correta do início ao fim da carreira', {
+    this.add.text(this.gameWidth / 2, 160, 'Arraste os elementos na ordem correta do início ao fim da carreira!', {
       fontSize: '20px',
       fill: '#000000',
       fontFamily: 'font'
@@ -435,8 +434,8 @@ class minigameEstrategiaCarlos extends Phaser.Scene {
         arrow.setTint(0x000000);
       }
 
-      const zone = this.add.rectangle(x, y, zoneWidth, 120, 0xE6E6E6, 0.8);
-      zone.setStrokeStyle(2, 0x8950FC);
+      const zone = this.add.rectangle(x, y, zoneWidth, 120, 0xB600B9, 0.8);
+      zone.setStrokeStyle(2, 0xB600B9);
       zone.setInteractive();
       zone.correctIndex = i;
 
@@ -456,12 +455,12 @@ class minigameEstrategiaCarlos extends Phaser.Scene {
       const x = startX + (zoneWidth + spacing) * index + zoneWidth / 2;
       const y = this.gameHeight - 150;
 
-      const background = this.add.rectangle(0, 0, zoneWidth, 120, 0x8950FC);
-      background.setStrokeStyle(2, 0x6B3FCC);
+      const background = this.add.rectangle(0, 0, zoneWidth, 120, 0xB600B9);
+      background.setStrokeStyle(2, 0xB600B9);
 
       const text = this.add.text(0, 0, element.text, {
         fontSize: '18px',
-        fill: '#FFFFFF',
+        fill: '#000000', // Changed from '#FFFFFF' to '#000000'
         align: 'center',
         fontFamily: 'font',
         wordWrap: { width: zoneWidth - 20 }
@@ -605,41 +604,61 @@ class minigameEstrategiaCarlos extends Phaser.Scene {
   }
 
   showSuccess() {
-    // Clear any existing feedback
     if (this.feedbackContainer) {
       this.feedbackContainer.destroy();
     }
 
-    // Cria o fundo da tela de feedback em tela cheia
-    const overlay = this.add.rectangle(400, 300, 800, 600, 0x000000, 0.7); // Fundo preto translúcido
-    this.feedbackContainer = this.add.container(400, 300);
+    // Create centered overlay
+    const overlay = this.add.rectangle(
+      this.gameWidth / 2,
+      this.gameHeight / 2,
+      this.gameWidth,
+      this.gameHeight,
+      0x000000,
+      0.7
+    );
 
-    // Ajusta o fundo do feedback para ocupar a tela inteira
-    const feedbackBg = this.add.rectangle(0, 0, this.gameWidth, this.gameHeight, 0x8950FC, 0.9); // Fundo roxo translúcido
-    feedbackBg.setStrokeStyle(4, 0x6B3FCC); // Borda roxa
+    // Create centered container
+    this.feedbackContainer = this.add.container(this.gameWidth / 2, this.gameHeight / 2);
 
-    // Centraliza o texto de feedback
-    const feedbackText = this.add.text(0, 0, this.npcData[this.currentNPC].feedback, {
-      fontSize: '32px', // Aumenta o tamanho da fonte para tela cheia
-      fill: '#FFFFFF',
-      align: 'center',
-      fontFamily: 'font',
-      wordWrap: { width: this.gameWidth - 100 } // Ajusta a largura do texto para caber na tela
-    }).setOrigin(0.5); // Centraliza o texto
+    // Create feedback background with proper size
+    const feedbackBg = this.add.rectangle(
+      0,
+      0,
+      800,  // Increased width
+      200,  // Adjusted height
+      0xB600B9,
+      0.9
+    ).setOrigin(0.5);
+    feedbackBg.setStrokeStyle(4, 0xB600B9);
 
-    // Adiciona os elementos ao contêiner
+    // Create centered text
+    const feedbackText = this.add.text(
+      0,
+      0,
+      this.npcData[this.currentNPC].feedback,
+      {
+        fontSize: '24px',
+        fill: '#FFFFFF',
+        align: 'center',
+        fontFamily: 'font',
+        wordWrap: { width: 750 }  // Adjusted wrap width
+      }
+    ).setOrigin(0.5);  // This centers the text both horizontally and vertically
+
+    // Add elements to container
     this.feedbackContainer.add([feedbackBg, feedbackText]);
 
-    // Configura o tempo de exibição e a transição
-    this.time.delayedCall(3000, () => { // Exibe o feedback por 3 segundos
+    // Increased display time to 8 seconds
+    this.time.delayedCall(8000, () => {
       this.tweens.add({
         targets: [overlay, this.feedbackContainer],
-        alpha: 0, // Reduz a opacidade para 0
-        duration: 500, // Duração da animação (0.5 segundos)
+        alpha: 0,
+        duration: 500,
         onComplete: () => {
-          overlay.destroy(); // Remove o fundo
-          this.feedbackContainer.destroy(); // Remove o contêiner de feedback
-          this.scene.switch('VpEstrategiaScene', { showThankYou: true }); // Retorna para a cena principal com diálogo final
+          overlay.destroy();
+          this.feedbackContainer.destroy();
+          this.scene.switch('VpEstrategiaScene', { showThankYou: true });
         }
       });
     });
