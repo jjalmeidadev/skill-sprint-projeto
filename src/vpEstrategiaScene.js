@@ -10,7 +10,7 @@ class VpEstrategiaScene extends Phaser.Scene {
     this.load.image('personalizado_vivo', '../assets/mapaVpEstrategia/personalizado_vivo.png'); // Carrega o tileset personalizado
 
     this.load.spritesheet('player', '../assets/Player.png', { frameWidth: 32, frameHeight: 32 }); // Carrega o spritesheet do jogador com dimensões de cada frame
-    this.load.image('npc', '../assets/viviane_lider.png'); // Carrega a imagem da NPC
+    this.load.image('npc', '../assets/viviane_liderr.png'); // Carrega a imagem da NPC
     this.load.image('keyE', '../assets/teclaE.png'); // Carrega a imagem da tecla "E" para interação
     this.load.image("balloonText", "../assets/balaoTexto.png"); // Carrega a imagem do balão de fala da NPC
 
@@ -59,7 +59,7 @@ class VpEstrategiaScene extends Phaser.Scene {
     this.physics.add.collider(this.player, layer5); // Colisão do jogador com a camada de decoração sem barreira
 
     this.npc = this.physics.add.sprite(width - 800, height - 500, 'npc'); // Adiciona a NPC na cena
-    this.npc.setScale(2); // Ajusta o tamanho da NPC
+    this.npc.setScale(0.9); // Ajusta o tamanho da NPC
     this.npc.body.immovable = true; // Faz a NPC ficar parada
 
     this.physics.add.collider(this.player, this.npc); // Adiciona colisão entre o jogador e a NPC
@@ -126,6 +126,22 @@ class VpEstrategiaScene extends Phaser.Scene {
     this.npcIdle.play('npc_idle'); // Reproduz a animação IDLE
     this.npcIdle.body.immovable = true; // Faz o NPC ficar parado
 
+    // Create npcIdle2
+    this.npcIdle2 = this.physics.add.sprite(this.npc.x + 380, this.npc.y + 350, 'npcIdle');
+    this.npcIdle2.setScale(2.5);
+    this.npcIdle2.play('npc_idle');
+    this.npcIdle2.body.immovable = true;
+
+    // Create npcIdle3
+    this.npcIdle3 = this.physics.add.sprite(this.npc.x - 310, this.npc.y + 295, 'npcIdle');
+    this.npcIdle3.setScale(2.5);
+    this.npcIdle3.play('npc_idle');
+    this.npcIdle3.body.immovable = true;
+
+    // Add collisions for new NPCs
+    this.physics.add.collider(this.player, this.npcIdle2);
+    this.physics.add.collider(this.player, this.npcIdle3);
+
     // Show "Obrigado!" dialogue immediately after returning from minigame
     if (this.showThankYou) {
       this.time.delayedCall(500, () => {
@@ -135,6 +151,12 @@ class VpEstrategiaScene extends Phaser.Scene {
 
     this.keyEnterIdle = this.add.image(this.npcIdle.x + 50, this.npcIdle.y - 100, 'keyEnter').setScale(0.2);
     this.keyEnterIdle.setVisible(false); // Deixa a tecla Enter invisível inicialmente
+
+    this.keyEnterIdle2 = this.add.image(this.npcIdle2.x + 50, this.npcIdle2.y - 100, 'keyEnter').setScale(0.2);
+    this.keyEnterIdle2.setVisible(false);
+
+    this.keyEnterIdle3 = this.add.image(this.npcIdle3.x + 50, this.npcIdle3.y - 100, 'keyEnter').setScale(0.2);
+    this.keyEnterIdle3.setVisible(false);
 
     this.physics.add.collider(this.player, this.npcIdle); // Adiciona colisão entre o jogador e o NPC
 
@@ -147,6 +169,16 @@ class VpEstrategiaScene extends Phaser.Scene {
     this.exclamationIdle.play("exclaiming");
     this.exclamationIdle.setImmovable(true);
     this.exclamationIdle.setVisible(false); // Deixa a exclamação invisível inicialmente
+
+    this.exclamationIdle2 = this.physics.add.sprite(this.npcIdle2.x, this.npcIdle2.y - 80, "indicator").setScale(0.3);
+    this.exclamationIdle2.play("exclaiming");
+    this.exclamationIdle2.setImmovable(true);
+    this.exclamationIdle2.setVisible(false);
+
+    this.exclamationIdle3 = this.physics.add.sprite(this.npcIdle3.x, this.npcIdle3.y - 80, "indicator").setScale(0.3);
+    this.exclamationIdle3.play("exclaiming");
+    this.exclamationIdle3.setImmovable(true);
+    this.exclamationIdle3.setVisible(false);
 
     // Interação com o npcIdle
     this.physics.add.overlap(this.player, this.exclamationIdle, () => {
@@ -161,6 +193,38 @@ class VpEstrategiaScene extends Phaser.Scene {
 
         this.exclamationIdle.destroy(); // Remove a exclamação do npcIdle
         this.keyEnterIdle.setVisible(false); // Oculta a tecla Enter após o início do diálogo
+      }
+    });
+
+    // Interação com o npcIdle2
+    this.physics.add.overlap(this.player, this.exclamationIdle2, () => {
+      if (!this.activeDialogue && this.keyEnterIdle2) {
+        this.keyEnterIdle2.setVisible(true);
+        this.startDialogue([
+          'Oi! Eu sou a Ana.',
+          'Trabalho com desenvolvimento aqui na Vivo.',
+          'Adoro programar, mas estou meio perdida...',
+          'Será que você pode me ajudar a entender como crescer na área técnica?',
+          'Quero virar especialista, mas não sei por onde começar!"'
+        ], this.npcIdle2);
+
+        this.exclamationIdle2.destroy();
+        this.keyEnterIdle2.setVisible(false);
+      }
+    });
+
+    // Interação com o npcIdle3
+    this.physics.add.overlap(this.player, this.exclamationIdle3, () => {
+      if (!this.activeDialogue && this.keyEnterIdle3) {
+        this.keyEnterIdle3.setVisible(true);
+        this.startDialogue([
+          `Oi, ${this.nome}! Eu sou a Mariana, trabalho no SAC.`,
+          'Estou em dúvida sobre minha próxima certificação.',
+          'Todo mundo fala que aqui na Vivo dá pra crescer e ganhar benefícios melhores, mas não tô entendendo direito como funciona.', 'Será que aumento vem antes ou depois da promoção?', 'Você pode me mostrar a ordem das coisas?'
+        ], this.npcIdle3);
+
+        this.exclamationIdle3.destroy();
+        this.keyEnterIdle3.setVisible(false);
       }
     });
 
@@ -206,14 +270,14 @@ class VpEstrategiaScene extends Phaser.Scene {
         this.keyEnter.setVisible(false); // Oculta a tecla Enter
         this.activeDialogue = false; // Permite iniciar outro diálogo no futuro
 
-        // Exibe a exclamação do npcIdle após o diálogo com a NPC principal
         if (npc === this.npc) {
-          this.exclamationIdle.setVisible(true); // Torna a exclamação do npcIdle visível
+          this.exclamationIdle.setVisible(true);
+          this.exclamationIdle2.setVisible(true);
+          this.exclamationIdle3.setVisible(true);
         }
 
-        // Muda para a cena "minigameEstrategiaCarlos" após o diálogo com o npcIdle
-        if (npc === this.npcIdle) {
-          this.scene.switch("minigameEstrategiaCarlos"); // Muda para a cena do minigame
+        if (npc === this.npcIdle || npc === this.npcIdle2 || npc === this.npcIdle3) {
+          this.scene.switch("minigameEstrategiaCarlos");
         }
       }
     };
@@ -376,7 +440,7 @@ class minigameEstrategiaCarlos extends Phaser.Scene {
           { text: 'Fazer treinamento de liderança', color: 0x000000 },
           { text: 'Virar Gerente (Carreira em Y)', color: 0x000000 }
         ],
-        feedback: 'Certíssimo! Este é o caminho do líder na Vivo: Analista → Coordenador → Gerente. Você ganha bônus por resultados (PLR) e acesso a treinamentos exclusivos para crescer na empresa.'
+        feedback: 'Certíssimo! Este é o caminho do líder na Vivo: Analista → Coordenador → Gerente. Você ganha bônus por resultados (PLR) e acesso a treinamentos exclusivos para crescer na empresa. Carlos está muito agradecido! Ele disse que quer te pagar um café qualquer dia. Parabéns por ajudá-lo no seu planejamento de carreira!'
       }
     ];
   }
@@ -384,7 +448,7 @@ class minigameEstrategiaCarlos extends Phaser.Scene {
   preload() {
     this.load.audio('success', '../assets/sounds/success.mp3');
     this.load.audio('error', '../assets/sounds/error.mp3');
-    this.load.image('background', '../assets/background_career.png');
+    this.load.image('background', '../assets/background_vpestrategia_minigame.png'); // Fixed path
     this.load.image('arrow', '../assets/arrow.png');
   }
 
@@ -396,8 +460,20 @@ class minigameEstrategiaCarlos extends Phaser.Scene {
   }
 
   createGameElements() {
-    // Set background color
-    this.cameras.main.setBackgroundColor('#E6E6E6');
+    // Add background image
+    this.add.image(this.gameWidth / 2, this.gameHeight / 2, 'background')
+      .setDisplaySize(this.gameWidth, this.gameHeight)
+      .setOrigin(0.5);
+
+    // Add white overlay with 50% opacity
+    this.add.rectangle(
+      this.gameWidth / 2,
+      this.gameHeight / 2,
+      this.gameWidth,
+      this.gameHeight,
+      0xFFFFFF,
+      0.5
+    );
 
     const currentNPCData = this.npcData[this.currentNPC];
 
@@ -412,8 +488,8 @@ class minigameEstrategiaCarlos extends Phaser.Scene {
     }).setOrigin(0.5);
 
     // Centered instructions - adjusted position
-    this.add.text(this.gameWidth / 2, 160, 'Arraste os elementos na ordem correta do início ao fim da carreira!', {
-      fontSize: '20px',
+    this.add.text(this.gameWidth / 2, 160, 'Carlos precisa de sua ajuda! Clique e arraste os elementos na ordem correta do início ao fim da carreira.', {
+      fontSize: '29px',
       fill: '#000000',
       fontFamily: 'font'
     }).setOrigin(0.5);
@@ -434,10 +510,18 @@ class minigameEstrategiaCarlos extends Phaser.Scene {
         arrow.setTint(0x000000);
       }
 
-      const zone = this.add.rectangle(x, y, zoneWidth, 120, 0xB600B9, 0.8);
-      zone.setStrokeStyle(2, 0xB600B9);
+      // Create depth effect with multiple layers
+      const shadowZone = this.add.rectangle(x + 4, y + 4, zoneWidth, 120, 0x000000, 0.2);
+      const baseZone = this.add.rectangle(x, y, zoneWidth, 120, 0xE6B3FF, 0.3); // Lighter purple base
+      const zone = this.add.rectangle(x, y, zoneWidth, 120, 0xE6B3FF, 0.8); // Lighter purple top
+      
+      // Add inner shadow effect
+      zone.setStrokeStyle(2, 0x000000, 0.2);
       zone.setInteractive();
       zone.correctIndex = i;
+
+      // Add depth effect with gradient
+      const gradient = this.add.rectangle(x, y + 2, zoneWidth - 4, 116, 0xD9A3FF, 0.4); // Slightly darker for depth
 
       this.add.text(x, y - 80, `${i + 1}`, {
         fontSize: '32px',
@@ -445,22 +529,25 @@ class minigameEstrategiaCarlos extends Phaser.Scene {
         fontStyle: 'bold'
       }).setOrigin(0.5);
 
+      // Group all visual elements
+      const zoneGroup = [shadowZone, baseZone, gradient, zone];
       this.dropZones.push(zone);
     }
 
-    // Create centered draggable elements - adjusted positions
+    // Create draggable elements with matching color scheme
     const shuffledElements = Phaser.Utils.Array.Shuffle([...currentNPCData.elements]);
 
     this.dragElements = shuffledElements.map((element, index) => {
       const x = startX + (zoneWidth + spacing) * index + zoneWidth / 2;
       const y = this.gameHeight - 150;
 
+      // Change back to original purple color (0xB600B9) for draggable elements
       const background = this.add.rectangle(0, 0, zoneWidth, 120, 0xB600B9);
-      background.setStrokeStyle(2, 0xB600B9);
+      background.setStrokeStyle(2, 0x000000, 0.3);
 
       const text = this.add.text(0, 0, element.text, {
         fontSize: '18px',
-        fill: '#000000', // Changed from '#FFFFFF' to '#000000'
+        fill: '#000000',
         align: 'center',
         fontFamily: 'font',
         wordWrap: { width: zoneWidth - 20 }
@@ -541,63 +628,69 @@ class minigameEstrategiaCarlos extends Phaser.Scene {
 
   showPositionError(gameObject) {
     if (this.positionErrorContainer) {
-      this.positionErrorContainer.destroy(); // Remove qualquer contêiner de erro existente
+      this.positionErrorContainer.destroy();
     }
 
-    // Cria o contêiner de erro
-    this.positionErrorContainer = this.add.container(400, 200);
+    this.positionErrorContainer = this.add.container(
+      this.gameWidth / 2,
+      this.gameHeight / 2 + 50
+    );
 
-    const errorBg = this.add.rectangle(0, 0, 400, 60, 0xFF0000, 0.2); // Fundo do erro
-    errorBg.setStrokeStyle(2, 0xFF0000); // Borda vermelha
+    // Add outer stroke for a subtle border effect
+    const errorBorder = this.add.rectangle(0, 0, 404, 64, 0xFF6B6B);
+    const errorBg = this.add.rectangle(0, 0, 400, 60, 0xFFA7A7, 1);
+    errorBg.setStrokeStyle(2, 0xFF8888, 1); // Inner stroke slightly lighter
 
     const errorText = this.add.text(0, 0, 'Posição incorreta!', {
       fontSize: '20px',
-      fill: '#CC0000',
+      fill: '#800000', // Darker red text for better contrast
       fontFamily: 'font'
-    }).setOrigin(0.5); // Texto centralizado
+    }).setOrigin(0.5);
 
-    this.positionErrorContainer.add([errorBg, errorText]); // Adiciona o fundo e o texto ao contêiner
+    this.positionErrorContainer.add([errorBorder, errorBg, errorText]);
 
-    // Animação para desaparecer o contêiner de erro após 2 segundos
     this.tweens.add({
       targets: this.positionErrorContainer,
-      alpha: 0, // Reduz a opacidade para 0
-      y: 180, // Move o contêiner ligeiramente para cima
-      duration: 500, // Duração da animação (0.5 segundos)
-      delay: 1500, // Espera 1.5 segundos antes de iniciar a animação
-      ease: 'Power2', // Tipo de animação
+      alpha: 0,
+      y: this.positionErrorContainer.y - 20,
+      duration: 500,
+      delay: 1500,
+      ease: 'Power2',
       onComplete: () => {
-        this.positionErrorContainer.destroy(); // Remove o contêiner de erro após a animação
+        this.positionErrorContainer.destroy();
       }
     });
   }
-
-
 
   showPositionSuccess(gameObject) {
     if (this.positionSuccessContainer) {
       this.positionSuccessContainer.destroy();
     }
 
-    this.positionSuccessContainer = this.add.container(400, 200);
+    this.positionSuccessContainer = this.add.container(
+      this.gameWidth / 2,
+      this.gameHeight / 2 + 50
+    );
 
-    const successBg = this.add.rectangle(0, 0, 400, 60, 0x00FF00, 0.2);
-    successBg.setStrokeStyle(2, 0x00FF00);
+    // Add outer stroke for a subtle border effect
+    const successBorder = this.add.rectangle(0, 0, 404, 64, 0x2E8B57);
+    const successBg = this.add.rectangle(0, 0, 400, 60, 0x90EE90, 1);
+    successBg.setStrokeStyle(2, 0x98FB98, 1); // Inner stroke slightly lighter
 
     const successText = this.add.text(0, 0, 'Posição correta!', {
       fontSize: '20px',
-      fill: '#00AA00',
+      fill: '#006400', // Darker green text for better contrast
       fontFamily: 'font'
     }).setOrigin(0.5);
 
-    this.positionSuccessContainer.add([successBg, successText]);
+    this.positionSuccessContainer.add([successBorder, successBg, successText]);
 
     this.tweens.add({
       targets: this.positionSuccessContainer,
       alpha: 0,
-      y: 180,
+      y: this.positionSuccessContainer.y - 20,
       duration: 500,
-      delay: 1500, // Total of 2 seconds (1.5s delay + 0.5s fade)
+      delay: 1500,
       ease: 'Power2',
       onComplete: () => this.positionSuccessContainer.destroy()
     });
