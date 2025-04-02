@@ -51,6 +51,7 @@ const config = { // Configuração do jogo Phaser
     bookScene, // Cena relacionada a um livro
     
     VpNegociosScene, // Cena do VP de Negócios
+    MinigameWires, // Cena do minigame de fios
 
     VpEstrategiaScene, // Cena do VP de Estratégia
 
