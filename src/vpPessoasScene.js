@@ -785,22 +785,24 @@ class VpPessoasScene extends Phaser.Scene {
 
     createButtonBack() {
       console.log("Adicionando botão de voltar"); // Loga no console que o botão de voltar está sendo adicionado
-      if (this.botaoVoltar) return; // impede criar mais de uma vez
 
-      this.botaoVoltar = this.add.image(width - 508, height - 660, "keyE"); // Adiciona o botão de voltar na posição especificada
-      this.botaoVoltar.setScale(0.2); // Define o tamanho do botão de voltar
-      this.botaoVoltar.setDepth(1000); // Coloca o botão acima de outros objetos
+      const buttonBack = this.add.image(width - 700, height - 680, "keyE"); // Adiciona a imagem do botão de retorno na posição especificada
+      buttonBack.setScale(0.2); // Define o tamanho do botão de voltar
+      buttonBack.setDepth(1000); // Coloca o botão acima de outros objetos
 
       this.input.keyboard.on("keydown-E", () => { // Adiciona evento para a tecla "E"
-        const distancia = Phaser.Math.Distance.Between(
-          this.player.x, this.player.y, // Posição do jogador
-          this.botaoVoltar.x, this.botaoVoltar.y // Posição do botão de voltar
-        );
+      const distancia = Phaser.Math.Distance.Between(
+        this.player.x, this.player.y, // Posição do jogador
+        buttonBack.x, buttonBack.y // Posição do botão de voltar
+      );
 
-        if (distancia < 100) { // Verifica se o jogador está próximo do botão de voltar
-          this.scene.stop("vpPessoasScene"); // Para a cena atual
-          this.scene.start("elevadorScene"); // Inicia a cena do elevador
-        }
+      if (distancia < 100) { // Verifica se o jogador está próximo do botão de voltar
+        // Pausa todos os sons da cena
+        this.sound.stopAll();
+
+        this.scene.stop("vpPessoasScene"); // Para a cena atual
+        this.scene.start("elevadorScene"); // Inicia a cena do elevador
+      }
       });
     }
 
