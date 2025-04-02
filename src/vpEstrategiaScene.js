@@ -1,6 +1,7 @@
 class VpEstrategiaScene extends Phaser.Scene {
   constructor() {
     super({ key: 'VpEstrategiaScene' });
+    this.interactionCount = 0; // Initialize counter
   }
 
   preload() {
@@ -18,7 +19,9 @@ class VpEstrategiaScene extends Phaser.Scene {
     this.load.audio("strategyMusic", "../assets/Kevin-MacLeod-Itty-Bitty-8-Bit-♫-NO-COPYRIGHT-8-bit-Music.mp3"); // Carrega a música de fundo da cena
     this.load.spritesheet("indicator", "../assets/exclamaçãoRoxa.png", { frameWidth: 254, frameHeight: 305 }); // Carrega a exclamação
     this.load.image('keyEnter', '../assets/keyEnter.png'); // Carrega a imagem da tecla Enter
-    this.load.spritesheet('npcIdle', '../assets/personagens/skinsPlayer/Player4Idle.png', { frameWidth: 16, frameHeight: 32 }); // Carrega o spritesheet do NPC 1
+    this.load.spritesheet('npcIdle', '../assets/personagens/skinsPlayer/Player4Idle.png', { frameWidth: 16, frameHeight: 32 });
+    this.load.spritesheet('npcIdle2', '../assets/personagens/skinsPlayer/Player4Idle.png', { frameWidth: 16, frameHeight: 32 });
+    this.load.spritesheet('npcIdle3', '../assets/personagens/skinsPlayer/Player4Idle.png', { frameWidth: 16, frameHeight: 32 }); // Carrega o spritesheet do NPC 1
   }
 
   init(data) {
@@ -26,6 +29,8 @@ class VpEstrategiaScene extends Phaser.Scene {
   }
 
   create() {
+    // Inicializa a variável de controle
+    this.npcInteractionComplete = false;
     const width = this.cameras.main.width; // Obtém a largura da câmera principal
     const height = this.cameras.main.height; // Obtém a altura da câmera principal
 
@@ -182,6 +187,10 @@ class VpEstrategiaScene extends Phaser.Scene {
 
     // Interação com o npcIdle
     this.physics.add.overlap(this.player, this.exclamationIdle, () => {
+      if (!this.npcInteractionComplete) {
+        return; // Bloqueia a interação se o jogador não tiver interagido com a NPC principal
+      }
+
       if (!this.activeDialogue && this.keyEnterIdle) { // Check if this.keyEnterIdle is defined
         this.keyEnterIdle.setVisible(true); // Exibe a tecla Enter ao interagir com o npcIdle
         this.startDialogue([
@@ -198,39 +207,68 @@ class VpEstrategiaScene extends Phaser.Scene {
 
     // Interação com o npcIdle2
     this.physics.add.overlap(this.player, this.exclamationIdle2, () => {
+      if (!this.npcInteractionComplete) {
+        return; // Bloqueia a interação se o jogador não tiver interagido com a NPC principal
+      }
+
       if (!this.activeDialogue && this.keyEnterIdle2) {
-        this.keyEnterIdle2.setVisible(true);
+        this.keyEnterIdle2.setVisible(true); // Exibe a tecla Enter ao interagir com o npcIdle2
         this.startDialogue([
           'Oi! Eu sou a Ana.',
           'Trabalho com desenvolvimento aqui na Vivo.',
           'Adoro programar, mas estou meio perdida...',
           'Será que você pode me ajudar a entender como crescer na área técnica?',
-          'Quero virar especialista, mas não sei por onde começar!"'
-        ], this.npcIdle2);
+          'Quero virar especialista, mas não sei por onde começar!'
+        ], this.npcIdle2); // Passa o npcIdle2 como referência
 
-        this.exclamationIdle2.destroy();
-        this.keyEnterIdle2.setVisible(false);
+
+        this.exclamationIdle2.destroy(); // Remove a exclamação do npcIdle2
+        this.keyEnterIdle2.setVisible(false); // Oculta a tecla Enter após o início do diálogo
       }
     });
-
     // Interação com o npcIdle3
     this.physics.add.overlap(this.player, this.exclamationIdle3, () => {
+      if (!this.npcInteractionComplete) {
+        return; // Bloqueia a interação se o jogador não tiver interagido com a NPC principal
+      }
+
       if (!this.activeDialogue && this.keyEnterIdle3) {
-        this.keyEnterIdle3.setVisible(true);
+        this.keyEnterIdle3.setVisible(true); // Exibe a tecla Enter ao interagir com o npcIdle3
         this.startDialogue([
           `Oi, ${this.nome}! Eu sou a Mariana, trabalho no SAC.`,
           'Estou em dúvida sobre minha próxima certificação.',
-          'Todo mundo fala que aqui na Vivo dá pra crescer e ganhar benefícios melhores, mas não tô entendendo direito como funciona.', 'Será que aumento vem antes ou depois da promoção?', 'Você pode me mostrar a ordem das coisas?'
-        ], this.npcIdle3);
+          'Aqui na Vivo dá pra crescer e ganhar benefícios melhores,',
+          'mas eu não entendo direito como funciona.',
+          'Será que aumento vem antes ou depois da promoção?',
+          'Você pode me mostrar a ordem das coisas?'
+        ], this.npcIdle3); // Passa o npcIdle3 como referência
 
-        this.exclamationIdle3.destroy();
-        this.keyEnterIdle3.setVisible(false);
+        this.exclamationIdle3.destroy(); // Remove a exclamação do npcIdle3
+        this.keyEnterIdle3.setVisible(false); // Oculta a tecla Enter após o início do diálogo
       }
     });
 
     // Dá zoom na tela do jogo e faz a câmera seguir o personagem
     this.cameras.main.startFollow(this.player); // Faz a câmera seguir o jogador
     this.cameras.main.setZoom(2); // Define o nível de zoom da câmera
+
+    // Create the HUD with improved styling
+    const hudContainer = this.add.container(16, 16);
+    hudContainer.setScrollFactor(0);
+
+    // Add background with stroke
+    const hudBg = this.add.rectangle(0, 0, 100, 40, 0x000000, 0.7);
+    hudBg.setStrokeStyle(2, 0xB600B9);
+
+    this.progressText = this.add.text(50, 20, '0/3', {
+      fontSize: '24px',
+      fill: '#FFFFFF',
+      fontFamily: 'font',
+    }).setOrigin(0.5);
+
+    hudContainer.add([hudBg, this.progressText]);
+    hudContainer.setVisible(false); // Initially hidden
+    this.progressHUD = hudContainer;
   }
 
   update() {
@@ -270,14 +308,20 @@ class VpEstrategiaScene extends Phaser.Scene {
         this.keyEnter.setVisible(false); // Oculta a tecla Enter
         this.activeDialogue = false; // Permite iniciar outro diálogo no futuro
 
+        // Exibe as exclamações nos NPCs após o diálogo com a NPC principal
         if (npc === this.npc) {
-          this.exclamationIdle.setVisible(true);
-          this.exclamationIdle2.setVisible(true);
-          this.exclamationIdle3.setVisible(true);
+          this.exclamationIdle.setVisible(true); // Torna a exclamação do npcIdle visível
+          this.exclamationIdle2.setVisible(true); // Torna a exclamação do npcIdle2 visível
+          this.exclamationIdle3.setVisible(true); // Torna a exclamação do npcIdle3 visível
+          this.npcInteractionComplete = true; // Permite a interação com os outros NPCs
+          this.progressHUD.setVisible(true); // Show HUD after main NPC dialogue
         }
 
-        if (npc === this.npcIdle || npc === this.npcIdle2 || npc === this.npcIdle3) {
-          this.scene.switch("minigameEstrategiaCarlos");
+        // Update counter after each NPC interaction
+        if (npc !== this.npc && !this.showThankYou) {
+          this.interactionCount++;
+          this.progressText.setText(`${this.interactionCount}/3`);
+          this.scene.switch("minigameEstrategia" + (npc === this.npcIdle ? "Carlos" : npc === this.npcIdle2 ? "Ana" : "Mariana"));
         }
       }
     };
@@ -514,7 +558,774 @@ class minigameEstrategiaCarlos extends Phaser.Scene {
       const shadowZone = this.add.rectangle(x + 4, y + 4, zoneWidth, 120, 0x000000, 0.2);
       const baseZone = this.add.rectangle(x, y, zoneWidth, 120, 0xE6B3FF, 0.3); // Lighter purple base
       const zone = this.add.rectangle(x, y, zoneWidth, 120, 0xE6B3FF, 0.8); // Lighter purple top
-      
+
+      // Add inner shadow effect
+      zone.setStrokeStyle(2, 0x000000, 0.2);
+      zone.setInteractive();
+      zone.correctIndex = i;
+
+      // Add depth effect with gradient
+      const gradient = this.add.rectangle(x, y + 2, zoneWidth - 4, 116, 0xD9A3FF, 0.4); // Slightly darker for depth
+
+      this.add.text(x, y - 80, `${i + 1}`, {
+        fontSize: '32px',
+        fill: '#000000',
+        fontStyle: 'bold'
+      }).setOrigin(0.5);
+
+      // Group all visual elements
+      const zoneGroup = [shadowZone, baseZone, gradient, zone];
+      this.dropZones.push(zone);
+    }
+
+    // Create draggable elements with matching color scheme
+    const shuffledElements = Phaser.Utils.Array.Shuffle([...currentNPCData.elements]);
+
+    this.dragElements = shuffledElements.map((element, index) => {
+      const x = startX + (zoneWidth + spacing) * index + zoneWidth / 2;
+      const y = this.gameHeight - 150;
+
+      // Change back to original purple color (0xB600B9) for draggable elements
+      const background = this.add.rectangle(0, 0, zoneWidth, 120, 0xB600B9);
+      background.setStrokeStyle(2, 0x000000, 0.3);
+
+      const text = this.add.text(0, 0, element.text, {
+        fontSize: '18px',
+        fill: '#000000',
+        align: 'center',
+        fontFamily: 'font',
+        wordWrap: { width: zoneWidth - 20 }
+      }).setOrigin(0.5);
+
+      const container = this.add.container(x, y, [background, text]);
+      container.setSize(zoneWidth, 120);
+      container.setInteractive({ draggable: true });
+      container.originalIndex = currentNPCData.elements.indexOf(element);
+      container.originalX = x;
+      container.originalY = y;
+
+      // Hover effect
+      container.on('pointerover', () => {
+        this.tweens.add({
+          targets: container,
+          scaleX: 1.05,
+          scaleY: 1.05,
+          duration: 100
+        });
+      });
+
+      container.on('pointerout', () => {
+        this.tweens.add({
+          targets: container,
+          scaleX: 1,
+          scaleY: 1,
+          duration: 100
+        });
+      });
+
+      return container;
+    });
+
+    // Setup drag events
+    this.input.on('dragstart', (pointer, gameObject) => {
+      gameObject.setDepth(1);
+    });
+
+    this.input.on('drag', (pointer, gameObject, dragX, dragY) => {
+      gameObject.x = dragX;
+      gameObject.y = dragY;
+    });
+
+    this.input.on('dragend', (pointer, gameObject) => {
+      gameObject.setDepth(0);
+      const dropZone = this.findOverlappingZone(gameObject);
+
+      if (dropZone) {
+        if (dropZone.correctIndex === gameObject.originalIndex) {
+          gameObject.x = dropZone.x;
+          gameObject.y = dropZone.y;
+          gameObject.input.draggable = false;
+          this.showPositionSuccess(gameObject); // Mostra feedback de sucesso
+          this.checkCompletion();
+        } else {
+          this.showPositionError(gameObject); // Mostra feedback de posição incorreta
+          this.tweens.add({
+            targets: gameObject,
+            x: gameObject.originalX,
+            y: gameObject.originalY,
+            duration: 300,
+            ease: 'Back.easeOut'
+          });
+        }
+      } else {
+        this.tweens.add({
+          targets: gameObject,
+          x: gameObject.originalX,
+          y: gameObject.originalY,
+          duration: 300,
+          ease: 'Back.easeOut'
+        });
+      }
+    });
+  }
+
+
+  showPositionError(gameObject) {
+    if (this.positionErrorContainer) {
+      this.positionErrorContainer.destroy();
+    }
+
+    this.positionErrorContainer = this.add.container(
+      this.gameWidth / 2,
+      this.gameHeight / 2 + 50
+    );
+
+    // Add outer stroke for a subtle border effect
+    const errorBorder = this.add.rectangle(0, 0, 404, 64, 0xFF6B6B);
+    const errorBg = this.add.rectangle(0, 0, 400, 60, 0xFFA7A7, 1);
+    errorBg.setStrokeStyle(2, 0xFF8888, 1); // Inner stroke slightly lighter
+
+    const errorText = this.add.text(0, 0, 'Posição incorreta!', {
+      fontSize: '20px',
+      fill: '#800000', // Darker red text for better contrast
+      fontFamily: 'font'
+    }).setOrigin(0.5);
+
+    this.positionErrorContainer.add([errorBorder, errorBg, errorText]);
+
+    this.tweens.add({
+      targets: this.positionErrorContainer,
+      alpha: 0,
+      y: this.positionErrorContainer.y - 20,
+      duration: 500,
+      delay: 1500,
+      ease: 'Power2',
+      onComplete: () => {
+        this.positionErrorContainer.destroy();
+      }
+    });
+  }
+
+  showPositionSuccess(gameObject) {
+    if (this.positionSuccessContainer) {
+      this.positionSuccessContainer.destroy();
+    }
+
+    this.positionSuccessContainer = this.add.container(
+      this.gameWidth / 2,
+      this.gameHeight / 2 + 50
+    );
+
+    // Add outer stroke for a subtle border effect
+    const successBorder = this.add.rectangle(0, 0, 404, 64, 0x2E8B57);
+    const successBg = this.add.rectangle(0, 0, 400, 60, 0x90EE90, 1);
+    successBg.setStrokeStyle(2, 0x98FB98, 1); // Inner stroke slightly lighter
+
+    const successText = this.add.text(0, 0, 'Posição correta!', {
+      fontSize: '20px',
+      fill: '#006400', // Darker green text for better contrast
+      fontFamily: 'font'
+    }).setOrigin(0.5);
+
+    this.positionSuccessContainer.add([successBorder, successBg, successText]);
+
+    this.tweens.add({
+      targets: this.positionSuccessContainer,
+      alpha: 0,
+      y: this.positionSuccessContainer.y - 20,
+      duration: 500,
+      delay: 1500,
+      ease: 'Power2',
+      onComplete: () => this.positionSuccessContainer.destroy()
+    });
+  }
+
+  showSuccess() {
+    if (this.feedbackContainer) {
+      this.feedbackContainer.destroy();
+    }
+
+    // Create centered overlay
+    const overlay = this.add.rectangle(
+      this.gameWidth / 2,
+      this.gameHeight / 2,
+      this.gameWidth,
+      this.gameHeight,
+      0x000000,
+      0.7
+    );
+
+    // Create centered container
+    this.feedbackContainer = this.add.container(this.gameWidth / 2, this.gameHeight / 2);
+
+    // Create feedback background with proper size
+    const feedbackBg = this.add.rectangle(
+      0,
+      0,
+      800,  // Increased width
+      200,  // Adjusted height
+      0xB600B9,
+      0.9
+    ).setOrigin(0.5);
+    feedbackBg.setStrokeStyle(4, 0xB600B9);
+
+    // Create centered text
+    const feedbackText = this.add.text(
+      0,
+      0,
+      this.npcData[this.currentNPC].feedback,
+      {
+        fontSize: '24px',
+        fill: '#FFFFFF',
+        align: 'center',
+        fontFamily: 'font',
+        wordWrap: { width: 750 }  // Adjusted wrap width
+      }
+    ).setOrigin(0.5);  // This centers the text both horizontally and vertically
+
+    // Add elements to container
+    this.feedbackContainer.add([feedbackBg, feedbackText]);
+
+    // Increased display time to 8 seconds
+    this.time.delayedCall(8000, () => {
+      this.tweens.add({
+        targets: [overlay, this.feedbackContainer],
+        alpha: 0,
+        duration: 500,
+        onComplete: () => {
+          overlay.destroy();
+          this.feedbackContainer.destroy();
+          this.scene.switch('VpEstrategiaScene', { showThankYou: true });
+        }
+      });
+    });
+  }
+
+  showError(gameObject) {
+    if (this.errorContainer) {
+      this.errorContainer.destroy(); // Remove qualquer contêiner de erro existente
+    }
+
+    // Cria o contêiner de erro
+    this.errorContainer = this.add.container(400, 200);
+
+    const errorBg = this.add.rectangle(0, 0, 400, 60, 0xFF0000, 0.2); // Fundo do erro
+    errorBg.setStrokeStyle(2, 0xFF0000); // Borda vermelha
+
+    const errorText = this.add.text(0, 0, 'Ordem incorreta! Tente novamente.', {
+      fontSize: '20px',
+      fill: '#CC0000',
+      fontFamily: 'font'
+    }).setOrigin(0.5); // Texto centralizado
+
+    this.errorContainer.add([errorBg, errorText]); // Adiciona o fundo e o texto ao contêiner
+    this.sound.play('error'); // Toca o som de erro
+
+    // Animação para desaparecer o contêiner de erro após 2 segundos
+    this.tweens.add({
+      targets: this.errorContainer,
+      alpha: 0, // Reduz a opacidade para 0
+      y: 180, // Move o contêiner ligeiramente para cima
+      duration: 500, // Duração da animação (0.5 segundos)
+      delay: 1500, // Espera 1.5 segundos antes de iniciar a animação
+      ease: 'Power2', // Tipo de animação
+      onComplete: () => {
+        this.errorContainer.destroy(); // Remove o contêiner de erro após a animação
+      }
+    });
+  }
+
+  findOverlappingZone(gameObject) {
+    return this.dropZones.find(zone => {
+      const distance = Phaser.Math.Distance.Between(gameObject.x, gameObject.y, zone.x, zone.y);
+      return distance < 50;
+    });
+  }
+
+  checkCompletion() {
+    const allCorrect = this.dragElements.every(element => {
+      const dropZone = this.findOverlappingZone(element);
+      return dropZone && dropZone.correctIndex === element.originalIndex;
+    });
+
+    if (allCorrect) {
+      this.showSuccess();
+    }
+  }
+}
+
+
+class minigameEstrategiaAna extends Phaser.Scene {
+  constructor() {
+    super({ key: "minigameEstrategiaAna" });
+    this.currentNPC = 0; // Track current NPC (0: Ana, 1: Carlos, 2: Mariana)
+    this.npcData = [
+      {
+        name: 'Ana',
+        elements: [
+          { text: 'Primeiro cargo como Dev Júnior', color: 0x000000 },
+          { text: 'Investir em certificação Cloud', color: 0x000000 },
+          { text: 'Promoção para Dev Pleno', color: 0x000000 },
+          { text: 'Alcançar o nível Expert (Carreira Y)', color: 0x000000 }
+        ],
+        feedback: 'Sequência correta! Ana seguirá como especialista técnica: Júnior (base) → Pleno (projetos complexos) → Expert (referência técnica). Ela está animada para focar em código e te manda um meme de agradecimento!'
+      }
+    ];
+  }
+
+  preload() {
+    this.load.audio('success', '../assets/sounds/success.mp3');
+    this.load.audio('error', '../assets/sounds/error.mp3');
+    this.load.image('background', '../assets/background_vpestrategia_minigame.png'); // Fixed path
+    this.load.image('arrow', '../assets/arrow.png');
+  }
+
+  create() {
+    // Get game dimensions
+    this.gameWidth = this.cameras.main.width;
+    this.gameHeight = this.cameras.main.height;
+    this.createGameElements();
+  }
+
+  createGameElements() {
+    // Add background image
+    this.add.image(this.gameWidth / 2, this.gameHeight / 2, 'background')
+      .setDisplaySize(this.gameWidth, this.gameHeight)
+      .setOrigin(0.5);
+
+    // Add white overlay with 50% opacity
+    this.add.rectangle(
+      this.gameWidth / 2,
+      this.gameHeight / 2,
+      this.gameWidth,
+      this.gameHeight,
+      0xFFFFFF,
+      0.5
+    );
+
+    const currentNPCData = this.npcData[this.currentNPC];
+
+    // Centered header - adjusted for full screen
+    const headerBg = this.add.rectangle(this.gameWidth / 2, 80, this.gameWidth * 0.8, 120, 0x000000, 0.1);
+
+    this.add.text(this.gameWidth / 2, 90, `Organize a carreira de ${currentNPCData.name}`, {
+      fontSize: '32px',
+      fill: '#000000',
+      fontStyle: 'bold',
+      fontFamily: 'font'
+    }).setOrigin(0.5);
+
+    // Centered instructions - adjusted position
+    this.add.text(this.gameWidth / 2, 160, 'Ana precisa de sua ajuda! Clique e arraste os elementos na ordem correta do início ao fim da carreira.', {
+      fontSize: '29px',
+      fill: '#000000',
+      fontFamily: 'font'
+    }).setOrigin(0.5);
+
+    // Create centered drop zones - adjusted for full width
+    this.dropZones = [];
+    const zoneWidth = 200;
+    const totalWidth = zoneWidth * 4;
+    const spacing = 50;
+    const startX = (this.gameWidth - (totalWidth + spacing * 3)) / 2;
+
+    for (let i = 0; i < 4; i++) {
+      const x = startX + (zoneWidth + spacing) * i + zoneWidth / 2;
+      const y = this.gameHeight / 2 - 50;
+
+      if (i < 3) {
+        const arrow = this.add.image(x + zoneWidth / 2 + spacing / 2, y, 'arrow').setScale(0.4);
+        arrow.setTint(0x000000);
+      }
+
+      // Create depth effect with multiple layers
+      const shadowZone = this.add.rectangle(x + 4, y + 4, zoneWidth, 120, 0x000000, 0.2);
+      const baseZone = this.add.rectangle(x, y, zoneWidth, 120, 0xE6B3FF, 0.3); // Lighter purple base
+      const zone = this.add.rectangle(x, y, zoneWidth, 120, 0xE6B3FF, 0.8); // Lighter purple top
+
+      // Add inner shadow effect
+      zone.setStrokeStyle(2, 0x000000, 0.2);
+      zone.setInteractive();
+      zone.correctIndex = i;
+
+      // Add depth effect with gradient
+      const gradient = this.add.rectangle(x, y + 2, zoneWidth - 4, 116, 0xD9A3FF, 0.4); // Slightly darker for depth
+
+      this.add.text(x, y - 80, `${i + 1}`, {
+        fontSize: '32px',
+        fill: '#000000',
+        fontStyle: 'bold'
+      }).setOrigin(0.5);
+
+      // Group all visual elements
+      const zoneGroup = [shadowZone, baseZone, gradient, zone];
+      this.dropZones.push(zone);
+    }
+
+    // Create draggable elements with matching color scheme
+    const shuffledElements = Phaser.Utils.Array.Shuffle([...currentNPCData.elements]);
+
+    this.dragElements = shuffledElements.map((element, index) => {
+      const x = startX + (zoneWidth + spacing) * index + zoneWidth / 2;
+      const y = this.gameHeight - 150;
+
+      // Change back to original purple color (0xB600B9) for draggable elements
+      const background = this.add.rectangle(0, 0, zoneWidth, 120, 0xB600B9);
+      background.setStrokeStyle(2, 0x000000, 0.3);
+
+      const text = this.add.text(0, 0, element.text, {
+        fontSize: '18px',
+        fill: '#000000',
+        align: 'center',
+        fontFamily: 'font',
+        wordWrap: { width: zoneWidth - 20 }
+      }).setOrigin(0.5);
+
+      const container = this.add.container(x, y, [background, text]);
+      container.setSize(zoneWidth, 120);
+      container.setInteractive({ draggable: true });
+      container.originalIndex = currentNPCData.elements.indexOf(element);
+      container.originalX = x;
+      container.originalY = y;
+
+      // Hover effect
+      container.on('pointerover', () => {
+        this.tweens.add({
+          targets: container,
+          scaleX: 1.05,
+          scaleY: 1.05,
+          duration: 100
+        });
+      });
+
+      container.on('pointerout', () => {
+        this.tweens.add({
+          targets: container,
+          scaleX: 1,
+          scaleY: 1,
+          duration: 100
+        });
+      });
+
+      return container;
+    });
+
+    // Setup drag events
+    this.input.on('dragstart', (pointer, gameObject) => {
+      gameObject.setDepth(1);
+    });
+
+    this.input.on('drag', (pointer, gameObject, dragX, dragY) => {
+      gameObject.x = dragX;
+      gameObject.y = dragY;
+    });
+
+    this.input.on('dragend', (pointer, gameObject) => {
+      gameObject.setDepth(0);
+      const dropZone = this.findOverlappingZone(gameObject);
+
+      if (dropZone) {
+        if (dropZone.correctIndex === gameObject.originalIndex) {
+          gameObject.x = dropZone.x;
+          gameObject.y = dropZone.y;
+          gameObject.input.draggable = false;
+          this.showPositionSuccess(gameObject); // Mostra feedback de sucesso
+          this.checkCompletion();
+        } else {
+          this.showPositionError(gameObject); // Mostra feedback de posição incorreta
+          this.tweens.add({
+            targets: gameObject,
+            x: gameObject.originalX,
+            y: gameObject.originalY,
+            duration: 300,
+            ease: 'Back.easeOut'
+          });
+        }
+      } else {
+        this.tweens.add({
+          targets: gameObject,
+          x: gameObject.originalX,
+          y: gameObject.originalY,
+          duration: 300,
+          ease: 'Back.easeOut'
+        });
+      }
+    });
+  }
+
+
+  showPositionError(gameObject) {
+    if (this.positionErrorContainer) {
+      this.positionErrorContainer.destroy();
+    }
+
+    this.positionErrorContainer = this.add.container(
+      this.gameWidth / 2,
+      this.gameHeight / 2 + 50
+    );
+
+    // Add outer stroke for a subtle border effect
+    const errorBorder = this.add.rectangle(0, 0, 404, 64, 0xFF6B6B);
+    const errorBg = this.add.rectangle(0, 0, 400, 60, 0xFFA7A7, 1);
+    errorBg.setStrokeStyle(2, 0xFF8888, 1); // Inner stroke slightly lighter
+
+    const errorText = this.add.text(0, 0, 'Posição incorreta!', {
+      fontSize: '20px',
+      fill: '#800000', // Darker red text for better contrast
+      fontFamily: 'font'
+    }).setOrigin(0.5);
+
+    this.positionErrorContainer.add([errorBorder, errorBg, errorText]);
+
+    this.tweens.add({
+      targets: this.positionErrorContainer,
+      alpha: 0,
+      y: this.positionErrorContainer.y - 20,
+      duration: 500,
+      delay: 1500,
+      ease: 'Power2',
+      onComplete: () => {
+        this.positionErrorContainer.destroy();
+      }
+    });
+  }
+
+  showPositionSuccess(gameObject) {
+    if (this.positionSuccessContainer) {
+      this.positionSuccessContainer.destroy();
+    }
+
+    this.positionSuccessContainer = this.add.container(
+      this.gameWidth / 2,
+      this.gameHeight / 2 + 50
+    );
+
+    // Add outer stroke for a subtle border effect
+    const successBorder = this.add.rectangle(0, 0, 404, 64, 0x2E8B57);
+    const successBg = this.add.rectangle(0, 0, 400, 60, 0x90EE90, 1);
+    successBg.setStrokeStyle(2, 0x98FB98, 1); // Inner stroke slightly lighter
+
+    const successText = this.add.text(0, 0, 'Posição correta!', {
+      fontSize: '20px',
+      fill: '#006400', // Darker green text for better contrast
+      fontFamily: 'font'
+    }).setOrigin(0.5);
+
+    this.positionSuccessContainer.add([successBorder, successBg, successText]);
+
+    this.tweens.add({
+      targets: this.positionSuccessContainer,
+      alpha: 0,
+      y: this.positionSuccessContainer.y - 20,
+      duration: 500,
+      delay: 1500,
+      ease: 'Power2',
+      onComplete: () => this.positionSuccessContainer.destroy()
+    });
+  }
+
+  showSuccess() {
+    if (this.feedbackContainer) {
+      this.feedbackContainer.destroy();
+    }
+
+    // Create centered overlay
+    const overlay = this.add.rectangle(
+      this.gameWidth / 2,
+      this.gameHeight / 2,
+      this.gameWidth,
+      this.gameHeight,
+      0x000000,
+      0.7
+    );
+
+    // Create centered container
+    this.feedbackContainer = this.add.container(this.gameWidth / 2, this.gameHeight / 2);
+
+    // Create feedback background with proper size
+    const feedbackBg = this.add.rectangle(
+      0,
+      0,
+      800,  // Increased width
+      200,  // Adjusted height
+      0xB600B9,
+      0.9
+    ).setOrigin(0.5);
+    feedbackBg.setStrokeStyle(4, 0xB600B9);
+
+    // Create centered text
+    const feedbackText = this.add.text(
+      0,
+      0,
+      this.npcData[this.currentNPC].feedback,
+      {
+        fontSize: '24px',
+        fill: '#FFFFFF',
+        align: 'center',
+        fontFamily: 'font',
+        wordWrap: { width: 750 }  // Adjusted wrap width
+      }
+    ).setOrigin(0.5);  // This centers the text both horizontally and vertically
+
+    // Add elements to container
+    this.feedbackContainer.add([feedbackBg, feedbackText]);
+
+    // Increased display time to 8 seconds
+    this.time.delayedCall(8000, () => {
+      this.tweens.add({
+        targets: [overlay, this.feedbackContainer],
+        alpha: 0,
+        duration: 500,
+        onComplete: () => {
+          overlay.destroy();
+          this.feedbackContainer.destroy();
+          this.scene.switch('VpEstrategiaScene', { showThankYou: true });
+        }
+      });
+    });
+  }
+
+  showError(gameObject) {
+    if (this.errorContainer) {
+      this.errorContainer.destroy(); // Remove qualquer contêiner de erro existente
+    }
+
+    // Cria o contêiner de erro
+    this.errorContainer = this.add.container(400, 200);
+
+    const errorBg = this.add.rectangle(0, 0, 400, 60, 0xFF0000, 0.2); // Fundo do erro
+    errorBg.setStrokeStyle(2, 0xFF0000); // Borda vermelha
+
+    const errorText = this.add.text(0, 0, 'Ordem incorreta! Tente novamente.', {
+      fontSize: '20px',
+      fill: '#CC0000',
+      fontFamily: 'font'
+    }).setOrigin(0.5); // Texto centralizado
+
+    this.errorContainer.add([errorBg, errorText]); // Adiciona o fundo e o texto ao contêiner
+    this.sound.play('error'); // Toca o som de erro
+
+    // Animação para desaparecer o contêiner de erro após 2 segundos
+    this.tweens.add({
+      targets: this.errorContainer,
+      alpha: 0, // Reduz a opacidade para 0
+      y: 180, // Move o contêiner ligeiramente para cima
+      duration: 500, // Duração da animação (0.5 segundos)
+      delay: 1500, // Espera 1.5 segundos antes de iniciar a animação
+      ease: 'Power2', // Tipo de animação
+      onComplete: () => {
+        this.errorContainer.destroy(); // Remove o contêiner de erro após a animação
+      }
+    });
+  }
+
+  findOverlappingZone(gameObject) {
+    return this.dropZones.find(zone => {
+      const distance = Phaser.Math.Distance.Between(gameObject.x, gameObject.y, zone.x, zone.y);
+      return distance < 50;
+    });
+  }
+
+  checkCompletion() {
+    const allCorrect = this.dragElements.every(element => {
+      const dropZone = this.findOverlappingZone(element);
+      return dropZone && dropZone.correctIndex === element.originalIndex;
+    });
+
+    if (allCorrect) {
+      this.showSuccess();
+    }
+  }
+}
+
+class minigameEstrategiaMariana extends Phaser.Scene {
+  constructor() {
+    super({ key: "minigameEstrategiaMariana" });
+    this.currentNPC = 0; // Track current NPC (0: Ana, 1: Carlos, 2: Mariana)
+    this.npcData = [
+      {
+        name: 'Mariana',
+        elements: [
+          { text: 'Atendente SAC', color: 0x00A0E3 },
+          { text: 'Participar do Programa de Talentos', color: 0x00A0E3 },
+          { text: 'Certificação em Experiência do Cliente', color: 0x00A0E3 },
+          { text: 'Líder de Novos Colaboradores', color: 0x00A0E3 }
+        ],
+        feedback: 'Mariana seguiu perfeitamente o plano de carreira da Vivo! Como Líder de Novos Colaboradores, agora tem remuneração ampliada (salário + bônus por performance) e benefícios como capacitação contínua. Este caso mostra como na Vivo, crescimento vertical e horizontal andam juntos!'
+      }
+    ];
+  }
+
+  preload() {
+    this.load.audio('success', '../assets/sounds/success.mp3');
+    this.load.audio('error', '../assets/sounds/error.mp3');
+    this.load.image('background', '../assets/background_vpestrategia_minigame.png'); // Fixed path
+    this.load.image('arrow', '../assets/arrow.png');
+  }
+
+  create() {
+    // Get game dimensions
+    this.gameWidth = this.cameras.main.width;
+    this.gameHeight = this.cameras.main.height;
+    this.createGameElements();
+  }
+
+  createGameElements() {
+    // Add background image
+    this.add.image(this.gameWidth / 2, this.gameHeight / 2, 'background')
+      .setDisplaySize(this.gameWidth, this.gameHeight)
+      .setOrigin(0.5);
+
+    // Add white overlay with 50% opacity
+    this.add.rectangle(
+      this.gameWidth / 2,
+      this.gameHeight / 2,
+      this.gameWidth,
+      this.gameHeight,
+      0xFFFFFF,
+      0.5
+    );
+
+    const currentNPCData = this.npcData[this.currentNPC];
+
+    // Centered header - adjusted for full screen
+    const headerBg = this.add.rectangle(this.gameWidth / 2, 80, this.gameWidth * 0.8, 120, 0x000000, 0.1);
+
+    this.add.text(this.gameWidth / 2, 90, `Organize a carreira de ${currentNPCData.name}`, {
+      fontSize: '32px',
+      fill: '#000000',
+      fontStyle: 'bold',
+      fontFamily: 'font'
+    }).setOrigin(0.5);
+
+    // Centered instructions - adjusted position
+    this.add.text(this.gameWidth / 2, 160, 'Mariana precisa de sua ajuda! Clique e arraste os elementos na ordem correta do início ao fim da carreira.', {
+      fontSize: '29px',
+      fill: '#000000',
+      fontFamily: 'font'
+    }).setOrigin(0.5);
+
+    // Create centered drop zones - adjusted for full width
+    this.dropZones = [];
+    const zoneWidth = 200;
+    const totalWidth = zoneWidth * 4;
+    const spacing = 50;
+    const startX = (this.gameWidth - (totalWidth + spacing * 3)) / 2;
+
+    for (let i = 0; i < 4; i++) {
+      const x = startX + (zoneWidth + spacing) * i + zoneWidth / 2;
+      const y = this.gameHeight / 2 - 50;
+
+      if (i < 3) {
+        const arrow = this.add.image(x + zoneWidth / 2 + spacing / 2, y, 'arrow').setScale(0.4);
+        arrow.setTint(0x000000);
+      }
+
+      // Create depth effect with multiple layers
+      const shadowZone = this.add.rectangle(x + 4, y + 4, zoneWidth, 120, 0x000000, 0.2);
+      const baseZone = this.add.rectangle(x, y, zoneWidth, 120, 0xE6B3FF, 0.3); // Lighter purple base
+      const zone = this.add.rectangle(x, y, zoneWidth, 120, 0xE6B3FF, 0.8); // Lighter purple top
+
       // Add inner shadow effect
       zone.setStrokeStyle(2, 0x000000, 0.2);
       zone.setInteractive();
