@@ -194,7 +194,7 @@ class VpEstrategiaScene extends Phaser.Scene {
       if (!this.activeDialogue && this.keyEnterIdle) { // Check if this.keyEnterIdle is defined
         this.keyEnterIdle.setVisible(true); // Exibe a tecla Enter ao interagir com o npcIdle
         this.startDialogue([
-          `E aí, ${this.playerName}!`,
+          `E aí, ${playerName}!`,
           'Sou o Carlos do time comercial.',
           'Tenho vontade de virar gestor, mas não sei qual o caminho certo aqui na Vivo.',
           'Você entende como funciona Carreira em Y? Pode me dar uma força?'
@@ -235,7 +235,7 @@ class VpEstrategiaScene extends Phaser.Scene {
       if (!this.activeDialogue && this.keyEnterIdle3) {
         this.keyEnterIdle3.setVisible(true); // Exibe a tecla Enter ao interagir com o npcIdle3
         this.startDialogue([
-          `Oi, ${this.playerName}! Eu sou a Mariana, trabalho no SAC.`,
+          `Oi, ${playerName}! Eu sou a Mariana, trabalho no SAC.`,
           'Estou em dúvida sobre minha próxima certificação.',
           'Aqui na Vivo dá pra crescer e ganhar benefícios melhores,',
           'mas eu não entendo direito como funciona.',
@@ -251,20 +251,6 @@ class VpEstrategiaScene extends Phaser.Scene {
     // Dá zoom na tela do jogo e faz a câmera seguir o personagem
     this.cameras.main.startFollow(this.player); // Faz a câmera seguir o jogador
     this.cameras.main.setZoom(2); // Define o nível de zoom da câmera
-
-    //Add fundo com borda
-    const hudBg = this.add.rectangle(0, 0, 100, 40, 0x000000, 0.7);
-    hudBg.setStrokeStyle(2, 0xB600B9);
-
-    this.progressText = this.add.text(50, 20, '0/3', {
-      fontSize: '24px',
-      fill: '#FFFFFF',
-      fontFamily: 'font',
-    }).setOrigin(0.5);
-
-    hudContainer.add([hudBg, this.progressText]);
-    hudContainer.setVisible(false); // Initially hidden
-    this.progressHUD = hudContainer;
   }
 
   update() {
