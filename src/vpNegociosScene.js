@@ -675,3 +675,134 @@ class VpNegociosScene extends Phaser.Scene {
   }
 }
 
+class MinigameWires extends Phaser.Scene {
+  constructor() {
+    super({ key: 'minigameWires' });
+  }
+
+  preload() {
+    this.load.image('serverBackground', '../assets/assetsWires/serverBackground.png');
+    this.load.image('backgroundMinigame', '../assets/assetsWires/backgroundMinigame.png');
+    this.load.image('blueWireConnected', '../assets/assetsWires/fioAzulGrande.png');
+    this.load.image('blueWireDisconnected', '../assets/assetsWires/fioAzulPequeno.png');
+    this.load.image('redWireConnected', '../assets/assetsWires/fioVermelhoGrande.png');
+    this.load.image('redWireDisconnected', '../assets/assetsWires/fioVermelhoPequeno.png');
+    this.load.image('yellowWireConnected', '../assets/assetsWires/fioAmareloGrande.png');
+    this.load.image('yellowWireDisconnected', '../assets/assetsWires/fioAmareloPequeno.png');
+    this.load.image('pinkWireConnected', '../assets/assetsWires/fioRosaGrande.png');
+    this.load.image('pinkWireDisconnected', '../assets/assetsWires/fioRosaPequeno.png');
+    this.load.image('endPointBlue', '../assets/assetsWires/endPointBlue.png');
+    this.load.image('endPointRed', '../assets/assetsWires/endPointRed.png');
+    this.load.image('endPointYellow', '../assets/assetsWires/endPointYellow.png');
+    this.load.image('endPointPink', '../assets/assetsWires/endPointPink.png');
+  }
+
+  create() {
+    this.add.image(width / 2, height / 2, 'serverBackground').setScale(1.8);
+    this.add.image(width / 2, height / 2, 'backgroundMinigame').setScale(0.55);
+    // Posições iniciais dos fios (esquerda da tela)
+    this.startPoints = {
+      blue: { x: width - 1100, y: height - 450 },
+      red: { x: width - 1100, y: height - 250 },
+      yellow: { x: width - 1100, y: height - 350 },
+      pink: { x: width - 1100, y: height - 550 }
+    };
+
+    // Conectores (direita da tela)
+    this.endPoints = {
+      blue: this.add.sprite(width - 420, height - 550, 'endPointBlue').setScale(0.2),
+      red: this.add.sprite(width - 420, height - 450, 'endPointRed').setScale(0.2),
+      yellow: this.add.sprite(width - 420, height - 350, 'endPointYellow').setScale(0.2),
+      pink: this.add.sprite(width - 420, height - 250, 'endPointPink').setScale(0.2)
+    };
+
+    // Criação dos fios curtos (arrastáveis) e fios longos (para esticar)
+    this.wires = {};
+
+    Object.keys(this.startPoints).forEach(color => {
+      let pos = this.startPoints[color];
+
+      let shortWire = this.add.sprite(pos.x, pos.y, `${color}WireDisconnected`).setInteractive();
+      shortWire.setData('color', color);
+      shortWire.setScale(3);
+      this.input.setDraggable(shortWire);
+
+      let longWire = this.add.sprite(pos.x, pos.y, `${color}WireConnected`)
+                         .setOrigin(0, 0.5)
+                         .setVisible(false);
+
+      this.wires[color] = { short: shortWire, long: longWire };
+    });
+
+    // Eventos drag-and-drop
+    this.input.on('dragstart', this.onDragStart, this);
+    this.input.on('drag', this.onDrag, this);
+    this.input.on('dragend', this.onDragEnd, this);
+  }
+
+  onDragStart(pointer, gameObject) {
+    const color = gameObject.getData('color');
+    this.wires[color].long.setVisible(true);
+  }
+
+  onDrag(pointer, gameObject, dragX, dragY) {
+    const color = gameObject.getData('color');
+    const start = this.startPoints[color];
+    const wireLong = this.wires[color].long;
+    wireLong.setScale(3);
+
+    gameObject.x = dragX;
+    gameObject.y = dragY;
+
+    const distance = Phaser.Math.Distance.Between(start.x, start.y, dragX, dragY);
+    const angle = Phaser.Math.Angle.Between(start.x, start.y, dragX, dragY);
+
+    wireLong.x = start.x;
+    wireLong.y = start.y;
+    wireLong.displayWidth = distance;
+    wireLong.rotation = angle;
+  }
+
+  onDragEnd(pointer, gameObject) {
+    const color = gameObject.getData('color');
+    const endPoint = this.endPoints[color];
+    const wireLong = this.wires[color].long;
+
+    const distToEnd = Phaser.Math.Distance.Between(gameObject.x, gameObject.y, endPoint.x, endPoint.y);
+
+    if (distToEnd < 50) {
+      gameObject.x = endPoint.x;
+      gameObject.y = endPoint.y;
+      gameObject.disableInteractive();
+
+      const distance = Phaser.Math.Distance.Between(this.startPoints[color].x, this.startPoints[color].y, endPoint.x, endPoint.y);
+      const angle = Phaser.Math.Angle.Between(this.startPoints[color].x, this.startPoints[color].y, endPoint.x, endPoint.y);
+
+      wireLong.displayWidth = distance;
+      wireLong.rotation = angle;
+
+      console.log(`Fio ${color} conectado com sucesso!`);
+      this.checkCompletion();
+    } else {
+      this.tweens.add({
+        targets: gameObject,
+        x: this.startPoints[color].x,
+        y: this.startPoints[color].y,
+        duration: 300,
+        ease: 'Power2'
+      });
+
+      wireLong.setVisible(false);
+    }
+  }
+
+  checkCompletion() {
+    const allConnected = Object.values(this.wires).every(wire => !wire.short.input.enabled);
+
+    if (allConnected) {
+      console.log("Minigame concluído com sucesso!");
+      // Aqui você pode avançar para a próxima etapa ou cena.
+    }
+  }
+}
+

@@ -11,15 +11,15 @@ class TutorialScene extends Phaser.Scene {
 
         //Lista das falas condicionais baseadas na resposta do jogador
         this.conditionalDialog = [
-            "Vivinho: UAU! Que bom que você já sabe. Agora, quero te explicar uma coisa muito importante na sua jornada a partir de agora, o termo JOB ROTATION.",
-            "Vivinho: Na Vivo, o termo JOB ROTATION se refere a uma estratégia de desenvolvimento profissional em que as pessoas estagiarias têm a oportunidade de atuar temporariamente em diferentes áreas da empresa.",
-            "Vivinho: O principal objetivo desse programa é ampliar a visão sistêmica do negócio, desenvolver novas habilidades e preparar os funcionários para se tornarem futuros gestores e líderes.",
-            "Vivinho: Por isso, irei te guiar para ser um líder na Vivo!"
+            "Vivinho: UAU! Que bom que você já sabe.",
+            "Vivinho: O plano de carreira da Vivo visa desenvolver talentos e promover crescimento profissional.",
+            "Vivinho: O principal objetivo do plano de carreira da Vivo é desenvolver e reter talentos, proporcionando crescimento profissional por meio de capacitação, mobilidade interna e participação em projetos estratégicos. A empresa busca formar líderes e especialistas alinhados aos seus valores e desafios do setor.",
+            "Vivinho: Por isso, irei te guiar para se desenvolver na Vivo!"
         ];
 
         //Lista de falas finais do tutorial
         this.finalDialog = [
-            "Vivinho: Observe esse esquema. Note que um novo talento pode evoluir para diversos cargos e realizar o job rotation na Vivo. Vamos mergulhar nisso nos próximos níveis!",
+            "Vivinho: Observe esse esquema. Note que um novo talento pode evoluir para diversos cargos na Vivo. Vamos mergulhar nisso nos próximos níveis!",
             "Vivinho: Além disso, a Vivo usa a plataforma Gupy para gerenciar seus processos seletivos, permitindo que candidatos cadastrem currículos, participem de testes e acompanhem o andamento das vagas."
         ];
 
