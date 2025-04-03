@@ -297,8 +297,16 @@ class VpEstrategiaScene extends Phaser.Scene {
           this.exclamationIdle3.setVisible(true); // Torna a exclamação do npcIdle3 visível
           this.npcInteractionComplete = true; // Permite a interação com os outros NPCs
           this.progressHUD.setVisible(true); // Show HUD after main NPC dialogue
+        } else {
+          // Troca para o minigame correspondente após o diálogo com NPCs idle
+          if (npc === this.npcIdle) {
+            this.scene.switch('minigameEstrategiaCarlos');
+          } else if (npc === this.npcIdle2) {
+            this.scene.switch('minigameEstrategiaAna');
+          } else if (npc === this.npcIdle3) {
+            this.scene.switch('minigameEstrategiaMariana');
+          }
         }
-
       }
     };
 
