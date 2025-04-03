@@ -194,7 +194,7 @@ class VpEstrategiaScene extends Phaser.Scene {
       if (!this.activeDialogue && this.keyEnterIdle) { // Check if this.keyEnterIdle is defined
         this.keyEnterIdle.setVisible(true); // Exibe a tecla Enter ao interagir com o npcIdle
         this.startDialogue([
-          `E aí, ${this.nome}!`,
+          `E aí, ${this.playerName}!`,
           'Sou o Carlos do time comercial.',
           'Tenho vontade de virar gestor, mas não sei qual o caminho certo aqui na Vivo.',
           'Você entende como funciona Carreira em Y? Pode me dar uma força?'
@@ -235,7 +235,7 @@ class VpEstrategiaScene extends Phaser.Scene {
       if (!this.activeDialogue && this.keyEnterIdle3) {
         this.keyEnterIdle3.setVisible(true); // Exibe a tecla Enter ao interagir com o npcIdle3
         this.startDialogue([
-          `Oi, ${this.nome}! Eu sou a Mariana, trabalho no SAC.`,
+          `Oi, ${this.playerName}! Eu sou a Mariana, trabalho no SAC.`,
           'Estou em dúvida sobre minha próxima certificação.',
           'Aqui na Vivo dá pra crescer e ganhar benefícios melhores,',
           'mas eu não entendo direito como funciona.',
@@ -252,11 +252,7 @@ class VpEstrategiaScene extends Phaser.Scene {
     this.cameras.main.startFollow(this.player); // Faz a câmera seguir o jogador
     this.cameras.main.setZoom(2); // Define o nível de zoom da câmera
 
-    // Create the HUD with improved styling
-    const hudContainer = this.add.container(16, 16);
-    hudContainer.setScrollFactor(0);
-
-    // Add background with stroke
+    //Add fundo com borda
     const hudBg = this.add.rectangle(0, 0, 100, 40, 0x000000, 0.7);
     hudBg.setStrokeStyle(2, 0xB600B9);
 
@@ -317,12 +313,6 @@ class VpEstrategiaScene extends Phaser.Scene {
           this.progressHUD.setVisible(true); // Show HUD after main NPC dialogue
         }
 
-        // Update counter after each NPC interaction
-        if (npc !== this.npc && !this.showThankYou) {
-          this.interactionCount++;
-          this.progressText.setText(`${this.interactionCount}/3`);
-          this.scene.switch("minigameEstrategia" + (npc === this.npcIdle ? "Carlos" : npc === this.npcIdle2 ? "Ana" : "Mariana"));
-        }
       }
     };
 
@@ -474,7 +464,7 @@ VpEstrategiaScene.lastMusicTime = 0;
 class minigameEstrategiaCarlos extends Phaser.Scene {
   constructor() {
     super({ key: "minigameEstrategiaCarlos" });
-    this.currentNPC = 0; // Track current NPC (0: Ana, 1: Carlos, 2: Mariana)
+    this.currentNPC = 0; // 
     this.npcData = [
       {
         name: 'Carlos',
@@ -492,24 +482,24 @@ class minigameEstrategiaCarlos extends Phaser.Scene {
   preload() {
     this.load.audio('success', '../assets/sounds/success.mp3');
     this.load.audio('error', '../assets/sounds/error.mp3');
-    this.load.image('background', '../assets/background_vpestrategia_minigame.png'); // Fixed path
+    this.load.image('background', '../assets/background_vpestrategia_minigame.png');
     this.load.image('arrow', '../assets/arrow.png');
   }
 
   create() {
-    // Get game dimensions
+    // Dimensões do jogo
     this.gameWidth = this.cameras.main.width;
     this.gameHeight = this.cameras.main.height;
     this.createGameElements();
   }
 
   createGameElements() {
-    // Add background image
+    // Imagem de fundo
     this.add.image(this.gameWidth / 2, this.gameHeight / 2, 'background')
       .setDisplaySize(this.gameWidth, this.gameHeight)
       .setOrigin(0.5);
 
-    // Add white overlay with 50% opacity
+    // Colocar branco com opacidade de 50%
     this.add.rectangle(
       this.gameWidth / 2,
       this.gameHeight / 2,
@@ -521,7 +511,7 @@ class minigameEstrategiaCarlos extends Phaser.Scene {
 
     const currentNPCData = this.npcData[this.currentNPC];
 
-    // Centered header - adjusted for full screen
+    // Cabeçalho no centro
     const headerBg = this.add.rectangle(this.gameWidth / 2, 80, this.gameWidth * 0.8, 120, 0x000000, 0.1);
 
     this.add.text(this.gameWidth / 2, 90, `Organize a carreira de ${currentNPCData.name}`, {
@@ -531,14 +521,14 @@ class minigameEstrategiaCarlos extends Phaser.Scene {
       fontFamily: 'font'
     }).setOrigin(0.5);
 
-    // Centered instructions - adjusted position
+    // Instruções centralizadas
     this.add.text(this.gameWidth / 2, 160, 'Carlos precisa de sua ajuda! Clique e arraste os elementos na ordem correta do início ao fim da carreira.', {
       fontSize: '29px',
       fill: '#000000',
       fontFamily: 'font'
     }).setOrigin(0.5);
 
-    // Create centered drop zones - adjusted for full width
+    // Drop zones do minigame centralizadas
     this.dropZones = [];
     const zoneWidth = 200;
     const totalWidth = zoneWidth * 4;
@@ -554,18 +544,18 @@ class minigameEstrategiaCarlos extends Phaser.Scene {
         arrow.setTint(0x000000);
       }
 
-      // Create depth effect with multiple layers
+      // Efeito de produndidade
       const shadowZone = this.add.rectangle(x + 4, y + 4, zoneWidth, 120, 0x000000, 0.2);
-      const baseZone = this.add.rectangle(x, y, zoneWidth, 120, 0xE6B3FF, 0.3); // Lighter purple base
-      const zone = this.add.rectangle(x, y, zoneWidth, 120, 0xE6B3FF, 0.8); // Lighter purple top
+      const baseZone = this.add.rectangle(x, y, zoneWidth, 120, 0xE6B3FF, 0.3); // Roxo claro base
+      const zone = this.add.rectangle(x, y, zoneWidth, 120, 0xE6B3FF, 0.8); // Roxo claro top
 
-      // Add inner shadow effect
+      // Sombra
       zone.setStrokeStyle(2, 0x000000, 0.2);
       zone.setInteractive();
       zone.correctIndex = i;
 
-      // Add depth effect with gradient
-      const gradient = this.add.rectangle(x, y + 2, zoneWidth - 4, 116, 0xD9A3FF, 0.4); // Slightly darker for depth
+      // Profundidade com gradiente
+      const gradient = this.add.rectangle(x, y + 2, zoneWidth - 4, 116, 0xD9A3FF, 0.4);
 
       this.add.text(x, y - 80, `${i + 1}`, {
         fontSize: '32px',
@@ -573,19 +563,19 @@ class minigameEstrategiaCarlos extends Phaser.Scene {
         fontStyle: 'bold'
       }).setOrigin(0.5);
 
-      // Group all visual elements
+      // Agrupando todos os elementos visuais
       const zoneGroup = [shadowZone, baseZone, gradient, zone];
       this.dropZones.push(zone);
     }
 
-    // Create draggable elements with matching color scheme
+    // Cria elementos draggable
     const shuffledElements = Phaser.Utils.Array.Shuffle([...currentNPCData.elements]);
 
     this.dragElements = shuffledElements.map((element, index) => {
       const x = startX + (zoneWidth + spacing) * index + zoneWidth / 2;
       const y = this.gameHeight - 150;
 
-      // Change back to original purple color (0xB600B9) for draggable elements
+      // Cor roxa
       const background = this.add.rectangle(0, 0, zoneWidth, 120, 0xB600B9);
       background.setStrokeStyle(2, 0x000000, 0.3);
 
@@ -604,7 +594,7 @@ class minigameEstrategiaCarlos extends Phaser.Scene {
       container.originalX = x;
       container.originalY = y;
 
-      // Hover effect
+      // Efeito Hover
       container.on('pointerover', () => {
         this.tweens.add({
           targets: container,
@@ -626,7 +616,7 @@ class minigameEstrategiaCarlos extends Phaser.Scene {
       return container;
     });
 
-    // Setup drag events
+    // Eventos de drag (para o minigame de arrastar elementos)
     this.input.on('dragstart', (pointer, gameObject) => {
       gameObject.setDepth(1);
     });
@@ -680,14 +670,15 @@ class minigameEstrategiaCarlos extends Phaser.Scene {
       this.gameHeight / 2 + 50
     );
 
-    // Add outer stroke for a subtle border effect
+    // Adicione um traço externo para um efeito de borda sutil
+
     const errorBorder = this.add.rectangle(0, 0, 404, 64, 0xFF6B6B);
     const errorBg = this.add.rectangle(0, 0, 400, 60, 0xFFA7A7, 1);
-    errorBg.setStrokeStyle(2, 0xFF8888, 1); // Inner stroke slightly lighter
+    errorBg.setStrokeStyle(2, 0xFF8888, 1); // Traço interno ligeiramente mais claro
 
     const errorText = this.add.text(0, 0, 'Posição incorreta!', {
       fontSize: '20px',
-      fill: '#800000', // Darker red text for better contrast
+      fill: '#800000', // Texto vermelho mais escuro para melhor contraste
       fontFamily: 'font'
     }).setOrigin(0.5);
 
@@ -716,14 +707,14 @@ class minigameEstrategiaCarlos extends Phaser.Scene {
       this.gameHeight / 2 + 50
     );
 
-    // Add outer stroke for a subtle border effect
+    // Adicione um traço externo para um efeito de borda sutil
     const successBorder = this.add.rectangle(0, 0, 404, 64, 0x2E8B57);
     const successBg = this.add.rectangle(0, 0, 400, 60, 0x90EE90, 1);
-    successBg.setStrokeStyle(2, 0x98FB98, 1); // Inner stroke slightly lighter
+    successBg.setStrokeStyle(2, 0x98FB98, 1); // Traço interno ligeiramente mais claro
 
     const successText = this.add.text(0, 0, 'Posição correta!', {
       fontSize: '20px',
-      fill: '#006400', // Darker green text for better contrast
+      fill: '#006400', // Texto verde mais escuro para melhor contraste
       fontFamily: 'font'
     }).setOrigin(0.5);
 
@@ -745,7 +736,7 @@ class minigameEstrategiaCarlos extends Phaser.Scene {
       this.feedbackContainer.destroy();
     }
 
-    // Create centered overlay
+    // Criar sobreposição centralizada
     const overlay = this.add.rectangle(
       this.gameWidth / 2,
       this.gameHeight / 2,
@@ -755,21 +746,21 @@ class minigameEstrategiaCarlos extends Phaser.Scene {
       0.7
     );
 
-    // Create centered container
+    // Criar contêiner centralizado
     this.feedbackContainer = this.add.container(this.gameWidth / 2, this.gameHeight / 2);
 
-    // Create feedback background with proper size
+    // Crie um plano de fundo de feedback com tamanho adequado
     const feedbackBg = this.add.rectangle(
       0,
       0,
-      800,  // Increased width
-      200,  // Adjusted height
+      800,  // Largura aumentada
+      200,  // Altura ajustada
       0xB600B9,
       0.9
     ).setOrigin(0.5);
     feedbackBg.setStrokeStyle(4, 0xB600B9);
 
-    // Create centered text
+    // Cria texto centralizado
     const feedbackText = this.add.text(
       0,
       0,
@@ -779,14 +770,14 @@ class minigameEstrategiaCarlos extends Phaser.Scene {
         fill: '#FFFFFF',
         align: 'center',
         fontFamily: 'font',
-        wordWrap: { width: 750 }  // Adjusted wrap width
+        wordWrap: { width: 750 }  // largura de envoltório ajustada
       }
-    ).setOrigin(0.5);  // This centers the text both horizontally and vertically
+    ).setOrigin(0.5);  // Isso centraliza o texto horizontalmente e verticalmente
 
-    // Add elements to container
+    // Addiciona elementos ao container
     this.feedbackContainer.add([feedbackBg, feedbackText]);
 
-    // Increased display time to 8 seconds
+    // Tempo de exibição aumentado para 8 segundos
     this.time.delayedCall(8000, () => {
       this.tweens.add({
         targets: [overlay, this.feedbackContainer],
@@ -803,7 +794,7 @@ class minigameEstrategiaCarlos extends Phaser.Scene {
 
   showError(gameObject) {
     if (this.errorContainer) {
-      this.errorContainer.destroy(); // Remove qualquer contêiner de erro existente
+      this.errorContainer.destroy(); // Remova qualquer contêiner de erro existente
     }
 
     // Cria o contêiner de erro
@@ -858,7 +849,7 @@ class minigameEstrategiaCarlos extends Phaser.Scene {
 class minigameEstrategiaAna extends Phaser.Scene {
   constructor() {
     super({ key: "minigameEstrategiaAna" });
-    this.currentNPC = 0; // Track current NPC (0: Ana, 1: Carlos, 2: Mariana)
+    this.currentNPC = 0; // Rastrear NPC atual (0: Ana, 1: Carlos, 2: Mariana)
     this.npcData = [
       {
         name: 'Ana',
@@ -876,24 +867,24 @@ class minigameEstrategiaAna extends Phaser.Scene {
   preload() {
     this.load.audio('success', '../assets/sounds/success.mp3');
     this.load.audio('error', '../assets/sounds/error.mp3');
-    this.load.image('background', '../assets/background_vpestrategia_minigame.png'); // Fixed path
+    this.load.image('background', '../assets/background_vpestrategia_minigame.png'); // Caminho fixo
     this.load.image('arrow', '../assets/arrow.png');
   }
 
   create() {
-    // Get game dimensions
+    // Obtenha as dimensões do jogo
     this.gameWidth = this.cameras.main.width;
     this.gameHeight = this.cameras.main.height;
     this.createGameElements();
   }
 
   createGameElements() {
-    // Add background image
+    // Adicionar imagem de fundo
     this.add.image(this.gameWidth / 2, this.gameHeight / 2, 'background')
       .setDisplaySize(this.gameWidth, this.gameHeight)
       .setOrigin(0.5);
 
-    // Add white overlay with 50% opacity
+    // Adicionar sobreposição branca com 50% de opacidade
     this.add.rectangle(
       this.gameWidth / 2,
       this.gameHeight / 2,
@@ -905,7 +896,7 @@ class minigameEstrategiaAna extends Phaser.Scene {
 
     const currentNPCData = this.npcData[this.currentNPC];
 
-    // Centered header - adjusted for full screen
+    // Cabeçalho centralizado
     const headerBg = this.add.rectangle(this.gameWidth / 2, 80, this.gameWidth * 0.8, 120, 0x000000, 0.1);
 
     this.add.text(this.gameWidth / 2, 90, `Organize a carreira de ${currentNPCData.name}`, {
@@ -915,14 +906,14 @@ class minigameEstrategiaAna extends Phaser.Scene {
       fontFamily: 'font'
     }).setOrigin(0.5);
 
-    // Centered instructions - adjusted position
+    // Instruções centralizadas
     this.add.text(this.gameWidth / 2, 160, 'Ana precisa de sua ajuda! Clique e arraste os elementos na ordem correta do início ao fim da carreira.', {
       fontSize: '29px',
       fill: '#000000',
       fontFamily: 'font'
     }).setOrigin(0.5);
 
-    // Create centered drop zones - adjusted for full width
+    // Drop zones centralizadas
     this.dropZones = [];
     const zoneWidth = 200;
     const totalWidth = zoneWidth * 4;
@@ -938,18 +929,18 @@ class minigameEstrategiaAna extends Phaser.Scene {
         arrow.setTint(0x000000);
       }
 
-      // Create depth effect with multiple layers
+      // Efeito de profundidade com várias camadas
       const shadowZone = this.add.rectangle(x + 4, y + 4, zoneWidth, 120, 0x000000, 0.2);
-      const baseZone = this.add.rectangle(x, y, zoneWidth, 120, 0xE6B3FF, 0.3); // Lighter purple base
-      const zone = this.add.rectangle(x, y, zoneWidth, 120, 0xE6B3FF, 0.8); // Lighter purple top
+      const baseZone = this.add.rectangle(x, y, zoneWidth, 120, 0xE6B3FF, 0.3); // Roxo claro base
+      const zone = this.add.rectangle(x, y, zoneWidth, 120, 0xE6B3FF, 0.8); // Roxo claro top
 
-      // Add inner shadow effect
+      // Adicionar efeito de sombra inner
       zone.setStrokeStyle(2, 0x000000, 0.2);
       zone.setInteractive();
       zone.correctIndex = i;
 
-      // Add depth effect with gradient
-      const gradient = this.add.rectangle(x, y + 2, zoneWidth - 4, 116, 0xD9A3FF, 0.4); // Slightly darker for depth
+      // Profundidade com gradiente
+      const gradient = this.add.rectangle(x, y + 2, zoneWidth - 4, 116, 0xD9A3FF, 0.4);
 
       this.add.text(x, y - 80, `${i + 1}`, {
         fontSize: '32px',
@@ -957,19 +948,19 @@ class minigameEstrategiaAna extends Phaser.Scene {
         fontStyle: 'bold'
       }).setOrigin(0.5);
 
-      // Group all visual elements
+      // Agrupar todos os elementos visuais
       const zoneGroup = [shadowZone, baseZone, gradient, zone];
       this.dropZones.push(zone);
     }
 
-    // Create draggable elements with matching color scheme
+    // Cria elementos draggable
     const shuffledElements = Phaser.Utils.Array.Shuffle([...currentNPCData.elements]);
 
     this.dragElements = shuffledElements.map((element, index) => {
       const x = startX + (zoneWidth + spacing) * index + zoneWidth / 2;
       const y = this.gameHeight - 150;
 
-      // Change back to original purple color (0xB600B9) for draggable elements
+      // Roxo nos elementos draggable
       const background = this.add.rectangle(0, 0, zoneWidth, 120, 0xB600B9);
       background.setStrokeStyle(2, 0x000000, 0.3);
 
@@ -988,7 +979,7 @@ class minigameEstrategiaAna extends Phaser.Scene {
       container.originalX = x;
       container.originalY = y;
 
-      // Hover effect
+      // Efeito hover
       container.on('pointerover', () => {
         this.tweens.add({
           targets: container,
@@ -1010,7 +1001,7 @@ class minigameEstrategiaAna extends Phaser.Scene {
       return container;
     });
 
-    // Setup drag events
+    // Eventos drag (para o minigame de arrastar elementos)
     this.input.on('dragstart', (pointer, gameObject) => {
       gameObject.setDepth(1);
     });
@@ -1064,7 +1055,7 @@ class minigameEstrategiaAna extends Phaser.Scene {
       this.gameHeight / 2 + 50
     );
 
-    // Add outer stroke for a subtle border effect
+    // Borda
     const errorBorder = this.add.rectangle(0, 0, 404, 64, 0xFF6B6B);
     const errorBg = this.add.rectangle(0, 0, 400, 60, 0xFFA7A7, 1);
     errorBg.setStrokeStyle(2, 0xFF8888, 1); // Inner stroke slightly lighter
@@ -1100,14 +1091,14 @@ class minigameEstrategiaAna extends Phaser.Scene {
       this.gameHeight / 2 + 50
     );
 
-    // Add outer stroke for a subtle border effect
+    // Borda
     const successBorder = this.add.rectangle(0, 0, 404, 64, 0x2E8B57);
     const successBg = this.add.rectangle(0, 0, 400, 60, 0x90EE90, 1);
     successBg.setStrokeStyle(2, 0x98FB98, 1); // Inner stroke slightly lighter
 
     const successText = this.add.text(0, 0, 'Posição correta!', {
       fontSize: '20px',
-      fill: '#006400', // Darker green text for better contrast
+      fill: '#006400', // Contraste do verde
       fontFamily: 'font'
     }).setOrigin(0.5);
 
@@ -1129,7 +1120,7 @@ class minigameEstrategiaAna extends Phaser.Scene {
       this.feedbackContainer.destroy();
     }
 
-    // Create centered overlay
+    // Overlay centralizado
     const overlay = this.add.rectangle(
       this.gameWidth / 2,
       this.gameHeight / 2,
@@ -1139,21 +1130,21 @@ class minigameEstrategiaAna extends Phaser.Scene {
       0.7
     );
 
-    // Create centered container
+    // Container centralizado
     this.feedbackContainer = this.add.container(this.gameWidth / 2, this.gameHeight / 2);
 
-    // Create feedback background with proper size
+    // Fundo de feedback
     const feedbackBg = this.add.rectangle(
       0,
       0,
-      800,  // Increased width
-      200,  // Adjusted height
+      800,  // Largura
+      200,  // Altura
       0xB600B9,
       0.9
     ).setOrigin(0.5);
     feedbackBg.setStrokeStyle(4, 0xB600B9);
 
-    // Create centered text
+    // Texto centralizado
     const feedbackText = this.add.text(
       0,
       0,
@@ -1165,12 +1156,12 @@ class minigameEstrategiaAna extends Phaser.Scene {
         fontFamily: 'font',
         wordWrap: { width: 750 }  // Adjusted wrap width
       }
-    ).setOrigin(0.5);  // This centers the text both horizontally and vertically
+    ).setOrigin(0.5);  // Centralizar verticalmente e horizontalmente
 
-    // Add elements to container
+    // Add elementos no container
     this.feedbackContainer.add([feedbackBg, feedbackText]);
 
-    // Increased display time to 8 seconds
+    // Tempo de display -> 8 segundos
     this.time.delayedCall(8000, () => {
       this.tweens.add({
         targets: [overlay, this.feedbackContainer],
@@ -1241,7 +1232,7 @@ class minigameEstrategiaAna extends Phaser.Scene {
 class minigameEstrategiaMariana extends Phaser.Scene {
   constructor() {
     super({ key: "minigameEstrategiaMariana" });
-    this.currentNPC = 0; // Track current NPC (0: Ana, 1: Carlos, 2: Mariana)
+    this.currentNPC = 0; // 
     this.npcData = [
       {
         name: 'Mariana',
@@ -1259,24 +1250,24 @@ class minigameEstrategiaMariana extends Phaser.Scene {
   preload() {
     this.load.audio('success', '../assets/sounds/success.mp3');
     this.load.audio('error', '../assets/sounds/error.mp3');
-    this.load.image('background', '../assets/background_vpestrategia_minigame.png'); // Fixed path
+    this.load.image('background', '../assets/background_vpestrategia_minigame.png'); // Caminho fixado
     this.load.image('arrow', '../assets/arrow.png');
   }
 
   create() {
-    // Get game dimensions
+    // Dimensões do jogo
     this.gameWidth = this.cameras.main.width;
     this.gameHeight = this.cameras.main.height;
     this.createGameElements();
   }
 
   createGameElements() {
-    // Add background image
+    // Add imagem de fundo
     this.add.image(this.gameWidth / 2, this.gameHeight / 2, 'background')
       .setDisplaySize(this.gameWidth, this.gameHeight)
       .setOrigin(0.5);
 
-    // Add white overlay with 50% opacity
+    // Adicionar sobreposição branca com 50% de opacidade
     this.add.rectangle(
       this.gameWidth / 2,
       this.gameHeight / 2,
@@ -1288,7 +1279,7 @@ class minigameEstrategiaMariana extends Phaser.Scene {
 
     const currentNPCData = this.npcData[this.currentNPC];
 
-    // Centered header - adjusted for full screen
+    // Cabeçalho centralizado
     const headerBg = this.add.rectangle(this.gameWidth / 2, 80, this.gameWidth * 0.8, 120, 0x000000, 0.1);
 
     this.add.text(this.gameWidth / 2, 90, `Organize a carreira de ${currentNPCData.name}`, {
@@ -1298,14 +1289,14 @@ class minigameEstrategiaMariana extends Phaser.Scene {
       fontFamily: 'font'
     }).setOrigin(0.5);
 
-    // Centered instructions - adjusted position
+    // Instruções centralizadas
     this.add.text(this.gameWidth / 2, 160, 'Mariana precisa de sua ajuda! Clique e arraste os elementos na ordem correta do início ao fim da carreira.', {
       fontSize: '29px',
       fill: '#000000',
       fontFamily: 'font'
     }).setOrigin(0.5);
 
-    // Create centered drop zones - adjusted for full width
+    // Drop zones centralizadas
     this.dropZones = [];
     const zoneWidth = 200;
     const totalWidth = zoneWidth * 4;
@@ -1321,17 +1312,17 @@ class minigameEstrategiaMariana extends Phaser.Scene {
         arrow.setTint(0x000000);
       }
 
-      // Create depth effect with multiple layers
+      // Efeito de profundidade com várias camadas
       const shadowZone = this.add.rectangle(x + 4, y + 4, zoneWidth, 120, 0x000000, 0.2);
-      const baseZone = this.add.rectangle(x, y, zoneWidth, 120, 0xE6B3FF, 0.3); // Lighter purple base
-      const zone = this.add.rectangle(x, y, zoneWidth, 120, 0xE6B3FF, 0.8); // Lighter purple top
+      const baseZone = this.add.rectangle(x, y, zoneWidth, 120, 0xE6B3FF, 0.3); // Roxo claro base
+      const zone = this.add.rectangle(x, y, zoneWidth, 120, 0xE6B3FF, 0.8); // Roxo claro top
 
-      // Add inner shadow effect
+      // Adicionar efeito de sombra inner
       zone.setStrokeStyle(2, 0x000000, 0.2);
       zone.setInteractive();
       zone.correctIndex = i;
 
-      // Add depth effect with gradient
+      // Profundidade com gradiente
       const gradient = this.add.rectangle(x, y + 2, zoneWidth - 4, 116, 0xD9A3FF, 0.4); // Slightly darker for depth
 
       this.add.text(x, y - 80, `${i + 1}`, {
@@ -1340,19 +1331,19 @@ class minigameEstrategiaMariana extends Phaser.Scene {
         fontStyle: 'bold'
       }).setOrigin(0.5);
 
-      // Group all visual elements
+      // Agrupar todos os elementos visuais
       const zoneGroup = [shadowZone, baseZone, gradient, zone];
       this.dropZones.push(zone);
     }
 
-    // Create draggable elements with matching color scheme
+    // Cria elementos draggable
     const shuffledElements = Phaser.Utils.Array.Shuffle([...currentNPCData.elements]);
 
     this.dragElements = shuffledElements.map((element, index) => {
       const x = startX + (zoneWidth + spacing) * index + zoneWidth / 2;
       const y = this.gameHeight - 150;
 
-      // Change back to original purple color (0xB600B9) for draggable elements
+      // Roxo nos elementos draggable
       const background = this.add.rectangle(0, 0, zoneWidth, 120, 0xB600B9);
       background.setStrokeStyle(2, 0x000000, 0.3);
 
@@ -1371,7 +1362,7 @@ class minigameEstrategiaMariana extends Phaser.Scene {
       container.originalX = x;
       container.originalY = y;
 
-      // Hover effect
+      // Efeito hover
       container.on('pointerover', () => {
         this.tweens.add({
           targets: container,
@@ -1393,7 +1384,7 @@ class minigameEstrategiaMariana extends Phaser.Scene {
       return container;
     });
 
-    // Setup drag events
+    // Eventos drag (para o minigame de arrastar elementos)
     this.input.on('dragstart', (pointer, gameObject) => {
       gameObject.setDepth(1);
     });
@@ -1447,7 +1438,7 @@ class minigameEstrategiaMariana extends Phaser.Scene {
       this.gameHeight / 2 + 50
     );
 
-    // Add outer stroke for a subtle border effect
+    // Borda
     const errorBorder = this.add.rectangle(0, 0, 404, 64, 0xFF6B6B);
     const errorBg = this.add.rectangle(0, 0, 400, 60, 0xFFA7A7, 1);
     errorBg.setStrokeStyle(2, 0xFF8888, 1); // Inner stroke slightly lighter
@@ -1483,14 +1474,14 @@ class minigameEstrategiaMariana extends Phaser.Scene {
       this.gameHeight / 2 + 50
     );
 
-    // Add outer stroke for a subtle border effect
+    // Borda
     const successBorder = this.add.rectangle(0, 0, 404, 64, 0x2E8B57);
     const successBg = this.add.rectangle(0, 0, 400, 60, 0x90EE90, 1);
     successBg.setStrokeStyle(2, 0x98FB98, 1); // Inner stroke slightly lighter
 
     const successText = this.add.text(0, 0, 'Posição correta!', {
       fontSize: '20px',
-      fill: '#006400', // Darker green text for better contrast
+      fill: '#006400', // Contraste do verde
       fontFamily: 'font'
     }).setOrigin(0.5);
 
@@ -1512,7 +1503,7 @@ class minigameEstrategiaMariana extends Phaser.Scene {
       this.feedbackContainer.destroy();
     }
 
-    // Create centered overlay
+    // Overlay centralizado
     const overlay = this.add.rectangle(
       this.gameWidth / 2,
       this.gameHeight / 2,
@@ -1522,21 +1513,21 @@ class minigameEstrategiaMariana extends Phaser.Scene {
       0.7
     );
 
-    // Create centered container
+    // Container centralizado
     this.feedbackContainer = this.add.container(this.gameWidth / 2, this.gameHeight / 2);
 
-    // Create feedback background with proper size
+    // Fundo de feedback
     const feedbackBg = this.add.rectangle(
       0,
       0,
-      800,  // Increased width
-      200,  // Adjusted height
+      800,  // Largura
+      200,  // Altura
       0xB600B9,
       0.9
     ).setOrigin(0.5);
     feedbackBg.setStrokeStyle(4, 0xB600B9);
 
-    // Create centered text
+    // Texto centralizado
     const feedbackText = this.add.text(
       0,
       0,
@@ -1548,12 +1539,12 @@ class minigameEstrategiaMariana extends Phaser.Scene {
         fontFamily: 'font',
         wordWrap: { width: 750 }  // Adjusted wrap width
       }
-    ).setOrigin(0.5);  // This centers the text both horizontally and vertically
+    ).setOrigin(0.5);  // Centralizar verticalmente e horizontalmente
 
-    // Add elements to container
+    // Add elementos no container
     this.feedbackContainer.add([feedbackBg, feedbackText]);
 
-    // Increased display time to 8 seconds
+    // Tempo de display -> 8 segundos
     this.time.delayedCall(8000, () => {
       this.tweens.add({
         targets: [overlay, this.feedbackContainer],
