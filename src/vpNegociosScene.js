@@ -407,10 +407,55 @@ class VpNegociosScene extends Phaser.Scene {
       });
     }
 
+    createIndicatorNpc16Back() {
+      console.log("createIndicatorNpc16Back called"); // Adiciona um log para verificar se a função está sendo chamada
+      this.indicatorNpc16 = this.physics.add.sprite(this.npc16.x, this.npc16.y - 50, 'indicator');
+      this.indicatorNpc16.setScale(0.2);
+      this.indicatorNpc16.setImmovable(true);
+      this.indicatorNpc16.play("exclaiming");
+
+      this.events.on('update', () => {
+      const distance = Phaser.Math.Distance.Between(this.player.x, this.player.y, this.npc16.x, this.npc16.y);
+
+      if (distance < 100 && !this.keyENpc16) {
+        if (this.indicatorNpc16) {
+        this.indicatorNpc16.destroy(); // Remove a exclamação
+        this.indicatorNpc16 = null;
+        }
+
+        this.keyENpc16 = this.add.image(this.npc16.x, this.npc16.y - 40, 'keyE').setScale(0.07).setDepth(1000);
+        this.canInteractWithNpc16 = true;
+      } else if (distance >= 100 && this.keyENpc16) {
+        this.keyENpc16.destroy();
+        this.keyENpc16 = null;
+        this.canInteractWithNpc16 = false;
+      }
+      });
+
+      // Adiciona a interação com o NPC 16
+      this.input.keyboard.on("keydown-E", () => {
+      if (this.canInteractWithNpc16) {
+        this.canInteractWithNpc16 = false;
+
+        if (this.keyENpc16) {
+        this.keyENpc16.destroy(); // Remove a tecla E
+        this.keyENpc16 = null;
+        }
+
+        this.createCongratulationsNpc16(); // Chama o método para exibir o diálogo
+      }
+      });
+    }
+
     createDialogNpc16() {
       const speech = [
-      "Olá! Bem-vindo à área de negócios!",
-      "Explore o ambiente e colete os chips para desbloquear novas informações!"
+      "Ei, ainda bem que você chegou! Estamos com um problemão nos servidores da área B2B.",
+      "Esses servidores são essenciais para manter os serviços corporativos da Vivo funcionando.",
+      "As conexões de grandes empresas, atendimento dedicado, soluções de nuvem, tudo passa por eles!",
+      "Quando eles caem, empresas inteiras podem ficar offline. Imagina um hospital ou um banco sem conexão... ",
+      "Preciso que você vá até a sala de manutenção e fale com o Jorge.",
+      "Ele vai te entregar uma chave de fenda especial que você vai usar para consertar os servidores.",
+      "Confio em você! A sala de manutenção fica do seu lado direito. Corre lá!"
       ];
 
       const dialogBalloon = this.add.image(this.npc16.x + 50, this.npc16.y - 50, "balloonText").setScale(0.8);
@@ -439,6 +484,42 @@ class VpNegociosScene extends Phaser.Scene {
 
       // Adiciona o evento para avançar o diálogo com a tecla ENTER
       this.input.keyboard.on("keydown-ENTER", advanceDialog);
+    }
+
+    createCongratulationsNpc16() {
+      const speech = [
+        "Ufa! Os servidores estão de volta ao ar! Você salvou o dia.",
+        "Já começaram a chegar alertas de normalização nos sistemas. As soluções corporativas da Vivo voltaram a funcionar perfeitamente.",
+        "Nossos clientes B2B dependem desses serviços pra manter empresas, hospitais, escolas e até órgãos públicos conectados. O que você fez foi gigante!",
+        "Parabéns pelo trabalho. E obrigada por agir tão rápido — você mostrou agilidade e responsabilidade."
+        ];
+  
+        const dialogBalloon = this.add.image(this.npc16.x + 50, this.npc16.y - 50, "balloonText").setScale(0.8);
+        const dialogText = this.add.text(this.npc16.x - 15, this.npc16.y - 100, speech[0], {
+        fontSize: "10px",
+        fill: "#000000",
+        wordWrap: { width: dialogBalloon.width - 50 },
+        });
+  
+        const keyEnter = this.add.image(this.npc16.x - 40, this.npc16.y - 40, 'keyENTER').setScale(0.1).setDepth(1000);
+  
+        let currentIndex = 0;
+  
+        const advanceDialog = () => {
+        currentIndex++;
+        if (currentIndex < speech.length) {
+          dialogText.setText(speech[currentIndex]); // Atualiza o texto do diálogo
+        } else {
+          // Remove o balão de diálogo e a tecla ENTER
+          dialogBalloon.destroy();
+          dialogText.destroy();
+          keyEnter.destroy();
+          this.input.keyboard.off("keydown-ENTER", advanceDialog);
+        }
+        };
+  
+        // Adiciona o evento para avançar o diálogo com a tecla ENTER
+        this.input.keyboard.on("keydown-ENTER", advanceDialog);
     }
 
     createServer() {
@@ -533,9 +614,11 @@ class VpNegociosScene extends Phaser.Scene {
 
     showNpc10Dialog() {
       const speech = [
-          "Olá! Bem-vindo à área de negócios!",
-          "Aqui você pode aprender mais sobre os serviços oferecidos.",
-          "Explore o ambiente e colete os chips para desbloquear novas informações!"
+          "Ah, você que veio ajudar com os servidores, né?",
+          "Aqui está a chave de fenda. Mas cuidado: ela não é uma chave comum — ela tem um sensor de segurança para não danificar os componentes internos.",
+          "Quando chegar na sala dos servidores, procure o painel com os fios danificados. É ali que tá o problema.",
+          "E lembra: sem esses servidores funcionando, os clientes corporativos da Vivo ficam no escuro. Capricha aí!",
+          "Vai lá e mostra do que você é capaz!"
       ];
 
       const dialogBalloon = this.add.image(this.npc10.x + 50, this.npc10.y - 50, "balloonText").setScale(0.8);
@@ -1110,7 +1193,9 @@ class MinigameWires extends Phaser.Scene {
         this.time.delayedCall(2000, () => {
             completionText.destroy(); // Remove a mensagem de conclusão
             this.scene.stop('minigameWires'); // Para a cena do minigame
-            this.scene.resume('vpNegociosScene'); // Retoma a cena principal sem reiniciá-la
+            const mainScene = this.scene.get('vpNegociosScene'); // Obtém a cena principal
+            mainScene.scene.resume(); // Retoma a cena principal
+            mainScene.createIndicatorNpc16Back(); // Chama o método para criar o indicador do NPC 16
         });
     }
   }
