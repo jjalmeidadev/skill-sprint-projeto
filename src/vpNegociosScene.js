@@ -33,10 +33,29 @@ class VpNegociosScene extends Phaser.Scene {
         this.load.image("bgElevNegocios", "../assets/bgelevadoroffice.png"); // Carrega a imagem de fundo do elevador
         this.load.image("panelElev", "../assets/painelelevador.png"); // Carrega a imagem do painel do elevador
         this.load.image("buttonElevNegocios", "../assets/botaocimaelevador.png"); // Carrega a imagem do botão do elevador
+        this.load.image('screwDriver', '../assets/minigameVpNegocios/screwdriver.png') // Carrega a imagem da chave de fenda
     }
 
     create() {
       this.collectedChips = 0; // contador inicial
+
+      // Verifica se o minigame foi concluído
+      const minigameWiresCompleted = this.registry.get('minigameWiresCompleted') || false;
+      // Verifica se há uma posição salva do jogador
+      const savedPosition = this.registry.get('playerPosition');
+      if (savedPosition) {
+          this.player.setPosition(savedPosition.x, savedPosition.y); // Restaura a posição do jogador
+      } else {
+          this.createPlayer(width, height); // Cria o jogador na posição inicial
+      }
+
+      if (minigameWiresCompleted) {
+          console.log("Minigame Wires já foi concluído. Progresso restaurado.");
+          // Aqui você pode ajustar o estado do jogo, como remover o crashedWire ou exibir algo diferente
+          if (this.crashedWire) {
+              this.crashedWire.destroy(); // Remove o servidor quebrado
+          }
+      }
 
       const map = this.make.tilemap({ key: "vpNegocios", tileWidth: 25, tileHeight: 20 }); // Cria o mapa
       const tileset1 = map.addTilesetImage("decoracao"); // Adiciona o tileset de decoração ao mapa
@@ -105,12 +124,20 @@ class VpNegociosScene extends Phaser.Scene {
 
       this.add.image(width - 410, height - 245, 'chip').setScale(0.03);
       this.createLocker();
+
+      this.screwDriverCollected = false; // Inicializa como falso, indicando que a chave de fenda ainda não foi coletada
       this.createServer();
     }
 
     update() {
       this.movePlayer();
-    
+
+      // Verifica se a chave de fenda existe antes de tentar manipulá-la
+      if (this.screwDriver && this.screwDriverCollected) {
+        this.screwDriver.x = this.player.x; // Atualiza a posição horizontal
+        this.screwDriver.y = this.player.y + 25; // Atualiza a posição vertical
+      }
+
       if (this.canInteractWithNpc15 && Phaser.Input.Keyboard.JustDown(this.keys.interagir)) {
         if (!this.npc15Interacted) {
           if (this.keyENpc15) {
@@ -332,7 +359,48 @@ class VpNegociosScene extends Phaser.Scene {
     }
 
     createServer() {
-      this.crashedWire = this.add.image(width - 1170, height - 215, 'crashedWire').setScale(0.06);
+      this.crashedWire = this.physics.add.sprite(width - 1170, height - 220, 'crashedWire').setScale(0.06);
+      this.crashedWire.setImmovable(true);
+
+      // Adiciona o overlap entre o jogador e o crashedWire
+      this.physics.add.overlap(this.player, this.crashedWire, () => {
+          if (!this.keyECrashedWire && this.screwDriverCollected) { // Verifica se a chave de fenda foi coletada
+              this.keyECrashedWire = this.add.image(this.crashedWire.x, this.crashedWire.y - 40, 'keyE').setScale(0.2).setDepth(1000);
+              this.canInteractWithCrashedWire = true;
+          }
+      });
+
+      // Remove a tecla E se o player se afasta
+      this.physics.add.overlap(this.player, this.crashedWire, null, (player, wire) => {
+          const distance = Phaser.Math.Distance.Between(player.x, player.y, wire.x, wire.y);
+          if (distance > 100 && this.keyECrashedWire) {
+              this.keyECrashedWire.destroy();
+              this.keyECrashedWire = null;
+              this.canInteractWithCrashedWire = false;
+          }
+          return true;
+      }, this);
+
+      // Adiciona a interação com o crashedWire
+      this.input.keyboard.on("keydown-E", () => {
+          if (this.canInteractWithCrashedWire) {
+              this.canInteractWithCrashedWire = false;
+
+              if (this.keyECrashedWire) {
+                  this.keyECrashedWire.destroy(); // Remove a tecla E
+                  this.keyECrashedWire = null;
+              }
+
+              if (this.screwDriver) {
+                  this.screwDriver.destroy(); // Remove a chave de fenda
+                  this.screwDriver = null;
+                  this.screwDriverCollected = false; // Reseta o estado da chave de fenda
+              }
+
+              this.scene.pause('vpNegociosScene'); // Pausa a cena principal
+              this.scene.launch('minigameWires'); // Inicia a cena do minigame
+          }
+      });
     }
 
     createIndicatorNpc10() {
@@ -409,11 +477,42 @@ class VpNegociosScene extends Phaser.Scene {
               dialogText.destroy();
               keyEnter.destroy();
               this.input.keyboard.off("keydown-ENTER", advanceDialog);
+
+              this.addScrewDriver(); // Adiciona a chave de fenda ao lado do jogador
           }
       };
 
       // Adiciona o evento para avançar o diálogo com a tecla ENTER
       this.input.keyboard.on("keydown-ENTER", advanceDialog);
+    }
+
+    addScrewDriver() {
+      // Cria o sprite da chave de fenda ao lado do jogador
+      this.screwDriver = this.physics.add.sprite(this.player.x + 20, this.player.y, 'screwDriver').setScale(0.08);
+      this.screwDriver.setDepth(1000); // Garante que a chave de fenda fique acima de outros elementos
+      this.screwDriver.setFlipX(true); // Vira a chave de fenda no eixo X inicialmente
+  
+      // Atualiza a posição da chave de fenda para seguir o jogador
+      this.physics.add.overlap(this.player, this.screwDriver, () => {
+          if (this.screwDriver) {
+              this.screwDriver.x = this.player.x; // Ajusta a posição horizontal
+              this.screwDriver.y = this.player.y + 25; // Ajusta a posição vertical
+          }
+      });
+  
+      // Atualiza a orientação da chave de fenda com base no movimento do jogador
+      this.events.on('update', () => {
+          if (this.screwDriver) {
+              if (this.keys.left.isDown) {
+                  this.screwDriver.setFlipX(true); // Vira a chave de fenda para a esquerda
+              } else if (this.keys.right.isDown) {
+                  this.screwDriver.setFlipX(false); // Vira a chave de fenda para a direita
+              }
+          }
+      });
+  
+      // Marca que a chave de fenda foi coletada
+      this.screwDriverCollected = true;
     }
 
     createIndicatorNpc15() {
@@ -901,8 +1000,21 @@ class MinigameWires extends Phaser.Scene {
     const allConnected = Object.values(this.wires).every(wire => !wire.short.input.enabled);
 
     if (allConnected) {
-      console.log("Minigame concluído com sucesso!");
-      // Aqui você pode avançar para a próxima etapa ou cena.
+        console.log("Minigame concluído com sucesso!");
+  
+        // Exibe uma mensagem de conclusão
+        const completionText = this.add.text(width / 2, height / 2, "Minigame Concluído!", {
+            fontSize: "32px",
+            fill: "#ffffff",
+            fontFamily: "Arial",
+        }).setOrigin(0.5);
+  
+        // Adiciona um pequeno atraso antes de retornar à cena principal
+        this.time.delayedCall(2000, () => {
+            completionText.destroy(); // Remove a mensagem de conclusão
+            this.scene.stop('minigameWires'); // Para a cena do minigame
+            this.scene.resume('vpNegociosScene'); // Retoma a cena principal sem reiniciá-la
+        });
     }
   }
 }
