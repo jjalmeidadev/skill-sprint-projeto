@@ -765,6 +765,16 @@ class VpNegociosScene extends Phaser.Scene {
       this.input.keyboard.off("keydown-ENTER");
     };
 
+    // Remove listeners antigos para evitar conflitos
+    if (this.enterKeyListenerA) {
+      this.input.keyboard.off("keydown-ENTER", this.enterKeyListenerA);
+      this.enterKeyListenerA = null;
+    }
+    if (this.enterKeyListenerB) {
+      this.input.keyboard.off("keydown-ENTER", this.enterKeyListenerB);
+      this.enterKeyListenerB = null;
+    }
+
     // Lógica para a letterA
     this.physics.add.overlap(this.player, letterA, () => {
       const distance = Phaser.Math.Distance.Between(this.player.x, this.player.y, letterA.x, letterA.y);
