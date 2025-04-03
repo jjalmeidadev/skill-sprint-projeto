@@ -180,6 +180,7 @@ class OfficeScene extends Phaser.Scene {
   }
 
   update() {
+
     this.movePlayer(); // Move o jogador com base nas teclas pressionadas
 
     if (this.returnedFromLeaderRoom && !this.elevatorIndicatorCreated) {// Se o jogador retornou da sala do líder, cria o botão do elevador

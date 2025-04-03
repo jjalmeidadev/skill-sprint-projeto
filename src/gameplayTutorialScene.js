@@ -60,4 +60,12 @@ class GameplayTutorialScene extends Phaser.Scene {
             }
         ).setOrigin(0.5); // Centraliza o texto em relação ao ponto de origem
     }
+
+    update() { // Método de atualização chamado a cada frame
+        
+    //skip p elevador
+    this.scene.stop("gameplayTutorialScene"); // Para a cena do elevador
+    this.scene.start("VpRelacoesScene"); // Inicia a cena do escritório
+    }
 }
+
