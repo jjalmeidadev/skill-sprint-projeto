@@ -32,7 +32,8 @@ class PreloadSist extends Phaser.Scene {
     this.load.audio("vineBoom", "../assets/sounds/vineboom.mp3"); // Carrega o som do efeito "vineboom"
     this.load.audio("bumpVidro", "../assets/sounds/bumpvidro.mp3"); // Carrega o som de impacto no vidro
     this.load.audio("vidroSlide", "../assets/sounds/vidroslide.mp3"); // Carrega o som de arraste no vidro   
-   
+    //BOTÕES
+    this.load.image('buttonStart', '../assets/assets_botoes/botaoStart.png')
 
     // Verificação de carregamento
     this.load.on('complete', () => {
