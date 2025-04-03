@@ -18,6 +18,7 @@ class VpNegociosScene extends Phaser.Scene {
         this.load.spritesheet("npc14", "../assets/personagens/VPpessoas/npc14.png", { frameWidth: 16, frameHeight: 32 }); // Carrega o spritesheet do NPC 14
         this.load.spritesheet("npc15", "../assets/personagens/VPpessoas/npc15.png", { frameWidth: 16, frameHeight: 32 }); // Carrega o spritesheet do NPC 15
         this.load.spritesheet("npc10", "../assets/personagens/npc10Lift.png", {frameWidth: 16,  frameHeight: 32, }); // Carrega o spritesheet do NPC 10 no elevador
+        this.load.spritesheet("npc16", "../assets/personagens/VPpessoas/npc16.png", { frameWidth: 16, frameHeight: 32 }); // Carrega o spritesheet do NPC 1
 
         //this.load.audio('indicatorSound', '../assets/sounds/497198_abacagi_bubble-pops (mp3cut.net).wav'); // Carrega o som do indicador de interação
         this.load.audio('walkSound', '../assets/sounds/753292__vrymaa__footsteps-high-heels-hardwood-walk-run (mp3cut.net).wav'); // Carrega o som de passos
@@ -320,7 +321,6 @@ class VpNegociosScene extends Phaser.Scene {
       this.createNpcAnimations(); // Cria as animações do NPC 15
       this.npc15.anims.play('npc15'); // Inicia a animação "npc15" para o NPC 15
       this.createIndicatorNpc15(); // Ativa o indicador para o NPC
-      //this.createCollisionNpc();
 
       this.npc10 = this.physics.add.sprite( width - 380, height - 580, 'npc10'); // Cria o sprite da NPC 10 na posição especificada
       this.npc10.setScale(2.5); // Define a escala do sprite da NPC 10
@@ -328,6 +328,13 @@ class VpNegociosScene extends Phaser.Scene {
       this.createNpcAnimations(); // Cria as animações para os NPCs
       this.npc10.anims.play('npc10'); // Reproduz a animação "npc10" para a NPC 10
       this.createIndicatorNpc10();
+
+      this.npc16 = this.physics.add.sprite(width - 1045, height - 680, 'npc16'); // Adiciona o NPC 16 na posição especificada
+      this.npc16.setScale(2.5); // Define o tamanho do NPC 16
+      this.npc16.setImmovable(true); // Define o NPC 16 como imóvel para colisões
+      this.createNpcAnimations(); // Cria as animações do NPC 16
+      this.npc16.anims.play('npc16'); // Inicia a animação "npc16" para o NPC 16
+      this.createIndicatorNpc16();
     }
 
     createNpcAnimations() { 
@@ -351,11 +358,87 @@ class VpNegociosScene extends Phaser.Scene {
         frameRate: 6, // Velocidade da animação (quadros por segundo)
         repeat: -1, // Faz a animação repetir indefinidamente
       });
+
+      this.anims.create({
+        key: "npc16", // Nome da animação para o NPC 16
+        frames: this.anims.generateFrameNumbers('npc16', { start: 0, end: 11 }), // Define os frames da animação
+        frameRate: 4, // Velocidade da animação
+        repeat: -1, // Repetição infinita
+      });
     }  
 
-    createCollisionNpc() {
-      this.physics.add.collider(this.player, this.npc14) // Colisão com o "NPC 14"
-      this.physics.add.collider(this.player, this.npc15) // Colisão com o "NPC 15"
+    createIndicatorNpc16() {
+      this.indicatorNpc16 = this.physics.add.sprite(this.npc16.x, this.npc16.y - 50, 'indicator');
+      this.indicatorNpc16.setScale(0.2);
+      this.indicatorNpc16.setImmovable(true);
+      this.indicatorNpc16.play("exclaiming");
+
+      this.events.on('update', () => {
+      const distance = Phaser.Math.Distance.Between(this.player.x, this.player.y, this.npc16.x, this.npc16.y);
+
+      if (distance < 100 && !this.keyENpc16 && !this.npc16Interacted) {
+        if (this.indicatorNpc16) {
+        this.indicatorNpc16.destroy();
+        this.indicatorNpc16 = null;
+        }
+
+        this.keyENpc16 = this.add.image(this.npc16.x, this.npc16.y - 40, 'keyE').setScale(0.07).setDepth(1000);
+        this.canInteractWithNpc16 = true;
+      } else if (distance >= 100 && this.keyENpc16) {
+        this.keyENpc16.destroy();
+        this.keyENpc16 = null;
+        this.canInteractWithNpc16 = false;
+      }
+      });
+
+      // Adiciona a interação com o NPC 16
+      this.input.keyboard.on("keydown-E", () => {
+      if (this.canInteractWithNpc16) {
+        this.canInteractWithNpc16 = false;
+
+        if (this.keyENpc16) {
+        this.keyENpc16.destroy(); // Remove a tecla E
+        this.keyENpc16 = null;
+        }
+
+        this.npc16Interacted = true; // Marca que o NPC 16 foi interagido
+        this.createDialogNpc16(); // Chama o método para exibir o diálogo
+      }
+      });
+    }
+
+    createDialogNpc16() {
+      const speech = [
+      "Olá! Bem-vindo à área de negócios!",
+      "Explore o ambiente e colete os chips para desbloquear novas informações!"
+      ];
+
+      const dialogBalloon = this.add.image(this.npc16.x + 50, this.npc16.y - 50, "balloonText").setScale(0.8);
+      const dialogText = this.add.text(this.npc16.x - 15, this.npc16.y - 100, speech[0], {
+      fontSize: "10px",
+      fill: "#000000",
+      wordWrap: { width: dialogBalloon.width - 50 },
+      });
+
+      const keyEnter = this.add.image(this.npc16.x - 40, this.npc16.y - 40, 'keyENTER').setScale(0.1).setDepth(1000);
+
+      let currentIndex = 0;
+
+      const advanceDialog = () => {
+      currentIndex++;
+      if (currentIndex < speech.length) {
+        dialogText.setText(speech[currentIndex]); // Atualiza o texto do diálogo
+      } else {
+        // Remove o balão de diálogo e a tecla ENTER
+        dialogBalloon.destroy();
+        dialogText.destroy();
+        keyEnter.destroy();
+        this.input.keyboard.off("keydown-ENTER", advanceDialog);
+      }
+      };
+
+      // Adiciona o evento para avançar o diálogo com a tecla ENTER
+      this.input.keyboard.on("keydown-ENTER", advanceDialog);
     }
 
     createServer() {
