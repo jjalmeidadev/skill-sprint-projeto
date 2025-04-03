@@ -6,6 +6,7 @@ class InitialScene extends Phaser.Scene {
       type: Phaser.AUTO, // Define o tipo de renderização como automático (Phaser escolhe entre WebGL e Canvas)
       width: 800, // Define a largura da tela do jogo
       height: 600, // Define a altura da tela do jogo
+      pixelArt: true, // Habilita o modo de renderização para pixel art
       physics: {
         default: "arcade", // Define o sistema de física padrão como "arcade"
         arcade: {
@@ -47,7 +48,7 @@ class InitialScene extends Phaser.Scene {
     this.load.audio("bumpVidro", "../assets/sounds/bumpvidro.mp3"); // Carrega o som de impacto no vidro
     this.load.audio("vidroSlide", "../assets/sounds/vidroslide.mp3"); // Carrega o som de arraste no vidro
   }
-
+  
   create() {
     const width = this.scale.width; // Obtém a largura da tela
     const height = this.scale.height; // Obtém a altura da tela
@@ -237,7 +238,7 @@ class InitialScene extends Phaser.Scene {
       this.buttonSound(); // Toca o som de clique do botão
       this.shutdown(); // Para a música inicial
       this.scene.stop("initialScene"); // Para a cena inicial
-      this.scene.start("cutScene"); // Inicia a cena "cutScene"
+      this.scene.start("PlayerSkin"); // Inicia a cena "PlayerSkin"
     });
   }
 

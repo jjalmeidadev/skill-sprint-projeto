@@ -1,4 +1,4 @@
-export default class PreloadSist extends Phaser.Scene {
+class PreloadSist extends Phaser.Scene {
     constructor() {
         super('preloadSist');
         this.assetsLoaded = false;
@@ -26,29 +26,28 @@ export default class PreloadSist extends Phaser.Scene {
     this.load.image("bg04", "../assets/assetsBackground/4.png"); // Carrega a imagem de fundo da camada 4
     this.load.image("bg05", "../assets/assetsBackground/5.png"); // Carrega a imagem de fundo da camada 5
     this.load.image("bg06", "../assets/assetsBackground/6.png"); // Carrega a imagem de fundo da camada 6
-    //BOTÕEs   
+    //MUSICAS
+    this.load.audio("initialMusic", "../assets/Kevin MacLeod - Pixelland ♫ NO COPYRIGHT 8-bit Music.mp3"); // Carrega o áudio da música inicial em loop
+    this.load.audio("buttonSound", "../assets/sounds/687107__aphom000__mouse-2-button-fast-click.wav"); // Carrega o som do clique do botão
+    this.load.audio("vineBoom", "../assets/sounds/vineboom.mp3"); // Carrega o som do efeito "vineboom"
+    this.load.audio("bumpVidro", "../assets/sounds/bumpvidro.mp3"); // Carrega o som de impacto no vidro
+    this.load.audio("vidroSlide", "../assets/sounds/vidroslide.mp3"); // Carrega o som de arraste no vidro   
    
 
-    //VERIFIÇÃO DE CARREGAMENTO
+    // Verificação de carregamento
     this.load.on('complete', () => {
         this.assetsLoaded = true; // Atualiza a variável quando o carregamento terminar
-    });
-    document.fonts.load('10pt "SaboFilled"').then(function () {
-    // Após a fonte estar carregada, inicie o jogo
-    });
-    this.load.on('complete', () => {
-        this.assetsLoaded = true; // Atualiza a variável quando o carregamento terminar
-        this.ajustarElementosDOM(); // Chama a função de ajuste após o carregamento
+        this.ajustarElementosDOM(); // Ajusta os elementos DOM após o carregamento
     });
 
     // Garante que a função de ajuste seja chamada após o carregamento das fontes
     document.fonts.load('10pt "SaboFilled"').then(() => {
-        this.ajustarElementosDOM(); // Chamada novamente por segurança, se houver elementos dependentes da fonte
+        this.ajustarElementosDOM(); // Ajusta os elementos DOM após o carregamento das fontes
     });
-    }
+}
 
-    create() {
-      this.scale.on('resize', this.ajustarElementosDOM, this);
-      this.ajustarElementosDOM(); // Chama imediatamente para garantir que tudo está ajustado desde o início.
-    }
+create() {
+    this.scale.on('resize', this.ajustarElementosDOM, this); // Ajusta os elementos DOM ao redimensionar
+    this.ajustarElementosDOM(); // Ajusta imediatamente para garantir que tudo está correto
+}
 }
