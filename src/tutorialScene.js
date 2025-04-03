@@ -13,7 +13,8 @@ class TutorialScene extends Phaser.Scene {
         this.conditionalDialog = [
             "Vivinho: UAU! Que bom que você já sabe.",
             "Vivinho: O plano de carreira da Vivo visa desenvolver talentos e promover crescimento profissional.",
-            "Vivinho: O principal objetivo do plano de carreira da Vivo é desenvolver e reter talentos, proporcionando crescimento profissional por meio de capacitação, mobilidade interna e participação em projetos estratégicos. A empresa busca formar líderes e especialistas alinhados aos seus valores e desafios do setor.",
+            "Vivinho: O principal objetivo do plano de carreira da Vivo é desenvolver e reter talentos, proporcionando crescimento profissional por meio de capacitação, mobilidade interna e participação em projetos estratégicos.",
+            "Vivinho: A empresa busca formar líderes e especialistas alinhados aos seus valores e desafios do setor.",
             "Vivinho: Por isso, irei te guiar para se desenvolver na Vivo!"
         ];
 
@@ -44,7 +45,7 @@ class TutorialScene extends Phaser.Scene {
         this.load.audio('keySound', '../assets/sounds/computer-keyboard-typing-290582 (mp3cut.net).mp3'); // Carrega o som de digitação no teclado
         this.load.audio('buttonSound', '../assets/sounds/687107__aphom000__mouse-2-button-fast-click.wav'); // Carrega o som de clique do botão
 
-        this.load.image('keyENTER', '../assets/keyEnter.png'); // Carrega a imagem da tecla ENTER
+        this.load.image('keyENTERPurple', '../assets/keyEnterPurple.png'); // Carrega a imagem da tecla ENTER
     }
 
     create() {
@@ -154,7 +155,7 @@ class TutorialScene extends Phaser.Scene {
             wordWrap: { width: 600 } // Define a largura máxima para quebra automática de linha
         });
 
-        this.keyEnterIcon = this.add.image(x + dialogWidth - 40, y + dialogHeight - 33, 'keyENTER'); // Adiciona a imagem da tecla ENTER
+        this.keyEnterIcon = this.add.image(x + dialogWidth - 40, y + dialogHeight - 33, 'keyENTERPurple'); // Adiciona a imagem da tecla ENTER
         this.keyEnterIcon.setScale(0.12).setDepth(1000); // Redimensiona a tecla ENTER e define sua profundidade para estar acima de outros elementos
     }
 

@@ -430,7 +430,7 @@ class OfficeScene extends Phaser.Scene {
       this.canInteractWithComputer = true; // Permite interação com o computador quando o jogador está próximo
     
       if (!this.keyEComputer) { // Verifica se a tecla E ainda não foi exibida
-        this.keyEComputer = this.add.image(width - 1020, height - 150, 'keyE').setScale(0.2); // Adiciona a tecla E acima do computador
+        this.keyEComputer = this.add.image(width - 1020, height - 150, 'keyE').setScale(0.07); // Adiciona a tecla E acima do computador
       }
     });
   
@@ -571,7 +571,7 @@ class OfficeScene extends Phaser.Scene {
         }
 
         if (!this.keyEVivita) { // Verifica se a tecla E ainda não foi exibida
-        this.keyEVivita = this.add.image(this.vivita.x, this.vivita.y - 50, 'keyE').setScale(0.2).setDepth(1000); // Adiciona a tecla E acima da Vivita
+        this.keyEVivita = this.add.image(this.vivita.x, this.vivita.y - 50, 'keyE').setScale(0.07).setDepth(1000); // Adiciona a tecla E acima da Vivita
         }
     });
   }
@@ -668,7 +668,7 @@ class OfficeScene extends Phaser.Scene {
   
   createButtonBack(width, height) {
     const buttonBack = this.add.image(width - 435, height - 700, "keyE"); // Adiciona a imagem do botão de retorno na posição especificada
-    buttonBack.setScale(0.2); // Ajusta o tamanho da imagem do botão de retorno
+    buttonBack.setScale(0.07); // Ajusta o tamanho da imagem do botão de retorno
   
     this.input.keyboard.on("keydown-E", () => { // Adiciona um evento para a tecla "E"
     const distance = Phaser.Math.Distance.Between( // Calcula a distância entre o jogador e o botão de retorno

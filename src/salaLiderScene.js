@@ -59,7 +59,7 @@ class SalaLider extends Phaser.Scene {
           this.keyELeader = null;
         }
         if (!this.keyENTERLeader) {
-          this.keyENTERLeader = this.add.image(this.leader.x, this.leader.y - 50, 'keyENTER').setScale(0.1).setDepth(1000);
+          this.keyENTERLeader = this.add.image(this.leader.x, this.leader.y - 50, 'keyENTER').setScale(0.13).setDepth(1000);
         }
       }
     });
@@ -121,7 +121,7 @@ class SalaLider extends Phaser.Scene {
     ) {
       this.canInteractWithLeader = true;
       if (!this.keyELeader) {
-        this.keyELeader = this.add.image(this.leader.x, this.leader.y - 50, 'keyE').setScale(0.2).setDepth(1000);
+        this.keyELeader = this.add.image(this.leader.x, this.leader.y - 50, 'keyE').setScale(0.09).setDepth(1000);
       }
     } else {
       this.canInteractWithLeader = false;

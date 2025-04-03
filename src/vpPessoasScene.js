@@ -324,7 +324,7 @@ class VpPessoasScene extends Phaser.Scene {
 
         if (this.canInteractWithBook) { // Se o jogador estiver próximo do livro
           if (!this.keyEBook) { // Se o ícone da tecla "E" ainda não foi criado
-            this.keyEBook = this.add.image(this.book.x, this.book.y - 40, 'keyE').setScale(0.2); // Adiciona o ícone da tecla "E"
+            this.keyEBook = this.add.image(this.book.x, this.book.y - 40, 'keyE').setScale(0.07); // Adiciona o ícone da tecla "E"
           }
         } else { // Se o jogador se afastar do livro
           if (this.keyEBook) { // Se o ícone da tecla "E" existir
@@ -390,7 +390,7 @@ class VpPessoasScene extends Phaser.Scene {
           this.indicatorRafaelaActive = false; // Desativa o indicador de Rafaela
 
           if (!this.keyERafaela) { // Se o ícone da tecla "E" ainda não foi criado
-            this.keyERafaela = this.add.image(this.rafaela.x, this.rafaela.y - 60, 'keyE').setScale(0.2); // Adiciona o ícone da tecla "E"
+            this.keyERafaela = this.add.image(this.rafaela.x, this.rafaela.y - 60, 'keyE').setScale(0.07); // Adiciona o ícone da tecla "E"
           }
         } else { // Se o jogador se afastar de Rafaela
           if (this.keyERafaela) { // Se o ícone da tecla "E" existir
@@ -560,7 +560,7 @@ class VpPessoasScene extends Phaser.Scene {
         if (!this.npcMobileInteracted && !this.keyENpcMobile) { // Verifica se o NPC móvel ainda não foi interagido e se a tecla "E" não foi exibida
           this.indicatorNpcMobile.destroy(); // Remove o indicador de interação
 
-          this.keyENpcMobile = this.add.image(this.npcMobile.x, this.npcMobile.y - 40, 'keyE').setScale(0.2); // Adiciona o ícone da tecla "E" acima do NPC móvel
+          this.keyENpcMobile = this.add.image(this.npcMobile.x, this.npcMobile.y - 40, 'keyE').setScale(0.07); // Adiciona o ícone da tecla "E" acima do NPC móvel
           this.canInteractWithNpcMobile = true; // Permite interação com o NPC móvel
         }
       });
@@ -716,7 +716,7 @@ class VpPessoasScene extends Phaser.Scene {
         this.canInteractWithTrash = true; // Permite interação com o lixo
 
         if (!this.keyETrash) { // Verifica se o ícone da tecla "E" ainda não foi criado
-          this.keyETrash = this.add.image(width - 735, height - 610, 'keyE').setScale(0.2); // Adiciona o ícone da tecla "E" acima do lixo
+          this.keyETrash = this.add.image(width - 735, height - 610, 'keyE').setScale(0.07); // Adiciona o ícone da tecla "E" acima do lixo
         }
       });
 
@@ -733,7 +733,7 @@ class VpPessoasScene extends Phaser.Scene {
         this.canInteractWithBook = true; // Permite interação com o livro
 
         if (!this.keyEBook) { // Verifica se o ícone da tecla "E" ainda não foi criado
-          this.keyEBook = this.add.image(width - 700, height - 250, 'keyE').setScale(0.2); // Adiciona o ícone da tecla "E" acima do livro
+          this.keyEBook = this.add.image(width - 700, height - 250, 'keyE').setScale(0.07); // Adiciona o ícone da tecla "E" acima do livro
         }
       });
 
@@ -787,7 +787,7 @@ class VpPessoasScene extends Phaser.Scene {
       console.log("Adicionando botão de voltar"); // Loga no console que o botão de voltar está sendo adicionado
 
       const buttonBack = this.add.image(width - 700, height - 680, "keyE"); // Adiciona a imagem do botão de retorno na posição especificada
-      buttonBack.setScale(0.2); // Define o tamanho do botão de voltar
+      buttonBack.setScale(0.07); // Define o tamanho do botão de voltar
       buttonBack.setDepth(1000); // Coloca o botão acima de outros objetos
 
       this.input.keyboard.on("keydown-E", () => { // Adiciona evento para a tecla "E"

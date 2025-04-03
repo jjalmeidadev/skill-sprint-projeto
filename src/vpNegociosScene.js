@@ -146,7 +146,7 @@ class VpNegociosScene extends Phaser.Scene {
           }
     
           if (!this.keyEnterNpc15) {
-            this.keyEnterNpc15 = this.add.image(this.npc15.x - 40, this.npc15.y - 40, 'keyENTER').setScale(0.06).setDepth(1000);
+            this.keyEnterNpc15 = this.add.image(this.npc15.x - 40, this.npc15.y - 40, 'keyENTER').setScale(0.1).setDepth(1000);
           }
     
           this.npc15Interacted = true;
@@ -239,7 +239,7 @@ class VpNegociosScene extends Phaser.Scene {
 
     createButtonBack(width, height) {
       const buttonBack = this.add.image(width - 670, height - 680, "keyE"); // Adiciona a imagem da tecla "E" na posição especificada
-      buttonBack.setScale(0.2); // Reduz o tamanho da imagem para 20% do tamanho original
+      buttonBack.setScale(0.07); // Reduz o tamanho da imagem para 20% do tamanho original
 
       this.input.keyboard.on("keydown-E", () => { // Adiciona um evento para quando a tecla "E" for pressionada
       const distance = Phaser.Math.Distance.Between( // Calcula a distância entre o jogador e o botão
@@ -365,7 +365,7 @@ class VpNegociosScene extends Phaser.Scene {
       // Adiciona o overlap entre o jogador e o crashedWire
       this.physics.add.overlap(this.player, this.crashedWire, () => {
           if (!this.keyECrashedWire && this.screwDriverCollected) { // Verifica se a chave de fenda foi coletada
-              this.keyECrashedWire = this.add.image(this.crashedWire.x, this.crashedWire.y - 40, 'keyE').setScale(0.2).setDepth(1000);
+              this.keyECrashedWire = this.add.image(this.crashedWire.x, this.crashedWire.y - 40, 'keyE').setScale(0.07).setDepth(1000);
               this.canInteractWithCrashedWire = true;
           }
       });
@@ -416,7 +416,7 @@ class VpNegociosScene extends Phaser.Scene {
                   this.indicatorNpc10 = null;
               }
   
-              this.keyENpc10 = this.add.image(this.npc10.x, this.npc10.y - 40, 'keyE').setScale(0.2).setDepth(1000);
+              this.keyENpc10 = this.add.image(this.npc10.x, this.npc10.y - 40, 'keyE').setScale(0.07).setDepth(1000);
               this.canInteractWithNpc10 = true;
           }
       });
@@ -463,7 +463,7 @@ class VpNegociosScene extends Phaser.Scene {
       });
 
       // Adiciona a tecla ENTER ao lado do balão de diálogo
-      const keyEnter = this.add.image(this.npc10.x - 40, this.npc10.y - 40, 'keyENTER').setScale(0.06).setDepth(1000);
+      const keyEnter = this.add.image(this.npc10.x - 40, this.npc10.y - 40, 'keyENTER').setScale(0.1).setDepth(1000);
 
       let currentIndex = 0;
 
@@ -528,7 +528,7 @@ class VpNegociosScene extends Phaser.Scene {
             this.indicatorNpc15 = null;
           }
     
-          this.keyENpc15 = this.add.image(this.npc15.x, this.npc15.y - 40, 'keyE').setScale(0.2).setDepth(1000);
+          this.keyENpc15 = this.add.image(this.npc15.x, this.npc15.y - 40, 'keyE').setScale(0.07).setDepth(1000);
           this.canInteractWithNpc15 = true;
         }
       });
@@ -725,7 +725,7 @@ class VpNegociosScene extends Phaser.Scene {
                 });
 
                 // Adiciona a tecla ENTER ao lado do balão de feedback
-                const feedbackKeyEnter = this.add.image(this.npc15.x - 40, this.npc15.y - 40, 'keyENTER').setScale(0.06).setDepth(1000);
+                const feedbackKeyEnter = this.add.image(this.npc15.x - 40, this.npc15.y - 40, 'keyENTER').setScale(0.1).setDepth(1000);
 
                 let feedbackIndex = 0;
 
@@ -800,7 +800,7 @@ class VpNegociosScene extends Phaser.Scene {
                     wordWrap: { width: feedbackBalloon.width - 50 },
                 });
 
-                const feedbackKeyEnter = this.add.image(this.npc15.x - 40, this.npc15.y - 40, 'keyENTER').setScale(0.06).setDepth(1000);
+                const feedbackKeyEnter = this.add.image(this.npc15.x - 40, this.npc15.y - 40, 'keyENTER').setScale(0.1).setDepth(1000);
 
                 let feedbackIndex = 0;
 
