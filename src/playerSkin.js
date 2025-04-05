@@ -23,6 +23,7 @@ class PlayerSkinSelection extends Phaser.Scene {
             this.load.image(`person${i}Select`, `../assets/personagens/playerSkins/person${i}Select.png`); 
             // Carrega outra imagem com o identificador `person${i}Select` (ex.: person1Select, person2Select, etc.) 
             // e especifica o caminho do arquivo correspondente na pasta de assets.
+            this.load.spritesheet(`person`, `../assets/personagens/skinsPlayer/players/${this.selectedSpriteSheet}.png`, { frameWidth: 32, frameHeight: 32 });
         }
 
         // Certifique-se de carregar os fundos também
@@ -149,6 +150,7 @@ class PlayerSkinSelection extends Phaser.Scene {
         this.person[previousPerson - 1].setTexture(`person${previousPerson}I`);
     }
     this.personSelected = index; // Atualiza o índice da skin selecionada.
+    this.selectedSpriteSheet = `person${index}`; // Armazena a spritesheet correspondente.
         // Atualiza a textura do sprite selecionado para o estado de seleção.
     this.person[index - 1].setTexture(`person${index}Select`);
 
@@ -198,6 +200,7 @@ class PlayerSkinSelection extends Phaser.Scene {
         if (this.personSelected) {
             this.scene.start('cutScene', {
                 personSelected: this.personSelected,
+                selectedSpriteSheet: this.selectedSpriteSheet, // Passa a spritesheet selecionada para a próxima cena.
             });
         }
     }

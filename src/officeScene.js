@@ -9,6 +9,11 @@ class OfficeScene extends Phaser.Scene {
     this.buttonUpCreated = false; // Indica se o botão para subir no elevador já foi criado
   }
 
+  init(data) {
+    this.selectedSpriteSheet = data.selectedSpriteSheet;
+    console.log('Selected Sprite Sheet:', this.selectedSpriteSheet);
+  }
+
   preload() {
     this.load.spritesheet("player", "../assets/personagens/skinsPlayer/player1all.png", {frameWidth: 16, frameHeight: 32, }); // Carrega o spritesheet do jogador
     this.load.spritesheet("npc7", "../assets/personagens/npc7.png", {frameWidth: 16, frameHeight: 32, }); // Carrega o spritesheet do NPC 7
@@ -38,6 +43,8 @@ class OfficeScene extends Phaser.Scene {
     this.load.image("bgElevOffice", "../assets/bgelevadoroffice.png"); // Carrega a imagem de fundo do elevador no escritório
     this.load.image("panelElev", "../assets/painelelevador.png"); // Carrega a imagem do painel do elevador
     this.load.image("buttonElevOffice", "../assets/botaocimaelevador.png"); // Carrega a imagem do botão para subir no elevador
+
+    this.load.spritesheet(`person`, `../assets/personagens/skinsPlayer/players/${this.selectedSpriteSheet}.png`, { frameWidth: 32, frameHeight: 32 });
   }
 
   create() {
@@ -680,7 +687,7 @@ class OfficeScene extends Phaser.Scene {
       this.sound.stopAll();
 
       this.scene.stop("vpTecnologiaScene"); // Para a cena atual
-      this.scene.start("elevadorScene"); // Inicia a cena do elevador
+      this.scene.start("elevadorScene", {selectedSpriteSheet: this.selectedSpriteSheet,}); // Inicia a cena do elevador
     }
     });
   }
