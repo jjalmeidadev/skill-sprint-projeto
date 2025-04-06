@@ -141,7 +141,7 @@ class VpNegociosScene extends Phaser.Scene {
     onShutdown() {
       // Salva o tempo atual da música e a para quando a cena é pausada ou encerrada
       if (this.peopleMusic && this.peopleMusic.isPlaying) { // Verifica se a música de fundo está tocando
-        VpPessoasScene.lastMusicTime = this.peopleMusic.seek; // Salva o tempo atual da música
+        VpNegociosScene.lastMusicTime = this.peopleMusic.seek; // Salva o tempo atual da música
         this.peopleMusic.stop(); // Para a música de fundo
       }
     }

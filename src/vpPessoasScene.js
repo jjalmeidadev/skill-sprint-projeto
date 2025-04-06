@@ -403,9 +403,7 @@ class VpPessoasScene extends Phaser.Scene {
             this.keyENpcMobile = null;
           }
           if (!this.keyEnterNpcMobile) {
-            this.keyEnterNpcMobile = this.add.image(this.npcMobile.x - 20, this.npcMobile.y - 50, 'keyENTER')
-              .setScale(0.1)
-              .setDepth(1000);
+            this.keyEnterNpcMobile = this.add.image(this.npcMobile.x - 20, this.npcMobile.y - 50, 'keyENTER').setScale(0.1).setDepth(1000); 
           }
           this.npcMobileInteracted = true;
           this.canInteractWithNpcMobile = false;
@@ -773,7 +771,7 @@ class VpPessoasScene extends Phaser.Scene {
       this.physics.add.overlap(this.player, this.trash, () => {
         this.canInteractWithTrash = true;
         if (!this.keyETrash) {
-          this.keyETrash = this.add.image(this.trash.x, this.trash.y - 40, 'keyE').setScale(0.2);
+          this.keyETrash = this.add.image(this.trash.x, this.trash.y - 40, 'keyE').setScale(0.07);
         }
       });
     }
@@ -855,7 +853,7 @@ class VpPessoasScene extends Phaser.Scene {
       if (this.botaoVoltar) return; // impede criar mais de uma vez
 
       this.botaoVoltar = this.add.image(width - 508, height - 660, "keyE"); // Adiciona o botão de voltar na posição especificada
-      this.botaoVoltar.setScale(0.2); // Define o tamanho do botão de voltar
+      this.botaoVoltar.setScale(0.07); // Define o tamanho do botão de voltar
       this.botaoVoltar.setDepth(1000); // Coloca o botão acima de outros objetos
 
       this.input.keyboard.on("keydown-E", () => { // Adiciona evento para a tecla "E"
