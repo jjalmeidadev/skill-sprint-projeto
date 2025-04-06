@@ -713,7 +713,7 @@ class QuizVpPessoas extends Phaser.Scene {
                     });
                 } else {
                     // Quiz completo
-                    this.scene.start('CongratulationsSceneResumeVpPeople', { score: score });
+                    this.scene.start('CongratulationsSceneCurriculoVpPessoas', { score: score });
                 }
             });
         } else {
