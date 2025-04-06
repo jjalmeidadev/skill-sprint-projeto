@@ -2,6 +2,7 @@ class VpNegociosScene extends Phaser.Scene {
     constructor() {
       super({ key: 'vpNegociosScene' });
       this.npc15ChipCollected = false; // Variável para controlar se o chip do NPC 15 foi coletado
+      this.canInteractWithCrashedWire = false; // Inicializa como falso
     }
 
     preload() {
@@ -42,6 +43,9 @@ class VpNegociosScene extends Phaser.Scene {
 
       // Verifica se o minigame foi concluído
       const minigameWiresCompleted = this.registry.get('minigameWiresCompleted') || false;
+
+      console.log("Estado do minigameWiresCompleted:", minigameWiresCompleted);
+
       // Verifica se há uma posição salva do jogador
       const savedPosition = this.registry.get('playerPosition');
       if (savedPosition) {
@@ -56,6 +60,7 @@ class VpNegociosScene extends Phaser.Scene {
           if (this.crashedWire) {
               this.crashedWire.destroy(); // Remove o servidor quebrado
           }
+          this.createIndicatorNpc16Back();
       }
 
       const map = this.make.tilemap({ key: "vpNegocios", tileWidth: 25, tileHeight: 20 }); // Cria o mapa
@@ -327,7 +332,6 @@ class VpNegociosScene extends Phaser.Scene {
       this.npc10.setImmovable(true); // Define a NPC 10 como imóvel
       this.createNpcAnimations(); // Cria as animações para os NPCs
       this.npc10.anims.play('npc10'); // Reproduz a animação "npc10" para a NPC 10
-      this.createIndicatorNpc10();
 
       this.npc16 = this.physics.add.sprite(width - 1045, height - 680, 'npc16'); // Adiciona o NPC 16 na posição especificada
       this.npc16.setScale(2.5); // Define o tamanho do NPC 16
@@ -368,6 +372,8 @@ class VpNegociosScene extends Phaser.Scene {
     }  
 
     createIndicatorNpc16() {
+      if (this.npc16Interacted) return; // Não recria o indicador se o NPC já foi interagido
+
       this.indicatorNpc16 = this.physics.add.sprite(this.npc16.x, this.npc16.y - 50, 'indicator');
       this.indicatorNpc16.setScale(0.2);
       this.indicatorNpc16.setImmovable(true);
@@ -403,24 +409,33 @@ class VpNegociosScene extends Phaser.Scene {
 
         this.npc16Interacted = true; // Marca que o NPC 16 foi interagido
         this.createDialogNpc16(); // Chama o método para exibir o diálogo
+
+        this.input.keyboard.off("keydown-E"); // Remove o evento de teclado após o diálogo inicial
       }
       });
     }
 
     createIndicatorNpc16Back() {
+      console.log("createIndicatorNpc16Back chamado"); // Log para depuração
+
+      if (this.npc16Interacted) {
+          console.log("NPC 16 já interagido. Não criando indicador.");
+          return; // Não recria o indicador se o NPC já foi interagido
+      }
+
       console.log("createIndicatorNpc16Back called"); // Adiciona um log para verificar se a função está sendo chamada
-      this.indicatorNpc16 = this.physics.add.sprite(this.npc16.x, this.npc16.y - 50, 'indicator');
-      this.indicatorNpc16.setScale(0.2);
-      this.indicatorNpc16.setImmovable(true);
-      this.indicatorNpc16.play("exclaiming");
+      this.indicatorNpc16Back = this.physics.add.sprite(this.npc16.x, this.npc16.y - 50, 'indicator');
+      this.indicatorNpc16Back.setScale(0.2);
+      this.indicatorNpc16Back.setImmovable(true);
+      this.indicatorNpc16Back.play("exclaiming");
 
       this.events.on('update', () => {
       const distance = Phaser.Math.Distance.Between(this.player.x, this.player.y, this.npc16.x, this.npc16.y);
 
       if (distance < 100 && !this.keyENpc16) {
-        if (this.indicatorNpc16) {
-        this.indicatorNpc16.destroy(); // Remove a exclamação
-        this.indicatorNpc16 = null;
+        if (this.indicatorNpc16Back) {
+        this.indicatorNpc16Back.destroy(); // Remove a exclamação
+        this.indicatorNpc16Back = null;
         }
 
         this.keyENpc16 = this.add.image(this.npc16.x, this.npc16.y - 40, 'keyE').setScale(0.07).setDepth(1000);
@@ -442,7 +457,9 @@ class VpNegociosScene extends Phaser.Scene {
         this.keyENpc16 = null;
         }
 
-        this.createCongratulationsNpc16(); // Chama o método para exibir o diálogo
+        if (!this.npc16Interacted) {
+          this.createCongratulationsNpc16(); // Chama o método para exibir o diálogo de conclusão
+        }
       }
       });
     }
@@ -478,7 +495,9 @@ class VpNegociosScene extends Phaser.Scene {
         dialogBalloon.destroy();
         dialogText.destroy();
         keyEnter.destroy();
+        this.createIndicatorNpc10();
         this.input.keyboard.off("keydown-ENTER", advanceDialog);
+        this.npc16Interacted = true; // Marca que o NPC 16 foi interagido
       }
       };
 
@@ -523,21 +542,27 @@ class VpNegociosScene extends Phaser.Scene {
     }
 
     createServer() {
+      console.log("createServer chamado."); // Log para depuração
+
       this.crashedWire = this.physics.add.sprite(width - 1170, height - 220, 'crashedWire').setScale(0.06);
       this.crashedWire.setImmovable(true);
 
       // Adiciona o overlap entre o jogador e o crashedWire
       this.physics.add.overlap(this.player, this.crashedWire, () => {
           if (!this.keyECrashedWire && this.screwDriverCollected) { // Verifica se a chave de fenda foi coletada
+              console.log("Jogador próximo ao crashedWire e chave de fenda coletada.");
               this.keyECrashedWire = this.add.image(this.crashedWire.x, this.crashedWire.y - 40, 'keyE').setScale(0.07).setDepth(1000);
               this.canInteractWithCrashedWire = true;
+              console.log("canInteractWithCrashedWire definido como true.");
           }
       });
 
       // Remove a tecla E se o player se afasta
       this.physics.add.overlap(this.player, this.crashedWire, null, (player, wire) => {
           const distance = Phaser.Math.Distance.Between(player.x, player.y, wire.x, wire.y);
+          console.log("Distância do jogador ao crashedWire:", distance);
           if (distance > 100 && this.keyECrashedWire) {
+              console.log("Jogador se afastou do crashedWire.");
               this.keyECrashedWire.destroy();
               this.keyECrashedWire = null;
               this.canInteractWithCrashedWire = false;
@@ -547,7 +572,10 @@ class VpNegociosScene extends Phaser.Scene {
 
       // Adiciona a interação com o crashedWire
       this.input.keyboard.on("keydown-E", () => {
+          console.log("Tecla E pressionada.");
+          console.log("Estado de canInteractWithCrashedWire:", this.canInteractWithCrashedWire);
           if (this.canInteractWithCrashedWire) {
+              console.log("Interagindo com o crashedWire.");
               this.canInteractWithCrashedWire = false;
 
               if (this.keyECrashedWire) {
@@ -563,7 +591,9 @@ class VpNegociosScene extends Phaser.Scene {
 
               this.scene.pause('vpNegociosScene'); // Pausa a cena principal
               this.scene.launch('minigameWires'); // Inicia a cena do minigame
-          }
+          } else {
+            console.log("Não é possível interagir com o crashedWire.");
+        }
       });
     }
 
@@ -1181,21 +1211,27 @@ class MinigameWires extends Phaser.Scene {
 
     if (allConnected) {
         console.log("Minigame concluído com sucesso!");
-  
-        // Exibe uma mensagem de conclusão
+
         const completionText = this.add.text(width / 2, height / 2, "Minigame Concluído!", {
             fontSize: "32px",
             fill: "#ffffff",
             fontFamily: "Arial",
         }).setOrigin(0.5);
-  
-        // Adiciona um pequeno atraso antes de retornar à cena principal
+
         this.time.delayedCall(2000, () => {
-            completionText.destroy(); // Remove a mensagem de conclusão
-            this.scene.stop('minigameWires'); // Para a cena do minigame
-            const mainScene = this.scene.get('vpNegociosScene'); // Obtém a cena principal
-            mainScene.scene.resume(); // Retoma a cena principal
-            mainScene.createIndicatorNpc16Back(); // Chama o método para criar o indicador do NPC 16
+            completionText.destroy();
+            this.scene.stop('minigameWires');
+
+            const mainScene = this.scene.get('vpNegociosScene');
+            if (mainScene) {
+                console.log("Cena principal encontrada. Retomando...");
+                mainScene.registry.set('minigameWiresCompleted', true);
+                mainScene.npc16Interacted = false; // Redefine o estado para permitir a criação do indicador
+                mainScene.scene.resume();
+                mainScene.createIndicatorNpc16Back(); // Chama o método
+            } else {
+                console.error("Cena principal 'vpNegociosScene' não encontrada.");
+            }
         });
     }
   }
