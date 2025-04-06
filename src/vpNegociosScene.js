@@ -44,21 +44,20 @@ class VpNegociosScene extends Phaser.Scene {
     create() {
       this.collectedChips = 0; // contador inicial
 
-      // Verifica se o minigame foi concluído
-      const minigameWiresCompleted = this.registry.get('minigameWiresCompleted') || false;
-      // Verifica se há uma posição salva do jogador
-      const savedPosition = this.registry.get('playerPosition');
+      const minigameWiresCompleted = this.registry.get('minigameWiresCompleted') || false; // Verifica se o minigame foi concluído anteriormente, usando o registro global para armazenar o estado.
+
+      const savedPosition = this.registry.get('playerPosition'); // Obtém a posição salva do jogador, se existir, do registro global.
       if (savedPosition) {
-          this.player.setPosition(savedPosition.x, savedPosition.y); // Restaura a posição do jogador
+          this.player.setPosition(savedPosition.x, savedPosition.y); // Restaura a posição do jogador para a posição salva.
       } else {
-          this.createPlayer(width, height); // Cria o jogador na posição inicial
+          this.createPlayer(width, height); // Cria o jogador na posição inicial caso não haja uma posição salva.
       }
 
       if (minigameWiresCompleted) {
-          console.log("Minigame Wires já foi concluído. Progresso restaurado.");
-          // Aqui você pode ajustar o estado do jogo, como remover o crashedWire ou exibir algo diferente
+          console.log("Minigame Wires já foi concluído. Progresso restaurado."); // Exibe no console que o minigame já foi concluído e o progresso foi restaurado.
+          
           if (this.crashedWire) {
-              this.crashedWire.destroy(); // Remove o servidor quebrado
+          this.crashedWire.destroy(); // Remove o sprite do servidor quebrado, pois o minigame já foi concluído.
           }
       }
 
@@ -123,19 +122,20 @@ class VpNegociosScene extends Phaser.Scene {
       this.cameras.main.startFollow(this.player); // Faz a câmera seguir o jogador
       this.cameras.main.setZoom(2); // Define o nível de zoom da câmera
 
-      this.chipText = this.add.text(width - 429, height - 230, `${this.collectedChips}/5`, {
-        fontSize: '14px',
-        fill: '#ffffff',
-        fontFamily: 'Arial',
-        //backgroundColor: 'rgba(0, 0, 0, 0.5)',
-        padding: { x: 10, y: 5 }
-      }).setDepth(1000);
+      this.chipText = this.add.text(width - 429, height - 230, `${this.collectedChips}/5`, { // Adiciona um texto na tela para exibir a quantidade de chips coletados
+        fontSize: '14px', // Define o tamanho da fonte do texto
+        fill: '#ffffff', // Define a cor do texto como branco
+        fontFamily: 'Arial', // Define a fonte do texto como Arial
+        padding: { x: 10, y: 5 } // Adiciona um espaçamento interno ao texto
+      }).setDepth(1000); // Define a profundidade do texto para garantir que ele fique acima de outros elementos
 
-      this.add.image(width - 410, height - 245, 'chip').setScale(0.03);
-      this.createLocker();
+      this.add.image(width - 410, height - 245, 'chip').setScale(0.03); // Adiciona uma imagem de chip ao lado do contador de chips e ajusta seu tamanho
 
-      this.screwDriverCollected = false; // Inicializa como falso, indicando que a chave de fenda ainda não foi coletada
-      this.createServer();
+      this.createLocker(); // Chama o método para criar o locker no mapa
+
+      this.screwDriverCollected = false; // Inicializa a variável indicando que a chave de fenda ainda não foi coletada
+
+      this.createServer(); // Chama o método para criar o servidor quebrado no mapa
     }
 
     onShutdown() {
@@ -157,7 +157,7 @@ class VpNegociosScene extends Phaser.Scene {
     }
 
     update() {
-      this.movePlayer();
+      this.movePlayer(); // Chama a função para mover o jogador
 
       // Verifica se a chave de fenda existe antes de tentar manipulá-la
       if (this.screwDriver && this.screwDriverCollected) {
@@ -165,33 +165,33 @@ class VpNegociosScene extends Phaser.Scene {
         this.screwDriver.y = this.player.y + 25; // Atualiza a posição vertical
       }
 
-      if (this.canInteractWithNpc15 && Phaser.Input.Keyboard.JustDown(this.keys.interagir)) {
-        if (!this.npc15Interacted) {
-          if (this.keyENpc15) {
-            this.keyENpc15.destroy();
-            this.keyENpc15 = null;
+      if (this.canInteractWithNpc15 && Phaser.Input.Keyboard.JustDown(this.keys.interagir)) { // Verifica se o jogador pode interagir com o NPC 15 e se a tecla de interação foi pressionada
+        if (!this.npc15Interacted) { // Verifica se o NPC 15 ainda não foi interagido
+          if (this.keyENpc15) { // Verifica se a tecla "E" está visível para interação
+        this.keyENpc15.destroy(); // Remove a tecla "E" da tela
+        this.keyENpc15 = null; // Reseta a referência da tecla "E"
           }
-    
-          if (!this.keyEnterNpc15) {
-            this.keyEnterNpc15 = this.add.image(this.npc15.x - 40, this.npc15.y - 40, 'keyENTER').setScale(0.1).setDepth(1000);
+        
+          if (!this.keyEnterNpc15) { // Verifica se a tecla "ENTER" ainda não foi criada
+        this.keyEnterNpc15 = this.add.image(this.npc15.x - 40, this.npc15.y - 40, 'keyENTER').setScale(0.1).setDepth(1000); // Adiciona a tecla "ENTER" ao lado do NPC 15
           }
-    
-          this.npc15Interacted = true;
-          this.canInteractWithNpc15 = false;
-          this.keySound();
-          this.npc15Question(); // Chama o diálogo com o NPC
+        
+          this.npc15Interacted = true; // Marca que o NPC 15 foi interagido
+          this.canInteractWithNpc15 = false; // Impede novas interações com o NPC 15 por enquanto
+          this.keySound(); // Toca o som de interação
+          this.npc15Question(); // Chama o diálogo com o NPC 15
         }
       }
 
-      if(this.collectedChips === 4) {
-        this.locker.destroy();
+      if(this.collectedChips === 4) { // Verifica se o jogador coletou 4 chips
+        this.locker.destroy(); // Remove o locker do mapa
       }
 
-          // Verifica se o jogador coletou todos os 5 chips
-    if (this.collectedChips === 5 && !this.congratulationsShown) {
-      this.showCongratulations(); // Exibe a imagem de parabéns
-      this.congratulationsShown = true; // Garante que a imagem será exibida apenas uma vez
-  }
+      // Verifica se o jogador coletou todos os 5 chips
+      if (this.collectedChips === 5 && !this.congratulationsShown) { // Verifica se o jogador coletou 5 chips e se a mensagem de parabéns ainda não foi exibida
+        this.showCongratulations(); // Exibe a imagem de parabéns
+        this.congratulationsShown = true; // Garante que a imagem será exibida apenas uma vez
+      }
     }
 
     movePlayer() {
@@ -407,711 +407,711 @@ class VpNegociosScene extends Phaser.Scene {
     }  
 
     createIndicatorNpc16() {
-      this.indicatorNpc16 = this.physics.add.sprite(this.npc16.x, this.npc16.y - 50, 'indicator');
-      this.indicatorNpc16.setScale(0.2);
-      this.indicatorNpc16.setImmovable(true);
-      this.indicatorNpc16.play("exclaiming");
+      this.indicatorNpc16 = this.physics.add.sprite(this.npc16.x, this.npc16.y - 50, 'indicator'); // Cria o sprite do indicador acima do NPC 16
+      this.indicatorNpc16.setScale(0.2); // Define o tamanho do indicador
+      this.indicatorNpc16.setImmovable(true); // Define o indicador como imóvel
+      this.indicatorNpc16.play("exclaiming"); // Reproduz a animação de exclamação para o indicador
 
-      this.events.on('update', () => {
-      const distance = Phaser.Math.Distance.Between(this.player.x, this.player.y, this.npc16.x, this.npc16.y);
+      this.events.on('update', () => { // Adiciona um evento que será executado a cada atualização do jogo
+      const distance = Phaser.Math.Distance.Between(this.player.x, this.player.y, this.npc16.x, this.npc16.y); // Calcula a distância entre o jogador e o NPC 16
 
-      if (distance < 100 && !this.keyENpc16 && !this.npc16Interacted) {
-        if (this.indicatorNpc16) {
-        this.indicatorNpc16.destroy();
-        this.indicatorNpc16 = null;
+      if (distance < 100 && !this.keyENpc16 && !this.npc16Interacted) { // Verifica se o jogador está próximo do NPC 16 e se a tecla E ainda não foi exibida
+        if (this.indicatorNpc16) { // Verifica se o indicador ainda existe
+        this.indicatorNpc16.destroy(); // Remove o indicador
+        this.indicatorNpc16 = null; // Reseta a referência do indicador
         }
 
-        this.keyENpc16 = this.add.image(this.npc16.x, this.npc16.y - 40, 'keyE').setScale(0.07).setDepth(1000);
-        this.canInteractWithNpc16 = true;
-      } else if (distance >= 100 && this.keyENpc16) {
-        this.keyENpc16.destroy();
-        this.keyENpc16 = null;
-        this.canInteractWithNpc16 = false;
+        this.keyENpc16 = this.add.image(this.npc16.x, this.npc16.y - 40, 'keyE').setScale(0.07).setDepth(1000); // Adiciona a tecla E acima do NPC 16
+        this.canInteractWithNpc16 = true; // Permite a interação com o NPC 16
+      } else if (distance >= 100 && this.keyENpc16) { // Verifica se o jogador se afastou do NPC 16 e se a tecla E está visível
+        this.keyENpc16.destroy(); // Remove a tecla E
+        this.keyENpc16 = null; // Reseta a referência da tecla E
+        this.canInteractWithNpc16 = false; // Impede a interação com o NPC 16
       }
       });
 
       // Adiciona a interação com o NPC 16
-      this.input.keyboard.on("keydown-E", () => {
-      if (this.canInteractWithNpc16) {
-        this.canInteractWithNpc16 = false;
+      this.input.keyboard.on("keydown-E", () => { // Adiciona um evento para quando a tecla E for pressionada
+      if (this.canInteractWithNpc16) { // Verifica se o jogador pode interagir com o NPC 16
+        this.canInteractWithNpc16 = false; // Impede novas interações enquanto a atual está em andamento
 
-        if (this.keyENpc16) {
+        if (this.keyENpc16) { // Verifica se a tecla E está visível
         this.keyENpc16.destroy(); // Remove a tecla E
-        this.keyENpc16 = null;
+        this.keyENpc16 = null; // Reseta a referência da tecla E
         }
 
         this.npc16Interacted = true; // Marca que o NPC 16 foi interagido
-        this.keySound();
-        this.createDialogNpc16(); // Chama o método para exibir o diálogo
+        this.keySound(); // Toca o som de interação
+        this.createDialogNpc16(); // Chama o método para exibir o diálogo do NPC 16
       }
       });
     }
 
     createIndicatorNpc23() {
       console.log("createIndicatorNpc23 called"); // Adiciona um log para verificar se a função está sendo chamada
-      this.indicatorNpc23 = this.physics.add.sprite(this.npc23.x, this.npc23.y - 50, 'indicator');
-      this.indicatorNpc23.setScale(0.2);
-      this.indicatorNpc23.setImmovable(true);
-      this.indicatorNpc23.play("exclaiming");
+      this.indicatorNpc23 = this.physics.add.sprite(this.npc23.x, this.npc23.y - 50, 'indicator'); // Cria um sprite de indicador acima do NPC 23
+      this.indicatorNpc23.setScale(0.2); // Define o tamanho do indicador
+      this.indicatorNpc23.setImmovable(true); // Define o indicador como imóvel
+      this.indicatorNpc23.play("exclaiming"); // Reproduz a animação de exclamação para o indicador
 
-      this.events.on('update', () => {
-        const distance = Phaser.Math.Distance.Between(this.player.x, this.player.y, this.npc23.x, this.npc23.y);
+      this.events.on('update', () => { // Adiciona um evento que será executado a cada atualização do jogo
+      const distance = Phaser.Math.Distance.Between(this.player.x, this.player.y, this.npc23.x, this.npc23.y); // Calcula a distância entre o jogador e o NPC 23
 
-        if (distance < 100 && !this.keyENpc23) {
-          if (this.indicatorNpc23) {
-            this.indicatorNpc23.destroy(); // Remove a exclamação
-            this.indicatorNpc23 = null;
-          }
-
-          this.keyENpc23 = this.add.image(this.npc23.x, this.npc23.y - 40, 'keyE').setScale(0.07);
-          this.canInteractWithNpc23 = true;
-        } else if (distance >= 100 && this.keyENpc23) {
-          this.keyENpc23.destroy();
-          this.keyENpc23 = null;
-          this.canInteractWithNpc23 = false;
+      if (distance < 100 && !this.keyENpc23) { // Verifica se o jogador está próximo do NPC 23 e se a tecla E ainda não foi exibida
+        if (this.indicatorNpc23) { // Verifica se o indicador ainda existe
+        this.indicatorNpc23.destroy(); // Remove o indicador
+        this.indicatorNpc23 = null; // Reseta a referência do indicador
         }
+
+        this.keyENpc23 = this.add.image(this.npc23.x, this.npc23.y - 40, 'keyE').setScale(0.07); // Adiciona a tecla E acima do NPC 23
+        this.canInteractWithNpc23 = true; // Permite a interação com o NPC 23
+      } else if (distance >= 100 && this.keyENpc23) { // Verifica se o jogador se afastou do NPC 23 e se a tecla E está visível
+        this.keyENpc23.destroy(); // Remove a tecla E
+        this.keyENpc23 = null; // Reseta a referência da tecla E
+        this.canInteractWithNpc23 = false; // Impede a interação com o NPC 23
+      }
       });
 
       // Adiciona a interação com o NPC 23
-      this.input.keyboard.on("keydown-E", () => {
-        this.keySound();
-        if (this.canInteractWithNpc23 && !this.npc23Interacted) {
-          this.canInteractWithNpc23 = false;
-          this.npc23Interacted = true; // Marca que o NPC 23 foi interagido
+      this.input.keyboard.on("keydown-E", () => { // Adiciona um evento para quando a tecla E for pressionada
+      this.keySound(); // Toca o som de interação
+      if (this.canInteractWithNpc23 && !this.npc23Interacted) { // Verifica se o jogador pode interagir com o NPC 23 e se ele ainda não foi interagido
+        this.canInteractWithNpc23 = false; // Impede novas interações enquanto a atual está em andamento
+        this.npc23Interacted = true; // Marca que o NPC 23 foi interagido
 
-          if (this.keyENpc23) {
-            this.keyENpc23.destroy(); // Remove a tecla E
-            this.keyENpc23 = null;
-          }
-
-          this.createCongratulationsNpc23(); // Chama o método para exibir o diálogo
-        } else if (this.keyENpc23) {
-          this.keyENpc23.destroy(); // Garante que a tecla E seja destruída
-          this.keyENpc23 = null;
+        if (this.keyENpc23) { // Verifica se a tecla E está visível
+        this.keyENpc23.destroy(); // Remove a tecla E
+        this.keyENpc23 = null; // Reseta a referência da tecla E
         }
+
+        this.createCongratulationsNpc23(); // Chama o método para exibir o diálogo de parabéns
+      } else if (this.keyENpc23) { // Caso a tecla E ainda esteja visível
+        this.keyENpc23.destroy(); // Garante que a tecla E seja destruída
+        this.keyENpc23 = null; // Reseta a referência da tecla E
+      }
       });
     }
 
     createDialogNpc16() {
-      const speech = [
-      "Ei, ainda bem que você chegou! Estamos com um problemão nos servidores da área B2B.",
-      "Esses servidores são essenciais para manter os serviços corporativos da Vivo funcionando.",
-      "As conexões de grandes empresas, atendimento dedicado, soluções de nuvem, tudo passa por eles!",
-      "Quando eles caem, empresas inteiras podem ficar offline. Imagina um hospital ou um banco sem conexão... ",
-      "Preciso que você vá até a sala de manutenção e fale com o Jorge.",
-      "Ele vai te entregar uma chave de fenda especial que você vai usar para consertar os servidores.",
-      "Confio em você! A sala de manutenção fica do seu lado direito. Corre lá!"
+      const speech = [ // Array contendo as falas do NPC 16
+      "Ei, ainda bem que você chegou! Estamos com um problemão nos servidores da área B2B.", // Primeira fala
+      "Esses servidores são essenciais para manter os serviços corporativos da Vivo funcionando.", // Segunda fala
+      "As conexões de grandes empresas, atendimento dedicado, soluções de nuvem, tudo passa por eles!", // Terceira fala
+      "Quando eles caem, empresas inteiras podem ficar offline. Imagina um hospital ou um banco sem conexão... ", // Quarta fala
+      "Preciso que você vá até a sala de manutenção e fale com o Jorge.", // Quinta fala
+      "Ele vai te entregar uma chave de fenda especial que você vai usar para consertar os servidores.", // Sexta fala
+      "Confio em você! A sala de manutenção fica do seu lado direito. Corre lá!" // Sétima fala
       ];
 
-      const dialogBalloon = this.add.image(this.npc16.x + 50, this.npc16.y - 50, "balloonText").setScale(0.8);
-      const dialogText = this.add.text(this.npc16.x - 15, this.npc16.y - 100, speech[0], {
-      fontSize: "10px",
-      fill: "#000000",
-      wordWrap: { width: dialogBalloon.width - 50 },
+      const dialogBalloon = this.add.image(this.npc16.x + 50, this.npc16.y - 50, "balloonText").setScale(0.8); // Adiciona um balão de diálogo acima do NPC 16
+      const dialogText = this.add.text(this.npc16.x - 15, this.npc16.y - 100, speech[0], { // Adiciona o texto inicial do diálogo
+      fontSize: "10px", // Define o tamanho da fonte
+      fill: "#000000", // Define a cor do texto como preto
+      wordWrap: { width: dialogBalloon.width - 50 }, // Define a largura máxima para quebra de linha
       });
 
-      const keyEnter = this.add.image(this.npc16.x - 40, this.npc16.y - 40, 'keyENTER').setScale(0.1).setDepth(1000);
+      const keyEnter = this.add.image(this.npc16.x - 40, this.npc16.y - 40, 'keyENTER').setScale(0.1).setDepth(1000); // Adiciona a tecla ENTER ao lado do NPC 16
 
-      let currentIndex = 0;
+      let currentIndex = 0; // Índice atual do diálogo
 
-      const advanceDialog = () => {
-      currentIndex++;
-      if (currentIndex < speech.length) {
-        dialogText.setText(speech[currentIndex]); // Atualiza o texto do diálogo
-        this.keySound();
+      const advanceDialog = () => { // Função para avançar o diálogo
+      currentIndex++; // Incrementa o índice do diálogo
+      if (currentIndex < speech.length) { // Verifica se ainda há falas no array
+      dialogText.setText(speech[currentIndex]); // Atualiza o texto do diálogo
+      this.keySound(); // Toca o som de interação
       } else {
-        // Remove o balão de diálogo e a tecla ENTER
-        this.keySound();
-        dialogBalloon.destroy();
-        dialogText.destroy();
-        keyEnter.destroy();
-        this.createIndicatorNpc10();
-        this.input.keyboard.off("keydown-ENTER", advanceDialog);
+      // Remove o balão de diálogo e a tecla ENTER
+      this.keySound(); // Toca o som de interação
+      dialogBalloon.destroy(); // Remove o balão de diálogo
+      dialogText.destroy(); // Remove o texto do diálogo
+      keyEnter.destroy(); // Remove a tecla ENTER
+      this.createIndicatorNpc10(); // Cria o indicador para o NPC 10
+      this.input.keyboard.off("keydown-ENTER", advanceDialog); // Remove o evento de pressionar ENTER
       }
       };
 
       // Adiciona o evento para avançar o diálogo com a tecla ENTER
-      this.input.keyboard.on("keydown-ENTER", advanceDialog);
+      this.input.keyboard.on("keydown-ENTER", advanceDialog); // Adiciona o evento para avançar o diálogo ao pressionar ENTER
     }
 
     createCongratulationsNpc23() {
-      const speech = [
-        "Ufa! Os servidores estão de volta ao ar! Você salvou o dia.",
-        "Já começaram a chegar alertas de normalização nos sistemas. As soluções corporativas da Vivo voltaram a funcionar perfeitamente.",
-        "Nossos clientes B2B dependem desses serviços pra manter empresas, hospitais, escolas e até órgãos públicos conectados.",
-        "Parabéns pelo trabalho. E obrigada por agir tão rápido — você mostrou agilidade e responsabilidade."
+      const speech = [ // Array contendo as falas do NPC 23
+      "Ufa! Os servidores estão de volta ao ar! Você salvou o dia.", // Primeira fala
+      "Já começaram a chegar alertas de normalização nos sistemas. As soluções corporativas da Vivo voltaram a funcionar perfeitamente.", // Segunda fala
+      "Nossos clientes B2B dependem desses serviços pra manter empresas, hospitais, escolas e até órgãos públicos conectados.", // Terceira fala
+      "Parabéns pelo trabalho. E obrigada por agir tão rápido — você mostrou agilidade e responsabilidade." // Quarta fala
       ];
 
-      const dialogBalloon = this.add.image(this.npc23.x + 50, this.npc23.y - 50, "balloonText").setScale(0.8).setDepth(1000);
-      const dialogText = this.add.text(this.npc23.x - 15, this.npc23.y - 100, speech[0], {
-        fontSize: "10px",
-        fill: "#000000",
-        wordWrap: { width: dialogBalloon.width - 50 },
+      const dialogBalloon = this.add.image(this.npc23.x + 50, this.npc23.y - 50, "balloonText").setScale(0.8).setDepth(1000); // Adiciona um balão de diálogo acima do NPC 23
+      const dialogText = this.add.text(this.npc23.x - 15, this.npc23.y - 100, speech[0], { // Adiciona o texto inicial do diálogo
+      fontSize: "10px", // Define o tamanho da fonte
+      fill: "#000000", // Define a cor do texto como preto
+      wordWrap: { width: dialogBalloon.width - 50 }, // Define a largura máxima para quebra de linha
       });
-      dialogText.setDepth(1000); // Define a profundidade do texto para 1000
+      dialogText.setDepth(1000); // Define a profundidade do texto para garantir que ele fique acima de outros elementos
 
-      const keyEnter = this.add.image(this.npc23.x - 40, this.npc23.y - 40, 'keyENTER').setScale(0.1).setDepth(1000);
+      const keyEnter = this.add.image(this.npc23.x - 40, this.npc23.y - 40, 'keyENTER').setScale(0.1).setDepth(1000); // Adiciona a tecla ENTER ao lado do NPC 23
 
-      let currentIndex = 0;
+      let currentIndex = 0; // Índice atual do diálogo
 
-      const advanceDialog = () => {
-        currentIndex++;
-        if (currentIndex < speech.length) {
-          dialogText.setText(speech[currentIndex]); // Atualiza o texto do diálogo
-          this.keySound();
-        } else {
-          // Remove o balão de diálogo e a tecla ENTER
-          this.keySound();
-          dialogBalloon.destroy();
-          dialogText.destroy();
-          keyEnter.destroy();
-          this.createIndicatorNpc15(); // Ativa o indicador para o NPC
-          this.input.keyboard.off("keydown-ENTER", advanceDialog);
-        }
+      const advanceDialog = () => { // Função para avançar o diálogo
+      currentIndex++; // Incrementa o índice do diálogo
+      if (currentIndex < speech.length) { // Verifica se ainda há falas no array
+        dialogText.setText(speech[currentIndex]); // Atualiza o texto do diálogo
+        this.keySound(); // Toca o som de interação
+      } else {
+        // Remove o balão de diálogo e a tecla ENTER
+        this.keySound(); // Toca o som de interação
+        dialogBalloon.destroy(); // Remove o balão de diálogo
+        dialogText.destroy(); // Remove o texto do diálogo
+        keyEnter.destroy(); // Remove a tecla ENTER
+        this.createIndicatorNpc15(); // Ativa o indicador para o NPC 15
+        this.input.keyboard.off("keydown-ENTER", advanceDialog); // Remove o evento de pressionar ENTER
+      }
       };
 
       // Adiciona o evento para avançar o diálogo com a tecla ENTER
-      this.input.keyboard.on("keydown-ENTER", advanceDialog);
+      this.input.keyboard.on("keydown-ENTER", advanceDialog); // Adiciona o evento para avançar o diálogo ao pressionar ENTER
     }
 
     createServer() {
-      this.crashedWire = this.physics.add.sprite(width - 1170, height - 220, 'crashedWire').setScale(0.06);
-      this.crashedWire.setImmovable(true);
+      this.crashedWire = this.physics.add.sprite(width - 1170, height - 220, 'crashedWire').setScale(0.06); // Adiciona o sprite do fio quebrado na posição especificada e ajusta seu tamanho
+      this.crashedWire.setImmovable(true); // Define o fio quebrado como imóvel para colisões
 
-      // Adiciona o overlap entre o jogador e o crashedWire
+      // Adiciona o overlap entre o jogador e o fio quebrado
       this.physics.add.overlap(this.player, this.crashedWire, () => {
-          if (!this.keyECrashedWire && this.screwDriverCollected) { // Verifica se a chave de fenda foi coletada
-              this.keyECrashedWire = this.add.image(this.crashedWire.x, this.crashedWire.y - 40, 'keyE').setScale(0.07).setDepth(1000);
-              this.canInteractWithCrashedWire = true;
-          }
+        if (!this.keyECrashedWire && this.screwDriverCollected) { // Verifica se a tecla "E" não foi exibida e se a chave de fenda foi coletada
+          this.keyECrashedWire = this.add.image(this.crashedWire.x, this.crashedWire.y - 40, 'keyE').setScale(0.07).setDepth(1000); // Adiciona a tecla "E" acima do fio quebrado
+          this.canInteractWithCrashedWire = true; // Permite a interação com o fio quebrado
+        }
       });
 
-      // Remove a tecla E se o player se afasta
+      // Remove a tecla "E" se o jogador se afasta do fio quebrado
       this.physics.add.overlap(this.player, this.crashedWire, null, (player, wire) => {
-          const distance = Phaser.Math.Distance.Between(player.x, player.y, wire.x, wire.y);
-          if (distance > 100 && this.keyECrashedWire) {
-              this.keyECrashedWire.destroy();
-              this.keyECrashedWire = null;
-              this.canInteractWithCrashedWire = false;
-          }
-          return true;
+        const distance = Phaser.Math.Distance.Between(player.x, player.y, wire.x, wire.y); // Calcula a distância entre o jogador e o fio quebrado
+        if (distance > 100 && this.keyECrashedWire) { // Verifica se o jogador está a mais de 100 pixels de distância e se a tecla "E" está visível
+          this.keyECrashedWire.destroy(); // Remove a tecla "E"
+          this.keyECrashedWire = null; // Reseta a referência da tecla "E"
+          this.canInteractWithCrashedWire = false; // Impede a interação com o fio quebrado
+        }
+        return true; // Retorna verdadeiro para continuar verificando o overlap
       }, this);
 
-      // Adiciona a interação com o crashedWire
+      // Adiciona a interação com o fio quebrado ao pressionar a tecla "E"
       this.input.keyboard.on("keydown-E", () => {
-          if (this.canInteractWithCrashedWire) {
-              this.canInteractWithCrashedWire = false;
+        if (this.canInteractWithCrashedWire) { // Verifica se o jogador pode interagir com o fio quebrado
+          this.canInteractWithCrashedWire = false; // Impede novas interações enquanto a atual está em andamento
 
-              if (this.keyECrashedWire) {
-                  this.keyECrashedWire.destroy(); // Remove a tecla E
-                  this.keyECrashedWire = null;
-              }
-
-              if (this.screwDriver) {
-                  this.screwDriver.destroy(); // Remove a chave de fenda
-                  this.screwDriver = null;
-                  this.screwDriverCollected = false; // Reseta o estado da chave de fenda
-              }
-
-              this.scene.pause('vpNegociosScene'); // Pausa a cena principal
-              this.scene.launch('minigameWires'); // Inicia a cena do minigame
+          if (this.keyECrashedWire) { // Verifica se a tecla "E" está visível
+            this.keyECrashedWire.destroy(); // Remove a tecla "E"
+            this.keyECrashedWire = null; // Reseta a referência da tecla "E"
           }
+
+          if (this.screwDriver) { // Verifica se a chave de fenda está presente
+            this.screwDriver.destroy(); // Remove a chave de fenda
+            this.screwDriver = null; // Reseta a referência da chave de fenda
+            this.screwDriverCollected = false; // Reseta o estado indicando que a chave de fenda foi coletada
+          }
+
+          this.scene.pause('vpNegociosScene'); // Pausa a cena principal
+          this.scene.launch('minigameWires'); // Inicia a cena do minigame de fios
+        }
       });
     }
 
     createIndicatorNpc10() {
-      this.indicatorNpc10 = this.physics.add.sprite(this.npc10.x, this.npc10.y - 50, 'indicator');
-      this.indicatorNpc10.setScale(0.2);
-      this.indicatorNpc10.setImmovable(true);
-      this.indicatorNpc10.play("exclaiming");
-  
-      this.physics.add.overlap(this.player, this.npc10, () => {
-          if (!this.npc10Interacted && !this.keyENpc10 && !this.Npc10ChipCollected) {
-              if (this.indicatorNpc10) {
-                  this.indicatorNpc10.destroy();
-                  this.indicatorNpc10 = null;
-              }
-  
-              this.keyENpc10 = this.add.image(this.npc10.x, this.npc10.y - 40, 'keyE').setScale(0.07).setDepth(1000);
-              this.canInteractWithNpc10 = true;
+      this.indicatorNpc10 = this.physics.add.sprite(this.npc10.x, this.npc10.y - 50, 'indicator'); // Cria um sprite de indicador acima do NPC 10
+      this.indicatorNpc10.setScale(0.2); // Define o tamanho do indicador
+      this.indicatorNpc10.setImmovable(true); // Define o indicador como imóvel
+      this.indicatorNpc10.play("exclaiming"); // Reproduz a animação de exclamação para o indicador
+    
+      this.physics.add.overlap(this.player, this.npc10, () => { // Adiciona um evento de overlap entre o jogador e o NPC 10
+        if (!this.npc10Interacted && !this.keyENpc10 && !this.Npc10ChipCollected) { // Verifica se o NPC 10 ainda não foi interagido, a tecla E não está visível e o chip não foi coletado
+          if (this.indicatorNpc10) { // Verifica se o indicador ainda existe
+            this.indicatorNpc10.destroy(); // Remove o indicador
+            this.indicatorNpc10 = null; // Reseta a referência do indicador
           }
+    
+          this.keyENpc10 = this.add.image(this.npc10.x, this.npc10.y - 40, 'keyE').setScale(0.07).setDepth(1000); // Adiciona a tecla E acima do NPC 10
+          this.canInteractWithNpc10 = true; // Permite a interação com o NPC 10
+        }
       });
-  
-      // Remove a tecla E se o player se afasta
-      this.physics.add.overlap(this.player, this.npc10, null, (player, npc) => {
-          const distance = Phaser.Math.Distance.Between(player.x, player.y, npc.x, npc.y);
-          if (distance > 100 && this.keyENpc10) {
-              this.keyENpc10.destroy();
-              this.keyENpc10 = null;
-              this.canInteractWithNpc10 = false;
-          }
-          return true;
+    
+      // Remove a tecla E se o jogador se afasta do NPC 10
+      this.physics.add.overlap(this.player, this.npc10, null, (player, npc) => { // Adiciona um evento de overlap para verificar a distância entre o jogador e o NPC 10
+        const distance = Phaser.Math.Distance.Between(player.x, player.y, npc.x, npc.y); // Calcula a distância entre o jogador e o NPC 10
+        if (distance > 100 && this.keyENpc10) { // Verifica se o jogador está a mais de 100 pixels de distância e se a tecla E está visível
+          this.keyENpc10.destroy(); // Remove a tecla E
+          this.keyENpc10 = null; // Reseta a referência da tecla E
+          this.canInteractWithNpc10 = false; // Impede a interação com o NPC 10
+        }
+        return true; // Retorna verdadeiro para continuar verificando o overlap
       }, this);
-  
-      // Adiciona a interação com o NPC 10
-      this.input.keyboard.on("keydown-E", () => {
-          this.keySound();
-          if (this.canInteractWithNpc10) {
-              this.canInteractWithNpc10 = false;
-  
-              if (this.keyENpc10) {
-                  this.keyENpc10.destroy(); // Remove a tecla E
-                  this.keyENpc10 = null;
-              }
-  
-              this.npc10Interacted = true; // Marca que o NPC 10 foi interagido
-              this.showNpc10Dialog(); // Chama o método para exibir o diálogo
+    
+      // Adiciona a interação com o NPC 10 ao pressionar a tecla E
+      this.input.keyboard.on("keydown-E", () => { // Adiciona um evento para quando a tecla E for pressionada
+        this.keySound(); // Toca o som de interação
+        if (this.canInteractWithNpc10) { // Verifica se o jogador pode interagir com o NPC 10
+          this.canInteractWithNpc10 = false; // Impede novas interações enquanto a atual está em andamento
+    
+          if (this.keyENpc10) { // Verifica se a tecla E está visível
+            this.keyENpc10.destroy(); // Remove a tecla E
+            this.keyENpc10 = null; // Reseta a referência da tecla E
           }
+    
+          this.npc10Interacted = true; // Marca que o NPC 10 foi interagido
+          this.showNpc10Dialog(); // Chama o método para exibir o diálogo do NPC 10
+        }
       });
     }
 
     showNpc10Dialog() {
-      const speech = [
-          "Ah, você que veio ajudar com os servidores, né?",
-          "Aqui está a chave de fenda. Mas cuidado: ela não é uma chave comum — ela tem um sensor de segurança para não danificar os componentes internos.",
-          "Quando chegar na sala dos servidores, procure o painel com os fios danificados. É ali que tá o problema.",
-          "E lembra: sem esses servidores funcionando, os clientes corporativos da Vivo ficam no escuro. Capricha aí!",
-          "Vai lá e mostra do que você é capaz!"
+      const speech = [ // Array contendo as falas do NPC 10
+        "Ah, você que veio ajudar com os servidores, né?", // Primeira fala
+        "Aqui está a chave de fenda. Mas cuidado: ela não é uma chave comum — ela tem um sensor de segurança para não danificar os componentes internos.", // Segunda fala
+        "Quando chegar na sala dos servidores, procure o painel com os fios danificados. É ali que tá o problema.", // Terceira fala
+        "E lembra: sem esses servidores funcionando, os clientes corporativos da Vivo ficam no escuro. Capricha aí!", // Quarta fala
+        "Vai lá e mostra do que você é capaz!" // Quinta fala
       ];
 
-      const dialogBalloon = this.add.image(this.npc10.x + 50, this.npc10.y - 50, "balloonText").setScale(0.8);
-      const dialogText = this.add.text(this.npc10.x - 15, this.npc10.y - 100, speech[0], {
-          fontSize: "10px",
-          fill: "#000000",
-          wordWrap: { width: dialogBalloon.width - 50 },
+      const dialogBalloon = this.add.image(this.npc10.x + 50, this.npc10.y - 50, "balloonText").setScale(0.8); // Adiciona um balão de diálogo acima do NPC 10
+      const dialogText = this.add.text(this.npc10.x - 15, this.npc10.y - 100, speech[0], { // Adiciona o texto inicial do diálogo
+        fontSize: "10px", // Define o tamanho da fonte do texto
+        fill: "#000000", // Define a cor do texto como preto
+        wordWrap: { width: dialogBalloon.width - 50 }, // Define a largura máxima para quebra de linha
       });
 
       // Adiciona a tecla ENTER ao lado do balão de diálogo
-      const keyEnter = this.add.image(this.npc10.x - 40, this.npc10.y - 40, 'keyENTER').setScale(0.1).setDepth(1000);
+      const keyEnter = this.add.image(this.npc10.x - 40, this.npc10.y - 40, 'keyENTER').setScale(0.1).setDepth(1000); // Adiciona a tecla ENTER ao lado do NPC 10
 
-      let currentIndex = 0;
+      let currentIndex = 0; // Índice atual do diálogo
 
-      const advanceDialog = () => {
-          currentIndex++;
-          if (currentIndex < speech.length) {
-              dialogText.setText(speech[currentIndex]); // Atualiza o texto do diálogo
-              this.keySound();
-          } else {
-              // Remove o balão de diálogo e a tecla ENTER
-              this.keySound();
-              dialogBalloon.destroy();
-              dialogText.destroy();
-              keyEnter.destroy();
-              this.input.keyboard.off("keydown-ENTER", advanceDialog);
+      const advanceDialog = () => { // Função para avançar o diálogo
+        currentIndex++; // Incrementa o índice do diálogo
+        if (currentIndex < speech.length) { // Verifica se ainda há falas no array
+          dialogText.setText(speech[currentIndex]); // Atualiza o texto do diálogo
+          this.keySound(); // Toca o som de interação
+        } else {
+          // Remove o balão de diálogo e a tecla ENTER
+          this.keySound(); // Toca o som de interação
+          dialogBalloon.destroy(); // Remove o balão de diálogo
+          dialogText.destroy(); // Remove o texto do diálogo
+          keyEnter.destroy(); // Remove a tecla ENTER
+          this.input.keyboard.off("keydown-ENTER", advanceDialog); // Remove o evento de pressionar ENTER
 
-              this.addScrewDriver(); // Adiciona a chave de fenda ao lado do jogador
-          }
+          this.addScrewDriver(); // Adiciona a chave de fenda ao lado do jogador
+        }
       };
 
       // Adiciona o evento para avançar o diálogo com a tecla ENTER
-      this.input.keyboard.on("keydown-ENTER", advanceDialog);
+      this.input.keyboard.on("keydown-ENTER", advanceDialog); // Adiciona o evento para avançar o diálogo ao pressionar ENTER
     }
 
     addScrewDriver() {
       // Cria o sprite da chave de fenda ao lado do jogador
-      this.screwDriver = this.physics.add.sprite(this.player.x + 20, this.player.y, 'screwDriver').setScale(0.08);
+      this.screwDriver = this.physics.add.sprite(this.player.x + 20, this.player.y, 'screwDriver').setScale(0.08); // Adiciona o sprite da chave de fenda próximo ao jogador e ajusta seu tamanho
       this.screwDriver.setDepth(1000); // Garante que a chave de fenda fique acima de outros elementos
       this.screwDriver.setFlipX(true); // Vira a chave de fenda no eixo X inicialmente
-  
+    
       // Atualiza a posição da chave de fenda para seguir o jogador
-      this.physics.add.overlap(this.player, this.screwDriver, () => {
-          if (this.screwDriver) {
-              this.screwDriver.x = this.player.x; // Ajusta a posição horizontal
-              this.screwDriver.y = this.player.y + 25; // Ajusta a posição vertical
-          }
+      this.physics.add.overlap(this.player, this.screwDriver, () => { // Adiciona um evento de overlap entre o jogador e a chave de fenda
+        if (this.screwDriver) { // Verifica se a chave de fenda existe
+          this.screwDriver.x = this.player.x; // Ajusta a posição horizontal da chave de fenda para seguir o jogador
+          this.screwDriver.y = this.player.y + 25; // Ajusta a posição vertical da chave de fenda para seguir o jogador
+        }
       });
-  
+    
       // Atualiza a orientação da chave de fenda com base no movimento do jogador
-      this.events.on('update', () => {
-          if (this.screwDriver) {
-              if (this.keys.left.isDown) {
-                  this.screwDriver.setFlipX(true); // Vira a chave de fenda para a esquerda
-              } else if (this.keys.right.isDown) {
-                  this.screwDriver.setFlipX(false); // Vira a chave de fenda para a direita
-              }
+      this.events.on('update', () => { // Adiciona um evento que será executado a cada atualização do jogo
+        if (this.screwDriver) { // Verifica se a chave de fenda existe
+          if (this.keys.left.isDown) { // Verifica se a tecla de mover para a esquerda está pressionada
+            this.screwDriver.setFlipX(true); // Vira a chave de fenda para a esquerda
+          } else if (this.keys.right.isDown) { // Verifica se a tecla de mover para a direita está pressionada
+            this.screwDriver.setFlipX(false); // Vira a chave de fenda para a direita
           }
+        }
       });
-  
+    
       // Marca que a chave de fenda foi coletada
-      this.screwDriverCollected = true;
+      this.screwDriverCollected = true; // Define que a chave de fenda foi coletada
     }
 
     createIndicatorNpc15() {
-      this.indicatorNpc15 = this.physics.add.sprite(this.npc15.x, this.npc15.y - 50, 'indicator');
-      this.indicatorNpc15.setScale(0.2);
-      this.indicatorNpc15.setImmovable(true);
-      this.indicatorNpc15.play("exclaiming");
+      this.indicatorNpc15 = this.physics.add.sprite(this.npc15.x, this.npc15.y - 50, 'indicator'); // Cria um sprite de indicador acima do NPC 15
+      this.indicatorNpc15.setScale(0.2); // Ajusta o tamanho do indicador
+      this.indicatorNpc15.setImmovable(true); // Define o indicador como imóvel
+      this.indicatorNpc15.play("exclaiming"); // Reproduz a animação de exclamação para o indicador
     
-      this.physics.add.overlap(this.player, this.npc15, () => {
-        if (!this.npc15Interacted && !this.keyENpc15 && !this.npc15ChipCollected) {
-          if (this.indicatorNpc15) {
-            this.indicatorNpc15.destroy();
-            this.indicatorNpc15 = null;
-          }
-    
-          this.keyENpc15 = this.add.image(this.npc15.x, this.npc15.y - 40, 'keyE').setScale(0.07).setDepth(1000);
-          this.canInteractWithNpc15 = true;
+      this.physics.add.overlap(this.player, this.npc15, () => { // Adiciona um evento de overlap entre o jogador e o NPC 15
+      if (!this.npc15Interacted && !this.keyENpc15 && !this.npc15ChipCollected) { // Verifica se o NPC 15 ainda não foi interagido, a tecla E não está visível e o chip não foi coletado
+        if (this.indicatorNpc15) { // Verifica se o indicador ainda existe
+        this.indicatorNpc15.destroy(); // Remove o indicador
+        this.indicatorNpc15 = null; // Reseta a referência do indicador
         }
+    
+        this.keyENpc15 = this.add.image(this.npc15.x, this.npc15.y - 40, 'keyE').setScale(0.07).setDepth(1000); // Adiciona a tecla E acima do NPC 15
+        this.canInteractWithNpc15 = true; // Permite a interação com o NPC 15
+      }
       });
     
       // Remove a tecla E se o player se afasta
-      this.physics.add.overlap(this.player, this.npc15, null, (player, npc) => {
-        const distance = Phaser.Math.Distance.Between(player.x, player.y, npc.x, npc.y);
-        if (distance > 100 && this.keyENpc15) {
-          this.keyENpc15.destroy();
-          this.keyENpc15 = null;
-          this.canInteractWithNpc15 = false;
-        }
-        return true;
+      this.physics.add.overlap(this.player, this.npc15, null, (player, npc) => { // Adiciona um evento de overlap para verificar a distância entre o jogador e o NPC 15
+      const distance = Phaser.Math.Distance.Between(player.x, player.y, npc.x, npc.y); // Calcula a distância entre o jogador e o NPC 15
+      if (distance > 100 && this.keyENpc15) { // Verifica se o jogador está a mais de 100 pixels de distância e se a tecla E está visível
+        this.keyENpc15.destroy(); // Remove a tecla E
+        this.keyENpc15 = null; // Reseta a referência da tecla E
+        this.canInteractWithNpc15 = false; // Impede a interação com o NPC 15
+      }
+      return true; // Retorna verdadeiro para continuar verificando o overlap
       }, this);
     }
 
     createChips() {
-      this.chips = this.physics.add.group(); // Cria um grupo para os chips
+      this.chips = this.physics.add.group(); // Cria um grupo para os chips, permitindo manipulação em conjunto
 
       // Adiciona 5 chips em posições fixas
       const chipPositions = [
-        { x: width - 850, y: height - 270 }, // Chip da planta - primeiro
-        { x: width - 720, y: height - 130 }, // Chip na mesa esquerda inferior - segundo
-        { x: width - 370, y: height - 50 }, // Chip na direita perto da parede - terceiro
-        { x: width - 370, y: height - 320 } // Chip na salinha do 5G - quinto
+      { x: width - 850, y: height - 270 }, // Chip da planta - primeiro
+      { x: width - 720, y: height - 130 }, // Chip na mesa esquerda inferior - segundo
+      { x: width - 370, y: height - 50 }, // Chip na direita perto da parede - terceiro
+      { x: width - 370, y: height - 320 } // Chip na salinha do 5G - quinto
       ];
 
-      chipPositions.forEach(pos => {
-        const chip = this.chips.create(pos.x, pos.y, 'chip'); // Cria um chip na posição especificada
-        chip.setScale(0.06); // Ajusta o tamanho do chip
+      chipPositions.forEach(pos => { // Itera sobre as posições definidas
+      const chip = this.chips.create(pos.x, pos.y, 'chip'); // Cria um chip na posição especificada
+      chip.setScale(0.06); // Ajusta o tamanho do chip
       });
 
       // Adiciona o overlap entre o jogador e os chips
-      this.physics.add.overlap(this.player, this.chips, this.collectChip, null, this);
+      this.physics.add.overlap(this.player, this.chips, this.collectChip, null, this); // Detecta colisão entre o jogador e os chips
     }
 
     collectChip(player, chip) {
-      this.collectSound();
+      this.collectSound(); // Toca o som de coleta
       chip.destroy(); // Remove o chip coletado
       this.collectedChips += 1; // Incrementa o contador de chips em 1
-      this.chipText.setText(`${this.collectedChips}/5`); // Atualiza o texto na tela
+      this.chipText.setText(`${this.collectedChips}/5`); // Atualiza o texto na tela com a quantidade de chips coletados
     }
     
     createNpc15Chip() {
       // Verifica se o chip já foi criado ou coletado
-      if (this.npc15ChipCollected || this.npc15ChipCreated) return;
-  
-      console.log("Chip do NPC 15 criado");
-  
+      if (this.npc15ChipCollected || this.npc15ChipCreated) return; // Impede a criação do chip se ele já foi criado ou coletado
+    
+      console.log("Chip do NPC 15 criado"); // Loga no console que o chip foi criado
+    
       // Marca que o chip foi criado
-      this.npc15ChipCreated = true;
-  
+      this.npc15ChipCreated = true; // Define que o chip foi criado
+    
       const chipPosition = { x: width - 470, y: height - 310 }; // Posição fixa do chip do NPC 15
-      const chip = this.chips.create(chipPosition.x, chipPosition.y, 'chip'); // Cria o chip
+      const chip = this.chips.create(chipPosition.x, chipPosition.y, 'chip'); // Cria o chip na posição especificada
       chip.setScale(0.06); // Ajusta o tamanho do chip
-  
+    
       // Adiciona o overlap entre o jogador e o chip
-      this.physics.add.overlap(this.player, chip, (player, chip) => {
-          chip.destroy(); // Remove o chip coletado
-          this.collectedChips += 1; // Incrementa o contador de chips em 1
-          this.chipText.setText(`${this.collectedChips}/5`); // Atualiza o texto na tela
-          this.npc15ChipCollected = true; // Marca o chip como coletado
+      this.physics.add.overlap(this.player, chip, (player, chip) => { // Detecta colisão entre o jogador e o chip
+        chip.destroy(); // Remove o chip coletado
+        this.collectedChips += 1; // Incrementa o contador de chips em 1
+        this.chipText.setText(`${this.collectedChips}/5`); // Atualiza o texto na tela com a quantidade de chips coletados
+        this.npc15ChipCollected = true; // Marca o chip como coletado
       }, null, this);
-  }
+    }
   
 
   npc15Question() {
-    if (this.npc15ChipCollected) return;
+    if (this.npc15ChipCollected) return; // Verifica se o chip do NPC 15 já foi coletado e, se sim, retorna sem executar o restante do código.
   
-    const speech = [
-      "Olá, seja Bem-Vindo a área da B2B da Vivo!",
-      "Aqui você vai conhecer os conceitos de B2B e B2C.",
-      "Vamos começar coletando os chips de internet para desbloquear os 5G mais rápido do Brasil!",
-      "Mas antes eu tenho uma pergunta para você, para responde-lá é só apertar ENTER na opção correta.",
-      "Você sabe quais são os principais serviços oferecidos pela Vivo para clientes B2C?"
+    const speech = [ // Define um array com as falas do NPC 15.
+      "Olá, seja Bem-Vindo a área da B2B da Vivo!", // Primeira fala do NPC 15.
+      "Aqui você vai conhecer os conceitos de B2B e B2C.", // Segunda fala do NPC 15.
+      "Vamos começar coletando os chips de internet para desbloquear os 5G mais rápido do Brasil!", // Terceira fala do NPC 15.
+      "Mas antes eu tenho uma pergunta para você, para responde-lá é só apertar ENTER na opção correta.", // Quarta fala do NPC 15.
+      "Você sabe quais são os principais serviços oferecidos pela Vivo para clientes B2C?" // Quinta fala do NPC 15.
     ];
   
-    this.npc15DialogBalloon = this.add.image(this.npc15.x + 50, this.npc15.y - 50, "balloonText").setScale(0.8);
-    this.npc15DialogText = this.add.text(this.npc15.x - 15, this.npc15.y - 100, speech[0], {
-      fontSize: "10px",
-      fill: "#000000",
-      wordWrap: { width: this.npc15DialogBalloon.width - 50 },
+    this.npc15DialogBalloon = this.add.image(this.npc15.x + 50, this.npc15.y - 50, "balloonText").setScale(0.8); // Adiciona um balão de diálogo acima do NPC 15.
+    this.npc15DialogText = this.add.text(this.npc15.x - 15, this.npc15.y - 100, speech[0], { // Adiciona o texto inicial do diálogo.
+      fontSize: "10px", // Define o tamanho da fonte do texto.
+      fill: "#000000", // Define a cor do texto como preto.
+      wordWrap: { width: this.npc15DialogBalloon.width - 50 }, // Define a largura máxima para quebra de linha no texto.
     });
   
-    let currentIndex = 0;
+    let currentIndex = 0; // Inicializa o índice atual do diálogo como 0.
   
-    const enterNpc15 = () => {
-      currentIndex++;
-      if (currentIndex < speech.length) {
-        this.npc15DialogText.setText(speech[currentIndex]);
-        this.keySound();
-      } else {
-        this.npc15DialogText.setVisible(false);
-        this.npc15DialogBalloon.setVisible(false);
-        this.input.keyboard.off("keydown-ENTER", enterNpc15);
+    const enterNpc15 = () => { // Define uma função para avançar o diálogo ao pressionar ENTER.
+      currentIndex++; // Incrementa o índice do diálogo.
+      if (currentIndex < speech.length) { // Verifica se ainda há falas no array.
+        this.npc15DialogText.setText(speech[currentIndex]); // Atualiza o texto do diálogo com a próxima fala.
+        this.keySound(); // Toca o som de interação.
+      } else { // Caso todas as falas tenham sido exibidas.
+        this.npc15DialogText.setVisible(false); // Esconde o texto do diálogo.
+        this.npc15DialogBalloon.setVisible(false); // Esconde o balão de diálogo.
+        this.input.keyboard.off("keydown-ENTER", enterNpc15); // Remove o evento de pressionar ENTER.
   
-        if (this.keyEnterNpc15) {
-          this.keyEnterNpc15.destroy();
-          this.keyEnterNpc15 = null;
-          this.createOptions(); // Cria letterA e letterB
+        if (this.keyEnterNpc15) { // Verifica se a tecla ENTER está visível.
+          this.keyEnterNpc15.destroy(); // Remove a tecla ENTER.
+          this.keyEnterNpc15 = null; // Reseta a referência da tecla ENTER.
+          this.createOptions(); // Chama o método para criar as opções letterA e letterB.
         }
       }
     };
   
-    this.input.keyboard.on("keydown-ENTER", enterNpc15);
+    this.input.keyboard.on("keydown-ENTER", enterNpc15); // Adiciona o evento para avançar o diálogo ao pressionar ENTER.
   }
 
   handleCorrectAnswer(callback) {
-    console.log("Resposta correta!");
+    console.log("Resposta correta!"); // Exibe no console que a resposta está correta
     this.sound.play('correctSound'); // Toca o som de resposta correta
 
-    const feedbackSpeechCorrect = [
-      "Correto! Esses são exatamente os serviços focados no consumidor final, que é o público-alvo do modelo B2C (business to consumer).",
-      "Como recompensa vou te entregar um chip para te ajudar nessa aventura."
+    const feedbackSpeechCorrect = [ // Define um array com as falas de feedback para a resposta correta
+      "Correto! Esses são exatamente os serviços focados no consumidor final, que é o público-alvo do modelo B2C (business to consumer).", // Primeira fala
+      "Como recompensa vou te entregar um chip para te ajudar nessa aventura." // Segunda fala
     ];
 
-    const feedbackBalloon = this.add.image(this.npc15.x + 50, this.npc15.y - 50, "balloonText").setScale(0.8);
-    const feedbackText = this.add.text(this.npc15.x - 15, this.npc15.y - 100, feedbackSpeechCorrect[0], {
-        fontSize: "10px",
-        fill: "#000000",
-        wordWrap: { width: feedbackBalloon.width - 50 },
+    const feedbackBalloon = this.add.image(this.npc15.x + 50, this.npc15.y - 50, "balloonText").setScale(0.8); // Adiciona um balão de diálogo acima do NPC 15
+    const feedbackText = this.add.text(this.npc15.x - 15, this.npc15.y - 100, feedbackSpeechCorrect[0], { // Adiciona o texto inicial do feedback
+        fontSize: "10px", // Define o tamanho da fonte do texto
+        fill: "#000000", // Define a cor do texto como preto
+        wordWrap: { width: feedbackBalloon.width - 50 }, // Define a largura máxima para quebra de linha no texto
     });
 
-    const feedbackKeyEnter = this.add.image(this.npc15.x - 40, this.npc15.y - 40, 'keyENTER').setScale(0.1).setDepth(1000);
+    const feedbackKeyEnter = this.add.image(this.npc15.x - 40, this.npc15.y - 40, 'keyENTER').setScale(0.1).setDepth(1000); // Adiciona a tecla ENTER ao lado do NPC 15
 
-    let feedbackIndex = 0;
+    let feedbackIndex = 0; // Inicializa o índice atual do feedback como 0
 
-    const destroyFeedback = () => {
-        this.keySound();
-        if (feedbackBalloon) feedbackBalloon.destroy();
-        if (feedbackText) feedbackText.destroy();
-        if (feedbackKeyEnter) feedbackKeyEnter.destroy();
+    const destroyFeedback = () => { // Define uma função para destruir os elementos de feedback
+        this.keySound(); // Toca o som de interação
+        if (feedbackBalloon) feedbackBalloon.destroy(); // Remove o balão de feedback, se existir
+        if (feedbackText) feedbackText.destroy(); // Remove o texto de feedback, se existir
+        if (feedbackKeyEnter) feedbackKeyEnter.destroy(); // Remove a tecla ENTER, se existir
     };
 
-    const advanceFeedback = () => {
-        feedbackIndex++;
-        if (feedbackIndex < feedbackSpeechCorrect.length) {
-            feedbackText.setText(feedbackSpeechCorrect[feedbackIndex]);
-            this.keySound();
-        } else {
-            destroyFeedback();
-            this.createNpc15Chip();
-            this.input.keyboard.off("keydown-ENTER", advanceFeedback);
+    const advanceFeedback = () => { // Define uma função para avançar o feedback ao pressionar ENTER
+        feedbackIndex++; // Incrementa o índice do feedback
+        if (feedbackIndex < feedbackSpeechCorrect.length) { // Verifica se ainda há falas no array
+            feedbackText.setText(feedbackSpeechCorrect[feedbackIndex]); // Atualiza o texto do feedback com a próxima fala
+            this.keySound(); // Toca o som de interação
+        } else { // Caso todas as falas tenham sido exibidas
+            destroyFeedback(); // Remove os elementos de feedback
+            this.createNpc15Chip(); // Cria o chip do NPC 15 como recompensa
+            this.input.keyboard.off("keydown-ENTER", advanceFeedback); // Remove o evento de pressionar ENTER
 
             // Executa o callback, se fornecido
-            if (callback) callback();
+            if (callback) callback(); // Chama o callback, se ele existir
         }
     };
 
-    this.input.keyboard.on("keydown-ENTER", advanceFeedback);
+    this.input.keyboard.on("keydown-ENTER", advanceFeedback); // Adiciona o evento para avançar o feedback ao pressionar ENTER
   }
 
   handleIncorrectAnswer(callback) {
-    console.log("Resposta incorreta!");
+    console.log("Resposta incorreta!"); // Exibe no console que a resposta está incorreta
     this.sound.play('wrongSound'); // Toca o som de resposta incorreta
 
-    const feedbackSpeechWrong = [
-        "Incorreto. Esses serviços são voltados para empresas e fazem parte do modelo B2B (business to business), não para o consumidor final.",
-        "Tente novamente e escolha a opção correta!"
+    const feedbackSpeechWrong = [ // Define um array com as falas de feedback para a resposta incorreta
+        "Incorreto. Esses serviços são voltados para empresas e fazem parte do modelo B2B (business to business), não para o consumidor final.", // Primeira fala
+        "Tente novamente e escolha a opção correta!" // Segunda fala
     ];
 
-    const feedbackBalloon = this.add.image(this.npc15.x + 50, this.npc15.y - 50, "balloonText").setScale(0.8);
-    const feedbackText = this.add.text(this.npc15.x - 15, this.npc15.y - 100, feedbackSpeechWrong[0], {
-        fontSize: "10px",
-        fill: "#000000",
-        wordWrap: { width: feedbackBalloon.width - 50 },
+    const feedbackBalloon = this.add.image(this.npc15.x + 50, this.npc15.y - 50, "balloonText").setScale(0.8); // Adiciona um balão de diálogo acima do NPC 15
+    const feedbackText = this.add.text(this.npc15.x - 15, this.npc15.y - 100, feedbackSpeechWrong[0], { // Adiciona o texto inicial do feedback
+        fontSize: "10px", // Define o tamanho da fonte do texto
+        fill: "#000000", // Define a cor do texto como preto
+        wordWrap: { width: feedbackBalloon.width - 50 }, // Define a largura máxima para quebra de linha no texto
     });
 
-    const feedbackKeyEnter = this.add.image(this.npc15.x - 40, this.npc15.y - 40, 'keyENTER').setScale(0.1).setDepth(1000);
+    const feedbackKeyEnter = this.add.image(this.npc15.x - 40, this.npc15.y - 40, 'keyENTER').setScale(0.1).setDepth(1000); // Adiciona a tecla ENTER ao lado do NPC 15
 
-    let feedbackIndex = 0;
+    let feedbackIndex = 0; // Inicializa o índice atual do feedback como 0
 
-    const destroyFeedback = () => {
-        this.keySound();
-        if (feedbackBalloon) feedbackBalloon.destroy();
-        if (feedbackText) feedbackText.destroy();
-        if (feedbackKeyEnter) feedbackKeyEnter.destroy();
+    const destroyFeedback = () => { // Define uma função para destruir os elementos de feedback
+        this.keySound(); // Toca o som de interação
+        if (feedbackBalloon) feedbackBalloon.destroy(); // Remove o balão de feedback, se existir
+        if (feedbackText) feedbackText.destroy(); // Remove o texto de feedback, se existir
+        if (feedbackKeyEnter) feedbackKeyEnter.destroy(); // Remove a tecla ENTER, se existir
     };
 
-    const advanceFeedback = () => {
-        feedbackIndex++;
-        if (feedbackIndex < feedbackSpeechWrong.length) {
-            feedbackText.setText(feedbackSpeechWrong[feedbackIndex]);
-            this.keySound();
-        } else {
-            destroyFeedback();
-            this.input.keyboard.off("keydown-ENTER", advanceFeedback);
+    const advanceFeedback = () => { // Define uma função para avançar o feedback ao pressionar ENTER
+        feedbackIndex++; // Incrementa o índice do feedback
+        if (feedbackIndex < feedbackSpeechWrong.length) { // Verifica se ainda há falas no array
+            feedbackText.setText(feedbackSpeechWrong[feedbackIndex]); // Atualiza o texto do feedback com a próxima fala
+            this.keySound(); // Toca o som de interação
+        } else { // Caso todas as falas tenham sido exibidas
+            destroyFeedback(); // Remove os elementos de feedback
+            this.input.keyboard.off("keydown-ENTER", advanceFeedback); // Remove o evento de pressionar ENTER
 
             // Recria as opções sem criar o chip
-            this.createOptions();
+            this.createOptions(); // Chama o método para recriar as opções letterA e letterB
 
             // Executa o callback, se fornecido
-            if (callback) callback();
+            if (callback) callback(); // Chama o callback, se ele existir
         }
     };
 
-    this.input.keyboard.on("keydown-ENTER", advanceFeedback);
+    this.input.keyboard.on("keydown-ENTER", advanceFeedback); // Adiciona o evento para avançar o feedback ao pressionar ENTER
   }
 
   createOptions() {
-    this.input.keyboard.off("keydown-ENTER");
+    this.input.keyboard.off("keydown-ENTER"); // Remove qualquer evento anterior associado à tecla ENTER para evitar conflitos.
 
-    const letterA = this.physics.add.sprite(width - 590, height - 330, 'letterA');
-    letterA.setScale(0.1);
-    letterA.setImmovable();
+    const letterA = this.physics.add.sprite(width - 590, height - 330, 'letterA'); // Adiciona a opção "A" como um sprite no mapa.
+    letterA.setScale(0.1); // Define o tamanho do sprite da opção "A".
+    letterA.setImmovable(); // Define que a opção "A" não pode ser movida.
 
-    const letterB = this.physics.add.sprite(width - 510, height - 330, 'letterB');
-    letterB.setScale(0.1);
-    letterB.setImmovable();
+    const letterB = this.physics.add.sprite(width - 510, height - 330, 'letterB'); // Adiciona a opção "B" como um sprite no mapa.
+    letterB.setScale(0.1); // Define o tamanho do sprite da opção "B".
+    letterB.setImmovable(); // Define que a opção "B" não pode ser movida.
 
-    let activeTextA = null;
-    let activeTextB = null;
-    let keyEnterA = null;
-    let keyEnterB = null;
+    let activeTextA = null; // Variável para armazenar o texto ativo associado à opção "A".
+    let activeTextB = null; // Variável para armazenar o texto ativo associado à opção "B".
+    let keyEnterA = null; // Variável para armazenar a tecla ENTER associada à opção "A".
+    let keyEnterB = null; // Variável para armazenar a tecla ENTER associada à opção "B".
 
-    const destroyText = (activeText) => {
-      if (activeText) {
-        activeText.balloonText.destroy();
-        activeText.displayedText.destroy();
+    const destroyText = (activeText) => { // Função para destruir o texto ativo.
+      if (activeText) { // Verifica se há texto ativo.
+        activeText.balloonText.destroy(); // Remove o balão de texto.
+        activeText.displayedText.destroy(); // Remove o texto exibido.
       }
     };
 
-    const destroyKeyEnter = (keyEnter) => {
-      if (keyEnter) {
-        keyEnter.destroy();
+    const destroyKeyEnter = (keyEnter) => { // Função para destruir a tecla ENTER.
+      if (keyEnter) { // Verifica se a tecla ENTER existe.
+        keyEnter.destroy(); // Remove a tecla ENTER.
       }
     };
 
-    const destroyOptions = () => {
-      letterA.destroy();
-      letterB.destroy();
-      destroyText(activeTextA);
-      destroyText(activeTextB);
-      destroyKeyEnter(keyEnterA);
-      destroyKeyEnter(keyEnterB);
+    const destroyOptions = () => { // Função para destruir as opções.
+      letterA.destroy(); // Remove a opção "A".
+      letterB.destroy(); // Remove a opção "B".
+      destroyText(activeTextA); // Remove o texto ativo da opção "A".
+      destroyText(activeTextB); // Remove o texto ativo da opção "B".
+      destroyKeyEnter(keyEnterA); // Remove a tecla ENTER da opção "A".
+      destroyKeyEnter(keyEnterB); // Remove a tecla ENTER da opção "B".
     };
 
-    const destroyCreateOptions = () => {
-      destroyOptions();
-      this.input.keyboard.off("keydown-ENTER");
+    const destroyCreateOptions = () => { // Função para destruir as opções e remover eventos associados.
+      destroyOptions(); // Chama a função para destruir as opções.
+      this.input.keyboard.off("keydown-ENTER"); // Remove o evento associado à tecla ENTER.
     };
 
     // Remove listeners antigos para evitar conflitos
-    if (this.enterKeyListenerA) {
-      this.input.keyboard.off("keydown-ENTER", this.enterKeyListenerA);
-      this.enterKeyListenerA = null;
+    if (this.enterKeyListenerA) { // Verifica se há um listener associado à opção "A".
+      this.input.keyboard.off("keydown-ENTER", this.enterKeyListenerA); // Remove o listener associado à tecla ENTER para a opção "A".
+      this.enterKeyListenerA = null; // Reseta a referência do listener.
     }
-    if (this.enterKeyListenerB) {
-      this.input.keyboard.off("keydown-ENTER", this.enterKeyListenerB);
-      this.enterKeyListenerB = null;
+    if (this.enterKeyListenerB) { // Verifica se há um listener associado à opção "B".
+      this.input.keyboard.off("keydown-ENTER", this.enterKeyListenerB); // Remove o listener associado à tecla ENTER para a opção "B".
+      this.enterKeyListenerB = null; // Reseta a referência do listener.
     }
 
     // Lógica para a letterA
-    this.physics.add.overlap(this.player, letterA, () => {
-      const distance = Phaser.Math.Distance.Between(this.player.x, this.player.y, letterA.x, letterA.y);
-      if (distance < 20) {
-        if (!activeTextA) {
-          const balloonText = this.add.image(letterA.x + 80, letterA.y - 80, "balloonText").setScale(0.8);
-          const displayedText = this.add.text(
+    this.physics.add.overlap(this.player, letterA, () => { // Adiciona um evento de overlap entre o jogador e a opção "A".
+      const distance = Phaser.Math.Distance.Between(this.player.x, this.player.y, letterA.x, letterA.y); // Calcula a distância entre o jogador e a opção "A".
+      if (distance < 20) { // Verifica se o jogador está próximo da opção "A".
+        if (!activeTextA) { // Verifica se o texto ativo da opção "A" ainda não foi criado.
+          const balloonText = this.add.image(letterA.x + 80, letterA.y - 80, "balloonText").setScale(0.8); // Adiciona um balão de texto acima da opção "A".
+          const displayedText = this.add.text( // Adiciona o texto explicativo da opção "A".
             letterA.x + 10,
             letterA.y - 132,
             "Planos de celular pré e pós-pago, internet banda larga residencial (Vivo Fibra), TV por assinatura, serviços digitais (Vivo Play) e apps de streaming.",
             {
-              fontSize: "10px",
-              fill: "#000000",
-              wordWrap: { width: balloonText.width - 40 },
+              fontSize: "10px", // Define o tamanho da fonte do texto.
+              fill: "#000000", // Define a cor do texto como preto.
+              wordWrap: { width: balloonText.width - 40 }, // Define a largura máxima para quebra de linha no texto.
             }
           );
 
-          activeTextA = { balloonText, displayedText };
+          activeTextA = { balloonText, displayedText }; // Armazena o balão e o texto como texto ativo da opção "A".
         }
-        if (!keyEnterA) {
-          keyEnterA = this.add.image(letterA.x, letterA.y - 40, 'keyENTER').setScale(0.06).setDepth(1000);
+        if (!keyEnterA) { // Verifica se a tecla ENTER associada à opção "A" ainda não foi criada.
+          keyEnterA = this.add.image(letterA.x, letterA.y - 40, 'keyENTER').setScale(0.06).setDepth(1000); // Adiciona a tecla ENTER acima da opção "A".
         }
 
         // Adiciona evento para pressionar ENTER na letterA
-        if (!this.enterKeyListenerA) {
-          this.enterKeyListenerA = this.input.keyboard.on("keydown-ENTER", () => {
-            if (activeTextA) {
-              destroyCreateOptions(); // Destrói as opções
-              this.handleCorrectAnswer(); // Chama o método handleCorrectAnswer
-              this.input.keyboard.off("keydown-ENTER", this.enterKeyListenerA);
-              this.enterKeyListenerA = null;
+        if (!this.enterKeyListenerA) { // Verifica se o listener para a tecla ENTER ainda não foi criado.
+          this.enterKeyListenerA = this.input.keyboard.on("keydown-ENTER", () => { // Adiciona um evento para pressionar ENTER.
+            if (activeTextA) { // Verifica se há texto ativo na opção "A".
+              destroyCreateOptions(); // Destrói as opções.
+              this.handleCorrectAnswer(); // Chama o método handleCorrectAnswer para tratar a resposta correta.
+              this.input.keyboard.off("keydown-ENTER", this.enterKeyListenerA); // Remove o listener associado à tecla ENTER.
+              this.enterKeyListenerA = null; // Reseta a referência do listener.
             }
           });
         }
-      } else {
-        if (activeTextA) {
-          destroyText(activeTextA);
-          activeTextA = null;
+      } else { // Caso o jogador se afaste da opção "A".
+        if (activeTextA) { // Verifica se há texto ativo na opção "A".
+          destroyText(activeTextA); // Remove o texto ativo da opção "A".
+          activeTextA = null; // Reseta a referência do texto ativo.
         }
-        if (keyEnterA) {
-          destroyKeyEnter(keyEnterA);
-          keyEnterA = null;
+        if (keyEnterA) { // Verifica se a tecla ENTER está visível.
+          destroyKeyEnter(keyEnterA); // Remove a tecla ENTER.
+          keyEnterA = null; // Reseta a referência da tecla ENTER.
         }
       }
     });
 
     // Lógica para a letterB
-    this.physics.add.overlap(this.player, letterB, () => {
-      const distance = Phaser.Math.Distance.Between(this.player.x, this.player.y, letterB.x, letterB.y);
-      if (distance < 20) {
-        if (!activeTextB) {
-          const balloonText = this.add.image(letterB.x + 80, letterB.y - 80, "balloonText").setScale(0.8);
-          const displayedText = this.add.text(
+    this.physics.add.overlap(this.player, letterB, () => { // Adiciona um evento de overlap entre o jogador e a opção "B".
+      const distance = Phaser.Math.Distance.Between(this.player.x, this.player.y, letterB.x, letterB.y); // Calcula a distância entre o jogador e a opção "B".
+      if (distance < 20) { // Verifica se o jogador está próximo da opção "B".
+        if (!activeTextB) { // Verifica se o texto ativo da opção "B" ainda não foi criado.
+          const balloonText = this.add.image(letterB.x + 80, letterB.y - 80, "balloonText").setScale(0.8); // Adiciona um balão de texto acima da opção "B".
+          const displayedText = this.add.text( // Adiciona o texto explicativo da opção "B".
             letterB.x + 10,
             letterB.y - 132,
             "Soluções de conectividade corporativa, serviços em nuvem, redes privadas, IoT empresarial e consultoria em transformação digital.",
             {
-              fontSize: "10px",
-              fill: "#000000",
-              wordWrap: { width: balloonText.width - 40 },
+              fontSize: "10px", // Define o tamanho da fonte do texto.
+              fill: "#000000", // Define a cor do texto como preto.
+              wordWrap: { width: balloonText.width - 40 }, // Define a largura máxima para quebra de linha no texto.
             }
           );
 
-          activeTextB = { balloonText, displayedText };
+          activeTextB = { balloonText, displayedText }; // Armazena o balão e o texto como texto ativo da opção "B".
         }
-        if (!keyEnterB) {
-          keyEnterB = this.add.image(letterB.x, letterB.y - 40, 'keyENTER').setScale(0.06).setDepth(1000);
+        if (!keyEnterB) { // Verifica se a tecla ENTER associada à opção "B" ainda não foi criada.
+          keyEnterB = this.add.image(letterB.x, letterB.y - 40, 'keyENTER').setScale(0.06).setDepth(1000); // Adiciona a tecla ENTER acima da opção "B".
         }
 
         // Adiciona evento para pressionar ENTER na letterB
-        if (!this.enterKeyListenerB) {
-          this.enterKeyListenerB = this.input.keyboard.on("keydown-ENTER", () => {
-            if (activeTextB) {
-              destroyCreateOptions(); // Destrói as opções
-              this.handleIncorrectAnswer(() => {
-                  this.input.keyboard.off("keydown-ENTER", this.enterKeyListenerB);
-                  this.enterKeyListenerB = null;
+        if (!this.enterKeyListenerB) { // Verifica se o listener para a tecla ENTER ainda não foi criado.
+          this.enterKeyListenerB = this.input.keyboard.on("keydown-ENTER", () => { // Adiciona um evento para pressionar ENTER.
+            if (activeTextB) { // Verifica se há texto ativo na opção "B".
+              destroyCreateOptions(); // Destrói as opções.
+              this.handleIncorrectAnswer(() => { // Chama o método handleIncorrectAnswer para tratar a resposta incorreta.
+                  this.input.keyboard.off("keydown-ENTER", this.enterKeyListenerB); // Remove o listener associado à tecla ENTER.
+                  this.enterKeyListenerB = null; // Reseta a referência do listener.
               });
             }
           });
         }
-      } else {
-        if (activeTextB) {
-          destroyText(activeTextB);
-          activeTextB = null;
+      } else { // Caso o jogador se afaste da opção "B".
+        if (activeTextB) { // Verifica se há texto ativo na opção "B".
+          destroyText(activeTextB); // Remove o texto ativo da opção "B".
+          activeTextB = null; // Reseta a referência do texto ativo.
         }
-        if (keyEnterB) {
-          destroyKeyEnter(keyEnterB);
-          keyEnterB = null;
+        if (keyEnterB) { // Verifica se a tecla ENTER está visível.
+          destroyKeyEnter(keyEnterB); // Remove a tecla ENTER.
+          keyEnterB = null; // Reseta a referência da tecla ENTER.
         }
       }
     });
   }
 
   createLocker() {
-    this.locker = this.physics.add.sprite(width - 370, height - 220, 'locker').setScale(0.09);
+    this.locker = this.physics.add.sprite(width - 370, height - 220, 'locker').setScale(0.09); // Cria o sprite do locker na posição especificada e ajusta seu tamanho
     this.locker.setImmovable(true); // Define o locker como imóvel para colisões
-    this.physics.add.collider(this.player, this.locker, () => {
-      console.log("Player colidiu com o locker!");
+    this.physics.add.collider(this.player, this.locker, () => { // Adiciona uma colisão entre o jogador e o locker
+      console.log("Player colidiu com o locker!"); // Exibe uma mensagem no console quando o jogador colide com o locker
       // Adicione aqui qualquer lógica adicional para a colisão
     });
   }
 
   showCongratulations() {
-    const congratulationsImage = this.add.image(this.player.x, this.player.y - 150, 'congratulations5G').setDepth(1000);
-    congratulationsImage.setScale(0.3); // Ajusta o tamanho da imagem, se necessário
+    const congratulationsImage = this.add.image(this.player.x, this.player.y - 150, 'congratulations5G').setDepth(1000); // Adiciona a imagem de parabéns acima do jogador e define sua profundidade para garantir que fique acima de outros elementos
+    congratulationsImage.setScale(0.3); // Ajusta o tamanho da imagem de parabéns
 
     // Remove a imagem de parabéns após 3 segundos
-    this.time.delayedCall(3000, () => {
-        congratulationsImage.destroy();
+    this.time.delayedCall(3000, () => { // Define um atraso de 3 segundos antes de executar a função
+        congratulationsImage.destroy(); // Remove a imagem de parabéns da tela
     });
   }
 }
@@ -1122,22 +1122,22 @@ class MinigameWires extends Phaser.Scene {
   }
 
   preload() {
-    this.load.image('serverBackground', '../assets/assetsWires/serverBackground.png');
-    this.load.image('backgroundMinigame', '../assets/assetsWires/backgroundMinigame.png');
-    this.load.image('blueWireConnected', '../assets/assetsWires/fioAzulGrande.png');
-    this.load.image('blueWireDisconnected', '../assets/assetsWires/fioAzulPequeno.png');
-    this.load.image('redWireConnected', '../assets/assetsWires/fioVermelhoGrande.png');
-    this.load.image('redWireDisconnected', '../assets/assetsWires/fioVermelhoPequeno.png');
-    this.load.image('yellowWireConnected', '../assets/assetsWires/fioAmareloGrande.png');
-    this.load.image('yellowWireDisconnected', '../assets/assetsWires/fioAmareloPequeno.png');
-    this.load.image('pinkWireConnected', '../assets/assetsWires/fioRosaGrande.png');
-    this.load.image('pinkWireDisconnected', '../assets/assetsWires/fioRosaPequeno.png');
-    this.load.image('endPointBlue', '../assets/assetsWires/endPointBlue.png');
-    this.load.image('endPointRed', '../assets/assetsWires/endPointRed.png');
-    this.load.image('endPointYellow', '../assets/assetsWires/endPointYellow.png');
-    this.load.image('endPointPink', '../assets/assetsWires/endPointPink.png');
+    this.load.image('serverBackground', '../assets/assetsWires/serverBackground.png'); // Carrega a imagem de fundo do servidor para o minigame
+    this.load.image('backgroundMinigame', '../assets/assetsWires/backgroundMinigame.png'); // Carrega a imagem de fundo adicional para o minigame
+    this.load.image('blueWireConnected', '../assets/assetsWires/fioAzulGrande.png'); // Carrega a imagem do fio azul conectado (grande)
+    this.load.image('blueWireDisconnected', '../assets/assetsWires/fioAzulPequeno.png'); // Carrega a imagem do fio azul desconectado (pequeno)
+    this.load.image('redWireConnected', '../assets/assetsWires/fioVermelhoGrande.png'); // Carrega a imagem do fio vermelho conectado (grande)
+    this.load.image('redWireDisconnected', '../assets/assetsWires/fioVermelhoPequeno.png'); // Carrega a imagem do fio vermelho desconectado (pequeno)
+    this.load.image('yellowWireConnected', '../assets/assetsWires/fioAmareloGrande.png'); // Carrega a imagem do fio amarelo conectado (grande)
+    this.load.image('yellowWireDisconnected', '../assets/assetsWires/fioAmareloPequeno.png'); // Carrega a imagem do fio amarelo desconectado (pequeno)
+    this.load.image('pinkWireConnected', '../assets/assetsWires/fioRosaGrande.png'); // Carrega a imagem do fio rosa conectado (grande)
+    this.load.image('pinkWireDisconnected', '../assets/assetsWires/fioRosaPequeno.png'); // Carrega a imagem do fio rosa desconectado (pequeno)
+    this.load.image('endPointBlue', '../assets/assetsWires/endPointBlue.png'); // Carrega a imagem do ponto de conexão final para o fio azul
+    this.load.image('endPointRed', '../assets/assetsWires/endPointRed.png'); // Carrega a imagem do ponto de conexão final para o fio vermelho
+    this.load.image('endPointYellow', '../assets/assetsWires/endPointYellow.png'); // Carrega a imagem do ponto de conexão final para o fio amarelo
+    this.load.image('endPointPink', '../assets/assetsWires/endPointPink.png'); // Carrega a imagem do ponto de conexão final para o fio rosa
 
-    this.load.audio('collectSound', '../assets/sounds/476178__unadamlar__correct-choice.wav'); // Carrega o efeito de coletar
+    this.load.audio('collectSound', '../assets/sounds/476178__unadamlar__correct-choice.wav'); // Carrega o efeito sonoro de coleta
     this.load.audio('correctSound', '../assets/sounds/476178__unadamlar__correct-choice.wav'); // Carrega o som de resposta correta
   }
 
@@ -1147,118 +1147,114 @@ class MinigameWires extends Phaser.Scene {
   }
 
   create() {
-    this.add.image(width / 2, height / 2, 'serverBackground').setScale(1.8);
-    this.add.image(width / 2, height / 2, 'backgroundMinigame').setScale(0.55);
+    this.add.image(width / 2, height / 2, 'serverBackground').setScale(1.8); // Adiciona a imagem do servidor
+    this.add.image(width / 2, height / 2, 'backgroundMinigame').setScale(0.55); // Adiciona a imagem do minigame
     // Posições iniciais dos fios (esquerda da tela)
     this.startPoints = {
-      blue: { x: width - 1100, y: height - 450 },
-      red: { x: width - 1100, y: height - 250 },
-      yellow: { x: width - 1100, y: height - 350 },
-      pink: { x: width - 1100, y: height - 550 }
+      blue: { x: width - 1100, y: height - 450 }, // Adiciona o fio azul na tela
+      red: { x: width - 1100, y: height - 250 }, // Adiciona o vermelho azul na tela
+      yellow: { x: width - 1100, y: height - 350 }, // Adiciona o fio amarelo na tela
+      pink: { x: width - 1100, y: height - 550 } // Adiciona o fio rosa na tela
     };
 
     // Conectores (direita da tela)
     this.endPoints = {
-      blue: this.add.sprite(width - 420, height - 550, 'endPointBlue').setScale(0.2),
-      red: this.add.sprite(width - 420, height - 450, 'endPointRed').setScale(0.2),
-      yellow: this.add.sprite(width - 420, height - 350, 'endPointYellow').setScale(0.2),
-      pink: this.add.sprite(width - 420, height - 250, 'endPointPink').setScale(0.2)
+      blue: this.add.sprite(width - 420, height - 550, 'endPointBlue').setScale(0.2), // Adiciona o ponto de conecxão azul na tela
+      red: this.add.sprite(width - 420, height - 450, 'endPointRed').setScale(0.2), // Adiciona o ponto de conecxão vermelho na tela
+      yellow: this.add.sprite(width - 420, height - 350, 'endPointYellow').setScale(0.2), // Adiciona o ponto de conecxão amarelo na tela
+      pink: this.add.sprite(width - 420, height - 250, 'endPointPink').setScale(0.2) // Adiciona o ponto de conecxão rosa na tela
     };
 
-    // Criação dos fios curtos (arrastáveis) e fios longos (para esticar)
-    this.wires = {};
+    this.wires = {}; // Criação dos fios curtos (arrastáveis) e fios longos (para esticar)
 
-    Object.keys(this.startPoints).forEach(color => {
-      let pos = this.startPoints[color];
+    Object.keys(this.startPoints).forEach(color => { // Itera sobre as cores dos fios
+      let pos = this.startPoints[color]; // Posição inicial do fio
 
-      let shortWire = this.add.sprite(pos.x, pos.y, `${color}WireDisconnected`).setInteractive();
-      shortWire.setData('color', color);
-      shortWire.setScale(3);
-      this.input.setDraggable(shortWire);
+      let shortWire = this.add.sprite(pos.x, pos.y, `${color}WireDisconnected`).setInteractive(); // Cria o fio desconectado e o torna interativo
+      shortWire.setData('color', color); // Define a cor do fio como dado do objeto
+      shortWire.setScale(3); // Ajusta o tamanho do fio
+      this.input.setDraggable(shortWire); // Define o fio como arrrastável
 
-      let longWire = this.add.sprite(pos.x, pos.y, `${color}WireConnected`)
-                         .setOrigin(0, 0.5)
-                         .setVisible(false);
+      let longWire = this.add.sprite(pos.x, pos.y, `${color}WireConnected`).setOrigin(0, 0.5).setVisible(false); // Cria o fio conectado         
 
-      this.wires[color] = { short: shortWire, long: longWire };
+      this.wires[color] = { short: shortWire, long: longWire }; // Aramazena os fios curtos e longos em um objeto
     });
 
     // Eventos drag-and-drop
-    this.input.on('dragstart', this.onDragStart, this);
-    this.input.on('drag', this.onDrag, this);
-    this.input.on('dragend', this.onDragEnd, this);
+    this.input.on('dragstart', this.onDragStart, this); // Inicia o arrasto
+    this.input.on('drag', this.onDrag, this); // Arrasta o fio
+    this.input.on('dragend', this.onDragEnd, this); // Finaliza o arrasto
   }
 
-  onDragStart(pointer, gameObject) {
-    const color = gameObject.getData('color');
-    this.wires[color].long.setVisible(true);
+  onDragStart(pointer, gameObject) { // Inicia o arrasto do fio
+    const color = gameObject.getData('color'); // Obtém a cor do fio
+    this.wires[color].long.setVisible(true); // Torna o fio longo visível
   }
 
-  onDrag(pointer, gameObject, dragX, dragY) {
-    const color = gameObject.getData('color');
-    const start = this.startPoints[color];
-    const wireLong = this.wires[color].long;
-    wireLong.setScale(3);
+  onDrag(pointer, gameObject, dragX, dragY) { // Arrasta o fio
+    const color = gameObject.getData('color'); // Obtém a cor do fio
+    const start = this.startPoints[color]; // Obtém a posição inicial do fio
+    const wireLong = this.wires[color].long; // Obtém o fio longo correspondente
+    wireLong.setScale(3); // Ajusta o tamanho do fio longo
 
-    gameObject.x = dragX;
-    gameObject.y = dragY;
+    gameObject.x = dragX; // Atualiza a posição do fio curto
+    gameObject.y = dragY; // Atualiza a posição do fio curto
 
-    const distance = Phaser.Math.Distance.Between(start.x, start.y, dragX, dragY);
-    const angle = Phaser.Math.Angle.Between(start.x, start.y, dragX, dragY);
+    const distance = Phaser.Math.Distance.Between(start.x, start.y, dragX, dragY); // Calcula a distância entre o ponto inicial e o ponto arrastado
+    const angle = Phaser.Math.Angle.Between(start.x, start.y, dragX, dragY); // Calcula o ângulo entre o ponto inicial e o ponto arrastado
 
-    wireLong.x = start.x;
-    wireLong.y = start.y;
-    wireLong.displayWidth = distance;
-    wireLong.rotation = angle;
+    wireLong.x = start.x; // Define a posição x do fio longo
+    wireLong.y = start.y; // Define a posição x do fio longo
+    wireLong.displayWidth = distance; // Atualiza a largura do fio longo com base na distância arrastada
+    wireLong.rotation = angle; // Define a rotação do fio longo com base no ângulo calculado
   }
 
-  onDragEnd(pointer, gameObject) {
-    const color = gameObject.getData('color');
-    const endPoint = this.endPoints[color];
-    const wireLong = this.wires[color].long;
+  onDragEnd(pointer, gameObject) { // Finaliza o arrasto do fio
+    const color = gameObject.getData('color'); // Obtém a cor do fio
+    const endPoint = this.endPoints[color]; // Obtém o ponto de conexão correspondente
+    const wireLong = this.wires[color].long; // Obtém o fio longo correspondente
 
-    const distToEnd = Phaser.Math.Distance.Between(gameObject.x, gameObject.y, endPoint.x, endPoint.y);
+    const distToEnd = Phaser.Math.Distance.Between(gameObject.x, gameObject.y, endPoint.x, endPoint.y); // Calcula a distância entre o ponto arrastado e o ponto de conexão
 
-    if (distToEnd < 50) {
-      gameObject.x = endPoint.x;
-      gameObject.y = endPoint.y;
-      gameObject.disableInteractive();
+    if (distToEnd < 50) { // Verifica se o fio está próximo do ponto de conexão
+      gameObject.x = endPoint.x; // Atualiza a posição x do fio curto para o ponto de conexão
+      gameObject.y = endPoint.y; // Atualiza a posição y do fio curto para o ponto de conexão
+      gameObject.disableInteractive(); // Desabilita a interatividade do fio curto
 
-      const distance = Phaser.Math.Distance.Between(this.startPoints[color].x, this.startPoints[color].y, endPoint.x, endPoint.y);
-      const angle = Phaser.Math.Angle.Between(this.startPoints[color].x, this.startPoints[color].y, endPoint.x, endPoint.y);
+      const distance = Phaser.Math.Distance.Between(this.startPoints[color].x, this.startPoints[color].y, endPoint.x, endPoint.y); // Calcula a distância entre o ponto inicial e o ponto de conexão
+      const angle = Phaser.Math.Angle.Between(this.startPoints[color].x, this.startPoints[color].y, endPoint.x, endPoint.y); // Calcula o ângulo entre o ponto inicial e o ponto de conexão
 
-      wireLong.displayWidth = distance;
-      wireLong.rotation = angle;
+      wireLong.displayWidth = distance; // Atualiza a largura do fio longo com base na distância arrastada
+      wireLong.rotation = angle; // Define a rotação do fio longo com base no ângulo calculado
 
-      console.log(`Fio ${color} conectado com sucesso!`);
-      this.collectSound();
-      this.checkCompletion();
+      console.log(`Fio ${color} conectado com sucesso!`); // Exibe uma mensagem no console indicando que o fio foi conectado com sucesso
+      this.collectSound(); // Toca o som de coleta
+      this.checkCompletion(); // Verifica se todos os fios foram conectados
     } else {
-      this.tweens.add({
-        targets: gameObject,
-        x: this.startPoints[color].x,
-        y: this.startPoints[color].y,
-        duration: 300,
-        ease: 'Power2'
+      this.tweens.add({ // Adiciona uma animação de retorno do fio curto para a posição inicial
+        targets: gameObject, // Define o alvo da animação como o fio curto
+        x: this.startPoints[color].x, // Define a posição x inicial do fio curto
+        y: this.startPoints[color].y, // Define a posição y inicial do fio curto
+        duration: 300, // Define a duração da animação 
+        ease: 'Power2' // Define o tipo de easing da animação
       });
 
-      wireLong.setVisible(false);
+      wireLong.setVisible(false); // Esconde o fio longo
     }
   }
 
-  checkCompletion() {
-    const allConnected = Object.values(this.wires).every(wire => !wire.short.input.enabled);
+  checkCompletion() { 
+    const allConnected = Object.values(this.wires).every(wire => !wire.short.input.enabled); // Verifica se todos os fios curtos estão desconectados (ou seja, se todos foram conectados com sucesso)
 
     if (allConnected) {
-        console.log("Minigame concluído com sucesso!");
+        console.log("Minigame concluído com sucesso!"); // Exibe uma mensagem no console indicando que o minigame foi concluído com sucesso
         this.sound.play('correctSound'); // Toca o som de resposta correta
   
-        // Exibe uma mensagem de conclusão
-        const completionText = this.add.text(width / 2, height / 2, "Minigame Concluído!", {
-            fontSize: "32px",
-            fill: "#ffffff",
-            fontFamily: "Arial",
-        }).setOrigin(0.5);
+        const completionText = this.add.text(width / 2, height / 2, "Minigame Concluído!", { // Exibe uma mensagem de conclusão
+            fontSize: "32px", // Define o tamanho da fonte
+            fill: "#ffffff", // Define a cor do texto como branco
+            fontFamily: "Arial",  // Define a fonte
+        }).setOrigin(0.5); // Centraliza o texto na tela
   
         // Adiciona um pequeno atraso antes de retornar à cena principal
         this.time.delayedCall(2000, () => {
