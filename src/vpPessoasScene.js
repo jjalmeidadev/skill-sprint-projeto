@@ -4,7 +4,12 @@ class VpPessoasScene extends Phaser.Scene {
 
       this.minigameComplete = false;
       this.npcMobileFixedCreated = false;
+      this.elevatorTarget = null;
+     
+      this.arrowOffset = Phaser.Math.DegToRad(-180);
+      this.activeIndicators = [];
     }
+    
 
     preload() {
       this.load.tilemapTiledJSON('vpPessoas', '../assets/mapaVPPessoas/mapaVPPessoas.json'); // Carrega o mapa da VP Pessoas em formato JSON
@@ -41,9 +46,13 @@ class VpPessoasScene extends Phaser.Scene {
       this.load.image("bgElevPessoas", "../assets/bgelevadoroffice.png"); // Carrega a imagem de fundo do elevador
       this.load.image("panelElev", "../assets/painelelevador.png"); // Carrega a imagem do painel do elevador
       this.load.image("buttonElevPesssoas", "../assets/botaocimaelevador.png"); // Carrega a imagem do botão do elevador
+      this.load.image("arrow", "../assets/seta.png");
+    
     }
 
   create() {
+    const width = this.sys.game.config.width;
+  const height = this.sys.game.config.height;
     const map = this.make.tilemap({ key: "vpPessoas", tileWidth: 25, tileHeight: 20 }); // Cria o mapa com as dimensões dos tiles
     const tileset1 = map.addTilesetImage("decoracao"); // Adiciona o tileset de decoração
     const tileset2 = map.addTilesetImage("paredes"); // Adiciona o tileset de paredes
@@ -120,6 +129,16 @@ class VpPessoasScene extends Phaser.Scene {
     // Dá zoom na tela do jogo e faz a visão seguir o personagem
     this.cameras.main.startFollow(this.player); // Faz a câmera seguir o jogador
     this.cameras.main.setZoom(2); // Define o zoom da câmera
+    this.elevatorTarget = {
+      x: width - 430, 
+      y: height - 570
+    };
+    this.compassArrow = this.add.image(
+      this.cameras.main.width / 2,  210, "arrow" )
+      .setScrollFactor(0)  // fixa na tela, não desloca com o mapa
+      .setDepth(1000)      // acima de todos os elementos
+      .setScale(0.5)
+      .setOrigin(0.5, 0.5);
   }
 
   createAnimsIndicator() {
@@ -299,113 +318,129 @@ class VpPessoasScene extends Phaser.Scene {
     update() {
       this.movePlayer(); // Move o jogador com base nas teclas pressionadas
       this.moveNpcMobile(); // Move o NPC móvel de acordo com sua lógica
-
+    
       // LIXO
-      if (this.trash) { // Verifica se o objeto de lixo existe
+      if (this.trash) {
         const distTrash = Phaser.Math.Distance.Between(
           this.player.x, this.player.y,
           this.trash.x, this.trash.y
-        ); // Calcula a distância entre o jogador e o lixo
-        this.canInteractWithTrash = distTrash < 50; // Permite interação se a distância for menor que 50
-
-        if (distTrash >= 50 && this.keyETrash) { // Se o jogador se afastar do lixo
-          this.keyETrash.destroy(); // Remove o ícone da tecla "E"
-          this.keyETrash = null; // Reseta a referência do ícone
+        );
+        this.canInteractWithTrash = distTrash < 50;
+        if (distTrash >= 50 && this.keyETrash) {
+          this.keyETrash.destroy();
+          this.keyETrash = null;
         }
       }
-
+    
       // LIVRO
-      if (this.book && this.npcMobileInteractionFinished) { // Verifica se o livro existe e a interação com o NPC móvel foi concluída
+      if (this.book && this.npcMobileInteractionFinished) {
         const distBook = Phaser.Math.Distance.Between(
           this.player.x, this.player.y,
           this.book.x, this.book.y
-        ); // Calcula a distância entre o jogador e o livro
-        this.canInteractWithBook = distBook < 100; // Permite interação se a distância for menor que 100
-
-        if (this.canInteractWithBook) { // Se o jogador estiver próximo do livro
-          if (!this.keyEBook) { // Se o ícone da tecla "E" ainda não foi criado
-            this.keyEBook = this.add.image(this.book.x, this.book.y - 40, 'keyE').setScale(0.2); // Adiciona o ícone da tecla "E"
+        );
+        this.canInteractWithBook = distBook < 100;
+        if (this.canInteractWithBook) {
+          if (!this.keyEBook) {
+            this.keyEBook = this.add.image(this.book.x, this.book.y - 40, 'keyE').setScale(0.2);
           }
-        } else { // Se o jogador se afastar do livro
-          if (this.keyEBook) { // Se o ícone da tecla "E" existir
-            this.keyEBook.destroy(); // Remove o ícone da tecla "E"
-            this.keyEBook = null; // Reseta a referência do ícone
-
-            // Quando o jogador se afasta do livro e já leu o conteúdo
-            const bookRead = this.registry.get('bookRead'); // Verifica se o livro foi lido
-            if (bookRead && !this.botaoVoltar) { // Se o livro foi lido e o botão de voltar ainda não foi criado
-              this.createButtonBack(); // Cria o botão de voltar
+        } else {
+          if (this.keyEBook) {
+            this.keyEBook.destroy();
+            this.keyEBook = null;
+            const bookRead = this.registry.get('bookRead');
+            if (bookRead && !this.botaoVoltar) {
+              this.createButtonBack();
             }
           }
         }
       }
-
-      // INTERAÇÃO
-      if (this.canInteractWithTrash && Phaser.Input.Keyboard.JustDown(this.keys.interagir)) { // Se o jogador pode interagir com o lixo e pressionou a tecla de interação
-        this.buttonClick = this.sound.add('buttonSound', { loop: false, volume: 10 }); // Adiciona o som de clique
-        this.buttonClick.play(); // Toca o som de clique
-        this.scene.pause(); // Pausa a cena atual
-        this.scene.launch('minigameTrashScene'); // Inicia a cena do minijogo do lixo
-        this.minigameComplete = true; // Marca o minijogo como concluído
-      }
-
-      if (this.canInteractWithBook && this.npcMobileInteractionFinished && Phaser.Input.Keyboard.JustDown(this.keys.interagir)) { // Se o jogador pode interagir com o livro e pressionou a tecla de interação
-        this.buttonClick.play(); // Toca o som de clique
-        this.scene.pause(); // Pausa a cena atual
-        this.scene.launch('bookScene'); // Inicia a cena do livro
-        this.createButtonBack(); // Cria o botão de voltar
-      }
-
-      if (this.canInteractWithNpcMobile && Phaser.Input.Keyboard.JustDown(this.keys.interagir)) { // Se o jogador pode interagir com o NPC móvel e pressionou a tecla de interação
-        if (!this.npcMobileInteracted) { // Se o NPC móvel ainda não foi interagido
-          if (this.keyENpcMobile) { // Se o ícone da tecla "E" existir
-            this.keyENpcMobile.destroy(); // Remove o ícone da tecla "E"
-            this.keyENpcMobile = null; // Reseta a referência do ícone
+    
+      // ATUALIZAÇÃO DA SETA – se houver indicadores ativos, aponta para o mais próximo;
+      // caso contrário, a seta desaparece.
+      if (this.compassArrow) {
+        // Remove os indicadores que não estão mais ativos
+        this.activeIndicators = this.activeIndicators.filter(ind => ind.active);
+        if (this.activeIndicators.length > 0) {
+          const closest = this.getClosestIndicator();
+          if (closest) {
+            const angle = Phaser.Math.Angle.Between(
+              this.player.x, this.player.y,
+              closest.x, closest.y
+            );
+            this.compassArrow.setRotation(angle + this.arrowOffset);
           }
-
-          if (!this.keyEnterNpcMobile) { // Se o ícone da tecla "ENTER" ainda não foi criado
-            this.keyEnterNpcMobile = this.add.image(this.npcMobile.x - 20, this.npcMobile.y - 50, 'keyENTER').setScale(0.1).setDepth(1000); // Adiciona o ícone da tecla "ENTER"
-          }
-
-          this.npcMobileInteracted = true; // Marca o NPC móvel como interagido
-          this.canInteractWithNpcMobile = false; // Desativa a possibilidade de interação
-          this.showNpcMobileInteraction(); // Mostra a interação com o NPC móvel
+          // Garante que a seta esteja visível se houver indicadores
+          this.compassArrow.setVisible(true);
+        } else {
+          // Se não houver nenhum indicador ativo, esconde a seta
+          this.compassArrow.setVisible(false);
         }
       }
-
-      // RAFAELA
-      if (this.rafaela && this.indicatorRafaelaActive) { // Se a NPC Rafaela existe e o indicador está ativo
-        const distRafaela = Phaser.Math.Distance.Between(this.player.x, this.player.y, this.rafaela.x, this.rafaela.y); // Calcula a distância entre o jogador e Rafaela
-        this.canInteractWithRafaela = distRafaela < 70; // Permite interação se a distância for menor que 70
-
-        if (this.canInteractWithRafaela) { // Se o jogador estiver próximo de Rafaela
-          if (this.indicatorSoundRafaela && this.indicatorSoundRafaela.isPlaying) { // Se o som do indicador está tocando
-            this.indicatorSoundRafaela.stop(); // Para o som do indicador
+    
+      // INTERAÇÃO COM O LIXO
+      if (this.canInteractWithTrash && Phaser.Input.Keyboard.JustDown(this.keys.interagir)) {
+        this.buttonClick = this.sound.add('buttonSound', { loop: false, volume: 10 });
+        this.buttonClick.play();
+        this.scene.pause();
+        this.scene.launch('minigameTrashScene');
+        this.minigameComplete = true;
+      }
+    
+      // INTERAÇÃO COM O LIVRO
+      if (this.canInteractWithBook && this.npcMobileInteractionFinished && Phaser.Input.Keyboard.JustDown(this.keys.interagir)) {
+        this.buttonClick.play();
+        this.scene.pause();
+        this.scene.launch('bookScene');
+        this.createButtonBack();
+      }
+    
+      // INTERAÇÃO COM O NPC MÓVEL
+      if (this.canInteractWithNpcMobile && Phaser.Input.Keyboard.JustDown(this.keys.interagir)) {
+        if (!this.npcMobileInteracted) {
+          if (this.keyENpcMobile) {
+            this.keyENpcMobile.destroy();
+            this.keyENpcMobile = null;
           }
-
-          if (this.exclamation) { // Se o ícone de exclamação existir
-            this.exclamation.destroy(); // Remove o ícone de exclamação
+          if (!this.keyEnterNpcMobile) {
+            this.keyEnterNpcMobile = this.add.image(this.npcMobile.x - 20, this.npcMobile.y - 50, 'keyENTER')
+              .setScale(0.1)
+              .setDepth(1000);
           }
-
-          this.indicatorRafaelaActive = false; // Desativa o indicador de Rafaela
-
-          if (!this.keyERafaela) { // Se o ícone da tecla "E" ainda não foi criado
-            this.keyERafaela = this.add.image(this.rafaela.x, this.rafaela.y - 60, 'keyE').setScale(0.2); // Adiciona o ícone da tecla "E"
+          this.npcMobileInteracted = true;
+          this.canInteractWithNpcMobile = false;
+          this.showNpcMobileInteraction();
+        }
+      }
+    
+      // INTERAÇÃO COM RAFAELA
+      if (this.rafaela && this.indicatorRafaelaActive) {
+        const distRafaela = Phaser.Math.Distance.Between(this.player.x, this.player.y, this.rafaela.x, this.rafaela.y);
+        this.canInteractWithRafaela = distRafaela < 70;
+        if (this.canInteractWithRafaela) {
+          if (this.indicatorSoundRafaela && this.indicatorSoundRafaela.isPlaying) {
+            this.indicatorSoundRafaela.stop();
           }
-        } else { // Se o jogador se afastar de Rafaela
-          if (this.keyERafaela) { // Se o ícone da tecla "E" existir
-            this.keyERafaela.destroy(); // Remove o ícone da tecla "E"
-            this.keyERafaela = null; // Reseta a referência do ícone
+          if (this.exclamation) {
+            this.exclamation.destroy();
+          }
+          this.indicatorRafaelaActive = false;
+          if (!this.keyERafaela) {
+            this.keyERafaela = this.add.image(this.rafaela.x, this.rafaela.y - 60, 'keyE').setScale(0.2);
+          }
+        } else {
+          if (this.keyERafaela) {
+            this.keyERafaela.destroy();
+            this.keyERafaela = null;
           }
         }
       }
-
-      if (this.returnedFromTrash) { // Se o jogador já voltou do minijogo do lixo
-        this.npcMobile.anims.stop(); // Para a animação de andar do NPC móvel
-        this.npcMobile.setFlipX(false); // Define a direção neutra do NPC móvel
+    
+      if (this.returnedFromTrash) {
+        this.npcMobile.anims.stop();
+        this.npcMobile.setFlipX(false);
       }
     }
-
+    
     indicatorSound() {
       this.exclaming = this.sound.add('indicatorSound', { loop: false, volume: 10 }); // Adiciona o som do indicador com volume e sem loop
       this.exclaming.play(); // Toca o som do indicador
@@ -611,47 +646,61 @@ class VpPessoasScene extends Phaser.Scene {
     }
     
     addRafaela(width, height) {
-      const rafaela = this.physics.add.sprite(width - 400, height - 600, 'rafaela'); // Adiciona o sprite de Rafaela na posição especificada
-      rafaela.setScale(2.5); // Define o tamanho do sprite de Rafaela
-      rafaela.setImmovable(true); // Define Rafaela como imóvel para colisões
-      this.rafaela = rafaela; // Salva a referência do sprite de Rafaela
-      this.createRafaelaAnimations(); // Cria as animações de Rafaela
-      this.rafaela.anims.play('rafaela'); // Inicia a animação de Rafaela
-
-      this.exclamation = this.physics.add.sprite(width - 400, height - 660, "indicator").setScale(0.2); // Adiciona o indicador de exclamação acima de Rafaela
-      this.exclamation.play("exclaiming"); // Inicia a animação de exclamação do indicador
-
-      this.indicatorSoundRafaela = this.sound.add('indicatorSound', { loop: true, volume: 10 }); // Adiciona o som do indicador de Rafaela
-      this.indicatorSoundRafaela.play(); // Toca o som do indicador de Rafaela
-
-      this.indicatorRafaelaActive = true; // Controle para evitar que o som toque várias vezes
-
-      rafaela.setInteractive(); // Torna Rafaela interativa para cliques
-      rafaela.on("pointerdown", () => { // Adiciona evento de clique no sprite de Rafaela
-        this.showRafaelaInteraction(); // Mostra a interação com Rafaela
+      const rafaela = this.physics.add.sprite(width - 400, height - 600, 'rafaela');
+      rafaela.setScale(2.5);
+      rafaela.setImmovable(true);
+      this.rafaela = rafaela;
+      this.createRafaelaAnimations();
+      this.rafaela.anims.play('rafaela');
+    
+      // Cria a exclamação acima da Rafaela
+      this.exclamation = this.physics.add.sprite(width - 400, height - 660, "indicator").setScale(0.2);
+      this.exclamation.play("exclaiming");
+      // ADIÇÃO: Adiciona a exclamação ao array de indicadores ativos
+      this.activeIndicators.push(this.exclamation);
+    
+      this.indicatorSoundRafaela = this.sound.add('indicatorSound', { loop: true, volume: 10 });
+      this.indicatorSoundRafaela.play();
+    
+      this.indicatorRafaelaActive = true;
+    
+      rafaela.setInteractive();
+      rafaela.on("pointerdown", () => {
+        this.showRafaelaInteraction();
       });
-
-      this.input.keyboard.on('keydown-E', () => { // Adiciona evento para a tecla "E"
-        if (
-          this.canInteractWithRafaela && // Verifica se o jogador pode interagir com Rafaela
-          !this.rafaelaInteracted // Verifica se Rafaela ainda não foi interagida
-        ) {
-          this.rafaelaInteracted = true; // Marca Rafaela como interagida
-          this.buttonClick.play(); // Toca o som de clique
-          this.showRafaelaInteraction(); // Mostra a interação com Rafaela
-
-          if (this.keyERafaela) { // Verifica se o ícone da tecla "E" existe
-            this.keyERafaela.destroy(); // Remove o ícone da tecla "E"
-            this.keyERafaela = null; // Reseta a referência do ícone
+    
+      this.input.keyboard.on('keydown-E', () => {
+        if (this.canInteractWithRafaela && !this.rafaelaInteracted) {
+          this.rafaelaInteracted = true;
+          this.buttonClick.play();
+          this.showRafaelaInteraction();
+    
+          if (this.keyERafaela) {
+            this.keyERafaela.destroy();
+            this.keyERafaela = null;
           }
-
-          if (!this.keyEnterRafaela) { // Verifica se o ícone da tecla "ENTER" ainda não foi criado
-            this.keyEnterRafaela = this.add.image(this.rafaela.x, this.rafaela.y - 60, 'keyENTER').setScale(0.1).setDepth(1000); // Adiciona o ícone da tecla "ENTER" acima de Rafaela
+    
+          if (!this.keyEnterRafaela) {
+            this.keyEnterRafaela = this.add.image(this.rafaela.x, this.rafaela.y - 60, 'keyENTER').setScale(0.1).setDepth(1000);
           }
         }
       });
+    }    
+    getClosestIndicator() {
+      if (this.activeIndicators.length === 0) return null;
+      let closest = this.activeIndicators[0];
+      let minDist = Phaser.Math.Distance.Between(this.player.x, this.player.y, closest.x, closest.y);
+      for (let i = 1; i < this.activeIndicators.length; i++) {
+        let indicator = this.activeIndicators[i];
+        let dist = Phaser.Math.Distance.Between(this.player.x, this.player.y, indicator.x, indicator.y);
+        if (dist < minDist) {
+          closest = indicator;
+          minDist = dist;
+        }
+      }
+      return closest;
     }
-
+    
     showRafaelaInteraction() {
       this.exclamation.setVisible(false); // Esconde o ícone de exclamação acima de Rafaela
 
@@ -691,12 +740,16 @@ class VpPessoasScene extends Phaser.Scene {
           }
 
           this.showIndicatorTrash(); // Mostra o indicador de interação com o lixo
+       
+
+
         }
       });
     }
 
     showIndicatorTrash() {
       this.createIndicatorTrash(); // Ativa o indicador e som do lixo
+      
     }
       
     onShutdown() {
@@ -708,21 +761,47 @@ class VpPessoasScene extends Phaser.Scene {
     }
 
     createTrash() {
-      const trash = this.physics.add.sprite(width - 735, height - 570, 'trash'); // Adiciona o sprite do lixo na posição especificada
-      trash.setScale(0.1); // Define o tamanho do sprite do lixo
-      trash.setImmovable(true); // Define o lixo como imóvel para colisões
-
-      this.physics.add.overlap(this.player, trash, () => { // Adiciona detecção de sobreposição entre o jogador e o lixo
-        this.canInteractWithTrash = true; // Permite interação com o lixo
-
-        if (!this.keyETrash) { // Verifica se o ícone da tecla "E" ainda não foi criado
-          this.keyETrash = this.add.image(width - 735, height - 610, 'keyE').setScale(0.2); // Adiciona o ícone da tecla "E" acima do lixo
+      // Cria o sprite do lixo (sem exclamação)
+      this.trash = this.physics.add.sprite(width - 735, height - 570, 'trash');
+      this.trash.setScale(0.1);
+      this.trash.setImmovable(true);
+    
+      // Configura o overlap para permitir a interação com o lixo
+      this.physics.add.overlap(this.player, this.trash, () => {
+        this.canInteractWithTrash = true;
+        if (!this.keyETrash) {
+          this.keyETrash = this.add.image(this.trash.x, this.trash.y - 40, 'keyE').setScale(0.2);
         }
       });
-
-      // Detectar quando sai da zona de interação (usando evento de update com verificação de distância)
-      this.trash = trash; // Salva o objeto do lixo para usar no método update
     }
+    
+    showIndicatorTrash() {
+      // Cria o indicador de exclamação acima do lixo somente após o diálogo
+      this.trashIndicator = this.physics.add.sprite(this.trash.x, this.trash.y - 60, 'indicator');
+      this.trashIndicator.setScale(0.2);
+      this.trashIndicator.setImmovable(true);
+      this.trashIndicator.play("exclaiming");
+    
+      // Adiciona o indicador ao array de indicadores ativos para que a seta aponte para ele
+      this.activeIndicators.push(this.trashIndicator);
+    
+      // Toca o som de alerta para o indicador
+      this.indicatorSoundTrash = this.sound.add('indicatorSound', { loop: true, volume: 10 });
+      this.indicatorSoundTrash.play();
+    
+      // Configura o overlap para que, se o jogador tocar no indicador, ele desapareça
+      this.physics.add.overlap(this.player, this.trashIndicator, () => {
+        if (this.indicatorTrashActive) {
+          this.indicatorSoundTrash.stop();
+          this.trashIndicator.destroy();
+          this.indicatorTrashActive = false;
+        }
+      });
+    
+      this.indicatorTrashActive = true;
+    }
+    
+    
 
     createBook() {
       const book = this.physics.add.sprite(width - 700, height - 250, 'book'); // Adiciona o sprite do livro na posição especificada
@@ -741,68 +820,51 @@ class VpPessoasScene extends Phaser.Scene {
       this.book = book; // Salva o objeto do livro para usar no método update
     }
 
-    createIndicatorTrash() {
-      this.indicatorTrash = this.physics.add.sprite(width - 740, height - 630, 'indicator'); // Adiciona o sprite do indicador acima do lixo
-      this.indicatorTrash.setScale(0.2); // Define o tamanho do indicador
-      this.indicatorTrash.setImmovable(true); // Define o indicador como imóvel para colisões
-      this.indicatorTrash.play("exclaiming"); // Inicia a animação de exclamação do indicador
-
-      // Toca o som de alerta
-      this.indicatorSoundTrash = this.sound.add('indicatorSound', { loop: true, volume: 10 }); // Adiciona o som de alerta para o indicador do lixo
-      this.indicatorSoundTrash.play(); // Toca o som de alerta
-
-      this.physics.add.overlap(this.player, this.indicatorTrash, () => { // Adiciona detecção de sobreposição entre o jogador e o indicador do lixo
-        if (this.indicatorTrashActive) { // Verifica se o indicador está ativo
-          this.indicatorSoundTrash.stop(); // Para o som de alerta
-          this.indicatorTrash.destroy(); // Remove o indicador do lixo
-          this.indicatorTrashActive = false; // Desativa o indicador
-        }
-      });
-
-      this.indicatorTrashActive = true; // Flag de controle para indicar que o indicador está ativo
-    }
-
     createIndicatorBook() {
-      this.indicatorBook = this.physics.add.sprite(width - 700, height - 300, 'indicator'); // Adiciona o sprite do indicador acima do livro
-      this.indicatorBook.setScale(0.2); // Define o tamanho do indicador
-      this.indicatorBook.setImmovable(true); // Define o indicador como imóvel para colisões
-      this.indicatorBook.play("exclaiming"); // Inicia a animação de exclamação do indicador
-
-      // Toca o som de alerta
-      this.indicatorSoundBook = this.sound.add('indicatorSound', { loop: true, volume: 10 }); // Adiciona o som de alerta para o indicador do livro
-      this.indicatorSoundBook.play(); // Toca o som de alerta
-
-      this.physics.add.overlap(this.player, this.indicatorBook, () => { // Adiciona detecção de sobreposição entre o jogador e o indicador do livro
-        if (this.indicatorBookActive) { // Verifica se o indicador está ativo
-          this.indicatorSoundBook.stop(); // Para o som de alerta
-          this.indicatorBook.destroy(); // Remove o indicador do livro
-          this.indicatorBookActive = false; // Desativa o indicador
+      this.indicatorBook = this.physics.add.sprite(width - 700, height - 300, 'indicator');
+      this.indicatorBook.setScale(0.2);
+      this.indicatorBook.setImmovable(true);
+      this.indicatorBook.play("exclaiming");
+    
+      // ADICIONE ESTA LINHA:
+      this.activeIndicators.push(this.indicatorBook);
+    
+      // Som e overlap...
+      this.indicatorSoundBook = this.sound.add('indicatorSound', { loop: true, volume: 10 });
+      this.indicatorSoundBook.play();
+    
+      this.physics.add.overlap(this.player, this.indicatorBook, () => {
+        if (this.indicatorBookActive) {
+          this.indicatorSoundBook.stop();
+          this.indicatorBook.destroy();
+          this.indicatorBookActive = false;
         }
       });
-
-      this.indicatorBookActive = true; // Flag de controle para indicar que o indicador está ativo
+    
+      this.indicatorBookActive = true;
     }
+    
+
+    
 
     createButtonBack() {
       console.log("Adicionando botão de voltar"); // Loga no console que o botão de voltar está sendo adicionado
+      if (this.botaoVoltar) return; // impede criar mais de uma vez
 
-      const buttonBack = this.add.image(width - 700, height - 680, "keyE"); // Adiciona a imagem do botão de retorno na posição especificada
-      buttonBack.setScale(0.2); // Define o tamanho do botão de voltar
-      buttonBack.setDepth(1000); // Coloca o botão acima de outros objetos
+      this.botaoVoltar = this.add.image(width - 508, height - 660, "keyE"); // Adiciona o botão de voltar na posição especificada
+      this.botaoVoltar.setScale(0.2); // Define o tamanho do botão de voltar
+      this.botaoVoltar.setDepth(1000); // Coloca o botão acima de outros objetos
 
       this.input.keyboard.on("keydown-E", () => { // Adiciona evento para a tecla "E"
-      const distancia = Phaser.Math.Distance.Between(
-        this.player.x, this.player.y, // Posição do jogador
-        buttonBack.x, buttonBack.y // Posição do botão de voltar
-      );
+        const distancia = Phaser.Math.Distance.Between(
+          this.player.x, this.player.y, // Posição do jogador
+          this.botaoVoltar.x, this.botaoVoltar.y // Posição do botão de voltar
+        );
 
-      if (distancia < 100) { // Verifica se o jogador está próximo do botão de voltar
-        // Pausa todos os sons da cena
-        this.sound.stopAll();
-
-        this.scene.stop("vpPessoasScene"); // Para a cena atual
-        this.scene.start("elevadorScene"); // Inicia a cena do elevador
-      }
+        if (distancia < 100) { // Verifica se o jogador está próximo do botão de voltar
+          this.scene.stop("vpPessoasScene"); // Para a cena atual
+          this.scene.start("elevadorScene"); // Inicia a cena do elevador
+        }
       });
     }
 
