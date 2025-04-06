@@ -43,6 +43,7 @@ const config = { // Configuração do jogo Phaser
 
     buttonElevatorScene, // Cena do botão do elevador
     ElevadorScene, // Cena do elevador
+    VpRelacoesScene, // Cena do VP de Relações
 
     VpPessoasScene, // Cena do VP de Pessoas
     MinigameTrashScene, // Cena de minigame relacionado a lixo
