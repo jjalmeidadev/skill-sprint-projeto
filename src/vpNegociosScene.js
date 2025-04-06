@@ -19,6 +19,7 @@ class VpNegociosScene extends Phaser.Scene {
         this.load.spritesheet("npc15", "../assets/personagens/VPpessoas/npc15.png", { frameWidth: 16, frameHeight: 32 }); // Carrega o spritesheet do NPC 15
         this.load.spritesheet("npc10", "../assets/personagens/npc10Lift.png", {frameWidth: 16,  frameHeight: 32, }); // Carrega o spritesheet do NPC 10 no elevador
         this.load.spritesheet("npc16", "../assets/personagens/VPpessoas/npc16.png", { frameWidth: 16, frameHeight: 32 }); // Carrega o spritesheet do NPC 1
+        this.load.spritesheet("npc23", "../assets/personagens/VPpessoas/npc23.png", { frameWidth: 16, frameHeight: 32 }); // Carrega o spritesheet do NPC 23
 
         //this.load.audio('indicatorSound', '../assets/sounds/497198_abacagi_bubble-pops (mp3cut.net).wav'); // Carrega o som do indicador de interação
         this.load.audio('walkSound', '../assets/sounds/753292__vrymaa__footsteps-high-heels-hardwood-walk-run (mp3cut.net).wav'); // Carrega o som de passos
@@ -320,14 +321,12 @@ class VpNegociosScene extends Phaser.Scene {
       this.npc15.setImmovable(true); // Define o NPC 15 como imóvel para colisões
       this.createNpcAnimations(); // Cria as animações do NPC 15
       this.npc15.anims.play('npc15'); // Inicia a animação "npc15" para o NPC 15
-      this.createIndicatorNpc15(); // Ativa o indicador para o NPC
 
       this.npc10 = this.physics.add.sprite( width - 380, height - 580, 'npc10'); // Cria o sprite da NPC 10 na posição especificada
       this.npc10.setScale(2.5); // Define a escala do sprite da NPC 10
       this.npc10.setImmovable(true); // Define a NPC 10 como imóvel
       this.createNpcAnimations(); // Cria as animações para os NPCs
       this.npc10.anims.play('npc10'); // Reproduz a animação "npc10" para a NPC 10
-      this.createIndicatorNpc10();
 
       this.npc16 = this.physics.add.sprite(width - 1045, height - 680, 'npc16'); // Adiciona o NPC 16 na posição especificada
       this.npc16.setScale(2.5); // Define o tamanho do NPC 16
@@ -335,6 +334,12 @@ class VpNegociosScene extends Phaser.Scene {
       this.createNpcAnimations(); // Cria as animações do NPC 16
       this.npc16.anims.play('npc16'); // Inicia a animação "npc16" para o NPC 16
       this.createIndicatorNpc16();
+
+      this.npc23 = this.physics.add.sprite(width - 1180, height - 565, 'npc23'); // Adiciona o NPC 23 na posição especificada
+      this.npc23.setScale(2.5); // Define o tamanho do NPC 23
+      this.npc23.setImmovable(true); // Define o NPC 23 como imóvel para colisões
+      this.createNpcAnimations(); // Cria as animações do NPC 23
+      this.npc23.anims.play('npc23'); // Inicia a animação "npc23" para o NPC 23
     }
 
     createNpcAnimations() { 
@@ -362,6 +367,13 @@ class VpNegociosScene extends Phaser.Scene {
       this.anims.create({
         key: "npc16", // Nome da animação para o NPC 16
         frames: this.anims.generateFrameNumbers('npc16', { start: 0, end: 11 }), // Define os frames da animação
+        frameRate: 4, // Velocidade da animação
+        repeat: -1, // Repetição infinita
+      });
+
+      this.anims.create({
+        key: "npc23", // Nome da animação para o NPC 23
+        frames: this.anims.generateFrameNumbers('npc23', { start: 0, end: 11 }), // Define os frames da animação
         frameRate: 4, // Velocidade da animação
         repeat: -1, // Repetição infinita
       });
@@ -407,42 +419,46 @@ class VpNegociosScene extends Phaser.Scene {
       });
     }
 
-    createIndicatorNpc16Back() {
-      console.log("createIndicatorNpc16Back called"); // Adiciona um log para verificar se a função está sendo chamada
-      this.indicatorNpc16 = this.physics.add.sprite(this.npc16.x, this.npc16.y - 50, 'indicator');
-      this.indicatorNpc16.setScale(0.2);
-      this.indicatorNpc16.setImmovable(true);
-      this.indicatorNpc16.play("exclaiming");
+    createIndicatorNpc23() {
+      console.log("createIndicatorNpc23 called"); // Adiciona um log para verificar se a função está sendo chamada
+      this.indicatorNpc23 = this.physics.add.sprite(this.npc23.x, this.npc23.y - 50, 'indicator');
+      this.indicatorNpc23.setScale(0.2);
+      this.indicatorNpc23.setImmovable(true);
+      this.indicatorNpc23.play("exclaiming");
 
       this.events.on('update', () => {
-      const distance = Phaser.Math.Distance.Between(this.player.x, this.player.y, this.npc16.x, this.npc16.y);
+      const distance = Phaser.Math.Distance.Between(this.player.x, this.player.y, this.npc23.x, this.npc23.y);
 
-      if (distance < 100 && !this.keyENpc16) {
-        if (this.indicatorNpc16) {
-        this.indicatorNpc16.destroy(); // Remove a exclamação
-        this.indicatorNpc16 = null;
+      if (distance < 100 && !this.keyENpc23) {
+        if (this.indicatorNpc23) {
+        this.indicatorNpc23.destroy(); // Remove a exclamação
+        this.indicatorNpc23 = null;
         }
 
-        this.keyENpc16 = this.add.image(this.npc16.x, this.npc16.y - 40, 'keyE').setScale(0.07).setDepth(1000);
-        this.canInteractWithNpc16 = true;
-      } else if (distance >= 100 && this.keyENpc16) {
-        this.keyENpc16.destroy();
-        this.keyENpc16 = null;
-        this.canInteractWithNpc16 = false;
-      }
-      });
+        this.keyENpc23 = this.add.image(this.npc23.x, this.npc23.y - 40, 'keyE').setScale(0.07);
+        this.canInteractWithNpc23 = true;
+            } else if (distance >= 100 && this.keyENpc23) {
+        this.keyENpc23.destroy();
+        this.keyENpc23 = null;
+        this.canInteractWithNpc23 = false;
+            }
+            });
 
-      // Adiciona a interação com o NPC 16
-      this.input.keyboard.on("keydown-E", () => {
-      if (this.canInteractWithNpc16) {
-        this.canInteractWithNpc16 = false;
+            // Adiciona a interação com o NPC 23
+            this.input.keyboard.on("keydown-E", () => {
+            if (this.canInteractWithNpc23 && !this.npc23Interacted) {
+        this.canInteractWithNpc23 = false;
+        this.npc23Interacted = true; // Marca que o NPC 23 foi interagido
 
-        if (this.keyENpc16) {
-        this.keyENpc16.destroy(); // Remove a tecla E
-        this.keyENpc16 = null;
+        if (this.keyENpc23) {
+        this.keyENpc23.destroy(); // Remove a tecla E
+        this.keyENpc23 = null;
         }
 
-        this.createCongratulationsNpc16(); // Chama o método para exibir o diálogo
+        this.createCongratulationsNpc23(); // Chama o método para exibir o diálogo
+      } else if (this.keyENpc23) {
+        this.keyENpc23.destroy(); // Garante que a tecla E seja destruída
+        this.keyENpc23 = null;
       }
       });
     }
@@ -478,6 +494,7 @@ class VpNegociosScene extends Phaser.Scene {
         dialogBalloon.destroy();
         dialogText.destroy();
         keyEnter.destroy();
+        this.createIndicatorNpc10();
         this.input.keyboard.off("keydown-ENTER", advanceDialog);
       }
       };
@@ -486,40 +503,42 @@ class VpNegociosScene extends Phaser.Scene {
       this.input.keyboard.on("keydown-ENTER", advanceDialog);
     }
 
-    createCongratulationsNpc16() {
+    createCongratulationsNpc23() {
       const speech = [
-        "Ufa! Os servidores estão de volta ao ar! Você salvou o dia.",
-        "Já começaram a chegar alertas de normalização nos sistemas. As soluções corporativas da Vivo voltaram a funcionar perfeitamente.",
-        "Nossos clientes B2B dependem desses serviços pra manter empresas, hospitais, escolas e até órgãos públicos conectados. O que você fez foi gigante!",
-        "Parabéns pelo trabalho. E obrigada por agir tão rápido — você mostrou agilidade e responsabilidade."
-        ];
-  
-        const dialogBalloon = this.add.image(this.npc16.x + 50, this.npc16.y - 50, "balloonText").setScale(0.8);
-        const dialogText = this.add.text(this.npc16.x - 15, this.npc16.y - 100, speech[0], {
-        fontSize: "10px",
-        fill: "#000000",
-        wordWrap: { width: dialogBalloon.width - 50 },
-        });
-  
-        const keyEnter = this.add.image(this.npc16.x - 40, this.npc16.y - 40, 'keyENTER').setScale(0.1).setDepth(1000);
-  
-        let currentIndex = 0;
-  
-        const advanceDialog = () => {
-        currentIndex++;
-        if (currentIndex < speech.length) {
-          dialogText.setText(speech[currentIndex]); // Atualiza o texto do diálogo
-        } else {
-          // Remove o balão de diálogo e a tecla ENTER
-          dialogBalloon.destroy();
-          dialogText.destroy();
-          keyEnter.destroy();
-          this.input.keyboard.off("keydown-ENTER", advanceDialog);
-        }
-        };
-  
-        // Adiciona o evento para avançar o diálogo com a tecla ENTER
-        this.input.keyboard.on("keydown-ENTER", advanceDialog);
+      "Ufa! Os servidores estão de volta ao ar! Você salvou o dia.",
+      "Já começaram a chegar alertas de normalização nos sistemas. As soluções corporativas da Vivo voltaram a funcionar perfeitamente.",
+      "Nossos clientes B2B dependem desses serviços pra manter empresas, hospitais, escolas e até órgãos públicos conectados.",
+      "Parabéns pelo trabalho. E obrigada por agir tão rápido — você mostrou agilidade e responsabilidade."
+      ];
+    
+      const dialogBalloon = this.add.image(this.npc23.x + 50, this.npc23.y - 50, "balloonText").setScale(0.8).setDepth(1000);
+      const dialogText = this.add.text(this.npc23.x - 15, this.npc23.y - 100, speech[0], {
+      fontSize: "10px",
+      fill: "#000000",
+      wordWrap: { width: dialogBalloon.width - 50 },
+      });
+      dialogText.setDepth(1000); // Define a profundidade do texto para 1000
+    
+      const keyEnter = this.add.image(this.npc23.x - 40, this.npc23.y - 40, 'keyENTER').setScale(0.1).setDepth(1000);
+    
+      let currentIndex = 0;
+    
+      const advanceDialog = () => {
+      currentIndex++;
+      if (currentIndex < speech.length) {
+        dialogText.setText(speech[currentIndex]); // Atualiza o texto do diálogo
+      } else {
+        // Remove o balão de diálogo e a tecla ENTER
+        dialogBalloon.destroy();
+        dialogText.destroy();
+        keyEnter.destroy();
+        this.createIndicatorNpc15(); // Ativa o indicador para o NPC
+        this.input.keyboard.off("keydown-ENTER", advanceDialog);
+      }
+      };
+    
+      // Adiciona o evento para avançar o diálogo com a tecla ENTER
+      this.input.keyboard.on("keydown-ENTER", advanceDialog);
     }
 
     createServer() {
@@ -1195,7 +1214,7 @@ class MinigameWires extends Phaser.Scene {
             this.scene.stop('minigameWires'); // Para a cena do minigame
             const mainScene = this.scene.get('vpNegociosScene'); // Obtém a cena principal
             mainScene.scene.resume(); // Retoma a cena principal
-            mainScene.createIndicatorNpc16Back(); // Chama o método para criar o indicador do NPC 16
+            mainScene.createIndicatorNpc23(); // Chama o método para criar o indicador do NPC 16
         });
     }
   }
