@@ -219,7 +219,7 @@ class OfficeScene extends Phaser.Scene {
       this.keyEVivita = null; // Reseta a referência da tecla E
       }
     
-      // Exibe a tecla ENTER
+     // Exibe a tecla ENTER
       this.keyENTERVivita = this.add.image(this.vivita.x, this.vivita.y - 50, 'keyENTER').setScale(0.1).setDepth(1000); // Adiciona a tecla ENTER acima da Vivita
     
       this.buttonClick = this.sound.add('buttonSound', { loop: false, volume: 10 }); // Adiciona o som de clique de botão
@@ -371,29 +371,35 @@ class OfficeScene extends Phaser.Scene {
   }
 
   createUpButton() {
-    this.cameras.main.stopFollow(); // Para a câmera de seguir o jogador
-    this.cameras.main.setZoom(1.2); // Define o nível de zoom da câmera
+  this.cameras.main.stopFollow(); // Stop the camera from following the player
+  this.cameras.main.setZoom(1.2); // Set the zoom level of the camera
 
-    this.bgElevOffice = this.add.image(width - 1300, height - 1000, "bgElevOffice").setOrigin(0, 0); // Adiciona a imagem de fundo do elevador
-    this.bgElevOffice.setDisplaySize(width, height); // Ajusta o tamanho da imagem de fundo para preencher a tela
-    this.panelElev = this.add.image(width - 610, height - 800, "panelElev").setOrigin(0, 0); // Adiciona a imagem do painel do elevador
-    this.bgElevOffice.setVisible(false); // Inicialmente, oculta o fundo do elevador
-    this.panelElev.setVisible(false); // Inicialmente, oculta o painel do elevador
+  this.bgElevOffice = this.add.image(width - 1300, height - 1000, "bgElevOffice").setOrigin(0, 0);
+  this.bgElevOffice.setDisplaySize(width, height);
+  this.panelElev = this.add.image(width - 610, height - 800, "panelElev").setOrigin(0, 0);
+  this.bgElevOffice.setVisible(false);
+  this.panelElev.setVisible(false);
 
-    this.upButton = this.add.image(width - 440, height - 670, "buttonElevOffice"); // Adiciona o botão para subir no elevador
+  this.upButton = this.add.image(width - 440, height - 670, "buttonElevOffice");
+  this.upButton.setInteractive();
+  this.upButton.setScale(1);
+  this.upButton.setVisible(true);
+  this.bgElevOffice.setVisible(true);
+  this.panelElev.setVisible(true);
 
-    this.upButton.setInteractive(); // Torna o botão interativo
-    this.upButton.setScale(1); // Define a escala do botão
-    this.upButton.setVisible(true); // Torna o botão visível
-    this.bgElevOffice.setVisible(true); // Torna o fundo do elevador visível
-    this.panelElev.setVisible(true); // Torna o painel do elevador visível
-
-    this.upButton.on("pointerdown", () => { // Adiciona um evento ao clicar no botão
-      this.scene.stop("officeScene"); // Para a cena atual (escritório)
-      this.scene.start("elevadorScene"); // Inicia a cena do elevador
-      this.officeMusic.stop();
-    });
-  }
+  this.upButton.on("pointerdown", () => {
+    console.log("Transitioning to elevadorScene...");
+    if (this.officeMusic && this.officeMusic.isPlaying) {
+      console.log("Stopping officeMusic...");
+      this.officeMusic.stop(); // Stop the office music
+    } else {
+      console.log("officeMusic is not playing or undefined.");
+    }
+    this.scene.stop("officeScene");
+    this.scene.start("elevadorScene");
+  });
+}
+  
 
   createElevatorIndicator() {
     this.elevatorIndicator = this.physics.add.sprite(width - 435, height - 700, "indicator").setScale(0.2); // Adiciona o indicador do elevador
