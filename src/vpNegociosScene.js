@@ -25,6 +25,9 @@ class VpNegociosScene extends Phaser.Scene {
         this.load.audio('walkSound', '../assets/sounds/753292__vrymaa__footsteps-high-heels-hardwood-walk-run (mp3cut.net).wav'); // Carrega o som de passos
         this.load.audio('correctSound', '../assets/sounds/476178__unadamlar__correct-choice.wav'); // Carrega o som de resposta correta
         this.load.audio('wrongSound', '../assets/sounds/700641__producing_raylite__incorrect-buzzer.wav'); // Carrega o som de resposta errada
+        this.load.audio('peopleMusic', '../assets/sounds/VPpessoas.mp3'); // Carrega a música de fundo da VP Pessoas
+        this.load.audio('keySound', '../assets/sounds/computer-keyboard-typing-290582 (mp3cut.net).mp3'); // Carrega o som de digitação no teclado 
+        this.load.audio('collectSound', '../assets/sounds/476178__unadamlar__correct-choice.wav'); // Carrega o efeito de coletar
 
         this.load.image('keyE', '../assets/teclaE.png'); // Carrega a imagem da tecla "E" para interação
         this.load.image('keyENTER', '../assets/keyEnter.png'); // Carrega a imagem da tecla "ENTER" para interação
@@ -80,6 +83,10 @@ class VpNegociosScene extends Phaser.Scene {
       layer.setCollisionByProperty({ collider: true }); // Define colisões para as camadas com a propriedade "collider"
       });
 
+      const startTime = VpPessoasScene.lastMusicTime || 0; // Obtém o tempo salvo da música ou inicia do início
+      this.peopleMusic = this.sound.add("peopleMusic", { loop: true }); // Adiciona a música de fundo em loop
+      this.peopleMusic.play({ seek: startTime }); // Toca a música a partir do tempo salvo
+
       this.keys = this.input.keyboard.addKeys({
       up: Phaser.Input.Keyboard.KeyCodes.W, // Tecla W para mover para cima
       down: Phaser.Input.Keyboard.KeyCodes.S, // Tecla S para mover para baixo
@@ -131,6 +138,24 @@ class VpNegociosScene extends Phaser.Scene {
       this.createServer();
     }
 
+    onShutdown() {
+      // Salva o tempo atual da música e a para quando a cena é pausada ou encerrada
+      if (this.peopleMusic && this.peopleMusic.isPlaying) { // Verifica se a música de fundo está tocando
+        VpPessoasScene.lastMusicTime = this.peopleMusic.seek; // Salva o tempo atual da música
+        this.peopleMusic.stop(); // Para a música de fundo
+      }
+    }
+
+    keySound() {
+      this.keySoundPlay = this.sound.add('keySound', { loop: false, volume: 10 }); // Adiciona o som de digitação no teclado com volume alto
+      this.keySoundPlay.play(); // Reproduz o som de digitação no teclado
+    }
+
+    collectSound() {
+      this.collected = this.sound.add('collectSound', { loop: false, volume: 10 }); // Adiciona o som de coleta com volume e sem loop
+      this.collected.play(); // Reproduz o som de coleta
+    }
+
     update() {
       this.movePlayer();
 
@@ -153,6 +178,7 @@ class VpNegociosScene extends Phaser.Scene {
     
           this.npc15Interacted = true;
           this.canInteractWithNpc15 = false;
+          this.keySound();
           this.npc15Question(); // Chama o diálogo com o NPC
         }
       }
@@ -250,6 +276,7 @@ class VpNegociosScene extends Phaser.Scene {
 
       if (distance < 100) { // Verifica se o jogador está dentro de um raio de 100 pixels do botão
       // Pausa todos os sons da cena
+      this.keySound();
       this.sound.stopAll();
       this.scene.stop("vpNegociosScene"); // Para a cena atual "vpNegociosScene"
       this.scene.start("elevadorScene"); // Inicia a cena "elevadorScene"
@@ -414,6 +441,7 @@ class VpNegociosScene extends Phaser.Scene {
         }
 
         this.npc16Interacted = true; // Marca que o NPC 16 foi interagido
+        this.keySound();
         this.createDialogNpc16(); // Chama o método para exibir o diálogo
       }
       });
@@ -427,39 +455,40 @@ class VpNegociosScene extends Phaser.Scene {
       this.indicatorNpc23.play("exclaiming");
 
       this.events.on('update', () => {
-      const distance = Phaser.Math.Distance.Between(this.player.x, this.player.y, this.npc23.x, this.npc23.y);
+        const distance = Phaser.Math.Distance.Between(this.player.x, this.player.y, this.npc23.x, this.npc23.y);
 
-      if (distance < 100 && !this.keyENpc23) {
-        if (this.indicatorNpc23) {
-        this.indicatorNpc23.destroy(); // Remove a exclamação
-        this.indicatorNpc23 = null;
+        if (distance < 100 && !this.keyENpc23) {
+          if (this.indicatorNpc23) {
+            this.indicatorNpc23.destroy(); // Remove a exclamação
+            this.indicatorNpc23 = null;
+          }
+
+          this.keyENpc23 = this.add.image(this.npc23.x, this.npc23.y - 40, 'keyE').setScale(0.07);
+          this.canInteractWithNpc23 = true;
+        } else if (distance >= 100 && this.keyENpc23) {
+          this.keyENpc23.destroy();
+          this.keyENpc23 = null;
+          this.canInteractWithNpc23 = false;
         }
+      });
 
-        this.keyENpc23 = this.add.image(this.npc23.x, this.npc23.y - 40, 'keyE').setScale(0.07);
-        this.canInteractWithNpc23 = true;
-            } else if (distance >= 100 && this.keyENpc23) {
-        this.keyENpc23.destroy();
-        this.keyENpc23 = null;
-        this.canInteractWithNpc23 = false;
-            }
-            });
+      // Adiciona a interação com o NPC 23
+      this.input.keyboard.on("keydown-E", () => {
+        this.keySound();
+        if (this.canInteractWithNpc23 && !this.npc23Interacted) {
+          this.canInteractWithNpc23 = false;
+          this.npc23Interacted = true; // Marca que o NPC 23 foi interagido
 
-            // Adiciona a interação com o NPC 23
-            this.input.keyboard.on("keydown-E", () => {
-            if (this.canInteractWithNpc23 && !this.npc23Interacted) {
-        this.canInteractWithNpc23 = false;
-        this.npc23Interacted = true; // Marca que o NPC 23 foi interagido
+          if (this.keyENpc23) {
+            this.keyENpc23.destroy(); // Remove a tecla E
+            this.keyENpc23 = null;
+          }
 
-        if (this.keyENpc23) {
-        this.keyENpc23.destroy(); // Remove a tecla E
-        this.keyENpc23 = null;
+          this.createCongratulationsNpc23(); // Chama o método para exibir o diálogo
+        } else if (this.keyENpc23) {
+          this.keyENpc23.destroy(); // Garante que a tecla E seja destruída
+          this.keyENpc23 = null;
         }
-
-        this.createCongratulationsNpc23(); // Chama o método para exibir o diálogo
-      } else if (this.keyENpc23) {
-        this.keyENpc23.destroy(); // Garante que a tecla E seja destruída
-        this.keyENpc23 = null;
-      }
       });
     }
 
@@ -489,8 +518,10 @@ class VpNegociosScene extends Phaser.Scene {
       currentIndex++;
       if (currentIndex < speech.length) {
         dialogText.setText(speech[currentIndex]); // Atualiza o texto do diálogo
+        this.keySound();
       } else {
         // Remove o balão de diálogo e a tecla ENTER
+        this.keySound();
         dialogBalloon.destroy();
         dialogText.destroy();
         keyEnter.destroy();
@@ -505,38 +536,40 @@ class VpNegociosScene extends Phaser.Scene {
 
     createCongratulationsNpc23() {
       const speech = [
-      "Ufa! Os servidores estão de volta ao ar! Você salvou o dia.",
-      "Já começaram a chegar alertas de normalização nos sistemas. As soluções corporativas da Vivo voltaram a funcionar perfeitamente.",
-      "Nossos clientes B2B dependem desses serviços pra manter empresas, hospitais, escolas e até órgãos públicos conectados.",
-      "Parabéns pelo trabalho. E obrigada por agir tão rápido — você mostrou agilidade e responsabilidade."
+        "Ufa! Os servidores estão de volta ao ar! Você salvou o dia.",
+        "Já começaram a chegar alertas de normalização nos sistemas. As soluções corporativas da Vivo voltaram a funcionar perfeitamente.",
+        "Nossos clientes B2B dependem desses serviços pra manter empresas, hospitais, escolas e até órgãos públicos conectados.",
+        "Parabéns pelo trabalho. E obrigada por agir tão rápido — você mostrou agilidade e responsabilidade."
       ];
-    
+
       const dialogBalloon = this.add.image(this.npc23.x + 50, this.npc23.y - 50, "balloonText").setScale(0.8).setDepth(1000);
       const dialogText = this.add.text(this.npc23.x - 15, this.npc23.y - 100, speech[0], {
-      fontSize: "10px",
-      fill: "#000000",
-      wordWrap: { width: dialogBalloon.width - 50 },
+        fontSize: "10px",
+        fill: "#000000",
+        wordWrap: { width: dialogBalloon.width - 50 },
       });
       dialogText.setDepth(1000); // Define a profundidade do texto para 1000
-    
+
       const keyEnter = this.add.image(this.npc23.x - 40, this.npc23.y - 40, 'keyENTER').setScale(0.1).setDepth(1000);
-    
+
       let currentIndex = 0;
-    
+
       const advanceDialog = () => {
-      currentIndex++;
-      if (currentIndex < speech.length) {
-        dialogText.setText(speech[currentIndex]); // Atualiza o texto do diálogo
-      } else {
-        // Remove o balão de diálogo e a tecla ENTER
-        dialogBalloon.destroy();
-        dialogText.destroy();
-        keyEnter.destroy();
-        this.createIndicatorNpc15(); // Ativa o indicador para o NPC
-        this.input.keyboard.off("keydown-ENTER", advanceDialog);
-      }
+        currentIndex++;
+        if (currentIndex < speech.length) {
+          dialogText.setText(speech[currentIndex]); // Atualiza o texto do diálogo
+          this.keySound();
+        } else {
+          // Remove o balão de diálogo e a tecla ENTER
+          this.keySound();
+          dialogBalloon.destroy();
+          dialogText.destroy();
+          keyEnter.destroy();
+          this.createIndicatorNpc15(); // Ativa o indicador para o NPC
+          this.input.keyboard.off("keydown-ENTER", advanceDialog);
+        }
       };
-    
+
       // Adiciona o evento para avançar o diálogo com a tecla ENTER
       this.input.keyboard.on("keydown-ENTER", advanceDialog);
     }
@@ -617,6 +650,7 @@ class VpNegociosScene extends Phaser.Scene {
   
       // Adiciona a interação com o NPC 10
       this.input.keyboard.on("keydown-E", () => {
+          this.keySound();
           if (this.canInteractWithNpc10) {
               this.canInteractWithNpc10 = false;
   
@@ -656,8 +690,10 @@ class VpNegociosScene extends Phaser.Scene {
           currentIndex++;
           if (currentIndex < speech.length) {
               dialogText.setText(speech[currentIndex]); // Atualiza o texto do diálogo
+              this.keySound();
           } else {
               // Remove o balão de diálogo e a tecla ENTER
+              this.keySound();
               dialogBalloon.destroy();
               dialogText.destroy();
               keyEnter.destroy();
@@ -751,6 +787,7 @@ class VpNegociosScene extends Phaser.Scene {
     }
 
     collectChip(player, chip) {
+      this.collectSound();
       chip.destroy(); // Remove o chip coletado
       this.collectedChips += 1; // Incrementa o contador de chips em 1
       this.chipText.setText(`${this.collectedChips}/5`); // Atualiza o texto na tela
@@ -803,6 +840,7 @@ class VpNegociosScene extends Phaser.Scene {
       currentIndex++;
       if (currentIndex < speech.length) {
         this.npc15DialogText.setText(speech[currentIndex]);
+        this.keySound();
       } else {
         this.npc15DialogText.setVisible(false);
         this.npc15DialogBalloon.setVisible(false);
@@ -840,6 +878,7 @@ class VpNegociosScene extends Phaser.Scene {
     let feedbackIndex = 0;
 
     const destroyFeedback = () => {
+        this.keySound();
         if (feedbackBalloon) feedbackBalloon.destroy();
         if (feedbackText) feedbackText.destroy();
         if (feedbackKeyEnter) feedbackKeyEnter.destroy();
@@ -849,6 +888,7 @@ class VpNegociosScene extends Phaser.Scene {
         feedbackIndex++;
         if (feedbackIndex < feedbackSpeechCorrect.length) {
             feedbackText.setText(feedbackSpeechCorrect[feedbackIndex]);
+            this.keySound();
         } else {
             destroyFeedback();
             this.createNpc15Chip();
@@ -883,6 +923,7 @@ class VpNegociosScene extends Phaser.Scene {
     let feedbackIndex = 0;
 
     const destroyFeedback = () => {
+        this.keySound();
         if (feedbackBalloon) feedbackBalloon.destroy();
         if (feedbackText) feedbackText.destroy();
         if (feedbackKeyEnter) feedbackKeyEnter.destroy();
@@ -892,6 +933,7 @@ class VpNegociosScene extends Phaser.Scene {
         feedbackIndex++;
         if (feedbackIndex < feedbackSpeechWrong.length) {
             feedbackText.setText(feedbackSpeechWrong[feedbackIndex]);
+            this.keySound();
         } else {
             destroyFeedback();
             this.input.keyboard.off("keydown-ENTER", advanceFeedback);
@@ -1094,6 +1136,14 @@ class MinigameWires extends Phaser.Scene {
     this.load.image('endPointRed', '../assets/assetsWires/endPointRed.png');
     this.load.image('endPointYellow', '../assets/assetsWires/endPointYellow.png');
     this.load.image('endPointPink', '../assets/assetsWires/endPointPink.png');
+
+    this.load.audio('collectSound', '../assets/sounds/476178__unadamlar__correct-choice.wav'); // Carrega o efeito de coletar
+    this.load.audio('correctSound', '../assets/sounds/476178__unadamlar__correct-choice.wav'); // Carrega o som de resposta correta
+  }
+
+  collectSound() {
+    this.collected = this.sound.add('collectSound', { loop: false, volume: 10 }); // Adiciona o som de coleta com volume e sem loop
+    this.collected.play(); // Reproduz o som de coleta
   }
 
   create() {
@@ -1181,6 +1231,7 @@ class MinigameWires extends Phaser.Scene {
       wireLong.rotation = angle;
 
       console.log(`Fio ${color} conectado com sucesso!`);
+      this.collectSound();
       this.checkCompletion();
     } else {
       this.tweens.add({
@@ -1200,6 +1251,7 @@ class MinigameWires extends Phaser.Scene {
 
     if (allConnected) {
         console.log("Minigame concluído com sucesso!");
+        this.sound.play('correctSound'); // Toca o som de resposta correta
   
         // Exibe uma mensagem de conclusão
         const completionText = this.add.text(width / 2, height / 2, "Minigame Concluído!", {
