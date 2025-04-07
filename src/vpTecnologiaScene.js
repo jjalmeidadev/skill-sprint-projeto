@@ -18,6 +18,9 @@ class VpTecnologiaScene extends Phaser.Scene {
     this.load.image("word3", "../assets/upskillingBotão3_0.png");
     this.load.image("word4", "../assets/upskillingBotão4_0.png");
     this.load.spritesheet("npc", "../assets/personagens/npc7.png", {frameWidth: 16, frameHeight: 32, }); // Carrega o spritesheet do NPC 7
+    this.load.spritesheet("indicator", "../assets/exclamaçãoRoxa.png", { frameWidth: 254, frameHeight: 305 }); // Carrega o spritesheet do indicador
+    this.load.image('keyE', '../assets/teclaE.png'); // Carrega a imagem da tecla "E"
+    this.load.image("balloonText", "../assets/balaoTexto.png"); // Carrega a imagem do balão de texto
   }
 
   create() {
@@ -47,7 +50,8 @@ class VpTecnologiaScene extends Phaser.Scene {
     this.createPlayerAnimations();
     this.createComputer(width, height);
     this.createButtonBack(width, height);
-    this.createNPC(width, height); // Add NPC creation
+    this.createNPCWithBalloon(); // Adiciona a NPC com balão de fala
+    this.createComputerIndicator(); // Configura o indicador para o computador
 
     this.physics.add.collider(this.player, layers[0]);
     this.physics.add.collider(this.player, layers[2]);
@@ -75,6 +79,14 @@ class VpTecnologiaScene extends Phaser.Scene {
 
     const pointer = this.input.activePointer;
     this.cursorCoordinatesText.setText(`X: ${pointer.worldX.toFixed(0)} Y: ${pointer.worldY.toFixed(0)}`);
+
+    if (this.keyEExample) {
+      const distance = Phaser.Math.Distance.Between(this.player.x, this.player.y, 400, 300);
+      if (distance > 50) { // Remove a tecla "E" se o jogador se afastar
+        this.keyEExample.destroy();
+        this.keyEExample = null;
+      }
+    }
   }
 
   createPlayer(width, height) {
@@ -200,32 +212,110 @@ class VpTecnologiaScene extends Phaser.Scene {
     this.allowComputerInteraction = false; // Initially disable computer interaction
   }
 
-  createComputer(width, height) {
-    const computer = this.add.image(1111, 381, "computer").setScale(0.1); // Updated position and further reduced scale
+  createNPCWithBalloon() {
+    const npc = this.physics.add.sprite(957, 173, "npc"); // Adiciona o sprite da NPC
+    npc.setScale(2.5); // Define o tamanho da NPC
+    npc.setImmovable(true); // Define a NPC como imóvel para colisões
 
-    const interactWithComputer = () => {
-      if (this.allowComputerInteraction) {
-        this.startMiniGame();
+    const dialogues = [
+      "Bem-vindo à VP de Tecnologia!",
+      "Aqui você aprenderá sobre inovação e upskilling.",
+      "Interaja com o computador para começar o mini-game.",
+    ];
+
+    let currentDialogueIndex = 0;
+
+    // Adiciona a exclamação e a tecla "E" sobre a NPC
+    const indicator = this.physics.add.sprite(npc.x, npc.y - 50, 'indicator').setScale(0.2);
+    indicator.play("exclaiming");
+    let keyE = this.add.image(npc.x, npc.y - 80, 'keyE').setScale(0.2).setVisible(false); // Inicialmente invisível
+
+    this.physics.add.overlap(this.player, indicator, () => {
+      const distance = Phaser.Math.Distance.Between(this.player.x, this.player.y, npc.x, npc.y);
+      if (distance < 100) {
+        keyE.setVisible(true); // Mostra a tecla "E" quando o jogador se aproxima
       } else {
-        const warningText = this.add.text(computer.x - 100, computer.y - 50, "Fale com o NPC primeiro!", {
-          fontSize: "16px",
-          fill: "#ff0000",
-          backgroundColor: "#000000",
-          padding: { x: 10, y: 5 },
-        });
-        this.time.delayedCall(2000, () => warningText.destroy()); // Remove warning after 2 seconds
+        keyE.setVisible(false); // Esconde a tecla "E" quando o jogador se afasta
+      }
+    });
+
+    const balloonText = this.add.image(npc.x, npc.y - 60, "balloonText").setScale(0.8).setVisible(false);
+    const text = this.add.text(npc.x - 70, npc.y - 90, "", {
+      fontSize: "14px",
+      fill: "#000000",
+      wordWrap: { width: balloonText.width - 20 },
+    }).setVisible(false);
+
+    const showDialogue = () => {
+      if (currentDialogueIndex < dialogues.length) {
+        balloonText.setVisible(true);
+        text.setText(dialogues[currentDialogueIndex]).setVisible(true);
+        currentDialogueIndex++;
+      } else {
+        balloonText.setVisible(false);
+        text.setVisible(false);
+        this.input.keyboard.off("keydown-ENTER", showDialogue);
+
+        // Remove a exclamação e a tecla "E" da NPC
+        indicator.destroy();
+        keyE.destroy();
+
+        // Ativa o indicador sobre o computador
+        this.activateComputerIndicator();
       }
     };
 
-    computer.setInteractive();
-    computer.on("pointerdown", interactWithComputer);
+    npc.setInteractive();
+    npc.on("pointerdown", () => {
+      currentDialogueIndex = 0; // Reinicia o índice das falas
+      showDialogue();
+      this.input.keyboard.on("keydown-ENTER", showDialogue); // Adiciona evento para avançar as falas com ENTER
+    });
 
     this.input.keyboard.on("keydown-E", () => {
-      const distance = Phaser.Math.Distance.Between(this.player.x, this.player.y, computer.x, computer.y);
+      const distance = Phaser.Math.Distance.Between(this.player.x, this.player.y, npc.x, npc.y);
       if (distance < 100) {
-        interactWithComputer();
+        currentDialogueIndex = 0; // Reinicia o índice das falas
+        showDialogue();
+        this.input.keyboard.on("keydown-ENTER", showDialogue); // Adiciona evento para avançar as falas com ENTER
       }
     });
+  }
+
+  createComputer(width, height) {
+    this.add.image(1111, 381, "computer").setScale(0.1); // Apenas adiciona o computador sem mensagem
+  }
+
+  createComputerIndicator() {
+    const indicator = this.physics.add.sprite(1111, 331, 'indicator').setScale(0.2).setVisible(false);
+    indicator.play("exclaiming");
+    const keyE = this.add.image(1111, 301, 'keyE').setScale(0.2).setVisible(false); // Inicialmente invisível
+
+    this.physics.add.overlap(this.player, indicator, () => {
+        const distance = Phaser.Math.Distance.Between(this.player.x, this.player.y, 1111, 381);
+        if (distance < 100) {
+            keyE.setVisible(true); // Mostra a tecla "E" quando o jogador se aproxima
+            if (Phaser.Input.Keyboard.JustDown(this.keys.interagir)) {
+                this.startMiniGame(); // Inicia o mini-game ao interagir
+            }
+        } else {
+            keyE.setVisible(false); // Esconde a tecla "E" quando o jogador se afasta
+        }
+    });
+
+    this.input.keyboard.on("keydown-E", () => {
+        const distance = Phaser.Math.Distance.Between(this.player.x, this.player.y, 1111, 381);
+        if (distance < 100) {
+            this.startMiniGame(); // Inicia o mini-game ao pressionar "E" próximo ao computador
+        }
+    });
+
+    this.computerIndicator = indicator;
+    this.keyEComputer = keyE;
+}
+
+  activateComputerIndicator() {
+    this.computerIndicator.setVisible(true);
   }
 
   startMiniGame() {
@@ -381,6 +471,19 @@ class VpTecnologiaScene extends Phaser.Scene {
         this.sound.stopAll();
         this.scene.stop("vpTecnologiaScene");
         this.scene.start("elevadorScene");
+      }
+    });
+  }
+
+  createIndicators() {
+    // Exemplo de indicador de interação
+    this.indicatorExample = this.physics.add.sprite(400, 300, 'indicator'); // Adiciona o indicador na posição desejada
+    this.indicatorExample.setScale(0.2); // Define o tamanho do indicador
+    this.indicatorExample.play("exclaiming"); // Inicia a animação de exclamação
+
+    this.physics.add.overlap(this.player, this.indicatorExample, () => {
+      if (!this.keyEExample) { // Se a tecla "E" ainda não foi exibida
+        this.keyEExample = this.add.image(400, 260, 'keyE').setScale(0.2); // Adiciona a tecla "E" acima do indicador
       }
     });
   }
