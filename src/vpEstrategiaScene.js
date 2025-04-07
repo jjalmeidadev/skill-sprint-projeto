@@ -27,6 +27,7 @@ class VpEstrategiaScene extends Phaser.Scene {
     this.load.spritesheet('npcIdle', '../assets/personagens/skinsPlayer/Player4Idle.png', { frameWidth: 16, frameHeight: 32 });
     this.load.image('npcIdle2', '../assets/ana.png');
     this.load.image('npcIdle3', '../assets/mariana.png');
+    this.load.image('mug', '../assets/mug.png'); // Add mug image load
   }
 
   init(data) {
@@ -127,7 +128,7 @@ class VpEstrategiaScene extends Phaser.Scene {
       ENTER: Phaser.Input.Keyboard.KeyCodes.ENTER // Tecla Enter para avançar diálogos
     });
 
-    this.keyEnter = this.add.image(0, 0, 'keyEnter').setScale(0.2);
+    this.keyEnter = this.add.image(0, 0, 'keyEnter').setScale(0.1);
     this.keyEnter.setVisible(false); // Inicialmente oculta a imagem da tecla Enter
 
     this.exclamation = this.physics.add.sprite(this.npc.x, this.npc.y - 80, "indicator").setScale(0.3);
@@ -135,25 +136,28 @@ class VpEstrategiaScene extends Phaser.Scene {
     this.exclamation.setImmovable(true); // Define que a exclamação não pode ser movida
 
     this.physics.add.overlap(this.player, this.exclamation, () => {
-      if (!this.activeDialogue && this.keyEnter) { // Certifica-se de que this.keyEnter está definido
-        this.keyEnter.setVisible(true); // Exibe a tecla Enter
-        this.startDialogue([
-          "Olá! Que bom que você chegou!",
-          "Bem-vindo à sala da VP de Estratégia!",
-          "Meu nome é Viviane e sou líder de carreiras aqui na Vivo.",
-          "Estamos em um momento único na empresa!",
-          "Acabamos de lançar um programa exclusivo.",
-          "Queremos acelerar talentos como você!",
-          "Mas tem um porém...",
-          "As inscrições fecham em 24h!",
-          "Só quem montar um plano estratégico para funcionários HOJE garante a vaga!",
-          "Você tem 2 minutos para ajudar três talentos a escolherem seus próximos passos de carreira.",
-          "Planeje com cuidado!",
-          "Cada decisão impacta o crescimento deles na empresa!",
-          "Siga as exclamações para ajudá-los."
-        ], this.npc); // Passa a NPC principal como referência
-
-        this.exclamation.destroy(); // Remove a exclamação da NPC principal
+      if (!this.activeDialogue) {
+        this.keyEMain.setVisible(true);
+        
+        if (this.keys.interagir.isDown) {
+          this.keyEMain.setVisible(false);
+          this.startDialogue([
+            "Olá! Que bom que você chegou!",
+            "Bem-vindo à sala da VP de Estratégia!",
+            "Meu nome é Viviane e sou líder de carreiras aqui na Vivo.",
+            "Estamos em um momento único na empresa!",
+            "Acabamos de lançar um programa exclusivo.",
+            "Queremos acelerar talentos como você!",
+            "Mas tem um porém...",
+            "As inscrições fecham em 24h!",
+            "Só quem montar um plano estratégico para funcionários HOJE garante a vaga!",
+            "Ajude três talentos a escolherem seus próximos passos de carreira.",
+            "Faça isso o mais rápido possível!",
+            "Siga as exclamações para ajudá-los.",
+            "Não esqueça de coletar os mimos que eles te oferecerão em agradecimento. :)"
+          ], this.npc);
+          this.exclamation.destroy();
+        }
       }
     });
 
@@ -190,13 +194,13 @@ class VpEstrategiaScene extends Phaser.Scene {
       });
     }
 
-    this.keyEnterIdle = this.add.image(this.npcIdle.x + 50, this.npcIdle.y - 100, 'keyEnter').setScale(0.2);
+    this.keyEnterIdle = this.add.image(this.npcIdle.x + 50, this.npcIdle.y - 100, 'keyEnter').setScale(0.1);
     this.keyEnterIdle.setVisible(false); // Deixa a tecla Enter invisível inicialmente
 
-    this.keyEnterIdle2 = this.add.image(this.npcIdle2.x + 50, this.npcIdle2.y - 100, 'keyEnter').setScale(0.2);
+    this.keyEnterIdle2 = this.add.image(this.npcIdle2.x + 50, this.npcIdle2.y - 100, 'keyEnter').setScale(0.1);
     this.keyEnterIdle2.setVisible(false);
 
-    this.keyEnterIdle3 = this.add.image(this.npcIdle3.x + 50, this.npcIdle3.y - 100, 'keyEnter').setScale(0.2);
+    this.keyEnterIdle3 = this.add.image(this.npcIdle3.x + 50, this.npcIdle3.y - 100, 'keyEnter').setScale(0.1);
     this.keyEnterIdle3.setVisible(false);
 
     this.physics.add.collider(this.player, this.npcIdle); // Adiciona colisão entre o jogador e o NPC
@@ -221,14 +225,99 @@ class VpEstrategiaScene extends Phaser.Scene {
     this.exclamationIdle3.setImmovable(true);
     this.exclamationIdle3.setVisible(false);
 
+    // Adiciona as imagens da tecla E para cada NPC (ajustando posição Y)
+    this.keyEMain = this.add.image(this.npc.x, this.npc.y - 50, 'keyE').setScale(0.2);
+    this.keyEMain.setVisible(false);
+
+    this.keyEIdle = this.add.image(this.npcIdle.x, this.npcIdle.y - 50, 'keyE').setScale(0.2);
+    this.keyEIdle.setVisible(false);
+
+    this.keyEIdle2 = this.add.image(this.npcIdle2.x, this.npcIdle2.y - 50, 'keyE').setScale(0.2);
+    this.keyEIdle2.setVisible(false);
+
+    this.keyEIdle3 = this.add.image(this.npcIdle3.x, this.npcIdle3.y - 50, 'keyE').setScale(0.2);
+    this.keyEIdle3.setVisible(false);
+
+    // Create mug container with exclamation and key E
+    this.mugContainer = this.add.container(this.npcIdle.x + 50, this.npcIdle.y);
+    
+    this.mugSprite = this.add.image(0, 0, 'mug')
+      .setScale(1)
+      .setVisible(false);
+
+    this.mugExclamation = this.physics.add.sprite(0, -40, "indicator")
+      .setScale(0.15)
+      .setVisible(false);
+
+    this.keyEMug = this.add.image(0, -60, 'keyE') // Changed Y position from -20 to -60 to place it higher above the mug
+      .setScale(0.2)
+      .setVisible(false);
+    
+    this.mugContainer.add([this.mugSprite, this.mugExclamation, this.keyEMug]);
+
+    // Add mug interaction
+    this.input.keyboard.on('keydown-E', () => {
+      if (this.mugSprite.visible && !this.activeDialogue) {
+        const distanceMug = Phaser.Math.Distance.Between(
+          this.player.x, this.player.y,
+          this.mugContainer.x, this.mugContainer.y
+        );
+        
+        if (distanceMug < 100) {
+          // Create overlay for better text visibility
+          const overlay = this.add.rectangle(
+            0, 0,
+            this.cameras.main.width * 2,
+            this.cameras.main.height * 2,
+            0x000000, 0.5
+          );
+
+          // Create centered message container
+          const messageContainer = this.add.container(this.cameras.main.width / 2, this.cameras.main.height / 2);
+          messageContainer.setScrollFactor(0); // Fix to screen
+          
+          // Add large mug image above text
+          const mugIcon = this.add.image(0, -120, 'mug')
+            .setScale(2.5);
+          
+          // Add background
+          const messageBg = this.add.rectangle(0, 0, 550, 100, 0xB600B9, 0.9)
+            .setOrigin(0.5);
+          messageBg.setStrokeStyle(4, 0xB600B9);
+          
+          // Add shorter text
+          const messageText = this.add.text(0, 0, 
+            "Você tomou o café da gratidão! Estava delicioso.", {
+              fontSize: '24px',
+              fill: '#FFFFFF',
+              align: 'center',
+              fontFamily: 'font'
+          }).setOrigin(0.5);
+          
+          messageContainer.add([mugIcon, messageBg, messageText]);
+          
+          // Remove message and overlay after 4 seconds
+          this.time.delayedCall(4000, () => {
+            overlay.destroy();
+            messageContainer.destroy();
+          });
+          
+          this.mugExclamation.destroy();
+          this.keyEMug.setVisible(false);
+        }
+      }
+    });
+
     // Interação com o npcIdle
     this.physics.add.overlap(this.player, this.exclamationIdle, () => {
       if (!this.npcInteractionComplete) {
         return; // Bloqueia a interação se o jogador não tiver interagido com a NPC principal
       }
 
-      if (!this.activeDialogue && this.keyEnterIdle) { // Check if this.keyEnterIdle is defined
-        this.keyEnterIdle.setVisible(true); // Exibe a tecla Enter ao interagir com o npcIdle
+      this.keyEIdle.setVisible(true);
+
+      if (this.keys.interagir.isDown && !this.activeDialogue) {
+        this.keyEIdle.setVisible(false);
         this.startDialogue([
           `E aí, ${playerName}!`,
           'Sou o Carlos do time comercial.',
@@ -237,7 +326,6 @@ class VpEstrategiaScene extends Phaser.Scene {
         ], this.npcIdle); // Passa o npcIdle como referência
 
         this.exclamationIdle.destroy(); // Remove a exclamação do npcIdle
-        this.keyEnterIdle.setVisible(false); // Oculta a tecla Enter após o início do diálogo
       }
     });
 
@@ -247,8 +335,10 @@ class VpEstrategiaScene extends Phaser.Scene {
         return; // Bloqueia a interação se o jogador não tiver interagido com a NPC principal
       }
 
-      if (!this.activeDialogue && this.keyEnterIdle2) {
-        this.keyEnterIdle2.setVisible(true); // Exibe a tecla Enter ao interagir com o npcIdle2
+      this.keyEIdle2.setVisible(true);
+      
+      if (this.keys.interagir.isDown && !this.activeDialogue) {
+        this.keyEIdle2.setVisible(false);
         this.startDialogue([
           'Oi! Eu sou a Ana.',
           'Trabalho com desenvolvimento aqui na Vivo.',
@@ -257,19 +347,20 @@ class VpEstrategiaScene extends Phaser.Scene {
           'Quero virar especialista, mas não sei por onde começar!'
         ], this.npcIdle2); // Passa o npcIdle2 como referência
 
-
         this.exclamationIdle2.destroy(); // Remove a exclamação do npcIdle2
-        this.keyEnterIdle2.setVisible(false); // Oculta a tecla Enter após o início do diálogo
       }
     });
+
     // Interação com o npcIdle3
     this.physics.add.overlap(this.player, this.exclamationIdle3, () => {
       if (!this.npcInteractionComplete) {
         return; // Bloqueia a interação se o jogador não tiver interagido com a NPC principal
       }
 
-      if (!this.activeDialogue && this.keyEnterIdle3) {
-        this.keyEnterIdle3.setVisible(true); // Exibe a tecla Enter ao interagir com o npcIdle3
+      this.keyEIdle3.setVisible(true);
+      
+      if (this.keys.interagir.isDown && !this.activeDialogue) {
+        this.keyEIdle3.setVisible(false);
         this.startDialogue([
           `Oi, ${playerName}! Eu sou a Mariana, trabalho no SAC.`,
           'Estou em dúvida sobre minha próxima certificação.',
@@ -280,7 +371,6 @@ class VpEstrategiaScene extends Phaser.Scene {
         ], this.npcIdle3); // Passa o npcIdle3 como referência
 
         this.exclamationIdle3.destroy(); // Remove a exclamação do npcIdle3
-        this.keyEnterIdle3.setVisible(false); // Oculta a tecla Enter após o início do diálogo
       }
     });
 
@@ -298,7 +388,39 @@ class VpEstrategiaScene extends Phaser.Scene {
   update() {
     this.movePlayer(); // Atualiza o movimento do jogador
 
-    const distance = Phaser.Math.Distance.Between(this.player.x, this.player.y, this.npc.x, this.npc.y);// Verifica se o jogador está próximo da NPC
+    // Verifica distância para cada NPC e mostra/esconde tecla E
+    const distanceMain = Phaser.Math.Distance.Between(
+      this.player.x, this.player.y,
+      this.npc.x, this.npc.y
+    );
+    this.keyEMain.setVisible(distanceMain < 100);
+
+    const distanceIdle = Phaser.Math.Distance.Between(
+      this.player.x, this.player.y,
+      this.npcIdle.x, this.npcIdle.y
+    );
+    this.keyEIdle.setVisible(distanceIdle < 100 && this.npcInteractionComplete);
+
+    const distanceIdle2 = Phaser.Math.Distance.Between(
+      this.player.x, this.player.y,
+      this.npcIdle2.x, this.npcIdle2.y
+    );
+    this.keyEIdle2.setVisible(distanceIdle2 < 100 && this.npcInteractionComplete);
+
+    const distanceIdle3 = Phaser.Math.Distance.Between(
+      this.player.x, this.player.y,
+      this.npcIdle3.x, this.npcIdle3.y
+    );
+    this.keyEIdle3.setVisible(distanceIdle3 < 100 && this.npcInteractionComplete);
+
+    // Check distance to mug and show/hide key E
+    if (this.mugSprite.visible) {
+      const distanceMug = Phaser.Math.Distance.Between(
+        this.player.x, this.player.y,
+        this.mugContainer.x, this.mugContainer.y
+      );
+      this.keyEMug.setVisible(distanceMug < 100);
+    }
   }
 
   startDialogue(speechNpc, npc) {
@@ -307,13 +429,42 @@ class VpEstrategiaScene extends Phaser.Scene {
       return;
     }
 
-    this.activeDialogue = true; // Impede que o diálogo seja iniciado novamente enquanto está ativo
+    this.activeDialogue = true;
+    let indexCurrentSpeech = 0;
 
-    let indexCurrentSpeech = 0; // Índice da fala atual
+    // Configurações específicas de balão para cada NPC
+    let balloonX = npc.x + 90;
+    let balloonY = npc.y - 100;
+    let textY = npc.y - 120;
 
-    // Posiciona o balão de fala com base no NPC (principal ou npcIdle)
-    const balloonText = this.add.image(npc.x + 90, npc.y - 100, "balloonText").setOrigin(0.5).setScale(1);
-    const text = this.add.text(npc.x + 90, npc.y - 120, speechNpc[indexCurrentSpeech], {
+    // Ajustes específicos para cada NPC
+    if (npc === this.npcIdle) {
+      balloonX = npc.x + 150;
+      balloonY = npc.y - 80;
+      textY = npc.y - 100;
+    } else if (npc === this.npcIdle2) {
+      balloonX = npc.x + 120;
+      balloonY = npc.y - 60;
+      textY = npc.y - 80;
+    } else if (npc === this.npcIdle3) {
+      balloonX = npc.x + 120;
+      balloonY = npc.y - 60;
+      textY = npc.y - 80;
+    }
+
+    // Cria o balão de fala
+    const balloonText = this.add.image(balloonX, balloonY, "balloonText")
+      .setOrigin(0.5)
+      .setScale(1);
+
+    // Adiciona tecla ENTER ao lado direito do balão
+    const enterKey = this.add.image(
+      balloonX + balloonText.width / 2 + 20,
+      balloonY,
+      'keyEnter'
+    ).setScale(0.1);
+
+    const text = this.add.text(balloonX, textY, speechNpc[indexCurrentSpeech], {
       fontSize: "16px",
       fill: "#000000",
       wordWrap: { width: balloonText.width - 20 },
@@ -324,24 +475,25 @@ class VpEstrategiaScene extends Phaser.Scene {
     const nextSpeech = () => {
       indexCurrentSpeech++;
       if (indexCurrentSpeech < speechNpc.length) {
-        text.setText(speechNpc[indexCurrentSpeech]); // Atualiza o texto com a próxima fala
+        text.setText(speechNpc[indexCurrentSpeech]);
       } else {
-        balloonText.destroy(); // Remove o balão de fala
-        text.destroy(); // Remove o texto
-        this.input.keyboard.off("keydown-ENTER", nextSpeech); // Remove o evento de tecla
-        this.keyEnter.setVisible(false); // Oculta a tecla Enter
-        this.activeDialogue = false; // Permite iniciar outro diálogo no futuro
+        balloonText.destroy();
+        text.destroy();
+        enterKey.destroy(); // Remove a tecla ENTER junto com o balão
+        this.input.keyboard.off("keydown-ENTER", nextSpeech);
+        this.activeDialogue = false;
 
-        // Exibe as exclamações nos NPCs após o diálogo com a NPC principal
         if (npc === this.npc) {
-          this.exclamationIdle.setVisible(true); // Torna a exclamação do npcIdle visível
-          this.exclamationIdle2.setVisible(true); // Torna a exclamação do npcIdle2 visível
-          this.exclamationIdle3.setVisible(true); // Torna a exclamação do npcIdle3 visível
-          this.npcInteractionComplete = true; // Permite a interação com os outros NPCs
-          this.progressHUD.setVisible(true); // Show HUD after main NPC dialogue
+          this.exclamationIdle.setVisible(true);
+          this.exclamationIdle2.setVisible(true);
+          this.exclamationIdle3.setVisible(true);
+          this.npcInteractionComplete = true;
         } else {
-          // Troca para o minigame correspondente após o diálogo com NPCs idle
           if (npc === this.npcIdle) {
+            // Show mug and its exclamation
+            this.mugSprite.setVisible(true);
+            this.mugExclamation.setVisible(true);
+            this.mugExclamation.play("exclaiming");
             this.scene.switch('minigameEstrategiaCarlos');
           } else if (npc === this.npcIdle2) {
             this.scene.switch('minigameEstrategiaAna');
@@ -352,7 +504,7 @@ class VpEstrategiaScene extends Phaser.Scene {
       }
     };
 
-    this.input.keyboard.on("keydown-ENTER", nextSpeech); // Adiciona o evento para avançar as falas ao pressionar Enter
+    this.input.keyboard.on("keydown-ENTER", nextSpeech);
   }
 
   movePlayer() {
@@ -509,7 +661,7 @@ class minigameEstrategiaCarlos extends Phaser.Scene {
           { text: 'Fazer treinamento de liderança', color: 0x000000 },
           { text: 'Virar Gerente (Carreira em Y)', color: 0x000000 }
         ],
-        feedback: 'Certíssimo! Este é o caminho do líder na Vivo: Analista → Coordenador → Gerente. Você ganha bônus por resultados (PLR) e acesso a treinamentos exclusivos para crescer na empresa. Carlos está muito agradecido! Ele disse que quer te pagar um café qualquer dia. Parabéns por ajudá-lo no seu planejamento de carreira!'
+        feedback: 'Certíssimo! Este é o caminho do líder na Vivo: Analista → Coordenador → Gerente. Você ganha bônus por resultados (PLR) e acesso a treinamentos exclusivos para crescer na empresa. Carlos está muito agradecido! Por isso, ele disse que quer te pagar um café. COLETE O CAFÉ OFERECIDO POR SEU AMIGO CARLOS! Parabéns por ajudá-lo no seu planejamento de carreira!'
       }
     ];
   }
