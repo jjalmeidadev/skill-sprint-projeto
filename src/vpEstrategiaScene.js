@@ -952,7 +952,9 @@ class minigameEstrategiaCarlos extends Phaser.Scene {
       const y = this.gameHeight / 2 - 50;
 
       if (i < 3) {
-        const arrow = this.add.image(x + zoneWidth / 2 + spacing / 2, y, 'arrow').setScale(0.4);
+        const arrow = this.add.image(x + zoneWidth / 2 + spacing / 2, y, 'arrow')
+          .setScale(0.4)
+          .setFlipX(true); // Add flip
         arrow.setTint(0x000000);
       }
 
@@ -1337,7 +1339,9 @@ class minigameEstrategiaAna extends Phaser.Scene {
       const y = this.gameHeight / 2 - 50;
 
       if (i < 3) {
-        const arrow = this.add.image(x + zoneWidth / 2 + spacing / 2, y, 'arrow').setScale(0.4);
+        const arrow = this.add.image(x + zoneWidth / 2 + spacing / 2, y, 'arrow')
+          .setScale(0.4)
+          .setFlipX(true); // Add flip
         arrow.setTint(0x000000);
       }
 
@@ -1720,7 +1724,9 @@ class minigameEstrategiaMariana extends Phaser.Scene {
       const y = this.gameHeight / 2 - 50;
 
       if (i < 3) {
-        const arrow = this.add.image(x + zoneWidth / 2 + spacing / 2, y, 'arrow').setScale(0.4);
+        const arrow = this.add.image(x + zoneWidth / 2 + spacing / 2, y, 'arrow')
+          .setScale(0.4)
+          .setFlipX(true); // Add flip
         arrow.setTint(0x000000);
       }
 
