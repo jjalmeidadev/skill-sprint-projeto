@@ -87,6 +87,7 @@ class OfficeScene extends Phaser.Scene {
     this.lastPosition = "down"; // Define a posição inicial do jogador como "para baixo"
     this.createCollisions(); // Configura colisões do jogador com camadas selecionadas
     this.movePlayer();
+    const layer14 = this.map.createLayer("superiorPorta", this.tileset2, this.offsetX, 0).setScale(2.5); // Cria a camada da porta superior
 
     this.events.on('resume', () => { // Evento para retomar a música ao retornar à cena
       if (!this.officeMusic || !this.officeMusic.isPlaying) { // Verifica se a música não está tocando
@@ -202,6 +203,10 @@ class OfficeScene extends Phaser.Scene {
     layers.forEach((layer, index) => { // Itera sobre cada camada
       this[`layer${index + 1}`] = layer; // Atribui cada camada a uma propriedade dinâmica da classe
     });
+
+    this.map = map; // Atribui o mapa à propriedade da classe
+    this.tileset2 = tileset2; // Atribui o tileset de paredes à propriedade da classe
+    this.offsetX = offsetX; // Atribui o deslocamento X à propriedade da classe
   }
 
   onShutdown() {
