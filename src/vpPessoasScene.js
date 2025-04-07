@@ -36,7 +36,7 @@ class VpPessoasScene extends Phaser.Scene {
 
       this.load.audio('walkSound', '../assets/sounds/753292__vrymaa__footsteps-high-heels-hardwood-walk-run (mp3cut.net).wav'); // Carrega o som de passos
       this.load.audio('peopleMusic', '../assets/sounds/VPpessoas.mp3'); // Carrega a música de fundo da VP Pessoas 
-      this.load.audio('indicatorSound', '../assets/sounds/497198_abacagi_bubble-pops (mp3cut.net).wav'); // Carrega o som do indicador de interação
+      
 
       this.load.spritesheet('trash', '../assets/trash.png', {frameWidth: 267, frameHeight: 343}); // Carrega o spritesheet do objeto de lixo
       this.load.spritesheet('book', '../assets/assetsBookVPPessoas/book.png', {frameWidth: 835, frameHeight: 520}); // Carrega o spritesheet do objeto livro
@@ -53,9 +53,9 @@ class VpPessoasScene extends Phaser.Scene {
       this.load.image("panelElev", "../assets/painelelevador.png"); // Carrega a imagem do painel do elevador
       this.load.image("buttonElevPesssoas", "../assets/botaocimaelevador.png"); // Carrega a imagem do botão do elevador
       this.load.image("arrow", "../assets/seta.png");
-    
+     
     }
-
+    
   create() {
     const width = this.sys.game.config.width;
   const height = this.sys.game.config.height;
@@ -123,7 +123,7 @@ class VpPessoasScene extends Phaser.Scene {
     this.createBook(); // Cria o objeto livro
 
     this.buttonClick = this.sound.add('buttonSound', { loop: false, volume: 10 }); // Som de clique de botão
-    this.indicatorSound = this.sound.add('indicatorSound', { loop: true, volume: 10 }); // Som do indicador
+   
     this.walkSound = this.sound.add('walkSound', { loop: false, volume: 10 }); // Som de passos
 
     this.rafaelaInteracted = false; // Flag para verificar se Rafaela foi interagida
@@ -448,10 +448,7 @@ class VpPessoasScene extends Phaser.Scene {
       }
     }
     
-    indicatorSound() {
-      this.exclaming = this.sound.add('indicatorSound', { loop: false, volume: 10 }); // Adiciona o som do indicador com volume e sem loop
-      this.exclaming.play(); // Toca o som do indicador
-    }
+   
 
     movePlayer() {
       const speed = 150; // Define a velocidade do jogador
@@ -591,7 +588,7 @@ class VpPessoasScene extends Phaser.Scene {
 
       this.createIndicatorNpcMobile(); // Ativa o indicador de interação para o NPC fixo
     }
-
+   
     createIndicatorNpcMobile() {
       this.indicatorNpcMobile = this.physics.add.sprite(this.npcMobile.x, this.npcMobile.y - 50, 'indicator'); // Adiciona o indicador de interação acima do NPC móvel
       this.indicatorNpcMobile.setScale(0.2); // Define o tamanho do indicador
@@ -659,15 +656,12 @@ class VpPessoasScene extends Phaser.Scene {
       this.rafaela = rafaela;
       this.createRafaelaAnimations();
       this.rafaela.anims.play('rafaela');
-    
-      // Cria a exclamação acima da Rafaela
-      this.exclamation = this.physics.add.sprite(width - 400, height - 660, "indicator").setScale(0.2);
+      this.exclamation = this.physics.add.sprite(rafaela.x, rafaela.y - 60, 'indicator').setScale(0.2);
       this.exclamation.play("exclaiming");
-      // ADIÇÃO: Adiciona a exclamação ao array de indicadores ativos
       this.activeIndicators.push(this.exclamation);
-    
-      this.indicatorSoundRafaela = this.sound.add('indicatorSound', { loop: true, volume: 10 });
-      this.indicatorSoundRafaela.play();
+      
+      // Cria a exclamação acima da Rafaela
+      
     
       this.indicatorRafaelaActive = true;
     
@@ -793,13 +787,12 @@ class VpPessoasScene extends Phaser.Scene {
       this.activeIndicators.push(this.trashIndicator);
     
       // Toca o som de alerta para o indicador
-      this.indicatorSoundTrash = this.sound.add('indicatorSound', { loop: true, volume: 10 });
-      this.indicatorSoundTrash.play();
+      
     
       // Configura o overlap para que, se o jogador tocar no indicador, ele desapareça
       this.physics.add.overlap(this.player, this.trashIndicator, () => {
         if (this.indicatorTrashActive) {
-          this.indicatorSoundTrash.stop();
+        
           this.trashIndicator.destroy();
           this.indicatorTrashActive = false;
         }
@@ -837,12 +830,11 @@ class VpPessoasScene extends Phaser.Scene {
       this.activeIndicators.push(this.indicatorBook);
     
       // Som e overlap...
-      this.indicatorSoundBook = this.sound.add('indicatorSound', { loop: true, volume: 10 });
-      this.indicatorSoundBook.play();
+      
     
       this.physics.add.overlap(this.player, this.indicatorBook, () => {
         if (this.indicatorBookActive) {
-          this.indicatorSoundBook.stop();
+      
           this.indicatorBook.destroy();
           this.indicatorBookActive = false;
         }
