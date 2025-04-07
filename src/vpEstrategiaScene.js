@@ -28,6 +28,10 @@ class VpEstrategiaScene extends Phaser.Scene {
     this.load.image('npcIdle2', '../assets/ana.png');
     this.load.image('npcIdle3', '../assets/mariana.png');
     this.load.image('mug', '../assets/mug.png'); // Add mug image load
+    this.load.image('mobile', '../assets/mobile.png'); // Add mobile image load
+    this.load.image('meme_estrategia', '../assets/meme_estrategia.jpg'); // Add meme image load
+    this.load.image('sheet', '../assets/sheet.png'); // Add sheet image load
+    this.load.image('notes', '../assets/notes.png'); // Add notes image load
   }
 
   init(data) {
@@ -187,6 +191,9 @@ class VpEstrategiaScene extends Phaser.Scene {
 
     // Add collisions for new NPCs
     this.physics.add.collider(this.player, this.npcIdle2);
+    this.physics.add.collider(this.player, this.npcIdle); // Add collider for npcIdle
+    this.physics.add.collider(this.player, this.npcIdle3); // Add collider for npcIdle3
+
     // Show "Obrigado!" dialogue immediately after returning from minigame
     if (this.showThankYou) {
       this.time.delayedCall(500, () => {
@@ -264,7 +271,6 @@ class VpEstrategiaScene extends Phaser.Scene {
         );
         
         if (distanceMug < 100) {
-          // Create overlay for better text visibility
           const overlay = this.add.rectangle(
             0, 0,
             this.cameras.main.width * 2,
@@ -272,24 +278,23 @@ class VpEstrategiaScene extends Phaser.Scene {
             0x000000, 0.5
           );
 
-          // Create centered message container
           const messageContainer = this.add.container(this.cameras.main.width / 2, this.cameras.main.height / 2);
           messageContainer.setScrollFactor(0); // Fix to screen
           
-          // Add large mug image above text
-          const mugIcon = this.add.image(0, -120, 'mug')
+          // Changed y position from -120 to -80 to move mug icon lower
+          const mugIcon = this.add.image(0, -80, 'mug')
             .setScale(2.5);
           
           // Add background
-          const messageBg = this.add.rectangle(0, 0, 550, 100, 0xB600B9, 0.9)
+          const messageBg = this.add.rectangle(0, 50, 550, 100, 0xB600B9, 0.9)
             .setOrigin(0.5);
           messageBg.setStrokeStyle(4, 0xB600B9);
           
           // Add shorter text
-          const messageText = this.add.text(0, 0, 
+          const messageText = this.add.text(0, 50, 
             "Você tomou o café da gratidão! Estava delicioso.", {
               fontSize: '24px',
-              fill: '#FFFFFF',
+              fill: '#000000',
               align: 'center',
               fontFamily: 'font'
           }).setOrigin(0.5);
@@ -304,6 +309,130 @@ class VpEstrategiaScene extends Phaser.Scene {
           
           this.mugExclamation.destroy();
           this.keyEMug.setVisible(false);
+        }
+      }
+    });
+
+    // Create mobile container with exclamation and key E
+    this.mobileContainer = this.add.container(this.npcIdle2.x + 50, this.npcIdle2.y);
+    
+    this.mobileSprite = this.add.image(0, 0, 'mobile')
+      .setScale(0.1)
+      .setVisible(false);
+
+    this.mobileExclamation = this.physics.add.sprite(0, -40, "indicator")
+      .setScale(0.15)
+      .setVisible(false);
+
+    this.keyEMobile = this.add.image(0, -60, 'keyE')
+      .setScale(0.2)
+      .setVisible(false);
+    
+    this.mobileContainer.add([this.mobileSprite, this.mobileExclamation, this.keyEMobile]);
+
+    // Add mobile interaction
+    this.input.keyboard.on('keydown-E', () => {
+      if (this.mobileSprite.visible && !this.activeDialogue) {
+        const distanceMobile = Phaser.Math.Distance.Between(
+          this.player.x, this.player.y,
+          this.mobileContainer.x, this.mobileContainer.y
+        );
+        
+        if (distanceMobile < 100) {
+          const overlay = this.add.rectangle(
+            0, 0,
+            this.cameras.main.width * 2, 
+            this.cameras.main.height * 2,
+            0x000000, 0.5
+          );
+
+          const messageContainer = this.add.container(this.cameras.main.width / 2, this.cameras.main.height / 2);
+          messageContainer.setScrollFactor(0);
+          
+          const memeIcon = this.add.image(0, -80, 'meme_estrategia')
+            .setScale(0.3);
+          
+          // Create text first to get its bounds
+          const messageText = this.add.text(0, 50, 
+            "Você recebeu um meme da Ana! Riram bastante e isso melhorou o dia de trabalho em 100%.", {
+              fontSize: '15px',
+              fill: '#000000',
+              align: 'center',
+              fontFamily: 'font',
+              wordWrap: { width: 400 }
+          }).setOrigin(0.5);
+          
+          // Get text bounds to size background
+          const textBounds = messageText.getBounds();
+          
+          // Create background that matches text size exactly
+          const messageBg = this.add.rectangle(0, 50, textBounds.width + 20, textBounds.height + 10, 0xB600B9, 0.9)
+            .setOrigin(0.5);
+          messageBg.setStrokeStyle(2, 0xB600B9);
+          
+          messageContainer.add([memeIcon, messageBg, messageText]);
+          
+          this.time.delayedCall(4000, () => {
+            overlay.destroy();
+            messageContainer.destroy();
+          });
+          
+          this.mobileExclamation.destroy();
+          this.keyEMobile.setVisible(false);
+        }
+      }
+    });
+
+    // Create sheet container with exclamation and key E
+    this.sheetContainer = this.add.container(this.npcIdle3.x + 50, this.npcIdle3.y);
+    
+    this.sheetSprite = this.add.image(0, 0, 'sheet')
+      .setScale(0.1)
+      .setVisible(false);
+
+    this.sheetExclamation = this.physics.add.sprite(0, -40, "indicator")
+      .setScale(0.15)
+      .setVisible(false);
+
+    this.keyESheet = this.add.image(0, -60, 'keyE')
+      .setScale(0.2)
+      .setVisible(false);
+    
+    this.sheetContainer.add([this.sheetSprite, this.sheetExclamation, this.keyESheet]);
+
+    // Add sheet interaction
+    this.input.keyboard.on('keydown-E', () => {
+      if (this.sheetSprite.visible && !this.activeDialogue) {
+        const distanceSheet = Phaser.Math.Distance.Between(
+          this.player.x, this.player.y,
+          this.sheetContainer.x, this.sheetContainer.y
+        );
+        
+        if (distanceSheet < 100) {
+          const overlay = this.add.rectangle(
+            0, 0,
+            this.cameras.main.width * 2,
+            this.cameras.main.height * 2,
+            0x000000, 0.5
+          );
+
+          const messageContainer = this.add.container(this.cameras.main.width / 2, this.cameras.main.height / 2);
+          messageContainer.setScrollFactor(0);
+          
+          const notesIcon = this.add.image(0, 0, 'notes') // Changed y from -80 to 0 and added setOrigin for perfect centering
+            .setScale(0.5)
+            .setOrigin(0.5);
+          
+          messageContainer.add([notesIcon]);
+          
+          // Remove message and overlay after 5 seconds
+          this.time.delayedCall(5000, () => {
+            overlay.destroy();
+            messageContainer.destroy();
+          });
+          
+          this.sheetExclamation.destroy();
+          this.keyESheet.setVisible(false);
         }
       }
     });
@@ -421,6 +550,24 @@ class VpEstrategiaScene extends Phaser.Scene {
       );
       this.keyEMug.setVisible(distanceMug < 100);
     }
+
+    // Check distance to mobile and show/hide key E
+    if (this.mobileSprite.visible) {
+      const distanceMobile = Phaser.Math.Distance.Between(
+        this.player.x, this.player.y,
+        this.mobileContainer.x, this.mobileContainer.y
+      );
+      this.keyEMobile.setVisible(distanceMobile < 100);
+    }
+
+    // Check distance to sheet and show/hide key E
+    if (this.sheetSprite.visible) {
+      const distanceSheet = Phaser.Math.Distance.Between(
+        this.player.x, this.player.y,
+        this.sheetContainer.x, this.sheetContainer.y
+      );
+      this.keyESheet.setVisible(distanceSheet < 100);
+    }
   }
 
   startDialogue(speechNpc, npc) {
@@ -496,8 +643,16 @@ class VpEstrategiaScene extends Phaser.Scene {
             this.mugExclamation.play("exclaiming");
             this.scene.switch('minigameEstrategiaCarlos');
           } else if (npc === this.npcIdle2) {
+            // Show mobile and its exclamation
+            this.mobileSprite.setVisible(true);
+            this.mobileExclamation.setVisible(true);
+            this.mobileExclamation.play("exclaiming");
             this.scene.switch('minigameEstrategiaAna');
           } else if (npc === this.npcIdle3) {
+            // Show sheet and its exclamation
+            this.sheetSprite.setVisible(true);
+            this.sheetExclamation.setVisible(true);
+            this.sheetExclamation.play("exclaiming");
             this.scene.switch('minigameEstrategiaMariana');
           }
         }
@@ -954,7 +1109,7 @@ class minigameEstrategiaCarlos extends Phaser.Scene {
       this.npcData[this.currentNPC].feedback,
       {
         fontSize: '24px',
-        fill: '#FFFFFF',
+        fill: '#000000',
         align: 'center',
         fontFamily: 'font',
         wordWrap: { width: 750 }  // largura de envoltório ajustada
@@ -1046,7 +1201,7 @@ class minigameEstrategiaAna extends Phaser.Scene {
           { text: 'Promoção para Dev Pleno', color: 0x000000 },
           { text: 'Alcançar o nível Expert (Carreira Y)', color: 0x000000 }
         ],
-        feedback: 'Sequência correta! Ana seguirá como especialista técnica: Júnior (base) → Pleno (projetos complexos) → Expert (referência técnica). Ela está animada para focar em código e te manda um meme de agradecimento! COLETE O MEME DA GRATIDÃO!'
+        feedback: 'Sequência correta! Ana seguirá como especialista técnica: Júnior (base) → Pleno (projetos complexos) → Expert (referência técnica). Ela está animada para focar em código e te manda um meme de agradecimento! COLETE O MEME DA GRATIDÃO INTERAGINDO COM O CELULAR!'
       }
     ];
   }
@@ -1338,7 +1493,7 @@ class minigameEstrategiaAna extends Phaser.Scene {
       this.npcData[this.currentNPC].feedback,
       {
         fontSize: '24px',
-        fill: '#FFFFFF',
+        fill: '#000000',
         align: 'center',
         fontFamily: 'font',
         wordWrap: { width: 750 }  // Adjusted wrap width
@@ -1712,7 +1867,7 @@ class minigameEstrategiaMariana extends Phaser.Scene {
       this.npcData[this.currentNPC].feedback,
       {
         fontSize: '24px',
-        fill: '#FFFFFF',
+        fill: '#000000',
         align: 'center',
         fontFamily: 'font',
         wordWrap: { width: 750 }  // Adjusted wrap width
