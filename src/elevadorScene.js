@@ -27,12 +27,13 @@ class ElevadorScene extends Phaser.Scene {
     this.load.video("videoElev2", "../assets/videoelev2.mp4"); // Carrega o vídeo do elevador
     this.load.video("videoElev3", "../assets/videoelev3.mp4"); // Carrega o vídeo do elevador
     
-    this.load.spritesheet("indicator", "../assets/spriteexclamação.png", { frameWidth: 254, frameHeight: 291 }); // Carrega a sprite do indicador
+    this.load.spritesheet("indicator", "../assets/exclamaçãoRoxa.png", { frameWidth: 254, frameHeight: 291 }); // Carrega a sprite do indicador
+    this.load.spritesheet("player", "../assets/personagens/skinsPlayer/player1all.png", { frameWidth: 16, frameHeight: 32, }); // Carrega a sprite do jogador
     
-    this.load.spritesheet('player', `../assets/personagens/skinsPlayer/players/${this.selectedSpriteSheet}.png`, {
-      frameWidth: 16,
-      frameHeight: 32,
-  });
+    this.load.spritesheet('player', `../assets/personagens/skinsPlayer/players/${this.selectedSpriteSheet}.png`, {frameWidth: 16, frameHeight: 32,});
+      
+      
+  
     this.load.audio('elevatorAudio', '../assets/Local Forecast - Elevator [ ezmp3.co ].mp3'); // Carrega o áudio do elevador
     this.load.audio('indicatorSound', '../assets/sounds/497198_abacagi_bubble-pops (mp3cut.net).wav'); // Carrega o áudio do indicador
     this.load.audio('buttonSound', '../assets/sounds/687107__aphom000__mouse-2-button-fast-click.wav'); // Carrega o áudio do botão
@@ -55,6 +56,7 @@ class ElevadorScene extends Phaser.Scene {
     this.walkSound = this.sound.add('walkSound', { loop: false, volume: 2 }); // Som dos passos do jogador
     
     this.elevatorSound = this.sound.add("elevatorAudio", { loop: true, volume: 0.5 }); // Inicia o áudio do elevador em loop
+    this.sound.stopAll();
     this.elevatorSound.play(); // Toca o som do elevador
     
     if (!this.anims.exists("exclaiming")) { // Cria a animação do indicador, caso ainda não exista
@@ -241,6 +243,49 @@ class ElevadorScene extends Phaser.Scene {
     this.physics.world.setBounds(0, 0, width, height); // Define os limites do mundo do jogo para colisões
   }
 
+  cleanupScene() {
+  // Remove event listeners
+  this.input.keyboard.off('keydown-ENTER');
+  this.input.off('pointerdown');
+
+  // Stop any ongoing sounds
+  if (this.elevatorSound && this.elevatorSound.isPlaying) {
+    this.elevatorSound.stop();
+  }
+  if (this.indicatorSound && this.indicatorSound.isPlaying) {
+    this.indicatorSound.stop();
+  }
+  if (this.walkSound && this.walkSound.isPlaying) {
+    this.walkSound.stop();
+  }
+
+  // Stop animations
+  if (this.indicator) {
+    this.indicator.stop();
+    this.indicator.destroy();
+  }
+
+  // Destroy UI elements
+  if (this.panelElev) this.panelElev.destroy();
+  if (this.buttonOfficeEl) this.buttonOfficeEl.destroy();
+  if (this.buttonPeople) this.buttonPeople.destroy();
+  if (this.buttonStrategies) this.buttonStrategies.destroy();
+  if (this.buttonBusiness) this.buttonBusiness.destroy();
+  if (this.buttonTech) this.buttonTech.destroy();
+  if (this.buttonRelations) this.buttonRelations.destroy();
+
+  // Destroy physics objects
+  if (this.proximity) this.proximity.destroy();
+  if (this.barrier) this.barrier.destroy();
+  if (this.barrier1) this.barrier1.destroy();
+  if (this.barrier2) this.barrier2.destroy();
+  if (this.barrier3) this.barrier3.destroy();
+
+  // Reset variables
+  this.panelElevShown = false;
+  this.indicatorActive = false;
+}
+
   createPlayerAnimations() {
     this.anims.create({ // Cria a animação de andar para baixo
       key: "walk_down", // Nome da animação
@@ -405,10 +450,13 @@ class ElevadorScene extends Phaser.Scene {
 
     this.buttonRelations.on("pointerdown", () => { // Adiciona um evento de clique ao botão de Relações
       this.buttonClick.play(); // Toca o som de clique do botão
+      
+    // Call cleanup logic
+      this.cleanupScene();
+      
       this.shutdown(); // Finaliza a cena atual
       this.scene.stop("elevadorScene"); // Para a cena atual
-      this.scene.start("relacoesScene", {selectedSpriteSheet: this.selectedSpriteSheet,}); // Inicia a cena de Relações
+      this.scene.start("VpRelacoesScene", {selectedSpriteSheet: this.selectedSpriteSheet,}); // Inicia a cena de Relações
     });
   }
 }
-

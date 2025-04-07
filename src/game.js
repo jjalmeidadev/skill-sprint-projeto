@@ -44,6 +44,7 @@ const config = { // Configuração do jogo Phaser
 
     buttonElevatorScene, // Cena do botão do elevador
     ElevadorScene, // Cena do elevador
+    VpRelacoesScene, // Cena do VP de Relações
 
     VpPessoasScene, // Cena do VP de Pessoas
     MinigameTrashScene, // Cena de minigame relacionado a lixo
@@ -52,8 +53,12 @@ const config = { // Configuração do jogo Phaser
     bookScene, // Cena relacionada a um livro
     
     VpNegociosScene, // Cena do VP de Negócios
+    MinigameWires, // Cena do minigame de fios
 
-    VpEstrategiaScene, // Cena do VP de Estratégia
+    VpEstrategiaScene,
+    minigameEstrategiaCarlos, // Cena do VP de Estratégia
+    minigameEstrategiaMariana,
+    minigameEstrategiaAna,
 
     VpTecnologiaScene, // Cena do VP de Tecnologia
   ], 

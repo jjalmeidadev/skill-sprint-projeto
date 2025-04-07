@@ -11,15 +11,16 @@ class TutorialScene extends Phaser.Scene {
 
         //Lista das falas condicionais baseadas na resposta do jogador
         this.conditionalDialog = [
-            "Vivinho: UAU! Que bom que você já sabe. Agora, quero te explicar uma coisa muito importante na sua jornada a partir de agora, o termo JOB ROTATION.",
-            "Vivinho: Na Vivo, o termo JOB ROTATION se refere a uma estratégia de desenvolvimento profissional em que as pessoas estagiarias têm a oportunidade de atuar temporariamente em diferentes áreas da empresa.",
-            "Vivinho: O principal objetivo desse programa é ampliar a visão sistêmica do negócio, desenvolver novas habilidades e preparar os funcionários para se tornarem futuros gestores e líderes.",
-            "Vivinho: Por isso, irei te guiar para ser um líder na Vivo!"
+            "Vivinho: UAU! Que bom que você já sabe.",
+            "Vivinho: O plano de carreira da Vivo visa desenvolver talentos e promover crescimento profissional.",
+            "Vivinho: O principal objetivo do plano de carreira da Vivo é desenvolver e reter talentos, proporcionando crescimento profissional por meio de capacitação, mobilidade interna e participação em projetos estratégicos.",
+            "Vivinho: A empresa busca formar líderes e especialistas alinhados aos seus valores e desafios do setor.",
+            "Vivinho: Por isso, irei te guiar para se desenvolver na Vivo!"
         ];
 
         //Lista de falas finais do tutorial
         this.finalDialog = [
-            "Vivinho: Observe esse esquema. Note que um novo talento pode evoluir para diversos cargos e realizar o job rotation na Vivo. Vamos mergulhar nisso nos próximos níveis!",
+            "Vivinho: Observe esse esquema. Note que um novo talento pode evoluir para diversos cargos na Vivo. Vamos mergulhar nisso nos próximos níveis!",
             "Vivinho: Além disso, a Vivo usa a plataforma Gupy para gerenciar seus processos seletivos, permitindo que candidatos cadastrem currículos, participem de testes e acompanhem o andamento das vagas."
         ];
 
@@ -49,7 +50,7 @@ class TutorialScene extends Phaser.Scene {
         this.load.audio('keySound', '../assets/sounds/computer-keyboard-typing-290582 (mp3cut.net).mp3'); // Carrega o som de digitação no teclado
         this.load.audio('buttonSound', '../assets/sounds/687107__aphom000__mouse-2-button-fast-click.wav'); // Carrega o som de clique do botão
 
-        this.load.image('keyENTER', '../assets/keyEnter.png'); // Carrega a imagem da tecla ENTER
+        this.load.image('keyENTERPurple', '../assets/keyEnterPurple.png'); // Carrega a imagem da tecla ENTER
     }
 
     create() {
@@ -122,12 +123,16 @@ class TutorialScene extends Phaser.Scene {
                 placeholderText.setVisible(true); // Mostra o texto de placeholder
             }
 
-            if (this.textEntry.text.length > 0) { // Verifica se o texto não está vazio
-                placeholderText.setVisible(false); // Esconde o texto de placeholder
-                this.keyEnterIcon.setVisible(true); // Mostra a tecla ENTER
+            if (this.textEntry.text.length > 0) {
+                placeholderText.setVisible(false);
+                if (this.currentDialogIndex !== 2) {
+                    this.keyEnterIcon.setVisible(true);
+                } else {
+                    this.keyEnterIcon.setVisible(false); // Garante que ela continue oculta na fala 2
+                }
             } else {
-                placeholderText.setVisible(true); // Mostra o texto de placeholder
-                this.keyEnterIcon.setVisible(false); // Esconde novamente a tecla ENTER
+                placeholderText.setVisible(true);
+                this.keyEnterIcon.setVisible(false);
             }
         });
 
@@ -159,7 +164,7 @@ class TutorialScene extends Phaser.Scene {
             wordWrap: { width: 600 } // Define a largura máxima para quebra automática de linha
         });
 
-        this.keyEnterIcon = this.add.image(x + dialogWidth - 40, y + dialogHeight - 33, 'keyENTER'); // Adiciona a imagem da tecla ENTER
+        this.keyEnterIcon = this.add.image(x + dialogWidth - 40, y + dialogHeight - 33, 'keyENTERPurple'); // Adiciona a imagem da tecla ENTER
         this.keyEnterIcon.setScale(0.12).setDepth(1000); // Redimensiona a tecla ENTER e define sua profundidade para estar acima de outros elementos
     }
 
@@ -179,6 +184,10 @@ class TutorialScene extends Phaser.Scene {
             }
         } else {
             this.dialogText.setText(this.introduction[this.currentDialogIndex]); // Exibe a fala correspondente da introdução
+
+            if (this.keyEnterIcon && this.currentDialogIndex !== 2) {
+                this.keyEnterIcon.setVisible(true);
+            }
         }
     }
 
@@ -216,9 +225,11 @@ class TutorialScene extends Phaser.Scene {
         if (optionIndex === 1) { // Se o jogador escolheu "Não"
             this.currentConditionalIndex = 1; // Começa a exibir as falas condicionais a partir do índice 1
             this.dialogText.setText(this.conditionalDialog[this.currentConditionalIndex]); // Atualiza o texto do diálogo com a fala condicional
+            if (this.keyEnterIcon) this.keyEnterIcon.setVisible(true);
         } else { // Se o jogador escolheu "Sim"
             this.currentConditionalIndex = -1; // Evita o loop de exibição das falas condicionais
             this.dialogText.setText(this.conditionalDialog[0]); // Atualiza o texto do diálogo com a primeira fala condicional
+            if (this.keyEnterIcon) this.keyEnterIcon.setVisible(true);
             this.yesSelected = true; // Marca que o jogador escolheu "Sim"
             this.overlayVisible = false; // Esconde a imagem de sobreposição
         }
@@ -246,16 +257,18 @@ class TutorialScene extends Phaser.Scene {
                 this.dialogText.setText(this.finalDialog[0]);
                 this.overlayImage.setAlpha(1);
                 this.overlayVisible = true;
+                if (this.keyEnterIcon) this.keyEnterIcon.setVisible(true);
+                this.currentDialogIndex = 99;
                 return;
             }
             if (this.currentFinalIndex < this.finalDialog.length - 1) {
                 this.currentFinalIndex++;
                 this.dialogText.setText(this.finalDialog[this.currentFinalIndex]);
+                if (this.keyEnterIcon) this.keyEnterIcon.setVisible(true);
+                this.currentDialogIndex = 99;
                 return;
             }
-            this.scene.start('officeScene', {
-                selectedSpriteSheet: this.selectedSpriteSheet, // Passa a spritesheet selecionada
-            }); // Vai para a mesma cena para ambos
+            this.scene.start('officeScene', {selectedSpriteSheet: this.selectedSpriteSheet}); // Vai para a mesma cena para ambos
             return;
         }
     
@@ -263,6 +276,9 @@ class TutorialScene extends Phaser.Scene {
         if (this.optionSelected && this.currentConditionalIndex >= 0 && this.currentConditionalIndex < this.conditionalDialog.length - 1) {
             this.currentConditionalIndex++;
             this.dialogText.setText(this.conditionalDialog[this.currentConditionalIndex]);
+
+            this.currentDialogIndex = 99;
+            if (this.keyEnterIcon) this.keyEnterIcon.setVisible(true);
             return;
         }
     
@@ -271,6 +287,8 @@ class TutorialScene extends Phaser.Scene {
             this.dialogText.setText(this.finalDialog[0]);
             this.overlayImage.setAlpha(1);
             this.overlayVisible = true;
+            if (this.keyEnterIcon) this.keyEnterIcon.setVisible(true);
+            this.currentDialogIndex = 99;
             this.currentConditionalIndex++; // Marca que entrou nessa fase
             return;
         }
@@ -280,6 +298,7 @@ class TutorialScene extends Phaser.Scene {
             if (this.currentFinalIndex < this.finalDialog.length - 1) {
                 this.currentFinalIndex++;
                 this.dialogText.setText(this.finalDialog[this.currentFinalIndex]);
+                if (this.keyEnterIcon) this.keyEnterIcon.setVisible(true); 
                 return;
             }
             this.scene.start('officeScene', {selectedSpriteSheet: this.selectedSpriteSheet,}); // Unificado para ir sempre para officeScene
@@ -290,6 +309,8 @@ class TutorialScene extends Phaser.Scene {
         if (this.currentDialogIndex < this.introduction.length) {
             if (this.currentDialogIndex === 2 && this.keyEnterIcon) {
                 this.keyEnterIcon.setVisible(false);
+            } else if (this.keyEnterIcon) {
+                this.keyEnterIcon.setVisible(true);
             }
             this.showDialog();
         }

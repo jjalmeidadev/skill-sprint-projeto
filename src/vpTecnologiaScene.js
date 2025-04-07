@@ -19,6 +19,13 @@ class VpTecnologiaScene extends Phaser.Scene {
       });
 
       this.load.audio('walkSound', '../assets/sounds/753292__vrymaa__footsteps-high-heels-hardwood-walk-run (mp3cut.net).wav'); // Carrega o som de passos
+
+      //assets para o mini game
+      this.load.image("box","../assets/upskilling.png");//carrega o fundo do mini game
+      this.load.image("word1", "../assets/upskillingBotão1.png");//Carrega a botão 1
+      this.load.image("word2", "../assets/upskillingBotão2.png");//Carrega o botão 2
+      this.load.image("word3", "../assets/upskillingBotão3.png");//Carrega o botão 3
+      this.load.image("word4", "../assets/upskillingBotão4.png");//Carrega o botão 4
   }
 
   create() {

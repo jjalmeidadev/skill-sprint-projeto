@@ -72,3 +72,4 @@ class GameplayTutorialScene extends Phaser.Scene {
         ).setOrigin(0.5); // Centraliza o texto em relação ao ponto de origem
     }
 }
+

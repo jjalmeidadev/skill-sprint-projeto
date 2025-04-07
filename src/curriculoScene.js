@@ -718,7 +718,7 @@ class QuizVpPessoas extends Phaser.Scene {
                     });
                 } else {
                     // Quiz completo
-                    this.scene.start('CongratulationsSceneResumeVpPeople', { score: score }, {selectedSpriteSheet: this.selectedSpriteSheet,});
+                    this.scene.start('CongratulationsSceneCurriculoVpPessoas', { score: score }, {selectedSpriteSheet: this.selectedSpriteSheet,});
                 }
             });
         } else {
