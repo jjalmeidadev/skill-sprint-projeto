@@ -20,28 +20,28 @@ class SalaLider extends Phaser.Scene {
     this.load.image('keyENTER', '../assets/keyEnter.png');
     this.load.image("textBalloon", "../assets/balaoTexto.png");
   }
-
-  create() {
+ 
+  create() { 
     this.sound.stopAll();
     this.cameras.main.fadeIn(1000);
 
-    const startTime = OfficeScene.lastMusicTime || 0;
-    this.officeMusic = this.sound.add("officeMusic", { loop: true });
-    this.officeMusic.play({ seek: startTime });
+    const startTime = OfficeScene.lastMusicTime || 0; // Obtém o tempo de início da música do escritório
+    this.officeMusic = this.sound.add("officeMusic", { loop: true }); // Adiciona a música do escritório
+    this.officeMusic.play({ seek: startTime });  // Inicia a música do escritório a partir do tempo salvo
 
-    this.buttonClick = this.sound.add('buttonSound', { loop: false, volume: 10 });
-    this.walkSound = this.sound.add('walkSound', { loop: false, volume: 2 });
+    this.buttonClick = this.sound.add('buttonSound', { loop: false, volume: 10 }); // Som do clique do botão
+    this.walkSound = this.sound.add('walkSound', { loop: false, volume: 2 }); // Som dos passos
 
-    this.anims.create({
+    this.anims.create({ // Cria animação para a tecla E
       key: "exclaiming",
       frames: this.anims.generateFrameNumbers("indicator", { start: 0, end: 1 }),
       frameRate: 3,
       repeat: -1,
     });
 
-    this.leaderInteracted = false;
+    this.leaderInteracted = false; // Variável para controlar se o jogador já interagiu com o líder
 
-    this.keys = this.input.keyboard.addKeys({
+    this.keys = this.input.keyboard.addKeys({ // Define as teclas de controle
       up: Phaser.Input.Keyboard.KeyCodes.W,
       down: Phaser.Input.Keyboard.KeyCodes.S,
       left: Phaser.Input.Keyboard.KeyCodes.A,
@@ -49,7 +49,7 @@ class SalaLider extends Phaser.Scene {
       interagir: Phaser.Input.Keyboard.KeyCodes.E,
     });
 
-    this.input.keyboard.on('keydown-E', () => {
+    this.input.keyboard.on('keydown-E', () => { // Evento para tecla E
       if (this.canInteractWithLeader && !this.leaderInteracted) {
         this.showLeaderInteraction();
         this.buttonClick.play();
@@ -64,52 +64,56 @@ class SalaLider extends Phaser.Scene {
       }
     });
 
-    // Add world bounds that match the background size with adjusted height
-    const boundaryOffsetX = width - 1170; // Same as map offsetX 
-    const boundaryOffsetY = height - 650; // Same as map offsetY
-    const boundaryWidth = 1170;  // Width of the playable area
-    const boundaryHeight = 500;  // Further reduced height to move barrier up
+    // Define variáveis para criar os limites do mundo do jogo
+    const boundaryOffsetX = width - 1170;  // Calcula o deslocamento X baseado na largura da tela
+    const boundaryOffsetY = height - 650;  // Calcula o deslocamento Y baseado na altura da tela
+    const boundaryWidth = 1170;            // Define a largura da área jogável
+    const boundaryHeight = 500;            // Define a altura da área jogável (reduzida para criar barreira superior)
 
-    // Create invisible bottom wall sprite higher up
+    // Cria uma barreira invisível na parte inferior da tela
     const bottomWall = this.add.rectangle(
-      boundaryOffsetX + boundaryWidth/2,
-      boundaryOffsetY + boundaryHeight - 30, // Moved up by 30 pixels
-      boundaryWidth,
-      20,
-      0x000000,
-      0
+      boundaryOffsetX + boundaryWidth/2,   // Posiciona a barreira no centro horizontal da área
+      boundaryOffsetY + boundaryHeight - 30,// Posiciona a barreira verticalmente (30 pixels acima)
+      boundaryWidth,                       // Define a largura da barreira
+      20,                                  // Define a altura da barreira
+      0x000000,                           // Cor da barreira (preto)
+      0                                   // Transparência total (invisível)
     );
-    this.physics.add.existing(bottomWall, true); // Make it a static physics object
-    
+    this.physics.add.existing(bottomWall, true); // Adiciona física estática à barreira
+
+    // Define os limites físicos do mundo do jogo
     this.physics.world.setBounds(boundaryOffsetX, boundaryOffsetY, boundaryWidth, boundaryHeight);
 
-    // Configuração do mapa e camadas
-    const map = this.make.tilemap({ key: "salaLider", tileWidth: 10, tileHeight: 6 });
-    const tileset = map.addTilesetImage("decoracao");
-    const offsetX = width - 1170;
-    const offsetY = height - 650;
-    const layer1 = map.createLayer("chao", tileset, offsetX, offsetY).setScale(5);
-    const layer2 = map.createLayer("tapete", tileset, offsetX, offsetY).setScale(5);
-    const layer3 = map.createLayer("parede", tileset, offsetX, offsetY).setScale(5);
-    const layer4 = map.createLayer("mesa", tileset, offsetX, offsetY).setScale(5);
-    const layer5 = map.createLayer("decoracao", tileset, offsetX, offsetY).setScale(5);
-    const layer6 = map.createLayer("pertences", tileset, offsetX, offsetY).setScale(5);
+    // Configura e carrega o mapa do jogo
+    const map = this.make.tilemap({ key: "salaLider", tileWidth: 10, tileHeight: 6 }); // Cria o mapa usando o arquivo JSON
+    const tileset = map.addTilesetImage("decoracao");   // Adiciona o conjunto de tiles de decoração
+    const offsetX = width - 1170;                       // Define o deslocamento X para as camadas
+    const offsetY = height - 650;                       // Define o deslocamento Y para as camadas
 
-    layer1.setCollisionByProperty({ collider: true });
-    layer2.setCollisionByProperty({ collider: true });
-    layer3.setCollisionByProperty({ collider: true });
-    layer4.setCollisionByProperty({ collider: true });
-    layer5.setCollisionByProperty({ collider: true });
-    layer6.setCollisionByProperty({ collider: true });
+    // Cria as diferentes camadas do mapa
+    const layer1 = map.createLayer("chao", tileset, offsetX, offsetY).setScale(5);        // Camada do chão
+    const layer2 = map.createLayer("tapete", tileset, offsetX, offsetY).setScale(5);      // Camada do tapete
+    const layer3 = map.createLayer("parede", tileset, offsetX, offsetY).setScale(5);      // Camada das paredes
+    const layer4 = map.createLayer("mesa", tileset, offsetX, offsetY).setScale(5);        // Camada das mesas
+    const layer5 = map.createLayer("decoracao", tileset, offsetX, offsetY).setScale(5);   // Camada de decoração
+    const layer6 = map.createLayer("pertences", tileset, offsetX, offsetY).setScale(5);   // Camada de pertences
 
-    this.createLeaderAnimations();
-    this.addLeader();
-    this.canInteractWithLeader = false;
+    // Configura colisões para cada camada do mapa
+    layer1.setCollisionByProperty({ collider: true });  // Ativa colisões na camada do chão
+    layer2.setCollisionByProperty({ collider: true });  // Ativa colisões na camada do tapete
+    layer3.setCollisionByProperty({ collider: true });  // Ativa colisões na camada das paredes
+    layer4.setCollisionByProperty({ collider: true });  // Ativa colisões na camada das mesas
+    layer5.setCollisionByProperty({ collider: true });  // Ativa colisões na camada de decoração
+    layer6.setCollisionByProperty({ collider: true });  // Ativa colisões na camada de pertences
 
-    this.createPlayer();
-    this.createPlayerAnimations();
+    this.createLeaderAnimations(); // Cria animações para o líder
+    this.addLeader(); // Adiciona o líder ao jogo
+    this.canInteractWithLeader = false; // Variável para controlar a interação com o líder
 
-    // Add collider with world bounds right after player creation
+    this.createPlayer(); // Cria o jogador
+    this.createPlayerAnimations(); 
+
+    // Adiciona colisão com os limites do mundo logo após a criação do jogador
     this.player.setCollideWorldBounds(true);
 
     this.physics.add.collider(this.player, layer3);
@@ -128,9 +132,9 @@ class SalaLider extends Phaser.Scene {
   }
 
   update() {
-    this.movePlayer();
+    this.movePlayer(); // Atualiza a movimentação do jogador a cada frame
 
-    if (!this.indicatorActive && this.indicatorSound) {
+    if (!this.indicatorActive && this.indicatorSound) { // Som da Exclamação
       this.indicatorSound.stop();
       this.indicatorSound.destroy();
       this.indicatorSound = null;
@@ -154,11 +158,11 @@ class SalaLider extends Phaser.Scene {
     }
   }
 
-  movePlayer() {
+  movePlayer() { // Movimentação do jogador
     const speed = 150;
     let moving = false;
 
-    if (this.keys.left.isDown) {
+    if (this.keys.left.isDown) { // Verifica se a tecla para esquerda está pressionada
       this.player.setVelocityX(-speed);
       this.lastPosition = "left";
       this.player.anims.play("walk_left", true);
@@ -172,7 +176,7 @@ class SalaLider extends Phaser.Scene {
       this.player.setVelocityX(0);
     }
 
-    if (this.keys.up.isDown) {
+    if (this.keys.up.isDown) { // Verifica se a tecla para cima está pressionada
       this.player.setVelocityY(-speed);
       this.lastPosition = "up";
       this.player.anims.play("walk_up", true);
@@ -186,7 +190,7 @@ class SalaLider extends Phaser.Scene {
       this.player.setVelocityY(0);
     }
 
-    if (!moving) {
+    if (!moving) { // Se o jogador não está se movendo
       switch (this.lastPosition) {
         case "left":
           this.player.anims.play("stop_left", true);
@@ -210,12 +214,12 @@ class SalaLider extends Phaser.Scene {
     }
   }
 
-  createPlayer() {
+  createPlayer() { // Cria o jogador
     this.player = this.physics.add.sprite(width - 1050, height - 230, "player");
     this.player.setScale(5);
   }
 
-  createPlayerAnimations() {
+  createPlayerAnimations() { // Cria animações para o jogador
     this.anims.create({
       key: "walk_down",
       frames: this.anims.generateFrameNumbers("player", { start: 130, end: 135 }),
@@ -266,7 +270,7 @@ class SalaLider extends Phaser.Scene {
     });
   }
 
-  createLeaderAnimations() {
+  createLeaderAnimations() { // Cria animações para o líder
     this.anims.create({
       key: "drink",
       frames: this.anims.generateFrameNumbers("leader", { start: 0, end: 11 }),
@@ -312,7 +316,7 @@ class SalaLider extends Phaser.Scene {
       this.exclamation.setVisible(false);
     }
 
-    const leaderDialog = [
+    const leaderDialog = [ // Diálogo do líder
       'Olá, ' + playerName + '! Tudo bem?',
       'Ah, então quer dizer que você quer migrar para uma nova VP? Que alegria!',
       'Vou analisar seu currículo.',
@@ -321,7 +325,7 @@ class SalaLider extends Phaser.Scene {
       'Vá até o elevador para conhecer as áreas internas da vivo!'
     ];
 
-    let currentDialogIndex = 0;
+    let currentDialogIndex = 0; // Índice do diálogo atual
     let textBalloon = this.add.image(width - 730, height - 420, 'textBalloon');
     textBalloon.setFlipX(true).setVisible(true);
 
@@ -346,7 +350,7 @@ class SalaLider extends Phaser.Scene {
           this.keyENTERLeader.destroy();
           this.keyENTERLeader = null;
         }
-        this.showIndicatorToReturn();
+        this.showIndicatorToReturn(); // Chama a função para mostrar o indicador de retorno
       }
     });
   }
@@ -368,7 +372,7 @@ class SalaLider extends Phaser.Scene {
     this.indicatorSound = this.sound.add('indicatorSound', { loop: true, volume: 1.5 });
     this.indicatorSound.play();
 
-    this.physics.add.overlap(this.player, this.exclamation, () => {
+    this.physics.add.overlap(this.player, this.exclamation, () => { // Verifica a sobreposição entre o jogador e o indicador
       if (this.indicatorActive && this.indicatorSound) {
         this.indicatorSound.stop();
         this.indicatorSound.destroy();
@@ -381,7 +385,7 @@ class SalaLider extends Phaser.Scene {
     });
   }
 
-  backToOffice() {
+  backToOffice() { // Função para voltar à cena do escritório
     if (this.exclamation) {
       this.exclamation.destroy();
     }
@@ -404,7 +408,7 @@ class SalaLider extends Phaser.Scene {
         this.indicatorActive = false;
       }
     });
-
+// Verifica a sobreposição entre o jogador e o indicador
     this.scene.get('officeScene').events.emit('stopWalkSound');
     this.scene.switch('officeScene');
     this.scene.get('officeScene').events.emit('stopWalkSound');

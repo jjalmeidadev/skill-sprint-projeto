@@ -78,69 +78,97 @@ class VpTecnologiaScene extends Phaser.Scene {
     }
   
   createPlayerAnimations() {
+    // Walking animations
     this.anims.create({
-      key: "walk_down", // Animação para andar para baixo
-      frames: this.anims.generateFrameNumbers("player", { start: 0, end: 5 }), // Define os frames da animação
-      frameRate: 10, // Taxa de quadros por segundo
-      repeat: -1, // Repete a animação indefinidamente
+      key: "walk_down",
+      frames: this.anims.generateFrameNumbers("player", { start: 0, end: 5 }),
+      frameRate: 10,
+      repeat: -1,
     });
     this.anims.create({
-      key: "walk_right", // Animação para andar para a direita
-      frames: this.anims.generateFrameNumbers("player", { start: 6, end: 11 }), // Define os frames da animação
-      frameRate: 10, // Taxa de quadros por segundo
-      repeat: -1, // Repete a animação indefinidamente
+      key: "walk_right",
+      frames: this.anims.generateFrameNumbers("player", { start: 6, end: 11 }),
+      frameRate: 10,
+      repeat: -1,
     });
     this.anims.create({
-      key: "walk_up", // Animação para andar para cima
-      frames: this.anims.generateFrameNumbers("player", { start: 12, end: 17 }), // Define os frames da animação
-      frameRate: 10, // Taxa de quadros por segundo
-      repeat: -1, // Repete a animação indefinidamente
+      key: "walk_up",
+      frames: this.anims.generateFrameNumbers("player", { start: 12, end: 17 }),
+      frameRate: 10,
+      repeat: -1,
     });
     this.anims.create({
-      key: "walk_left", // Animação para andar para a esquerda
-      frames: this.anims.generateFrameNumbers("player", { start: 6, end: 11 }), // Define os frames da animação
-      frameRate: 10, // Taxa de quadros por segundo
-      repeat: -1, // Repete a animação indefinidamente
+      key: "walk_left",
+      frames: this.anims.generateFrameNumbers("player", { start: 6, end: 11 }),
+      frameRate: 10,
+      repeat: -1,
+    });
+
+    // Idle animations
+    this.anims.create({
+      key: "idle_down",
+      frames: this.anims.generateFrameNumbers("player", { start: 74, end: 79 }),
+      frameRate: 5,
+      repeat: -1,
+    });
+    this.anims.create({
+      key: "idle_up",
+      frames: this.anims.generateFrameNumbers("player", { start: 62, end: 67 }),
+      frameRate: 5,
+      repeat: -1,
+    });
+    this.anims.create({
+      key: "idle_right",
+      frames: this.anims.generateFrameNumbers("player", { start: 56, end: 61 }),
+      frameRate: 5,
+      repeat: -1,
+    });
+    this.anims.create({
+      key: "idle_left",
+      frames: this.anims.generateFrameNumbers("player", { start: 68, end: 73 }),
+      frameRate: 5,
+      repeat: -1,
     });
   }
 
   movePlayer() {
-    const speed = 150; // Define a velocidade do jogador
-    let moving = false; // Variável para verificar se o jogador está se movendo
+    const speed = 150;
+    let moving = false;
+    this.lastDirection = this.lastDirection || 'down'; // Default direction
 
-    if (this.keys.left.isDown) { // Verifica se a tecla esquerda está pressionada
-      this.player.setVelocityX(-speed); // Move o jogador para a esquerda
-      this.player.anims.play("walk_right", true); // Toca a animação de andar para a direita
-      this.player.setFlipX(true); // Inverte o sprite horizontalmente
-      moving = true; // Define que o jogador está se movendo
-    } else if (this.keys.right.isDown) { // Verifica se a tecla direita está pressionada
-      this.player.setVelocityX(speed); // Move o jogador para a direita
-      this.player.anims.play("walk_right", true); // Toca a animação de andar para a direita
-      this.player.setFlipX(false); // Não inverte o sprite horizontalmente
-      moving = true; // Define que o jogador está se movendo
+    if (this.keys.left.isDown) {
+      this.player.setVelocityX(-speed);
+      this.player.anims.play("walk_left", true);
+      this.lastDirection = 'left';
+      moving = true;
+    } else if (this.keys.right.isDown) {
+      this.player.setVelocityX(speed);
+      this.player.anims.play("walk_right", true);
+      this.lastDirection = 'right';
+      moving = true;
     } else {
-      this.player.setVelocityX(0); // Para o movimento horizontal do jogador
+      this.player.setVelocityX(0);
     }
 
-    if (this.keys.up.isDown) { // Verifica se a tecla para cima está pressionada
-      this.player.setVelocityY(-speed); // Move o jogador para cima
-      this.player.anims.play("walk_up", true); // Toca a animação de andar para cima
-      moving = true; // Define que o jogador está se movendo
-    } else if (this.keys.down.isDown) { // Verifica se a tecla para baixo está pressionada
-      this.player.setVelocityY(speed); // Move o jogador para baixo
-      this.player.anims.play("walk_down", true); // Toca a animação de andar para baixo
-      moving = true; // Define que o jogador está se movendo
+    if (this.keys.up.isDown) {
+      this.player.setVelocityY(-speed);
+      this.player.anims.play("walk_up", true);
+      this.lastDirection = 'up';
+      moving = true;
+    } else if (this.keys.down.isDown) {
+      this.player.setVelocityY(speed);
+      this.player.anims.play("walk_down", true);
+      this.lastDirection = 'down';
+      moving = true;
     } else {
-      this.player.setVelocityY(0); // Para o movimento vertical do jogador
+      this.player.setVelocityY(0);
     }
 
-    if (!moving) { // Verifica se o jogador não está se movendo
-      this.player.anims.stop(); // Para a animação do jogador
-      this.walkSound.stop(); // Para o som de passos
-    } else {
-      if (!this.walkSound.isPlaying) { // Verifica se o som de passos não está tocando
-      this.walkSound.play(); // Toca o som de passos
-      }
+    if (!moving) {
+      this.player.anims.play(`idle_${this.lastDirection}`, true);
+      this.walkSound.stop();
+    } else if (!this.walkSound.isPlaying) {
+      this.walkSound.play();
     }
   }
 

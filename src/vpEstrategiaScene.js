@@ -7,7 +7,7 @@ class VpEstrategiaScene extends Phaser.Scene {
     this.finalInteractionComplete = false; // Flag para interação final
     this.sceneTransitions = 0; // Contador de transições
     this.completedMinigames = new Set(); // Rastrear minigames completados
-    this.eKeyInteractions = 0; // Counter for specific E key interactions
+    this.eKeyInteractions = 0; // Contador para interações específicas com a tecla E
     this.interactedWith = {
       npcIdle: false,
       npcIdle2: false,
@@ -36,11 +36,11 @@ class VpEstrategiaScene extends Phaser.Scene {
     this.load.spritesheet('npcIdle', '../assets/personagens/skinsPlayer/Player4Idle.png', { frameWidth: 16, frameHeight: 32 });
     this.load.image('npcIdle2', '../assets/ana.png');
     this.load.image('npcIdle3', '../assets/mariana.png');
-    this.load.image('mug', '../assets/mug.png'); // Add mug image load
-    this.load.image('mobile', '../assets/mobile.png'); // Add mobile image load
-    this.load.image('meme_estrategia', '../assets/meme_estrategia.jpg'); // Add meme image load
-    this.load.image('sheet', '../assets/sheet.png'); // Add sheet image load
-    this.load.image('notes', '../assets/notes.png'); // Add notes image load
+    this.load.image('mug', '../assets/mug.png'); // Adiciona imagem da caneca
+    this.load.image('mobile', '../assets/mobile.png'); // Adiciona imagem do celular
+    this.load.image('meme_estrategia', '../assets/meme_estrategia.jpg'); // Adiciona imagem do meme
+    this.load.image('sheet', '../assets/sheet.png'); // Adiciona imagem da folha
+    this.load.image('notes', '../assets/notes.png'); // Adiciona imagem das anotações
   }
 
   init(data) {
@@ -93,19 +93,19 @@ class VpEstrategiaScene extends Phaser.Scene {
     this.strategyMusic.play({ seek: startTime }); // Toca a música a partir do tempo salvo
 
     const map = this.make.tilemap({ key: "map_estrategia", tileWidth: 25, tileHeight: 20 }); // Cria o mapa 
-    const tileset1 = map.addTilesetImage("decoracao"); // Adiciona o tileset de decoração
-    const tileset2 = map.addTilesetImage("paredes"); // Adiciona o tileset de paredes
-    const tileset3 = map.addTilesetImage("personalizado_vivo"); // Adiciona o tileset personalizado
+    const tilesetDecoracao = map.addTilesetImage("decoracao"); // Adiciona o tileset de decoração
+    const tilesetParedes = map.addTilesetImage("paredes"); // Adiciona o tileset de paredes
+    const tilesetPersonalizado = map.addTilesetImage("personalizado_vivo"); // Adiciona o tileset personalizado
 
     const offsetX = width - 1270; // Define a posição x para as camadas
-    const layer1 = map.createLayer("chao", tileset2, offsetX, 0).setScale(2.5); // Cria a camada de chão e ajusta o tamanho
-    const layer2 = map.createLayer("parede", tileset2, offsetX, 0).setScale(2.5); // Cria a camada de paredes e ajusta o tamanho
-    const layer3 = map.createLayer("porta_elevador", tileset1, offsetX, 0).setScale(2.5); // Cria a camada de porta do elevador e ajusta o tamanho
-    const layer4 = map.createLayer("decoracao_com_barreiras", tileset1, offsetX, 0).setScale(2.5); // Cria a camada de decoração com barreiras e ajusta o tamanho
-    const layer5 = map.createLayer("decoracao_sem_barreiras", tileset1, offsetX, 0).setScale(2.5); // Cria a camada de decoração sem barreiras e ajusta o tamanho
-    const layer6 = map.createLayer("personalizado_vivo_Sem_barreiras", tileset3, offsetX, 0).setScale(2.5); // Cria a camada personalizada sem barreiras e ajusta o tamanho
+    const layerChao = map.createLayer("chao", tilesetParedes, offsetX, 0).setScale(2.5); // Cria a camada de chão e ajusta o tamanho
+    const layerParede = map.createLayer("parede", tilesetParedes, offsetX, 0).setScale(2.5); // Cria a camada de paredes e ajusta o tamanho
+    const layerPortaElevador = map.createLayer("porta_elevador", tilesetDecoracao, offsetX, 0).setScale(2.5); // Cria a camada de porta do elevador e ajusta o tamanho
+    const layerDecoracaoComBarreiras = map.createLayer("decoracao_com_barreiras", tilesetDecoracao, offsetX, 0).setScale(2.5); // Cria a camada de decoração com barreiras e ajusta o tamanho
+    const layerDecoracaoSemBarreiras = map.createLayer("decoracao_sem_barreiras", tilesetDecoracao, offsetX, 0).setScale(2.5); // Cria a camada de decoração sem barreiras e ajusta o tamanho
+    const layerPersonalizadoSemBarreiras = map.createLayer("personalizado_vivo_Sem_barreiras", tilesetPersonalizado, offsetX, 0).setScale(2.5); // Cria a camada personalizada sem barreiras e ajusta o tamanho
 
-    [layer1, layer2, layer3, layer4, layer5, layer6].forEach(layer => {
+    [layerChao, layerParede, layerPortaElevador, layerDecoracaoComBarreiras, layerDecoracaoSemBarreiras, layerPersonalizadoSemBarreiras].forEach(layer => {
       layer.setCollisionByProperty({ collider: true }); // Define colisões para as camadas com a propriedade "collider"
     });
 
@@ -113,9 +113,9 @@ class VpEstrategiaScene extends Phaser.Scene {
     this.createPlayerAnimations(); // Cria as animações do jogador
     this.createButtonBack(width, height); // Cria o botão de retorno para outra cena
 
-    this.physics.add.collider(this.player, layer2); // Colisão do jogador com a camada de paredes
-    this.physics.add.collider(this.player, layer4); // Colisão do jogador com a camada de decoração com barreiras
-    this.physics.add.collider(this.player, layer5); // Colisão do jogador com a camada de decoração sem barreira
+    this.physics.add.collider(this.player, layerParede); // Colisão do jogador com a camada de paredes
+    this.physics.add.collider(this.player, layerDecoracaoComBarreiras); // Colisão do jogador com a camada de decoração com barreiras
+    this.physics.add.collider(this.player, layerDecoracaoSemBarreiras); // Colisão do jogador com a camada de decoração sem barreira
 
     this.npc = this.physics.add.sprite(width - 800, height - 500, 'npc'); // Adiciona a NPC na cena
     this.npc.setScale(0.9); // Ajusta o tamanho da NPC
@@ -130,7 +130,7 @@ class VpEstrategiaScene extends Phaser.Scene {
         frameRate: 3,
         repeat: -1
       });
-    } //Animação da exclamação
+    } // Animação da exclamação
 
     this.keys = this.input.keyboard.addKeys({ // Configuração do teclado
       up: Phaser.Input.Keyboard.KeyCodes.W, // Tecla W para mover para cima
@@ -177,7 +177,7 @@ class VpEstrategiaScene extends Phaser.Scene {
     if (!this.anims.exists('npc_idle')) {
       this.anims.create({
         key: 'npc_idle',
-        frames: this.anims.generateFrameNumbers('npcIdle', { start: 18, end: 23 }), // Corrected frames for npcIdle animation
+        frames: this.anims.generateFrameNumbers('npcIdle', { start: 18, end: 23 }), // Corrigido frames para animação npcIdle
         frameRate: 5, // Taxa de quadros por segundo
         repeat: -1 // Faz a animação repetir indefinidamente
       });
@@ -188,25 +188,25 @@ class VpEstrategiaScene extends Phaser.Scene {
     this.npcIdle.play('npc_idle'); // Reproduz a animação IDLE
     this.npcIdle.body.immovable = true; // Faz o NPC ficar parado
 
-    // Create npcIdle2
+    // Cria npcIdle2
     this.npcIdle2 = this.physics.add.sprite(this.npc.x + 380, this.npc.y + 350, 'npcIdle2');
     this.npcIdle2.setScale(0.1);
     this.npcIdle2.body.immovable = true;
 
-    // Create npcIdle3
+    // Cria npcIdle3
     this.npcIdle3 = this.physics.add.sprite(this.npc.x - 310, this.npc.y + 295, 'npcIdle3');
     this.npcIdle3.setScale(0.1);
     this.npcIdle3.body.immovable = true;
 
-    // Add collisions for new NPCs
+    // Adiciona colisões para os novos NPCs
     this.physics.add.collider(this.player, this.npcIdle2);
-    this.physics.add.collider(this.player, this.npcIdle); // Add collider for npcIdle
-    this.physics.add.collider(this.player, this.npcIdle3); // Add collider for npcIdle3
+    this.physics.add.collider(this.player, this.npcIdle); // Adiciona colisão para npcIdle
+    this.physics.add.collider(this.player, this.npcIdle3); // Adiciona colisão para npcIdle3
 
-    // Show "Obrigado!" dialogue immediately after returning from minigame
+    // Mostra diálogo "Obrigado!" imediatamente após retornar do minigame
     if (this.showThankYou) {
       this.time.delayedCall(500, () => {
-        this.startDialogue(["Obrigado!"], this.npcIdle); // Trigger dialogue
+        this.startDialogue(["Obrigado!"], this.npcIdle); // Dispara diálogo
       });
     }
 
@@ -221,7 +221,7 @@ class VpEstrategiaScene extends Phaser.Scene {
 
     this.physics.add.collider(this.player, this.npcIdle); // Adiciona colisão entre o jogador e o NPC
 
-    this.walkSound = this.sound.add('walkSound', { loop: false, volume: 2 }); // Adiciona o som de passos com volume ajustado
+    this.soundWalk = this.sound.add('walkSound', { loop: false, volume: 2 }); // Adiciona o som de passos com volume ajustado
 
     this.activeDialogue = false; // Define o estado inicial do diálogo como inativo
 
@@ -242,19 +242,19 @@ class VpEstrategiaScene extends Phaser.Scene {
     this.exclamationIdle3.setVisible(false);
 
     // Adiciona as imagens da tecla E para cada NPC (ajustando posição Y)
-    this.keyEMain = this.add.image(this.npc.x, this.npc.y - 50, 'keyE').setScale(0.05); // Changed from 0.2 to 0.1
+    this.keyEMain = this.add.image(this.npc.x, this.npc.y - 50, 'keyE').setScale(0.05); // Alterado de 0.2 para 0.1
     this.keyEMain.setVisible(false);
 
-    this.keyEIdle = this.add.image(this.npcIdle.x, this.npcIdle.y - 50, 'keyE').setScale(0.05); // Changed from 0.2 to 0.1
+    this.keyEIdle = this.add.image(this.npcIdle.x, this.npcIdle.y - 50, 'keyE').setScale(0.05); // Alterado de 0.2 para 0.1
     this.keyEIdle.setVisible(false);
 
-    this.keyEIdle2 = this.add.image(this.npcIdle2.x, this.npcIdle2.y - 50, 'keyE').setScale(0.05); // Changed from 0.2 to 0.1
+    this.keyEIdle2 = this.add.image(this.npcIdle2.x, this.npcIdle2.y - 50, 'keyE').setScale(0.05); // Alterado de 0.2 para 0.1
     this.keyEIdle2.setVisible(false);
 
-    this.keyEIdle3 = this.add.image(this.npcIdle3.x, this.npcIdle3.y - 50, 'keyE').setScale(0.05); // Changed from 0.2 to 0.1
+    this.keyEIdle3 = this.add.image(this.npcIdle3.x, this.npcIdle3.y - 50, 'keyE').setScale(0.05); // Alterado de 0.2 para 0.1
     this.keyEIdle3.setVisible(false);
 
-    // Create mug container with exclamation and key E
+    // Cria contêiner da caneca com exclamação e tecla E
     this.mugContainer = this.add.container(this.npcIdle.x + 50, this.npcIdle.y);
     
     this.mugSprite = this.add.image(0, 0, 'mug')
@@ -265,12 +265,12 @@ class VpEstrategiaScene extends Phaser.Scene {
       .setScale(0.15)
       .setVisible(false);
 
-    this.keyEMug = this.add.image(0, -60, 'keyE').setScale(0.05); // Changed from 0.2 to 0.1
+    this.keyEMug = this.add.image(0, -60, 'keyE').setScale(0.05); // Alterado de 0.2 para 0.1
     this.keyEMug.setVisible(false);
     
     this.mugContainer.add([this.mugSprite, this.mugExclamation, this.keyEMug]);
 
-    // Add mug interaction
+    // Adiciona interação com a caneca
     this.input.keyboard.on('keydown-E', () => {
       if (this.mugSprite.visible && !this.activeDialogue && !this.interactedWith.mug) {
         const distanceMug = Phaser.Math.Distance.Between(
@@ -290,18 +290,18 @@ class VpEstrategiaScene extends Phaser.Scene {
           );
 
           const messageContainer = this.add.container(this.cameras.main.width / 2, this.cameras.main.height / 2);
-          messageContainer.setScrollFactor(0); // Fix to screen
+          messageContainer.setScrollFactor(0); // Fixa na tela
           
-          // Changed y position from -120 to -80 to move mug icon lower
+          // Alterada posição Y de -120 para -80 para mover o ícone da caneca mais baixo
           const mugIcon = this.add.image(0, -80, 'mug')
             .setScale(2.5);
           
-          // Add background
+          // Adiciona fundo
           const messageBg = this.add.rectangle(0, 50, 550, 100, 0xB600B9, 0.9)
             .setOrigin(0.5);
           messageBg.setStrokeStyle(4, 0xB600B9);
           
-          // Add shorter text
+          // Adiciona texto mais curto
           const messageText = this.add.text(0, 50, 
             "Você tomou o café da gratidão! Estava delicioso.", {
               fontSize: '18px',
@@ -312,7 +312,7 @@ class VpEstrategiaScene extends Phaser.Scene {
           
           messageContainer.add([mugIcon, messageBg, messageText]);
           
-          // Remove message and overlay after 4 seconds
+          // Remove mensagem e sobreposição após 4 segundos
           this.time.delayedCall(4000, () => {
             overlay.destroy();
             messageContainer.destroy();
@@ -324,7 +324,7 @@ class VpEstrategiaScene extends Phaser.Scene {
       }
     });
 
-    // Create mobile container with exclamation and key E
+    // Cria contêiner do celular com exclamação e tecla E
     this.mobileContainer = this.add.container(this.npcIdle2.x + 50, this.npcIdle2.y);
     
     this.mobileSprite = this.add.image(0, 0, 'mobile')
@@ -335,12 +335,12 @@ class VpEstrategiaScene extends Phaser.Scene {
       .setScale(0.15)
       .setVisible(false);
 
-    this.keyEMobile = this.add.image(0, -60, 'keyE').setScale(0.05); // Changed from 0.2 to 0.1
+    this.keyEMobile = this.add.image(0, -60, 'keyE').setScale(0.05); // Alterado de 0.2 para 0.1
     this.keyEMobile.setVisible(false);
     
     this.mobileContainer.add([this.mobileSprite, this.mobileExclamation, this.keyEMobile]);
 
-    // Add mobile interaction
+    // Adiciona interação com o celular
     this.input.keyboard.on('keydown-E', () => {
       if (this.mobileSprite.visible && !this.activeDialogue && !this.interactedWith.mobile) {
         const distanceMobile = Phaser.Math.Distance.Between(
@@ -365,7 +365,7 @@ class VpEstrategiaScene extends Phaser.Scene {
           const memeIcon = this.add.image(0, -80, 'meme_estrategia')
             .setScale(0.3);
           
-          // Create text first to get its bounds
+          // Cria texto primeiro para obter seus limites
           const messageText = this.add.text(0, 50, 
             "Você recebeu um meme da Ana! Riram bastante e isso melhorou o dia de trabalho em 100%.", {
               fontSize: '15px',
@@ -375,10 +375,10 @@ class VpEstrategiaScene extends Phaser.Scene {
               wordWrap: { width: 400 }
           }).setOrigin(0.5);
           
-          // Get text bounds to size background
+          // Obtém limites do texto para dimensionar fundo
           const textBounds = messageText.getBounds();
           
-          // Create background that matches text size exactly
+          // Cria fundo que corresponde exatamente ao tamanho do texto
           const messageBg = this.add.rectangle(0, 50, textBounds.width + 20, textBounds.height + 10, 0xB600B9, 0.9)
             .setOrigin(0.5);
           messageBg.setStrokeStyle(2, 0xB600B9);
@@ -396,7 +396,7 @@ class VpEstrategiaScene extends Phaser.Scene {
       }
     });
 
-    // Create sheet container with exclamation and key E
+    // Cria contêiner da folha com exclamação e tecla E
     this.sheetContainer = this.add.container(this.npcIdle3.x + 50, this.npcIdle3.y);
     
     this.sheetSprite = this.add.image(0, 0, 'sheet')
@@ -407,12 +407,12 @@ class VpEstrategiaScene extends Phaser.Scene {
       .setScale(0.15)
       .setVisible(false);
 
-    this.keyESheet = this.add.image(0, -60, 'keyE').setScale(0.05); // Changed from 0.2 to 0.1
+    this.keyESheet = this.add.image(0, -60, 'keyE').setScale(0.05); // Alterado de 0.2 para 0.1
     this.keyESheet.setVisible(false);
     
     this.sheetContainer.add([this.sheetSprite, this.sheetExclamation, this.keyESheet]);
 
-    // Add sheet interaction
+    // Adiciona interação com a folha
     this.input.keyboard.on('keydown-E', () => {
       if (this.sheetSprite.visible && !this.activeDialogue && !this.interactedWith.sheet) {
         const distanceSheet = Phaser.Math.Distance.Between(
@@ -434,13 +434,13 @@ class VpEstrategiaScene extends Phaser.Scene {
           const messageContainer = this.add.container(this.cameras.main.width / 2, this.cameras.main.height / 2);
           messageContainer.setScrollFactor(0);
           
-          const notesIcon = this.add.image(0, 0, 'notes') // Changed y from -80 to 0 and added setOrigin for perfect centering
+          const notesIcon = this.add.image(0, 0, 'notes') // Alterado Y de -80 para 0 e adicionado setOrigin para centralização perfeita
             .setScale(0.5)
             .setOrigin(0.5);
           
           messageContainer.add([notesIcon]);
           
-          // Remove message and overlay after 5 seconds
+          // Remove mensagem e sobreposição após 5 segundos
           this.time.delayedCall(5000, () => {
             overlay.destroy();
             messageContainer.destroy();
@@ -565,7 +565,7 @@ class VpEstrategiaScene extends Phaser.Scene {
     );
     this.keyEIdle3.setVisible(distanceIdle3 < 100 && this.npcInteractionComplete);
 
-    // Check distance to mug and show/hide key E
+    // Verifica distância para a caneca e mostra/esconde tecla E
     if (this.mugSprite.visible) {
       const distanceMug = Phaser.Math.Distance.Between(
         this.player.x, this.player.y,
@@ -574,7 +574,7 @@ class VpEstrategiaScene extends Phaser.Scene {
       this.keyEMug.setVisible(distanceMug < 100);
     }
 
-    // Check distance to mobile and show/hide key E
+    // Verifica distância para o celular e mostra/esconde tecla E
     if (this.mobileSprite.visible) {
       const distanceMobile = Phaser.Math.Distance.Between(
         this.player.x, this.player.y,
@@ -583,7 +583,7 @@ class VpEstrategiaScene extends Phaser.Scene {
       this.keyEMobile.setVisible(distanceMobile < 100);
     }
 
-    // Check distance to sheet and show/hide key E
+    // Verifica distância para a folha e mostra/esconde tecla E
     if (this.sheetSprite.visible) {
       const distanceSheet = Phaser.Math.Distance.Between(
         this.player.x, this.player.y,
@@ -660,19 +660,19 @@ class VpEstrategiaScene extends Phaser.Scene {
           this.npcInteractionComplete = true;
         } else {
           if (npc === this.npcIdle) {
-            // Show mug and its exclamation
+            // Mostra caneca e sua exclamação
             this.mugSprite.setVisible(true);
             this.mugExclamation.setVisible(true);
             this.mugExclamation.play("exclaiming");
             this.scene.switch('minigameEstrategiaCarlos');
           } else if (npc === this.npcIdle2) {
-            // Show mobile and its exclamation
+            // Mostra celular e sua exclamação
             this.mobileSprite.setVisible(true);
             this.mobileExclamation.setVisible(true);
             this.mobileExclamation.play("exclaiming");
             this.scene.switch('minigameEstrategiaAna');
           } else if (npc === this.npcIdle3) {
-            // Show sheet and its exclamation
+            // Mostra folha e sua exclamação
             this.sheetSprite.setVisible(true);
             this.sheetExclamation.setVisible(true);
             this.sheetExclamation.play("exclaiming");
@@ -734,10 +734,10 @@ class VpEstrategiaScene extends Phaser.Scene {
           this.player.anims.play("stop_down", true); // Reproduz a animação de parada para baixo
           break;
       }
-      this.walkSound.stop(); // Para o som de passos
+      this.soundWalk.stop(); // Para o som de passos
     } else {
-      if (!this.walkSound.isPlaying) { // Verifica se o som de passos não está tocando
-        this.walkSound.play(); // Reproduz o som de passos
+      if (!this.soundWalk.isPlaying) { // Verifica se o som de passos não está tocando
+        this.soundWalk.play(); // Reproduz o som de passos
       }
     }
   }
@@ -808,7 +808,7 @@ class VpEstrategiaScene extends Phaser.Scene {
 
   createButtonBack(width, height) {
     const buttonBack = this.add.image(width - 700, height - 680, "keyE"); // Adiciona a imagem do botão de retorno na posição especificada
-    buttonBack.setScale(0.1); // Changed from 0.2 to 0.1
+    buttonBack.setScale(0.1); // Alterado de 0.2 para 0.1
 
     this.input.keyboard.on("keydown-E", () => { // Adiciona um evento para a tecla "E"
       const distance = Phaser.Math.Distance.Between( // Calcula a distância entre o jogador e o botão de retorno
@@ -823,17 +823,17 @@ class VpEstrategiaScene extends Phaser.Scene {
   }
 
   checkCompletionDialogue() {
-    console.log("E key interactions:", this.eKeyInteractions);
-    console.log("Interacted with:", this.interactedWith);
+    console.log("Interações com a tecla E:", this.eKeyInteractions);
+    console.log("Interagiu com:", this.interactedWith);
     
     if (this.eKeyInteractions === 6) {
-      // Create exclamation above NPC
+      // Cria exclamação acima da NPC
       const finalExclamation = this.physics.add.sprite(this.npc.x, this.npc.y - 80, "indicator")
         .setScale(0.3);
       finalExclamation.play("exclaiming");
       finalExclamation.setImmovable(true);
 
-      // Create balloon dialogue
+      // Cria diálogo com balão
       const balloonX = this.npc.x + 90;
       const balloonY = this.npc.y - 100;
       const textY = this.npc.y - 120;
@@ -870,7 +870,7 @@ class VpEstrategiaScene extends Phaser.Scene {
   }
 }
 
-// Propriedade estática para armazenar o tempo de reprodução da músic
+// Propriedade estática para armazenar o tempo de reprodução da música
 VpEstrategiaScene.lastMusicTime = 0;
 
 class minigameEstrategiaCarlos extends Phaser.Scene {
