@@ -1,7 +1,12 @@
 class VpEstrategiaScene extends Phaser.Scene {
   constructor() {
     super({ key: 'VpEstrategiaScene' });
-    this.interactionCount = 0; // Initialize counter
+    this.interactionCount = 0; // Contador de interações com minigames
+    this.finalInteractionTriggered = false; // Flag para garantir que a interação final seja configurada apenas uma vez
+    this.npcInteractionsCount = 0; // Contador para interações com NPCs
+    this.finalInteractionComplete = false; // Flag para interação final
+    this.sceneTransitions = 0; // Contador de transições
+    this.completedMinigames = new Set(); // Rastrear minigames completados
   }
 
   preload() {
@@ -20,12 +25,47 @@ class VpEstrategiaScene extends Phaser.Scene {
     this.load.spritesheet("indicator", "../assets/exclamaçãoRoxa.png", { frameWidth: 254, frameHeight: 305 }); // Carrega a exclamação
     this.load.image('keyEnter', '../assets/keyEnter.png'); // Carrega a imagem da tecla Enter
     this.load.spritesheet('npcIdle', '../assets/personagens/skinsPlayer/Player4Idle.png', { frameWidth: 16, frameHeight: 32 });
-    this.load.spritesheet('npcIdle2', '../assets/personagens/skinsPlayer/Player4Idle.png', { frameWidth: 16, frameHeight: 32 });
-    this.load.spritesheet('npcIdle3', '../assets/personagens/skinsPlayer/Player4Idle.png', { frameWidth: 16, frameHeight: 32 }); // Carrega o spritesheet do NPC 1
+    this.load.image('npcIdle2', '../assets/ana.png');
+    this.load.image('npcIdle3', '../assets/mariana.png');
   }
 
   init(data) {
-    this.showThankYou = data && data.showThankYou; // Flag to show "Obrigado!" dialogue
+    this.showThankYou = data && data.showThankYou;
+
+    // Verifica se está retornando de um minigame
+    if (data && data.showThankYou) {
+      this.interactionCount++;
+
+      // Se completou todos os 3 minigames, configura a interação final
+      if (this.interactionCount === 3 && !this.finalInteractionTriggered) {
+        this.finalInteractionTriggered = true; // Garante que a interação final seja configurada apenas uma vez
+        this.setupFinalInteraction();
+      }
+    }
+  }
+
+  setupFinalInteraction() {
+    // Cria a exclamação para a NPC principal
+    const finalExclamation = this.physics.add.sprite(this.npc.x, this.npc.y - 80, "indicator").setScale(0.3);
+    finalExclamation.play("exclaiming");
+    finalExclamation.setImmovable(true);
+
+    // Configura o overlap para a interação final
+    this.physics.add.overlap(this.player, finalExclamation, () => {
+      if (!this.activeDialogue) {
+        this.startDialogue([
+          "Parabéns! Você fez um excelente trabalho!",
+          "Ajudou nossos três talentos a planejarem suas carreiras.",
+          "Isso prova que você tem visão estratégica e sabe orientar pessoas.",
+          "Você está aprovado(a) para o programa!",
+          "Vamos crescer juntos aqui na Vivo!",
+          "Aguarde mais informações por e-mail.",
+          "Até breve!"
+        ], this.npc);
+
+        finalExclamation.destroy(); // Remove a exclamação após a interação
+      }
+    });
   }
 
   create() {
@@ -132,21 +172,17 @@ class VpEstrategiaScene extends Phaser.Scene {
     this.npcIdle.body.immovable = true; // Faz o NPC ficar parado
 
     // Create npcIdle2
-    this.npcIdle2 = this.physics.add.sprite(this.npc.x + 380, this.npc.y + 350, 'npcIdle');
-    this.npcIdle2.setScale(2.5);
-    this.npcIdle2.play('npc_idle');
+    this.npcIdle2 = this.physics.add.sprite(this.npc.x + 380, this.npc.y + 350, 'npcIdle2');
+    this.npcIdle2.setScale(0.1);
     this.npcIdle2.body.immovable = true;
 
     // Create npcIdle3
-    this.npcIdle3 = this.physics.add.sprite(this.npc.x - 310, this.npc.y + 295, 'npcIdle');
-    this.npcIdle3.setScale(2.5);
-    this.npcIdle3.play('npc_idle');
+    this.npcIdle3 = this.physics.add.sprite(this.npc.x - 310, this.npc.y + 295, 'npcIdle3');
+    this.npcIdle3.setScale(0.1);
     this.npcIdle3.body.immovable = true;
 
     // Add collisions for new NPCs
     this.physics.add.collider(this.player, this.npcIdle2);
-    this.physics.add.collider(this.player, this.npcIdle3);
-
     // Show "Obrigado!" dialogue immediately after returning from minigame
     if (this.showThankYou) {
       this.time.delayedCall(500, () => {
@@ -247,6 +283,12 @@ class VpEstrategiaScene extends Phaser.Scene {
         this.keyEnterIdle3.setVisible(false); // Oculta a tecla Enter após o início do diálogo
       }
     });
+
+    // Se já completou os 3 minigames, configura a interação final imediatamente
+    if (this.interactionCount === 3 && !this.finalInteractionTriggered) {
+      this.finalInteractionTriggered = true;
+      this.setupFinalInteraction();
+    }
 
     // Dá zoom na tela do jogo e faz a câmera seguir o personagem
     this.cameras.main.startFollow(this.player); // Faz a câmera seguir o jogador
@@ -369,7 +411,6 @@ class VpEstrategiaScene extends Phaser.Scene {
       }
     }
   }
-
 
   createPlayer(width, height) {
     this.player = this.physics.add.sprite(width - 670, height - 660, 'player'); // Adiciona o sprite do jogador na posição especificada
@@ -1358,15 +1399,6 @@ class minigameEstrategiaMariana extends Phaser.Scene {
 
       // Efeito hover
       container.on('pointerover', () => {
-        this.tweens.add({
-          targets: container,
-          scaleX: 1.05,
-          scaleY: 1.05,
-          duration: 100
-        });
-      });
-
-      container.on('pointerout', () => {
         this.tweens.add({
           targets: container,
           scaleX: 1,
