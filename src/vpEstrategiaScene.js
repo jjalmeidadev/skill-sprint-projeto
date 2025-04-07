@@ -7,6 +7,15 @@ class VpEstrategiaScene extends Phaser.Scene {
     this.finalInteractionComplete = false; // Flag para interação final
     this.sceneTransitions = 0; // Contador de transições
     this.completedMinigames = new Set(); // Rastrear minigames completados
+    this.eKeyInteractions = 0; // Counter for specific E key interactions
+    this.interactedWith = {
+      npcIdle: false,
+      npcIdle2: false,
+      npcIdle3: false,
+      mug: false,
+      mobile: false,
+      sheet: false
+    };
   }
 
   preload() {
@@ -264,13 +273,16 @@ class VpEstrategiaScene extends Phaser.Scene {
 
     // Add mug interaction
     this.input.keyboard.on('keydown-E', () => {
-      if (this.mugSprite.visible && !this.activeDialogue) {
+      if (this.mugSprite.visible && !this.activeDialogue && !this.interactedWith.mug) {
         const distanceMug = Phaser.Math.Distance.Between(
           this.player.x, this.player.y,
           this.mugContainer.x, this.mugContainer.y
         );
         
         if (distanceMug < 100) {
+          this.interactedWith.mug = true;
+          this.eKeyInteractions++;
+          this.checkCompletionDialogue();
           const overlay = this.add.rectangle(
             0, 0,
             this.cameras.main.width * 2,
@@ -332,13 +344,16 @@ class VpEstrategiaScene extends Phaser.Scene {
 
     // Add mobile interaction
     this.input.keyboard.on('keydown-E', () => {
-      if (this.mobileSprite.visible && !this.activeDialogue) {
+      if (this.mobileSprite.visible && !this.activeDialogue && !this.interactedWith.mobile) {
         const distanceMobile = Phaser.Math.Distance.Between(
           this.player.x, this.player.y,
           this.mobileContainer.x, this.mobileContainer.y
         );
         
         if (distanceMobile < 100) {
+          this.interactedWith.mobile = true;
+          this.eKeyInteractions++;
+          this.checkCompletionDialogue();
           const overlay = this.add.rectangle(
             0, 0,
             this.cameras.main.width * 2, 
@@ -402,13 +417,16 @@ class VpEstrategiaScene extends Phaser.Scene {
 
     // Add sheet interaction
     this.input.keyboard.on('keydown-E', () => {
-      if (this.sheetSprite.visible && !this.activeDialogue) {
+      if (this.sheetSprite.visible && !this.activeDialogue && !this.interactedWith.sheet) {
         const distanceSheet = Phaser.Math.Distance.Between(
           this.player.x, this.player.y,
           this.sheetContainer.x, this.sheetContainer.y
         );
         
         if (distanceSheet < 100) {
+          this.interactedWith.sheet = true;
+          this.eKeyInteractions++;
+          this.checkCompletionDialogue();
           const overlay = this.add.rectangle(
             0, 0,
             this.cameras.main.width * 2,
@@ -445,8 +463,11 @@ class VpEstrategiaScene extends Phaser.Scene {
 
       this.keyEIdle.setVisible(true);
 
-      if (this.keys.interagir.isDown && !this.activeDialogue) {
+      if (this.keys.interagir.isDown && !this.activeDialogue && !this.interactedWith.npcIdle) {
         this.keyEIdle.setVisible(false);
+        this.interactedWith.npcIdle = true;
+        this.eKeyInteractions++;
+        this.checkCompletionDialogue();
         this.startDialogue([
           `E aí, ${playerName}!`,
           'Sou o Carlos do time comercial.',
@@ -466,8 +487,11 @@ class VpEstrategiaScene extends Phaser.Scene {
 
       this.keyEIdle2.setVisible(true);
       
-      if (this.keys.interagir.isDown && !this.activeDialogue) {
+      if (this.keys.interagir.isDown && !this.activeDialogue && !this.interactedWith.npcIdle2) {
         this.keyEIdle2.setVisible(false);
+        this.interactedWith.npcIdle2 = true;
+        this.eKeyInteractions++;
+        this.checkCompletionDialogue();
         this.startDialogue([
           'Oi! Eu sou a Ana.',
           'Trabalho com desenvolvimento aqui na Vivo.',
@@ -488,8 +512,11 @@ class VpEstrategiaScene extends Phaser.Scene {
 
       this.keyEIdle3.setVisible(true);
       
-      if (this.keys.interagir.isDown && !this.activeDialogue) {
+      if (this.keys.interagir.isDown && !this.activeDialogue && !this.interactedWith.npcIdle3) {
         this.keyEIdle3.setVisible(false);
+        this.interactedWith.npcIdle3 = true;
+        this.eKeyInteractions++;
+        this.checkCompletionDialogue();
         this.startDialogue([
           `Oi, ${playerName}! Eu sou a Mariana, trabalho no SAC.`,
           'Estou em dúvida sobre minha próxima certificação.',
@@ -797,6 +824,53 @@ class VpEstrategiaScene extends Phaser.Scene {
         this.scene.start("elevadorScene"); // Inicia a cena do elevador
       }
     });
+  }
+
+  checkCompletionDialogue() {
+    console.log("E key interactions:", this.eKeyInteractions);
+    console.log("Interacted with:", this.interactedWith);
+    
+    if (this.eKeyInteractions === 6) {
+      // Create exclamation above NPC
+      const finalExclamation = this.physics.add.sprite(this.npc.x, this.npc.y - 80, "indicator")
+        .setScale(0.3);
+      finalExclamation.play("exclaiming");
+      finalExclamation.setImmovable(true);
+
+      // Create balloon dialogue
+      const balloonX = this.npc.x + 90;
+      const balloonY = this.npc.y - 100;
+      const textY = this.npc.y - 120;
+
+      const balloonText = this.add.image(balloonX, balloonY, "balloonText")
+        .setOrigin(0.5)
+        .setScale(1);
+
+      const text = this.add.text(balloonX, textY, 
+        "Parabéns! Fase VP de Estratégia concluída!", {
+          fontSize: "16px",
+          fill: "#000000",
+          wordWrap: { width: balloonText.width - 20 },
+          align: "center",
+          fontFamily: "font"
+        }).setOrigin(0.5);
+
+      const enterKey = this.add.image(
+        balloonX + balloonText.width / 2 + 20,
+        balloonY,
+        'keyEnter'
+      ).setScale(0.1);
+
+      const removeDialogue = () => {
+        balloonText.destroy();
+        text.destroy();
+        enterKey.destroy();
+        finalExclamation.destroy();
+        this.input.keyboard.off('keydown-ENTER', removeDialogue);
+      };
+
+      this.input.keyboard.on('keydown-ENTER', removeDialogue);
+    }
   }
 }
 
