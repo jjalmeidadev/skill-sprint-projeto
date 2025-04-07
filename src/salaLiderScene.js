@@ -64,6 +64,25 @@ class SalaLider extends Phaser.Scene {
       }
     });
 
+    // Add world bounds that match the background size with adjusted height
+    const boundaryOffsetX = width - 1170; // Same as map offsetX 
+    const boundaryOffsetY = height - 650; // Same as map offsetY
+    const boundaryWidth = 1170;  // Width of the playable area
+    const boundaryHeight = 500;  // Further reduced height to move barrier up
+
+    // Create invisible bottom wall sprite higher up
+    const bottomWall = this.add.rectangle(
+      boundaryOffsetX + boundaryWidth/2,
+      boundaryOffsetY + boundaryHeight - 30, // Moved up by 30 pixels
+      boundaryWidth,
+      20,
+      0x000000,
+      0
+    );
+    this.physics.add.existing(bottomWall, true); // Make it a static physics object
+    
+    this.physics.world.setBounds(boundaryOffsetX, boundaryOffsetY, boundaryWidth, boundaryHeight);
+
     // Configuração do mapa e camadas
     const map = this.make.tilemap({ key: "salaLider", tileWidth: 10, tileHeight: 6 });
     const tileset = map.addTilesetImage("decoracao");
@@ -89,6 +108,9 @@ class SalaLider extends Phaser.Scene {
 
     this.createPlayer();
     this.createPlayerAnimations();
+
+    // Add collider with world bounds right after player creation
+    this.player.setCollideWorldBounds(true);
 
     this.physics.add.collider(this.player, layer3);
     this.physics.add.collider(this.player, layer4);
@@ -379,7 +401,6 @@ class SalaLider extends Phaser.Scene {
       if (this.indicatorActive && this.indicatorSound) {
         this.indicatorSound.stop();
         this.indicatorSound.destroy();
-        this.indicatorSound = null;
         this.indicatorActive = false;
       }
     });

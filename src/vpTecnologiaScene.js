@@ -42,7 +42,11 @@ class VpTecnologiaScene extends Phaser.Scene {
         layer.setCollisionByProperty({ collider: true }); // Configura colisão para as camadas com a propriedade "collider"
     });
 
+    this.physics.world.setBounds(0, 0, width, height); // Define os limites do mundo para coincidir com as dimensões da câmera
+
     this.createPlayer(width, height); // Cria o jogador
+    this.player.setCollideWorldBounds(true); // Faz o jogador colidir com os limites do mundo
+
     this.createPlayerAnimations(); // Cria as animações do jogador
     this.createButtonBack(width, height);//cria botão de voltar
 
@@ -106,7 +110,7 @@ class VpTecnologiaScene extends Phaser.Scene {
 
     if (this.keys.left.isDown) { // Verifica se a tecla esquerda está pressionada
       this.player.setVelocityX(-speed); // Move o jogador para a esquerda
-      this.player.anims.play("walk_left", true); // Toca a animação de andar para a esquerda
+      this.player.anims.play("walk_right", true); // Toca a animação de andar para a direita
       this.player.setFlipX(true); // Inverte o sprite horizontalmente
       moving = true; // Define que o jogador está se movendo
     } else if (this.keys.right.isDown) { // Verifica se a tecla direita está pressionada
