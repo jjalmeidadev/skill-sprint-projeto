@@ -237,7 +237,7 @@ class InitialScene extends Phaser.Scene {
       this.buttonSound(); // Toca o som de clique do botão
       this.shutdown(); // Para a música inicial
       this.scene.stop("initialScene"); // Para a cena inicial
-      this.scene.start("cutScene"); // Inicia a cena "cutScene"
+      this.scene.start("tutorialScene"); // Inicia a cena "cutScene"
     });
   }
 

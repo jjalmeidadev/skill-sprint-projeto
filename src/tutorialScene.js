@@ -118,12 +118,16 @@ class TutorialScene extends Phaser.Scene {
                 placeholderText.setVisible(true); // Mostra o texto de placeholder
             }
 
-            if (this.textEntry.text.length > 0) { // Verifica se o texto não está vazio
-                placeholderText.setVisible(false); // Esconde o texto de placeholder
-                this.keyEnterIcon.setVisible(true); // Mostra a tecla ENTER
+            if (this.textEntry.text.length > 0) {
+                placeholderText.setVisible(false);
+                if (this.currentDialogIndex !== 2) {
+                    this.keyEnterIcon.setVisible(true);
+                } else {
+                    this.keyEnterIcon.setVisible(false); // Garante que ela continue oculta na fala 2
+                }
             } else {
-                placeholderText.setVisible(true); // Mostra o texto de placeholder
-                this.keyEnterIcon.setVisible(false); // Esconde novamente a tecla ENTER
+                placeholderText.setVisible(true);
+                this.keyEnterIcon.setVisible(false);
             }
         });
 
@@ -175,6 +179,10 @@ class TutorialScene extends Phaser.Scene {
             }
         } else {
             this.dialogText.setText(this.introduction[this.currentDialogIndex]); // Exibe a fala correspondente da introdução
+
+            if (this.keyEnterIcon && this.currentDialogIndex !== 2) {
+                this.keyEnterIcon.setVisible(true);
+            }
         }
     }
 
@@ -212,9 +220,11 @@ class TutorialScene extends Phaser.Scene {
         if (optionIndex === 1) { // Se o jogador escolheu "Não"
             this.currentConditionalIndex = 1; // Começa a exibir as falas condicionais a partir do índice 1
             this.dialogText.setText(this.conditionalDialog[this.currentConditionalIndex]); // Atualiza o texto do diálogo com a fala condicional
+            if (this.keyEnterIcon) this.keyEnterIcon.setVisible(true);
         } else { // Se o jogador escolheu "Sim"
             this.currentConditionalIndex = -1; // Evita o loop de exibição das falas condicionais
             this.dialogText.setText(this.conditionalDialog[0]); // Atualiza o texto do diálogo com a primeira fala condicional
+            if (this.keyEnterIcon) this.keyEnterIcon.setVisible(true);
             this.yesSelected = true; // Marca que o jogador escolheu "Sim"
             this.overlayVisible = false; // Esconde a imagem de sobreposição
         }
@@ -242,14 +252,18 @@ class TutorialScene extends Phaser.Scene {
                 this.dialogText.setText(this.finalDialog[0]);
                 this.overlayImage.setAlpha(1);
                 this.overlayVisible = true;
+                if (this.keyEnterIcon) this.keyEnterIcon.setVisible(true);
+                this.currentDialogIndex = 99;
                 return;
             }
             if (this.currentFinalIndex < this.finalDialog.length - 1) {
                 this.currentFinalIndex++;
                 this.dialogText.setText(this.finalDialog[this.currentFinalIndex]);
+                if (this.keyEnterIcon) this.keyEnterIcon.setVisible(true);
+                this.currentDialogIndex = 99;
                 return;
             }
-            this.scene.start('officeScene'); // Vai para a mesma cena para ambos
+            this.scene.start('officeScene');
             return;
         }
     
@@ -257,6 +271,9 @@ class TutorialScene extends Phaser.Scene {
         if (this.optionSelected && this.currentConditionalIndex >= 0 && this.currentConditionalIndex < this.conditionalDialog.length - 1) {
             this.currentConditionalIndex++;
             this.dialogText.setText(this.conditionalDialog[this.currentConditionalIndex]);
+
+            this.currentDialogIndex = 99;
+            if (this.keyEnterIcon) this.keyEnterIcon.setVisible(true);
             return;
         }
     
@@ -265,6 +282,8 @@ class TutorialScene extends Phaser.Scene {
             this.dialogText.setText(this.finalDialog[0]);
             this.overlayImage.setAlpha(1);
             this.overlayVisible = true;
+            if (this.keyEnterIcon) this.keyEnterIcon.setVisible(true);
+            this.currentDialogIndex = 99;
             this.currentConditionalIndex++; // Marca que entrou nessa fase
             return;
         }
@@ -274,6 +293,7 @@ class TutorialScene extends Phaser.Scene {
             if (this.currentFinalIndex < this.finalDialog.length - 1) {
                 this.currentFinalIndex++;
                 this.dialogText.setText(this.finalDialog[this.currentFinalIndex]);
+                if (this.keyEnterIcon) this.keyEnterIcon.setVisible(true); 
                 return;
             }
             this.scene.start('officeScene'); // Unificado para ir sempre para officeScene
@@ -284,6 +304,8 @@ class TutorialScene extends Phaser.Scene {
         if (this.currentDialogIndex < this.introduction.length) {
             if (this.currentDialogIndex === 2 && this.keyEnterIcon) {
                 this.keyEnterIcon.setVisible(false);
+            } else if (this.keyEnterIcon) {
+                this.keyEnterIcon.setVisible(true);
             }
             this.showDialog();
         }
