@@ -134,7 +134,7 @@ class VpPessoasScene extends Phaser.Scene {
       y: height - 570
     };
     this.compassArrow = this.add.image(
-      this.cameras.main.width / 2,  210, "arrow" )
+      this.cameras.main.width / 2,  335, "arrow" )
       .setScrollFactor(0)  // fixa na tela, não desloca com o mapa
       .setDepth(1000)      // acima de todos os elementos
       .setScale(0.5)
