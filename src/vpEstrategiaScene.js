@@ -242,16 +242,16 @@ class VpEstrategiaScene extends Phaser.Scene {
     this.exclamationIdle3.setVisible(false);
 
     // Adiciona as imagens da tecla E para cada NPC (ajustando posição Y)
-    this.keyEMain = this.add.image(this.npc.x, this.npc.y - 50, 'keyE').setScale(0.2);
+    this.keyEMain = this.add.image(this.npc.x, this.npc.y - 50, 'keyE').setScale(0.05); // Changed from 0.2 to 0.1
     this.keyEMain.setVisible(false);
 
-    this.keyEIdle = this.add.image(this.npcIdle.x, this.npcIdle.y - 50, 'keyE').setScale(0.2);
+    this.keyEIdle = this.add.image(this.npcIdle.x, this.npcIdle.y - 50, 'keyE').setScale(0.05); // Changed from 0.2 to 0.1
     this.keyEIdle.setVisible(false);
 
-    this.keyEIdle2 = this.add.image(this.npcIdle2.x, this.npcIdle2.y - 50, 'keyE').setScale(0.2);
+    this.keyEIdle2 = this.add.image(this.npcIdle2.x, this.npcIdle2.y - 50, 'keyE').setScale(0.05); // Changed from 0.2 to 0.1
     this.keyEIdle2.setVisible(false);
 
-    this.keyEIdle3 = this.add.image(this.npcIdle3.x, this.npcIdle3.y - 50, 'keyE').setScale(0.2);
+    this.keyEIdle3 = this.add.image(this.npcIdle3.x, this.npcIdle3.y - 50, 'keyE').setScale(0.05); // Changed from 0.2 to 0.1
     this.keyEIdle3.setVisible(false);
 
     // Create mug container with exclamation and key E
@@ -265,9 +265,8 @@ class VpEstrategiaScene extends Phaser.Scene {
       .setScale(0.15)
       .setVisible(false);
 
-    this.keyEMug = this.add.image(0, -60, 'keyE') // Changed Y position from -20 to -60 to place it higher above the mug
-      .setScale(0.2)
-      .setVisible(false);
+    this.keyEMug = this.add.image(0, -60, 'keyE').setScale(0.05); // Changed from 0.2 to 0.1
+    this.keyEMug.setVisible(false);
     
     this.mugContainer.add([this.mugSprite, this.mugExclamation, this.keyEMug]);
 
@@ -305,7 +304,7 @@ class VpEstrategiaScene extends Phaser.Scene {
           // Add shorter text
           const messageText = this.add.text(0, 50, 
             "Você tomou o café da gratidão! Estava delicioso.", {
-              fontSize: '24px',
+              fontSize: '18px',
               fill: '#000000',
               align: 'center',
               fontFamily: 'font'
@@ -336,9 +335,8 @@ class VpEstrategiaScene extends Phaser.Scene {
       .setScale(0.15)
       .setVisible(false);
 
-    this.keyEMobile = this.add.image(0, -60, 'keyE')
-      .setScale(0.2)
-      .setVisible(false);
+    this.keyEMobile = this.add.image(0, -60, 'keyE').setScale(0.05); // Changed from 0.2 to 0.1
+    this.keyEMobile.setVisible(false);
     
     this.mobileContainer.add([this.mobileSprite, this.mobileExclamation, this.keyEMobile]);
 
@@ -409,9 +407,8 @@ class VpEstrategiaScene extends Phaser.Scene {
       .setScale(0.15)
       .setVisible(false);
 
-    this.keyESheet = this.add.image(0, -60, 'keyE')
-      .setScale(0.2)
-      .setVisible(false);
+    this.keyESheet = this.add.image(0, -60, 'keyE').setScale(0.05); // Changed from 0.2 to 0.1
+    this.keyESheet.setVisible(false);
     
     this.sheetContainer.add([this.sheetSprite, this.sheetExclamation, this.keyESheet]);
 
@@ -522,7 +519,6 @@ class VpEstrategiaScene extends Phaser.Scene {
           'Estou em dúvida sobre minha próxima certificação.',
           'Aqui na Vivo dá pra crescer e ganhar benefícios melhores,',
           'mas eu não entendo direito como funciona.',
-          'Será que aumento vem antes ou depois da promoção?',
           'Você pode me mostrar a ordem das coisas?'
         ], this.npcIdle3); // Passa o npcIdle3 como referência
 
@@ -812,7 +808,7 @@ class VpEstrategiaScene extends Phaser.Scene {
 
   createButtonBack(width, height) {
     const buttonBack = this.add.image(width - 700, height - 680, "keyE"); // Adiciona a imagem do botão de retorno na posição especificada
-    buttonBack.setScale(0.2); // Ajusta o tamanho da imagem do botão de retorno
+    buttonBack.setScale(0.1); // Changed from 0.2 to 0.1
 
     this.input.keyboard.on("keydown-E", () => { // Adiciona um evento para a tecla "E"
       const distance = Phaser.Math.Distance.Between( // Calcula a distância entre o jogador e o botão de retorno
