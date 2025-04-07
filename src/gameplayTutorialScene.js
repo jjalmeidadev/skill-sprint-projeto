@@ -14,7 +14,7 @@ class GameplayTutorialScene extends Phaser.Scene {
     preload() {
         this.load.font('font', 'fonts/PixelifySans-VariableFont_wght.ttf'); // Carrega a fonte
  
-        this.load.image('introduction', '../assets/tutorial de jogabilidade.png'); // Carrega a imagem de introdução
+        this.load.image('introduction', '../assets/instrucao.png'); // Carrega a imagem de introdução
 
         this.load.audio('buttonSound', '../assets/sounds/687107__aphom000__mouse-2-button-fast-click.wav'); // Efeito sonoro de clique
         this.load.audio('keySound', '../assets/sounds/computer-keyboard-typing-290582 (mp3cut.net).mp3'); // Efeito sonoros de tecla
