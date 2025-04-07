@@ -75,6 +75,7 @@ class TutorialScene extends Phaser.Scene {
         const layer11 = map.createLayer("planta", tileset1, offsetX, 0).setScale(2.5); // Cria a camada de plantas
         const layer12 = map.createLayer("porta", tileset1, offsetX, 0).setScale(2.5); // Cria a camada de portas
         const layer13 = map.createLayer("decoracao", tileset1, offsetX, 0).setScale(2.5); // Cria a camada de decoração
+        const layer14 = map.createLayer("superiorPorta", tileset2, offsetX, 0).setScale(2.5); // Cria a camada superior da porta e aplica escala
 
         layer1.setCollisionByProperty({ collider: true }); // Ativa colisão para a camada de chão
         layer2.setCollisionByProperty({ collider: true }); // Ativa colisão para a camada de chão do líder
