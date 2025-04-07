@@ -142,7 +142,7 @@ class VpNegociosScene extends Phaser.Scene {
 
     this.createServer(); // Chama o método para criar o servidor quebrado no mapa
   // Depois de criar o locker e antes de finalizar o create():
-this.compassArrow = this.add.image(this.cameras.main.width / 2, 210, 'arrow')
+this.compassArrow = this.add.image(this.cameras.main.width / 2, 335, 'arrow')
 .setScrollFactor(0)        // Para que a seta fique fixa na tela
 .setDepth(1000)            // Para que fique acima de outros objetos
 .setScale(0.5)
