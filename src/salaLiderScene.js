@@ -2,8 +2,17 @@ class SalaLider extends Phaser.Scene {
   constructor() {
     super({ key: "salaLiderScene" });
   }
+
+  init(data) {
+    this.selectedSpriteSheet = data.selectedSpriteSheet;
+    console.log('Selected Sprite Sheet:', this.selectedSpriteSheet);
+  }
+
   preload() {
-    this.load.spritesheet("player", "../assets/Player.png", {frameWidth: 32, frameHeight: 32 }); // Sprite do jogador com dimensões de cada frame
+    this.load.spritesheet('player', `../assets/personagens/skinsPlayer/players/${this.selectedSpriteSheet}.png`, {
+        frameWidth: 32,
+        frameHeight: 32,
+    });
     this.load.spritesheet("indicator", "../assets/exclamaçãoRoxa.png", {frameWidth: 254,  frameHeight: 305 }); // Sprite da exclamação com dimensões de cada frame
     this.load.spritesheet("leader", "../assets/personagens/LiderReading.png", { frameWidth: 16, frameHeight: 32 }); // Sprite da líder com dimensões de cada frame
 

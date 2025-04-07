@@ -64,7 +64,7 @@
       this.buttonSound(); // Reproduz o som do clique do botão
       this.shutdown(); // Interrompe a música da cena
       this.scene.stop('ajusteScene'); // Para a cena atual
-      this.scene.start('initialScene'); // Inicia a cena inicial
+      this.scene.start('initialScene', {selectedSpriteSheet: this.selectedSpriteSheet,}); // Inicia a cena inicial
     });
   }
 

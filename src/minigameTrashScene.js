@@ -3,6 +3,11 @@ class MinigameTrashScene extends Phaser.Scene {
         super({key: 'minigameTrashScene'});
     }
 
+    init(data) {
+        this.selectedSpriteSheet = data.selectedSpriteSheet;
+        console.log('Selected Sprite Sheet:', this.selectedSpriteSheet);
+    }
+    
     preload() {
         this.load.image('backgroundTrash', '../assets/assetsTrash/backgroundTrash.png'); // Carrega o fundo
         this.load.spritesheet('banana', '../assets/assetsTrash/banana.png', { frameWidth: 498, frameHeight: 316 }); // Carrega a banana

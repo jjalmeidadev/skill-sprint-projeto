@@ -29,6 +29,11 @@ class TutorialScene extends Phaser.Scene {
         this.overlayVisible = false; //Controla se a imagem de sobreposição foi exibida
     }
 
+    init(data) {
+        this.selectedSpriteSheet = data.selectedSpriteSheet;
+        console.log('Selected Sprite Sheet:', this.selectedSpriteSheet);
+    }
+
     preload() {
         this.load.image('vivinho', '../assets/vivinho.png'); // Carrega a imagem do personagem Vivinho
         this.load.image('buttonYes', '../assets/botao_sim.png'); // Carrega a imagem do botão "Sim"

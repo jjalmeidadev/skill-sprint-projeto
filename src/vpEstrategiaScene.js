@@ -3,13 +3,21 @@ class VpEstrategiaScene extends Phaser.Scene {
         super({ key: 'VpEstrategiaScene' });
     }
 
+    init(data) {
+      this.selectedSpriteSheet = data.selectedSpriteSheet;
+      console.log('Selected Sprite Sheet:', this.selectedSpriteSheet);
+    }
+
     preload() {
         this.load.tilemapTiledJSON('map_estrategia', '../assets/mapaVpEstrategia/map_estrategia.json'); // Carrega o arquivo JSON do mapa criado no Tiled
         this.load.image('decoracao', '../assets/mapaVpEstrategia/decoracao.png'); // Carrega o tileset de decoração
         this.load.image('paredes', '../assets/mapaVpEstrategia/paredes.png'); // Carrega o tileset de paredes
         this.load.image('personalizado_vivo', '../assets/mapaVpEstrategia/personalizado_vivo.png'); // Carrega o tileset personalizado
         
-        this.load.spritesheet('player', '../assets/Player.png', { frameWidth: 32, frameHeight: 32 }); // Carrega o spritesheet do jogador com dimensões de cada frame
+        this.load.spritesheet('player', `../assets/personagens/skinsPlayer/players/${this.selectedSpriteSheet}.png`, {
+          frameWidth: 32,
+          frameHeight: 32,
+      }); // Carrega o spritesheet do jogador com base na seleção do usuário
         this.load.image('npc', '../assets/viviane_lider.png'); // Carrega a imagem da NPC
         this.load.image('keyE', '../assets/teclaE.png'); // Carrega a imagem da tecla "E" para interação
         this.load.image("balloonText", "../assets/balaoTexto.png"); // Carrega a imagem do balão de fala da NPC

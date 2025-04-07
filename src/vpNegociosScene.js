@@ -4,12 +4,20 @@ class VpNegociosScene extends Phaser.Scene {
       this.npc15ChipCollected = false; // Variável para controlar se o chip do NPC 15 foi coletado
     }
 
+    init(data) {
+      this.selectedSpriteSheet = data.selectedSpriteSheet;
+      console.log('Selected Sprite Sheet:', this.selectedSpriteSheet);
+    }
+
     preload() {
         this.load.tilemapTiledJSON('vpNegocios', '../assets/mapaVPNegocios/mapaVPNegocios.json'); // Carrega o arquivo JSON do mapa criado no Tiled
         this.load.image('decoracao', '../assets/mapaVPNegocios/decoracao.png'); // Carrega a imagem do tileset de decoração
         this.load.image('paredes', '../assets/mapaVPNegocios/paredes.png'); // Carrega a imagem do tileset de paredes
 
-        this.load.spritesheet('player', '../assets/personagens/skinsPlayer/player1all.png', { frameWidth: 16, frameHeight: 32 }); // Carrega o spritesheet do jogador com dimensões de cada frame
+        this.load.spritesheet('player', `../assets/personagens/skinsPlayer/players/${this.selectedSpriteSheet}.png`, {
+          frameWidth: 32,
+          frameHeight: 32,
+      });
         this.load.spritesheet("indicator", "../assets/exclamaçãoRoxa.png", {frameWidth: 254, frameHeight: 305,}); // Carrega o spritesheet do indicador de exclamação
         this.load.spritesheet('chip', '../assets/minigameVpNegocios/chip.png', {frameWidth: 520, frameHeight: 520}); // Carrega o spritesheet do chip
         this.load.spritesheet('letterA', '../assets/minigameVpNegocios/letterA.png', {frameWidth: 288, frameHeight: 301}); // Carrega o spritesheet da Letra A

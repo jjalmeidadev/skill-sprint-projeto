@@ -5,6 +5,11 @@ class ElevadorScene extends Phaser.Scene {
     this.panelElevShown = false; // Controla se o painel do elevador foi mostrado
   }
 
+  init(data) {
+    this.selectedSpriteSheet = data.selectedSpriteSheet;
+    console.log('Selected Sprite Sheet:', this.selectedSpriteSheet);
+  }
+
   preload() {
     this.load.image("backgroundElev", "../assets/bgelevadorvar1.png"); // Carrega a imagem de fundo do elevador
     this.load.image("backgroundElev2", "../assets/bgelevadorvar2.jpg"); // Carrega a imagem de fundo do elevador
@@ -23,8 +28,11 @@ class ElevadorScene extends Phaser.Scene {
     this.load.video("videoElev3", "../assets/videoelev3.mp4"); // Carrega o vídeo do elevador
     
     this.load.spritesheet("indicator", "../assets/spriteexclamação.png", { frameWidth: 254, frameHeight: 291 }); // Carrega a sprite do indicador
-    this.load.spritesheet("player", "../assets/personagens/skinsPlayer/player1all.png", { frameWidth: 16, frameHeight: 32, }); // Carrega a sprite do jogador
     
+    this.load.spritesheet('player', `../assets/personagens/skinsPlayer/players/${this.selectedSpriteSheet}.png`, {
+      frameWidth: 32,
+      frameHeight: 32,
+  });
     this.load.audio('elevatorAudio', '../assets/Local Forecast - Elevator [ ezmp3.co ].mp3'); // Carrega o áudio do elevador
     this.load.audio('indicatorSound', '../assets/sounds/497198_abacagi_bubble-pops (mp3cut.net).wav'); // Carrega o áudio do indicador
     this.load.audio('buttonSound', '../assets/sounds/687107__aphom000__mouse-2-button-fast-click.wav'); // Carrega o áudio do botão
@@ -314,7 +322,7 @@ class ElevadorScene extends Phaser.Scene {
     this.buttonOfficeEl.on("pointerdown", () => { // Adiciona um evento de clique ao botão do escritório
       this.buttonClick.play(); // Toca o som de clique do botão
       this.scene.stop("elevadorScene"); // Para a cena atual
-      this.scene.start("officeScene"); // Inicia a cena do escritório
+      this.scene.start("officeScene", {selectedSpriteSheet: this.selectedSpriteSheet,}); // Inicia a cena do escritório
     });
   }
 
@@ -331,7 +339,7 @@ class ElevadorScene extends Phaser.Scene {
       this.buttonClick.play(); // Toca o som de clique do botão
       this.shutdown(); // Finaliza a cena atual
       this.scene.stop("elevadorScene"); // Para a cena atual
-      this.scene.start("vpPessoasScene"); // Inicia a cena de Pessoas
+      this.scene.start("vpPessoasScene", {selectedSpriteSheet: this.selectedSpriteSheet,}); // Inicia a cena de Pessoas
     });
   }
 
@@ -348,7 +356,7 @@ class ElevadorScene extends Phaser.Scene {
       this.buttonClick.play(); // Toca o som de clique do botão
       this.shutdown(); // Finaliza a cena atual
       this.scene.stop("elevadorScene"); // Para a cena atual
-      this.scene.start("VpEstrategiaScene"); // Inicia a cena de Estratégias
+      this.scene.start("VpEstrategiaScene", {selectedSpriteSheet: this.selectedSpriteSheet,}); // Inicia a cena de Estratégias
     });
   }
 
@@ -365,7 +373,7 @@ class ElevadorScene extends Phaser.Scene {
       this.buttonClick.play(); // Toca o som de clique do botão
       this.shutdown(); // Finaliza a cena atual
       this.scene.stop("elevadorScene"); // Para a cena atual
-      this.scene.start("vpNegociosScene"); // Inicia a cena de Negócios
+      this.scene.start("vpNegociosScene", {selectedSpriteSheet: this.selectedSpriteSheet,}); // Inicia a cena de Negócios
     });
   }
 
@@ -382,7 +390,7 @@ class ElevadorScene extends Phaser.Scene {
       this.buttonClick.play(); // Toca o som de clique do botão
       this.shutdown(); // Finaliza a cena atual
       this.scene.stop("elevadorScene"); // Para a cena atual
-      this.scene.start("vpTecnologiaScene"); // Inicia a cena de Tecnologia
+      this.scene.start("vpTecnologiaScene", {selectedSpriteSheet: this.selectedSpriteSheet,}); // Inicia a cena de Tecnologia
     });
   }
 
@@ -399,7 +407,7 @@ class ElevadorScene extends Phaser.Scene {
       this.buttonClick.play(); // Toca o som de clique do botão
       this.shutdown(); // Finaliza a cena atual
       this.scene.stop("elevadorScene"); // Para a cena atual
-      this.scene.start("relacoesScene"); // Inicia a cena de Relações
+      this.scene.start("relacoesScene", {selectedSpriteSheet: this.selectedSpriteSheet,}); // Inicia a cena de Relações
     });
   }
 }

@@ -44,7 +44,10 @@ class OfficeScene extends Phaser.Scene {
     this.load.image("panelElev", "../assets/painelelevador.png"); // Carrega a imagem do painel do elevador
     this.load.image("buttonElevOffice", "../assets/botaocimaelevador.png"); // Carrega a imagem do botão para subir no elevador
 
-    this.load.spritesheet(`person`, `../assets/personagens/skinsPlayer/players/${this.selectedSpriteSheet}.png`, { frameWidth: 32, frameHeight: 32 });
+    this.load.spritesheet('player', `../assets/personagens/skinsPlayer/players/${this.selectedSpriteSheet}.png`, {
+      frameWidth: 32,
+      frameHeight: 32,
+  });
   }
 
   create() {

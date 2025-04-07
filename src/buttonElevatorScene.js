@@ -2,6 +2,11 @@ class buttonElevatorScene extends Phaser.Scene {
     constructor() {
         super({ key: 'buttonElevatorScene' });
     }
+    
+    init(data) {
+        this.selectedSpriteSheet = data.selectedSpriteSheet;
+        console.log('Selected Sprite Sheet:', this.selectedSpriteSheet);
+    }
 
     preload() {
         this.load.image('buttonElevOffice', '../assets/botaocimaelevador.png'); // Carrega a imagem do botão do elevador
@@ -24,7 +29,7 @@ class buttonElevatorScene extends Phaser.Scene {
 
         this.buttonUP.on("pointerdown", () => { // Adiciona o evento de clique
             this.buttonClick.play(); // Toca o som do botão
-            this.scene.start("elevadorScene"); // Troca para a cena do elevador
+            this.scene.start("elevadorScene", {selectedSpriteSheet: this.selectedSpriteSheet,}); // Troca para a cena do elevador
         });
     }
 }

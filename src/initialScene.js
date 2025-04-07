@@ -238,7 +238,7 @@ class InitialScene extends Phaser.Scene {
       this.buttonSound(); // Toca o som de clique do botão
       this.shutdown(); // Para a música inicial
       this.scene.stop("initialScene"); // Para a cena inicial
-      this.scene.start("PlayerSkin"); // Inicia a cena "PlayerSkin"
+      this.scene.start("PlayerSkin", {selectedSpriteSheet: this.selectedSpriteSheet,}); // Inicia a cena "PlayerSkin"
     });
   }
 
@@ -250,7 +250,7 @@ class InitialScene extends Phaser.Scene {
       this.buttonSound(); // Toca o som de clique do botão
       this.shutdown(); // Para a música inicial
       this.scene.stop("initialScene"); // Para a cena inicial
-      this.scene.switch("creditosScene"); // Alterna para a cena "creditosScene"
+      this.scene.switch("creditosScene", {selectedSpriteSheet: this.selectedSpriteSheet,}); // Alterna para a cena "creditosScene"
     });
   }
 
@@ -262,7 +262,7 @@ class InitialScene extends Phaser.Scene {
       this.buttonSound(); // Toca o som de clique do botão
       this.shutdown(); // Para a música inicial
       this.scene.stop("initialScene"); // Para a cena inicial
-      this.scene.start("ajusteScene"); // Inicia a cena "ajusteScene"
+      this.scene.start("ajusteScene", {selectedSpriteSheet: this.selectedSpriteSheet,}); // Inicia a cena "ajusteScene"
     });
   }
 

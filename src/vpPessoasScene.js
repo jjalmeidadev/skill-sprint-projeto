@@ -6,6 +6,11 @@ class VpPessoasScene extends Phaser.Scene {
       this.npcMobileFixedCreated = false;
     }
 
+    init(data) {
+      this.selectedSpriteSheet = data.selectedSpriteSheet;
+      console.log('Selected Sprite Sheet:', this.selectedSpriteSheet);
+    }
+
     preload() {
       this.load.tilemapTiledJSON('vpPessoas', '../assets/mapaVPPessoas/mapaVPPessoas.json'); // Carrega o mapa da VP Pessoas em formato JSON
       this.load.image('decoracao', '../assets/mapaVPPessoas/decoracao.png'); // Carrega a imagem de decoração do mapa
@@ -31,7 +36,12 @@ class VpPessoasScene extends Phaser.Scene {
 
       this.load.spritesheet('trash', '../assets/trash.png', {frameWidth: 267, frameHeight: 343}); // Carrega o spritesheet do objeto de lixo
       this.load.spritesheet('book', '../assets/assetsBookVPPessoas/book.png', {frameWidth: 835, frameHeight: 520}); // Carrega o spritesheet do objeto livro
-      this.load.spritesheet('player', '../assets/personagens/skinsPlayer/player1all.png', { frameWidth: 16, frameHeight: 32 }); // Carrega o spritesheet do jogador com dimensões dos frames
+      
+      this.load.spritesheet('player', `../assets/personagens/skinsPlayer/players/${this.selectedSpriteSheet}.png`, {
+        frameWidth: 32,
+        frameHeight: 32,
+      });
+
       this.load.spritesheet("indicator", "../assets/exclamaçãoRoxa.png", {frameWidth: 254, frameHeight: 305}); // Carrega o spritesheet do indicador de interação
 
       this.load.image('keyE', '../assets/teclaE.png'); // Carrega a imagem da tecla "E" para interação

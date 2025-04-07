@@ -3,12 +3,20 @@ class VpTecnologiaScene extends Phaser.Scene {
       super({ key: 'vpTecnologiaScene' });
   }
 
+  init(data) {
+    this.selectedSpriteSheet = data.selectedSpriteSheet;
+    console.log('Selected Sprite Sheet:', this.selectedSpriteSheet);
+  }
+
   preload() {
       //Carrega o mapa do Tiled e os tilesets
       this.load.tilemapTiledJSON('vpTecnologia', '../assets/vp_tecnologia/mapa.json'); // Carrega o arquivo JSON do mapa
       this.load.image('decoracao', '../assets/mapaVPPessoas/decoracao.png'); // Carrega a imagem do tileset de decoração
       this.load.image('paredes', '../assets/mapaVPPessoas/paredes.png'); // Carrega a imagem do tileset de paredes
-      this.load.spritesheet('player', '../assets/Player.png', { frameWidth: 32, frameHeight: 32 }); // Carrega o spritesheet do jogador
+      this.load.spritesheet('player', `../assets/personagens/skinsPlayer/players/${this.selectedSpriteSheet}.png`, {
+        frameWidth: 32,
+        frameHeight: 32,
+      });
 
       this.load.audio('walkSound', '../assets/sounds/753292__vrymaa__footsteps-high-heels-hardwood-walk-run (mp3cut.net).wav'); // Carrega o som de passos
   }
@@ -147,8 +155,9 @@ class VpTecnologiaScene extends Phaser.Scene {
       this.sound.stopAll();
 
       this.scene.stop("vpTecnologiaScene"); // Para a cena atual
-      this.scene.start("elevadorScene"); // Inicia a cena do elevador
+      this.scene.start("elevadorScene", {selectedSpriteSheet: this.selectedSpriteSheet,}); // Inicia a cena do elevador
     }
-    });
+  });
   }
 }
+

@@ -23,7 +23,10 @@ class PlayerSkinSelection extends Phaser.Scene {
             this.load.image(`person${i}Select`, `../assets/personagens/playerSkins/person${i}Select.png`); 
             // Carrega outra imagem com o identificador `person${i}Select` (ex.: person1Select, person2Select, etc.) 
             // e especifica o caminho do arquivo correspondente na pasta de assets.
-            this.load.spritesheet(`person`, `../assets/personagens/skinsPlayer/players/${this.selectedSpriteSheet}.png`, { frameWidth: 32, frameHeight: 32 });
+            this.load.spritesheet('player', `../assets/personagens/skinsPlayer/players/${this.selectedSpriteSheet}.png`, {
+                frameWidth: 32,
+                frameHeight: 32,
+            });
         }
 
         // Certifique-se de carregar os fundos também
@@ -188,7 +191,7 @@ class PlayerSkinSelection extends Phaser.Scene {
         this.buttonSound(); // Toca o som de clique do botão
         this.shutdown(); // Para a música inicial
         this.scene.stop("PlayerSkin"); // Para a cena inicial
-        this.scene.start("cutScene"); // Inicia a cena "cutScene"
+        this.scene.start("cutScene", {selectedSpriteSheet: this.selectedSpriteSheet,}); // Inicia a cena "cutScene"
     });
     }
 

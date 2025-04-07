@@ -368,7 +368,7 @@ class CurriculoScene extends Phaser.Scene {
                         this.clickSound = this.sound.add('clickSound', { loop: false, volume: 10 });
                         this.clickSound.play();
 
-                        this.scene.start('QuizVpPessoas');
+                        this.scene.start('QuizVpPessoas', {selectedSpriteSheet: this.selectedSpriteSheet,});
                     });
                 }
             });
@@ -398,7 +398,7 @@ class CurriculoScene extends Phaser.Scene {
                         this.clickSound = this.sound.add('clickSound', { loop: false, volume: 10 });
                         this.clickSound.play();
 
-                        this.scene.start('QuizVpEstrategia');
+                        this.scene.start('QuizVpEstrategia', {selectedSpriteSheet: this.selectedSpriteSheet,});
                     });
                 }
             });
@@ -428,7 +428,7 @@ class CurriculoScene extends Phaser.Scene {
                         this.clickSound = this.sound.add('clickSound', { loop: false, volume: 10 });
                         this.clickSound.play();
 
-                        this.scene.start('QuizVpNegocios');
+                        this.scene.start('QuizVpNegocios', {selectedSpriteSheet: this.selectedSpriteSheet,});
                     });
                 }
             });
@@ -458,7 +458,7 @@ class CurriculoScene extends Phaser.Scene {
                         this.clickSound = this.sound.add('clickSound', { loop: false, volume: 10 });
                         this.clickSound.play();
 
-                        this.scene.start('QuizVpRelacoes');
+                        this.scene.start('QuizVpRelacoes', {selectedSpriteSheet: this.selectedSpriteSheet,});
                     });
                 }
             });
@@ -488,7 +488,7 @@ class CurriculoScene extends Phaser.Scene {
                         this.clickSound = this.sound.add('clickSound', { loop: false, volume: 10 });
                         this.clickSound.play();
 
-                        this.scene.start('QuizVpTecnologia');
+                        this.scene.start('QuizVpTecnologia', {selectedSpriteSheet: this.selectedSpriteSheet,});
                     });
                 }
             });
@@ -713,7 +713,7 @@ class QuizVpPessoas extends Phaser.Scene {
                     });
                 } else {
                     // Quiz completo
-                    this.scene.start('CongratulationsSceneResumeVpPeople', { score: score });
+                    this.scene.start('CongratulationsSceneResumeVpPeople', { score: score }, {selectedSpriteSheet: this.selectedSpriteSheet,});
                 }
             });
         } else {
@@ -813,7 +813,7 @@ class CongratulationsSceneCurriculoVpPessoas extends Phaser.Scene {
                         this.clickSound.play();
 
                         this.scene.stop('CongratulationsSceneCurriculoVpPessoas');
-                        this.scene.resume('officeScene');
+                        this.scene.resume('officeScene', {selectedSpriteSheet: this.selectedSpriteSheet,});
 
                     });
                 }
@@ -1053,7 +1053,7 @@ class QuizVpEstrategia extends Phaser.Scene {
                     });
                 } else {
                     // Quiz completo
-                    this.scene.start('CongratulationsSceneCurriculoVpEstrategia', { score: score });
+                    this.scene.start('CongratulationsSceneCurriculoVpEstrategia', { score: score }, {selectedSpriteSheet: this.selectedSpriteSheet,});
                 }
             });
         } else {
@@ -1152,7 +1152,7 @@ class CongratulationsSceneCurriculoVpEstrategia extends Phaser.Scene {
                         this.clickSound.play();
 
                         this.scene.stop('CongratulationsSceneCurriculoVpEstrategia');
-                        this.scene.resume('officeScene');
+                        this.scene.resume('officeScene', {selectedSpriteSheet: this.selectedSpriteSheet,});
                     });
                 }
             });
@@ -1388,7 +1388,7 @@ class QuizVpNegocios extends Phaser.Scene {
                     });
                 } else {
                     // Quiz completo
-                    this.scene.start('CongratulationsSceneCurriculoVpNegocios', { score: score });
+                    this.scene.start('CongratulationsSceneCurriculoVpNegocios', { score: score }), {selectedSpriteSheet: this.selectedSpriteSheet,};
                 }
             });
         } else {
@@ -1487,7 +1487,7 @@ class CongratulationsSceneCurriculoVpNegocios extends Phaser.Scene {
                         this.clickSound.play();
 
                         this.scene.stop('CongratulationsSceneCurriculoVpNegocios');
-                        this.scene.resume('officeScene');
+                        this.scene.resume('officeScene', {selectedSpriteSheet: this.selectedSpriteSheet,});
                     });
                 }
             });
@@ -1723,7 +1723,7 @@ class QuizVpRelacoes extends Phaser.Scene {
                     });
                 } else {
                     // Quiz completo
-                    this.scene.start('CongratulationsSceneCurriculoVpRelacoes', { score: score });
+                    this.scene.start('CongratulationsSceneCurriculoVpRelacoes', { score: score }, {selectedSpriteSheet: this.selectedSpriteSheet,});
                 }
             });
         } else {
@@ -1823,7 +1823,7 @@ class CongratulationsSceneCurriculoVpRelacoes extends Phaser.Scene {
                         this.clickSound.play();
 
                         this.scene.stop('CongratulationsSceneCurriculoVpRelacoes');
-                        this.scene.resume('officeScene');
+                        this.scene.resume('officeScene', {selectedSpriteSheet: this.selectedSpriteSheet,});
                     });
                 }
             });
@@ -2059,7 +2059,7 @@ class QuizVpTecnologia extends Phaser.Scene {
                     });
                 } else {
                     // Quiz completo
-                    this.scene.start('CongratulationsSceneCurriculoVpTecnologia', { score: score });
+                    this.scene.start('CongratulationsSceneCurriculoVpTecnologia', { score: score }, {selectedSpriteSheet: this.selectedSpriteSheet,});
                 }
             });
         } else {
@@ -2163,7 +2163,7 @@ class CongratulationsSceneCurriculoVpTecnologia extends Phaser.Scene {
                         this.clickSound.play();
 
                         this.scene.stop('CongratulationsSceneCurriculoVpTecnologia');
-                        this.scene.resume('officeScene');
+                        this.scene.resume('officeScene', {selectedSpriteSheet: this.selectedSpriteSheet,});
                         this.exclamationBubble.play();
 
                     });
