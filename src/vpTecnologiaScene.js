@@ -257,7 +257,7 @@ class VpTecnologiaScene extends Phaser.Scene {
       { x: 751, y: 200, word: "word1" },
       { x: 870, y: 290, word: "word2" },
       { x: 1004, y: 340, word: "word3" },
-      { x: 691, y: 520, word: "word4" },
+      { x: 693, y: 500, word: "word4" },
     ];
 
     // Create target areas as smaller rectangles with purple color
