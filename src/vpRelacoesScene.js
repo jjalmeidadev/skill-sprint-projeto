@@ -189,6 +189,8 @@ class VpRelacoesScene extends Phaser.Scene {
         next();
       }
     });
+ this.input.keyboard.disableGlobalCapture();
+
   }
 
   handleElevatorProximity() {

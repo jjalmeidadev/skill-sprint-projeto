@@ -983,7 +983,7 @@ class bookScene extends Phaser.Scene {
     const column2 = this.add.image(width - 1118, height - 430, 'column2').setScale(0.7); // Adiciona a coluna 2 na posição especificada e define o tamanho
     const column3 = this.add.image(width - 1110, height - 355, 'column3').setScale(0.7); // Adiciona a coluna 3 na posição especificada e define o tamanho
     const column4 = this.add.image(width - 1108, height - 275, 'column4').setScale(0.7); // Adiciona a coluna 4 na posição especificada e define o tamanho
-    const column5 = this.add.image(width - 1110, height - 200, 'column5').setScale(0.7); // Adiciona a coluna 5 na posição especificada e define o tamanho
+    const column5 = this.add.image(width - 1100, height - 200, 'column5').setScale(0.7); // Adiciona a coluna 5 na posição especificada e define o tamanho
 
     const columns = [column1, column2, column3, column4, column5]; // Cria um array com todas as colunas
 
