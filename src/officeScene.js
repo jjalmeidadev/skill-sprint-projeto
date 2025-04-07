@@ -98,7 +98,7 @@ class OfficeScene extends Phaser.Scene {
     // Dá zoom na tela do jogo e faz a câmera seguir o personagem
     this.cameras.main.startFollow(this.player); // Faz a câmera seguir o jogador
     this.cameras.main.setZoom(1.5); // Define o nível de zoom da câmera
-    this.compassArrow = this.add.image(this.cameras.main.width / 2, 180, "arrow")
+    this.compassArrow = this.add.image(this.cameras.main.width / 2, 335, "arrow")
     .setScrollFactor(0)
     .setDepth(1000)
     .setScale(0.5)
@@ -469,6 +469,7 @@ class OfficeScene extends Phaser.Scene {
     this.elevatorIndicator = this.physics.add.sprite(width - 435, height - 700, "indicator").setScale(0.2); // Adiciona o indicador do elevador
     this.elevatorIndicator.setImmovable(true); // Define o indicador como imóvel
     this.elevatorIndicator.play("exclaiming"); // Reproduz a animação de exclamação no indicador
+    this.activeIndicators.push(this.elevatorIndicator);
 
     this.indicatorActive = true; // Marca o indicador como ativo
     if (this.indicatorActive) {
@@ -744,7 +745,7 @@ this.indicatorSoundVivita = this.sound.add('indicatorSound', { loop: true, volum
     this.indicatorSound.play();
   
     // Cria nova seta (bússola)
-    this.compassArrow = this.add.image(this.cameras.main.width / 2, 180, "arrow")
+    this.compassArrow = this.add.image(this.cameras.main.width / 2, 335, "arrow")
       .setScrollFactor(0)
       .setDepth(1000)
       .setScale(0.5)

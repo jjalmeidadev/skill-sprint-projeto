@@ -47,7 +47,11 @@ class VpTecnologiaScene extends Phaser.Scene {
         layer.setCollisionByProperty({ collider: true }); // Configura colisão para as camadas com a propriedade "collider"
     });
 
+    this.physics.world.setBounds(0, 0, width, height); // Define os limites do mundo para coincidir com as dimensões da câmera
+
     this.createPlayer(width, height); // Cria o jogador
+    this.player.setCollideWorldBounds(true); // Faz o jogador colidir com os limites do mundo
+
     this.createPlayerAnimations(); // Cria as animações do jogador
     this.createButtonBack(width, height);//cria botão de voltar
 
