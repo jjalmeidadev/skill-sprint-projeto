@@ -30,7 +30,7 @@ class ElevadorScene extends Phaser.Scene {
     this.load.spritesheet("indicator", "../assets/spriteexclamação.png", { frameWidth: 254, frameHeight: 291 }); // Carrega a sprite do indicador
     
     this.load.spritesheet('player', `../assets/personagens/skinsPlayer/players/${this.selectedSpriteSheet}.png`, {
-      frameWidth: 32,
+      frameWidth: 16,
       frameHeight: 32,
   });
     this.load.audio('elevatorAudio', '../assets/Local Forecast - Elevator [ ezmp3.co ].mp3'); // Carrega o áudio do elevador

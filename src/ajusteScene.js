@@ -3,6 +3,11 @@
     super({ key: 'ajusteScene' });
   }
 
+  init(data) {
+    this.selectedSpriteSheet = data.selectedSpriteSheet;
+    console.log('Selected Sprite Sheet:', this.selectedSpriteSheet);
+}
+
   preload() {
     // Carrega os elementos do fundo
     this.load.image('bg01', '../assets/assetsBackground/1.png');

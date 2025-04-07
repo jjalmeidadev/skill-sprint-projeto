@@ -3,6 +3,11 @@ class CreditosScene extends Phaser.Scene {
         super({key: 'creditosScene' });
     }
 
+    init(data) {
+        this.selectedSpriteSheet = data.selectedSpriteSheet;
+        console.log('Selected Sprite Sheet:', this.selectedSpriteSheet);
+    }
+
     preload() {
         this.load.image('backgroundCreditos', '../assets/créditos.png'); // Carrega a imagem de fundo
         this.load.image('arrow', '../assets/seta.png'); // Carrega a imagem da seta

@@ -309,6 +309,11 @@ class CurriculoScene extends Phaser.Scene {
         this.canMove = true;
     }
 
+    init(data) {
+        this.selectedSpriteSheet = data.selectedSpriteSheet;
+        console.log('Selected Sprite Sheet:', this.selectedSpriteSheet);
+    }
+
     preload() {
         // Carrega as imagens
         this.load.image('firstScreen', '../assets/primeiraTela.png');
@@ -1388,7 +1393,7 @@ class QuizVpNegocios extends Phaser.Scene {
                     });
                 } else {
                     // Quiz completo
-                    this.scene.start('CongratulationsSceneCurriculoVpNegocios', { score: score }), {selectedSpriteSheet: this.selectedSpriteSheet,};
+                    this.scene.start('CongratulationsSceneCurriculoVpNegocios', { score: score }, {selectedSpriteSheet: this.selectedSpriteSheet,});
                 }
             });
         } else {

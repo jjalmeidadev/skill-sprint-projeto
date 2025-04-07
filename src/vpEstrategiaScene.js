@@ -15,7 +15,7 @@ class VpEstrategiaScene extends Phaser.Scene {
         this.load.image('personalizado_vivo', '../assets/mapaVpEstrategia/personalizado_vivo.png'); // Carrega o tileset personalizado
         
         this.load.spritesheet('player', `../assets/personagens/skinsPlayer/players/${this.selectedSpriteSheet}.png`, {
-          frameWidth: 32,
+          frameWidth: 16,
           frameHeight: 32,
       }); // Carrega o spritesheet do jogador com base na seleção do usuário
         this.load.image('npc', '../assets/viviane_lider.png'); // Carrega a imagem da NPC
@@ -274,7 +274,7 @@ class VpEstrategiaScene extends Phaser.Scene {
           this.sound.stopAll();
 
           this.scene.stop("VpEstrategiaScene"); // Para a cena atual
-          this.scene.start("elevadorScene"); // Inicia a cena do elevador
+          this.scene.start("elevadorScene", {selectedSpriteSheet: this.selectedSpriteSheet,}); // Inicia a cena do elevador
         }
         });
       }

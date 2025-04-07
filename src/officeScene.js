@@ -45,7 +45,7 @@ class OfficeScene extends Phaser.Scene {
     this.load.image("buttonElevOffice", "../assets/botaocimaelevador.png"); // Carrega a imagem do botão para subir no elevador
 
     this.load.spritesheet('player', `../assets/personagens/skinsPlayer/players/${this.selectedSpriteSheet}.png`, {
-      frameWidth: 32,
+      frameWidth: 16,
       frameHeight: 32,
   });
   }
@@ -399,7 +399,7 @@ class OfficeScene extends Phaser.Scene {
 
     this.upButton.on("pointerdown", () => { // Adiciona um evento ao clicar no botão
       this.scene.stop("officeScene"); // Para a cena atual (escritório)
-      this.scene.start("elevadorScene"); // Inicia a cena do elevador
+      this.scene.start("elevadorScene", {selectedSpriteSheet: this.selectedSpriteSheet,}); // Inicia a cena do elevador // Passa a spritesheet selecionada
       this.officeMusic.stop();
     });
   }

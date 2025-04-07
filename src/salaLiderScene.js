@@ -10,7 +10,7 @@ class SalaLider extends Phaser.Scene {
 
   preload() {
     this.load.spritesheet('player', `../assets/personagens/skinsPlayer/players/${this.selectedSpriteSheet}.png`, {
-        frameWidth: 32,
+        frameWidth: 16,
         frameHeight: 32,
     });
     this.load.spritesheet("indicator", "../assets/exclamaçãoRoxa.png", {frameWidth: 254,  frameHeight: 305 }); // Sprite da exclamação com dimensões de cada frame

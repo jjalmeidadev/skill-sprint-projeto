@@ -14,7 +14,7 @@ class VpTecnologiaScene extends Phaser.Scene {
       this.load.image('decoracao', '../assets/mapaVPPessoas/decoracao.png'); // Carrega a imagem do tileset de decoração
       this.load.image('paredes', '../assets/mapaVPPessoas/paredes.png'); // Carrega a imagem do tileset de paredes
       this.load.spritesheet('player', `../assets/personagens/skinsPlayer/players/${this.selectedSpriteSheet}.png`, {
-        frameWidth: 32,
+        frameWidth: 16,
         frameHeight: 32,
       });
 

@@ -38,7 +38,7 @@ class VpPessoasScene extends Phaser.Scene {
       this.load.spritesheet('book', '../assets/assetsBookVPPessoas/book.png', {frameWidth: 835, frameHeight: 520}); // Carrega o spritesheet do objeto livro
       
       this.load.spritesheet('player', `../assets/personagens/skinsPlayer/players/${this.selectedSpriteSheet}.png`, {
-        frameWidth: 32,
+        frameWidth: 16,
         frameHeight: 32,
       });
 
@@ -811,7 +811,7 @@ class VpPessoasScene extends Phaser.Scene {
         this.sound.stopAll();
 
         this.scene.stop("vpPessoasScene"); // Para a cena atual
-        this.scene.start("elevadorScene"); // Inicia a cena do elevador
+        this.scene.start("elevadorScene", {selectedSpriteSheet: this.selectedSpriteSheet,}); // Inicia a cena do elevador
       }
       });
     }

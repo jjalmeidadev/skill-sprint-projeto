@@ -15,7 +15,7 @@ class VpNegociosScene extends Phaser.Scene {
         this.load.image('paredes', '../assets/mapaVPNegocios/paredes.png'); // Carrega a imagem do tileset de paredes
 
         this.load.spritesheet('player', `../assets/personagens/skinsPlayer/players/${this.selectedSpriteSheet}.png`, {
-          frameWidth: 32,
+          frameWidth: 16,
           frameHeight: 32,
       });
         this.load.spritesheet("indicator", "../assets/exclamaçãoRoxa.png", {frameWidth: 254, frameHeight: 305,}); // Carrega o spritesheet do indicador de exclamação
@@ -229,7 +229,7 @@ class VpNegociosScene extends Phaser.Scene {
       // Pausa todos os sons da cena
       this.sound.stopAll();
       this.scene.stop("vpNegociosScene"); // Para a cena atual "vpNegociosScene"
-      this.scene.start("elevadorScene"); // Inicia a cena "elevadorScene"
+      this.scene.start("elevadorScene", {selectedSpriteSheet: this.selectedSpriteSheet,}); // Inicia a cena "elevadorScene"
       }
       });
     }

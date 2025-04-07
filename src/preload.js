@@ -4,6 +4,11 @@ class PreloadSist extends Phaser.Scene {
         this.assetsLoaded = false;
     }
 
+    init(data) {
+        this.selectedSpriteSheet = data.selectedSpriteSheet;
+        console.log('Selected Sprite Sheet:', this.selectedSpriteSheet);
+    }
+
     preload () {
     //PLAYERS
     this.load.spritesheet('person1', '../assets/personagens/skinsPlayer/players/person1.png');

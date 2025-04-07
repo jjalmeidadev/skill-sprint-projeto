@@ -253,7 +253,9 @@ class TutorialScene extends Phaser.Scene {
                 this.dialogText.setText(this.finalDialog[this.currentFinalIndex]);
                 return;
             }
-            this.scene.start('officeScene'); // Vai para a mesma cena para ambos
+            this.scene.start('officeScene', {
+                selectedSpriteSheet: this.selectedSpriteSheet, // Passa a spritesheet selecionada
+            }); // Vai para a mesma cena para ambos
             return;
         }
     
@@ -280,7 +282,7 @@ class TutorialScene extends Phaser.Scene {
                 this.dialogText.setText(this.finalDialog[this.currentFinalIndex]);
                 return;
             }
-            this.scene.start('officeScene'); // Unificado para ir sempre para officeScene
+            this.scene.start('officeScene', {selectedSpriteSheet: this.selectedSpriteSheet,}); // Unificado para ir sempre para officeScene
             return;
         }
     

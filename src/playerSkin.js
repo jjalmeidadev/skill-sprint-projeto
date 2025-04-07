@@ -12,19 +12,23 @@ class PlayerSkinSelection extends Phaser.Scene {
         this.playerSkinSelection = null; // Placeholder para a lógica de seleção de skin do jogador.
     }
 
+    init(data) {
+        this.selectedSpriteSheet = data.selectedSpriteSheet;
+        console.log('Selected Sprite Sheet:', this.selectedSpriteSheet);
+    }
 
     preload() { 
         // Define um método chamado 'preload', geralmente usado em frameworks como Phaser para carregar recursos antes do jogo começar.
         for (let i = 1; i <= 4; i++) { 
             // Inicia um loop que vai de 1 a 4, usado para carregar múltiplas imagens de forma dinâmica.
-            this.load.image(`person${i}I`, `../assets/personagens/playerSkins/person${i}I.png`); 
+            this.load.image(`player${i}I`, `../assets/personagens/playerSkins/player${i}I.png`); 
             // Carrega uma imagem com o identificador `person${i}I` (ex.: person1I, person2I, etc.) 
             // e especifica o caminho do arquivo correspondente na pasta de assets.
-            this.load.image(`person${i}Select`, `../assets/personagens/playerSkins/person${i}Select.png`); 
+            this.load.image(`player${i}Select`, `../assets/personagens/playerSkins/player${i}Select.png`); 
             // Carrega outra imagem com o identificador `person${i}Select` (ex.: person1Select, person2Select, etc.) 
             // e especifica o caminho do arquivo correspondente na pasta de assets.
             this.load.spritesheet('player', `../assets/personagens/skinsPlayer/players/${this.selectedSpriteSheet}.png`, {
-                frameWidth: 32,
+                frameWidth: 16,
                 frameHeight: 32,
             });
         }
@@ -50,15 +54,15 @@ class PlayerSkinSelection extends Phaser.Scene {
         // Adiciona a imagem ao centro da tela, ajustando a posição vertical
         this.add.image(width / 2, height / 2 - 250, 'ttSkin');
 
-        this.person = []; // Array para armazenar os sprites das skins do jogador.
+        this.player = []; // Array para armazenar os sprites das skins do jogador.
 
         for (let i = 1; i <= 4; i++) { // Loop para criar 4 opções de skins.
-            const person = this.createPersonSprite(i); // Cria um sprite para cada skin.
-            this.person.push(person); // Adiciona o sprite criado ao array.
+            const player = this.createPlayerSprite(i); // Cria um sprite para cada skin.
+            this.player.push(player); // Adiciona o sprite criado ao array.
         }
 
         this.cameras.main.fadeIn(1000); // Aplica um efeito de fade-in na câmera principal
-        this.createPersonSprite();
+        this.createPlayerSprite();
         this.createButtonStart(width, height);
         
         this.bgs = []; // Array para armazenar os fundos
@@ -96,7 +100,7 @@ class PlayerSkinSelection extends Phaser.Scene {
      * @param {number} index - O índice da skin a ser criada (1 a 4).
      * @returns {Phaser.GameObjects.Image} O sprite criado para a skin.
      */
-    createPersonSprite(index) {
+    createPlayerSprite(index) {
         // Calcula o espaçamento dinâmico para centralizar as sprites na largura do mapa.
         const totalSprites = 4; // Número total de sprites.
         const spriteWidth = 150; // Largura aproximada de cada sprite.
@@ -105,33 +109,33 @@ class PlayerSkinSelection extends Phaser.Scene {
         // Calcula a posição horizontal do sprite com base no índice e no espaçamento.
         const xPosition = spacing + (spriteWidth / 2) + (index - 1) * (spriteWidth + spacing);
 
-        const person = this.add.image(
+        const player = this.add.image(
             xPosition, 
             this.scale.height / 2, 
-            `person${index}I`
+            `player${index}I`
         ).setInteractive();
-        person.setScale(0.8); // Ajusta o tamanho do sprite.
+        player.setScale(0.8); // Ajusta o tamanho do sprite.
 
         // Altera a textura para o estado de hover quando o mouse está sobre o sprite.
-        person.on('pointerover', () => {
-            if (this.personSelected !== index) { // Garante que o efeito de hover não se aplique à skin selecionada.
-                person.setTexture(`person${index}Select`);
-                person.setScale(1);
+        player.on('pointerover', () => {
+            if (this.playerSelected !== index) { // Garante que o efeito de hover não se aplique à skin selecionada.
+                player.setTexture(`player${index}Select`);
+                player.setScale(1);
             }
         });
 
         // Reverte a textura para o estado normal quando o mouse sai do sprite.
-        person.on('pointerout', () => {
-            if (this.personSelected !== index) { // Garante que o estado normal não se aplique à skin selecionada.
-                person.setTexture(`person${index}I`);
-                person.setScale(0.8);
+        player.on('pointerout', () => {
+            if (this.playerSelected !== index) { // Garante que o estado normal não se aplique à skin selecionada.
+                player.setTexture(`player${index}I`);
+                player.setScale(0.8);
             }
         });
 
         // Define a skin selecionada quando o sprite é clicado.
-        person.on('pointerdown', () => this.selectPerson(index));
+        player.on('pointerdown', () => this.selectPlayer(index));
 
-        return person; // Retorna o sprite criado.
+        return player; // Retorna o sprite criado.
     }
 
     /**
@@ -141,25 +145,25 @@ class PlayerSkinSelection extends Phaser.Scene {
     * @param {string} texture - O nome da textura a ser aplicada.
     * @param {number} scale - O novo tamanho do sprite.
     */
-    updatePersonTexture(index, texture, scale) {
-        this.person[index - 1].setTexture(texture);
-        this.person[index - 1].setScale(scale);
+    updatePlayerTexture(index, texture, scale) {
+        this.player[index - 1].setTexture(texture);
+        this.player[index - 1].setScale(scale);
     }
 
-    selectPerson(index) {
-    if (this.personSelected !== undefined) { 
+    selectPlayer(index) {
+    if (this.playerSelected !== undefined) { 
          // Reverte a textura do sprite anteriormente selecionado para o estado normal.
-         const previousPerson = this.personSelected;
-        this.person[previousPerson - 1].setTexture(`person${previousPerson}I`);
+         const previousPlayer = this.playerSelected;
+        this.player[previousPlayer - 1].setTexture(`player${previousPlayer}I`);
     }
-    this.personSelected = index; // Atualiza o índice da skin selecionada.
-    this.selectedSpriteSheet = `person${index}`; // Armazena a spritesheet correspondente.
+    this.playerSelected = index; // Atualiza o índice da skin selecionada.
+    this.selectedSpriteSheet = `player${index}`; // Armazena a spritesheet correspondente.
         // Atualiza a textura do sprite selecionado para o estado de seleção.
-    this.person[index - 1].setTexture(`person${index}Select`);
+    this.player[index - 1].setTexture(`player${index}Select`);
 
           // Aplica a animação de escala
     this.tweens.add({
-        targets: this.person[index - 1],
+        targets: this.player[index - 1],
         scale: { from: 0.8, to: 1.3 }, // Aumenta o tamanho e volta
         duration: 150,
         yoyo: true,
@@ -200,9 +204,9 @@ class PlayerSkinSelection extends Phaser.Scene {
      * Certifica-se de que ambos foram definidos antes de iniciar a próxima cena.
      */
     startGame() {
-        if (this.personSelected) {
+        if (this.playerSelected) {
             this.scene.start('cutScene', {
-                personSelected: this.personSelected,
+                playerSelected: this.playerSelected,
                 selectedSpriteSheet: this.selectedSpriteSheet, // Passa a spritesheet selecionada para a próxima cena.
             });
         }
