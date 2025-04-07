@@ -15,7 +15,7 @@ class buttonElevatorScene extends Phaser.Scene {
     create() {
         this.sound.stopAll(); // Para garantir que o som não fique tocando em segundo plano
 
-        this.bgElevOffice = this.add.image(width / 2, height / 2, "bgElevOffice");  // Adiciona a imagem de fundo do elevador
+        this.bgElevOffice = this.add.image(width/2, height/2, "bgElevOffice").setScale(width/900, height/550);  // Adiciona a imagem de fundo do elevador
         this.displayElev = this.add.image(width / 2, height / 2, "displayElev"); // Adiciona a imagem do painel do elevador
 
         this.buttonUP = this.add.image(width /2, height - 470, "buttonElevOffice"); // Adiciona a imagem do botão do elevador
