@@ -6,7 +6,7 @@ class VpNegociosScene extends Phaser.Scene {
 
     init(data) {
       this.selectedSpriteSheet = data.selectedSpriteSheet;
-      console.log('Selected Sprite Sheet:', this.selectedSpriteSheet);
+      
     }
 
     preload() {
@@ -14,10 +14,7 @@ class VpNegociosScene extends Phaser.Scene {
         this.load.image('decoracao', '../assets/mapaVPNegocios/decoracao.png'); // Carrega a imagem do tileset de decoração
         this.load.image('paredes', '../assets/mapaVPNegocios/paredes.png'); // Carrega a imagem do tileset de paredes
 
-        this.load.spritesheet('player', `../assets/personagens/skinsPlayer/players/${this.selectedSpriteSheet}.png`, {
-          frameWidth: 16,
-          frameHeight: 32,
-      });
+        this.load.spritesheet('player', `../assets/personagens/skinsPlayer/players/${this.selectedSpriteSheet}.png`, {frameWidth: 16,frameHeight: 32,});
         this.load.spritesheet("indicator", "../assets/exclamaçãoRoxa.png", {frameWidth: 254, frameHeight: 305,}); // Carrega o spritesheet do indicador de exclamação
         this.load.spritesheet('chip', '../assets/minigameVpNegocios/chip.png', {frameWidth: 520, frameHeight: 520}); // Carrega o spritesheet do chip
         this.load.spritesheet('letterA', '../assets/minigameVpNegocios/letterA.png', {frameWidth: 288, frameHeight: 301}); // Carrega o spritesheet da Letra A

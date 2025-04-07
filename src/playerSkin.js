@@ -14,7 +14,7 @@ class PlayerSkinSelection extends Phaser.Scene {
 
     init(data) {
         this.selectedSpriteSheet = data.selectedSpriteSheet;
-        console.log('Selected Sprite Sheet:', this.selectedSpriteSheet);
+        
     }
 
     preload() { 
@@ -27,10 +27,7 @@ class PlayerSkinSelection extends Phaser.Scene {
             this.load.image(`player${i}Select`, `../assets/personagens/playerSkins/player${i}Select.png`); 
             // Carrega outra imagem com o identificador `person${i}Select` (ex.: person1Select, person2Select, etc.) 
             // e especifica o caminho do arquivo correspondente na pasta de assets.
-            this.load.spritesheet('player', `../assets/personagens/skinsPlayer/players/${this.selectedSpriteSheet}.png`, {
-                frameWidth: 16,
-                frameHeight: 32,
-            });
+            this.load.spritesheet('player', `../assets/personagens/skinsPlayer/players/${this.selectedSpriteSheet}.png`, {frameWidth: 16,frameHeight: 32,});
         }
 
         // Certifique-se de carregar os fundos também
@@ -53,11 +50,11 @@ class PlayerSkinSelection extends Phaser.Scene {
 
         // Adiciona a imagem ao centro da tela, ajustando a posição vertical
         this.add.image(width / 2, height / 2 - 250, 'ttSkin');
-
         this.player = []; // Array para armazenar os sprites das skins do jogador.
 
         for (let i = 1; i <= 4; i++) { // Loop para criar 4 opções de skins.
             const player = this.createPlayerSprite(i); // Cria um sprite para cada skin.
+            player.setDepth(3); // Garante que os botões fiquem acima do fundo
             this.player.push(player); // Adiciona o sprite criado ao array.
         }
 
@@ -205,9 +202,7 @@ class PlayerSkinSelection extends Phaser.Scene {
      */
     startGame() {
         if (this.playerSelected) {
-            this.scene.start('cutScene', {
-                playerSelected: this.playerSelected,
-                selectedSpriteSheet: this.selectedSpriteSheet, // Passa a spritesheet selecionada para a próxima cena.
+            this.scene.start('cutScene', {playerSelected: this.playerSelected,selectedSpriteSheet: this.selectedSpriteSheet, // Passa a spritesheet selecionada para a próxima cena.
             });
         }
     }

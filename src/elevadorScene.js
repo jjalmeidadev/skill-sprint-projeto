@@ -7,7 +7,7 @@ class ElevadorScene extends Phaser.Scene {
 
   init(data) {
     this.selectedSpriteSheet = data.selectedSpriteSheet;
-    console.log('Selected Sprite Sheet:', this.selectedSpriteSheet);
+    
   }
 
   preload() {
@@ -28,7 +28,6 @@ class ElevadorScene extends Phaser.Scene {
     this.load.video("videoElev3", "../assets/videoelev3.mp4"); // Carrega o vídeo do elevador
     
     this.load.spritesheet("indicator", "../assets/exclamaçãoRoxa.png", { frameWidth: 254, frameHeight: 291 }); // Carrega a sprite do indicador
-    this.load.spritesheet("player", "../assets/personagens/skinsPlayer/player1all.png", { frameWidth: 16, frameHeight: 32, }); // Carrega a sprite do jogador
     
     this.load.spritesheet('player', `../assets/personagens/skinsPlayer/players/${this.selectedSpriteSheet}.png`, {frameWidth: 16, frameHeight: 32,});
       

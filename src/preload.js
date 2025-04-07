@@ -6,7 +6,7 @@ class PreloadSist extends Phaser.Scene {
 
     init(data) {
         this.selectedSpriteSheet = data.selectedSpriteSheet;
-        console.log('Selected Sprite Sheet:', this.selectedSpriteSheet);
+        
     }
 
     preload () {

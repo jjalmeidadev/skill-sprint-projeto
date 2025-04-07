@@ -5,7 +5,7 @@ class CutScene extends Phaser.Scene {
     
     init(data) {
         this.selectedSpriteSheet = data.selectedSpriteSheet;
-        console.log('Selected Sprite Sheet:', this.selectedSpriteSheet);
+        
     }
     
     preload() {
@@ -29,7 +29,7 @@ class CutScene extends Phaser.Scene {
         // Código comentado que permite pular a cutscene ao clicar na tela
          this.input.on('pointerdown', () => { // Se o jogador clicar na tela, pula a cutscene
             this.scene.stop('cutScene'), // Para a cena atual
-             this.scene.start('tutorialScene'); // Inicia a cena 'tutorialScene'
+             this.scene.start('tutorialScene', {selectedSpriteSheet: this.selectedSpriteSheet}); // Inicia a cena 'tutorialScene'
          });
     }
 }

@@ -5,7 +5,7 @@ class SalaLider extends Phaser.Scene {
 
   init(data) {
     this.selectedSpriteSheet = data.selectedSpriteSheet;
-    console.log('Selected Sprite Sheet:', this.selectedSpriteSheet);
+    
   }
 
   preload() {
@@ -388,7 +388,8 @@ class SalaLider extends Phaser.Scene {
         this.indicatorActive = false;
       }
     });
-
+    
+    this.registry.set('selectedSpriteSheet', this.selectedSpriteSheet); // Salva o dado no Data Manager
     this.scene.get('officeScene').events.emit('stopWalkSound');
     this.scene.switch('officeScene');
     this.scene.get('officeScene').events.emit('stopWalkSound');

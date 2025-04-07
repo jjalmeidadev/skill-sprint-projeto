@@ -5,7 +5,7 @@ class MinigameTrashScene extends Phaser.Scene {
 
     init(data) {
         this.selectedSpriteSheet = data.selectedSpriteSheet;
-        console.log('Selected Sprite Sheet:', this.selectedSpriteSheet);
+        
     }
     
     preload() {
@@ -82,9 +82,7 @@ class MinigameTrashScene extends Phaser.Scene {
 
         if (this.vivinho === 3 && this.happiness >= 5) { // Verifica se todas as partes do Vivinho foram coletadas e se a felicidade é suficiente
             this.time.delayedCall(200, () => { // Aguarda 200ms antes de executar a próxima ação
-                this.scene.start('congratulationsMinigameScene', {
-                    selectedSpriteSheet: this.selectedSpriteSheet, // Passa a spritesheet selecionada
-                }); // Inicia a cena de parabéns
+                this.scene.start('congratulationsMinigameScene', {selectedSpriteSheet: this.selectedSpriteSheet}); // Inicia a cena de parabéns
             });
         }
 
@@ -202,9 +200,7 @@ class MinigameTrashScene extends Phaser.Scene {
     crash(hand, trash) { 
         this.physics.pause(); // Pausa a física do jogo
         this.hand.setVisible(false); // Oculta a mão
-        this.scene.start('gameOverMinigameTrashScene', { pontuacao: this.score }, {
-            selectedSpriteSheet: this.selectedSpriteSheet, // Passa a spritesheet selecionada
-        }); // Inicia a cena de Game Over
+        this.scene.start('gameOverMinigameTrashScene', { pontuacao: this.score }, {selectedSpriteSheet: this.selectedSpriteSheet}); // Inicia a cena de Game Over
     };
 
     collectVivinho(hand, part) {

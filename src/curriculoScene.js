@@ -311,7 +311,7 @@ class CurriculoScene extends Phaser.Scene {
 
     init(data) {
         this.selectedSpriteSheet = data.selectedSpriteSheet;
-        console.log('Selected Sprite Sheet:', this.selectedSpriteSheet);
+       
     }
 
     preload() {
@@ -322,7 +322,7 @@ class CurriculoScene extends Phaser.Scene {
         this.load.image('button03', '../assets/botao_vp_negocios.png');
         this.load.image('button04', '../assets/botao_vp_relacoes.png');
         this.load.image('button05', '../assets/botao_vp_tecnologia.png');
-
+      
         // Carrega a fonte
         this.load.font('font', 'fonts/PixelifySans-VariableFont_wght.ttf');
 

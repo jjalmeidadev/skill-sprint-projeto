@@ -15,10 +15,9 @@ class OfficeScene extends Phaser.Scene {
   init(data) {
     this.selectedSpriteSheet = data.selectedSpriteSheet;
     console.log('Selected Sprite Sheet:', this.selectedSpriteSheet);
-  }
+}
 
   preload() {
-    this.load.spritesheet("player", "../assets/personagens/skinsPlayer/player1all.png", {frameWidth: 16, frameHeight: 32, }); // Carrega o spritesheet do jogador
     this.load.spritesheet("npc7", "../assets/personagens/npc7.png", {frameWidth: 16, frameHeight: 32, }); // Carrega o spritesheet do NPC 7
     this.load.spritesheet("npc3", "../assets/personagens/npc3Sit.png", {frameWidth: 16, frameHeight: 32, }); // Carrega o spritesheet do NPC 3 sentado
     this.load.spritesheet("npc4", "../assets/personagens/npc4Sit.png", {frameWidth: 16, frameHeight: 32,}); // Carrega o spritesheet do NPC 4 sentado
@@ -48,7 +47,7 @@ class OfficeScene extends Phaser.Scene {
     this.load.image("buttonElevOffice", "../assets/botaocimaelevador.png"); // Carrega a imagem do botão para subir no elevador
     this.load.image("arrow", "../assets/seta.png");
 
-    this.load.spritesheet('player', `../assets/personagens/skinsPlayer/players/${this.selectedSpriteSheet}.png`, {frameWidth: 16, frameHeight: 32, });
+    this.load.spritesheet('player', `../assets/personagens/skinsPlayer/players/${this.selectedSpriteSheet}.png`, {frameWidth: 16,frameHeight: 32,});
   }
 
 
@@ -87,6 +86,7 @@ class OfficeScene extends Phaser.Scene {
     this.createComputer(width, height); // Adiciona o computador ao jogo
     this.lastPosition = "down"; // Define a posição inicial do jogador como "para baixo"
     this.createCollisions(); // Configura colisões do jogador com camadas selecionadas
+    this.movePlayer();
 
     this.events.on('resume', () => { // Evento para retomar a música ao retornar à cena
       if (!this.officeMusic || !this.officeMusic.isPlaying) { // Verifica se a música não está tocando

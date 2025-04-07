@@ -8,7 +8,7 @@ class GameplayTutorialScene extends Phaser.Scene {
 
     init(data) {
         this.selectedSpriteSheet = data.selectedSpriteSheet;
-        console.log('Selected Sprite Sheet:', this.selectedSpriteSheet);
+        
     }
 
     preload() {
@@ -19,10 +19,7 @@ class GameplayTutorialScene extends Phaser.Scene {
         this.load.audio('buttonSound', '../assets/sounds/687107__aphom000__mouse-2-button-fast-click.wav'); // Efeito sonoro de clique
         this.load.audio('keySound', '../assets/sounds/computer-keyboard-typing-290582 (mp3cut.net).mp3'); // Efeito sonoros de tecla
     
-        this.load.spritesheet('player', `../assets/personagens/skinsPlayer/players/${this.selectedSpriteSheet}.png`, {
-            frameWidth: 16,
-            frameHeight: 32,
-        });
+        this.load.spritesheet('player', `../assets/personagens/skinsPlayer/players/${this.selectedSpriteSheet}.png`, {frameWidth: 16,frameHeight: 32,});
     }
 
 

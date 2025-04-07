@@ -4,18 +4,13 @@ class VpEstrategiaScene extends Phaser.Scene {
         this.interactionCount = 0; // Initialize counter
     }
 
-    init(data) {
-      this.selectedSpriteSheet = data.selectedSpriteSheet;
-      console.log('Selected Sprite Sheet:', this.selectedSpriteSheet);
-    }
-
     preload() {
         this.load.tilemapTiledJSON('map_estrategia', '../assets/mapaVpEstrategia/map_estrategia.json'); // Carrega o arquivo JSON do mapa criado no Tiled
         this.load.image('decoracao', '../assets/mapaVpEstrategia/decoracao.png'); // Carrega o tileset de decoração
         this.load.image('paredes', '../assets/mapaVpEstrategia/paredes.png'); // Carrega o tileset de paredes
         this.load.image('personalizado_vivo', '../assets/mapaVpEstrategia/personalizado_vivo.png'); // Carrega o tileset personalizado
         
-        this.load.spritesheet('player', `../assets/personagens/skinsPlayer/players/${this.selectedSpriteSheet}.png`, {frameWidth: 16, frameHeight: 32, }); // Carrega o spritesheet do jogador com dimensões de cada frame
+        this.load.spritesheet("player", `../assets/personagens/skinsPlayer/players/${this.selectedSpriteSheet}.png`,{ frameWidth: 16, frameHeight: 32 });
         this.load.image('npc', '../assets/viviane_lider.png'); // Carrega a imagem da NPC
         this.load.image('keyE', '../assets/teclaE.png'); // Carrega a imagem da tecla "E" para interação
         this.load.image("balloonText", "../assets/balaoTexto.png"); // Carrega a imagem do balão de fala da NPC
@@ -31,6 +26,39 @@ class VpEstrategiaScene extends Phaser.Scene {
 
   init(data) {
     this.showThankYou = data && data.showThankYou; // Flag to show "Obrigado!" dialogue
+
+    if(data && data.showThankYou) {
+      this.interactionCount++;
+
+      if(this.interactionCount === 3 && !this.finalInteractionTriggered) {
+        this.finalInteractionTriggered = true; // Prevents multiple triggers
+       this.setupFinalInteraction(); // Call the function to set up the final interaction
+      }
+    }
+
+    this.selectedSpriteSheet = data.selectedSpriteSheet;
+  }
+  
+  setupFinalInteraction() {
+    // Cria a exclamação para a NPC principal
+    const finalExclamation = this.physics.add.sprite(this.npc.x, this.npc.y - 80, "indicator").setScale(0.3);
+    finalExclamation.play("exclaiming");
+    finalExclamation.setImmovable(true);
+    // Configura o overlap para a interação final
+    this.physics.add.overlap(this.player, finalExclamation, () => {
+      if (!this.activeDialogue) {
+        this.startDialogue([
+          "Parabéns! Você fez um excelente trabalho!",
+          "Ajudou nossos três talentos a planejarem suas carreiras.",
+          "Isso prova que você tem visão estratégica e sabe orientar pessoas.",
+          "Você está aprovado(a) para o programa!",
+          "Vamos crescer juntos aqui na Vivo!",
+          "Aguarde mais informações por e-mail.",
+          "Até breve!"
+        ], this.npc);
+        finalExclamation.destroy(); // Remove a exclamação após a interação
+      }
+    });
   }
 
   create() {
@@ -96,7 +124,14 @@ class VpEstrategiaScene extends Phaser.Scene {
     this.keyEnter.setVisible(false); // Inicialmente oculta a imagem da tecla Enter
 
     this.exclamation = this.physics.add.sprite(this.npc.x, this.npc.y - 80, "indicator").setScale(0.3);
-    this.exclamation.play("exclaiming"); // Reproduz a animação da exclamação
+    if (!this.anims.exists("exclaiming")) {
+      this.anims.create({
+          key: "exclaiming",
+          frames: this.anims.generateFrameNumbers("indicator", { start: 0, end: 1 }),
+          frameRate: 3,
+          repeat: -1,
+      });
+    } // Animação da exclamação
     this.exclamation.setImmovable(true); // Define que a exclamação não pode ser movida
 
     this.physics.add.overlap(this.player, this.exclamation, () => {
