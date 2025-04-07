@@ -81,9 +81,6 @@ class OfficeScene extends Phaser.Scene {
     this.createComputer(width, height); // Adiciona o computador ao jogo
     this.lastPosition = "down"; // Define a posição inicial do jogador como "para baixo"
     this.createCollisions(); // Configura colisões do jogador com camadas selecionadas
-    this.movePlayer();
-    const layer14 = this.map.createLayer("superiorPorta", this.tileset2, this.offsetX, 0).setScale(2.5); // Cria a camada superior da porta e aplica escala
-
 
     this.events.on('resume', () => { // Evento para retomar a música ao retornar à cena
       if (!this.officeMusic || !this.officeMusic.isPlaying) { // Verifica se a música não está tocando
@@ -179,6 +176,7 @@ class OfficeScene extends Phaser.Scene {
     const layer11 = map.createLayer("planta", tileset1, offsetX, 0).setScale(2.5); // Cria a camada de plantas e aplica escala
     const layer12 = map.createLayer("porta", tileset1, offsetX, 0).setScale(2.5); // Cria a camada de portas e aplica escala
     const layer13 = map.createLayer("decoracao", tileset1, offsetX, 0).setScale(2.5); // Cria a camada de decoração e aplica escala
+
     // Ativa as colisões com base na propriedade 'collider' para todas as camadas
     layer1.setCollisionByProperty({ collider: true }); // Ativa colisão para a camada de chão
     layer2.setCollisionByProperty({ collider: true }); // Ativa colisão para a camada de chão da sala do líder
@@ -198,10 +196,6 @@ class OfficeScene extends Phaser.Scene {
     layers.forEach((layer, index) => { // Itera sobre cada camada
       this[`layer${index + 1}`] = layer; // Atribui cada camada a uma propriedade dinâmica da classe
     });
-
-    this.map = map; // Armazena o mapa na propriedade 'map' da classe
-    this.tileset2 = tileset2; // Armazena o tileset de paredes na propriedade 'tileset2' da classe
-    this.offsetX = offsetX; // Armazena o deslocamento horizontal na propriedade 'offsetX' da classe
   }
 
   onShutdown() {
