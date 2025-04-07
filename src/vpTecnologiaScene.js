@@ -17,7 +17,7 @@ class VpTecnologiaScene extends Phaser.Scene {
     this.load.image("word2", "../assets/upskillingBotão2_0.png");
     this.load.image("word3", "../assets/upskillingBotão3_0.png");
     this.load.image("word4", "../assets/upskillingBotão4_0.png");
-    this.load.spritesheet("npc", "../assets/personagens/skinsPlayer/Player2Walk.png", { frameWidth: 32, frameHeight: 32 }); // Load NPC asset
+    this.load.spritesheet("npc", "../assets/personagens/npc7.png", {frameWidth: 16, frameHeight: 32, }); // Carrega o spritesheet do NPC 7
   }
 
   create() {
@@ -152,24 +152,39 @@ class VpTecnologiaScene extends Phaser.Scene {
     npc.setScale(2.5); // Match the scale used in other scenes
 
     const dialogBox = this.add.graphics();
-    dialogBox.fillStyle(0x000000, 0.8); // Black background with transparency
+    dialogBox.fillStyle(0xffffff, 0.8); // White background with transparency
     dialogBox.fillRoundedRect(npc.x - 120, npc.y - 100, 240, 60, 10); // Rounded rectangle for the balloon
     dialogBox.setVisible(false);
 
-    const dialogText = this.add.text(npc.x - 110, npc.y - 90, "Bem-vindo! Arraste as palavras para os locais corretos.", {
+    const dialogText = this.add.text(npc.x - 110, npc.y - 90, "", {
       fontSize: "14px",
-      fill: "#ffffff",
+      fill: "#000000", // Black text
       wordWrap: { width: 220 },
     }).setVisible(false); // Text inside the balloon
 
+    const dialogues = [
+      "Bem-vindo! Arraste as palavras para os locais corretos.",
+      "Você pode tentar novamente se errar.",
+      "Boa sorte no mini-game!",
+    ];
+
+    let currentDialogueIndex = 0;
+
     const showDialog = () => {
-      dialogBox.setVisible(true); // Show the balloon
-      dialogText.setVisible(true); // Show the text
-      this.time.delayedCall(3000, () => {
-        dialogBox.setVisible(false); // Hide the balloon after 3 seconds
-        dialogText.setVisible(false); // Hide the text after 3 seconds
-        this.allowComputerInteraction = true; // Allow interaction with the computer
-      });
+      if (currentDialogueIndex < dialogues.length) {
+        dialogBox.setVisible(true); // Show the balloon
+        dialogText.setText(dialogues[currentDialogueIndex]).setVisible(true); // Show the text
+        currentDialogueIndex++;
+        this.time.delayedCall(3000, () => {
+          dialogBox.setVisible(false); // Hide the balloon after 3 seconds
+          dialogText.setVisible(false); // Hide the text after 3 seconds
+          if (currentDialogueIndex < dialogues.length) {
+            showDialog(); // Show the next dialogue
+          } else {
+            this.allowComputerInteraction = true; // Allow interaction with the computer
+          }
+        });
+      }
     };
 
     npc.setInteractive();
@@ -234,7 +249,7 @@ class VpTecnologiaScene extends Phaser.Scene {
 
     // Enable dragging for words
     words.forEach(word => {
-      this.input.setDraggable(word); // Allow dragging any word in any order
+      this.input.setDraggable(word);
     });
 
     // Define target areas for each word
@@ -253,6 +268,25 @@ class VpTecnologiaScene extends Phaser.Scene {
 
     let placedCorrectly = [false, false, false, false];
 
+    // Create a reusable speech balloon
+    const speechBalloon = this.add.graphics();
+    const speechText = this.add.text(0, 0, "", {
+      fontSize: "14px",
+      fill: "#000000", // Black text
+      wordWrap: { width: 200 },
+    }).setVisible(false);
+
+    const showSpeechBalloon = (x, y, message) => {
+      speechBalloon.clear();
+      speechBalloon.fillStyle(0xffffff, 0.8); // White background with transparency
+      speechBalloon.fillRoundedRect(x - 110, y - 50, 220, 40, 10);
+      speechText.setText(message).setPosition(x - 100, y - 45).setVisible(true);
+      this.time.delayedCall(2000, () => {
+        speechBalloon.clear();
+        speechText.setVisible(false);
+      });
+    };
+
     // Handle dragging logic
     this.input.on("drag", (pointer, gameObject, dragX, dragY) => {
       gameObject.setPosition(dragX, dragY);
@@ -263,11 +297,10 @@ class VpTecnologiaScene extends Phaser.Scene {
       let correctPlacement = false;
 
       targetAreas.forEach((area, index) => {
-        const gameObjectBounds = gameObject.getBounds();
-        const targetBounds = area.target.getBounds();
+        const distance = Phaser.Math.Distance.Between(gameObject.x, gameObject.y, area.x, area.y);
 
         if (
-          Phaser.Geom.Intersects.RectangleToRectangle(gameObjectBounds, targetBounds) &&
+          distance < 50 && // Add a proximity check for the target
           gameObject.texture.key === area.word &&
           !placedCorrectly[index]
         ) {
@@ -277,12 +310,13 @@ class VpTecnologiaScene extends Phaser.Scene {
           gameObject.setTint(0x00ff00); // Highlight correct placement
           gameObject.disableInteractive(); // Make the word immovable
           area.target.setFillStyle(0x00ff00, 0.5); // Change target area color to green
+          showSpeechBalloon(area.x, area.y - 50, "Correto!");
         }
       });
 
       if (!correctPlacement) {
         // Highlight incorrect placement
-        const target = targetAreas.find(area => Phaser.Geom.Intersects.RectangleToRectangle(gameObject.getBounds(), area.target.getBounds()));
+        const target = targetAreas.find(area => Phaser.Math.Distance.Between(gameObject.x, gameObject.y, area.x, area.y) < 50);
         if (target) {
           target.target.setFillStyle(0xff0000, 0.5); // Change target area color to red
           this.time.delayedCall(500, () => {
@@ -290,14 +324,15 @@ class VpTecnologiaScene extends Phaser.Scene {
           });
         }
 
-        // Reset word to its initial position
-        const wordIndex = words.indexOf(gameObject);
-        if (wordIndex !== -1) {
-          this.time.delayedCall(500, () => {
-            gameObject.setPosition(initialPositions[wordIndex].x, initialPositions[wordIndex].y);
-            gameObject.clearTint();
-          });
-        }
+        // Provide feedback for incorrect placement
+        showSpeechBalloon(gameObject.x, gameObject.y - 50, "Errado! Tente novamente.");
+        this.time.delayedCall(500, () => {
+          const wordIndex = words.indexOf(gameObject);
+          if (wordIndex !== -1) {
+            gameObject.setPosition(initialPositions[wordIndex].x, initialPositions[wordIndex].y); // Reset to original position
+            gameObject.clearTint(); // Remove the red tint
+          }
+        });
       }
 
       // Check if all words are placed correctly
