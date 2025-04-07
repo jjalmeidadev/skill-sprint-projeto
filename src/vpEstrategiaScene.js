@@ -1046,7 +1046,7 @@ class minigameEstrategiaAna extends Phaser.Scene {
           { text: 'Promoção para Dev Pleno', color: 0x000000 },
           { text: 'Alcançar o nível Expert (Carreira Y)', color: 0x000000 }
         ],
-        feedback: 'Sequência correta! Ana seguirá como especialista técnica: Júnior (base) → Pleno (projetos complexos) → Expert (referência técnica). Ela está animada para focar em código e te manda um meme de agradecimento!'
+        feedback: 'Sequência correta! Ana seguirá como especialista técnica: Júnior (base) → Pleno (projetos complexos) → Expert (referência técnica). Ela está animada para focar em código e te manda um meme de agradecimento! COLETE O MEME DA GRATIDÃO!'
       }
     ];
   }
@@ -1429,7 +1429,7 @@ class minigameEstrategiaMariana extends Phaser.Scene {
           { text: 'Certificação em Experiência do Cliente', color: 0x00A0E3 },
           { text: 'Líder de Novos Colaboradores', color: 0x00A0E3 }
         ],
-        feedback: 'Mariana seguiu perfeitamente o plano de carreira da Vivo! Como Líder de Novos Colaboradores, agora tem remuneração ampliada (salário + bônus por performance) e benefícios como capacitação contínua. Este caso mostra como na Vivo, crescimento vertical e horizontal andam juntos!'
+        feedback: 'Mariana seguiu perfeitamente o plano de carreira da Vivo! Como Líder de Novos Colaboradores, agora tem remuneração ampliada (salário + bônus por performance) e benefícios como capacitação contínua. Este caso mostra como na Vivo, crescimento vertical e horizontal andam juntos! Ela ficou muito grata por sua ajuda, então te mostrou suas anotações sobre uma aula de planejamento de carreira! COLETE AS ANOTAÇÕES!'
       }
     ];
   }
