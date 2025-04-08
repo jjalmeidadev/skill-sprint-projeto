@@ -10,6 +10,7 @@ class OfficeScene extends Phaser.Scene {
     this.elevatorIndicatorCreated = false; // Indica se o indicador do elevador já foi criado
     this.buttonUpCreated = false; // Indica se o botão para subir no elevador já foi criado
     this.activeIndicators = []; // Vai guardar as exclamações visíveis
+    this.hasPlayedCurriculum = false;  // Add new flag to track curriculum completion
   }
 
   init(data) {
@@ -127,16 +128,26 @@ class OfficeScene extends Phaser.Scene {
   }
 
   createCollisions() {
-    this.physics.add.collider(this.player, this.layer3); // Colisão do jogador com a camada de paredes
-    this.physics.add.collider(this.player, this.layer7); // Colisão do jogador com a camada de cadeiras
-    this.physics.add.collider(this.player, this.layer8); // Colisão do jogador com a camada de cadeiras traseiras
-    this.physics.add.collider(this.player, this.layer9); // Colisão do jogador com a camada de quadros
-    this.physics.add.collider(this.player, this.layer10); // Colisão do jogador com a camada de sofás
-    this.physics.add.collider(this.player, this.layer11); // Colisão do jogador com a camada de plantas
-    this.physics.add.collider(this.player, this.npc7); // Colisão do jogador com o NPC 7
-    this.physics.add.collider(this.player, this.vivita); // Colisão do jogador com a personagem Vivita
-    
-    this.physics.world.setBounds(0, 0, width, height); // Define os limites do mundo com base na largura e altura da tela
+    // Add existing colliders
+    this.physics.add.collider(this.player, this.layer3);
+    this.physics.add.collider(this.player, this.layer7);
+    this.physics.add.collider(this.player, this.layer8);
+    this.physics.add.collider(this.player, this.layer9);
+    this.physics.add.collider(this.player, this.layer10);
+    this.physics.add.collider(this.player, this.layer11);
+    this.physics.add.collider(this.player, this.npc7);
+    this.physics.add.collider(this.player, this.vivita);
+
+    // Enable world bounds collision for player
+    this.player.setCollideWorldBounds(true);
+
+    // Set the world bounds to match the map dimensions 
+    this.physics.world.setBounds(
+        this.offsetX,          // x position aligned with map
+        0,                     // y position
+        1270 * 2.5,           // width (map width * scale)
+        720 * 2.5             // height (map height * scale)
+    );
   }
 
   createAnimsIndicator() {
@@ -271,12 +282,17 @@ class OfficeScene extends Phaser.Scene {
       }
     }
   
-    if (this.canInteractWithComputer && Phaser.Input.Keyboard.JustDown(this.keys.interagir)) {
+    if (this.canInteractWithComputer && Phaser.Input.Keyboard.JustDown(this.keys.interagir) && !this.hasPlayedCurriculum) {
       this.buttonClick = this.sound.add('buttonSound', { loop: false, volume: 10 });
       this.buttonClick.play();
       this.scene.pause();
       this.scene.launch('curriculoScene');
       this.curriculumFinished = true;
+      this.hasPlayedCurriculum = true; // Mark as played so it can't be played again
+      if (this.keyEComputer) {
+        this.keyEComputer.destroy();
+        this.keyEComputer = null;
+      }
     }
   
     // Criação da sala do líder
@@ -499,10 +515,15 @@ class OfficeScene extends Phaser.Scene {
     this.createIndicatorComputer(); // Cria o indicador de exclamação acima do computador
 
     this.physics.add.overlap(this.player, computer, () => { // Adiciona um evento de sobreposição entre o jogador e o computador
-      this.canInteractWithComputer = true; // Permite interação com o computador quando o jogador está próximo
+      // Only show E key if curriculum hasn't been played yet
+      this.canInteractWithComputer = !this.hasPlayedCurriculum && 
+        Phaser.Math.Distance.Between(this.player.x, this.player.y, computer.x, computer.y) < 100;
     
-      if (!this.keyEComputer) { // Verifica se a tecla E ainda não foi exibida
+      if (this.canInteractWithComputer && !this.keyEComputer) { // Verifica se a tecla E ainda não foi exibida
         this.keyEComputer = this.add.image(width - 1020, height - 150, 'keyE').setScale(0.07); // Adiciona a tecla E acima do computador
+      } else if (!this.canInteractWithComputer && this.keyEComputer) {
+        this.keyEComputer.destroy();
+        this.keyEComputer = null;
       }
     });
   
