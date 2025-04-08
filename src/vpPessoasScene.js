@@ -864,9 +864,11 @@ class VpPessoasScene extends Phaser.Scene {
         // Pausa todos os sons da cena
         this.sound.stopAll();
 
-        this.scene.stop("vpPessoasScene"); // Para a cena atual
-        this.scene.start("elevadorScene", {selectedSpriteSheet: this.selectedSpriteSheet,}); // Inicia a cena do elevador
-      }
+        this.scene.start("elevadorScene", {
+          selectedSpriteSheet: this.selectedSpriteSheet,
+          fromScene: "vpPessoasScene"
+        });
+        }
       });
     }
 
@@ -958,7 +960,7 @@ class bookScene extends Phaser.Scene {
       this.buttonSound(); // Toca o som de clique do botão
 
       // Sinaliza que o livro foi lido
-      this.registry.set('bookRead', true); // Define no registro que o livro foi lido
+      this.registry.set('vpPessoasConcluida', true); // Define no registro que a fase foi concluida
 
       this.scene.stop('bookScene'); // Para a cena atual do livro
 

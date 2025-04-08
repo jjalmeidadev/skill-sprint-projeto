@@ -3,10 +3,12 @@ class ElevadorScene extends Phaser.Scene {
     super({ key: "elevadorScene" });
     this.canMove = true; // Controla se o jogador pode se mover
     this.panelElevShown = false; // Controla se o painel do elevador foi mostrado
+    this.ready = false; // <- flag de prontidão
   }
 
   init(data) {
     this.selectedSpriteSheet = data.selectedSpriteSheet;
+    this.fromScene = data.fromScene || null; // Captura de onde o player veio
   }
 
   preload() {
@@ -21,6 +23,7 @@ class ElevadorScene extends Phaser.Scene {
     this.load.image("buttonPeople", "../assets/botaopessoas.png"); // Carrega a imagem do botão de pessoas
     this.load.image("buttonTech", "../assets/botaotech.png"); // Carrega a imagem do botão de tecnologia
     this.load.image("buttonRelations", "../assets/botaorelacoes.png"); // Carrega a imagem do botão de relações
+    this.load.image("checkButton", "../assets/check.png"); // Carrega a imagem do check
 
     this.load.video("videoElev1", "../assets/videoelev1.mp4"); // Carrega o vídeo do elevador
     this.load.video("videoElev2", "../assets/videoelev2.mp4"); // Carrega o vídeo do elevador
@@ -103,9 +106,13 @@ class ElevadorScene extends Phaser.Scene {
     });
 
     this.physics.world.setBounds(0, 0, width, height); // Define os limites do mundo do jogo
+
+    this.ready = true; // Define a cena como pronta para interação
   }
 
   update() {
+    if (!this.ready || !this.player || !this.player.body) return;
+
     this.movePlayer(); // Atualiza a posição do jogador
 
     const width = this.scale.width; // Obtém a largura da tela
@@ -124,7 +131,13 @@ class ElevadorScene extends Phaser.Scene {
       
       this.panelElev.setVisible(true); // Exibe o painel quando o jogador está próximo
       this.buttonOfficeEl.setVisible(true); // Exibe o botão do escritório quando o jogador está próximo
+      this.check.setVisible(true); // Exibe o botão de check quando o jogador está próximo
+
       this.buttonPeople.setVisible(true); // Exibe o botão de pessoas quando o jogador está próximo
+      if (this.checkPeopleActive && this.checkPeople) {
+        this.checkPeople.setVisible(true);
+      }
+
       this.buttonStrategies.setVisible(true); // Exibe o botão de estratégias quando o jogador está próximo
       this.buttonBusiness.setVisible(true); // Exibe o botão de negócios quando o jogador está próximo
       this.buttonTech.setVisible(true); // Exibe o botão de tecnologia quando o jogador está próximo
@@ -133,7 +146,13 @@ class ElevadorScene extends Phaser.Scene {
     } else {
       this.panelElev.setVisible(false); // Esconde o painel quando o jogador está longe
       this.buttonOfficeEl.setVisible(false); // Esconde o botão do escritório quando o jogador está longe
+      this.check.setVisible(false); // Exibe o botão de check quando o jogador está próximo
+
       this.buttonPeople.setVisible(false); // Esconde o botão de pessoas quando o jogador está longe
+      if (this.checkPeople) {
+        this.checkPeople.setVisible(false);
+      }
+      
       this.buttonStrategies.setVisible(false); // Esconde o botão de estratégias quando o jogador está longe
       this.buttonBusiness.setVisible(false); // Esconde o botão de negócios quando o jogador está longe
       this.buttonTech.setVisible(false); // Esconde o botão de tecnologia quando o jogador está longe
@@ -142,6 +161,18 @@ class ElevadorScene extends Phaser.Scene {
       if (!this.panelElevShown) { // O indicador só reaparece se o painel nunca foi mostrado
         this.indicator.setVisible(true); // Mostra o indicador novamente
       }
+    }
+
+    if (this.resumeFromPessoas && this.buttonPeople && this.checkPeople) {
+      const concluida = this.registry.get('vpPessoasConcluida') === true;
+    
+      if (concluida) {
+        this.checkPeopleActive = true;
+        this.buttonPeople.disableInteractive();
+        // check só aparece quando estiver perto, o update já cuida disso
+      }
+    
+      this.resumeFromPessoas = false; // reseta a flag
     }
   }
 
@@ -152,6 +183,8 @@ class ElevadorScene extends Phaser.Scene {
   }
 
   movePlayer() {
+    if (!this.player || !this.player.body) return;
+
     const speed = 150; // Define a velocidade de movimento do jogador
     let moving = false; // Variável para verificar se o jogador está se movendo
   
@@ -342,39 +375,58 @@ class ElevadorScene extends Phaser.Scene {
     this.indicator = this.add.sprite(width - 955, height - 660, "indicator").setScale(0.3); // Posiciona e escala o indicador
     this.indicator.play("exclaiming"); // Inicia a animação do indicador
     this.indicatorActive = true; // Marca o indicador como ativo
-   
     
     this.buttonOfficeEl = this.add.image(width - 905, height - 160, "buttonOffice"); // Adiciona o botão interativo do escritório
     this.buttonOfficeEl.setInteractive(); // Torna o botão interativo
     this.buttonOfficeEl.setScale(1.2, 1.15); // Ajusta o tamanho do botão
     this.buttonOfficeEl.setVisible(false); // Inicialmente esconde o botão
+
+    this.check = this.add.image(width - 905, height - 160, "checkButton"); // Adiciona o botão interativo do escritório
+    this.check.setInteractive(); // Torna o botão interativo
+    this.check.setScale(0.6); // Ajusta o tamanho do botão
+    this.check.setVisible(false); // Inicialmente esconde o botão
     
     this.proximity = this.add.rectangle(width - 955, height - 650, 105, 70, 0xff0000, 0); // Adiciona um retângulo invisível para detectar proximidade
     this.physics.add.existing(this.proximity, true); // Adiciona física à área de proximidade
 
-    this.buttonOfficeEl.on("pointerdown", () => { // Adiciona um evento de clique ao botão do escritório
+    /*this.buttonOfficeEl.on("pointerdown", () => { // Adiciona um evento de clique ao botão do escritório
       this.buttonClick.play(); // Toca o som de clique do botão
       this.scene.stop("elevadorScene"); // Para a cena atual
       this.scene.start("officeScene", {selectedSpriteSheet: this.selectedSpriteSheet,}); // Inicia a cena do escritório
-    });
+    });*/
   }
 
   createButtonPeople(width, height) {
-    this.buttonPeople = this.add.image(0, 0, "buttonPeople").setOrigin(0, 0); // Cria o botão de Pessoas
-    this.buttonPeople.setVisible(false); // Inicialmente esconde o botão
+  const returnedVpPessoas = this.fromScene === "vpPessoasScene";
+  const levelDone = this.registry.get('vpPessoasConcluida') === true;
 
-    this.buttonPeople = this.add.image(width - 620, height - 160, "buttonPeople"); // Posiciona o botão
-    this.buttonPeople.setInteractive(); // Torna o botão interativo
-    this.buttonPeople.setScale(1.2, 1.15); // Ajusta o tamanho do botão
-    this.buttonPeople.setVisible(false); // Inicialmente esconde o botão
+  this.buttonPeople = this.add.image(width - 620, height - 160, "buttonPeople");
+  this.buttonPeople.setInteractive();
+  this.buttonPeople.setScale(1.2, 1.15);
+  this.buttonPeople.setVisible(false);
 
-    this.buttonPeople.on("pointerdown", () => { // Adiciona um evento de clique ao botão de Pessoas
-      this.buttonClick.play(); // Toca o som de clique do botão
-      this.shutdown(); // Finaliza a cena atual
-      this.scene.stop("elevadorScene"); // Para a cena atual
-      this.scene.start("vpPessoasScene", {selectedSpriteSheet: this.selectedSpriteSheet,}); // Inicia a cena de Pessoas
+  this.checkPeople = this.add.image(width - 620, height - 160, "checkButton");
+  this.checkPeople.setScale(0.6);
+  this.checkPeople.setVisible(false); // Por padrão, invisível
+  this.checkPeopleActive = (this.fromScene === "vpPessoasScene" && this.registry.get('vpPessoasConcluida'));
+
+  // Se voltou da VP Pessoas e ela está marcada como concluída, mostra o check
+  if (returnedVpPessoas && levelDone) {
+    this.checkPeople.setVisible(true);
+    this.buttonPeople.disableInteractive();
+  }
+
+  if (!levelDone) {
+    this.buttonPeople.on("pointerdown", () => {
+      this.buttonClick.play();
+      this.shutdown();
+      this.scene.stop("elevadorScene");
+      this.scene.start("vpPessoasScene", {
+        selectedSpriteSheet: this.selectedSpriteSheet
+      });
     });
   }
+}
 
   createButtonStrategies(width, height) {
     this.buttonStrategies = this.add.image(0, 0, "buttonStrategies").setOrigin(0, 0); // Cria o botão de Estratégias
