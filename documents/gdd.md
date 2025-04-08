@@ -586,12 +586,7 @@ O próximo passo vai ser utilizar o elevador para ir para os próximos níveis. 
 
 O Gameflow de Skill Print pode ser observado a seguir:
 
-<div align="center">
-  <sub>Diagrama de Cenas</sub><br>
-  <img src="https://github.com/user-attachments/assets/e5c2d30d-10b0-4523-8660-6ef98265b399" width="900px" 
-  alt="Diagrama de Cenas"><br>
-  <sup>Fonte: produzido pelos autores.</sup>
-</div>
+![Image](https://github.com/user-attachments/assets/36dbf211-b7fc-42a2-8ceb-5cad738647f4)
 
 Link de acesso:  <https://github.com/user-attachments/assets/e5c2d30d-10b0-4523-8660-6ef98265b399>
 
