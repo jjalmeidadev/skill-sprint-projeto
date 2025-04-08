@@ -151,7 +151,7 @@ class VpEstrategiaScene extends Phaser.Scene {
     this.physics.add.overlap(this.player, this.exclamation, () => {
       if (!this.activeDialogue) {
         this.keyEMain.setVisible(true);
-        
+
         if (this.keys.interagir.isDown) {
           this.keyEMain.setVisible(false);
           this.startDialogue([
@@ -256,7 +256,7 @@ class VpEstrategiaScene extends Phaser.Scene {
 
     // Cria contêiner da caneca com exclamação e tecla E
     this.mugContainer = this.add.container(this.npcIdle.x + 50, this.npcIdle.y);
-    
+
     this.mugSprite = this.add.image(0, 0, 'mug')
       .setScale(1)
       .setVisible(false);
@@ -267,7 +267,7 @@ class VpEstrategiaScene extends Phaser.Scene {
 
     this.keyEMug = this.add.image(0, -60, 'keyE').setScale(0.05); // Alterado de 0.2 para 0.1
     this.keyEMug.setVisible(false);
-    
+
     this.mugContainer.add([this.mugSprite, this.mugExclamation, this.keyEMug]);
 
     // Adiciona interação com a caneca
@@ -277,7 +277,7 @@ class VpEstrategiaScene extends Phaser.Scene {
           this.player.x, this.player.y,
           this.mugContainer.x, this.mugContainer.y
         );
-        
+
         if (distanceMug < 100) {
           this.interactedWith.mug = true;
           this.eKeyInteractions++;
@@ -291,33 +291,33 @@ class VpEstrategiaScene extends Phaser.Scene {
 
           const messageContainer = this.add.container(this.cameras.main.width / 2, this.cameras.main.height / 2);
           messageContainer.setScrollFactor(0); // Fixa na tela
-          
+
           // Alterada posição Y de -120 para -80 para mover o ícone da caneca mais baixo
           const mugIcon = this.add.image(0, -80, 'mug')
             .setScale(2.5);
-          
+
           // Adiciona fundo
           const messageBg = this.add.rectangle(0, 50, 550, 100, 0xB600B9, 0.9)
             .setOrigin(0.5);
           messageBg.setStrokeStyle(4, 0xB600B9);
-          
+
           // Adiciona texto mais curto
-          const messageText = this.add.text(0, 50, 
+          const messageText = this.add.text(0, 50,
             "Você tomou o café da gratidão! Estava delicioso.", {
-              fontSize: '18px',
-              fill: '#000000',
-              align: 'center',
-              fontFamily: 'font'
+            fontSize: '18px',
+            fill: '#000000',
+            align: 'center',
+            fontFamily: 'font'
           }).setOrigin(0.5);
-          
+
           messageContainer.add([mugIcon, messageBg, messageText]);
-          
+
           // Remove mensagem e sobreposição após 4 segundos
           this.time.delayedCall(4000, () => {
             overlay.destroy();
             messageContainer.destroy();
           });
-          
+
           this.mugExclamation.destroy();
           this.keyEMug.setVisible(false);
         }
@@ -326,7 +326,7 @@ class VpEstrategiaScene extends Phaser.Scene {
 
     // Cria contêiner do celular com exclamação e tecla E
     this.mobileContainer = this.add.container(this.npcIdle2.x + 50, this.npcIdle2.y);
-    
+
     this.mobileSprite = this.add.image(0, 0, 'mobile')
       .setScale(0.1)
       .setVisible(false);
@@ -337,7 +337,7 @@ class VpEstrategiaScene extends Phaser.Scene {
 
     this.keyEMobile = this.add.image(0, -60, 'keyE').setScale(0.05); // Alterado de 0.2 para 0.1
     this.keyEMobile.setVisible(false);
-    
+
     this.mobileContainer.add([this.mobileSprite, this.mobileExclamation, this.keyEMobile]);
 
     // Adiciona interação com o celular
@@ -347,49 +347,49 @@ class VpEstrategiaScene extends Phaser.Scene {
           this.player.x, this.player.y,
           this.mobileContainer.x, this.mobileContainer.y
         );
-        
+
         if (distanceMobile < 100) {
           this.interactedWith.mobile = true;
           this.eKeyInteractions++;
           this.checkCompletionDialogue();
           const overlay = this.add.rectangle(
             0, 0,
-            this.cameras.main.width * 2, 
+            this.cameras.main.width * 2,
             this.cameras.main.height * 2,
             0x000000, 0.5
           );
 
           const messageContainer = this.add.container(this.cameras.main.width / 2, this.cameras.main.height / 2);
           messageContainer.setScrollFactor(0);
-          
+
           const memeIcon = this.add.image(0, -80, 'meme_estrategia')
             .setScale(0.3);
-          
+
           // Cria texto primeiro para obter seus limites
-          const messageText = this.add.text(0, 50, 
+          const messageText = this.add.text(0, 50,
             "Você recebeu um meme da Ana! Riram bastante e isso melhorou o dia de trabalho em 100%.", {
-              fontSize: '15px',
-              fill: '#000000',
-              align: 'center',
-              fontFamily: 'font',
-              wordWrap: { width: 400 }
+            fontSize: '15px',
+            fill: '#000000',
+            align: 'center',
+            fontFamily: 'font',
+            wordWrap: { width: 400 }
           }).setOrigin(0.5);
-          
+
           // Obtém limites do texto para dimensionar fundo
           const textBounds = messageText.getBounds();
-          
+
           // Cria fundo que corresponde exatamente ao tamanho do texto
           const messageBg = this.add.rectangle(0, 50, textBounds.width + 20, textBounds.height + 10, 0xB600B9, 0.9)
             .setOrigin(0.5);
           messageBg.setStrokeStyle(2, 0xB600B9);
-          
+
           messageContainer.add([memeIcon, messageBg, messageText]);
-          
+
           this.time.delayedCall(4000, () => {
             overlay.destroy();
             messageContainer.destroy();
           });
-          
+
           this.mobileExclamation.destroy();
           this.keyEMobile.setVisible(false);
         }
@@ -398,7 +398,7 @@ class VpEstrategiaScene extends Phaser.Scene {
 
     // Cria contêiner da folha com exclamação e tecla E
     this.sheetContainer = this.add.container(this.npcIdle3.x + 50, this.npcIdle3.y);
-    
+
     this.sheetSprite = this.add.image(0, 0, 'sheet')
       .setScale(0.1)
       .setVisible(false);
@@ -409,7 +409,7 @@ class VpEstrategiaScene extends Phaser.Scene {
 
     this.keyESheet = this.add.image(0, -60, 'keyE').setScale(0.05); // Alterado de 0.2 para 0.1
     this.keyESheet.setVisible(false);
-    
+
     this.sheetContainer.add([this.sheetSprite, this.sheetExclamation, this.keyESheet]);
 
     // Adiciona interação com a folha
@@ -419,7 +419,7 @@ class VpEstrategiaScene extends Phaser.Scene {
           this.player.x, this.player.y,
           this.sheetContainer.x, this.sheetContainer.y
         );
-        
+
         if (distanceSheet < 100) {
           this.interactedWith.sheet = true;
           this.eKeyInteractions++;
@@ -433,19 +433,19 @@ class VpEstrategiaScene extends Phaser.Scene {
 
           const messageContainer = this.add.container(this.cameras.main.width / 2, this.cameras.main.height / 2);
           messageContainer.setScrollFactor(0);
-          
+
           const notesIcon = this.add.image(0, 0, 'notes') // Alterado Y de -80 para 0 e adicionado setOrigin para centralização perfeita
             .setScale(0.5)
             .setOrigin(0.5);
-          
+
           messageContainer.add([notesIcon]);
-          
+
           // Remove mensagem e sobreposição após 5 segundos
           this.time.delayedCall(5000, () => {
             overlay.destroy();
             messageContainer.destroy();
           });
-          
+
           this.sheetExclamation.destroy();
           this.keyESheet.setVisible(false);
         }
@@ -483,7 +483,7 @@ class VpEstrategiaScene extends Phaser.Scene {
       }
 
       this.keyEIdle2.setVisible(true);
-      
+
       if (this.keys.interagir.isDown && !this.activeDialogue && !this.interactedWith.npcIdle2) {
         this.keyEIdle2.setVisible(false);
         this.interactedWith.npcIdle2 = true;
@@ -508,7 +508,7 @@ class VpEstrategiaScene extends Phaser.Scene {
       }
 
       this.keyEIdle3.setVisible(true);
-      
+
       if (this.keys.interagir.isDown && !this.activeDialogue && !this.interactedWith.npcIdle3) {
         this.keyEIdle3.setVisible(false);
         this.interactedWith.npcIdle3 = true;
@@ -639,7 +639,7 @@ class VpEstrategiaScene extends Phaser.Scene {
       fill: "#000000",
       wordWrap: { width: balloonText.width - 20 },
       align: "center",
-      fontFamily: "font"
+      fontFamily: 'font'
     }).setOrigin(0.5);
 
     const nextSpeech = () => {
@@ -825,7 +825,7 @@ class VpEstrategiaScene extends Phaser.Scene {
   checkCompletionDialogue() {
     console.log("Interações com a tecla E:", this.eKeyInteractions);
     console.log("Interagiu com:", this.interactedWith);
-    
+
     if (this.eKeyInteractions === 6) {
       // Cria exclamação acima da NPC
       const finalExclamation = this.physics.add.sprite(this.npc.x, this.npc.y - 80, "indicator")
@@ -842,14 +842,14 @@ class VpEstrategiaScene extends Phaser.Scene {
         .setOrigin(0.5)
         .setScale(1);
 
-      const text = this.add.text(balloonX, textY, 
+      const text = this.add.text(balloonX, textY,
         "Parabéns! Fase VP de Estratégia concluída!", {
-          fontSize: "16px",
-          fill: "#000000",
-          wordWrap: { width: balloonText.width - 20 },
-          align: "center",
-          fontFamily: "font"
-        }).setOrigin(0.5);
+        fontSize: "16px",
+        fill: "#000000",
+        wordWrap: { width: balloonText.width - 20 },
+        align: "center",
+        fontFamily: 'font'
+      }).setOrigin(0.5);
 
       const enterKey = this.add.image(
         balloonX + balloonText.width / 2 + 20,
@@ -974,7 +974,8 @@ class minigameEstrategiaCarlos extends Phaser.Scene {
       this.add.text(x, y - 80, `${i + 1}`, {
         fontSize: '32px',
         fill: '#000000',
-        fontStyle: 'bold'
+        fontStyle: 'bold',
+        fontFamily: 'font'
       }).setOrigin(0.5);
 
       // Agrupando todos os elementos visuais
@@ -1084,8 +1085,6 @@ class minigameEstrategiaCarlos extends Phaser.Scene {
       this.gameHeight / 2 + 50
     );
 
-    // Adicione um traço externo para um efeito de borda sutil
-
     const errorBorder = this.add.rectangle(0, 0, 404, 64, 0xFF6B6B);
     const errorBg = this.add.rectangle(0, 0, 400, 60, 0xFFA7A7, 1);
     errorBg.setStrokeStyle(2, 0xFF8888, 1); // Traço interno ligeiramente mais claro
@@ -1121,7 +1120,6 @@ class minigameEstrategiaCarlos extends Phaser.Scene {
       this.gameHeight / 2 + 50
     );
 
-    // Adicione um traço externo para um efeito de borda sutil
     const successBorder = this.add.rectangle(0, 0, 404, 64, 0x2E8B57);
     const successBg = this.add.rectangle(0, 0, 400, 60, 0x90EE90, 1);
     successBg.setStrokeStyle(2, 0x98FB98, 1); // Traço interno ligeiramente mais claro
@@ -1361,7 +1359,8 @@ class minigameEstrategiaAna extends Phaser.Scene {
       this.add.text(x, y - 80, `${i + 1}`, {
         fontSize: '32px',
         fill: '#000000',
-        fontStyle: 'bold'
+        fontStyle: 'bold',
+        fontFamily: 'font'
       }).setOrigin(0.5);
 
       // Agrupar todos os elementos visuais
@@ -1746,7 +1745,8 @@ class minigameEstrategiaMariana extends Phaser.Scene {
       this.add.text(x, y - 80, `${i + 1}`, {
         fontSize: '32px',
         fill: '#000000',
-        fontStyle: 'bold'
+        fontStyle: 'bold',
+        fontFamily: 'font'
       }).setOrigin(0.5);
 
       // Agrupar todos os elementos visuais
