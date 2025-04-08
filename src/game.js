@@ -20,6 +20,7 @@ const config = { // Configuração do jogo Phaser
   },
   scene: [ // Lista de cenas do jogo
     InitialScene, // Cena inicial do jogo
+    PlayerSkinSelection,//Cena de escolha de personagens
     AjusteScene, // Cena de ajustes ou configurações
     CreditosScene, // Cena de créditos do jogo
 

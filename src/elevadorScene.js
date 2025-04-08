@@ -26,7 +26,7 @@ class ElevadorScene extends Phaser.Scene {
     this.load.spritesheet("player", "../assets/personagens/skinsPlayer/player1all.png", { frameWidth: 16, frameHeight: 32, }); // Carrega a sprite do jogador
     
     this.load.audio('elevatorAudio', '../assets/Local Forecast - Elevator [ ezmp3.co ].mp3'); // Carrega o áudio do elevador
-    this.load.audio('indicatorSound', '../assets/sounds/497198_abacagi_bubble-pops (mp3cut.net).wav'); // Carrega o áudio do indicador
+   
     this.load.audio('buttonSound', '../assets/sounds/687107__aphom000__mouse-2-button-fast-click.wav'); // Carrega o áudio do botão
     this.load.audio('walkSound', '../assets/sounds/753292__vrymaa__footsteps-high-heels-hardwood-walk-run (mp3cut.net).wav'); // Carrega o áudio dos passos
 
@@ -36,20 +36,15 @@ class ElevadorScene extends Phaser.Scene {
     const width = this.scale.width; // Obtém a largura da tela
     const height = this.scale.height; // Obtém a altura da tela
 
-    this.indicator = this.sound.add("indicatorSound", { loop: false, volume: 10 }); // Adiciona o som do indicador
-    this.indicator.play();  // Toca o som do indicador sempre que a cena inicia
+    
 
     this.events.on("shutdown", this.shutdown, this); // Evento para quando a cena for encerrada
     this.events.on("pause", this.shutdown, this); // Evento para quando a cena for pausada
-
     this.buttonClick = this.sound.add('buttonSound', { loop: false, volume: 10 }); // Som do clique do botão
-    this.indicatorSound = this.sound.add('indicatorSound', { loop: true, volume: 1.5 }); // Som do indicador
     this.walkSound = this.sound.add('walkSound', { loop: false, volume: 2 }); // Som dos passos do jogador
-    
     this.elevatorSound = this.sound.add("elevatorAudio", { loop: true, volume: 0.5 }); // Inicia o áudio do elevador em loop
     this.sound.stopAll();
     this.elevatorSound.play(); // Toca o som do elevador
-    
     if (!this.anims.exists("exclaiming")) { // Cria a animação do indicador, caso ainda não exista
       this.anims.create({
         key: "exclaiming", // Nome da animação
@@ -118,7 +113,7 @@ class ElevadorScene extends Phaser.Scene {
 
     if (closeToButtons) { // Se o jogador estiver próximo dos botões
       if (!this.panelElevShown) { // Se o painel do elevador ainda não foi mostrado      
-        this.indicatorSound.stop(); // Para o som do indicador
+      
         this.indicator.setVisible(false); // Esconde o indicador (apenas na primeira vez)
         this.panelElevShown = true; // Marca que o painel foi mostrado pelo menos uma vez
       }
@@ -343,9 +338,7 @@ class ElevadorScene extends Phaser.Scene {
     this.indicator = this.add.sprite(width - 955, height - 660, "indicator").setScale(0.3); // Posiciona e escala o indicador
     this.indicator.play("exclaiming"); // Inicia a animação do indicador
     this.indicatorActive = true; // Marca o indicador como ativo
-    if (this.indicatorActive) {
-      this.indicatorSound.play(); // Toca o som do indicador se estiver ativo
-    }
+   
     
     this.buttonOfficeEl = this.add.image(width - 905, height - 160, "buttonOffice"); // Adiciona o botão interativo do escritório
     this.buttonOfficeEl.setInteractive(); // Torna o botão interativo

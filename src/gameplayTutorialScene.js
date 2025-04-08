@@ -6,14 +6,22 @@ class GameplayTutorialScene extends Phaser.Scene {
         });
     }
 
+    init(data) {
+        this.selectedSpriteSheet = data.selectedSpriteSheet;
+        
+    }
+
     preload() {
         this.load.font('font', 'fonts/PixelifySans-VariableFont_wght.ttf'); // Carrega a fonte
  
-        this.load.image('introduction', '../assets/tutorial de jogabilidade.png'); // Carrega a imagem de introdução
+        this.load.image('introduction', '../assets/instrucao.png'); // Carrega a imagem de introdução
 
         this.load.audio('buttonSound', '../assets/sounds/687107__aphom000__mouse-2-button-fast-click.wav'); // Efeito sonoro de clique
         this.load.audio('keySound', '../assets/sounds/computer-keyboard-typing-290582 (mp3cut.net).mp3'); // Efeito sonoros de tecla
+    
+        this.load.spritesheet('player', `../assets/personagens/skinsPlayer/players/${this.selectedSpriteSheet}.png`, {frameWidth: 16,frameHeight: 32,});
     }
+
 
     create() { 
         this.cameras.main.setBackgroundColor('#61088d'); // Define a cor de fundo diretamente no método create
@@ -31,7 +39,7 @@ class GameplayTutorialScene extends Phaser.Scene {
         const startNextScene = () => { // Função para iniciar a próxima cena (quando o jogador clica ou aperta ENTER)
             this.cameras.main.fadeOut(1000); // Aplica um efeito de transição de fade-out ao sair da cena
             this.cameras.main.once('camerafadeoutcomplete', () => { // Aguarda o término do fade-out
-                this.scene.start('tutorialScene'); // Inicia a próxima cena chamada 'tutorialScene'
+                this.scene.start('tutorialScene', {selectedSpriteSheet: this.selectedSpriteSheet,}); // Inicia a próxima cena chamada 'tutorialScene'
             });
         };
 

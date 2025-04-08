@@ -3,12 +3,17 @@ class VpTecnologiaScene extends Phaser.Scene {
       super({ key: 'vpTecnologiaScene' });
   }
 
+  init(data) {
+    this.selectedSpriteSheet = data.selectedSpriteSheet;
+   
+  }
+
   preload() {
       //Carrega o mapa do Tiled e os tilesets
       this.load.tilemapTiledJSON('vpTecnologia', '../assets/vp_tecnologia/mapa.json'); // Carrega o arquivo JSON do mapa
       this.load.image('decoracao', '../assets/mapaVPPessoas/decoracao.png'); // Carrega a imagem do tileset de decoração
       this.load.image('paredes', '../assets/mapaVPPessoas/paredes.png'); // Carrega a imagem do tileset de paredes
-      this.load.spritesheet('player', '../assets/Player.png', { frameWidth: 32, frameHeight: 32 }); // Carrega o spritesheet do jogador
+      this.load.spritesheet('player', `../assets/personagens/skinsPlayer/players/${this.selectedSpriteSheet}.png`, {frameWidth: 16,frameHeight: 32,});
 
       this.load.audio('walkSound', '../assets/sounds/753292__vrymaa__footsteps-high-heels-hardwood-walk-run (mp3cut.net).wav'); // Carrega o som de passos
 
@@ -75,102 +80,115 @@ class VpTecnologiaScene extends Phaser.Scene {
   createPlayer(width, height) {
       this.player = this.physics.add.sprite(width - 405, height - 100, "player"); // Cria o sprite do jogador com posição inicial
       this.player.setScale(2.5); // Ajusta o tamanho do jogador
-    }
+  }
   
-  createPlayerAnimations() {
-    // Walking animations
-    this.anims.create({
-      key: "walk_down",
-      frames: this.anims.generateFrameNumbers("player", { start: 0, end: 5 }),
-      frameRate: 10,
-      repeat: -1,
-    });
-    this.anims.create({
-      key: "walk_right",
-      frames: this.anims.generateFrameNumbers("player", { start: 6, end: 11 }),
-      frameRate: 10,
-      repeat: -1,
-    });
-    this.anims.create({
-      key: "walk_up",
-      frames: this.anims.generateFrameNumbers("player", { start: 12, end: 17 }),
-      frameRate: 10,
-      repeat: -1,
-    });
-    this.anims.create({
-      key: "walk_left",
-      frames: this.anims.generateFrameNumbers("player", { start: 6, end: 11 }),
-      frameRate: 10,
-      repeat: -1,
-    });
-
-    // Idle animations
-    this.anims.create({
-      key: "idle_down",
-      frames: this.anims.generateFrameNumbers("player", { start: 74, end: 79 }),
-      frameRate: 5,
-      repeat: -1,
-    });
-    this.anims.create({
-      key: "idle_up",
-      frames: this.anims.generateFrameNumbers("player", { start: 62, end: 67 }),
-      frameRate: 5,
-      repeat: -1,
-    });
-    this.anims.create({
-      key: "idle_right",
-      frames: this.anims.generateFrameNumbers("player", { start: 56, end: 61 }),
-      frameRate: 5,
-      repeat: -1,
-    });
-    this.anims.create({
-      key: "idle_left",
-      frames: this.anims.generateFrameNumbers("player", { start: 68, end: 73 }),
-      frameRate: 5,
-      repeat: -1,
-    });
-  }
-
-  movePlayer() {
-    const speed = 150;
-    let moving = false;
-    this.lastDirection = this.lastDirection || 'down'; // Default direction
-
-    if (this.keys.left.isDown) {
-      this.player.setVelocityX(-speed);
-      this.player.anims.play("walk_left", true);
-      this.lastDirection = 'left';
-      moving = true;
-    } else if (this.keys.right.isDown) {
-      this.player.setVelocityX(speed);
-      this.player.anims.play("walk_right", true);
-      this.lastDirection = 'right';
-      moving = true;
-    } else {
-      this.player.setVelocityX(0);
+    createPlayerAnimations() {
+      this.anims.create({
+        key: "walk_down", // Chave para a animação de caminhar para baixo
+        frames: this.anims.generateFrameNumbers("player", { start: 130, end: 135 }), // Define os frames da animação
+        frameRate: 10, // Define a taxa de quadros por segundo
+        repeat: -1, // Faz a animação repetir indefinidamente
+      });
+      this.anims.create({
+        key: "walk_right", // Chave para a animação de caminhar para a direita
+        frames: this.anims.generateFrameNumbers("player", { start: 112, end: 117 }), // Define os frames da animação
+        frameRate: 10, // Define a taxa de quadros por segundo
+        repeat: -1, // Faz a animação repetir indefinidamente
+      });
+      this.anims.create({
+        key: "walk_up", // Chave para a animação de caminhar para cima
+        frames: this.anims.generateFrameNumbers("player", { start: 118, end: 123 }), // Define os frames da animação
+        frameRate: 10, // Define a taxa de quadros por segundo
+        repeat: -1, // Faz a animação repetir indefinidamente
+      });
+      this.anims.create({
+        key: "walk_left", // Chave para a animação de caminhar para a esquerda
+        frames: this.anims.generateFrameNumbers("player", { start: 124, end: 129 }), // Define os frames da animação
+        frameRate: 10, // Define a taxa de quadros por segundo
+        repeat: -1, // Faz a animação repetir indefinidamente
+      });
+      this.anims.create({
+        key: "stop_down", // Chave para a animação de parada olhando para baixo
+        frames: this.anims.generateFrameNumbers("player", { start: 74, end: 79 }), // Define os frames da animação
+        frameRate: 5, // Define a taxa de quadros por segundo (mais lento)
+        repeat: -1, // Faz a animação repetir indefinidamente
+      });
+      this.anims.create({
+        key: "stop_right", // Chave para a animação de parada olhando para a direita
+        frames: this.anims.generateFrameNumbers("player", { start: 56, end: 61 }), // Define os frames da animação
+        frameRate: 5, // Define a taxa de quadros por segundo
+        repeat: -1, // Faz a animação repetir indefinidamente
+      });
+      this.anims.create({
+        key: "stop_up", // Chave para a animação de parada olhando para cima
+        frames: this.anims.generateFrameNumbers("player", { start: 62, end: 67 }), // Define os frames da animação
+        frameRate: 5, // Define a taxa de quadros por segundo
+        repeat: -1, // Faz a animação repetir indefinidamente
+      });
+      this.anims.create({
+        key: "stop_left", // Chave para a animação de parada olhando para a esquerda
+        frames: this.anims.generateFrameNumbers("player", { start: 68, end: 73 }), // Define os frames da animação
+        frameRate: 5, // Define a taxa de quadros por segundo
+        repeat: -1, // Faz a animação repetir indefinidamente
+      });
     }
 
-    if (this.keys.up.isDown) {
-      this.player.setVelocityY(-speed);
-      this.player.anims.play("walk_up", true);
-      this.lastDirection = 'up';
-      moving = true;
-    } else if (this.keys.down.isDown) {
-      this.player.setVelocityY(speed);
-      this.player.anims.play("walk_down", true);
-      this.lastDirection = 'down';
-      moving = true;
-    } else {
-      this.player.setVelocityY(0);
-    }
+    movePlayer() {
+      const speed = 150; // Define a velocidade do jogador
+      let moving = false; // Flag para verificar se o jogador está se movendo
 
-    if (!moving) {
-      this.player.anims.play(`idle_${this.lastDirection}`, true);
-      this.walkSound.stop();
-    } else if (!this.walkSound.isPlaying) {
-      this.walkSound.play();
+      if (this.keys.left.isDown) { // Verifica se a tecla para mover para a esquerda está pressionada
+        this.player.setVelocityX(-speed); // Move o jogador para a esquerda
+        this.lastPosition = "left"; // Salva a última posição como "esquerda"
+        this.player.anims.play("walk_left", true); // Toca a animação de andar para a esquerda
+        moving = true; // Marca que o jogador está se movendo
+      } else if (this.keys.right.isDown) { // Verifica se a tecla para mover para a direita está pressionada
+        this.player.setVelocityX(speed); // Move o jogador para a direita
+        this.lastPosition = "right"; // Salva a última posição como "direita"
+        this.player.anims.play("walk_right", true); // Toca a animação de andar para a direita
+        moving = true; // Marca que o jogador está se movendo
+      } else {
+        this.player.setVelocityX(0); // Para o movimento horizontal do jogador
+      }
+
+      if (this.keys.up.isDown) { // Verifica se a tecla para mover para cima está pressionada
+        this.player.setVelocityY(-speed); // Move o jogador para cima
+        this.lastPosition = "up"; // Salva a última posição como "cima"
+        this.player.anims.play("walk_up", true); // Toca a animação de andar para cima
+        moving = true; // Marca que o jogador está se movendo
+      } else if (this.keys.down.isDown) { // Verifica se a tecla para mover para baixo está pressionada
+        this.player.setVelocityY(speed); // Move o jogador para baixo
+        this.lastPosition = "down"; // Salva a última posição como "baixo"
+        this.player.anims.play("walk_down", true); // Toca a animação de andar para baixo
+        moving = true; // Marca que o jogador está se movendo
+      } else {
+        this.player.setVelocityY(0); // Para o movimento vertical do jogador
+      }
+
+      // Se o personagem parou, inicia a animação de stop_* em loop
+      if (!moving) { // Verifica se o jogador não está se movendo
+        switch (this.lastPosition) { // Verifica a última posição do jogador
+          case "left":
+            this.player.anims.play("stop_left", true); // Toca a animação de parada olhando para a esquerda
+            break;
+          case "right":
+            this.player.anims.play("stop_right", true); // Toca a animação de parada olhando para a direita
+            break;
+          case "up":
+            this.player.anims.play("stop_up", true); // Toca a animação de parada olhando para cima
+            break;
+          case "down":
+          default:
+            this.player.anims.play("stop_down", true); // Toca a animação de parada olhando para baixo
+            break;
+        }
+        this.walkSound.stop(); // Para o som de passos
+      } else {
+        if (!this.walkSound.isPlaying) { // Verifica se o som de passos não está tocando
+          this.walkSound.play(); // Toca o som de passos
+        }
+      }
     }
-  }
 
   createButtonBack(width, height) {
     const buttonBack = this.add.image(width - 700, height - 680, "keyE"); // Adiciona a imagem do botão de retorno na posição especificada
@@ -186,8 +204,9 @@ class VpTecnologiaScene extends Phaser.Scene {
       this.sound.stopAll();
 
       this.scene.stop("vpTecnologiaScene"); // Para a cena atual
-      this.scene.start("elevadorScene"); // Inicia a cena do elevador
+      this.scene.start("elevadorScene", {selectedSpriteSheet: this.selectedSpriteSheet,}); // Inicia a cena do elevador
     }
-    });
+  });
   }
 }
+

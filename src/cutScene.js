@@ -2,7 +2,12 @@ class CutScene extends Phaser.Scene {
     constructor() {
         super({ key: 'cutScene' });
     }
-
+    
+    init(data) {
+        this.selectedSpriteSheet = data.selectedSpriteSheet;
+        
+    }
+    
     preload() {
         this.load.video('cutScene', '../assets/cutsceneVivo.mp4'); // Carrega o vídeo da cutscene
     }
@@ -18,13 +23,13 @@ class CutScene extends Phaser.Scene {
         this.cutScene.play(false); // Reproduz o vídeo da cutscene
 
         this.cutScene.on('complete', () => { // Quando o vídeo terminar, inicia a próxima cena do jogo
-            this.scene.start('gameplayTutorialScene'); // Troca para a cena 'gameplayTutorialScene'
+            this.scene.start('gameplayTutorialScene', {selectedSpriteSheet: this.selectedSpriteSheet,}); // Troca para a cena 'gameplayTutorialScene'
         });
         
         // Código comentado que permite pular a cutscene ao clicar na tela
          this.input.on('pointerdown', () => { // Se o jogador clicar na tela, pula a cutscene
             this.scene.stop('cutScene'), // Para a cena atual
-             this.scene.start('tutorialScene'); // Inicia a cena 'tutorialScene'
+             this.scene.start('tutorialScene', {selectedSpriteSheet: this.selectedSpriteSheet}); // Inicia a cena 'tutorialScene'
          });
     }
 }

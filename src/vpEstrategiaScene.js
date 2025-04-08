@@ -33,7 +33,7 @@ class VpEstrategiaScene extends Phaser.Scene {
     this.load.audio("strategyMusic", "../assets/Kevin-MacLeod-Itty-Bitty-8-Bit-♫-NO-COPYRIGHT-8-bit-Music.mp3"); // Carrega a música de fundo da cena
     this.load.spritesheet("indicator", "../assets/exclamaçãoRoxa.png", { frameWidth: 254, frameHeight: 305 }); // Carrega a exclamação
     this.load.image('keyEnter', '../assets/keyEnter.png'); // Carrega a imagem da tecla Enter
-    this.load.spritesheet('npcIdle', '../assets/personagens/skinsPlayer/Player4Idle.png', { frameWidth: 16, frameHeight: 32 });
+    this.load.spritesheet('npcIdle', '../assets/personagens/skinsPlayer/players/Player4Idle.png', { frameWidth: 16, frameHeight: 32 });
     this.load.image('npcIdle2', '../assets/ana.png');
     this.load.image('npcIdle3', '../assets/mariana.png');
     this.load.image('mug', '../assets/mug.png'); // Adiciona imagem da caneca

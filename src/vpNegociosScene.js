@@ -1,19 +1,22 @@
 class VpNegociosScene extends Phaser.Scene {
-  constructor() {
-    super({ key: 'vpNegociosScene' });
-    this.npc15ChipCollected = false; // ... seu código já existente
-    // Adicione as linhas abaixo:
+    constructor() {
+      super({ key: 'vpNegociosScene' });
+      this.npc15ChipCollected = false; // Variável para controlar se o chip do NPC 15 foi coletado
+      // Adicione as linhas abaixo:
     this.activeIndicators = []; // Array para armazenar os indicadores ativos (ex.: indicadores de NPCs)
     this.arrowOffset = Phaser.Math.DegToRad(-180); // Offset para ajustar a rotação da seta
-  }
-  
+    }
+
+    init(data) {
+      this.selectedSpriteSheet = data.selectedSpriteSheet;
+    }
 
   preload() {
       this.load.tilemapTiledJSON('vpNegocios', '../assets/mapaVPNegocios/mapaVPNegocios.json'); // Carrega o arquivo JSON do mapa criado no Tiled
       this.load.image('decoracao', '../assets/mapaVPNegocios/decoracao.png'); // Carrega a imagem do tileset de decoração
       this.load.image('paredes', '../assets/mapaVPNegocios/paredes.png'); // Carrega a imagem do tileset de paredes
 
-      this.load.spritesheet('player', '../assets/personagens/skinsPlayer/player1all.png', { frameWidth: 16, frameHeight: 32 }); // Carrega o spritesheet do jogador com dimensões de cada frame
+      this.load.spritesheet('player', `../assets/personagens/skinsPlayer/players/${this.selectedSpriteSheet}.png`, {frameWidth: 16,frameHeight: 32,});
       this.load.spritesheet("indicator", "../assets/exclamaçãoRoxa.png", {frameWidth: 254, frameHeight: 305,}); // Carrega o spritesheet do indicador de exclamação
       this.load.spritesheet('chip', '../assets/minigameVpNegocios/chip.png', {frameWidth: 520, frameHeight: 520}); // Carrega o spritesheet do chip
       this.load.spritesheet('letterA', '../assets/minigameVpNegocios/letterA.png', {frameWidth: 288, frameHeight: 301}); // Carrega o spritesheet da Letra A
@@ -319,15 +322,15 @@ if (this.compassArrow) {
     this.player.x, this.player.y, buttonBack.x, buttonBack.y // Coordenadas do jogador e do botão
     );
 
-    if (distance < 100) { // Verifica se o jogador está dentro de um raio de 100 pixels do botão
-    // Pausa todos os sons da cena
-    this.keySound();
-    this.sound.stopAll();
-    this.scene.stop("vpNegociosScene"); // Para a cena atual "vpNegociosScene"
-    this.scene.start("elevadorScene"); // Inicia a cena "elevadorScene"
+      if (distance < 100) { // Verifica se o jogador está dentro de um raio de 100 pixels do botão
+      // Pausa todos os sons da cena
+      this.keySound();
+      this.sound.stopAll();
+      this.scene.stop("vpNegociosScene"); // Para a cena atual "vpNegociosScene"
+      this.scene.start("elevadorScene", {selectedSpriteSheet: this.selectedSpriteSheet,}); // Inicia a cena "elevadorScene"
+      }
+      });
     }
-    });
-  }
 
   createPlayerAnimations() {
   this.anims.create({

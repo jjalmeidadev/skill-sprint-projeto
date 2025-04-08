@@ -6,6 +6,7 @@ class InitialScene extends Phaser.Scene {
       type: Phaser.AUTO, // Define o tipo de renderização como automático (Phaser escolhe entre WebGL e Canvas)
       width: 800, // Define a largura da tela do jogo
       height: 600, // Define a altura da tela do jogo
+      pixelArt: true, // Habilita o modo de renderização para pixel art
       physics: {
         default: "arcade", // Define o sistema de física padrão como "arcade"
         arcade: {
@@ -19,6 +20,11 @@ class InitialScene extends Phaser.Scene {
     };
   }
 
+  init(data) {
+    this.selectedSpriteSheet = data.selectedSpriteSheet;
+    ;
+  }
+
   preload() {
     this.load.image("bg01", "../assets/assetsBackground/1.png"); // Carrega a imagem de fundo da camada 1
     this.load.image("bg02", "../assets/assetsBackground/2.png"); // Carrega a imagem de fundo da camada 2
@@ -30,7 +36,7 @@ class InitialScene extends Phaser.Scene {
     this.load.image("vivinho", "../assets/vivinho.png"); // Carrega a imagem do personagem "vivinho"
     this.load.image("title", "../assets/assetsBackground/titulo.png "); // Carrega a imagem do título da tela inicial
 
-    this.load.image("buttonPlay", "../assets/assets_botoes/botaoPlay.png"); // Carrega a imagem do botão "Jogar"
+    this.load.image("buttonJogar", "../assets/assets_botoes/botaoJogar.png"); // Carrega a imagem do botão "Jogar"
     this.load.image("buttonCredits", "../assets/assets_botoes/botaoCreditos.png"); // Carrega a imagem do botão "Créditos"
     this.load.image("buttonSettings", "../assets/assets_botoes/botaoAjustes.png"); // Carrega a imagem do botão "Ajustes"
     this.load.image("layoutPlay", "../assets/assets_botoes/layoutPlay.png"); // Carrega a imagem do layout do botão "Play"
@@ -135,7 +141,7 @@ class InitialScene extends Phaser.Scene {
 
     this.add.image(width - 100, height - 100, "vivinho").setScale(0.75); // Adiciona a imagem do personagem "vivinho"
 
-    this.createButtonPlay(width, height); // Cria o botão "Jogar"
+    this.createButtonJogar(width, height); // Cria o botão "Jogar"
     this.createButtonCredits(width, height); // Cria o botão "Créditos"
     this.createButtonSettings(width, height); // Cria o botão "Ajustes"
 
@@ -229,15 +235,15 @@ class InitialScene extends Phaser.Scene {
     this.buttonClick.play(); // Toca o som de clique do botão
   }
 
-  createButtonPlay(width, height) {
-    const buttonPlay = this.add.image(width / 2, height / 2 + 50, "buttonPlay"); // Adiciona a imagem do botão "Jogar" na posição especificada
-    buttonPlay.setInteractive(); // Torna o botão interativo
-    buttonPlay.setScale(1); // Define o tamanho do botão
-    buttonPlay.on("pointerdown", () => {
+  createButtonJogar(width, height) {
+    const buttonJogar = this.add.image(width / 2, height / 2 + 50, "buttonJogar"); // Adiciona a imagem do botão "Jogar" na posição especificada
+    buttonJogar.setInteractive(); // Torna o botão interativo
+    buttonJogar.setScale(0.7); // Define o tamanho do botão
+    buttonJogar.on("pointerdown", () => {
       this.buttonSound(); // Toca o som de clique do botão
       this.shutdown(); // Para a música inicial
       this.scene.stop("initialScene"); // Para a cena inicial
-      this.scene.start("cutScene"); // Inicia a cena "cutScene"
+      this.scene.start("PlayerSkin", {selectedSpriteSheet: this.selectedSpriteSheet,}); // Inicia a cena "PlayerSkin"
     });
   }
 
@@ -249,7 +255,7 @@ class InitialScene extends Phaser.Scene {
       this.buttonSound(); // Toca o som de clique do botão
       this.shutdown(); // Para a música inicial
       this.scene.stop("initialScene"); // Para a cena inicial
-      this.scene.switch("creditosScene"); // Alterna para a cena "creditosScene"
+      this.scene.switch("creditosScene", {selectedSpriteSheet: this.selectedSpriteSheet,}); // Alterna para a cena "creditosScene"
     });
   }
 
@@ -261,7 +267,7 @@ class InitialScene extends Phaser.Scene {
       this.buttonSound(); // Toca o som de clique do botão
       this.shutdown(); // Para a música inicial
       this.scene.stop("initialScene"); // Para a cena inicial
-      this.scene.start("ajusteScene"); // Inicia a cena "ajusteScene"
+      this.scene.start("ajusteScene", {selectedSpriteSheet: this.selectedSpriteSheet,}); // Inicia a cena "ajusteScene"
     });
   }
 

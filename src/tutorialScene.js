@@ -30,6 +30,11 @@ class TutorialScene extends Phaser.Scene {
         this.overlayVisible = false; //Controla se a imagem de sobreposição foi exibida
     }
 
+    init(data) {
+        this.selectedSpriteSheet = data.selectedSpriteSheet;
+        
+    }
+
     preload() {
         this.load.image('vivinho', '../assets/vivinho.png'); // Carrega a imagem do personagem Vivinho
         this.load.image('buttonYes', '../assets/botao_sim.png'); // Carrega a imagem do botão "Sim"
@@ -70,6 +75,7 @@ class TutorialScene extends Phaser.Scene {
         const layer11 = map.createLayer("planta", tileset1, offsetX, 0).setScale(2.5); // Cria a camada de plantas
         const layer12 = map.createLayer("porta", tileset1, offsetX, 0).setScale(2.5); // Cria a camada de portas
         const layer13 = map.createLayer("decoracao", tileset1, offsetX, 0).setScale(2.5); // Cria a camada de decoração
+        const layer14 = map.createLayer("superiorPorta", tileset2, offsetX, 0).setScale(2.5); // Cria a camada da porta superior
 
         layer1.setCollisionByProperty({ collider: true }); // Ativa colisão para a camada de chão
         layer2.setCollisionByProperty({ collider: true }); // Ativa colisão para a camada de chão do líder
@@ -263,7 +269,7 @@ class TutorialScene extends Phaser.Scene {
                 this.currentDialogIndex = 99;
                 return;
             }
-            this.scene.start('officeScene');
+            this.scene.start('officeScene', {selectedSpriteSheet: this.selectedSpriteSheet}); // Vai para a mesma cena para ambos
             return;
         }
     
@@ -296,7 +302,7 @@ class TutorialScene extends Phaser.Scene {
                 if (this.keyEnterIcon) this.keyEnterIcon.setVisible(true); 
                 return;
             }
-            this.scene.start('officeScene'); // Unificado para ir sempre para officeScene
+            this.scene.start('officeScene', {selectedSpriteSheet: this.selectedSpriteSheet,}); // Unificado para ir sempre para officeScene
             return;
         }
     

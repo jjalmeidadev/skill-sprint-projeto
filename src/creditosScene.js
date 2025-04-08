@@ -3,6 +3,11 @@ class CreditosScene extends Phaser.Scene {
         super({key: 'creditosScene' });
     }
 
+    init(data) {
+        this.selectedSpriteSheet = data.selectedSpriteSheet;
+       
+    }
+
     preload() {
         this.load.image('backgroundCreditos', '../assets/créditos.png'); // Carrega a imagem de fundo
         this.load.image('arrow', '../assets/seta.png'); // Carrega a imagem da seta
@@ -20,7 +25,7 @@ class CreditosScene extends Phaser.Scene {
         arrow.setScale(1); // Ajusta o tamanho do botão
         arrow.on('pointerdown', () => { // Adiciona um evento de clique no botão
             this.scene.stop('creditosScene'); // Para a cena de créditos
-            this.scene.start('initialScene'); // Inicia a cena inicial
+            this.scene.start('initialScene', {selectedSpriteSheet: this.selectedSpriteSheet,}); // Inicia a cena inicial
         });
     }
 }

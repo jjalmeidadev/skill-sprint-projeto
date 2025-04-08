@@ -3,16 +3,21 @@ class SalaLider extends Phaser.Scene {
     super({ key: "salaLiderScene" });
   }
 
+  init(data) {
+    this.selectedSpriteSheet = data.selectedSpriteSheet;
+    
+  }
+
   preload() {
-    this.load.spritesheet("player", "../assets/Player.png", { frameWidth: 32, frameHeight: 32 });
-    this.load.spritesheet("indicator", "../assets/exclamaçãoRoxa.png", { frameWidth: 254, frameHeight: 305 });
-    this.load.spritesheet("leader", "../assets/personagens/LiderReading.png", { frameWidth: 16, frameHeight: 32 });
+    this.load.spritesheet('player', `../assets/personagens/skinsPlayer/players/${this.selectedSpriteSheet}.png`, {frameWidth: 16, frameHeight: 32, }); // Sprite do jogador com dimensões de cada frame
+    this.load.spritesheet("indicator", "../assets/exclamaçãoRoxa.png", {frameWidth: 254,  frameHeight: 305 }); // Sprite da exclamação com dimensões de cada frame
+    this.load.spritesheet("leader", "../assets/personagens/LiderReading.png", { frameWidth: 16, frameHeight: 32 }); // Sprite da líder com dimensões de cada frame
 
     this.load.tilemapTiledJSON('salaLider', '../assets/mapaSalaLider/mapaSalaLider.json');
     this.load.image('decoracao', '../assets/mapaSalaLider/decoracao.png');
 
     this.load.audio('keySound', '../assets/sounds/computer-keyboard-typing-290582 (mp3cut.net).mp3');
-    this.load.audio('indicatorSound', '../assets/sounds/497198_abacagi_bubble-pops (mp3cut.net).wav');
+   
     this.load.audio('walkSound', '../assets/sounds/753292__vrymaa__footsteps-high-heels-hardwood-walk-run (mp3cut.net).wav');
     this.load.audio("officeMusic", "../assets/0320(1).MP3");
 
@@ -291,14 +296,6 @@ class SalaLider extends Phaser.Scene {
     this.exclamation.play('exclaiming');
     this.indicatorActive = true;
 
-    // Se houver um som já criado, interrompe-o antes de iniciar um novo
-    if (this.indicatorSound) {
-      this.indicatorSound.stop();
-      this.indicatorSound.destroy();
-    }
-    this.indicatorSound = this.sound.add('indicatorSound', { loop: true, volume: 1.5 });
-    this.indicatorSound.play();
-
     this.leader.setInteractive();
     this.leader.on('pointerdown', () => {
       this.showLeaderInteraction();
@@ -365,18 +362,8 @@ class SalaLider extends Phaser.Scene {
     this.exclamation.play('exclaiming');
     this.indicatorActive = true;
 
-    if (this.indicatorSound) {
-      this.indicatorSound.stop();
-      this.indicatorSound.destroy();
-    }
-    this.indicatorSound = this.sound.add('indicatorSound', { loop: true, volume: 1.5 });
-    this.indicatorSound.play();
-
     this.physics.add.overlap(this.player, this.exclamation, () => { // Verifica a sobreposição entre o jogador e o indicador
-      if (this.indicatorActive && this.indicatorSound) {
-        this.indicatorSound.stop();
-        this.indicatorSound.destroy();
-        this.indicatorSound = null;
+      if (this.indicatorActive) {
         this.scene.get('officeScene').events.emit('stopWalkSound');
         this.scene.switch('officeScene');
         this.scene.get('officeScene').events.emit('stopWalkSound');
@@ -394,12 +381,7 @@ class SalaLider extends Phaser.Scene {
     this.exclamation.play('exclaiming');
     this.indicatorActive = true;
 
-    if (this.indicatorSound) {
-      this.indicatorSound.stop();
-      this.indicatorSound.destroy();
-    }
-    this.indicatorSound = this.sound.add('indicatorSound', { loop: true, volume: 1.5 });
-    this.indicatorSound.play();
+   
 
     this.physics.add.overlap(this.player, this.exclamation, () => {
       if (this.indicatorActive && this.indicatorSound) {
@@ -408,7 +390,8 @@ class SalaLider extends Phaser.Scene {
         this.indicatorActive = false;
       }
     });
-// Verifica a sobreposição entre o jogador e o indicador
+    
+    this.registry.set('selectedSpriteSheet', this.selectedSpriteSheet); // Salva o dado no Data Manager
     this.scene.get('officeScene').events.emit('stopWalkSound');
     this.scene.switch('officeScene');
     this.scene.get('officeScene').events.emit('stopWalkSound');

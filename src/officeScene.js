@@ -10,11 +10,14 @@ class OfficeScene extends Phaser.Scene {
     this.elevatorIndicatorCreated = false; // Indica se o indicador do elevador já foi criado
     this.buttonUpCreated = false; // Indica se o botão para subir no elevador já foi criado
     this.activeIndicators = []; // Vai guardar as exclamações visíveis
-}
+  }
 
+  init(data) {
+    this.selectedSpriteSheet = data.selectedSpriteSheet;
+    console.log('Selected Sprite Sheet:', this.selectedSpriteSheet);
+  }
 
   preload() {
-    this.load.spritesheet("player", "../assets/personagens/skinsPlayer/player1all.png", {frameWidth: 16, frameHeight: 32, }); // Carrega o spritesheet do jogador
     this.load.spritesheet("npc7", "../assets/personagens/npc7.png", {frameWidth: 16, frameHeight: 32, }); // Carrega o spritesheet do NPC 7
     this.load.spritesheet("npc3", "../assets/personagens/npc3Sit.png", {frameWidth: 16, frameHeight: 32, }); // Carrega o spritesheet do NPC 3 sentado
     this.load.spritesheet("npc4", "../assets/personagens/npc4Sit.png", {frameWidth: 16, frameHeight: 32,}); // Carrega o spritesheet do NPC 4 sentado
@@ -36,13 +39,15 @@ class OfficeScene extends Phaser.Scene {
 
     this.load.audio("officeMusic", "../assets/0320(1).MP3"); // Carrega a música de fundo do escritório
     this.load.audio('keySound', '../assets/sounds/computer-keyboard-typing-290582 (mp3cut.net).mp3'); // Carrega o som de digitação no teclado
-    this.load.audio('indicatorSound', '../assets/sounds/497198_abacagi_bubble-pops (mp3cut.net).wav'); // Carrega o som do indicador de exclamação
+    
     this.load.audio('walkSound', '../assets/sounds/753292__vrymaa__footsteps-high-heels-hardwood-walk-run (mp3cut.net).wav'); // Carrega o som de passos
 
     this.load.image("bgElevOffice", "../assets/bgelevadoroffice.png"); // Carrega a imagem de fundo do elevador no escritório
     this.load.image("panelElev", "../assets/painelelevador.png"); // Carrega a imagem do painel do elevador
     this.load.image("buttonElevOffice", "../assets/botaocimaelevador.png"); // Carrega a imagem do botão para subir no elevador
     this.load.image("arrow", "../assets/seta.png");
+
+    this.load.spritesheet('player', `../assets/personagens/skinsPlayer/players/${this.selectedSpriteSheet}.png`, {frameWidth: 16,frameHeight: 32,});
   }
 
 
@@ -65,7 +70,7 @@ class OfficeScene extends Phaser.Scene {
     this.events.on("pause", this.onShutdown, this); // Evento para salvar o tempo da música ao pausar a cena
 
     this.buttonClick = this.sound.add('buttonSound', {loop: false, volume: 10}); // Adiciona o som de clique de botão
-    this.indicatorSound = this.sound.add('indicatorSound', {loop: true, volume: 1.5}); // Adiciona o som do indicador de exclamação
+    
     if (!this.walkSound) {
       this.walkSound = this.sound.add('walkSound', { loop: false, volume: 2 }); // Adiciona o som de passos, se ainda não existir
     }
@@ -81,6 +86,8 @@ class OfficeScene extends Phaser.Scene {
     this.createComputer(width, height); // Adiciona o computador ao jogo
     this.lastPosition = "down"; // Define a posição inicial do jogador como "para baixo"
     this.createCollisions(); // Configura colisões do jogador com camadas selecionadas
+    this.movePlayer();
+    const layer14 = this.map.createLayer("superiorPorta", this.tileset2, this.offsetX, 0).setScale(2.5); // Cria a camada da porta superior
 
     this.events.on('resume', () => { // Evento para retomar a música ao retornar à cena
       if (!this.officeMusic || !this.officeMusic.isPlaying) { // Verifica se a música não está tocando
@@ -117,9 +124,6 @@ class OfficeScene extends Phaser.Scene {
         this.compassArrow.setRotation(angle + this.arrowOffset);
       }
     });
-    
-
-  
   }
 
   createCollisions() {
@@ -196,6 +200,10 @@ class OfficeScene extends Phaser.Scene {
     layers.forEach((layer, index) => { // Itera sobre cada camada
       this[`layer${index + 1}`] = layer; // Atribui cada camada a uma propriedade dinâmica da classe
     });
+
+    this.map = map; // Atribui o mapa à propriedade da classe
+    this.tileset2 = tileset2; // Atribui o tileset de paredes à propriedade da classe
+    this.offsetX = offsetX; // Atribui o deslocamento X à propriedade da classe
   }
 
   onShutdown() {
@@ -223,9 +231,7 @@ class OfficeScene extends Phaser.Scene {
       this.elevatorIndicatorCreated = true;
     }
   
-    if (!this.activeIndicator) {
-      this.indicatorSound.stop();
-    }
+    
   
     // Controle da Vivita
     if (this.vivita) {
@@ -454,7 +460,7 @@ class OfficeScene extends Phaser.Scene {
       console.log("officeMusic is not playing or undefined.");
     }
     this.scene.stop("officeScene");
-    this.scene.start("elevadorScene");
+    this.scene.start("elevadorScene", {selectedSpriteSheet: this.selectedSpriteSheet,});
   });
 }
   
@@ -466,15 +472,13 @@ class OfficeScene extends Phaser.Scene {
     this.activeIndicators.push(this.elevatorIndicator);
 
     this.indicatorActive = true; // Marca o indicador como ativo
-    if (this.indicatorActive) {
-      this.indicatorSound.play(); // Reproduz o som do indicador se ele estiver ativo
-    }
+    
 
     this.physics.add.overlap(this.player, this.elevatorIndicator, () => {
       if (!this.buttonUpCreated) {
         this.createUpButton();
         this.buttonUpCreated = true;
-        this.indicatorSound.stop();
+      
         this.elevatorIndicator.destroy();
         this.activeIndicators = this.activeIndicators.filter(i => i !== this.elevatorIndicator); // <- necessário
       }
@@ -513,12 +517,10 @@ class OfficeScene extends Phaser.Scene {
     this.activeIndicators.push(this.indicatorComputer);
 
 
-    this.indicatorSoundComputer = this.sound.add('indicatorSound', { loop: true, volume: 10 }); // Adiciona o som do indicador com loop e volume alto
-    this.indicatorSoundComputer.play(); // Reproduz o som do indicador
-  
+    
     this.physics.add.overlap(this.player, this.indicatorComputer, () => { // Adiciona um evento de sobreposição entre o jogador e o indicador
       if (this.indicatorComputerActive) { // Verifica se o indicador está ativo
-        this.indicatorSoundComputer.stop(); // Para o som do indicador
+        
         this.indicatorComputer.destroy(); // Remove o indicador da tela
         this.indicatorComputerActive = false; // Marca o indicador como inativo
       }
@@ -635,7 +637,7 @@ class OfficeScene extends Phaser.Scene {
         this.canInteractWithVivita = true; // Permite interação com a Vivita quando o jogador está próximo
 
         if (this.indicatorVivita && this.indicatorVivitaActive) { // Verifica se o indicador está ativo
-        this.indicatorSoundVivita.stop(); // Para o som do indicador
+        
         this.indicatorVivita.destroy(); // Remove o indicador da tela
         this.indicatorVivitaActive = false; // Marca o indicador como inativo
         }
@@ -654,11 +656,7 @@ class OfficeScene extends Phaser.Scene {
 
 this.activeIndicators.push(this.indicatorVivita); // <- aqui!
 
-this.indicatorSoundVivita = this.sound.add('indicatorSound', { loop: true, volume: 10 });
 
-
-    this.indicatorSoundVivita = this.sound.add('indicatorSound', { loop: true, volume: 10 }); // Adiciona o som do indicador com loop e volume alto
-    this.indicatorSoundVivita.play(); // Reproduz o som do indicador
   
     this.physics.add.overlap(this.player, this.indicatorVivita, () => {
       if (this.indicatorVivitaActive) {
@@ -735,8 +733,8 @@ this.indicatorSoundVivita = this.sound.add('indicatorSound', { loop: true, volum
     this.activeIndicators.push(this.exclamation);
     this.targetIndicator = this.exclamation;
   
-    this.indicatorSound = this.sound.add('indicatorSound', { loop: true, volume: 1.5 });
-    this.indicatorSound.play();
+   
+  
   
     // Cria nova seta (bússola)
     this.compassArrow = this.add.image(this.cameras.main.width / 2, 335, "arrow")
@@ -761,7 +759,7 @@ this.indicatorSoundVivita = this.sound.add('indicatorSound', { loop: true, volum
         this.blockLoop = 0;
         this.exclamation.setVisible(false);
         this.indicatorActive = false;
-        this.indicatorSound.stop();
+        
         this.walkSound.stop();
         this.events.emit('stopWalkSound');
         this.activeIndicators = this.activeIndicators.filter(i => i !== this.exclamation);

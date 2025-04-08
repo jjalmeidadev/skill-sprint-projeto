@@ -17,6 +17,11 @@ class VpRelacoesScene extends Phaser.Scene {
     this.musicarelainst = null; // Referência para a música de fundo
   }
 
+  init(data) {
+    this.selectedSpriteSheet = data.selectedSpriteSheet;
+    
+  }
+
   preload() {
     // Carregamento de todos os assets
     this.load.video("bgbase", "../assets/relainst1.mp4");
@@ -24,11 +29,7 @@ class VpRelacoesScene extends Phaser.Scene {
     this.load.video("bgwom", "../assets/relainstmuie.mp4");
 
     this.load.spritesheet("indicator", "../assets/exclamaçãoRoxa.png", { frameWidth: 254, frameHeight: 291 });
-    this.load.spritesheet("player", "../assets/personagens/skinsPlayer/player1all.png", {
-      frameWidth: 16,
-      frameHeight: 32,
-    });
-
+    this.load.spritesheet('player', `../assets/personagens/skinsPlayer/players/${this.selectedSpriteSheet}.png`, {frameWidth: 16,frameHeight: 32,});
     // Carregamento de imagens e sons
     this.load.image("keyENTER", "../assets/keyEnter.png");
     this.load.audio("buttonSound", "../assets/sounds/687107__aphom000__mouse-2-button-fast-click.wav");
@@ -188,6 +189,8 @@ class VpRelacoesScene extends Phaser.Scene {
         next();
       }
     });
+ this.input.keyboard.disableGlobalCapture();
+
   }
 
   handleElevatorProximity() {

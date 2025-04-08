@@ -3,6 +3,11 @@ class MinigameTrashScene extends Phaser.Scene {
         super({key: 'minigameTrashScene'});
     }
 
+    init(data) {
+        this.selectedSpriteSheet = data.selectedSpriteSheet;
+        
+    }
+    
     preload() {
         this.load.image('backgroundTrash', '../assets/assetsTrash/backgroundTrash.png'); // Carrega o fundo
         this.load.spritesheet('banana', '../assets/assetsTrash/banana.png', { frameWidth: 498, frameHeight: 316 }); // Carrega a banana
@@ -77,7 +82,7 @@ class MinigameTrashScene extends Phaser.Scene {
 
         if (this.vivinho === 3 && this.happiness >= 5) { // Verifica se todas as partes do Vivinho foram coletadas e se a felicidade é suficiente
             this.time.delayedCall(200, () => { // Aguarda 200ms antes de executar a próxima ação
-                this.scene.start('congratulationsMinigameScene'); // Inicia a cena de parabéns
+                this.scene.start('congratulationsMinigameScene', {selectedSpriteSheet: this.selectedSpriteSheet}); // Inicia a cena de parabéns
             });
         }
 
@@ -195,7 +200,7 @@ class MinigameTrashScene extends Phaser.Scene {
     crash(hand, trash) { 
         this.physics.pause(); // Pausa a física do jogo
         this.hand.setVisible(false); // Oculta a mão
-        this.scene.start('gameOverMinigameTrashScene', { pontuacao: this.score }); // Inicia a cena de Game Over
+        this.scene.start('gameOverMinigameTrashScene', { pontuacao: this.score }, {selectedSpriteSheet: this.selectedSpriteSheet}); // Inicia a cena de Game Over
     };
 
     collectVivinho(hand, part) {
@@ -351,7 +356,7 @@ class GameOverMinigameTrashScene extends Phaser.Scene {
         buttonRestart.on('pointerdown', () => { // Adiciona um evento de clique ao botão
             this.buttonSound(); // Reproduz o som do clique do botão
             this.scene.stop('gameOverMinigameTrashScene'); // Para a cena de "Game Over"
-            this.scene.start('minigameTrashScene'); // Reinicia a cena do minijogo
+            this.scene.start('minigameTrashScene', {selectedSpriteSheet: this.selectedSpriteSheet,}); // Reinicia a cena do minijogo
         });
     }
 }

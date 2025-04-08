@@ -3,6 +3,10 @@
     super({ key: 'ajusteScene' });
   }
 
+  init(data) {
+    this.selectedSpriteSheet = data.selectedSpriteSheet;
+}
+
   preload() {
     // Carrega os elementos do fundo
     this.load.image('bg01', '../assets/assetsBackground/1.png');
@@ -64,7 +68,7 @@
       this.buttonSound(); // Reproduz o som do clique do botão
       this.shutdown(); // Interrompe a música da cena
       this.scene.stop('ajusteScene'); // Para a cena atual
-      this.scene.start('initialScene'); // Inicia a cena inicial
+      this.scene.start('initialScene', {selectedSpriteSheet: this.selectedSpriteSheet,}); // Inicia a cena inicial
     });
   }
 
