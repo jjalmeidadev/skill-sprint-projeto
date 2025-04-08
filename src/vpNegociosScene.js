@@ -762,34 +762,118 @@ if (this.compassArrow) {
   }
 
   addScrewDriver() {
-    // Cria o sprite da chave de fenda ao lado do jogador
-    this.screwDriver = this.physics.add.sprite(this.player.x + 20, this.player.y, 'screwDriver').setScale(0.08); // Adiciona o sprite da chave de fenda próximo ao jogador e ajusta seu tamanho
-    this.screwDriver.setDepth(1000); // Garante que a chave de fenda fique acima de outros elementos
-    this.screwDriver.setFlipX(true); // Vira a chave de fenda no eixo X inicialmente
-  
-    // Atualiza a posição da chave de fenda para seguir o jogador
-    this.physics.add.overlap(this.player, this.screwDriver, () => { // Adiciona um evento de overlap entre o jogador e a chave de fenda
-      if (this.screwDriver) { // Verifica se a chave de fenda existe
-        this.screwDriver.x = this.player.x; // Ajusta a posição horizontal da chave de fenda para seguir o jogador
-        this.screwDriver.y = this.player.y + 25; // Ajusta a posição vertical da chave de fenda para seguir o jogador
-      }
-    });
-  
-    // Atualiza a orientação da chave de fenda com base no movimento do jogador
-    this.events.on('update', () => { // Adiciona um evento que será executado a cada atualização do jogo
-      if (this.screwDriver) { // Verifica se a chave de fenda existe
-        if (this.keys.left.isDown) { // Verifica se a tecla de mover para a esquerda está pressionada
-          this.screwDriver.setFlipX(true); // Vira a chave de fenda para a esquerda
-        } else if (this.keys.right.isDown) { // Verifica se a tecla de mover para a direita está pressionada
-          this.screwDriver.setFlipX(false); // Vira a chave de fenda para a direita
-        }
-      }
-    });
-  
-    // Marca que a chave de fenda foi coletada
-    this.screwDriverCollected = true; // Define que a chave de fenda foi coletada
-  }
+  // Cria o sprite da chave de fenda ao lado do jogador
+  this.screwDriver = this.physics.add.sprite(this.player.x + 20, this.player.y, 'screwDriver').setScale(0.08);
+  this.screwDriver.setDepth(1000);
+  this.screwDriver.setFlipX(true);
 
+  // Faz a chave de fenda seguir o jogador
+  this.physics.add.overlap(this.player, this.screwDriver, () => {
+    if (this.screwDriver) {
+      this.screwDriver.x = this.player.x;
+      this.screwDriver.y = this.player.y + 25;
+    }
+  });
+
+  // Atualiza a orientação baseada no movimento do jogador
+  this.events.on('update', () => {
+    if (this.screwDriver) {
+      if (this.keys.left.isDown) {
+        this.screwDriver.setFlipX(true);
+      } else if (this.keys.right.isDown) {
+        this.screwDriver.setFlipX(false);
+      }
+    }
+  });
+
+  this.screwDriverCollected = true;
+  
+  // Chama a função para adicionar indicador após pegar a chave
+  this.addWireIndicator();
+}
+
+addWireIndicator() {
+  // Posição fixa acima da área dos fios (servidor)
+  const wirePosition = { 
+    x: width - 1170,  // Mesmo X do servidor quebrado
+    y: height - 200   // Ajuste Y para posicionar acima dos fios
+  };
+  
+  // Cria o sprite do indicador
+  const wireIndicator = this.physics.add.sprite(
+    wirePosition.x, 
+    wirePosition.y - 50, // Posiciona 50px acima dos fios
+    'indicator'
+  );
+  
+  // Configurações visuais do indicador
+  wireIndicator.setScale(0.2);
+  wireIndicator.setImmovable(true);
+  wireIndicator.play("exclaiming");
+  wireIndicator.setDepth(999); // Garante que fique acima dos fios
+  
+  // Adiciona ao array de indicadores ativos para a bússola
+  this.activeIndicators.push(wireIndicator);
+  
+  // Lógica de interação quando jogador se aproxima
+  this.physics.add.overlap(this.player, wireIndicator, () => {
+    const distance = Phaser.Math.Distance.Between(
+      this.player.x, 
+      this.player.y, 
+      wireIndicator.x, 
+      wireIndicator.y
+    );
+    
+    // Mostra tecla E quando próximo
+    if (distance < 100 && !this.wireIndicatorKeyE) {
+      wireIndicator.destroy();
+      this.wireIndicatorKeyE = this.add.image(
+        wireIndicator.x, 
+        wireIndicator.y - 10, 
+        'keyE'
+      )
+      .setScale(0.07)
+      .setDepth(1000);
+      
+      this.canInteractWithWireIndicator = true;
+    }
+  });
+  
+  // Remove a tecla E quando jogador se afasta
+  this.physics.add.overlap(this.player, wireIndicator, null, (player, indicator) => {
+    const distance = Phaser.Math.Distance.Between(
+      player.x, 
+      player.y, 
+      indicator.x, 
+      indicator.y
+    );
+    
+    if (distance > 100 && this.wireIndicatorKeyE) {
+      this.wireIndicatorKeyE.destroy();
+      this.wireIndicatorKeyE = null;
+      this.canInteractWithWireIndicator = false;
+    }
+    return true;
+  }, this);
+  
+  // Lógica ao pressionar E
+  this.input.keyboard.on("keydown-E", () => {
+    if (this.canInteractWithWireIndicator && this.wireIndicatorKeyE) {
+      this.keySound();
+      this.wireIndicatorKeyE.destroy();
+      this.wireIndicatorKeyE = null;
+      this.canInteractWithWireIndicator = false;
+      
+      // Remove do array de indicadores ativos
+      this.activeIndicators = this.activeIndicators.filter(
+        ind => ind !== wireIndicator
+      );
+      
+      // Adicione aqui qualquer lógica adicional de recompensa
+    }
+  });
+}
+  
   createIndicatorNpc15() {
     this.indicatorNpc15 = this.physics.add.sprite(this.npc15.x, this.npc15.y - 50, 'indicator'); // Cria um sprite de indicador acima do NPC 15
     this.indicatorNpc15.setScale(0.2); // Ajusta o tamanho do indicador
