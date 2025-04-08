@@ -622,31 +622,28 @@ class OfficeScene extends Phaser.Scene {
   }
 
   addVivita() {
-    const vivita = this.physics.add.sprite(width / 1.75, height / 3, "vivita"); // Adiciona o sprite da Vivita na posição especificada
-    vivita.setScale(2.0); // Define a escala do sprite da Vivita
-    vivita.setImmovable(true); // Define a Vivita como imóvel
-    this.vivitaAnimations(); // Cria as animações para a Vivita
-    vivita.play("vivita"); // Reproduz a animação da Vivita
-    this.vivita = vivita; // Salva o objeto da Vivita para uso posterior
+    const vivita = this.physics.add.sprite(width / 1.75, height / 3, "vivita");
+    vivita.setScale(2.0);
+    vivita.setImmovable(true);
+    this.vivitaAnimations();
+    vivita.play("vivita");
+    this.vivita = vivita;
     
-    this.createIndicatorVivita(); // Cria o indicador de exclamação acima da Vivita
-
-    this.canInteractWithVivita = false; // Inicializa a variável que controla a interação com a Vivita como falsa
-
-    this.vivitaOverlap = this.physics.add.overlap(this.player, this.vivita, () => { // Adiciona um evento de sobreposição entre o jogador e a Vivita
-        this.canInteractWithVivita = true; // Permite interação com a Vivita quando o jogador está próximo
-
-        if (this.indicatorVivita && this.indicatorVivitaActive) { // Verifica se o indicador está ativo
-        
-        this.indicatorVivita.destroy(); // Remove o indicador da tela
-        this.indicatorVivitaActive = false; // Marca o indicador como inativo
-        }
-
-        if (!this.keyEVivita) { // Verifica se a tecla E ainda não foi exibida
-        this.keyEVivita = this.add.image(this.vivita.x, this.vivita.y - 50, 'keyE').setScale(0.07).setDepth(1000); // Adiciona a tecla E acima da Vivita
+    this.createIndicatorVivita(); // Cria o indicador de exclamação
+    
+    this.canInteractWithVivita = false;
+    
+    // Overlap entre o jogador e a Vivita para habilitar a interação
+    this.vivitaOverlap = this.physics.add.overlap(this.player, this.vivita, () => {
+        this.canInteractWithVivita = true;
+        // Aqui NÃO destruímos o indicador para que ele permaneça visível
+        if (!this.keyEVivita) {
+            this.keyEVivita = this.add.image(this.vivita.x, this.vivita.y - 50, 'keyE')
+                .setScale(0.07)
+                .setDepth(1000);
         }
     });
-  }
+}
 
   createIndicatorVivita() {
     this.indicatorVivita = this.physics.add.sprite(width / 1.75, height / 3.8, 'indicator'); // Adiciona o indicador de exclamação acima da Vivita
@@ -654,64 +651,59 @@ class OfficeScene extends Phaser.Scene {
     this.indicatorVivita.setImmovable(true); // Define o indicador como imóvel
     this.indicatorVivita.play("exclaiming");
 
-this.activeIndicators.push(this.indicatorVivita); // <- aqui!
-
-
-  
-    this.physics.add.overlap(this.player, this.indicatorVivita, () => {
-      if (this.indicatorVivitaActive) {
-        this.indicatorSoundVivita.stop();
-        this.indicatorVivita.destroy();
-        this.activeIndicators = this.activeIndicators.filter(i => i !== this.indicatorVivita); // <- necessário
-        this.indicatorVivitaActive = false;
-      }
-    });
-    
-  
+  this.activeIndicators.push(this.indicatorVivita); // <- aqui!
     this.indicatorVivitaActive = true; // Marca o indicador como ativo
   }
   
   showVivitaInteraction() {
-    const speechVivita = [ // Define um array com as falas da Vivita
-      "Olá! Você deve ser " + playerName + ", né?", // Primeira fala da Vivita
-      "Fiquei sabendo que você quer mudar de carreira na Vivo.", // Segunda fala da Vivita
-      "Vou te explicar o primeiro passo.", // Terceira fala da Vivita
-      "Primeiro, você precisa criar o seu currículo.", // Quarta fala da Vivita
-      "Vá até o computador no escritório.", // Quinta fala da Vivita
-      "Preencha seu currículo e depois entregue-o na sala da líder.", // Sexta fala da Vivita
-      "Boa sorte!", // Última fala da Vivita
+    // Remove o indicador de exclamação da Vivita somente quando a interação é iniciada
+    if (this.indicatorVivita && this.indicatorVivitaActive) {
+      this.indicatorVivita.destroy();
+      // Remove-o do array de indicadores ativos, se houver
+      this.activeIndicators = this.activeIndicators.filter(ind => ind !== this.indicatorVivita);
+      this.indicatorVivitaActive = false;
+    }
+  
+    // Array com as falas da Vivita
+    const speechVivita = [
+      "Olá! Você deve ser " + playerName + ", né?",
+      "Fiquei sabendo que você quer mudar de carreira na Vivo.",
+      "Vou te explicar o primeiro passo.",
+      "Primeiro, você precisa criar o seu currículo.",
+      "Vá até o computador no escritório.",
+      "Preencha seu currículo e depois entregue-o na sala da líder.",
+      "Boa sorte!"
     ];
-
-    const balloonText = this.add.image(width / 1.55, height / 4.8, "balloonText"); // Adiciona a imagem do balão de texto na posição especificada
-    const text = this.add.text(width / 1.68, height / 7, speechVivita[0], { // Adiciona o texto inicial da Vivita no balão
-      fontSize: "16px", // Define o tamanho da fonte do texto
-      fill: "#000000", // Define a cor do texto como preto
-      wordWrap: { width: balloonText.width - 20 }, // Define a largura máxima para quebra de linha no texto
+  
+    // Cria o balão de diálogo e o texto inicial
+    const balloonText = this.add.image(width / 1.55, height / 4.8, "balloonText");
+    const text = this.add.text(width / 1.68, height / 7, speechVivita[0], {
+      fontSize: "16px",
+      fill: "#000000",
+      wordWrap: { width: balloonText.width - 20 }
     });
-
-    let currentSpeechIndex = 0; // Inicializa o índice da fala atual como 0
-    this.input.keyboard.on("keydown-ENTER", () => { // Adiciona um evento para a tecla ENTER
-      currentSpeechIndex++; // Incrementa o índice da fala atual
-      if (currentSpeechIndex < speechVivita.length) { // Verifica se ainda há falas restantes
-        text.setText(speechVivita[currentSpeechIndex]); // Atualiza o texto no balão com a próxima fala
-        this.playButtonClick(); // Reproduz o som de clique de botão
+  
+    let currentSpeechIndex = 0;
+    // Registra o evento para avançar o diálogo com a tecla ENTER
+    this.input.keyboard.on("keydown-ENTER", () => {
+      currentSpeechIndex++;
+      if (currentSpeechIndex < speechVivita.length) {
+        text.setText(speechVivita[currentSpeechIndex]);
+        this.playButtonClick(); // Toca o som de clique do botão
       } else {
-        // Encerra diálogo
-        balloonText.setVisible(false); // Oculta o balão de texto
-        text.setVisible(false); // Oculta o texto
-
-        // Remove a tecla ENTER
-        if (this.keyENTERVivita) { // Verifica se a tecla ENTER está visível
-          this.keyENTERVivita.destroy(); // Remove a tecla ENTER da tela
-          this.keyENTERVivita = null; // Reseta a referência da tecla ENTER
+        // Finalizado o diálogo: oculta os elementos e remove o evento
+        balloonText.setVisible(false);
+        text.setVisible(false);
+        if (this.keyENTERVivita) {
+          this.keyENTERVivita.destroy();
+          this.keyENTERVivita = null;
         }
-
-        this.input.keyboard.off("keydown-ENTER"); // Remove o evento associado à tecla ENTER
-        this.addComputer(); // Adiciona o computador ao jogo
+        this.input.keyboard.off("keydown-ENTER");
+        this.addComputer(); // Prossegue para a próxima ação, por exemplo, adicionando o computador
       }
     });
   }
-
+  
   leaderRoom() {
     if (this.inTransition) return;
   
