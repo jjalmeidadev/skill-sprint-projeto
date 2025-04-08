@@ -586,12 +586,7 @@ O próximo passo vai ser utilizar o elevador para ir para os próximos níveis. 
 
 O Gameflow de Skill Print pode ser observado a seguir:
 
-<div align="center">
-  <sub>Diagrama de Cenas</sub><br>
-  <img src="https://github.com/user-attachments/assets/e5c2d30d-10b0-4523-8660-6ef98265b399" width="900px" 
-  alt="Diagrama de Cenas"><br>
-  <sup>Fonte: produzido pelos autores.</sup>
-</div>
+![Image](https://github.com/user-attachments/assets/36dbf211-b7fc-42a2-8ceb-5cad738647f4)
 
 Link de acesso:  <https://github.com/user-attachments/assets/e5c2d30d-10b0-4523-8660-6ef98265b399>
 
@@ -1060,6 +1055,27 @@ Os casos de teste descritos a seguir foram elaborados para avaliar os diferentes
 16 | O jogador entra na "VP Pessoas"| Aguardar o carregamento da cena | A trilha sonora da Cena 2 deve começar a tocar e substituir a anterior  
 17 | O jogador está próximo a um lixo interativo na "VP Pessoas"| Pressionar a tecla "E" | Um mini game deve iniciar na tela  
 18 | O jogador está próximo a um caderno interativo na "VP Pessoas" | Pressionar a tecla "E" | O caderno deve abrir e exibir anotações na tela  
+19 | O jogador terminou as ações anteriores | Entrar na área da VP de Negócios | A cena da VP de Negócios deve ser carregada corretamente  
+20 | O jogador está próximo do NPC 1 (VP de Negócios) | Pressionar a tecla "E" | Inicia diálogo com o NPC 1  
+21 | O jogador está próximo do NPC 2 (VP de Negócios) | Pressionar a tecla "E" | Inicia diálogo com o NPC 2  
+22 | O jogador está próximo ao armário danificado | Clicar ou pressionar "E" | Inicia uma cutscene ou interação que leva ao minigame  
+23 | O jogador ativou o armário danificado | Confirmar início do minigame | O minigame deve começar na tela  
+24 | O jogador terminou o minigame | Voltar a falar com o NPC 1 | O NPC 1 dará novas instruções e indicará o NPC 3  
+25 | O jogador está próximo do NPC 3 | Pressionar a tecla "E" | Inicia o diálogo com o NPC 3  
+26 | O jogador está no diálogo com o NPC 3 | Responder a pergunta apresentada | O jogo valida a resposta e exibe feedback correto/errado  
+27 | O jogador está na VP de Negócios | Coletar todos os chips espalhados pela fase | Uma mensagem de “Parabéns” aparece na tela  
+28 | O jogador terminou a VP de Negócios | Entrar na área da VP de Estratégias | A cena da VP de Estratégias deve ser carregada corretamente  
+29 | O jogador está próximo do 1º NPC (VP de Estratégias) | Pressionar a tecla "E" | Inicia o diálogo com o NPC  
+30 | O jogador está próximo do NPC 2 (VP de Estratégias) | Responder ao quiz apresentado | O jogo valida a resposta e continua a sequência  
+31 | O jogador está próximo do NPC 3 (VP de Estratégias) | Responder ao quiz apresentado | O jogo valida a resposta e continua a sequência  
+32 | O jogador está próximo do NPC 4 (VP de Estratégias) | Responder ao quiz apresentado | O jogo valida a resposta e finaliza o ciclo de quiz  
+33 | O jogador terminou a VP de Estratégias | Entrar na área da VP de Tecnologia | A cena da VP de Tecnologia deve ser carregada corretamente  
+34 | O jogador está próximo do NPC 1 (VP de Tecnologia) | Pressionar a tecla "E" | Inicia o diálogo com o NPC  
+35 | O jogador está na VP de Tecnologia | Ir até o computador interativo | O computador exibe a opção de iniciar minigame  
+36 | O jogador ativou o computador interativo | Confirmar início do minigame | O minigame deve começar  
+37 | O jogador terminou a VP de Tecnologia | Entrar na área da VP de Relações | A cena da VP de Relações deve ser carregada corretamente  
+38 | O jogador está na VP de Relações | Ir até a mesa com interação | A opção de interação deve ser exibida  
+39 | O jogador está na mesa com interação | Responder os questionários dos NPCs | O jogo deve validar as respostas e dar o feedback adequado  
 
 
 Através desses testes, é possível identificar pontos de melhoria, ajustar comportamentos inesperados e assegurar que a experiência do jogador seja fluida e intuitiva.
