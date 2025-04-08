@@ -306,8 +306,7 @@ class VpEstrategiaScene extends Phaser.Scene {
             "Você tomou o café da gratidão! Estava delicioso.", {
             fontSize: '18px',
             fill: '#000000',
-            align: 'center',
-            fontFamily: 'font'
+            align: 'center'
           }).setOrigin(0.5);
 
           messageContainer.add([mugIcon, messageBg, messageText]);
@@ -371,7 +370,6 @@ class VpEstrategiaScene extends Phaser.Scene {
             fontSize: '15px',
             fill: '#000000',
             align: 'center',
-            fontFamily: 'font',
             wordWrap: { width: 400 }
           }).setOrigin(0.5);
 
@@ -638,8 +636,7 @@ class VpEstrategiaScene extends Phaser.Scene {
       fontSize: "16px",
       fill: "#000000",
       wordWrap: { width: balloonText.width - 20 },
-      align: "center",
-      fontFamily: 'font'
+      align: "center"
     }).setOrigin(0.5);
 
     const nextSpeech = () => {
@@ -847,8 +844,7 @@ class VpEstrategiaScene extends Phaser.Scene {
         fontSize: "16px",
         fill: "#000000",
         wordWrap: { width: balloonText.width - 20 },
-        align: "center",
-        fontFamily: 'font'
+        align: "center"
       }).setOrigin(0.5);
 
       const enterKey = this.add.image(
