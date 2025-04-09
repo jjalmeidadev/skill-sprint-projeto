@@ -158,6 +158,9 @@ class ElevadorScene extends Phaser.Scene {
       }
 
       this.buttonRelations.setVisible(true); // Exibe o botão de relações quando o jogador está próximo
+      if (this.checkRelationsActive && this.checkRelations) {
+        this.checkRelations.setVisible(true);
+      }
 
       this.player.setVisible(false);
 
@@ -187,6 +190,9 @@ class ElevadorScene extends Phaser.Scene {
       }
 
       this.buttonRelations.setVisible(false); // Esconde o botão de relações quando o jogador está longe
+      if (this.checkRelations) {
+        this.checkRelations.setVisible(false);
+      }
 
       if (!this.panelElevShown) { // O indicador só reaparece se o painel nunca foi mostrado
         this.indicator.setVisible(true); // Mostra o indicador novamente
@@ -241,6 +247,18 @@ class ElevadorScene extends Phaser.Scene {
       }
     
       this.resumeFromTech = false; // reseta a flag
+    }
+
+    if (this.resumeFromRelations && this.buttonRelations && this.checkRelations) {
+      const concluida = this.registry.get('vpRelacoesConcluida') === true;
+    
+      if (concluida) {
+        this.checkRelationsActive = true;
+        this.buttonRelations.disableInteractive();
+        // check só aparece quando estiver perto, o update já cuida disso
+      }
+    
+      this.resumeFromRelations = false; // reseta a flag
     }
   }
 
@@ -591,6 +609,9 @@ class ElevadorScene extends Phaser.Scene {
   }
 
   createButtonRelations(width, height) {
+    const returnedVpRelations = this.fromScene === "VpRelacoesScene";
+    const levelDone = this.registry.get('vpRelacoesConcluida') === true;
+
     this.buttonRelations = this.add.image(0, 0, "buttonRelations").setOrigin(0, 0); // Cria o botão de Relações
     this.buttonRelations.setVisible(false); // Inicialmente esconde o botão
 
@@ -599,16 +620,24 @@ class ElevadorScene extends Phaser.Scene {
     this.buttonRelations.setScale(1.2, 1.15); // Ajusta o tamanho do botão
     this.buttonRelations.setVisible(false); // Inicialmente esconde o botão
 
-    this.buttonRelations.on("pointerdown", () => { // Adiciona um evento de clique ao botão de Relações
-      this.buttonClick.play(); // Toca o som de clique do botão
-      
-    // Call cleanup logic
-      this.cleanupScene();
-      
-      this.shutdown(); // Finaliza a cena atual
-      this.scene.stop("elevadorScene"); // Para a cena atual
-      this.scene.start("VpRelacoesScene", {selectedSpriteSheet: this.selectedSpriteSheet,}); // Inicia a cena de Relações
-    });
+    this.checkRelations = this.add.image(width - 615, height - 605, "checkButton");
+    this.checkRelations.setScale(0.6);
+    this.checkRelations.setVisible(false); // Por padrão, invisível
+    this.checkRelationsActive = (this.fromScene === "VpRelacoesScene" && this.registry.get('vpRelacoesConcluida'));
+
+    if (returnedVpRelations && levelDone) {
+      this.checkRelations.setVisible(true);
+      this.buttonRelations.disableInteractive();
+    }
+
+    if (!levelDone) {
+      this.buttonRelations.on("pointerdown", () => {
+        this.buttonClick.play();
+        this.shutdown();
+        this.scene.pause("elevadorScene");
+        this.scene.launch("VpRelacoesScene", { selectedSpriteSheet: this.selectedSpriteSheet });
+      });
+    }
   }
 
   resetPlayerPosition() {

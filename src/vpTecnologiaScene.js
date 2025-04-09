@@ -28,8 +28,7 @@ class VpTecnologiaScene extends Phaser.Scene {
   }
 
   create() {
-    const width = this.cameras.main.width;
-    const height = this.cameras.main.height;
+    this.add.rectangle(width - 2000, height - 2000, width, height, 0x2F052F).setOrigin(0).setScale(5); // Adiciona um retangulo de fundo
 
     const offsetX = this.scale.width - 1270;
     const map = this.make.tilemap({ key: "vpTecnologia", tileWidth: 25, tileHeight: 20 });

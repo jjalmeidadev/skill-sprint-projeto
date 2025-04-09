@@ -50,8 +50,7 @@ class VpRelacoesScene extends Phaser.Scene {
   }
 
   create() {
-    const width = this.scale.width;
-    const height = this.scale.height;
+    this.add.rectangle(width - 2000, height - 2000, width, height, 0x2F052F).setOrigin(0).setScale(5); // Adiciona um retangulo de fundo
 
     // Configuração inicial da cena
     this.cameras.main.fadeIn(1000);
@@ -205,10 +204,11 @@ class VpRelacoesScene extends Phaser.Scene {
       }
       
       // Transição para a cena do elevador
-      this.scene.start("elevadorScene", {
-        fromScene: "VpRelacoesScene",
-        playerName: this.playerName
-      });
+      this.registry.set('vpRelacoesConcluida', true);
+      const elevadorScene = this.scene.get("elevadorScene");
+      elevadorScene.resumeFromRelations = true;
+      this.scene.stop("VpRelacoesScene");
+      this.scene.resume("elevadorScene");
     }
   }
 
