@@ -13,6 +13,8 @@ class VpTecnologiaScene extends Phaser.Scene {
     this.load.image('paredes', '../assets/mapaVPPessoas/paredes.png');
     this.load.spritesheet('player', `../assets/personagens/skinsPlayer/players/${this.selectedSpriteSheet}.png`, {frameWidth: 16,frameHeight: 32,});
 
+    this.load.audio("bgMusic", "../assets/sounds/Funk-Modulator-RoccoW-_-Chiptune-_No-Copyright-Music_.mp3");
+
     this.load.audio('walkSound', '../assets/sounds/753292__vrymaa__footsteps-high-heels-hardwood-walk-run (mp3cut.net).wav');
 
     this.load.image("computer", "../assets/computador.png");
@@ -24,12 +26,39 @@ class VpTecnologiaScene extends Phaser.Scene {
     this.load.spritesheet("npc", "../assets/personagens/npc7.png", {frameWidth: 16, frameHeight: 32, }); // Carrega o spritesheet do NPC 7
     this.load.spritesheet("indicator", "../assets/exclamaçãoRoxa.png", { frameWidth: 254, frameHeight: 305 }); // Carrega o spritesheet do indicador
     this.load.image('keyE', '../assets/teclaE.png'); // Carrega a imagem da tecla "E"
+    this.load.image('keyEnter', '../assets/keyEnter.png'); // Add keyEnter image load here
     this.load.image("balloonText", "../assets/balaoTexto.png"); // Carrega a imagem do balão de texto
     this.load.image('levelTitle', '../assets/titulos/tituloVpTecnologia.png') // Carrega os asssets do titulo da fase
   }
 
   create() {
     this.add.rectangle(width - 2000, height - 2000, width, height, 0x2F052F).setOrigin(0).setScale(5); // Adiciona um retangulo de fundo
+
+    // Initialize and play background music with better error handling
+    try {
+      if (!this.bgMusic) {
+        this.bgMusic = this.sound.add("bgMusic", { 
+          loop: true, 
+          volume: 4,
+          rate: 1
+        });
+      }
+      if (!this.bgMusic.isPlaying) {
+        this.bgMusic.play();
+      }
+    } catch (error) {
+      console.warn("Could not play background music:", error);
+    }
+
+    // Create exclamation animation
+    if (!this.anims.exists('exclaiming')) {
+      this.anims.create({
+        key: 'exclaiming',
+        frames: this.anims.generateFrameNumbers('indicator', { start: 0, end: 1 }),
+        frameRate: 3,
+        repeat: -1
+      });
+    }
 
     const offsetX = this.scale.width - 1270;
     const map = this.make.tilemap({ key: "vpTecnologia", tileWidth: 25, tileHeight: 20 });
@@ -50,18 +79,54 @@ class VpTecnologiaScene extends Phaser.Scene {
       layer.setCollisionByProperty({ collider: true });
     });
 
+    // Create player first
     this.createPlayer(width, height);
     this.createPlayerAnimations();
-    this.createComputer(width, height);
-    this.createButtonBack(width, height);
-    this.createNPCWithBalloon(); // Adiciona a NPC com balão de fala
-    this.createComputerIndicator(); // Configura o indicador para o computador
 
+    // Dá zoom na tela do jogo e faz a câmera seguir o personagem
+    this.cameras.main.startFollow(this.player); // Faz a câmera seguir o jogador
+    this.cameras.main.setZoom(2); // Define o nível de zoom da câmera
+
+    // Then create barriers
+    this.barriers = this.physics.add.staticGroup();
+    
+    // Top barrier
+    this.barriers.create(width/2, 0, 'paredes')
+      .setScale(width, 0.1)
+      .setVisible(false)
+      .refreshBody();
+    
+    // Bottom barrier  
+    this.barriers.create(width/2, height, 'paredes')
+      .setScale(width, 0.1)
+      .setVisible(false)
+      .refreshBody();
+    
+    // Left barrier
+    this.barriers.create(0, height/2, 'paredes')
+      .setScale(0.1, height)
+      .setVisible(false)
+      .refreshBody();
+    
+    // Right barrier
+    this.barriers.create(width, height/2, 'paredes')
+      .setScale(0.1, height)
+      .setVisible(false)
+      .refreshBody();
+
+    // Add collisions after both player and barriers exist
+    this.physics.add.collider(this.player, this.barriers);
     this.physics.add.collider(this.player, layers[0]);
     this.physics.add.collider(this.player, layers[2]);
     this.physics.add.collider(this.player, layers[3]);
     this.physics.add.collider(this.player, layers[4]);
     this.physics.add.collider(this.player, layers[5]);
+
+    // Create remaining elements
+    this.createComputer(width, height);
+    this.createButtonBack(width, height);
+    this.createNPCWithBalloon();
+    this.createComputerIndicator();
 
     this.keys = this.input.keyboard.addKeys({
       up: Phaser.Input.Keyboard.KeyCodes.W,
@@ -268,52 +333,65 @@ class VpTecnologiaScene extends Phaser.Scene {
   }
 
   createNPCWithBalloon() {
-    const npc = this.physics.add.sprite(957, 173, "npc"); // Adiciona o sprite da NPC
-    npc.setScale(2.5); // Define o tamanho da NPC
-    npc.setImmovable(true); // Define a NPC como imóvel para colisões
+    const npc = this.physics.add.sprite(900, 173, "npc"); // Changed x from 957 to 857
+    npc.setScale(2.5);
+    npc.setImmovable(true);
+    
+    // Add collision between player and NPC
+    this.physics.add.collider(this.player, npc);
 
     const dialogues = [
-      "Bem-vindo à VP de Tecnologia!",
-      "Aqui você aprenderá sobre inovação e upskilling.",
-      "Interaja com o computador para começar o mini-game.",
+      "Bem-vindo(a) à VP de Tecnologia!",
+      "Você aprenderá sobre reskilling e upskilling.",
+      "Isso te ajudará no seu aprendizado contínuo na Vivo!",
+      "Interaja com o computador para começar!",
     ];
 
     let currentDialogueIndex = 0;
+    let isDialogueActive = false;
 
     // Adiciona a exclamação e a tecla "E" sobre a NPC
     const indicator = this.physics.add.sprite(npc.x, npc.y - 50, 'indicator').setScale(0.2);
     indicator.play("exclaiming");
     let keyE = this.add.image(npc.x, npc.y - 80, 'keyE').setScale(0.08).setVisible(false); // Inicialmente invisível
+    let keyEnter = this.add.image(npc.x, npc.y - 80, 'keyEnter').setScale(0.1).setVisible(false);
 
     this.physics.add.overlap(this.player, indicator, () => {
       const distance = Phaser.Math.Distance.Between(this.player.x, this.player.y, npc.x, npc.y);
-      if (distance < 100) {
+      if (distance < 100 && !isDialogueActive) {
         keyE.setVisible(true); // Mostra a tecla "E" quando o jogador se aproxima
       } else {
         keyE.setVisible(false); // Esconde a tecla "E" quando o jogador se afasta
       }
     });
 
-    const balloonText = this.add.image(npc.x, npc.y - 60, "balloonText").setScale(0.8).setVisible(false);
-    const text = this.add.text(npc.x - 70, npc.y - 90, "", {
-      fontSize: "14px",
+    const balloonText = this.add.image(npc.x + 100, npc.y - 60, "balloonText").setScale(0.8).setVisible(false);
+    const text = this.add.text(npc.x + 40, npc.y - 100, "", {
+      fontSize: "12px",
       fill: "#000000",
-      wordWrap: { width: balloonText.width - 20 },
+      wordWrap: { width: balloonText.width - 50 },
     }).setVisible(false);
 
     const showDialogue = () => {
       if (currentDialogueIndex < dialogues.length) {
+        isDialogueActive = true;
+        indicator.setVisible(false);
+        keyE.setVisible(false);
+        keyEnter.setVisible(true);
         balloonText.setVisible(true);
         text.setText(dialogues[currentDialogueIndex]).setVisible(true);
         currentDialogueIndex++;
       } else {
         balloonText.setVisible(false);
         text.setVisible(false);
+        keyEnter.setVisible(false);
         this.input.keyboard.off("keydown-ENTER", showDialogue);
+        isDialogueActive = false;
 
         // Remove a exclamação e a tecla "E" da NPC
         indicator.destroy();
         keyE.destroy();
+        keyEnter.destroy();
 
         // Ativa o indicador sobre o computador
         this.activateComputerIndicator();
@@ -338,30 +416,40 @@ class VpTecnologiaScene extends Phaser.Scene {
   }
 
   createComputer(width, height) {
-    this.add.image(1111, 381, "computer").setScale(0.1); // Apenas adiciona o computador sem mensagem
+    this.add.image(985, 381, "computer").setScale(0.1); // Apenas adiciona o computador sem mensagem
   }
 
   createComputerIndicator() {
-    const indicator = this.physics.add.sprite(1111, 331, 'indicator').setScale(0.2).setVisible(false);
+    const indicator = this.physics.add.sprite(985, 331, 'indicator').setScale(0.2).setVisible(false);
     indicator.play("exclaiming");
-    const keyE = this.add.image(1111, 301, 'keyE').setScale(0.08).setVisible(false); // Inicialmente invisível
+    
+    // Adjusted keyE position to be higher above the computer
+    const keyE = this.add.image(985, 301, 'keyE')
+      .setScale(0.08)
+      .setVisible(false)
+      .setDepth(1); // Ensure keyE appears above other elements
 
     this.physics.add.overlap(this.player, indicator, () => {
-        const distance = Phaser.Math.Distance.Between(this.player.x, this.player.y, 1111, 381);
-        if (distance < 100) {
-            keyE.setVisible(true); // Mostra a tecla "E" quando o jogador se aproxima
+        const distance = Phaser.Math.Distance.Between(this.player.x, this.player.y, 985, 381);
+        if (distance < 100 && !this.miniGameActive) {  // Add check for miniGameActive
+            keyE.setVisible(true);
+            indicator.setVisible(true);
             if (Phaser.Input.Keyboard.JustDown(this.keys.interagir)) {
-                this.startMiniGame(); // Inicia o mini-game ao interagir
+                this.miniGameActive = true;  // Set flag when minigame starts
+                keyE.setVisible(false);      // Ensure keyE is hidden
+                this.startMiniGame();
             }
         } else {
-            keyE.setVisible(false); // Esconde a tecla "E" quando o jogador se afasta
+            keyE.setVisible(false);
+            indicator.setVisible(false);
         }
     });
 
+    // Keep both key E and indicator visible after computer interaction is activated
     this.input.keyboard.on("keydown-E", () => {
         const distance = Phaser.Math.Distance.Between(this.player.x, this.player.y, 1111, 381);
         if (distance < 100) {
-            this.startMiniGame(); // Inicia o mini-game ao pressionar "E" próximo ao computador
+            this.startMiniGame();
         }
     });
 
@@ -374,15 +462,25 @@ class VpTecnologiaScene extends Phaser.Scene {
   }
 
   startMiniGame() {
+    // Hide key E when minigame starts
+    if (this.keyEComputer) {
+      this.keyEComputer.setVisible(false);
+    }
+    
+    // Reset zoom and camera follow for mini-game
+    this.cameras.main.stopFollow();
+    this.cameras.main.setZoom(1);
+    this.cameras.main.centerOn(this.cameras.main.width / 2, this.cameras.main.height / 2);
+
     // Add background image for the mini-game
     const background = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, "box").setScale(0.8);
 
-    // Create draggable words with their initial positions
+    // Create draggable words with their initial positions - with smaller scale
     const words = [
-      this.add.image(290, 400, "word1").setInteractive(),
-      this.add.image(290, 500, "word2").setInteractive(),
-      this.add.image(290, 300, "word3").setInteractive(),
-      this.add.image(290, 200, "word4").setInteractive(),
+      this.add.image(290, 400, "word1").setScale(0.7).setInteractive({ draggable: true }),
+      this.add.image(290, 500, "word2").setScale(0.7).setInteractive({ draggable: true }),
+      this.add.image(290, 300, "word3").setScale(0.7).setInteractive({ draggable: true }),
+      this.add.image(290, 200, "word4").setScale(0.7).setInteractive({ draggable: true }),
     ];
 
     const initialPositions = [
@@ -392,9 +490,14 @@ class VpTecnologiaScene extends Phaser.Scene {
       { x: 290, y: 200 },
     ];
 
-    // Enable dragging for words
-    words.forEach(word => {
-      this.input.setDraggable(word);
+    // Update drag handlers to work with multiple elements
+    this.input.on('dragstart', (pointer, gameObject) => {
+      this.children.bringToTop(gameObject);
+    });
+
+    this.input.on('drag', (pointer, gameObject, dragX, dragY) => {
+      gameObject.x = dragX;
+      gameObject.y = dragY;
     });
 
     // Define target areas for each word
@@ -432,6 +535,19 @@ class VpTecnologiaScene extends Phaser.Scene {
       });
     };
 
+    // Store instruction text in scene for later reference
+    this.instruction = this.add.text(
+      this.cameras.main.width / 2,
+      100,
+      'Posicione a palavra "novas" na posição correta!',
+      {
+        fontSize: '24px',
+        fill: '#000000',
+        backgroundColor: '#ffffff',
+        padding: { x: 10, y: 5 }
+      }
+    ).setOrigin(0.5).setDepth(1);
+
     // Handle dragging logic
     this.input.on("drag", (pointer, gameObject, dragX, dragY) => {
       gameObject.setPosition(dragX, dragY);
@@ -456,6 +572,11 @@ class VpTecnologiaScene extends Phaser.Scene {
           gameObject.disableInteractive(); // Make the word immovable
           area.target.setFillStyle(0x00ff00, 0.5); // Change target area color to green
           showSpeechBalloon(area.x, area.y - 50, "Correto!");
+          
+          // Remove instruction text specifically when word1 is placed correctly
+          if (gameObject.texture.key === "word1" && this.instruction) {
+            this.instruction.destroy();
+          }
         }
       });
 
@@ -482,11 +603,90 @@ class VpTecnologiaScene extends Phaser.Scene {
 
       // Check if all words are placed correctly
       if (placedCorrectly.every(p => p)) {
-        this.endMiniGame(background, words, targetAreas);
+        const overlay = this.add.rectangle(
+          this.cameras.main.width / 2,
+          this.cameras.main.height / 2,
+          this.cameras.main.width,
+          this.cameras.main.height,
+          0x000000,
+          0.7
+        );
+
+        const feedbackContainer = this.add.container(this.cameras.main.width / 2, this.cameras.main.height / 2);
+        const feedbackBg = this.add.rectangle(0, 0, 800, 200, 0xB600B9, 0.9).setOrigin(0.5);
+        feedbackBg.setStrokeStyle(4, 0xB600B9);
+
+        const feedbackText = this.add.text(0, 0, 'Parabéns! Você montou corretamente o conceito de upskilling: aprender novas competências para desenvolvimento e aprendizado contínuo!', {
+          fontSize: '24px',
+          fill: '#000000',
+          align: 'center',
+          fontFamily: 'font',
+          wordWrap: { width: 750 }
+        }).setOrigin(0.5);
+
+        feedbackContainer.add([feedbackBg, feedbackText]);
+
+        this.time.delayedCall(8000, () => {
+          this.tweens.add({
+            targets: [overlay, feedbackContainer],
+            alpha: 0,
+            duration: 500,
+            onComplete: () => {
+              overlay.destroy();
+              feedbackContainer.destroy();
+              this.endMiniGame(background, words, targetAreas);
+            }
+          });
+        });
       }
     });
 
     this.createCloseMiniGameButton();
+  }
+
+  showPositionSuccess(x, y) {
+    const successContainer = this.add.container(x, y);
+    const successBg = this.add.rectangle(0, 0, 200, 40, 0x00ff00, 0.8);
+    const successText = this.add.text(0, 0, "Correto!", {
+      fontSize: '16px',
+      fill: '#000000'
+    }).setOrigin(0.5);
+    
+    successContainer.add([successBg, successText]);
+    
+    this.tweens.add({
+      targets: successContainer,
+      alpha: 0,
+      y: y - 20,
+      duration: 1000,
+      onComplete: () => successContainer.destroy()
+    });
+  }
+
+  showPositionError(x, y, message = "Posição incorreta!") {
+    const errorContainer = this.add.container(x, y);
+    const errorBg = this.add.rectangle(0, 0, 200, 40, 0xff0000, 0.8);
+    const errorText = this.add.text(0, 0, message, {
+      fontSize: '16px',
+      fill: '#ffffff'
+    }).setOrigin(0.5);
+    
+    errorContainer.add([errorBg, errorText]);
+    
+    this.tweens.add({
+      targets: errorContainer,
+      alpha: 0,
+      y: y - 20,
+      duration: 1000,
+      onComplete: () => errorContainer.destroy()
+    });
+  }
+
+  resetWordPosition(gameObject, words, initialPositions) {
+    const index = words.indexOf(gameObject);
+    if (index !== -1) {
+      gameObject.setPosition(initialPositions[index].x, initialPositions[index].y);
+    }
   }
 
   restartMiniGame(background, words, targetAreas) {
@@ -512,13 +712,16 @@ class VpTecnologiaScene extends Phaser.Scene {
     closeButton.setInteractive();
 
     closeButton.on("pointerdown", () => {
+      // Restore camera settings when closing mini-game
+      this.cameras.main.startFollow(this.player);
+      this.cameras.main.setZoom(2);
       this.scene.resume();
       this.scene.stop();
     });
   }
 
   createButtonBack(width, height) {
-    const buttonBack = this.add.image(width - 500, height - 680, "keyE").setScale(0.08);
+    const buttonBack = this.add.image(width - 500, height - 720, "keyE").setScale(0.08);
 
     this.input.keyboard.on("keydown-E", () => {
       const distance = Phaser.Math.Distance.Between(this.player.x, this.player.y, buttonBack.x, buttonBack.y);
@@ -545,5 +748,18 @@ class VpTecnologiaScene extends Phaser.Scene {
         this.keyEExample = this.add.image(400, 260, 'keyE').setScale(0.08); // Adiciona a tecla "E" acima do indicador
       }
     });
+  }
+
+  // Add cleanup method for when scene changes
+  onShutdown() {
+    if (this.bgMusic && this.bgMusic.isPlaying) {
+      this.bgMusic.stop();
+    }
+  }
+
+  shutdown() {
+    if (this.bgMusic) {
+      this.bgMusic.stop();
+    }
   }
 }
