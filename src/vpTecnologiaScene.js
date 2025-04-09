@@ -25,6 +25,7 @@ class VpTecnologiaScene extends Phaser.Scene {
     this.load.spritesheet("indicator", "../assets/exclamaçãoRoxa.png", { frameWidth: 254, frameHeight: 305 }); // Carrega o spritesheet do indicador
     this.load.image('keyE', '../assets/teclaE.png'); // Carrega a imagem da tecla "E"
     this.load.image("balloonText", "../assets/balaoTexto.png"); // Carrega a imagem do balão de texto
+    this.load.image('levelTitle', '../assets/titulos/tituloVpTecnologia.png') // Carrega os asssets do titulo da fase
   }
 
   create() {
@@ -75,6 +76,8 @@ class VpTecnologiaScene extends Phaser.Scene {
 
     this.cursorCoordinatesText = this.add.text(10, 10, '', { fontSize: '16px', fill: '#000000' }); // Set text color to black
     this.cursorCoordinatesText.setDepth(1000); // Ensure it is above other elements
+
+    this.showTitle(); // Exibe o titulo da fase
   }
 
   update() {
@@ -90,6 +93,11 @@ class VpTecnologiaScene extends Phaser.Scene {
         this.keyEExample = null;
       }
     }
+  }
+
+  showTitle() {
+    const titleImage = this.add.image(this.player.x, this.player.y - 150, 'levelTitle').setDepth(1000); // Adiciona a imagem de parabéns acima do jogador e define sua profundidade para garantir que fique acima de outros elementos
+    titleImage.setScale(0.3); // Ajusta o tamanho da imagem de parabéns
   }
 
   createPlayer(width, height) {

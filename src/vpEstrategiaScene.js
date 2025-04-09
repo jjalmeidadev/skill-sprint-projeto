@@ -41,6 +41,7 @@ class VpEstrategiaScene extends Phaser.Scene {
     this.load.image('meme_estrategia', '../assets/meme_estrategia.jpg'); // Adiciona imagem do meme
     this.load.image('sheet', '../assets/sheet.png'); // Adiciona imagem da folha
     this.load.image('notes', '../assets/notes.png'); // Adiciona imagem das anotações
+    this.load.image('levelTitle', '../assets/titulos/tituloVpEstrategias.png') // Carrega os asssets do titulo da fase
   }
 
   init(data) {
@@ -536,6 +537,8 @@ class VpEstrategiaScene extends Phaser.Scene {
     // Dá zoom na tela do jogo e faz a câmera seguir o personagem
     this.cameras.main.startFollow(this.player); // Faz a câmera seguir o jogador
     this.cameras.main.setZoom(2); // Define o nível de zoom da câmera
+
+    this.showTitle(); // Exibe o titulo da fase
   }
 
   update() {
@@ -592,6 +595,11 @@ class VpEstrategiaScene extends Phaser.Scene {
       );
       this.keyESheet.setVisible(distanceSheet < 100);
     }
+  }
+
+  showTitle() {
+    const titleImage = this.add.image(this.player.x, this.player.y - 130, 'levelTitle').setDepth(1000); // Adiciona a imagem de parabéns acima do jogador e define sua profundidade para garantir que fique acima de outros elementos
+    titleImage.setScale(0.3); // Ajusta o tamanho da imagem de parabéns
   }
 
   startDialogue(speechNpc, npc) {
