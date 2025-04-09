@@ -1093,7 +1093,7 @@ class QuizVpEstrategia extends Phaser.Scene {
                 }
             ).setOrigin(0.5);
 
-            // Espera um momento antes de liberar uma nova tentativa
+            // Esperar um momento antes de liberar uma nova tentativa
             this.time.delayedCall(3000, () => {
                 feedbackText.destroy(); // Remove feedback
                 this.showQuestion(); // Volta para a mesma pergunta

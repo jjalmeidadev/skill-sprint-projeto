@@ -18,17 +18,13 @@ class VpEstrategiaScene extends Phaser.Scene {
     };
   }
 
-  init(data) {
-    this.selectedSpriteSheet = data.selectedSpriteSheet;
-  }
-
   preload() {
     this.load.tilemapTiledJSON('map_estrategia', '../assets/mapaVpEstrategia/map_estrategia.json'); // Carrega o arquivo JSON do mapa criado no Tiled
     this.load.image('decoracao', '../assets/mapaVpEstrategia/decoracao.png'); // Carrega o tileset de decoração
     this.load.image('paredes', '../assets/mapaVpEstrategia/paredes.png'); // Carrega o tileset de paredes
     this.load.image('personalizado_vivo', '../assets/mapaVpEstrategia/personalizado_vivo.png'); // Carrega o tileset personalizado
 
-    this.load.spritesheet('player', `../assets/personagens/skinsPlayer/players/${this.selectedSpriteSheet}.png`, {frameWidth: 16,frameHeight: 32,});
+    this.load.spritesheet('player', '../assets/Player.png', { frameWidth: 32, frameHeight: 32 }); // Carrega o spritesheet do jogador com dimensões de cada frame
     this.load.image('npc', '../assets/viviane_liderr.png'); // Carrega a imagem da NPC
     this.load.image('keyE', '../assets/teclaE.png'); // Carrega a imagem da tecla "E" para interação
     this.load.image("balloonText", "../assets/balaoTexto.png"); // Carrega a imagem do balão de fala da NPC
@@ -286,6 +282,7 @@ class VpEstrategiaScene extends Phaser.Scene {
           this.interactedWith.mug = true;
           this.eKeyInteractions++;
           this.checkCompletionDialogue();
+          this.exclamationIdle2.setVisible(true);
           const overlay = this.add.rectangle(
             0, 0,
             this.cameras.main.width * 2,
@@ -355,6 +352,7 @@ class VpEstrategiaScene extends Phaser.Scene {
           this.interactedWith.mobile = true;
           this.eKeyInteractions++;
           this.checkCompletionDialogue();
+          this.exclamationIdle3.setVisible(true);
           const overlay = this.add.rectangle(
             0, 0,
             this.cameras.main.width * 2,
@@ -656,8 +654,6 @@ class VpEstrategiaScene extends Phaser.Scene {
 
         if (npc === this.npc) {
           this.exclamationIdle.setVisible(true);
-          this.exclamationIdle2.setVisible(true);
-          this.exclamationIdle3.setVisible(true);
           this.npcInteractionComplete = true;
         } else {
           if (npc === this.npcIdle) {
@@ -818,7 +814,7 @@ class VpEstrategiaScene extends Phaser.Scene {
 
       if (distance < 100) { // Verifica se o jogador está próximo o suficiente do botão (raio de 100)
         this.scene.stop("VpEstrategiaScene"); // Para a cena atual
-        this.scene.start("elevadorScene", {selectedSpriteSheet: this.selectedSpriteSheet}); // Inicia a cena do elevador
+        this.scene.start("elevadorScene"); // Inicia a cena do elevador
       }
     });
   }
@@ -1198,6 +1194,7 @@ class minigameEstrategiaCarlos extends Phaser.Scene {
         onComplete: () => {
           overlay.destroy();
           this.feedbackContainer.destroy();
+          this.scene.get('VpEstrategiaScene').events.emit('completedCarlosMinigame');
           this.scene.switch('VpEstrategiaScene', { showThankYou: true });
         }
       });
@@ -1585,6 +1582,7 @@ class minigameEstrategiaAna extends Phaser.Scene {
         onComplete: () => {
           overlay.destroy();
           this.feedbackContainer.destroy();
+          this.scene.get('VpEstrategiaScene').events.emit('completedAnaMinigame');
           this.scene.switch('VpEstrategiaScene', { showThankYou: true });
         }
       });
