@@ -41,6 +41,7 @@ class VpEstrategiaScene extends Phaser.Scene {
     this.load.image('meme_estrategia', '../assets/meme_estrategia.jpg'); // Adiciona imagem do meme
     this.load.image('sheet', '../assets/sheet.png'); // Adiciona imagem da folha
     this.load.image('notes', '../assets/notes.png'); // Adiciona imagem das anotações
+    this.load.image('arrow', '../assets/seta.png');
   }
 
   init(data) {
@@ -83,11 +84,10 @@ class VpEstrategiaScene extends Phaser.Scene {
   }
 
   create() {
-    this.add.rectangle(width - 2000, height - 2000, width, height, 0x2F052F).setOrigin(0).setScale(5); // Adiciona um retangulo de fundo
-
     // Inicializa a variável de controle
     this.npcInteractionComplete = false;
-
+    const width = this.cameras.main.width; // Obtém a largura da câmera principal
+    const height = this.cameras.main.height; // Obtém a altura da câmera principal
 
     const startTime = VpEstrategiaScene.lastMusicTime || 0; // Recupera o tempo salvo da música ou inicia do início
     this.strategyMusic = this.sound.add("strategyMusic", { loop: true }); // Adiciona a música de fundo com loop
@@ -148,7 +148,13 @@ class VpEstrategiaScene extends Phaser.Scene {
     this.exclamation = this.physics.add.sprite(this.npc.x, this.npc.y - 80, "indicator").setScale(0.3);
     this.exclamation.play("exclaiming"); // Reproduz a animação da exclamação
     this.exclamation.setImmovable(true); // Define que a exclamação não pode ser movida
-
+    this.arrow = this.add.image(this.cameras.main.width / 2, 335, "arrow")
+    .setScale(0.5)
+    .setOrigin(0.5, 0.5)
+    .setDepth(1000);
+    this.arrow.setScrollFactor(0); // Fixa a seta na tela
+  
+  
     this.physics.add.overlap(this.player, this.exclamation, () => {
       if (!this.activeDialogue) {
         this.keyEMain.setVisible(true);
@@ -591,9 +597,13 @@ class VpEstrategiaScene extends Phaser.Scene {
         this.sheetContainer.x, this.sheetContainer.y
       );
       this.keyESheet.setVisible(distanceSheet < 100);
+   
     }
+    
+        this.updateArrowToNearestIndicator();
+      
+    
   }
-
   startDialogue(speechNpc, npc) {
     if (!npc) {
       console.error("NPC não definido ao iniciar o diálogo.");
@@ -739,7 +749,47 @@ class VpEstrategiaScene extends Phaser.Scene {
       }
     }
   }
-
+  updateArrowToNearestIndicator() {
+    if (!this.arrow || !this.player) return;
+  
+    const indicators = [
+      this.exclamation,
+      this.exclamationIdle,
+      this.exclamationIdle2,
+      this.exclamationIdle3,
+      this.mugExclamation,
+      this.mobileExclamation,
+      this.sheetExclamation
+    ].filter(ind => ind && ind.visible && ind.active);
+  
+    if (indicators.length === 0) {
+      this.arrow.setVisible(false);
+      return;
+    }
+  
+    this.arrow.setVisible(true);
+  
+    const nearestIndicator = indicators.reduce((closest, current) => {
+      const distCurrent = Phaser.Math.Distance.Between(this.player.x, this.player.y, current.x, current.y);
+      const distClosest = Phaser.Math.Distance.Between(this.player.x, this.player.y, closest.x, closest.y);
+      return distCurrent < distClosest ? current : closest;
+    });
+  
+    let targetX = nearestIndicator.x;
+    let targetY = nearestIndicator.y;
+  
+    // Corrigir posição se estiver dentro de container
+    if (nearestIndicator.parentContainer) {
+      targetX += nearestIndicator.parentContainer.x;
+      targetY += nearestIndicator.parentContainer.y;
+    }
+  
+    const angle = Phaser.Math.Angle.Between(this.player.x, this.player.y, targetX, targetY);
+    this.arrow.setRotation(angle + Math.PI);
+  }
+  
+  
+  
   createPlayer(width, height) {
     this.player = this.physics.add.sprite(width - 670, height - 660, 'player'); // Adiciona o sprite do jogador na posição especificada
     this.player.setScale(2.5); // Ajusta o tamanho do jogador
@@ -814,13 +864,8 @@ class VpEstrategiaScene extends Phaser.Scene {
       );
 
       if (distance < 100) { // Verifica se o jogador está próximo o suficiente do botão (raio de 100)
-        this.sound.stopAll();
-        
-        this.registry.set('vpEstrategiaConcluida', true);
-        const elevadorScene = this.scene.get("elevadorScene");
-        elevadorScene.resumeFromStrategies = true;
-        this.scene.stop("VpEstrategiaScene");
-        this.scene.resume("elevadorScene");
+        this.scene.stop("VpEstrategiaScene"); // Para a cena atual
+        this.scene.start("elevadorScene"); // Inicia a cena do elevador
       }
     });
   }
