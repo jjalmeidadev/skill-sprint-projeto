@@ -153,6 +153,10 @@ class ElevadorScene extends Phaser.Scene {
       }
 
       this.buttonTech.setVisible(true); // Exibe o botão de tecnologia quando o jogador está próximo
+      if (this.checkTechActive && this.checkTech) {
+        this.checkTech.setVisible(true);
+      }
+
       this.buttonRelations.setVisible(true); // Exibe o botão de relações quando o jogador está próximo
 
       this.player.setVisible(false);
@@ -178,6 +182,10 @@ class ElevadorScene extends Phaser.Scene {
       }
 
       this.buttonTech.setVisible(false); // Esconde o botão de tecnologia quando o jogador está longe
+      if (this.checkTech) {
+        this.checkTech.setVisible(false);
+      }
+
       this.buttonRelations.setVisible(false); // Esconde o botão de relações quando o jogador está longe
 
       if (!this.panelElevShown) { // O indicador só reaparece se o painel nunca foi mostrado
@@ -221,6 +229,18 @@ class ElevadorScene extends Phaser.Scene {
       }
     
       this.resumeFromBusiness = false; // reseta a flag
+    }
+
+    if (this.resumeFromTech && this.buttonTech && this.checkTech) {
+      const concluida = this.registry.get('vpTecnologiaConcluida') === true;
+    
+      if (concluida) {
+        this.checkTechActive = true;
+        this.buttonTech.disableInteractive();
+        // check só aparece quando estiver perto, o update já cuida disso
+      }
+    
+      this.resumeFromTech = false; // reseta a flag
     }
   }
 
@@ -539,6 +559,9 @@ class ElevadorScene extends Phaser.Scene {
   }
 
   createButtonTech(width, height) {
+    const returnedVpTech = this.fromScene === "vpTecnologiaScene";
+    const levelDone = this.registry.get('vpTecnologiaConcluida') === true;
+
     this.buttonTech = this.add.image(0, 0, "buttonTech").setOrigin(0, 0); // Cria o botão de Tecnologia
     this.buttonTech.setVisible(false); // Inicialmente esconde o botão
 
@@ -547,12 +570,24 @@ class ElevadorScene extends Phaser.Scene {
     this.buttonTech.setScale(1.2, 1.15); // Ajusta o tamanho do botão
     this.buttonTech.setVisible(false); // Inicialmente esconde o botão
 
-    this.buttonTech.on("pointerdown", () => { // Adiciona um evento de clique ao botão de Tecnologia
-      this.buttonClick.play(); // Toca o som de clique do botão
-      this.shutdown(); // Finaliza a cena atual
-      this.scene.stop("elevadorScene"); // Para a cena atual
-      this.scene.start("vpTecnologiaScene", {selectedSpriteSheet: this.selectedSpriteSheet,}); // Inicia a cena de Tecnologia
-    });
+    this.checkTech = this.add.image(width - 906, height - 602, "checkButton");
+    this.checkTech.setScale(0.6);
+    this.checkTech.setVisible(false); // Por padrão, invisível
+    this.checkTechActive = (this.fromScene === "vpTecnologiaScene" && this.registry.get('vpTecnologiaConcluida'));
+
+    if (returnedVpTech && levelDone) {
+      this.checkTech.setVisible(true);
+      this.buttonTech.disableInteractive();
+    }
+
+    if (!levelDone) {
+      this.buttonTech.on("pointerdown", () => {
+        this.buttonClick.play();
+        this.shutdown();
+        this.scene.pause("elevadorScene");
+        this.scene.launch("vpTecnologiaScene", { selectedSpriteSheet: this.selectedSpriteSheet });
+      });
+    }
   }
 
   createButtonRelations(width, height) {

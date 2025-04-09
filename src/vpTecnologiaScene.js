@@ -517,8 +517,12 @@ class VpTecnologiaScene extends Phaser.Scene {
       const distance = Phaser.Math.Distance.Between(this.player.x, this.player.y, buttonBack.x, buttonBack.y);
       if (distance < 100) {
         this.sound.stopAll();
+
+        this.registry.set('vpTecnologiaConcluida', true);
+        const elevadorScene = this.scene.get("elevadorScene");
+        elevadorScene.resumeFromTech = true;
         this.scene.stop("vpTecnologiaScene");
-        this.scene.start("elevadorScene", {selectedSpriteSheet: this.selectedSpriteSheet,});
+        this.scene.resume("elevadorScene");
       }
     });
   }
