@@ -818,6 +818,8 @@ class VpEstrategiaScene extends Phaser.Scene {
       );
 
       if (distance < 100) { // Verifica se o jogador está próximo o suficiente do botão (raio de 100)
+        this.sound.stopAll();
+        
         this.registry.set('vpEstrategiaConcluida', true);
         const elevadorScene = this.scene.get("elevadorScene");
         elevadorScene.resumeFromStrategies = true;
