@@ -1242,7 +1242,7 @@ createOptions() {
 }
 
 createLocker() {
-  this.locker = this.physics.add.sprite(width - 370, height - 220, 'locker').setScale(0.09); // Cria o sprite do locker na posição especificada e ajusta seu tamanho
+  this.locker = this.physics.add.sprite(width - 350, height - 220, 'locker').setScale(0.09); // Cria o sprite do locker na posição especificada e ajusta seu tamanho
   this.locker.setImmovable(true); // Define o locker como imóvel para colisões
   this.physics.add.collider(this.player, this.locker, () => { // Adiciona uma colisão entre o jogador e o locker
     console.log("Player colidiu com o locker!"); // Exibe uma mensagem no console quando o jogador colide com o locker
