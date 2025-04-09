@@ -57,8 +57,8 @@ class VpPessoasScene extends Phaser.Scene {
     }
     
   create() {
-    const width = this.sys.game.config.width;
-  const height = this.sys.game.config.height;
+    this.add.rectangle(width - 2000, height - 2000, width, height, 0x2F052F).setOrigin(0).setScale(5); // Adiciona um retangulo de fundo
+
     const map = this.make.tilemap({ key: "vpPessoas", tileWidth: 25, tileHeight: 20 }); // Cria o mapa com as dimensões dos tiles
     const tileset1 = map.addTilesetImage("decoracao"); // Adiciona o tileset de decoração
     const tileset2 = map.addTilesetImage("paredes"); // Adiciona o tileset de paredes
@@ -864,10 +864,10 @@ class VpPessoasScene extends Phaser.Scene {
         // Pausa todos os sons da cena
         this.sound.stopAll();
 
-        this.scene.start("elevadorScene", {
-          selectedSpriteSheet: this.selectedSpriteSheet,
-          fromScene: "vpPessoasScene"
-        });
+        const elevadorScene = this.scene.get("elevadorScene");
+        elevadorScene.resumeFromPessoas = true;
+        this.scene.stop("vpPessoasScene");
+        this.scene.resume("elevadorScene");
         }
       });
     }

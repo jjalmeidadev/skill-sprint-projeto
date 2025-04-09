@@ -107,6 +107,10 @@ class ElevadorScene extends Phaser.Scene {
 
     this.physics.world.setBounds(0, 0, width, height); // Define os limites do mundo do jogo
 
+    this.events.on("resume", () => {
+      this.resetPlayerPosition(); // Reposiciona o jogador ao retornar
+    });
+
     this.ready = true; // Define a cena como pronta para interação
   }
 
@@ -143,6 +147,8 @@ class ElevadorScene extends Phaser.Scene {
       this.buttonTech.setVisible(true); // Exibe o botão de tecnologia quando o jogador está próximo
       this.buttonRelations.setVisible(true); // Exibe o botão de relações quando o jogador está próximo
 
+      this.player.setVisible(false);
+
     } else {
       this.panelElev.setVisible(false); // Esconde o painel quando o jogador está longe
       this.buttonOfficeEl.setVisible(false); // Esconde o botão do escritório quando o jogador está longe
@@ -161,6 +167,8 @@ class ElevadorScene extends Phaser.Scene {
       if (!this.panelElevShown) { // O indicador só reaparece se o painel nunca foi mostrado
         this.indicator.setVisible(true); // Mostra o indicador novamente
       }
+
+      this.player.setVisible(true);
     }
 
     if (this.resumeFromPessoas && this.buttonPeople && this.checkPeople) {
@@ -420,10 +428,8 @@ class ElevadorScene extends Phaser.Scene {
     this.buttonPeople.on("pointerdown", () => {
       this.buttonClick.play();
       this.shutdown();
-      this.scene.stop("elevadorScene");
-      this.scene.start("vpPessoasScene", {
-        selectedSpriteSheet: this.selectedSpriteSheet
-      });
+      this.scene.pause("elevadorScene");
+      this.scene.launch("vpPessoasScene", { selectedSpriteSheet: this.selectedSpriteSheet });
     });
   }
 }
@@ -498,5 +504,23 @@ class ElevadorScene extends Phaser.Scene {
       this.scene.stop("elevadorScene"); // Para a cena atual
       this.scene.start("VpRelacoesScene", {selectedSpriteSheet: this.selectedSpriteSheet,}); // Inicia a cena de Relações
     });
+  }
+
+  resetPlayerPosition() {
+    // Destroi o player antigo se existir
+    if (this.player) {
+      this.player.destroy();
+    }
+
+    // Cria novo player
+    this.player = this.physics.add.sprite(width / 2, height / 2, "player");
+    this.player.setScale(6);
+    this.player.setCollideWorldBounds(true);
+
+    // Reaplica colisões
+    if (this.barrier) this.physics.add.collider(this.player, this.barrier);
+    if (this.barrier1) this.physics.add.collider(this.player, this.barrier1);
+    if (this.barrier2) this.physics.add.collider(this.player, this.barrier2);
+    if (this.barrier3) this.physics.add.collider(this.player, this.barrier3);
   }
 }
