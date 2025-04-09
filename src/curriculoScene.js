@@ -561,7 +561,7 @@ class QuizVpPessoas extends Phaser.Scene {
             this.sys.game.config.width - 150,
             50,
             `Question ${currentQuestion + 1}/${peopleQuestions.length}`,
-            { fontSize: '20px', fill: '#000', fontFamily: 'font' }
+            { fontSize: '30px', fill: '#000', fontFamily: 'font' }
         ).setOrigin(0.5);
     }
 
@@ -580,7 +580,7 @@ class QuizVpPessoas extends Phaser.Scene {
             420,
             50,
             `${progress}%`,
-            { fontSize: '20px', fill: '#000', fontFamily: 'font', fontWeight: 'bold' }
+            { fontSize: '30px', fill: '#000', fontFamily: 'font', fontWeight: 'bold' }
         ).setOrigin(0, 0.5);
     }
 
@@ -619,13 +619,13 @@ class QuizVpPessoas extends Phaser.Scene {
 
         const question = peopleQuestions[currentQuestion];
 
-        // Exibindo a pergunta
+        // Posição do texto
         const questionText = this.add.text(
             this.sys.game.config.width / 2,
-            100,
+            150,
             question.question,
             {
-                fontSize: '22px',
+                fontSize: '32px',
                 fill: '#B600B9',
                 fontFamily: 'font',
                 fontWeight: 'bold',
@@ -636,17 +636,21 @@ class QuizVpPessoas extends Phaser.Scene {
 
         this.questionTexts.push(questionText);
 
-        // Exibindo alternativas
-        const startY = 200;
+        // Posição do texto
+        const startY = 250;
         const spacing = 50;
 
         question.options.forEach((option, index) => {
-            // Container da alternativa (retângulo)
+            // Aumentar altura para o padding e espaçamento
+            const containerHeight = 70;
+            const padding = 20;
+
+            // Container da alternativa (retângulo) with increased height
             const buttonContainer = this.add.rectangle(
                 this.sys.game.config.width / 2,
-                startY + (index * spacing),
+                startY + (index * (containerHeight + 10)), // Ajusto de espaçamento
                 this.sys.game.config.width - 200,
-                50,
+                containerHeight,
                 0xEAE8E8
             ).setStrokeStyle(2, 0x444444)
                 .setInteractive();
@@ -667,16 +671,17 @@ class QuizVpPessoas extends Phaser.Scene {
                 this.checkAnswer(index, buttonContainer);
             });
 
-            // Texto da alternativa
+            // Texto com padding
             const optionText = this.add.text(
                 this.sys.game.config.width / 2,
-                startY + (index * spacing),
+                startY + (index * (containerHeight + 10)), // Alinhamento com container
                 `${index + 1}. ${option}`,
                 {
-                    fontSize: '18px',
+                    fontSize: '28px',
                     fill: '#000',
                     fontFamily: 'font',
-                    wordWrap: { width: this.sys.game.config.width - 220 }
+                    wordWrap: { width: this.sys.game.config.width - 220 - (padding * 2) },
+                    padding: { x: padding, y: padding }
                 }
             ).setOrigin(0.5);
 
@@ -691,7 +696,7 @@ class QuizVpPessoas extends Phaser.Scene {
             button.disableInteractive();
         });
 
-        const question = peopleQuestions[currentQuestion]; // Substitua por perguntasEstrategia, perguntasNegocios, etc., conforme a cena
+        const question = peopleQuestions[currentQuestion]; 
 
         if (answer === question.correct) {
             // Resposta correta
@@ -729,13 +734,13 @@ class QuizVpPessoas extends Phaser.Scene {
             this.wrong = this.sound.add('wrongSound', { loop: false, volume: 10 });
             this.wrong.play();
 
-            // Exibir feedback explicativo
+            // Posição do texto de feedback
             const feedbackText = this.add.text(
                 this.sys.game.config.width / 2,
-                this.sys.game.config.height / 2 + 50,
-                question.feedback, // Adicione a propriedade `feedback` ao objeto da pergunta
+                this.sys.game.config.height - 100, 
+                question.feedback,
                 {
-                    fontSize: '20px',
+                    fontSize: '23px', 
                     fill: '#FF888',
                     fontFamily: 'font',
                     wordWrap: { width: this.sys.game.config.width - 100 },
@@ -901,7 +906,7 @@ class QuizVpEstrategia extends Phaser.Scene {
             this.sys.game.config.width - 150,
             50,
             `Question ${currentQuestion + 1}/${strategyQuestions.length}`,
-            { fontSize: '20px', fill: '#000', fontFamily: 'font' }
+            { fontSize: '30px', fill: '#000', fontFamily: 'font' }
         ).setOrigin(0.5);
     }
 
@@ -920,7 +925,7 @@ class QuizVpEstrategia extends Phaser.Scene {
             420,
             50,
             `${progress}%`,
-            { fontSize: '20px', fill: '#000', fontFamily: 'font', fontWeight: 'bold' }
+            { fontSize: '30px', fill: '#000', fontFamily: 'font', fontWeight: 'bold' }
         ).setOrigin(0, 0.5);
     }
 
@@ -959,13 +964,13 @@ class QuizVpEstrategia extends Phaser.Scene {
 
         const question = strategyQuestions[currentQuestion];
 
-        // Mostrando a pergunta
+        // Posição do texto de perguntas
         const questionText = this.add.text(
             this.sys.game.config.width / 2,
-            100,
+            150,
             question.question,
             {
-                fontSize: '22px',
+                fontSize: '32px',
                 fill: '#B600B9',
                 fontFamily: 'font',
                 fontWeight: 'bold',
@@ -976,17 +981,21 @@ class QuizVpEstrategia extends Phaser.Scene {
 
         this.questionTexts.push(questionText);
 
-        // Mostrando alternativas
-        const startY = 200;
+        // Posição dos textos (quiz)
+        const startY = 250;
         const spacing = 50;
 
         question.options.forEach((option, index) => {
-            // Container da alternativa (retângulo)
+            // Altura aumentada
+            const containerHeight = 70;
+            const padding = 20;
+
+            // Container da alternativa (retângulo) with increased height
             const buttonContainer = this.add.rectangle(
                 this.sys.game.config.width / 2,
-                startY + (index * spacing),
+                startY + (index * (containerHeight + 10)), // Espaçamento ajustado
                 this.sys.game.config.width - 200,
-                50,
+                containerHeight,
                 0xEAE8E8
             ).setStrokeStyle(2, 0x444444)
                 .setInteractive();
@@ -1007,16 +1016,17 @@ class QuizVpEstrategia extends Phaser.Scene {
                 this.checkAnswer(index, buttonContainer);
             });
 
-            // Texto da alternativa
+            // Padding do texto
             const optionText = this.add.text(
                 this.sys.game.config.width / 2,
-                startY + (index * spacing),
+                startY + (index * (containerHeight + 10)), // Alinhamento com container
                 `${index + 1}. ${option}`,
                 {
-                    fontSize: '18px',
+                    fontSize: '28px',
                     fill: '#000',
                     fontFamily: 'font',
-                    wordWrap: { width: this.sys.game.config.width - 220 }
+                    wordWrap: { width: this.sys.game.config.width - 220 - (padding * 2) },
+                    padding: { x: padding, y: padding }
                 }
             ).setOrigin(0.5);
 
@@ -1069,13 +1079,13 @@ class QuizVpEstrategia extends Phaser.Scene {
             this.wrong = this.sound.add('wrongSound', { loop: false, volume: 10 });
             this.wrong.play();
 
-            // Exibir feedback explicativo
+            // Posição do texto de feedback do quiz
             const feedbackText = this.add.text(
                 this.sys.game.config.width / 2,
-                this.sys.game.config.height / 2 + 50,
-                question.feedback, // Adicione a propriedade `feedback` ao objeto da pergunta
+                this.sys.game.config.height - 100, 
+                question.feedback,
                 {
-                    fontSize: '20px',
+                    fontSize: '23px', 
                     fill: '#FF888',
                     fontFamily: 'font',
                     wordWrap: { width: this.sys.game.config.width - 100 },
@@ -1236,7 +1246,7 @@ class QuizVpNegocios extends Phaser.Scene {
             this.sys.game.config.width - 150,
             50,
             `Question ${currentQuestion + 1}/${businessQuestions.length}`,
-            { fontSize: '20px', fill: '#000', fontFamily: 'font' }
+            { fontSize: '30px', fill: '#000', fontFamily: 'font' }
         ).setOrigin(0.5);
     }
 
@@ -1255,7 +1265,7 @@ class QuizVpNegocios extends Phaser.Scene {
             420,
             50,
             `${progress}%`,
-            { fontSize: '20px', fill: '#000', fontFamily: 'font', fontWeight: 'bold' }
+            { fontSize: '30px', fill: '#000', fontFamily: 'font', fontWeight: 'bold' }
         ).setOrigin(0, 0.5);
     }
 
@@ -1294,13 +1304,13 @@ class QuizVpNegocios extends Phaser.Scene {
 
         const question = businessQuestions[currentQuestion];
 
-        // Exibindo a pergunta
+        // Posição do texto de perguntas
         const questionText = this.add.text(
             this.sys.game.config.width / 2,
-            100,
+            150,
             question.question,
             {
-                fontSize: '22px',
+                fontSize: '32px',
                 fill: '#B600B9',
                 fontFamily: 'font',
                 fontWeight: 'bold',
@@ -1311,17 +1321,21 @@ class QuizVpNegocios extends Phaser.Scene {
 
         this.questionTexts.push(questionText);
 
-        // Exibindo alternativas
-        const startY = 200;
+        // Posição dos textos (quiz)
+        const startY = 250;
         const spacing = 50;
 
         question.options.forEach((option, index) => {
-            // Container da alternativa (retângulo)
+            // Altura aumentada
+            const containerHeight = 70;
+            const padding = 20;
+
+            // Container da alternativa (retângulo) with increased height
             const buttonContainer = this.add.rectangle(
                 this.sys.game.config.width / 2,
-                startY + (index * spacing),
+                startY + (index * (containerHeight + 10)), // Espaçamento ajustado
                 this.sys.game.config.width - 200,
-                50,
+                containerHeight,
                 0xEAE8E8
             ).setStrokeStyle(2, 0x444444)
                 .setInteractive();
@@ -1342,16 +1356,17 @@ class QuizVpNegocios extends Phaser.Scene {
                 this.checkAnswer(index, buttonContainer);
             });
 
-            // Texto das alternativas
+            // Padding do texto
             const optionText = this.add.text(
                 this.sys.game.config.width / 2,
-                startY + (index * spacing),
+                startY + (index * (containerHeight + 10)), // Alinhamento com container
                 `${index + 1}. ${option}`,
                 {
-                    fontSize: '18px',
+                    fontSize: '28px',
                     fill: '#000',
                     fontFamily: 'font',
-                    wordWrap: { width: this.sys.game.config.width - 220 }
+                    wordWrap: { width: this.sys.game.config.width - 220 - (padding * 2) },
+                    padding: { x: padding, y: padding }
                 }
             ).setOrigin(0.5);
 
@@ -1407,10 +1422,10 @@ class QuizVpNegocios extends Phaser.Scene {
             // Mostrar feedback explanatório
             const feedbackText = this.add.text(
                 this.sys.game.config.width / 2,
-                this.sys.game.config.height / 2 + 50,
+                this.sys.game.config.height - 100, // Changed from "height/2 + 50" to "height - 100"
                 question.feedback, // Adiciona a propriedade feedback para o objeto question
                 {
-                    fontSize: '20px',
+                    fontSize: '23px', // Changed from '20px' to '23px'
                     fill: '#FF888',
                     fontFamily: 'font',
                     wordWrap: { width: this.sys.game.config.width - 100 },
@@ -1571,7 +1586,7 @@ class QuizVpRelacoes extends Phaser.Scene {
             this.sys.game.config.width - 150,
             50,
             `Question ${currentQuestion + 1}/${relationsQuestions.length}`,
-            { fontSize: '20px', fill: '#000', fontFamily: 'font' }
+            { fontSize: '30px', fill: '#000', fontFamily: 'font' }
         ).setOrigin(0.5);
     }
 
@@ -1590,7 +1605,7 @@ class QuizVpRelacoes extends Phaser.Scene {
             420,
             50,
             `${progress}%`,
-            { fontSize: '20px', fill: '#000', fontFamily: 'font', fontWeight: 'bold' }
+            { fontSize: '30px', fill: '#000', fontFamily: 'font', fontWeight: 'bold' }
         ).setOrigin(0, 0.5);
     }
 
@@ -1629,13 +1644,13 @@ class QuizVpRelacoes extends Phaser.Scene {
 
         const question = relationsQuestions[currentQuestion];
 
-        // Mostrando a pergunta/questão
+        // Posição do texto de perguntas
         const questionText = this.add.text(
             this.sys.game.config.width / 2,
-            100,
+            150,
             question.question,
             {
-                fontSize: '22px',
+                fontSize: '32px',
                 fill: '#B600B9',
                 fontFamily: 'font',
                 fontWeight: 'bold',
@@ -1646,17 +1661,21 @@ class QuizVpRelacoes extends Phaser.Scene {
 
         this.questionTexts.push(questionText);
 
-        // Mostrando alternativas
-        const startY = 200;
+        // Posição dos textos (quiz)
+        const startY = 250;
         const spacing = 50;
 
         question.options.forEach((option, index) => {
-            // Container da alternativa (retângulo)
+            // Altura aumentada
+            const containerHeight = 70;
+            const padding = 20;
+
+            // Container da alternativa (retângulo) with increased height
             const buttonContainer = this.add.rectangle(
                 this.sys.game.config.width / 2,
-                startY + (index * spacing),
+                startY + (index * (containerHeight + 10)), // Espaçamento ajustado
                 this.sys.game.config.width - 200,
-                50,
+                containerHeight,
                 0xEAE8E8
             ).setStrokeStyle(2, 0x444444)
                 .setInteractive();
@@ -1677,16 +1696,17 @@ class QuizVpRelacoes extends Phaser.Scene {
                 this.checkAnswer(index, buttonContainer);
             });
 
-            // Texto das alternativas
+            // Padding do texto
             const optionText = this.add.text(
                 this.sys.game.config.width / 2,
-                startY + (index * spacing),
+                startY + (index * (containerHeight + 10)), // Alinhamento com container
                 `${index + 1}. ${option}`,
                 {
-                    fontSize: '18px',
+                    fontSize: '28px',
                     fill: '#000',
                     fontFamily: 'font',
-                    wordWrap: { width: this.sys.game.config.width - 220 }
+                    wordWrap: { width: this.sys.game.config.width - 220 - (padding * 2) },
+                    padding: { x: padding, y: padding }
                 }
             ).setOrigin(0.5);
 
@@ -1742,10 +1762,10 @@ class QuizVpRelacoes extends Phaser.Scene {
             // Mostrar feedback explanatório
             const feedbackText = this.add.text(
                 this.sys.game.config.width / 2,
-                this.sys.game.config.height / 2 + 50,
+                this.sys.game.config.height - 100, // Changed from "height/2 + 50" to "height - 100"
                 question.feedback, // Adiciona a propriedade feedback para o objeto question
                 {
-                    fontSize: '20px',
+                    fontSize: '23px', // Changed from '20px' to '23px'
                     fill: '#FF888',
                     fontFamily: 'font',
                     wordWrap: { width: this.sys.game.config.width - 100 },
@@ -1907,7 +1927,7 @@ class QuizVpTecnologia extends Phaser.Scene {
             this.sys.game.config.width - 150,
             50,
             `Question ${currentQuestion + 1}/${technologyQuestions.length}`,
-            { fontSize: '20px', fill: '#000', fontFamily: 'font' }
+            { fontSize: '30px', fill: '#000', fontFamily: 'font' }
         ).setOrigin(0.5);
     }
 
@@ -1926,7 +1946,7 @@ class QuizVpTecnologia extends Phaser.Scene {
             420,
             50,
             `${progress}%`,
-            { fontSize: '20px', fill: '#000', fontFamily: 'font', fontWeight: 'bold' }
+            { fontSize: '30px', fill: '#000', fontFamily: 'font', fontWeight: 'bold' }
         ).setOrigin(0, 0.5);
     }
 
@@ -1965,13 +1985,13 @@ class QuizVpTecnologia extends Phaser.Scene {
 
         const question = technologyQuestions[currentQuestion];
 
-        // Mostrando a pergunta/questão
+        // Posição do texto de perguntas
         const questionText = this.add.text(
             this.sys.game.config.width / 2,
-            100,
+            150,
             question.question,
             {
-                fontSize: '22px',
+                fontSize: '32px',
                 fill: '#B600B9',
                 fontFamily: 'font',
                 fontWeight: 'bold',
@@ -1982,17 +2002,21 @@ class QuizVpTecnologia extends Phaser.Scene {
 
         this.questionTexts.push(questionText);
 
-        // Mostrando alternativas
-        const startY = 200;
+        // Posição dos textos (quiz)
+        const startY = 250;
         const spacing = 50;
 
         question.options.forEach((option, index) => {
-            // Container da alternativa (retângulo)
+            // Altura aumentada
+            const containerHeight = 70;
+            const padding = 20;
+
+            // Container da alternativa (retângulo) with increased height
             const buttonContainer = this.add.rectangle(
                 this.sys.game.config.width / 2,
-                startY + (index * spacing),
+                startY + (index * (containerHeight + 10)), // Espaçamento ajustado
                 this.sys.game.config.width - 200,
-                50,
+                containerHeight,
                 0xEAE8E8
             ).setStrokeStyle(2, 0x444444)
                 .setInteractive();
@@ -2013,16 +2037,17 @@ class QuizVpTecnologia extends Phaser.Scene {
                 this.checkAnswer(index, buttonContainer);
             });
 
-            // Texto das alternativas
+            // Padding do texto
             const optionText = this.add.text(
                 this.sys.game.config.width / 2,
-                startY + (index * spacing),
+                startY + (index * (containerHeight + 10)), // Alinhamento com container
                 `${index + 1}. ${option}`,
                 {
-                    fontSize: '18px',
+                    fontSize: '28px',
                     fill: '#000',
                     fontFamily: 'font',
-                    wordWrap: { width: this.sys.game.config.width - 220 }
+                    wordWrap: { width: this.sys.game.config.width - 220 - (padding * 2) },
+                    padding: { x: padding, y: padding }
                 }
             ).setOrigin(0.5);
 
@@ -2078,10 +2103,10 @@ class QuizVpTecnologia extends Phaser.Scene {
             // Mostrar feedback explanatório
             const feedbackText = this.add.text(
                 this.sys.game.config.width / 2,
-                this.sys.game.config.height / 2 + 50,
+                this.sys.game.config.height - 100, // Changed from "height/2 + 50" to "height - 100"
                 question.feedback, // Adiciona a propriedade feedback para o objeto question
                 {
-                    fontSize: '20px',
+                    fontSize: '23px', 
                     fill: '#FF888',
                     fontFamily: 'font',
                     wordWrap: { width: this.sys.game.config.width - 100 },
