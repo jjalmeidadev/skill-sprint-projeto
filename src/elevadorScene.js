@@ -143,6 +143,10 @@ class ElevadorScene extends Phaser.Scene {
       }
 
       this.buttonStrategies.setVisible(true); // Exibe o botão de estratégias quando o jogador está próximo
+      if (this.checkStrategiesActive && this.checkStrategies) {
+        this.checkStrategies.setVisible(true);
+      }
+
       this.buttonBusiness.setVisible(true); // Exibe o botão de negócios quando o jogador está próximo
       this.buttonTech.setVisible(true); // Exibe o botão de tecnologia quando o jogador está próximo
       this.buttonRelations.setVisible(true); // Exibe o botão de relações quando o jogador está próximo
@@ -160,6 +164,10 @@ class ElevadorScene extends Phaser.Scene {
       }
       
       this.buttonStrategies.setVisible(false); // Esconde o botão de estratégias quando o jogador está longe
+      if (this.checkStrategies) {
+        this.checkStrategies.setVisible(false);
+      }
+
       this.buttonBusiness.setVisible(false); // Esconde o botão de negócios quando o jogador está longe
       this.buttonTech.setVisible(false); // Esconde o botão de tecnologia quando o jogador está longe
       this.buttonRelations.setVisible(false); // Esconde o botão de relações quando o jogador está longe
@@ -181,6 +189,18 @@ class ElevadorScene extends Phaser.Scene {
       }
     
       this.resumeFromPessoas = false; // reseta a flag
+    }
+
+    if (this.resumeFromStrategies && this.buttonStrategies && this.checkStrategies) {
+      const concluida = this.registry.get('vpEstrategiaConcluida') === true;
+    
+      if (concluida) {
+        this.checkStrategiesActive = true;
+        this.buttonStrategies.disableInteractive();
+        // check só aparece quando estiver perto, o update já cuida disso
+      }
+    
+      this.resumeFromStrategies = false; // reseta a flag
     }
   }
 
@@ -435,6 +455,9 @@ class ElevadorScene extends Phaser.Scene {
 }
 
   createButtonStrategies(width, height) {
+    const returnedVpStrategies = this.fromScene === "VpEstrategiaScene";
+    const levelDone = this.registry.get('vpEstrategiaConcluida') === true;
+
     this.buttonStrategies = this.add.image(0, 0, "buttonStrategies").setOrigin(0, 0); // Cria o botão de Estratégias
     this.buttonStrategies.setVisible(false); // Inicialmente esconde o botão
 
@@ -443,12 +466,24 @@ class ElevadorScene extends Phaser.Scene {
     this.buttonStrategies.setScale(1.2, 1.15); // Ajusta o tamanho do botão
     this.buttonStrategies.setVisible(false); // Inicialmente esconde o botão
 
-    this.buttonStrategies.on("pointerdown", () => { // Adiciona um evento de clique ao botão de Estratégias
-      this.buttonClick.play(); // Toca o som de clique do botão
-      this.shutdown(); // Finaliza a cena atual
-      this.scene.stop("elevadorScene"); // Para a cena atual
-      this.scene.start("VpEstrategiaScene", {selectedSpriteSheet: this.selectedSpriteSheet,}); // Inicia a cena de Estratégias
-    });
+    this.checkStrategies = this.add.image(width - 620, height - 392, "checkButton");
+    this.checkStrategies.setScale(0.6);
+    this.checkStrategies.setVisible(false); // Por padrão, invisível
+    this.checkStrategiesActive = (this.fromScene === "VpEstrategiaScene" && this.registry.get('vpEstrategiaConcluida'));
+
+    if (returnedVpStrategies && levelDone) {
+      this.checkStrategies.setVisible(true);
+      this.buttonStrategies.disableInteractive();
+    }
+
+    if (!levelDone) {
+      this.buttonStrategies.on("pointerdown", () => {
+        this.buttonClick.play();
+        this.shutdown();
+        this.scene.pause("elevadorScene");
+        this.scene.launch("VpEstrategiaScene", { selectedSpriteSheet: this.selectedSpriteSheet });
+      });
+    }
   }
 
   createButtonBusiness(width, height) {

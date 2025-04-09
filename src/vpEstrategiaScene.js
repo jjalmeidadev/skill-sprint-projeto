@@ -87,10 +87,11 @@ class VpEstrategiaScene extends Phaser.Scene {
   }
 
   create() {
+    this.add.rectangle(width - 2000, height - 2000, width, height, 0x2F052F).setOrigin(0).setScale(5); // Adiciona um retangulo de fundo
+
     // Inicializa a variável de controle
     this.npcInteractionComplete = false;
-    const width = this.cameras.main.width; // Obtém a largura da câmera principal
-    const height = this.cameras.main.height; // Obtém a altura da câmera principal
+
 
     const startTime = VpEstrategiaScene.lastMusicTime || 0; // Recupera o tempo salvo da música ou inicia do início
     this.strategyMusic = this.sound.add("strategyMusic", { loop: true }); // Adiciona a música de fundo com loop
@@ -817,8 +818,11 @@ class VpEstrategiaScene extends Phaser.Scene {
       );
 
       if (distance < 100) { // Verifica se o jogador está próximo o suficiente do botão (raio de 100)
-        this.scene.stop("VpEstrategiaScene"); // Para a cena atual
-        this.scene.start("elevadorScene", {selectedSpriteSheet: this.selectedSpriteSheet}); // Inicia a cena do elevador
+        this.registry.set('vpEstrategiaConcluida', true);
+        const elevadorScene = this.scene.get("elevadorScene");
+        elevadorScene.resumeFromStrategies = true;
+        this.scene.stop("VpEstrategiaScene");
+        this.scene.resume("elevadorScene");
       }
     });
   }
