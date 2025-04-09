@@ -109,6 +109,11 @@ class ElevadorScene extends Phaser.Scene {
 
     this.events.on("resume", () => {
       this.resetPlayerPosition(); // Reposiciona o jogador ao retornar
+
+        // Toca novamente a música do elevador
+        if (this.elevatorSound && !this.elevatorSound.isPlaying) {
+          this.elevatorSound.play();
+        }
     });
 
     this.ready = true; // Define a cena como pronta para interação
