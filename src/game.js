@@ -61,6 +61,7 @@ const config = { // Configuração do jogo Phaser
     minigameEstrategiaAna,
 
     VpTecnologiaScene, // Cena do VP de Tecnologia
+    EndScene // Cena de finalização do jogo
   ], 
 };
   
