@@ -53,7 +53,7 @@ class VpPessoasScene extends Phaser.Scene {
       this.load.image("panelElev", "../assets/painelelevador.png"); // Carrega a imagem do painel do elevador
       this.load.image("buttonElevPesssoas", "../assets/botaocimaelevador.png"); // Carrega a imagem do botão do elevador
       this.load.image("arrow", "../assets/seta.png");
-     
+      this.load.image('levelTitle', '../assets/titulos/tituloVpPessoas.png') // Carrega os asssets do titulo da fase
     }
     
   create() {
@@ -145,6 +145,8 @@ class VpPessoasScene extends Phaser.Scene {
       .setDepth(1000)      // acima de todos os elementos
       .setScale(0.5)
       .setOrigin(0.5, 0.5);
+
+    this.showTitle(); // Exibe o título na tela
   }
 
   createAnimsIndicator() {
@@ -411,6 +413,8 @@ class VpPessoasScene extends Phaser.Scene {
           if (!this.keyEnterNpcMobile) {
             this.keyEnterNpcMobile = this.add.image(this.npcMobile.x - 20, this.npcMobile.y - 50, 'keyENTER').setScale(0.1).setDepth(1000); 
           }
+          this.buttonClick = this.sound.add('buttonSound', { loop: false, volume: 10 });
+          this.buttonClick.play();
           this.npcMobileInteracted = true;
           this.canInteractWithNpcMobile = false;
           this.showNpcMobileInteraction();
@@ -448,7 +452,10 @@ class VpPessoasScene extends Phaser.Scene {
       }
     }
     
-   
+    showTitle() {
+      const titleImage = this.add.image(this.player.x, this.player.y - 130, 'levelTitle').setDepth(1000); // Adiciona a imagem de parabéns acima do jogador e define sua profundidade para garantir que fique acima de outros elementos
+      titleImage.setScale(0.3); // Ajusta o tamanho da imagem de parabéns
+    }
 
     movePlayer() {
       const speed = 150; // Define a velocidade do jogador
@@ -623,9 +630,13 @@ class VpPessoasScene extends Phaser.Scene {
         currentIndex++; // Avança para a próxima fala
         if (currentIndex < speech.length) { // Verifica se ainda há falas restantes
           text.setText(speech[currentIndex]); // Atualiza o texto com a próxima fala
+          this.buttonClick = this.sound.add('buttonSound', { loop: false, volume: 10 });
+          this.buttonClick.play();
         } else { // Se todas as falas foram exibidas
           text.setVisible(false); // Esconde o texto
           balloonText.setVisible(false); // Esconde o balão de fala
+          this.buttonClick = this.sound.add('buttonSound', { loop: false, volume: 10 });
+          this.buttonClick.play();
           this.input.keyboard.off("keydown-ENTER"); // Remove o evento da tecla "ENTER"
 
           if (this.keyEnterNpcMobile) { // Verifica se o ícone da tecla "ENTER" existe
@@ -731,6 +742,7 @@ class VpPessoasScene extends Phaser.Scene {
           text.setText(speechRafaela[currentSpeechIndex]); // Atualiza o texto com a próxima fala
           this.buttonClick.play(); // Toca o som de clique
         } else { // Se todas as falas foram exibidas
+          this.buttonClick.play(); // Toca o som de clique
           balloonText.setVisible(false); // Esconde o balão de fala
           text.setVisible(false); // Esconde o texto
           this.input.keyboard.off("keydown-ENTER"); // Remove o evento da tecla "ENTER"

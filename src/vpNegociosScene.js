@@ -47,6 +47,7 @@ class VpNegociosScene extends Phaser.Scene {
       this.load.image("buttonElevNegocios", "../assets/botaocimaelevador.png"); // Carrega a imagem do botão do elevador
       this.load.image('screwDriver', '../assets/minigameVpNegocios/screwdriver.png') // Carrega a imagem da chave de fenda
       this.load.image('arrow', '../assets/seta.png'); // Carrega a imagem do chip
+      this.load.image('levelTitle', '../assets/titulos/tituloVpNegocios.png') // Carrega os asssets do titulo da fase
     }
 
   create() {
@@ -109,7 +110,6 @@ class VpNegociosScene extends Phaser.Scene {
     this.createPlayerAnimations(); // Cria as animações do jogador
     this.createAnimsIndicator(); // Cria a animação do indicador
     this.lastPosition = "down"; // Define a posição inicial do jogador como "down"
-    this.createButtonBack(width, height); // Cria o botão de retorno
     this.createChips(); // Cria os chips 
     this.addNpc(); // Cria os NPCs no mapa
 
@@ -145,13 +145,19 @@ class VpNegociosScene extends Phaser.Scene {
     this.screwDriverCollected = false; // Inicializa a variável indicando que a chave de fenda ainda não foi coletada
 
     this.createServer(); // Chama o método para criar o servidor quebrado no mapa
-  // Depois de criar o locker e antes de finalizar o create():
-this.compassArrow = this.add.image(this.cameras.main.width / 2, 335, 'arrow')
-.setScrollFactor(0)        // Para que a seta fique fixa na tela
-.setDepth(1000)            // Para que fique acima de outros objetos
-.setScale(0.5)
-.setOrigin(0.5, 0.5);
+    // Depois de criar o locker e antes de finalizar o create():
+    this.compassArrow = this.add.image(this.cameras.main.width / 2, 335, 'arrow')
+    .setScrollFactor(0)        // Para que a seta fique fixa na tela
+    .setDepth(1000)            // Para que fique acima de outros objetos
+    .setScale(0.5)
+    .setOrigin(0.5, 0.5);
 
+    this.barrierDoor = this.add.rectangle(width - 680, height - 720, 20, 20, 0x2F052F).setOrigin(0); // Adiciona um retângulo como barreira
+    this.physics.add.existing(this.barrierDoor, true); // Ativa a física do retângulo
+    this.physics.add.collider(this.player, this.barrierDoor); // Adiciona colisão entre o jogador e a barreira
+    this.barrierDoor.setVisible(false); // Torna o retângulo invisível
+
+    this.showTitle(); // Exibe o titulo na tela
   }
 
   onShutdown() {
@@ -209,25 +215,30 @@ this.compassArrow = this.add.image(this.cameras.main.width / 2, 335, 'arrow')
       this.congratulationsShown = true; // Garante que a imagem será exibida apenas uma vez
     }
   // Atualização da bússola (seta)
-if (this.compassArrow) {
-  // Filtra os indicadores ativos
-  this.activeIndicators = this.activeIndicators.filter(ind => ind && ind.active);
-  if (this.activeIndicators.length > 0) {
-    const closest = this.getClosestIndicator();
-    if (closest) {
-      const angle = Phaser.Math.Angle.Between(
-        this.player.x, this.player.y,
-        closest.x, closest.y
-      );
-      this.compassArrow.setRotation(angle + this.arrowOffset);
-      this.compassArrow.setVisible(true);
+  if (this.compassArrow) {
+    // Filtra os indicadores ativos
+    this.activeIndicators = this.activeIndicators.filter(ind => ind && ind.active);
+    if (this.activeIndicators.length > 0) {
+      const closest = this.getClosestIndicator();
+      if (closest) {
+        const angle = Phaser.Math.Angle.Between(
+          this.player.x, this.player.y,
+          closest.x, closest.y
+        );
+        this.compassArrow.setRotation(angle + this.arrowOffset);
+        this.compassArrow.setVisible(true);
+      }
+      } else {
+        this.compassArrow.setVisible(false);
+      }
     }
-  } else {
-    this.compassArrow.setVisible(false);
   }
-}
 
+  showTitle() {
+    const titleImage = this.add.image(this.player.x, this.player.y - 130, 'levelTitle').setDepth(1000); // Adiciona a imagem de parabéns acima do jogador e define sua profundidade para garantir que fique acima de outros elementos
+    titleImage.setScale(0.3); // Ajusta o tamanho da imagem de parabéns
   }
+
   getClosestIndicator() {
     if (this.activeIndicators.length === 0) return null;
     let closest = this.activeIndicators[0];
@@ -315,27 +326,26 @@ if (this.compassArrow) {
   }
 
   createButtonBack(width, height) {
-    const buttonBack = this.add.image(width - 670, height - 680, "keyE"); // Adiciona a imagem da tecla "E" na posição especificada
-    buttonBack.setScale(0.07); // Reduz o tamanho da imagem para 20% do tamanho original
-
-    this.input.keyboard.on("keydown-E", () => { // Adiciona um evento para quando a tecla "E" for pressionada
-    const distance = Phaser.Math.Distance.Between( // Calcula a distância entre o jogador e o botão
-    this.player.x, this.player.y, buttonBack.x, buttonBack.y // Coordenadas do jogador e do botão
-    );
-
-      if (distance < 100) { // Verifica se o jogador está dentro de um raio de 100 pixels do botão
-        // Pausa todos os sons da cena
-        this.keySound();
-        this.sound.stopAll();
-
-        this.registry.set('vpBusinessConcluida', true);
-        const elevadorScene = this.scene.get("elevadorScene");
-        elevadorScene.resumeFromBusiness = true;
-        this.scene.stop("vpNegociosScene");
-        this.scene.resume("elevadorScene");
-      }
-      });
-    }
+    // Cria o sprite da exclamação (ou mantenha o nome buttonBack se preferir)
+    const exclamation = this.physics.add.sprite(width - 670, height - 680, "indicator");
+    exclamation.play("exclaiming"); // Reproduz a animação de exclamação
+    exclamation.setScale(0.2);
+    exclamation.setImmovable(true); // Evita que o objeto se mova com colisões
+  
+    // Adiciona o overlap entre player e exclamation
+    this.physics.add.overlap(this.player, exclamation, () => {
+      // Lógica de troca de cena
+      this.keySound();
+      this.sound.stopAll();
+  
+      this.registry.set('vpBusinessConcluida', true);
+      const elevadorScene = this.scene.get("elevadorScene");
+      elevadorScene.resumeFromBusiness = true;
+  
+      this.scene.stop("vpNegociosScene");
+      this.scene.resume("elevadorScene");
+    }, null, this);
+  }
 
   createPlayerAnimations() {
   this.anims.create({
@@ -1242,7 +1252,7 @@ createOptions() {
 }
 
 createLocker() {
-  this.locker = this.physics.add.sprite(width - 370, height - 220, 'locker').setScale(0.09); // Cria o sprite do locker na posição especificada e ajusta seu tamanho
+  this.locker = this.physics.add.sprite(width - 350, height - 220, 'locker').setScale(0.09); // Cria o sprite do locker na posição especificada e ajusta seu tamanho
   this.locker.setImmovable(true); // Define o locker como imóvel para colisões
   this.physics.add.collider(this.player, this.locker, () => { // Adiciona uma colisão entre o jogador e o locker
     console.log("Player colidiu com o locker!"); // Exibe uma mensagem no console quando o jogador colide com o locker
@@ -1253,6 +1263,7 @@ createLocker() {
 showCongratulations() {
   const congratulationsImage = this.add.image(this.player.x, this.player.y - 150, 'congratulations5G').setDepth(1000); // Adiciona a imagem de parabéns acima do jogador e define sua profundidade para garantir que fique acima de outros elementos
   congratulationsImage.setScale(0.3); // Ajusta o tamanho da imagem de parabéns
+  this.createButtonBack(width, height); // Cria o botão de retorno
 
   // Remove a imagem de parabéns após 3 segundos
   this.time.delayedCall(3000, () => { // Define um atraso de 3 segundos antes de executar a função

@@ -64,7 +64,7 @@ class SalaLider extends Phaser.Scene {
           this.keyELeader = null;
         }
         if (!this.keyENTERLeader) {
-          this.keyENTERLeader = this.add.image(this.leader.x, this.leader.y - 50, 'keyENTER').setScale(0.13).setDepth(1000);
+          this.keyENTERLeader = this.add.image(this.leader.x + 20, this.leader.y - 80, 'keyENTER').setScale(0.13).setDepth(1000);
         }
       }
     });
@@ -324,12 +324,12 @@ class SalaLider extends Phaser.Scene {
 
     let currentDialogIndex = 0; // Índice do diálogo atual
     let textBalloon = this.add.image(width - 730, height - 420, 'textBalloon');
-    textBalloon.setFlipX(true).setVisible(true);
+    textBalloon.setFlipX(true).setVisible(true).setScale(1.5);
 
-    let text = this.add.text(width - 815, height - 480, leaderDialog[0], {
-      fontSize: '16px',
+    let text = this.add.text(width - 860, height - 510, leaderDialog[0], {
+      fontSize: '20px',
       fill: '#000000',
-      wordWrap: { width: textBalloon.width - 20 }
+      wordWrap: { width: textBalloon.width + 40}
     });
     text.setVisible(true);
 

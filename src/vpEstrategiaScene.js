@@ -41,6 +41,7 @@ class VpEstrategiaScene extends Phaser.Scene {
     this.load.image('meme_estrategia', '../assets/meme_estrategia.jpg'); // Adiciona imagem do meme
     this.load.image('sheet', '../assets/sheet.png'); // Adiciona imagem da folha
     this.load.image('notes', '../assets/notes.png'); // Adiciona imagem das anotações
+    this.load.image('levelTitle', '../assets/titulos/tituloVpEstrategias.png') // Carrega os asssets do titulo da fase
     this.load.image('arrow', '../assets/seta.png');
   }
 
@@ -84,10 +85,10 @@ class VpEstrategiaScene extends Phaser.Scene {
   }
 
   create() {
+    this.add.rectangle(width - 2000, height - 2000, width, height, 0x2F052F).setOrigin(0).setScale(5); // Adiciona um retangulo de fundo
+
     // Inicializa a variável de controle
     this.npcInteractionComplete = false;
-    const width = this.cameras.main.width; // Obtém a largura da câmera principal
-    const height = this.cameras.main.height; // Obtém a altura da câmera principal
 
     const startTime = VpEstrategiaScene.lastMusicTime || 0; // Recupera o tempo salvo da música ou inicia do início
     this.strategyMusic = this.sound.add("strategyMusic", { loop: true }); // Adiciona a música de fundo com loop
@@ -542,6 +543,8 @@ class VpEstrategiaScene extends Phaser.Scene {
     // Dá zoom na tela do jogo e faz a câmera seguir o personagem
     this.cameras.main.startFollow(this.player); // Faz a câmera seguir o jogador
     this.cameras.main.setZoom(2); // Define o nível de zoom da câmera
+
+    this.showTitle(); // Exibe o titulo da fase
   }
 
   update() {
@@ -597,13 +600,15 @@ class VpEstrategiaScene extends Phaser.Scene {
         this.sheetContainer.x, this.sheetContainer.y
       );
       this.keyESheet.setVisible(distanceSheet < 100);
-   
     }
-    
-        this.updateArrowToNearestIndicator();
-      
-    
+    this.updateArrowToNearestIndicator();
   }
+
+  showTitle() {
+    const titleImage = this.add.image(this.player.x, this.player.y - 130, 'levelTitle').setDepth(1000); // Adiciona a imagem de parabéns acima do jogador e define sua profundidade para garantir que fique acima de outros elementos
+    titleImage.setScale(0.3); // Ajusta o tamanho da imagem de parabéns
+  }
+
   startDialogue(speechNpc, npc) {
     if (!npc) {
       console.error("NPC não definido ao iniciar o diálogo.");
@@ -864,8 +869,13 @@ class VpEstrategiaScene extends Phaser.Scene {
       );
 
       if (distance < 100) { // Verifica se o jogador está próximo o suficiente do botão (raio de 100)
-        this.scene.stop("VpEstrategiaScene"); // Para a cena atual
-        this.scene.start("elevadorScene"); // Inicia a cena do elevador
+        this.sound.stopAll();
+        
+        this.registry.set('vpEstrategiaConcluida', true);
+        const elevadorScene = this.scene.get("elevadorScene");
+        elevadorScene.resumeFromStrategies = true;
+        this.scene.stop("VpEstrategiaScene");
+        this.scene.resume("elevadorScene");
       }
     });
   }
