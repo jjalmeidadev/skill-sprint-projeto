@@ -113,7 +113,6 @@ class VpEstrategiaScene extends Phaser.Scene {
 
     this.createPlayer(width, height); // Cria o jogador na cena
     this.createPlayerAnimations(); // Cria as animações do jogador
-    this.createButtonBack(width, height); // Cria o botão de retorno para outra cena
 
     this.physics.add.collider(this.player, layerParede); // Colisão do jogador com a camada de paredes
     this.physics.add.collider(this.player, layerDecoracaoComBarreiras); // Colisão do jogador com a camada de decoração com barreiras
@@ -544,6 +543,11 @@ class VpEstrategiaScene extends Phaser.Scene {
     this.cameras.main.startFollow(this.player); // Faz a câmera seguir o jogador
     this.cameras.main.setZoom(2); // Define o nível de zoom da câmera
 
+    this.barrierDoor = this.add.rectangle(width - 800, height - 720, 20, 20, 0x2F052F).setOrigin(0); // Adiciona um retângulo como barreira
+    this.physics.add.existing(this.barrierDoor, true); // Ativa a física do retângulo
+    this.physics.add.collider(this.player, this.barrierDoor); // Adiciona colisão entre o jogador e a barreira
+    this.barrierDoor.setVisible(false); // Torna o retângulo invisível
+
     this.showTitle(); // Exibe o titulo da fase
   }
 
@@ -796,7 +800,7 @@ class VpEstrategiaScene extends Phaser.Scene {
   
   
   createPlayer(width, height) {
-    this.player = this.physics.add.sprite(width - 670, height - 660, 'player'); // Adiciona o sprite do jogador na posição especificada
+    this.player = this.physics.add.sprite(width - 790, height - 660, 'player'); // Adiciona o sprite do jogador na posição especificada
     this.player.setScale(2.5); // Ajusta o tamanho do jogador
   }
 
@@ -860,24 +864,23 @@ class VpEstrategiaScene extends Phaser.Scene {
   }
 
   createButtonBack(width, height) {
-    const buttonBack = this.add.image(width - 700, height - 680, "keyE"); // Adiciona a imagem do botão de retorno na posição especificada
-    buttonBack.setScale(0.1); // Alterado de 0.2 para 0.1
+    const exclamation = this.physics.add.sprite(width - 800, height - 700, "indicator");
+    exclamation.play("exclaiming"); // Reproduz a animação de exclamação
+    exclamation.setScale(0.2);
+    exclamation.setImmovable(true); // Evita que o objeto se mova com colisões
 
-    this.input.keyboard.on("keydown-E", () => { // Adiciona um evento para a tecla "E"
-      const distance = Phaser.Math.Distance.Between( // Calcula a distância entre o jogador e o botão de retorno
-        this.player.x, this.player.y, buttonBack.x, buttonBack.y // Coordenadas do jogador e do botão
-      );
-
-      if (distance < 100) { // Verifica se o jogador está próximo o suficiente do botão (raio de 100)
-        this.sound.stopAll();
-        
-        this.registry.set('vpEstrategiaConcluida', true);
-        const elevadorScene = this.scene.get("elevadorScene");
-        elevadorScene.resumeFromStrategies = true;
-        this.scene.stop("VpEstrategiaScene");
-        this.scene.resume("elevadorScene");
-      }
-    });
+    // Adiciona o overlap entre player e exclamation
+    this.physics.add.overlap(this.player, exclamation, () => {
+      // Lógica de troca de cena
+      this.sound.stopAll();
+  
+      this.registry.set('vpEstrategiaConcluida', true);
+      const elevadorScene = this.scene.get("elevadorScene");
+      elevadorScene.resumeFromStrategies = true;
+  
+      this.scene.stop("VpEstrategiaScene");
+      this.scene.resume("elevadorScene");
+    }, null, this);
   }
 
   checkCompletionDialogue() {
@@ -920,6 +923,7 @@ class VpEstrategiaScene extends Phaser.Scene {
         enterKey.destroy();
         finalExclamation.destroy();
         this.input.keyboard.off('keydown-ENTER', removeDialogue);
+        this.createButtonBack(width, height); // Cria o botão de retorno para outra cena
       };
 
       this.input.keyboard.on('keydown-ENTER', removeDialogue);
