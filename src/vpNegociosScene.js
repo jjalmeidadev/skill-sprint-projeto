@@ -335,7 +335,6 @@ class VpNegociosScene extends Phaser.Scene {
     // Adiciona o overlap entre player e exclamation
     this.physics.add.overlap(this.player, exclamation, () => {
       // Lógica de troca de cena
-      this.keySound();
       this.sound.stopAll();
   
       this.registry.set('vpBusinessConcluida', true);
