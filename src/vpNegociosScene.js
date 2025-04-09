@@ -110,7 +110,6 @@ class VpNegociosScene extends Phaser.Scene {
     this.createPlayerAnimations(); // Cria as animações do jogador
     this.createAnimsIndicator(); // Cria a animação do indicador
     this.lastPosition = "down"; // Define a posição inicial do jogador como "down"
-    this.createButtonBack(width, height); // Cria o botão de retorno
     this.createChips(); // Cria os chips 
     this.addNpc(); // Cria os NPCs no mapa
 
@@ -152,6 +151,11 @@ class VpNegociosScene extends Phaser.Scene {
     .setDepth(1000)            // Para que fique acima de outros objetos
     .setScale(0.5)
     .setOrigin(0.5, 0.5);
+
+    this.barrierDoor = this.add.rectangle(width - 680, height - 720, 20, 20, 0x2F052F).setOrigin(0); // Adiciona um retângulo como barreira
+    this.physics.add.existing(this.barrierDoor, true); // Ativa a física do retângulo
+    this.physics.add.collider(this.player, this.barrierDoor); // Adiciona colisão entre o jogador e a barreira
+    this.barrierDoor.setVisible(false); // Torna o retângulo invisível
 
     this.showTitle(); // Exibe o titulo na tela
   }
@@ -322,27 +326,26 @@ class VpNegociosScene extends Phaser.Scene {
   }
 
   createButtonBack(width, height) {
-    const buttonBack = this.add.image(width - 670, height - 680, "keyE"); // Adiciona a imagem da tecla "E" na posição especificada
-    buttonBack.setScale(0.07); // Reduz o tamanho da imagem para 20% do tamanho original
-
-    this.input.keyboard.on("keydown-E", () => { // Adiciona um evento para quando a tecla "E" for pressionada
-    const distance = Phaser.Math.Distance.Between( // Calcula a distância entre o jogador e o botão
-    this.player.x, this.player.y, buttonBack.x, buttonBack.y // Coordenadas do jogador e do botão
-    );
-
-      if (distance < 100) { // Verifica se o jogador está dentro de um raio de 100 pixels do botão
-        // Pausa todos os sons da cena
-        this.keySound();
-        this.sound.stopAll();
-
-        this.registry.set('vpBusinessConcluida', true);
-        const elevadorScene = this.scene.get("elevadorScene");
-        elevadorScene.resumeFromBusiness = true;
-        this.scene.stop("vpNegociosScene");
-        this.scene.resume("elevadorScene");
-      }
-      });
-    }
+    // Cria o sprite da exclamação (ou mantenha o nome buttonBack se preferir)
+    const exclamation = this.physics.add.sprite(width - 670, height - 680, "indicator");
+    exclamation.play("exclaiming"); // Reproduz a animação de exclamação
+    exclamation.setScale(0.2);
+    exclamation.setImmovable(true); // Evita que o objeto se mova com colisões
+  
+    // Adiciona o overlap entre player e exclamation
+    this.physics.add.overlap(this.player, exclamation, () => {
+      // Lógica de troca de cena
+      this.keySound();
+      this.sound.stopAll();
+  
+      this.registry.set('vpBusinessConcluida', true);
+      const elevadorScene = this.scene.get("elevadorScene");
+      elevadorScene.resumeFromBusiness = true;
+  
+      this.scene.stop("vpNegociosScene");
+      this.scene.resume("elevadorScene");
+    }, null, this);
+  }
 
   createPlayerAnimations() {
   this.anims.create({
@@ -1260,6 +1263,7 @@ createLocker() {
 showCongratulations() {
   const congratulationsImage = this.add.image(this.player.x, this.player.y - 150, 'congratulations5G').setDepth(1000); // Adiciona a imagem de parabéns acima do jogador e define sua profundidade para garantir que fique acima de outros elementos
   congratulationsImage.setScale(0.3); // Ajusta o tamanho da imagem de parabéns
+  this.createButtonBack(width, height); // Cria o botão de retorno
 
   // Remove a imagem de parabéns após 3 segundos
   this.time.delayedCall(3000, () => { // Define um atraso de 3 segundos antes de executar a função
