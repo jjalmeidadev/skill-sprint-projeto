@@ -411,6 +411,8 @@ class VpPessoasScene extends Phaser.Scene {
           if (!this.keyEnterNpcMobile) {
             this.keyEnterNpcMobile = this.add.image(this.npcMobile.x - 20, this.npcMobile.y - 50, 'keyENTER').setScale(0.1).setDepth(1000); 
           }
+          this.buttonClick = this.sound.add('buttonSound', { loop: false, volume: 10 });
+          this.buttonClick.play();
           this.npcMobileInteracted = true;
           this.canInteractWithNpcMobile = false;
           this.showNpcMobileInteraction();
@@ -623,9 +625,13 @@ class VpPessoasScene extends Phaser.Scene {
         currentIndex++; // Avança para a próxima fala
         if (currentIndex < speech.length) { // Verifica se ainda há falas restantes
           text.setText(speech[currentIndex]); // Atualiza o texto com a próxima fala
+          this.buttonClick = this.sound.add('buttonSound', { loop: false, volume: 10 });
+          this.buttonClick.play();
         } else { // Se todas as falas foram exibidas
           text.setVisible(false); // Esconde o texto
           balloonText.setVisible(false); // Esconde o balão de fala
+          this.buttonClick = this.sound.add('buttonSound', { loop: false, volume: 10 });
+          this.buttonClick.play();
           this.input.keyboard.off("keydown-ENTER"); // Remove o evento da tecla "ENTER"
 
           if (this.keyEnterNpcMobile) { // Verifica se o ícone da tecla "ENTER" existe
@@ -731,6 +737,7 @@ class VpPessoasScene extends Phaser.Scene {
           text.setText(speechRafaela[currentSpeechIndex]); // Atualiza o texto com a próxima fala
           this.buttonClick.play(); // Toca o som de clique
         } else { // Se todas as falas foram exibidas
+          this.buttonClick.play(); // Toca o som de clique
           balloonText.setVisible(false); // Esconde o balão de fala
           text.setVisible(false); // Esconde o texto
           this.input.keyboard.off("keydown-ENTER"); // Remove o evento da tecla "ENTER"
