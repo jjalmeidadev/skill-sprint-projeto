@@ -148,6 +148,10 @@ class ElevadorScene extends Phaser.Scene {
       }
 
       this.buttonBusiness.setVisible(true); // Exibe o botão de negócios quando o jogador está próximo
+      if (this.checkBusinessActive && this.checkBusiness) {
+        this.checkBusiness.setVisible(true);
+      }
+
       this.buttonTech.setVisible(true); // Exibe o botão de tecnologia quando o jogador está próximo
       this.buttonRelations.setVisible(true); // Exibe o botão de relações quando o jogador está próximo
 
@@ -169,6 +173,10 @@ class ElevadorScene extends Phaser.Scene {
       }
 
       this.buttonBusiness.setVisible(false); // Esconde o botão de negócios quando o jogador está longe
+      if (this.checkBusiness) {
+        this.checkBusiness.setVisible(false);
+      }
+
       this.buttonTech.setVisible(false); // Esconde o botão de tecnologia quando o jogador está longe
       this.buttonRelations.setVisible(false); // Esconde o botão de relações quando o jogador está longe
 
@@ -201,6 +209,18 @@ class ElevadorScene extends Phaser.Scene {
       }
     
       this.resumeFromStrategies = false; // reseta a flag
+    }
+
+    if (this.resumeFromBusiness && this.buttonBusiness && this.checkBusiness) {
+      const concluida = this.registry.get('vpBusinessConcluida') === true;
+    
+      if (concluida) {
+        this.checkBusinessActive = true;
+        this.buttonBusiness.disableInteractive();
+        // check só aparece quando estiver perto, o update já cuida disso
+      }
+    
+      this.resumeFromBusiness = false; // reseta a flag
     }
   }
 
@@ -487,6 +507,9 @@ class ElevadorScene extends Phaser.Scene {
   }
 
   createButtonBusiness(width, height) {
+    const returnedVpBusiness = this.fromScene === "vpNegociosScene";
+    const levelDone = this.registry.get('vpBusinessConcluida') === true;
+
     this.buttonBusiness = this.add.image(0, 0, "buttonBusiness").setOrigin(0, 0); // Cria o botão de Negócios
     this.buttonBusiness.setVisible(false); // Inicialmente esconde o botão
 
@@ -495,12 +518,24 @@ class ElevadorScene extends Phaser.Scene {
     this.buttonBusiness.setScale(1.2, 1.15); // Ajusta o tamanho do botão
     this.buttonBusiness.setVisible(false); // Inicialmente esconde o botão
 
-    this.buttonBusiness.on("pointerdown", () => { // Adiciona um evento de clique ao botão de Negócios
-      this.buttonClick.play(); // Toca o som de clique do botão
-      this.shutdown(); // Finaliza a cena atual
-      this.scene.stop("elevadorScene"); // Para a cena atual
-      this.scene.start("vpNegociosScene", {selectedSpriteSheet: this.selectedSpriteSheet,}); // Inicia a cena de Negócios
-    });
+    this.checkBusiness = this.add.image(width - 910, height - 393, "checkButton");
+    this.checkBusiness.setScale(0.6);
+    this.checkBusiness.setVisible(false); // Por padrão, invisível
+    this.checkBusinessActive = (this.fromScene === "vpNegociosScene" && this.registry.get('vpBusinessConcluida'));
+
+    if (returnedVpBusiness && levelDone) {
+      this.checkBusiness.setVisible(true);
+      this.buttonBusiness.disableInteractive();
+    }
+
+    if (!levelDone) {
+      this.buttonBusiness.on("pointerdown", () => {
+        this.buttonClick.play();
+        this.shutdown();
+        this.scene.pause("elevadorScene");
+        this.scene.launch("vpNegociosScene", { selectedSpriteSheet: this.selectedSpriteSheet });
+      });
+    }
   }
 
   createButtonTech(width, height) {

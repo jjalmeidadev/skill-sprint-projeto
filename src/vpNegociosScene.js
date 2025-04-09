@@ -50,6 +50,7 @@ class VpNegociosScene extends Phaser.Scene {
     }
 
   create() {
+    this.add.rectangle(width - 2000, height - 2000, width, height, 0x2F052F).setOrigin(0).setScale(5); // Adiciona um retangulo de fundo
     this.collectedChips = 0; // contador inicial
 
     const minigameWiresCompleted = this.registry.get('minigameWiresCompleted') || false; // Verifica se o minigame foi concluído anteriormente, usando o registro global para armazenar o estado.
@@ -323,11 +324,15 @@ if (this.compassArrow) {
     );
 
       if (distance < 100) { // Verifica se o jogador está dentro de um raio de 100 pixels do botão
-      // Pausa todos os sons da cena
-      this.keySound();
-      this.sound.stopAll();
-      this.scene.stop("vpNegociosScene"); // Para a cena atual "vpNegociosScene"
-      this.scene.start("elevadorScene", {selectedSpriteSheet: this.selectedSpriteSheet,}); // Inicia a cena "elevadorScene"
+        // Pausa todos os sons da cena
+        this.keySound();
+        this.sound.stopAll();
+
+        this.registry.set('vpBusinessConcluida', true);
+        const elevadorScene = this.scene.get("elevadorScene");
+        elevadorScene.resumeFromBusiness = true;
+        this.scene.stop("vpNegociosScene");
+        this.scene.resume("elevadorScene");
       }
       });
     }
