@@ -1101,7 +1101,7 @@ O que poderia melhorar no jogo? | A responsividade do personagem aos controles, 
 
 ### 5.2.2 Melhorias
 
-*Descreva nesta seção um plano de melhorias sobre o jogo, com base nos resultados dos testes de jogabilidade*
+Entre as melhorias que estamos planejando, estão o aumento do tamanho da fonte, a adição de setas direcionais além do uso do WASD, ajustes nos sons, adaptação do jogo para a versão mobile, opções de customização e mini games mais complexos para ampliar a experiência do jogador.
 
 # <a name="c6"></a>6. Conclusões e trabalhos futuros (sprint 5)
 
