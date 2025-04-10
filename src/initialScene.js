@@ -1,6 +1,6 @@
 class InitialScene extends Phaser.Scene {
   constructor() {
-    super({ key: "initialScene" }); 
+    super({ key: "initialScene" });
     this.vidroSlidePlayed = false; // Inicializa uma variável para rastrear se o som de "vidroslide" já foi tocado
     const config = {
       type: Phaser.AUTO, // Define o tipo de renderização como automático (Phaser escolhe entre WebGL e Canvas)
@@ -179,7 +179,7 @@ class InitialScene extends Phaser.Scene {
 
     let size = [ // Define os tamanhos para o aumento gradual do pássaro
       1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2.0, 2.1, 2.2, 2.3, 2.4, 2.5,
-    ]; 
+    ];
 
     this.exploBird.setVisible(true); // Torna o pássaro explodido visível
 
@@ -243,7 +243,7 @@ class InitialScene extends Phaser.Scene {
       this.buttonSound(); // Toca o som de clique do botão
       this.shutdown(); // Para a música inicial
       this.scene.stop("initialScene"); // Para a cena inicial
-      this.scene.start("PlayerSkin", {selectedSpriteSheet: this.selectedSpriteSheet,}); // Inicia a cena "PlayerSkin"
+      this.scene.start("PlayerSkin", { selectedSpriteSheet: this.selectedSpriteSheet, }); // Inicia a cena "PlayerSkin"
     });
   }
 
@@ -255,7 +255,7 @@ class InitialScene extends Phaser.Scene {
       this.buttonSound(); // Toca o som de clique do botão
       this.shutdown(); // Para a música inicial
       this.scene.stop("initialScene"); // Para a cena inicial
-      this.scene.switch("creditosScene", {selectedSpriteSheet: this.selectedSpriteSheet,}); // Alterna para a cena "creditosScene"
+      this.scene.switch("creditosScene", { selectedSpriteSheet: this.selectedSpriteSheet, }); // Alterna para a cena "creditosScene"
     });
   }
 
@@ -267,7 +267,7 @@ class InitialScene extends Phaser.Scene {
       this.buttonSound(); // Toca o som de clique do botão
       this.shutdown(); // Para a música inicial
       this.scene.stop("initialScene"); // Para a cena inicial
-      this.scene.start("ajusteScene", {selectedSpriteSheet: this.selectedSpriteSheet,}); // Inicia a cena "ajusteScene"
+      this.scene.start("ajusteScene", { selectedSpriteSheet: this.selectedSpriteSheet, }); // Inicia a cena "ajusteScene"
     });
   }
 
@@ -301,7 +301,7 @@ class InitialScene extends Phaser.Scene {
         );
 
         this.meteor.setVelocityY(
-           // Cálculo da velocidade com V = v0 + at
+          // Cálculo da velocidade com V = v0 + at
           this.meteor.v0y + this.meteor.a * this.meteor.duration // Define a velocidade no eixo Y com base na aceleração e tempo
         );
       }
@@ -310,18 +310,18 @@ class InitialScene extends Phaser.Scene {
     if (this.meteor.visible === true) { // Verifica se o meteoro está visível na cena
       console.log( // Atualiza a posição do meteoro no console
         "A posição do meteoro no eixo X é: " +
-          // Utilizando S(t) = S₀ + v.t em MU
-          (this.meteor.x + this.meteor.v0x * this.meteor.duration) + // Calcula a posição X do meteoro com base na velocidade inicial e tempo
-          " A posição do meteoro no eixo Y é: " +
-          // Utilizando S(t) = S₀ + V₀.t + (a.t²)/2
-          (this.meteor.y + this.meteor.v0y * this.meteor.duration +
-            (this.meteor.a * this.meteor.duration ** 2) / 2) + // Calcula a posição Y do meteoro com base na velocidade inicial, aceleração e tempo
-          // Utilizando velocidade com V = delta S/t
-          "A velocidade do meteoro no eixo X é: " +
-          ((this.meteor.dS / this.meteor.duration) * speedMultiplier) + // Calcula a velocidade no eixo X com base no deslocamento e duração
-          // Utilizando velocidade com V = v0 + at
-          " A velocidade do meteoro no eixo Y é: " +
-          (this.meteor.v0y + this.meteor.a * this.meteor.duration) // Calcula a velocidade no eixo Y com base na aceleração e tempo
+        // Utilizando S(t) = S₀ + v.t em MU
+        (this.meteor.x + this.meteor.v0x * this.meteor.duration) + // Calcula a posição X do meteoro com base na velocidade inicial e tempo
+        " A posição do meteoro no eixo Y é: " +
+        // Utilizando S(t) = S₀ + V₀.t + (a.t²)/2
+        (this.meteor.y + this.meteor.v0y * this.meteor.duration +
+          (this.meteor.a * this.meteor.duration ** 2) / 2) + // Calcula a posição Y do meteoro com base na velocidade inicial, aceleração e tempo
+        // Utilizando velocidade com V = delta S/t
+        "A velocidade do meteoro no eixo X é: " +
+        ((this.meteor.dS / this.meteor.duration) * speedMultiplier) + // Calcula a velocidade no eixo X com base no deslocamento e duração
+        // Utilizando velocidade com V = v0 + at
+        " A velocidade do meteoro no eixo Y é: " +
+        (this.meteor.v0y + this.meteor.a * this.meteor.duration) // Calcula a velocidade no eixo Y com base na aceleração e tempo
       );
     }
   }

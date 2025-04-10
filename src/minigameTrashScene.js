@@ -1,13 +1,13 @@
 class MinigameTrashScene extends Phaser.Scene {
     constructor() {
-        super({key: 'minigameTrashScene'});
+        super({ key: 'minigameTrashScene' });
     }
 
     init(data) {
         this.selectedSpriteSheet = data.selectedSpriteSheet;
-        
+
     }
-    
+
     preload() {
         this.load.image('backgroundTrash', '../assets/assetsTrash/backgroundTrash.png'); // Carrega o fundo
         this.load.spritesheet('banana', '../assets/assetsTrash/banana.png', { frameWidth: 498, frameHeight: 316 }); // Carrega a banana
@@ -41,7 +41,7 @@ class MinigameTrashScene extends Phaser.Scene {
         this.smile.setBounce(0.7); // Define o valor de quique para a carinha
         this.smile.setScale(0.12); // Define o tamanho da carinha feliz
         this.smile.setGravityX(-100); // Define a gravidade do eixo X para a carinha feliz
-       
+
         this.progressBarBackground = this.add.graphics(); // Barra de progresso
         this.progressBarBackground.fillStyle(0x808080, 1); // Fundo Cinza
         this.progressBarBackground.fillRect(width - 1450, height - 730, 300, 30); // Cria a barra de progresso
@@ -64,7 +64,7 @@ class MinigameTrashScene extends Phaser.Scene {
             callbackScope: this, // Define o escopo do callback para a instância atual da cena
             loop: true // Faz o evento se repetir indefinidamente
         });
-     
+
         this.time.addEvent({ // Cria um evento temporizado que gera partes do vivinho a cada 2,5 segundos
             delay: 2500, // Define o intervalo de tempo entre cada execução do evento (2,5 segundos)
             callback: this.spawnRandomVivinho, // Define a função que será chamada para gerar partes do vivinho
@@ -82,7 +82,7 @@ class MinigameTrashScene extends Phaser.Scene {
 
         if (this.vivinho === 3 && this.happiness >= 5) { // Verifica se todas as partes do Vivinho foram coletadas e se a felicidade é suficiente
             this.time.delayedCall(200, () => { // Aguarda 200ms antes de executar a próxima ação
-                this.scene.start('congratulationsMinigameScene', {selectedSpriteSheet: this.selectedSpriteSheet}); // Inicia a cena de parabéns
+                this.scene.start('congratulationsMinigameScene', { selectedSpriteSheet: this.selectedSpriteSheet }); // Inicia a cena de parabéns
             });
         }
 
@@ -105,12 +105,12 @@ class MinigameTrashScene extends Phaser.Scene {
             this.banana.destroy(); // Destroi o sprite da banana
             this.banana = null; // Define a variável banana como null
         }
-        
+
         if (this.bottle && this.bottle.x < 0) { // Verifica se a garrafa existe e se saiu da tela pelo lado esquerdo
             this.bottle.destroy(); // Destroi o sprite da garrafa
             this.bottle = null; // Define a variável bottle como null
         }
-        
+
         if (this.paper && this.paper.x < 0) { // Verifica se o papel existe e se saiu da tela pelo lado esquerdo
             this.paper.destroy(); // Destroi o sprite do papel
             this.paper = null; // Define a variável paper como null
@@ -140,7 +140,7 @@ class MinigameTrashScene extends Phaser.Scene {
     addHead() {
         let posY = Phaser.Math.Between(50, this.sys.game.config.height - 50); // Gera uma posição Y aleatória para a carinha
         let posX = Phaser.Math.Between(50, this.sys.game.config.width - 50); // Gera uma posição X aleatória para a carinha
-        
+
         this.head = this.physics.add.sprite(1500, posY, 'head'); // Adiciona o sprite da carinha à cena
         this.head.setCollideWorldBounds(true); // Faz a carinha colidir com os limites do mundo
         this.head.setBounce(0.7); // Define o valor de quique para a carinha
@@ -151,7 +151,7 @@ class MinigameTrashScene extends Phaser.Scene {
     addBody() {
         let posY = Phaser.Math.Between(50, this.sys.game.config.height - 50); // Gera uma posição Y aleatória para a carinha
         let posX = Phaser.Math.Between(50, this.sys.game.config.width - 50); // Gera uma posição X aleatória para a carinha
-        
+
         this.body = this.physics.add.sprite(1500, posY, 'body'); // Adiciona o sprite da carinha à cena
         this.body.setCollideWorldBounds(true); // Faz a carinha colidir com os limites do mundo
         this.body.setBounce(0.7); // Define o valor de quique para a carinha
@@ -162,7 +162,7 @@ class MinigameTrashScene extends Phaser.Scene {
     addLegs() {
         let posY = Phaser.Math.Between(50, this.sys.game.config.height - 50); // Gera uma posição Y aleatória para a carinha
         let posX = Phaser.Math.Between(50, this.sys.game.config.width - 50); // Gera uma posição X aleatória para a carinha
-        
+
         this.legs = this.physics.add.sprite(1500, posY, 'legs'); // Adiciona o sprite da carinha à cena
         this.legs.setCollideWorldBounds(true); // Faz a carinha colidir com os limites do mundo
         this.legs.setBounce(0.7); // Define o valor de quique para a carinha
@@ -197,10 +197,10 @@ class MinigameTrashScene extends Phaser.Scene {
         this.paperExists = true; // Variável de controle
     }
 
-    crash(hand, trash) { 
+    crash(hand, trash) {
         this.physics.pause(); // Pausa a física do jogo
         this.hand.setVisible(false); // Oculta a mão
-        this.scene.start('gameOverMinigameTrashScene', { pontuacao: this.score }, {selectedSpriteSheet: this.selectedSpriteSheet}); // Inicia a cena de Game Over
+        this.scene.start('gameOverMinigameTrashScene', { pontuacao: this.score }, { selectedSpriteSheet: this.selectedSpriteSheet }); // Inicia a cena de Game Over
     };
 
     collectVivinho(hand, part) {
@@ -223,14 +223,14 @@ class MinigameTrashScene extends Phaser.Scene {
             this.vivinho += 1; // Incrementa o contador de partes do Vivinho
             this.updateVivinhoProgressBar(); // Atualiza a barra de progresso do Vivinho
         }
-    
+
         this.collected = this.sound.add('collectSound', { loop: false, volume: 10 }); // Adiciona o som de coleta com volume e sem loop
         this.collected.play(); // Reproduz o som de coleta
     }
 
     spawnRandomTrash() {
         const randomTrash = Phaser.Math.Between(0, 2); // Gera um número aleatório entre 0 e 2 para decidir o tipo de lixo
-    
+
         switch (randomTrash) {
             case 0: // Caso o número seja 0
                 this.addBanana(); // Adiciona uma banana à cena
@@ -244,12 +244,12 @@ class MinigameTrashScene extends Phaser.Scene {
                 this.addPaper(); // Adiciona um papel à cena
                 this.physics.add.collider(this.hand, this.paper, this.crash, null, this); // Adiciona colisão entre a mão e o papel
                 break;
+        }
     }
-}
     spawnRandomVivinho() {
         const randomVivinho = Phaser.Math.Between(0, 2); // Gera um número aleatório entre 0 e 2 para decidir qual parte do Vivinho será gerada
 
-        switch(randomVivinho) {
+        switch (randomVivinho) {
             case 0: // Caso o número aleatório seja 0
                 if (!this.headSpawned) { // Verifica se a cabeça ainda não foi gerada
                     this.addHead(); // Adiciona a cabeça do Vivinho à cena
@@ -293,7 +293,7 @@ class MinigameTrashScene extends Phaser.Scene {
         const percentage = Phaser.Math.Clamp(this.vivinho / maxParts, 0, 1); // Calcula a porcentagem do vivinho, garantindo que esteja entre 0 e 1
         const barWidth = 300; // Define a largura da barra de progresso
         const barHeight = 30; // Define a altura da barra de progresso
-    
+
         this.vivinhoProgressBar.clear();
         this.vivinhoProgressBar.fillStyle(0x670099, 1); // Define a cor da barra de progresso (roxo)
         this.vivinhoProgressBar.fillRect(width - 1450, height - 690, barWidth * percentage, barHeight);
@@ -302,7 +302,7 @@ class MinigameTrashScene extends Phaser.Scene {
 
 class GameOverMinigameTrashScene extends Phaser.Scene {
     constructor() {
-        super({key: 'gameOverMinigameTrashScene'});
+        super({ key: 'gameOverMinigameTrashScene' });
     }
 
     preload() {
@@ -323,7 +323,7 @@ class GameOverMinigameTrashScene extends Phaser.Scene {
     }
 
     buttonSound() {
-        this.buttonClick = this.sound.add('buttonSound', {loop: false, volume: 10}); // Adiciona o som do clique do botão com volume e sem loop
+        this.buttonClick = this.sound.add('buttonSound', { loop: false, volume: 10 }); // Adiciona o som do clique do botão com volume e sem loop
         this.buttonClick.play(); // Reproduz o som do clique do botão
     }
 
@@ -356,14 +356,14 @@ class GameOverMinigameTrashScene extends Phaser.Scene {
         buttonRestart.on('pointerdown', () => { // Adiciona um evento de clique ao botão
             this.buttonSound(); // Reproduz o som do clique do botão
             this.scene.stop('gameOverMinigameTrashScene'); // Para a cena de "Game Over"
-            this.scene.start('minigameTrashScene', {selectedSpriteSheet: this.selectedSpriteSheet,}); // Reinicia a cena do minijogo
+            this.scene.start('minigameTrashScene', { selectedSpriteSheet: this.selectedSpriteSheet, }); // Reinicia a cena do minijogo
         });
     }
 }
 
 class CongratulationsMinigameScene extends Phaser.Scene {
     constructor() {
-        super({key: 'congratulationsMinigameScene'})
+        super({ key: 'congratulationsMinigameScene' })
     }
 
     preload() {
@@ -380,7 +380,7 @@ class CongratulationsMinigameScene extends Phaser.Scene {
     }
 
     buttonSound() {
-        this.buttonClick = this.sound.add('buttonSound', {loop: false, volume: 10}); // Adiciona o som do clique do botão com volume e sem loop
+        this.buttonClick = this.sound.add('buttonSound', { loop: false, volume: 10 }); // Adiciona o som do clique do botão com volume e sem loop
         this.buttonClick.play(); // Reproduz o som do clique do botão
     }
 
@@ -414,7 +414,7 @@ class CongratulationsMinigameScene extends Phaser.Scene {
         buttonBack.on('pointerdown', () => { // Adiciona um evento de clique ao botão
             this.buttonSound(); // Reproduz o som do clique do botão
             this.scene.stop('congratulationsMinigameScene'); // Para a cena de parabéns
-            
+
             const vpScene = this.scene.get('vpPessoasScene'); // Obtém a cena 'vpPessoasScene'
             vpScene.resume(); // Chama o método resume definido na cena 'vpPessoasScene'
             this.scene.resume('vpPessoasScene'); // Retoma o fluxo normal da cena 'vpPessoasScene'

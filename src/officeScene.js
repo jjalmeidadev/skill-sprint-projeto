@@ -19,16 +19,16 @@ class OfficeScene extends Phaser.Scene {
   }
 
   preload() {
-    this.load.spritesheet("npc7", "../assets/personagens/npc7.png", {frameWidth: 16, frameHeight: 32, }); // Carrega o spritesheet do NPC 7
-    this.load.spritesheet("npc3", "../assets/personagens/npc3Sit.png", {frameWidth: 16, frameHeight: 32, }); // Carrega o spritesheet do NPC 3 sentado
-    this.load.spritesheet("npc4", "../assets/personagens/npc4Sit.png", {frameWidth: 16, frameHeight: 32,}); // Carrega o spritesheet do NPC 4 sentado
-    this.load.spritesheet("npc2", "../assets/personagens/npc2Sit.png", {frameWidth: 16, frameHeight: 32, }); // Carrega o spritesheet do NPC 2 sentado
-    this.load.spritesheet("npc6", "../assets/personagens/npc6Sit.png", {frameWidth: 16, frameHeight: 32, }); // Carrega o spritesheet do NPC 6 sentado
-    this.load.spritesheet("npc10", "../assets/personagens/npc10Lift.png", {frameWidth: 16,  frameHeight: 32, }); // Carrega o spritesheet do NPC 10 no elevador
-    this.load.spritesheet("vivita", "../assets/personagens/vivita.png", {frameWidth: 16, frameHeight: 32, }); // Carrega o spritesheet da Vivita
-    this.load.spritesheet("indicator", "../assets/exclamaçãoRoxa.png", {frameWidth: 254, frameHeight: 305,}); // Carrega o spritesheet do indicador de exclamação
-    
-    this.load.tilemapTiledJSON("office","../assets/mapaOffice/mapaOffice.json"); // Carrega o arquivo JSON do mapa do escritório
+    this.load.spritesheet("npc7", "../assets/personagens/npc7.png", { frameWidth: 16, frameHeight: 32, }); // Carrega o spritesheet do NPC 7
+    this.load.spritesheet("npc3", "../assets/personagens/npc3Sit.png", { frameWidth: 16, frameHeight: 32, }); // Carrega o spritesheet do NPC 3 sentado
+    this.load.spritesheet("npc4", "../assets/personagens/npc4Sit.png", { frameWidth: 16, frameHeight: 32, }); // Carrega o spritesheet do NPC 4 sentado
+    this.load.spritesheet("npc2", "../assets/personagens/npc2Sit.png", { frameWidth: 16, frameHeight: 32, }); // Carrega o spritesheet do NPC 2 sentado
+    this.load.spritesheet("npc6", "../assets/personagens/npc6Sit.png", { frameWidth: 16, frameHeight: 32, }); // Carrega o spritesheet do NPC 6 sentado
+    this.load.spritesheet("npc10", "../assets/personagens/npc10Lift.png", { frameWidth: 16, frameHeight: 32, }); // Carrega o spritesheet do NPC 10 no elevador
+    this.load.spritesheet("vivita", "../assets/personagens/vivita.png", { frameWidth: 16, frameHeight: 32, }); // Carrega o spritesheet da Vivita
+    this.load.spritesheet("indicator", "../assets/exclamaçãoRoxa.png", { frameWidth: 254, frameHeight: 305, }); // Carrega o spritesheet do indicador de exclamação
+
+    this.load.tilemapTiledJSON("office", "../assets/mapaOffice/mapaOffice.json"); // Carrega o arquivo JSON do mapa do escritório
     this.load.image("decoracao", "../assets/mapaOffice/decoracao.png"); // Carrega o tileset de decoração
     this.load.image("paredes", "../assets/mapaOffice/paredes.png"); // Carrega o tileset de paredes
     this.load.image("personalizado_vivo", "../assets/mapaOffice/personalizado_vivo.png"); // Carrega o tileset personalizado da Vivo
@@ -40,7 +40,7 @@ class OfficeScene extends Phaser.Scene {
 
     this.load.audio("officeMusic", "../assets/0320(1).MP3"); // Carrega a música de fundo do escritório
     this.load.audio('keySound', '../assets/sounds/computer-keyboard-typing-290582 (mp3cut.net).mp3'); // Carrega o som de digitação no teclado
-    
+
     this.load.audio('walkSound', '../assets/sounds/753292__vrymaa__footsteps-high-heels-hardwood-walk-run (mp3cut.net).wav'); // Carrega o som de passos
 
     this.load.image("bgElevOffice", "../assets/bgelevadoroffice.png"); // Carrega a imagem de fundo do elevador no escritório
@@ -48,13 +48,13 @@ class OfficeScene extends Phaser.Scene {
     this.load.image("buttonElevOffice", "../assets/botaocimaelevador.png"); // Carrega a imagem do botão para subir no elevador
     this.load.image("arrow", "../assets/seta.png");
 
-    this.load.spritesheet('player', `../assets/personagens/skinsPlayer/players/${this.selectedSpriteSheet}.png`, {frameWidth: 16,frameHeight: 32,});
+    this.load.spritesheet('player', `../assets/personagens/skinsPlayer/players/${this.selectedSpriteSheet}.png`, { frameWidth: 16, frameHeight: 32, });
   }
 
 
   create() {
     this.cameras.main.fadeIn(1000); // Transição suave ao iniciar a cena
-    
+
     this.events.on('stopWalkSound', () => { // Evento para parar o som de passos
       if (this.walkSound && this.walkSound.isPlaying) {
         this.walkSound.stop(); // Para o som de passos
@@ -68,8 +68,8 @@ class OfficeScene extends Phaser.Scene {
     this.events.on("shutdown", this.onShutdown, this); // Evento para salvar o tempo da música ao encerrar a cena
     this.events.on("pause", this.onShutdown, this); // Evento para salvar o tempo da música ao pausar a cena
 
-    this.buttonClick = this.sound.add('buttonSound', {loop: false, volume: 10}); // Adiciona o som de clique de botão
-    
+    this.buttonClick = this.sound.add('buttonSound', { loop: false, volume: 10 }); // Adiciona o som de clique de botão
+
     if (!this.walkSound) {
       this.walkSound = this.sound.add('walkSound', { loop: false, volume: 2 }); // Adiciona o som de passos, se ainda não existir
     }
@@ -90,8 +90,8 @@ class OfficeScene extends Phaser.Scene {
 
     this.events.on('resume', () => { // Evento para retomar a música ao retornar à cena
       if (!this.officeMusic || !this.officeMusic.isPlaying) { // Verifica se a música não está tocando
-      this.officeMusic = this.sound.add("officeMusic", { loop: true }); // Adiciona a música de fundo do escritório
-      this.officeMusic.play({ seek: OfficeScene.lastMusicTime || 0 }); // Toca a música a partir do tempo salvo
+        this.officeMusic = this.sound.add("officeMusic", { loop: true }); // Adiciona a música de fundo do escritório
+        this.officeMusic.play({ seek: OfficeScene.lastMusicTime || 0 }); // Toca a música a partir do tempo salvo
       }
     });
 
@@ -99,28 +99,28 @@ class OfficeScene extends Phaser.Scene {
     this.cameras.main.startFollow(this.player); // Faz a câmera seguir o jogador
     this.cameras.main.setZoom(1.5); // Define o nível de zoom da câmera
     this.compassArrow = this.add.image(this.cameras.main.width / 2, 335, "arrow")
-    .setScrollFactor(0)
-    .setDepth(1000)
-    .setScale(0.5)
-    .setOrigin(0.5, 0.5); // centraliza a rotação
+      .setScrollFactor(0)
+      .setDepth(1000)
+      .setScale(0.5)
+      .setOrigin(0.5, 0.5); // centraliza a rotação
     // Ajuste de rotação baseado na orientação da imagem da seta
-    this.arrowOffset = Phaser.Math.DegToRad(-180); 
+    this.arrowOffset = Phaser.Math.DegToRad(-180);
     this.events.on('resume', () => {
-      if (this.compassArrow && this.activeIndicators.length > 0) {
-        let closest = this.activeIndicators[0];
-        let minDist = Phaser.Math.Distance.Between(this.player.x, this.player.y, closest.x, closest.y);
-    
-        for (let i = 1; i < this.activeIndicators.length; i++) {
-          const ind = this.activeIndicators[i];
-          const d = Phaser.Math.Distance.Between(this.player.x, this.player.y, ind.x, ind.y);
-          if (d < minDist) {
-            closest = ind;
-            minDist = d;
+      if (this.compassArrow && this.activeIndicators.length > 0) { // Verifica se a seta da bússola e os indicadores ativos existem
+        let closest = this.activeIndicators[0]; // Inicializa o indicador mais próximo como o primeiro ativo
+        let minDist = Phaser.Math.Distance.Between(this.player.x, this.player.y, closest.x, closest.y); // Calcula a distância inicial
+
+        for (let i = 1; i < this.activeIndicators.length; i++) { // Itera sobre os indicadores ativos
+          const ind = this.activeIndicators[i]; // Calcula a distância entre o jogador e o indicador
+          const d = Phaser.Math.Distance.Between(this.player.x, this.player.y, ind.x, ind.y); // Calcula a distância entre o jogador e o indicador
+          if (d < minDist) { // Verifica se a distância atual é menor que a mínima
+            closest = ind; // Atualiza o indicador mais próximo
+            minDist = d; // Atualiza a distância mínima
           }
         }
-    
-        const angle = Phaser.Math.Angle.Between(this.player.x, this.player.y, closest.x, closest.y);
-        this.compassArrow.setRotation(angle + this.arrowOffset);
+
+        const angle = Phaser.Math.Angle.Between(this.player.x, this.player.y, closest.x, closest.y); // Calcula o ângulo entre o jogador e o indicador mais próximo
+        this.compassArrow.setRotation(angle + this.arrowOffset); // Define a rotação da seta da bússola
       }
     });
 
@@ -131,7 +131,7 @@ class OfficeScene extends Phaser.Scene {
   }
 
   createCollisions() {
-    // Add existing colliders
+    // Adiciona colisões entre o jogador e as camadas do mapa
     this.physics.add.collider(this.player, this.layer3);
     this.physics.add.collider(this.player, this.layer7);
     this.physics.add.collider(this.player, this.layer8);
@@ -141,15 +141,15 @@ class OfficeScene extends Phaser.Scene {
     this.physics.add.collider(this.player, this.npc7);
     this.physics.add.collider(this.player, this.vivita);
 
-    // Enable world bounds collision for player
+    // Adiciona colisões entre o jogador e a barreira da porta
     this.player.setCollideWorldBounds(true);
 
-    // Set the world bounds to match the map dimensions 
+    // Define as barreiras do mundo para que o jogador não saia da tela
     this.physics.world.setBounds(
-        this.offsetX,          // x position aligned with map
-        0,                     // y position
-        1270 * 2.5,           // width (map width * scale)
-        720 * 2.5             // height (map height * scale)
+      this.offsetX,          // Posição x alinhada ao mapa
+      0,                     // Posição y alinhada ao mapa
+      1270 * 2.5,           // Largura (map width * scale)
+      720 * 2.5             // Altura (map height * scale)
     );
   }
 
@@ -174,7 +174,7 @@ class OfficeScene extends Phaser.Scene {
   }
 
   createMap() {
-    const map = this.make.tilemap({key: "office", tileWidth: 25, tileHeight: 20}); // Cria o mapa usando o arquivo JSON com as dimensões dos tiles
+    const map = this.make.tilemap({ key: "office", tileWidth: 25, tileHeight: 20 }); // Cria o mapa usando o arquivo JSON com as dimensões dos tiles
     const tileset1 = map.addTilesetImage("decoracao"); // Adiciona o tileset de decoração ao mapa
     const tileset2 = map.addTilesetImage("paredes"); // Adiciona o tileset de paredes ao mapa
     const tileset3 = map.addTilesetImage("personalizado_vivo"); // Adiciona o tileset personalizado da Vivo ao mapa
@@ -238,104 +238,104 @@ class OfficeScene extends Phaser.Scene {
 
   update() {
 
-    this.movePlayer();
-  
-    if (this.returnedFromLeaderRoom && !this.elevatorIndicatorCreated) {
-      this.createElevatorIndicator();
-      this.elevatorIndicatorCreated = true;
+    this.movePlayer(); // Atualiza a posição do jogador com base nas teclas pressionadas
+
+    if (this.returnedFromLeaderRoom && !this.elevatorIndicatorCreated) { // Verifica se o jogador retornou da sala do líder e se o indicador do elevador ainda não foi criado
+      this.createElevatorIndicator(); // Cria o indicador do elevador
+      this.elevatorIndicatorCreated = true; // Marca que o indicador do elevador foi criado
     }
-  
-    
-  
+
+
+
     // Controle da Vivita
-    if (this.vivita) {
+    if (this.vivita) { // Verifica se a Vivita existe
       const distVivita = Phaser.Math.Distance.Between(this.player.x, this.player.y, this.vivita.x, this.vivita.y);
       this.canInteractWithVivita = distVivita < 100;
-  
-      if (this.keyEVivita && distVivita > 100) {
-        this.keyEVivita.destroy();
-        this.keyEVivita = null;
-        this.canInteractWithVivita = false;
+
+      if (this.keyEVivita && distVivita > 100) { // Verifica se a distância é maior que 100
+        this.keyEVivita.destroy(); // Se a distância for maior que 100, destrói a tecla E
+        this.keyEVivita = null; // Define a tecla E como nula
+        this.canInteractWithVivita = false; // Atualiza a variável de interação
       }
     }
-  
-    if (this.canInteractWithVivita && !this.vivitaInteracted && Phaser.Input.Keyboard.JustDown(this.keys.interagir)) {
-      this.vivitaInteracted = true;
-      if (this.keyEVivita) {
-        this.keyEVivita.destroy();
-        this.keyEVivita = null;
+
+    if (this.canInteractWithVivita && !this.vivitaInteracted && Phaser.Input.Keyboard.JustDown(this.keys.interagir)) { // Verifica se o jogador pode interagir com a Vivita e se ainda não interagiu
+      this.vivitaInteracted = true; // Marca que o jogador interagiu com a Vivita
+      if (this.keyEVivita) { // Verifica se a tecla E existe
+        this.keyEVivita.destroy(); // Destroi a tecla E
+        this.keyEVivita = null; // Define a tecla E como nula
       }
-    
+
       // Exibe a tecla ENTER
       this.keyENTERVivita = this.add.image(this.vivita.x, this.vivita.y - 50, 'keyENTER').setScale(0.1).setDepth(1000); // Adiciona a tecla ENTER acima da Vivita
-    
+
       this.buttonClick = this.sound.add('buttonSound', { loop: false, volume: 10 }); // Adiciona o som de clique de botão
       this.buttonClick.play(); // Reproduz o som de clique de botão
       this.showVivitaInteraction(); // Mostra a interação com a Vivita
     }
     // Controle do computador
 
-    if (this.computer) {
-      const distComputer = Phaser.Math.Distance.Between(this.player.x, this.player.y, this.computer.x, this.computer.y);
-      this.canInteractWithComputer = distComputer < 100;
-  
-      if (distComputer >= 100 && this.keyEComputer) {
-        this.keyEComputer.destroy();
-        this.keyEComputer = null;
+    if (this.computer) { // Verifica se o computador existe
+      const distComputer = Phaser.Math.Distance.Between(this.player.x, this.player.y, this.computer.x, this.computer.y); // Calcula a distância entre o jogador e o computador
+      this.canInteractWithComputer = distComputer < 100; // Verifica se o jogador está próximo o suficiente para interagir com o computador
+
+      if (distComputer >= 100 && this.keyEComputer) { // Verifica se a distância é maior que 100
+        this.keyEComputer.destroy(); // Destroi a tecla E
+        this.keyEComputer = null; // Define a tecla E como nula
       }
     }
-  
-    if (this.canInteractWithComputer && Phaser.Input.Keyboard.JustDown(this.keys.interagir) && !this.hasPlayedCurriculum) {
-      this.buttonClick = this.sound.add('buttonSound', { loop: false, volume: 10 });
-      this.buttonClick.play();
-      this.scene.pause();
-      this.scene.launch('curriculoScene');
-      this.curriculumFinished = true;
-      this.hasPlayedCurriculum = true; // Mark as played so it can't be played again
-      if (this.keyEComputer) {
-        this.keyEComputer.destroy();
-        this.keyEComputer = null;
+
+    if (this.canInteractWithComputer && Phaser.Input.Keyboard.JustDown(this.keys.interagir) && !this.hasPlayedCurriculum) { // Verifica se o jogador pode interagir com o computador e se ainda não jogou o currículo
+      this.buttonClick = this.sound.add('buttonSound', { loop: false, volume: 10 }); // Adiciona o som de clique de botão
+      this.buttonClick.play(); // Reproduz o som de clique de botão
+      this.scene.pause(); // Pausa a cena atual
+      this.scene.launch('curriculoScene'); // Lança a cena do currículo
+      this.curriculumFinished = true; // Marca que o currículo foi finalizado
+      this.hasPlayedCurriculum = true; // Marca que o currículo foi jogado, então não pode ser jogado novamente
+      if (this.keyEComputer) { // Verifica se a tecla E existe
+        this.keyEComputer.destroy(); // Destroi a tecla E
+        this.keyEComputer = null; // Define a tecla E como nula
       }
     }
-  
+
     // Criação da sala do líder
-    if (this.curriculumFinished && !this.canInteractWithComputer && !this.leaderRoomCreated) {
-      this.leaderRoomCreated = true;
+    if (this.curriculumFinished && !this.canInteractWithComputer && !this.leaderRoomCreated) { // Verifica se o currículo foi finalizado e se o jogador não está mais interagindo com o computador
+      this.leaderRoomCreated = true; // Marca que a sala do líder foi criada
       this.leaderRoom();
     }
-  
+
     // Atualização da bússola
-    if (this.compassArrow && this.activeIndicators.length > 0) {
-      this.activeIndicators = this.activeIndicators.filter(i => i && i.active);
-  
-      const closest = this.getClosestIndicator();
+    if (this.compassArrow && this.activeIndicators.length > 0) { // Verifica se a seta da bússola e os indicadores ativos existem
+      this.activeIndicators = this.activeIndicators.filter(i => i && i.active); // Filtra os indicadores ativos para remover os que não existem mais
+
+      const closest = this.getClosestIndicator(); // // Obtém o indicador mais próximo do jogador
       if (closest) {
-        const angle = Phaser.Math.Angle.Between(this.player.x, this.player.y, closest.x, closest.y);
-        this.compassArrow.setRotation(angle + this.arrowOffset);
+        const angle = Phaser.Math.Angle.Between(this.player.x, this.player.y, closest.x, closest.y); // Calcula o ângulo entre o jogador e o indicador mais próximo
+        this.compassArrow.setRotation(angle + this.arrowOffset); // Define a rotação da seta da bússola
       }
     }
-    this.updateArrowToIndicator();
+    this.updateArrowToIndicator(); // Atualiza a seta da bússola para o indicador mais próximo
 
   }
   getClosestIndicator() {
-    if (this.activeIndicators.length === 0) return null;
-  
-    let closest = this.activeIndicators[0];
-    let minDist = Phaser.Math.Distance.Between(this.player.x, this.player.y, closest.x, closest.y);
-  
-    for (let i = 1; i < this.activeIndicators.length; i++) {
-      const ind = this.activeIndicators[i];
-      const d = Phaser.Math.Distance.Between(this.player.x, this.player.y, ind.x, ind.y);
-      if (d < minDist) {
-        closest = ind;
-        minDist = d;
+    if (this.activeIndicators.length === 0) return null; // Se não houver indicadores ativos, retorna nulo
+
+    let closest = this.activeIndicators[0]; // Inicializa o indicador mais próximo como o primeiro ativo
+    let minDist = Phaser.Math.Distance.Between(this.player.x, this.player.y, closest.x, closest.y); // Calcula a distância inicial
+
+    for (let i = 1; i < this.activeIndicators.length; i++) { // Itera sobre os indicadores ativos
+      const ind = this.activeIndicators[i]; // Calcula a distância entre o jogador e o indicador
+      const d = Phaser.Math.Distance.Between(this.player.x, this.player.y, ind.x, ind.y); // Calcula a distância entre o jogador e o indicador
+      if (d < minDist) { // Verifica se a distância atual é menor que a mínima
+        closest = ind; // Atualiza o indicador mais próximo
+        minDist = d; // Atualiza a distância mínima
       }
     }
-  
-    return closest;
+
+    return closest; // Retorna o indicador mais próximo
   }
-    
-  
+
+
 
 
   movePlayer() {
@@ -454,58 +454,59 @@ class OfficeScene extends Phaser.Scene {
   }
 
   createUpButton() {
-  this.cameras.main.stopFollow(); // Stop the camera from following the player
-  this.cameras.main.setZoom(1.2); // Set the zoom level of the camera
+    this.cameras.main.stopFollow(); // Para a câmera de seguir o jogador
+    this.cameras.main.setZoom(1.2); // Ajusta o zoom da câmera para 1.2
 
-  this.bgElevOffice = this.add.image(width - 1300, height - 1000, "bgElevOffice").setOrigin(0, 0);
-  this.bgElevOffice.setDisplaySize(width, height);
-  this.panelElev = this.add.image(width - 610, height - 800, "panelElev").setOrigin(0, 0);
-  this.bgElevOffice.setVisible(false);
-  this.panelElev.setVisible(false);
+    this.bgElevOffice = this.add.image(width - 1300, height - 1000, "bgElevOffice").setOrigin(0, 0); // Adiciona a imagem de fundo do elevador
+    this.bgElevOffice.setDisplaySize(width, height); // Define o tamanho da imagem de fundo do elevador para preencher a tela
+    this.panelElev = this.add.image(width - 610, height - 800, "panelElev").setOrigin(0, 0); // Adiciona o painel do elevador
+    this.bgElevOffice.setVisible(false); // Torna a imagem de fundo do elevador invisível
+    this.panelElev.setVisible(false); // Torna o painel do elevador invisível
 
-  this.upButton = this.add.image(width - 440, height - 670, "buttonElevOffice");
-  this.upButton.setInteractive();
-  this.upButton.setScale(1);
-  this.upButton.setVisible(true);
-  this.bgElevOffice.setVisible(true);
-  this.panelElev.setVisible(true);
+    this.upButton = this.add.image(width - 440, height - 670, "buttonElevOffice"); // Adiciona o botão do elevador
+    this.upButton.setInteractive(); // Torna o botão interativo
+    this.upButton.setScale(1); // Define a escala do botão
+    this.upButton.setVisible(true); // Torna o botão visível
+    this.bgElevOffice.setVisible(true); // Torna a imagem de fundo do elevador visível
+    this.panelElev.setVisible(true); // Torna o painel do elevador visível
 
-  this.upButton.on("pointerdown", () => {
-    console.log("Transitioning to elevadorScene...");
-    if (this.officeMusic && this.officeMusic.isPlaying) {
-      console.log("Stopping officeMusic...");
-      this.officeMusic.stop(); // Stop the office music
-    } else {
-      console.log("officeMusic is not playing or undefined.");
-    }
-    this.scene.stop("officeScene");
-    this.scene.start("elevadorScene", {selectedSpriteSheet: this.selectedSpriteSheet,});
-  });
-}
-  
+    this.upButton.on("pointerdown", () => { // Adiciona um evento de clique no botão do elevador
+      console.log("Transitioning to elevadorScene..."); // Log para depuração
+      if (this.officeMusic && this.officeMusic.isPlaying) { // Verifica se a música de fundo do escritório está tocando
+        console.log("Stopping officeMusic..."); // Log para depuração
+        this.officeMusic.stop(); // Parar officeMusic
+      } else {
+        console.log("officeMusic is not playing or undefined."); // Log para depuração
+      }
+      this.scene.stop("officeScene"); // Pausa a cena atual
+      this.scene.start("elevadorScene", { selectedSpriteSheet: this.selectedSpriteSheet, }); // Inicia a cena do elevador
+    });
+  }
 
-  createElevatorIndicator() {
+
+  createElevatorIndicator() { // Cria o indicador do elevador
     this.elevatorIndicator = this.physics.add.sprite(width - 435, height - 700, "indicator").setScale(0.2); // Adiciona o indicador do elevador
     this.elevatorIndicator.setImmovable(true); // Define o indicador como imóvel
     this.elevatorIndicator.play("exclaiming"); // Reproduz a animação de exclamação no indicador
-    this.activeIndicators.push(this.elevatorIndicator);
+    this.activeIndicators.push(this.elevatorIndicator); // Adiciona o indicador à lista de indicadores ativos
 
     this.indicatorActive = true; // Marca o indicador como ativo
-    
 
-    this.physics.add.overlap(this.player, this.elevatorIndicator, () => {
-      if (!this.buttonUpCreated) {
-        this.createUpButton();
-        this.buttonUpCreated = true;
-      
-        this.elevatorIndicator.destroy();
+
+    this.physics.add.overlap(this.player, this.elevatorIndicator, () => { // Adiciona um evento de sobreposição entre o jogador e o indicador do elevador
+      if (!this.buttonUpCreated) { // Verifica se o botão do elevador ainda não foi criado
+        this.createUpButton(); // Cria o botão do elevador
+        this.buttonUpCreated = true; // Marca que o botão do elevador foi criado
+
+        this.elevatorIndicator.destroy(); // Destroi o indicador do elevador
         this.activeIndicators = this.activeIndicators.filter(i => i !== this.elevatorIndicator); // <- necessário
+        // Remove o indicador da lista de indicadores ativos
       }
     });
-    
+
   }
 
-  createComputer(width, height) {
+  createComputer(width, height) { // Cria o computador
     this.computer = this.add.image(width - 1020, height - 100, "computer").setScale(0.09); // Adiciona a imagem do computador
     this.computer.setInteractive(); // Torna o computador interativo
     this.computer.setFlipX(true); // Espelha a imagem do computador horizontalmente
@@ -519,9 +520,9 @@ class OfficeScene extends Phaser.Scene {
 
     this.physics.add.overlap(this.player, computer, () => { // Adiciona um evento de sobreposição entre o jogador e o computador
       // Only show E key if curriculum hasn't been played yet
-      this.canInteractWithComputer = !this.hasPlayedCurriculum && 
+      this.canInteractWithComputer = !this.hasPlayedCurriculum &&
         Phaser.Math.Distance.Between(this.player.x, this.player.y, computer.x, computer.y) < 100;
-    
+
       if (this.canInteractWithComputer && !this.keyEComputer) { // Verifica se a tecla E ainda não foi exibida
         this.keyEComputer = this.add.image(width - 1020, height - 150, 'keyE').setScale(0.07); // Adiciona a tecla E acima do computador
       } else if (!this.canInteractWithComputer && this.keyEComputer) {
@@ -529,7 +530,7 @@ class OfficeScene extends Phaser.Scene {
         this.keyEComputer = null;
       }
     });
-  
+
     this.computer = computer; // Salva o objeto do computador para usar no método update
   }
 
@@ -541,15 +542,15 @@ class OfficeScene extends Phaser.Scene {
     this.activeIndicators.push(this.indicatorComputer);
 
 
-    
+
     this.physics.add.overlap(this.player, this.indicatorComputer, () => { // Adiciona um evento de sobreposição entre o jogador e o indicador
       if (this.indicatorComputerActive) { // Verifica se o indicador está ativo
-        
+
         this.indicatorComputer.destroy(); // Remove o indicador da tela
         this.indicatorComputerActive = false; // Marca o indicador como inativo
       }
     });
-  
+
     this.indicatorComputerActive = true; // Marca o indicador como ativo
   }
 
@@ -591,8 +592,8 @@ class OfficeScene extends Phaser.Scene {
     this.createNpcAnimations(); // Cria as animações para os NPCs
     this.npc10.anims.play('npc10'); // Reproduz a animação "npc10" para a NPC 10
   }
-  
-  createNpcAnimations() { 
+
+  createNpcAnimations() {
     if (!this.anims.exists("Idle")) { // Verifica se a animação "Idle" já existe
       this.anims.create({ // Cria a animação "Idle" para a NPC 7
         key: "Idle", // Nome da animação
@@ -651,36 +652,36 @@ class OfficeScene extends Phaser.Scene {
 
   vivitaAnimations() {
     this.anims.create({ // Cria a animação para a Vivita
-        key: "vivita", // Nome da animação
-        frames: this.anims.generateFrameNumbers('vivita', { start: 18, end: 23 }), // Define os quadros da animação
-        frameRate: 6, // Velocidade da animação (quadros por segundo)
-        repeat: -1, // Faz a animação repetir indefinidamente
-      });
+      key: "vivita", // Nome da animação
+      frames: this.anims.generateFrameNumbers('vivita', { start: 18, end: 23 }), // Define os quadros da animação
+      frameRate: 6, // Velocidade da animação (quadros por segundo)
+      repeat: -1, // Faz a animação repetir indefinidamente
+    });
   }
 
   addVivita() {
-    const vivita = this.physics.add.sprite(width / 1.75, height / 3, "vivita");
-    vivita.setScale(2.0);
-    vivita.setImmovable(true);
-    this.vivitaAnimations();
-    vivita.play("vivita");
-    this.vivita = vivita;
-    
+    const vivita = this.physics.add.sprite(width / 1.75, height / 3, "vivita"); // Cria o sprite da Vivita na posição especificada
+    vivita.setScale(2.0); // Define a escala do sprite da Vivita
+    vivita.setImmovable(true); // Define a Vivita como imóvel
+    this.vivitaAnimations(); // Cria as animações para a Vivita
+    vivita.play("vivita"); // Reproduz a animação "vivita" para a Vivita
+    this.vivita = vivita; // Salva o objeto da Vivita para usar no método update
+
     this.createIndicatorVivita(); // Cria o indicador de exclamação
-    
-    this.canInteractWithVivita = false;
-    
+
+    this.canInteractWithVivita = false; // Marca que o jogador não pode interagir com a Vivita ainda
+
     // Overlap entre o jogador e a Vivita para habilitar a interação
     this.vivitaOverlap = this.physics.add.overlap(this.player, this.vivita, () => {
-        this.canInteractWithVivita = true;
-        // Aqui NÃO destruímos o indicador para que ele permaneça visível
-        if (!this.keyEVivita) {
-            this.keyEVivita = this.add.image(this.vivita.x, this.vivita.y - 50, 'keyE')
-                .setScale(0.07)
-                .setDepth(1000);
-        }
+      this.canInteractWithVivita = true;
+      // Aqui NÃO destruímos o indicador para que ele permaneça visível
+      if (!this.keyEVivita) {
+        this.keyEVivita = this.add.image(this.vivita.x, this.vivita.y - 50, 'keyE') // Adiciona a tecla E acima da Vivita
+          .setScale(0.07) // Ajusta a escala da tecla E
+          .setDepth(1000); // Define a profundidade da tecla E para que fique acima de outros elementos
+      }
     });
-}
+  }
 
   createIndicatorVivita() {
     this.indicatorVivita = this.physics.add.sprite(width / 1.75, height / 3.8, 'indicator'); // Adiciona o indicador de exclamação acima da Vivita
@@ -688,10 +689,10 @@ class OfficeScene extends Phaser.Scene {
     this.indicatorVivita.setImmovable(true); // Define o indicador como imóvel
     this.indicatorVivita.play("exclaiming");
 
-  this.activeIndicators.push(this.indicatorVivita); // <- aqui!
+    this.activeIndicators.push(this.indicatorVivita); // <- aqui!
     this.indicatorVivitaActive = true; // Marca o indicador como ativo
   }
-  
+
   showVivitaInteraction() {
     // Remove o indicador de exclamação da Vivita somente quando a interação é iniciada
     if (this.indicatorVivita && this.indicatorVivitaActive) {
@@ -700,7 +701,7 @@ class OfficeScene extends Phaser.Scene {
       this.activeIndicators = this.activeIndicators.filter(ind => ind !== this.indicatorVivita);
       this.indicatorVivitaActive = false;
     }
-  
+
     // Array com as falas da Vivita
     const speechVivita = [
       "Olá! Você deve ser " + playerName + ", né?",
@@ -711,16 +712,16 @@ class OfficeScene extends Phaser.Scene {
       "Preencha seu currículo e depois entregue-o na sala da líder.",
       "Boa sorte!"
     ];
-  
+
     // Cria o balão de diálogo e o texto inicial
     const balloonText = this.add.image(width / 1.55, height / 4.8, "balloonText");
-    const text = this.add.text(width / 1.68, height / 7, speechVivita[0], {
+    const text = this.add.text(width / 1.68, height / 7, speechVivita[0], { // Adiciona o texto inicial
       fontSize: "16px",
       fill: "#000000",
       wordWrap: { width: balloonText.width - 20 }
     });
-  
-    let currentSpeechIndex = 0;
+
+    let currentSpeechIndex = 0; // Variável para controlar o índice da fala atual
     // Registra o evento para avançar o diálogo com a tecla ENTER
     this.input.keyboard.on("keydown-ENTER", () => {
       currentSpeechIndex++;
@@ -729,55 +730,55 @@ class OfficeScene extends Phaser.Scene {
         this.playButtonClick(); // Toca o som de clique do botão
       } else {
         // Finalizado o diálogo: oculta os elementos e remove o evento
-        balloonText.setVisible(false);
-        text.setVisible(false);
-        if (this.keyENTERVivita) {
-          this.keyENTERVivita.destroy();
-          this.keyENTERVivita = null;
+        balloonText.setVisible(false); // Oculta o balão de diálogo
+        text.setVisible(false); // Oculta o texto
+        if (this.keyENTERVivita) { // Verifica se a tecla ENTER existe
+          this.keyENTERVivita.destroy(); // Destroi a tecla ENTER
+          this.keyENTERVivita = null; // Reseta a referência da tecla ENTER
         }
         this.input.keyboard.off("keydown-ENTER");
         this.addComputer(); // Prossegue para a próxima ação, por exemplo, adicionando o computador
       }
     });
   }
-  
+
   leaderRoom() {
-    if (this.inTransition) return;
-  
-    const width = this.sys.game.config.width;
-    const height = this.sys.game.config.height;
-  
+    if (this.inTransition) return; // Evita múltiplas transições simultâneas
+
+    const width = this.sys.game.config.width; // Define a largura da tela
+    const height = this.sys.game.config.height; // Define a altura da tela
+
     // Remove seta e indicadores anteriores
-    if (this.compassArrow) {
-      this.compassArrow.destroy();
+    if (this.compassArrow) { // Verifica se a seta da bússola existe
+      this.compassArrow.destroy(); // Destroi a seta da bússola
       this.compassArrow = null;
     }
-  
+
     this.activeIndicators.forEach(i => i.destroy());
     this.activeIndicators = [];
-  
+
     // Cria nova exclamação
     this.exclamation = this.physics.add.sprite(width - 1200, height - 500, 'indicator').setScale(0.2);
     this.exclamation.play('exclaiming');
     this.activeIndicators.push(this.exclamation);
     this.targetIndicator = this.exclamation;
-  
-   
-  
-  
+
+
+
+
     // Cria nova seta (bússola)
     this.compassArrow = this.add.image(this.cameras.main.width / 2, 335, "arrow")
       .setScrollFactor(0)
       .setDepth(1000)
       .setScale(0.5)
       .setOrigin(0.5, 0.5);
-  
+
     this.arrowOffset = Phaser.Math.DegToRad(-180);
-    
-  
+
+
     // Adiciona a lógica de rotação contínua no update (caso ainda não exista)
-    
-  
+
+
     // Overlap com indicador
     this.physics.add.overlap(this.player, this.exclamation, () => {
       if (!this.inTransition) {
@@ -788,16 +789,16 @@ class OfficeScene extends Phaser.Scene {
         this.blockLoop = 0;
         this.exclamation.setVisible(false);
         this.indicatorActive = false;
-        
+
         this.walkSound.stop();
         this.events.emit('stopWalkSound');
         this.activeIndicators = this.activeIndicators.filter(i => i !== this.exclamation);
         this.scene.switch('salaLiderScene');
-      
+
       }
     });
   }
-  
+
 
   resume() {
     if (this.keyEComputer) { // Verifica se a tecla E associada ao computador está visível
@@ -810,7 +811,7 @@ class OfficeScene extends Phaser.Scene {
       if (this.activeIndicators.length > 0) {
         // Garante que o array só contenha indicadores ativos
         this.activeIndicators = this.activeIndicators.filter(ind => ind && ind.active);
-        
+
         const closest = this.getClosestIndicator();
         if (closest) {
           const angle = Phaser.Math.Angle.Between(
@@ -826,7 +827,7 @@ class OfficeScene extends Phaser.Scene {
       }
     }
   }
-  
-// Propriedade estática para armazenar o tempo de reprodução da música
-static lastMusicTime = 0;
+
+  // Propriedade estática para armazenar o tempo de reprodução da música
+  static lastMusicTime = 0;
 }
