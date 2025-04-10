@@ -1031,7 +1031,7 @@ Com os avanços alcançados no desenvolvimento do jogo, esta seção dedicada à
 
 <div align="center">
   <sub>Layout para escolha de personagem.</sub><br>
-  <img src="![LayoutPlayer](https://github.com/user-attachments/assets/2542cbaa-cbf7-4bc1-b2ee-33c584cb779a)" width="900px" 
+  <img src="https://github.com/user-attachments/assets/2542cbaa-cbf7-4bc1-b2ee-33c584cb779a" width="900px" 
   alt="Título"><br>
   <sup>Fonte: elaborado pelos autores.</sup>
 </div>
