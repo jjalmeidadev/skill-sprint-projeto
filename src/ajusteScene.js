@@ -51,7 +51,7 @@ class AjusteScene extends Phaser.Scene {
 
     // Cria os elementos visuais da cena
     this.add.image(width / 2, height / 4, 'title').setScale(2.0); // Adiciona o título do jogo no topo da tela
-    this.add.image(width / 2, height - 250, 'layoutSettings').setScale(1.0); // Adiciona o layout de ajustes no centro da tela
+    this.add.image(width / 2, height - 250, 'layoutSettings').setScale(2.0); // Adiciona o layout de ajustes no centro da tela
 
     // Cria os botões da tela inicial
     this.createButtonVolumeDown(width, height); // Cria o botão para diminuir o volume
@@ -61,9 +61,9 @@ class AjusteScene extends Phaser.Scene {
 
   createButtonBack(width, height) {
     // Adiciona o botão de retorno à cena
-    const buttonBack = this.add.image((width / 2) + 190, height - 338, 'buttonBack');
+    const buttonBack = this.add.image((width / 2) + 215, height - 350, 'buttonBack');
     buttonBack.setInteractive(); // Torna o botão interativo
-    buttonBack.setScale(0.9); // Ajusta o tamanho do botão
+    buttonBack.setScale(1.5); // Ajusta o tamanho do botão
     buttonBack.on('pointerdown', () => { // Adiciona um evento ao clicar no botão
       this.buttonSound(); // Reproduz o som do clique do botão
       this.shutdown(); // Interrompe a música da cena
@@ -74,9 +74,9 @@ class AjusteScene extends Phaser.Scene {
 
   createButtonVolumeUp(width, height) {
     // Adiciona o botão para aumentar o volume
-    const buttonUp = this.add.image((width / 2) - 60, (height / 2) + 200, 'buttonUp');
+    const buttonUp = this.add.image((width / 2) + 77, (height / 2) + 194.3, 'buttonUp');
     buttonUp.setInteractive(); // Torna o botão interativo
-    buttonUp.setScale(1); // Ajusta o tamanho do botão
+    buttonUp.setScale(1.3); // Ajusta o tamanho do botão
     buttonUp.on('pointerdown', () => { // Adiciona um evento ao clicar no botão
       this.buttonSound(); // Reproduz o som do clique do botão
       this.sound.volume += 0.5; // Aumenta o volume do som em 0.5
@@ -85,9 +85,9 @@ class AjusteScene extends Phaser.Scene {
 
   createButtonVolumeDown(width, height) {
     // Adiciona o botão para diminuir o volume
-    const buttonDown = this.add.image((width / 2) - 170, (height / 2) + 200, 'buttonDown');
+    const buttonDown = this.add.image((width / 2) - 80, (height / 2) + 194.3, 'buttonDown');
     buttonDown.setInteractive(); // Torna o botão interativo
-    buttonDown.setScale(1); // Ajusta o tamanho do botão
+    buttonDown.setScale(1.3); // Ajusta o tamanho do botão
     buttonDown.on('pointerdown', () => { // Adiciona um evento ao clicar no botão
       this.buttonSound(); // Reproduz o som do clique do botão
       this.sound.volume -= 0.5; // Diminui o volume do som em 0.5
