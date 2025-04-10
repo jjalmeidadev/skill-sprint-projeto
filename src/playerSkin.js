@@ -38,8 +38,8 @@ class PlayerSkinSelection extends Phaser.Scene {
         this.load.image(`bg0${i}`, `../assets/backgrounds/bg0${i}.png`); 
         }
 
-        this.load.image('buttonStart', '../assets/assets_botoes/botaoStart.png');
-        this.load.image('ttSkin', '../assets/assets_objetos/escolhaSeuPersonagem.png')
+        this.load.image('buttonStart', '../assets/assets_botoes/botaoJogar.png');
+        this.load.image('ttSkin', '../assets/assets_objetos/escolhaSeuPersonagem.png');
     }
     
 
@@ -52,7 +52,7 @@ class PlayerSkinSelection extends Phaser.Scene {
         const height = this.cameras.main.height;
 
         const selectedPlayerKey = `player${this.selectedSpriteSheet}`;
-        this.playerSprite = this.add.sprite(100, 100, selectedPlayerKey); // Exemplo de uso
+        //this.playerSprite = this.add.sprite(100, 100, selectedPlayerKey); // Exemplo de uso
 
         // Adiciona a imagem ao centro da tela, ajustando a posição vertical
         this.add.image(width / 2, height / 2 - 250, 'ttSkin');
@@ -172,6 +172,11 @@ class PlayerSkinSelection extends Phaser.Scene {
         yoyo: true,
         ease: 'Sine.easeInOut'
     });
+
+    // Ativa o botão "Jogar" após a seleção de uma skin
+    if (this.buttonStart) {
+        this.buttonStart.setInteractive();
+    }
     }
 
     buttonSound() {
@@ -193,7 +198,11 @@ class PlayerSkinSelection extends Phaser.Scene {
     createButtonStart(width, height) {
     const buttonStart = this.add.image(width / 2, height / 2 + 250, "buttonStart"); // Adiciona a imagem do botão "Jogar" na posição especificada
     buttonStart.setInteractive(); // Torna o botão interativo
-    buttonStart.setScale(1); // Define o tamanho do botão
+    buttonStart.setScale(0.7); // Define o tamanho do botão
+    // Inicialmente desativa a interatividade do botão
+    buttonStart.disableInteractive();
+    // Armazena o botão para ativá-lo posteriormente
+    this.buttonStart = buttonStart;
     buttonStart.on("pointerdown", () => {
         this.buttonSound(); // Toca o som de clique do botão
         this.shutdown(); // Para a música inicial

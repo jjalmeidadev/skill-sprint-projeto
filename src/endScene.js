@@ -18,12 +18,18 @@ class EndScene extends Phaser.Scene {
         this.load.spritesheet('player', `../assets/personagens/skinsPlayer/players/${this.selectedSpriteSheet}.png`, {frameWidth: 16,frameHeight: 32,}); // Carrega o spritesheet do player
         this.load.image('thanksForPlaying', '../assets/thanksForPlaying.png'); // Carrega a imagem de agradecimento
         this.load.image('buttonPlayAgain', '../assets/buttonPlayAgain.png'); // Carrega o botão de jogar novamente
+        this.load.image('anne', '../assets/names/anne.png'); // Carrega a imagem de Anne
+        this.load.image('arthur', '../assets/names/arthur.png'); // Carrega a imagem de Arthur
+        this.load.image('jaime', '../assets/names/jaime.png'); // Carrega a imagem de Jaime
+        this.load.image('marcela', '../assets/names/marcela.png'); // Carrega a imagem de Marcela
+        this.load.image('mike', '../assets/names/mike.png'); // Carrega a imagem de Mike
+        this.load.image('sophia', '../assets/names/sophia.png'); // Carrega a imagem de Sophia
     }
 
     create() {
         this.bgs = []; // Cria um array para armazenar os fundos
         const speeds = [0.005, 0.05, 0.07, 0.08, 0.09, 0.1]; // Define as velocidades de movimento dos fundos
-        for (let i = 0; i < 6; i++) {
+        for (let i = 0; i < 6; i++) { // Cria 6 fundos
         let bg = this.add.tileSprite(0, 0, 576, 324, `bg0${i + 1}`).setOrigin(0, 0).setScale(2.8); // Adiciona um fundo com tileSprite
         this.bgs.push({ sprite: bg, speed: speeds[i] }); // Adiciona o fundo e sua velocidade ao array
         }
@@ -32,7 +38,28 @@ class EndScene extends Phaser.Scene {
         this.createPlayer(); // Cria o player
         
         this.add.image(width / 2, height / 2 - 200, 'thanksForPlaying'); // Adiciona a imagem de agradecimento ao centro da tela
-        this.createButtonBack()
+        this.createButtonBack(); // Cria o botão de jogar novamente
+
+        this.nameKeys = ['anne', 'arthur', 'jaime', 'marcela', 'mike', 'sophia']; // Array com os nomes
+        this.nameSprites = []; // Array para armazenar os sprites dos nomes
+        this.currentHighlightIndex = 0; // Índice do nome atual em destaque
+        
+        const centerX = width / 2; // Centraliza o texto na tela
+        const startY = height / 2 - ((this.nameKeys.length - 1) * 25) + 20; // centraliza a lista
+        const spacing = 30; // Define o espaçamento entre os nomes
+        
+        this.nameKeys.forEach((key, index) => {
+            const nameImage = this.add.image(centerX, startY + index * spacing, key).setScale(0.3); // Adiciona cada nome na tela
+            this.nameSprites.push(nameImage); // Coloca os nomes
+        });
+        
+        // Inicia o loop de destaque
+        this.time.addEvent({
+            delay: 2000,
+            callback: this.highlightNextName,
+            callbackScope: this,
+            loop: true
+        });
     }
 
     update() {
@@ -41,10 +68,34 @@ class EndScene extends Phaser.Scene {
           });
     }
 
+    highlightNextName() {
+        // Volta todos para o tamanho normal
+        this.nameSprites.forEach(sprite => {
+            this.tweens.add({
+                targets: sprite,
+                scale: 0.3,
+                duration: 300,
+                ease: 'Power1'
+            });
+        });
+    
+        // Destaca o próximo nome
+        const spriteToHighlight = this.nameSprites[this.currentHighlightIndex];
+        this.tweens.add({
+            targets: spriteToHighlight,
+            scale: 0.5,
+            duration: 300,
+            ease: 'Power1'
+        });
+    
+        // Atualiza o índice para o próximo nome
+        this.currentHighlightIndex = (this.currentHighlightIndex + 1) % this.nameSprites.length;
+    }
+
     createPlayer() {
         this.player = this.physics.add.sprite(width / 2, height - 250, "player"); // Cria o sprite do jogador no centro da tela
         this.player.setScale(6); // Ajusta o tamanho do jogador
-        this.player.anims.play("stop_down");
+        this.player.anims.play("stop_down"); // Animação do player
     }
 
     createPlayerAnimation() {

@@ -26,13 +26,16 @@ class VpTecnologiaScene extends Phaser.Scene {
     this.load.image("word2", "../assets/upskillingBotão2.png");
     this.load.image("word3", "../assets/upskillingBotão3.png");
     this.load.image("word4", "../assets/upskillingBotão4.png");
-    this.load.spritesheet("npc", "../assets/personagens/npc7.png", { frameWidth: 16, frameHeight: 32, });
+    this.load.spritesheet("npcTech", "../assets/personagens/npc7.png", { frameWidth: 16, frameHeight: 32, });
     this.load.spritesheet("indicator", "../assets/exclamaçãoRoxa.png", { frameWidth: 254, frameHeight: 305 });
     this.load.image('keyE', '../assets/teclaE.png');
     this.load.image('keyEnter', '../assets/keyEnter.png');
     this.load.image("balloonText", "../assets/balaoTexto.png");
     this.load.image('levelTitle', '../assets/titulos/tituloVpTecnologia.png');
     this.load.image('arrow', '../assets/seta.png');
+
+    this.load.image('levelTitleTech', '../assets/titulos/tituloVpTecnologia.png');
+
   }
 
   create() {
@@ -284,18 +287,8 @@ this.arrowOffset = Phaser.Math.DegToRad(-180);
   }
 
   showTitle() {
-    const titleImage = this.add.image(this.player.x, this.player.y - 150, 'levelTitle').setDepth(1000);
+    const titleImage = this.add.image(width - 500, height - 790, 'levelTitleTech').setDepth(1000);
     titleImage.setScale(0.3);
-
-    // Adiciona um fade out para o título após alguns segundos
-    this.time.delayedCall(3000, () => {
-      this.tweens.add({
-        targets: titleImage,
-        alpha: 0,
-        duration: 1000,
-        onComplete: () => titleImage.destroy()
-      });
-    });
   }
 
   createPlayer(width, height) {
@@ -414,7 +407,7 @@ this.arrowOffset = Phaser.Math.DegToRad(-180);
   }
 
   createNPCWithBalloon() {
-    const npc = this.physics.add.sprite(900, 173, "npc");
+    const npc = this.physics.add.sprite(900, 173, "npcTech");
     npc.setScale(2.5);
     npc.setImmovable(true);
 
@@ -870,6 +863,7 @@ this.updateArrowToNearestIndicator();
     }
     this.createButtonBack();
 
+    this.showTitle()
   }
 
   createButtonBack() {

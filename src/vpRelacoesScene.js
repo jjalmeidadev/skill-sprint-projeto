@@ -16,6 +16,7 @@ class VpRelacoesScene extends Phaser.Scene {
     this.onNext = null;
     this.musicarelainst = null;
     this.currentStep = 0;
+    this.enterDialogIcon = null;
     
     // Configuração das etapas de diálogo e palavras-chave
     this.keywordSteps = [
@@ -37,10 +38,10 @@ class VpRelacoesScene extends Phaser.Scene {
       },
       {
         vp: 'VP de Estratégia',
-        prompt: 'COLABORAÇAO',
+        prompt: 'COLABORAÇÃO',
         success: 'Exato! O que mais poderia elevar seu repertório a não ser ajudar outros colaboradores em suas tarefas? Atitude tomada com primor por sua parte.',
         next: 'Não se esqueça dela!',
-        keyword: 'COLABORAÇAO',
+        keyword: 'COLABORAÇÃO',
         head: 'vpestrategiacab'
       },
       {
@@ -72,6 +73,7 @@ class VpRelacoesScene extends Phaser.Scene {
     
     // Carrega imagens e sons
     this.load.image("keyENTER", "../assets/keyEnter.png");
+    this.load.image('keyENTERPurple', '../assets/keyEnterPurple.png'); 
     this.load.audio("buttonSound", "../assets/sounds/687107__aphom000__mouse-2-button-fast-click.wav");
     this.load.audio("walkSound", "../assets/sounds/753292__vrymaa__footsteps-high-heels-hardwood-walk-run (mp3cut.net).wav");
     this.load.image('jobRotation', '../assets/planoCarreira.png');
@@ -85,7 +87,7 @@ class VpRelacoesScene extends Phaser.Scene {
     this.load.image('vpestrategiacab', '../assets/cabecasrelainst/vpestrategiacab.png');
     this.load.image('vptechcab', '../assets/cabecasrelainst/vptechcab.png');
     this.load.image('vprelacoescab', '../assets/cabecasrelainst/vprelacoescab.png');
-    this.load.image('levelTitle', '../assets/titulos/tituloVpRelacoes.png') // Carrega os asssets do titulo da fase
+    this.load.image('levelTitleRelacoes', '../assets/titulos/tituloVpRelacoes.png') // Carrega os asssets do titulo da fase
   }
 
   create() {
@@ -204,6 +206,8 @@ class VpRelacoesScene extends Phaser.Scene {
 
     // Configura área de interação
     this.physics.add.overlap(this.player, this.proximityrela, this.handleProximityOverlap, null, this);
+
+    this.showTitle(); // Mostra o título da fase
   }
 
   // Manipula pressionamento da tecla ENTER
@@ -315,6 +319,12 @@ class VpRelacoesScene extends Phaser.Scene {
     if (this.musicarelainst && !this.musicarelainst.isPlaying) {
       this.musicarelainst.play();
     }
+
+    if (this.enterDialogIcon) {
+      this.enterDialogIcon.setVisible(false);
+      this.enterDialogIcon.destroy();
+      this.enterDialogIcon = null;
+    }
   }
 
   // Atualiza o estado do jogo a cada frame
@@ -374,7 +384,7 @@ class VpRelacoesScene extends Phaser.Scene {
   }
 
   showTitle() {
-    const titleImage = this.add.image(width / 2, height / 2, 'levelTitle').setDepth(1000); // Adiciona a imagem de parabéns acima do jogador e define sua profundidade para garantir que fique acima de outros elementos
+    const titleImage = this.add.image(width / 2, height / 2, 'levelTitleRelacoes').setDepth(1000); // Adiciona a imagem de parabéns acima do jogador e define sua profundidade para garantir que fique acima de outros elementos
     titleImage.setScale(0.6); // Ajusta o tamanho da imagem de parabéns
 
     // Remove a imagem de parabéns após 3 segundos
@@ -468,6 +478,13 @@ class VpRelacoesScene extends Phaser.Scene {
     
     this.dialogBox.setVisible(true);
     this.dialogText.setVisible(true);
+
+    // Ícone da tecla ENTER no canto inferior direito
+    this.enterDialogIcon = this.add.image(width - 420, height - 50, 'keyENTERPurple')
+    .setScale(0.15)
+    .setScrollFactor(0)
+    .setDepth(1000)
+    .setVisible(true); // Visível durante o diálogo
   }
 
   // Configura a entrada de texto para palavras-chave
