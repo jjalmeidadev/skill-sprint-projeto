@@ -1202,11 +1202,11 @@ Entre as melhorias que estamos planejando, estão o aumento do tamanho da fonte,
 
 # <a name="c6"></a>6. Conclusões e trabalhos futuros (sprint 5)
 
-*Escreva de que formas a solução do jogo atingiu os objetivos descritos na seção 1 deste documento. Indique pontos fortes e pontos a melhorar de maneira geral.*
+A partir da imersão no desenvolvimento, o grupo foi capaz de potencializar o alcance do jogo ao mesmo nível proposto inicialmente, sendo capaz de ter criado, de forma organizada e documentada, 5 fases de VPs que abordam os setores de Negócios, Pessoas, Relações Institucionais, Tecnologia e Estratégia, com cada uma contendo um minigame e assets correspondentes. Elevamos as metas de testes iniciais de 5 testes para mais de 20, fato que contribuiu exponencialmente para uma maior compreensão do impacto do jogo sobre alunos e colaboradores da Vivo (incluindo aprendizado e diversão com dinâmicas). Não só isso, como fomos capazes de corrigir bugs e identificar todos os recursos essenciais ainda não implementados no jogo até certo momento, incluindo o posicionamento adequado de barreiras, noção de progresso de fases e padronização de atividades, com hotfixes sendo realizados sempre que o necessário.
 
-*Relacione os pontos de melhorias evidenciados nos testes com plano de ações para serem implementadas no jogo. O grupo não precisa implementá-las, pode deixar registrado aqui o plano para futuros desenvolvimentos.*
+Como pontos negativos, é possível afirmar que não fomos capazes de explorar o tema de diversidade como planejado, a partir do momento que optamos por uma mecânica de customização limitada à personagens pré-definidos, e não uma customização livre ao usuário, não aplicamos a movimentação através das teclas de setas, acessibilidade pensada por meio de comandos de voz e pelo filtro de daltonismo não foi aplicada, o botão de ajustes não é disponível durante todo o jogo, e não comportamos a quantidade de informações da empresa e minigames inicialmente planejados, por mais que as fases em si puderam ser todas produzidas com designs únicos.
 
-*Relacione também quaisquer ideias que o grupo tenha para melhorias futuras*
+Portanto, melhorias evidentes para um plano de ações futuro seriam a inclusão do jogo em mobile, com falas audíveis, maior representatividade de condições de saúde e características físicas, um maior número de minigames em cada fase (cerca de +2 em cada) e maior acessibilidade por parte de botões de ajustes durante a trilha do jogo.
 
 # <a name="c7"></a>7. Referências (sprint 5)
 
