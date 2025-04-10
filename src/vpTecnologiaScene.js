@@ -1,6 +1,7 @@
 class VpTecnologiaScene extends Phaser.Scene {
   constructor() {
     super({ key: 'vpTecnologiaScene' });
+    this.activeIndicators = [];
   }
 
   init(data) {
@@ -31,12 +32,17 @@ class VpTecnologiaScene extends Phaser.Scene {
     this.load.image('keyEnter', '../assets/keyEnter.png');
     this.load.image("balloonText", "../assets/balaoTexto.png");
     this.load.image('levelTitle', '../assets/titulos/tituloVpTecnologia.png');
+    this.load.image('arrow', '../assets/seta.png');
   }
 
   create() {
     // Adicione estas linhas no início do create() se não estiverem definidas
     const width = this.scale.width;
     const height = this.scale.height;
+// No final do create()
+
+// Defina o offset da seta
+this.arrowOffset = Phaser.Math.DegToRad(-180);
 
     this.add.rectangle(width - 2000, height - 2000, width, height, 0x2F052F).setOrigin(0).setScale(5);
     this.miniGameActive = false;
@@ -120,7 +126,13 @@ class VpTecnologiaScene extends Phaser.Scene {
       .setScale(0.1, height)
       .setVisible(false)
       .refreshBody();
-
+      
+      this.compassArrow = this.add.image(this.cameras.main.width / 2, 335, 'arrow')
+      .setScrollFactor(0)        // Para que a seta fique fixa na tela
+      .setDepth(1000)            // Para que fique acima de outros objetos
+      .setScale(0.5)
+      .setOrigin(0.5, 0.5);
+      this.arrowOffset = Phaser.Math.DegToRad(-180);
     // Add collisions after both player and barriers exist
     this.physics.add.collider(this.player, this.barriers);
     this.physics.add.collider(this.player, layers[0]);
@@ -153,15 +165,36 @@ class VpTecnologiaScene extends Phaser.Scene {
     this.physics.add.existing(this.barrierDoor, true); // Ativa a física do retângulo
     this.physics.add.collider(this.player, this.barrierDoor); // Adiciona colisão entre o jogador e a barreira
     this.barrierDoor.setVisible(false); // Torna o retângulo invisível
-
+   
+    
     this.showTitle();
+    
+  
+    this.updateArrowToNearestIndicator();
   }
 
   update() {
     this.movePlayer();
-
     const pointer = this.input.activePointer;
     this.cursorCoordinatesText.setText(`X: ${pointer.worldX.toFixed(0)} Y: ${pointer.worldY.toFixed(0)}`);
+  
+    if (this.compassArrow) {
+      // Atualiza a lista de indicadores ativos
+      this.activeIndicators = this.activeIndicators.filter(ind => ind && ind.active);
+      if (this.activeIndicators.length > 0) {
+        const closest = this.getClosestIndicator();
+        if (closest) {
+          const angle = Phaser.Math.Angle.Between(
+            this.player.x, this.player.y,
+            closest.x, closest.y
+          );
+          this.compassArrow.setRotation(angle + this.arrowOffset);
+          this.compassArrow.setVisible(true);
+        }
+      } else {
+        this.compassArrow.setVisible(false);
+      }
+    }
 
     // Interação com o computador
     if (this.keyEComputer) {
@@ -188,8 +221,62 @@ class VpTecnologiaScene extends Phaser.Scene {
       } else if (this.keyEComputer && this.keyEComputer.active) {
         this.keyEComputer.setVisible(false);
       }
+      if (this.compassArrow) {
+        // Filtra os indicadores ativos
+        this.activeIndicators = this.activeIndicators.filter(ind => ind && ind.active);
+        if (this.activeIndicators.length > 0) {
+          const closest = this.getClosestIndicator();
+          if (closest) {
+            const angle = Phaser.Math.Angle.Between(
+              this.player.x, this.player.y,
+              closest.x, closest.y
+            );
+            this.compassArrow.setRotation(angle + this.arrowOffset);
+            this.compassArrow.setVisible(true);
+          }
+          } else {
+            this.compassArrow.setVisible(false);
+            this.updateArrowToNearestIndicator();
+          }
+        }
+      
+    }
+    
+  }
+  updateArrowToNearestIndicator() {
+    if (!this.player || !this.compassArrow || this.activeIndicators.length === 0) return;
+  
+    const closest = this.getClosestIndicator();
+    if (closest) {
+      const angle = Phaser.Math.Angle.Between(
+        this.player.x, this.player.y,
+        closest.x, closest.y
+      );
+      this.compassArrow.setRotation(angle + this.arrowOffset);
+      this.compassArrow.setVisible(true);
+    } else {
+      this.compassArrow.setVisible(false);
     }
   }
+  
+  getClosestIndicator() {
+    this.activeIndicators = this.activeIndicators.filter(ind => ind && ind.active && ind.visible); // <-- aqui!
+  
+    if (this.activeIndicators.length === 0) return null;
+  
+    let closest = this.activeIndicators[0];
+    let minDist = Phaser.Math.Distance.Between(this.player.x, this.player.y, closest.x, closest.y);
+    for (let i = 1; i < this.activeIndicators.length; i++) {
+      const ind = this.activeIndicators[i];
+      const d = Phaser.Math.Distance.Between(this.player.x, this.player.y, ind.x, ind.y);
+      if (d < minDist) {
+        closest = ind;
+        minDist = d;
+      }
+    }
+    return closest;
+  }
+  
 
   keySound() {
     this.keySoundPlay = this.sound.add('keySound', { loop: false, volume: 10 }); // Adiciona o som de digitação no teclado com volume alto
@@ -347,6 +434,7 @@ class VpTecnologiaScene extends Phaser.Scene {
     // Adiciona a exclamação e a tecla "E" sobre a NPC
     const indicator = this.physics.add.sprite(npc.x, npc.y - 50, 'indicator').setScale(0.2);
     indicator.play("exclaiming");
+    this.activeIndicators.push(indicator);
     let keyE = this.add.image(npc.x, npc.y - 80, 'keyE').setScale(0.08).setVisible(false); // Inicialmente invisível
     let keyEnter = this.add.image(npc.x, npc.y - 80, 'keyEnter').setScale(0.1).setVisible(false);
 
@@ -386,12 +474,19 @@ class VpTecnologiaScene extends Phaser.Scene {
         isDialogueActive = false;
 
         // Remove a exclamação e a tecla "E" da NPC
-        indicator.destroy();
-        keyE.destroy();
-        keyEnter.destroy();
+       // Remove a exclamação e a tecla "E" da NPC
+indicator.destroy();
+keyE.destroy();
+keyEnter.destroy();
 
-        // Ativa o indicador sobre o computador
-        this.activateComputerIndicator();
+// Ativa o indicador sobre o computador
+this.activateComputerIndicator();
+
+// Adiciona o indicador do computador (o novo!) à lista de ativos
+
+this.updateArrowToNearestIndicator();
+
+
       }
     };
 
@@ -457,6 +552,8 @@ class VpTecnologiaScene extends Phaser.Scene {
 
     this.computerIndicator = indicator;
     this.keyEComputer = keyE;
+    this.activeIndicators.push(indicator);
+
   }
 
   activateComputerIndicator() {
@@ -776,12 +873,15 @@ class VpTecnologiaScene extends Phaser.Scene {
   }
 
   createButtonBack() {
+    const width = this.scale.width;
+    const height = this.scale.height;
     // Cria o sprite da exclamação (ou mantenha o nome buttonBack se preferir)
     const exclamation = this.physics.add.sprite(width - 520, height - 680, "indicator");
     exclamation.play("exclaiming"); // Reproduz a animação de exclamação
     exclamation.setScale(0.2);
     exclamation.setImmovable(true); // Evita que o objeto se mova com colisões
-  
+    this.activeIndicators.push(exclamation);
+
     // Adiciona o overlap entre player e exclamation
     this.physics.add.overlap(this.player, exclamation, () => {
       // Lógica de troca de cena
@@ -794,5 +894,7 @@ class VpTecnologiaScene extends Phaser.Scene {
       this.scene.stop("vpTecnologiaScene");
       this.scene.resume("elevadorScene");
     }, null, this);
+    this.updateArrowToNearestIndicator();
+
   }
 }
