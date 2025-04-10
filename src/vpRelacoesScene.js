@@ -405,7 +405,7 @@ class VpRelacoesScene extends Phaser.Scene {
       dialogs.push("Sim? Que maravilha! Creio que já se sente muito capaz de atuar nos diversos setores da VIVO agora, espero que tenha aproveitado.");
     }
 
-    dialogs.push("O que acha de realizarmos um desafio para testar suas skills recém adquiridas? É simples, você pode nos contar uma palavra chave que descreva a respectiva VP e como esta foi capaz de te impactar em dilemas de desempenho! Digite-as com letra maiúscula!");
+    dialogs.push("O que acha de realizarmos um desafio para testar suas skills recém adquiridas? É simples, você pode nos contar uma palavra chave que descreva a respectiva VP e como esta foi capaz de te impactar em dilemas de desempenho!");
 
     return dialogs;
   }
