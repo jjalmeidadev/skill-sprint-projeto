@@ -174,7 +174,7 @@ class VpNegociosScene extends Phaser.Scene {
   }
 
   collectSound() {
-    this.collected = this.sound.add('collectSound', { loop: false, volume: 10 }); // Adiciona o som de coleta com volume e sem loop
+    this.collected = this.sound.add('collectSound', { loop: false, volume: 2 }); // Adiciona o som de coleta com volume e sem loop
     this.collected.play(); // Reproduz o som de coleta
   }
 
@@ -521,7 +521,7 @@ class VpNegociosScene extends Phaser.Scene {
     this.events.on('update', () => { // Adiciona um evento que será executado a cada atualização do jogo
     const distance = Phaser.Math.Distance.Between(this.player.x, this.player.y, this.npc23.x, this.npc23.y); // Calcula a distância entre o jogador e o NPC 23
 
-    if (distance < 100 && !this.keyENpc23) { // Verifica se o jogador está próximo do NPC 23 e se a tecla E ainda não foi exibida
+    if (distance < 100 && !this.keyENpc23 && !this.npc23Interacted) { // Verifica se o jogador está próximo do NPC 23 e se a tecla E ainda não foi exibida
       if (this.indicatorNpc23) { // Verifica se o indicador ainda existe
       this.indicatorNpc23.destroy(); // Remove o indicador
       this.indicatorNpc23 = null; // Reseta a referência do indicador
@@ -638,6 +638,10 @@ class VpNegociosScene extends Phaser.Scene {
 
     // Adiciona o evento para avançar o diálogo com a tecla ENTER
     this.input.keyboard.on("keydown-ENTER", advanceDialog); // Adiciona o evento para avançar o diálogo ao pressionar ENTER
+    if (this.keyENpc23) { // Verifica se a tecla E está visível
+      this.keyENpc23.destroy(); // Remove a tecla E
+      this.keyENpc23 = null; // Reseta e referência da tecla E
+    }
   }
 
   createServer() {
@@ -729,7 +733,7 @@ class VpNegociosScene extends Phaser.Scene {
         this.showNpc10Dialog(); // Chama o método para exibir o diálogo do NPC 10
       }
     });
-    this.activeIndicators.push(this.indicatorNpc10);
+    this.activeIndicators.push(this.indicatorNpc10); // Adiciona o indicador à lista de indicadores ativos
 
   }
 
@@ -1001,6 +1005,7 @@ npc15Question() {
       this.input.keyboard.off("keydown-ENTER", enterNpc15); // Remove o evento de pressionar ENTER.
 
       if (this.keyEnterNpc15) { // Verifica se a tecla ENTER está visível.
+        this.keySound(); // Toca o som de interação
         this.keyEnterNpc15.destroy(); // Remove a tecla ENTER.
         this.keyEnterNpc15 = null; // Reseta a referência da tecla ENTER.
         this.createOptions(); // Chama o método para criar as opções letterA e letterB.
@@ -1297,7 +1302,7 @@ preload() {
 }
 
 collectSound() {
-  this.collected = this.sound.add('collectSound', { loop: false, volume: 10 }); // Adiciona o som de coleta com volume e sem loop
+  this.collected = this.sound.add('collectSound', { loop: false, volume: 2 }); // Adiciona o som de coleta com volume e sem loop
   this.collected.play(); // Reproduz o som de coleta
 }
 
