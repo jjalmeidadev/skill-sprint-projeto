@@ -277,7 +277,7 @@ class ElevadorScene extends Phaser.Scene {
     this.endingTriggered = true; // evita múltiplas chamadas
     this.time.delayedCall(1000, () => {
     this.sound.stopAll(); // para o som do elevador
-    this.scene.start('endScene');
+    this.scene.start('endScene', { selectedSpriteSheet: this.selectedSpriteSheet });
     });
     }
   }
