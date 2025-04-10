@@ -1,33 +1,74 @@
 class VpRelacoesScene extends Phaser.Scene {
   constructor() {
     super({ key: "VpRelacoesScene" });
+    // Variáveis de controle do jogo
     this.canMove = true;
-    this.enterShown = false; // Indica se a tecla ENTER está visível para interação
-    this.dialogActive = false; // Controla se o diálogo está ativo
-    this.dialogReady = false; // Verifica se o diálogo está pronto para ser exibido
-    this.inputActive = false; // Controla o estado do input de palavras-chave
-    this.elevatorIndicator = null; // Referência para o indicador do elevador
-    this.elevatorProximity = null; // Área de proximidade do elevador
-    this.hasReset = false; // Verifica se o jogador já resetou após o diálogo
-    this.enterPressText = null; // Texto de pressionar ENTER
-    this.currentSpeaker = null; // Referência para o speaker atual
-    this.finalDialogPlayed = false; // Controla se o diálogo final foi mostrado
-    this.onNext = null; // Callback para próxima ação
-    this.musicarelainst = null; // Referência para a música de fundo
+    this.enterShown = false;
+    this.dialogActive = false;
+    this.dialogReady = false;
+    this.inputActive = false;
+    this.elevatorIndicator = null;
+    this.elevatorProximity = null;
+    this.hasReset = false;
+    this.enterPressText = null;
+    this.currentSpeaker = null;
+    this.finalDialogPlayed = false;
+    this.onNext = null;
+    this.musicarelainst = null;
+    this.currentStep = 0;
+    
+    // Configuração das etapas de diálogo e palavras-chave
+    this.keywordSteps = [
+      {
+        vp: 'VP de Relações',
+        prompt: 'EMPATIA',
+        success: 'Uma escolha certamente relevante para nosso cotidiano. Foi um valor que, de acordo com seu colega, foi aplicado diretamente por você quando o ajudou à aliviar seu nervosismo. Parabéns!',
+        next: 'E vocês gente?',
+        keyword: 'EMPATIA',
+        head: 'vprelacoescab'
+      },
+      {
+        vp: 'VP de Negócios',
+        prompt: 'CURIOSIDADE',
+        success: 'Certeiro! Carregar consigo um desejo de explorar novas possibilidades e materiais é essencial para seu desenvolvimento a longo prazo, ação que você praticou na coleta de chips!',
+        next: 'Não há duas sem três, né?',
+        keyword: 'CURIOSIDADE',
+        head: 'vpnegociocab'
+      },
+      {
+        vp: 'VP de Estratégia',
+        prompt: 'COLABORAÇAO',
+        success: 'Exato! O que mais poderia elevar seu repertório a não ser ajudar outros colaboradores em suas tarefas? Atitude tomada com primor por sua parte.',
+        next: 'Não se esqueça dela!',
+        keyword: 'COLABORAÇAO',
+        head: 'vpestrategiacab'
+      },
+      {
+        vp: 'VP de Tecnologia',
+        prompt: 'PRODUTIVIDADE',
+        success: 'Mas é claro! Ter disposição para lidar com prazos de maneira eficiente, buscando sempre a inovação e qualidade na funcionalidade dos produtos é indispensável, e nem preciso dizer que você demonstrou essa virtude com excelência na resolução de desafios!',
+        next: '-Com isso, finalizamos nossa reunião de hoje, e junto do aprendizado que você adquiriu, gostaríamos de expressar nossa gratidão por seus esforços e grande expectativa no que irá construir de agora em diante! Conte conosco para qualquer dúvida durante sua trilha.',
+        keyword: 'PRODUTIVIDADE',
+        head: 'vptechcab'
+      }
+    ];
   }
 
   init(data) {
+    // Recebe dados da cena anterior
     this.selectedSpriteSheet = data.selectedSpriteSheet;
+    this.playerSelected = data.playerSelected; // Índice do personagem selecionado (1-4)
   }
 
   preload() {
-    // Carrega todos os assets necessários para a cena
+    // Carrega os vídeos de fundo
     this.load.video("bgbase", "../assets/relainst1.mp4");
-    this.load.video("bgman", "../assets/relainsthome.mp4");
-    this.load.video("bgwom", "../assets/relainstmuie.mp4");
+    this.load.video("bgman", "../assets/relainsthome.mp4"); // Fundo para personagem masculino
+    this.load.video("bgwom", "../assets/relainstmuie.mp4"); // Fundo para personagem feminino
 
+    // Carrega assets do jogo
     this.load.spritesheet("indicator", "../assets/exclamaçãoRoxa.png", { frameWidth: 254, frameHeight: 291 });
-    this.load.spritesheet('player', `../assets/personagens/skinsPlayer/players/${this.selectedSpriteSheet}.png`, {frameWidth: 16,frameHeight: 32,});
+    this.load.spritesheet('player', `../assets/personagens/skinsPlayer/players/${this.selectedSpriteSheet}.png`, {frameWidth: 16,frameHeight: 32});
     
     // Carrega imagens e sons
     this.load.image("keyENTER", "../assets/keyEnter.png");
@@ -38,7 +79,7 @@ class VpRelacoesScene extends Phaser.Scene {
     this.load.audio('keySound', '../assets/sounds/computer-keyboard-typing-290582 (mp3cut.net).mp3');
     this.load.audio('musica', '../assets/sounds/musicarelainst.wav');
 
-    // Carrega as imagens dos VPs
+    // Carrega cabeças dos VPs
     this.load.image('vppessoascab', '../assets/cabecasrelainst/vppessoascab.png');
     this.load.image('vpnegociocab', '../assets/cabecasrelainst/vpnegociocab.png');
     this.load.image('vpestrategiacab', '../assets/cabecasrelainst/vpestrategiacab.png');
@@ -53,26 +94,23 @@ class VpRelacoesScene extends Phaser.Scene {
     this.cameras.main.fadeIn(1000);
     this.physics.world.setBounds(0, 0, width, height);
 
-    // Inicializa a música de fundo em loop
+    // Configura música de fundo
     if (!this.musicarelainst) {
-      this.musicarelainst = this.sound.add("musica", { 
-        loop: true, 
-        volume: 0.5 
-      });
+      this.musicarelainst = this.sound.add("musica", { loop: true, volume: 0.5 });
       this.sound.stopAll();
       this.musicarelainst.play();
     } else if (!this.musicarelainst.isPlaying) {
       this.musicarelainst.play();
     }
 
-    // Configura o jogador
+    // Cria o personagem do jogador
     this.player = this.physics.add.sprite(width - 150, height / 1.5, "player");
     this.player.setScale(8);
     this.player.setDepth(1);
     this.player.setCollideWorldBounds(true);
     this.player.anims.play("stop_left", true);
 
-    // Configura os vídeos de fundo
+    // Configura os fundos de vídeo
     this.bgbase = this.add.video(width / 2, height / 2, "bgbase");
     this.bgbase.setDisplaySize(width / 3, height / 1.5);
     this.bgbase.play(true);
@@ -87,13 +125,12 @@ class VpRelacoesScene extends Phaser.Scene {
     this.bgman.play(true);
     this.bgman.setVisible(false);
 
-    // Elementos do elevador
+    // Configura elementos de interação
     this.keyENTERElevator = this.physics.add.sprite(width - 150, height / 1.5, "keyENTER")
       .setScale(0.2)
       .setImmovable(true)
       .setVisible(false);
 
-    // Configura o som de caminhada
     this.walkSound = this.sound.add("walkSound", { loop: false, volume: 2 });
 
     // Cria animações e barreiras
@@ -106,7 +143,7 @@ class VpRelacoesScene extends Phaser.Scene {
     this.optionSelected = false;
     this.overlayVisible = false;
 
-    // Configura os controles do teclado
+    // Configura controles do teclado
     this.keys = this.input.keyboard.addKeys({
       left: Phaser.Input.Keyboard.KeyCodes.A,
       right: Phaser.Input.Keyboard.KeyCodes.D,
@@ -114,7 +151,14 @@ class VpRelacoesScene extends Phaser.Scene {
       ENTER: Phaser.Input.Keyboard.KeyCodes.ENTER,
     });
 
-    // Configura a animação do indicador
+    // Listener para tecla ENTER
+    this.input.keyboard.on('keydown', (event) => {
+      if (event.keyCode === Phaser.Input.Keyboard.KeyCodes.ENTER) {
+        this.handleEnterKey();
+      }
+    });
+
+    // Animação do indicador de exclamação
     if (!this.anims.exists("exclaiming")) {
       this.anims.create({
         key: "exclaiming",
@@ -124,7 +168,7 @@ class VpRelacoesScene extends Phaser.Scene {
       });
     }
 
-    // Cria os indicadores de interação
+    // Configura indicadores visuais
     this.indicatorrela = this.add.sprite(width / 2.0, height / 1.9, "indicator")
       .setScale(0.5)
       .play("exclaiming")
@@ -135,79 +179,61 @@ class VpRelacoesScene extends Phaser.Scene {
       .play("exclaiming")
       .setVisible(false);
 
-    // Áreas de interação
+    // Configura interação com assento
     this.keyENTERSeat = this.physics.add.sprite(width / 1.7, height / 1.5, "keyENTER")
       .setScale(0.2)
       .setImmovable(true)
       .setVisible(false);
     this.physics.add.collider(this.player, this.keyENTERSeat, this.onEnterCollision, null, this);
     
+    // Configura interação com elevador
     this.elevatorProximity = this.physics.add.sprite(width - 100, height / 1.5, "keyENTER")
       .setScale(0.2)
       .setImmovable(true)
       .setVisible(false);
     this.physics.add.overlap(this.player, this.elevatorProximity, this.handleElevatorProximity, null, this);
 
-    // Configura o som do botão
+    // Configura som de botão
     this.buttonClick = this.sound.add("buttonSound", { loop: false, volume: 10 });
     this.buttonClick.play();
 
-    // Configura os elementos de diálogo
+    // Configura texto de diálogo
     this.dialogText = this.add.text(100, 100, '', { fontSize: '20px', wordWrap: { width: 600 } });
-    this.inputText = null;
-    this.inputTextBg = null;
-    this.keywordLabel = null;
     this.playerName = playerName;
     this.completedPreviousPhases = true;
 
+    // Configura área de interação
     this.physics.add.overlap(this.player, this.proximityrela, this.handleProximityOverlap, null, this);
-
-    // Configura os listeners de input
-    this.setupInputHandlers();
   }
 
-  setupInputHandlers() {
-    // Handler unificado para a tecla ENTER
-    this.input.keyboard.on('keydown-ENTER', (event) => {
-      // Prioriza o input de palavras-chave se estiver ativo
-      if (this.inputActive) {
-        event.stopPropagation();
-        return;
-      }
+  // Manipula pressionamento da tecla ENTER
+  handleEnterKey() {
+    if (this.inputActive) return;
 
-      // Inicia o diálogo se o jogador estiver na área de interação
-      if (this.enterShown && !this.dialogActive && !this.dialogReady) {
-        this.startDialog();
-        return;
-      }
+    if (this.dialogActive) {
+      this.nextDialog();
+      return;
+    }
 
-      // Avança o diálogo se estiver ativo
-      if (this.dialogActive) {
-        event.stopPropagation();
-        this.nextDialog();
-        return;
-      }
+    if (this.onNext) {
+      const next = this.onNext;
+      this.onNext = null;
+      next();
+      return;
+    }
 
-      // Executa callbacks pendentes
-      if (this.onNext) {
-        event.stopPropagation();
-        const next = this.onNext;
-        this.onNext = null;
-        next();
-      }
+    if (this.hasReset && this.physics.overlap(this.player, this.elevatorProximity)) {
+      this.handleElevatorProximity();
+      return;
+    }
 
-      // Interage com o elevador se estiver na área
-      if (this.hasReset && this.physics.overlap(this.player, this.elevatorProximity)) {
-        this.handleElevatorProximity();
-      }
-    });
-
-    // Desabilita o capture global para evitar conflitos
-    this.input.keyboard.disableGlobalCapture();
+    if (this.enterShown && !this.dialogActive && !this.dialogReady) {
+      this.startDialog();
+    }
   }
 
+  // Inicia o diálogo
   startDialog() {
-    // Configura a cena para iniciar o diálogo
     this.keyENTERSeat.setVisible(false);
     this.bgbase.setVisible(false);
 
@@ -215,23 +241,25 @@ class VpRelacoesScene extends Phaser.Scene {
     this.keyENTERSeat.setActive(false).setVisible(false).setAlpha(0);
     this.indicatorrela.setActive(false).setVisible(false);
 
-    // Mostra o fundo correto baseado no personagem
-    if (this.player.texture.key === "playerwom") {
+    // Mostra o fundo correto baseado no personagem selecionado
+    if (this.playerSelected === 2) { // Personagem feminino (player2I)
       this.bgwom.setVisible(true);
-    } else if (this.player.texture.key === "player") {
+    } else if (this.playerSelected === 4) { // Personagem masculino (player4I)
       this.bgman.setVisible(true);
+    } else {
+      // Padrão para outros personagens
+      this.bgbase.setVisible(true);
     }
 
-    // Prepara e mostra o diálogo
     this.dialogReady = true;
     this.createDialogBox();
     this.showDialog();
     this.dialogActive = true;
   }
 
+  // Manipula interação com elevador
   handleElevatorProximity() {
     if (this.hasReset && Phaser.Input.Keyboard.JustDown(this.keys.ENTER)) {
-      // Limpa os sons e elementos do DOM antes da transição
       this.sound.stopAll();
       
       if (this.inputElement) {
@@ -239,7 +267,6 @@ class VpRelacoesScene extends Phaser.Scene {
         this.inputElement = null;
       }
       
-      // Transiciona para a cena do elevador
       this.registry.set('vpRelacoesConcluida', true);
       const elevadorScene = this.scene.get("elevadorScene");
       elevadorScene.resumeFromRelations = true;
@@ -248,8 +275,8 @@ class VpRelacoesScene extends Phaser.Scene {
     }
   }
 
+  // Reseta o jogador para o estado inicial
   resetPlayerToInitialState() {
-    // Reseta o jogador para o estado inicial
     const width = this.scale.width;
     const height = this.scale.height;
 
@@ -263,13 +290,13 @@ class VpRelacoesScene extends Phaser.Scene {
     if (this.dialogBox) this.dialogBox.setVisible(false);
     if (this.dialogText) this.dialogText.setVisible(false);
     if (this.currentSpeaker) this.currentSpeaker.destroy();
-    if (this.inputElement) this.inputElement.style.display = 'none';
     if (this.keywordLabel) this.keywordLabel.setVisible(false);
     if (this.enterPressText) {
       this.enterPressText.destroy();
       this.enterPressText = null;
     }
 
+    // Restaura o fundo base
     this.bgbase.setVisible(true);
     this.bgwom.setVisible(false);
     this.bgman.setVisible(false);
@@ -290,11 +317,12 @@ class VpRelacoesScene extends Phaser.Scene {
     }
   }
 
+  // Atualiza o estado do jogo a cada frame
   update() {
-    // Lógica de movimento do jogador
     const speed = 300;
     let moving = false;
 
+    // Controles de movimento
     if (this.keys.left.isDown) {
       this.player.setVelocityX(-speed);
       this.lastPosition = "left";
@@ -326,14 +354,14 @@ class VpRelacoesScene extends Phaser.Scene {
       }
     }
 
-    // Lógica dos indicadores de interação
+    // Atualiza indicadores de interação
     if (!this.physics.overlap(this.player, this.proximityrela)) {
       this.indicatorrela.setVisible(true);
       this.keyENTERSeat.setVisible(false);
       this.enterShown = false;
     }
 
-    // Lógica do elevador
+    // Atualiza estado do elevador
     if (this.hasReset && this.physics.overlap(this.player, this.elevatorProximity)) {
       if (!this.enterPressText) {
         this.keyENTERElevator.setActive(true).setVisible(true).setAlpha(1);
@@ -355,41 +383,15 @@ class VpRelacoesScene extends Phaser.Scene {
     });
   }
 
-  typeText(text, onComplete) {
-    // Exibe texto letra por letra (efeito de digitação)
-    if (this.typingEvent) {
-      this.typingEvent.remove();
-      this.typingEvent = null;
-    }
-
-    this.dialogText.setText('');
-    const chars = text.split('');
-    let i = 0;
-
-    this.typingEvent = this.time.addEvent({
-      delay: 30,
-      callback: () => {
-        this.dialogText.text += chars[i];
-        i++;
-        if (i >= chars.length) {
-          this.typingEvent.remove();
-          this.typingEvent = null;
-          if (onComplete) onComplete();
-        }
-      },
-      loop: true
-    });
-  }
-
+  // Manipula sobreposição com área de interação
   handleProximityOverlap(player, proximity) {
-    // Mostra o indicador quando o jogador está perto da área de interação
     this.indicatorrela.setVisible(false);
     this.keyENTERSeat.setVisible(true);
     this.enterShown = true;
   }
 
+  // Retorna os diálogos para a cena atual
   getDialogs() {
-    // Retorna os diálogos da cena
     const dialogs = [];
 
     dialogs.push(`VP de Pessoas: E olha só quem chegou, ${this.playerName}!`);
@@ -403,21 +405,21 @@ class VpRelacoesScene extends Phaser.Scene {
       dialogs.push("Sim? Que maravilha! Creio que já se sente muito capaz de atuar nos diversos setores da VIVO agora, espero que tenha aproveitado.");
     }
 
-    dialogs.push("O que acha de realizarmos um desafio para testar suas skills recém adquiridas? É simples, você pode nos contar uma palavra chave que descreva a respectiva VP e como esta foi capaz de te impactar em dilemas de desempenho!");
+    dialogs.push("O que acha de realizarmos um desafio para testar suas skills recém adquiridas? É simples, você pode nos contar uma palavra chave que descreva a respectiva VP e como esta foi capaz de te impactar em dilemas de desempenho! Digite-as com letra maiúscula!");
 
     return dialogs;
   }
 
+  // Mostra o diálogo na tela
   showDialog() {
-    // Inicia a exibição dos diálogos
     this.dialogIndex = 0;
     this.dialogLines = this.getDialogs();
     this.updateSpeaker('vppessoascab');
-    this.typeText(this.dialogLines[this.dialogIndex]);
+    this.dialogText.setText(this.dialogLines[this.dialogIndex]);
   }
 
+  // Atualiza o sprite do falante atual
   updateSpeaker(vpHead) {
-    // Atualiza a imagem do speaker atual
     if (this.currentSpeaker) {
       this.currentSpeaker.destroy();
     }
@@ -426,26 +428,19 @@ class VpRelacoesScene extends Phaser.Scene {
     this.currentSpeaker = this.add.image(dialogX + 80, dialogY + 40, vpHead).setScale(0.5);
   }
 
+  // Avança para o próximo diálogo
   nextDialog() {
-    // Avança para o próximo diálogo ou completa o atual
-    if (this.typingEvent) {
-      this.typingEvent.remove();
-      this.typingEvent = null;
-      this.dialogText.setText(this.dialogLines[this.dialogIndex]);
-      return;
-    }
-
     if (this.dialogIndex < this.dialogLines.length - 1) {
       this.dialogIndex++;
-      this.typeText(this.dialogLines[this.dialogIndex]);
+      this.dialogText.setText(this.dialogLines[this.dialogIndex]);
     } else {
       this.dialogActive = false;
       this.startKeywordChallenge();
     }
   }
 
+  // Cria a caixa de diálogo
   createDialogBox() {
-    // Cria a caixa de diálogo na tela
     if (!this.dialogReady) return;
 
     const width = this.scale.width;
@@ -456,10 +451,12 @@ class VpRelacoesScene extends Phaser.Scene {
     const dialogX = this.cameras.main.width / 2 - dialogWidth / 2;
     const dialogY = this.cameras.main.height - dialogHeight - 50;
 
+    // Cria os gráficos da caixa de diálogo
     this.dialogBox = this.add.graphics();
     this.dialogBox.fillStyle(0xff9e0d, 1);
     this.dialogBox.fillRoundedRect(dialogX, dialogY, dialogWidth, dialogHeight + 60, 10);
 
+    // Configura o texto do diálogo
     this.dialogText = this.add.text(dialogX + 150, dialogY + 30, '', {
       fontSize: '20px',
       color: '#000000',
@@ -467,147 +464,153 @@ class VpRelacoesScene extends Phaser.Scene {
       wordWrap: { width: dialogWidth - 200 }
     }).setDepth(1);
 
-    this.keywordLabel = this.add.text(width / 2, dialogY + 90, '', {
-      fontFamily: 'Arial',
-      fontSize: '22px',
-      color: '#ffff66',
-      fontStyle: 'bold'
-    }).setOrigin(0.5).setVisible(false);
-
-    // Configura o input para o desafio de palavras-chave
     this.setupKeywordInput(dialogX, dialogY);
     
     this.dialogBox.setVisible(true);
     this.dialogText.setVisible(true);
   }
 
+  // Configura a entrada de texto para palavras-chave
   setupKeywordInput(dialogX, dialogY) {
-    // Configura o elemento de input para palavras-chave
-    this.inputElement = document.createElement('input');
-    this.inputElement.type = 'text';
-    Object.assign(this.inputElement.style, {
-      position: 'absolute',
-      padding: '10px',
-      fontSize: '18px',
-      borderRadius: '10px',
-      border: '2px solid white',
-      backgroundColor: '#000000',
-      color: '#ffffff',
-      outline: 'none',
-      width: '300px',
-      display: 'none',
-      zIndex: 1000
-    });
-    document.body.appendChild(this.inputElement);
+    // Caixa de entrada de texto
+    this.inputBackground = this.add.graphics();
+    this.inputBackground.fillStyle(0xffffff);
+    this.inputBackground.fillRoundedRect(dialogX + 150, dialogY + 110, 500, 40, 10);
+    this.inputBackground.lineStyle(2, 0xffff00, 1);
+    this.inputBackground.strokeRoundedRect(dialogX + 150, dialogY + 110, 500, 40, 10);
+    this.inputBackground.setVisible(false);
 
-    this.updateInputPosition = () => {
-      const keywordLabelBounds = this.keywordLabel.getBounds();
-      this.inputElement.style.left = `${keywordLabelBounds.x + keywordLabelBounds.width / 2 - 150 - 115}px`;
-      this.inputElement.style.top = `${keywordLabelBounds.y + keywordLabelBounds.height - 110}px`;
+    // Texto de placeholder
+    this.placeholderText = this.add.text(dialogX + 160, dialogY + 115, 'Digite a palavra-chave...', { 
+      font: '20px font',
+      fill: '#888888'
+    }).setVisible(false);
+
+    // Texto digitado pelo jogador
+    this.keywordText = this.add.text(dialogX + 160, dialogY + 115, '', { 
+      font: '20px font',
+      fill: '#000000'
+    }).setVisible(false);
+
+    // Label do prompt
+    this.keywordLabel = this.add.text(width / 2, dialogY + 80, '', {
+      fontFamily: 'Arial',
+      fontSize: '22px',
+      color: '#ffff66',
+      fontStyle: 'bold'
+    }).setOrigin(0.5).setVisible(false);
+
+    // Mapeamento de caracteres especiais em português
+    const caracteresEspeciais = {
+      'Ç': 'Ç', 'ç': 'Ç',
+      'Ã': 'A', 'ã': 'A', 
+      'Õ': 'O', 'õ': 'O',
+      'Â': 'A', 'â': 'A',
+      'Ê': 'E', 'ê': 'E',
+      'Î': 'I', 'î': 'I',
+      'Ô': 'O', 'ô': 'O',
+      'Û': 'U', 'û': 'U',
+      'Á': 'A', 'á': 'A',
+      'É': 'E', 'é': 'E',
+      'Í': 'I', 'í': 'I',
+      'Ó': 'O', 'ó': 'O',
+      'Ú': 'U', 'ú': 'U',
+      'À': 'A', 'à': 'A',
+      'è': 'E', 'È': 'E',
+      'ì': 'I', 'Ì': 'I',
+      'ò': 'O', 'Ò': 'O',
+      'ù': 'U', 'Ù': 'U',
+      '~': '~'
     };
 
-    // Handler para o input de palavras-chave
-    this.inputElement.addEventListener('keydown', (event) => {
-      if (event.key === 'Enter') {
-        event.preventDefault();
-        event.stopPropagation();
-        
-        const resposta = this.inputElement.value.trim().toUpperCase();
-        const etapa = this.keywordSteps[this.currentStep];
+    // Listener para entrada de teclado
+    this.input.keyboard.on('keydown', event => {
+      if (this.inputActive) {
+        if (event.keyCode === 8 && this.keywordText.text.length > 0) {
+          // Backspace
+          this.keywordText.text = this.keywordText.text.substr(0, this.keywordText.text.length - 1);
+        }
+        else if (event.keyCode === 32 || (event.keyCode >= 48 && event.keyCode <= 90)) {
+          // Letras e números padrão
+          this.keywordText.text += event.key.toUpperCase();
+        }
+        else if (caracteresEspeciais[event.key]) {
+          // Caracteres especiais em português
+          this.keywordText.text += caracteresEspeciais[event.key];
+        }
 
-        if (resposta === etapa.keyword) {
-          this.inputActive = false;
-          this.dialogText.setText('');
-          this.inputElement.style.display = 'none';
-          this.keywordLabel.setVisible(false);
+        this.placeholderText.setVisible(this.keywordText.text.length === 0);
 
-          this.typeText(etapa.success, () => {
-            this.onNext = () => {
-              this.typeText(etapa.next, () => {
-                this.onNext = () => {
-                  this.currentStep++;
-                  if (this.currentStep < this.keywordSteps.length) {
-                    this.showKeywordStep();
-                  } else {
-                    if (!this.finalDialogPlayed) {
-                      this.onNext = () => {
-                        this.finalDialogPlayed = true;
-                        this.resetPlayerToInitialState();
-                      };
-                    } else {
-                      this.resetPlayerToInitialState();
-                    }
-                  }
-                };
-              });
-            };
-          });
-        } else {
-          this.dialogText.setText('Tente de novo!');
-          this.inputElement.value = '';
+        if (event.keyCode === 13) {
+          this.checkKeywordAnswer();
         }
       }
     });
   }
 
-  startKeywordChallenge() {
-    // Configura as etapas do desafio de palavras-chave
-    this.keywordSteps = [
-      {
-        vp: 'VP de Relações',
-        prompt: 'EMPATIA',
-        success: 'Uma escolha certamente relevante para nosso cotidiano. Foi um valor que, de acordo com seu colega, foi aplicado diretamente por você quando o ajudou à aliviar seu nervosismo. Parabéns!',
-        next: ' E vocês gente?',
-        keyword: 'EMPATIA',
-        head: 'vprelacoescab'
-      },
-      {
-        vp: 'VP de Negócios',
-        prompt: 'CURIOSIDADE',
-        success: 'Certeiro! Carregar consigo um desejo de explorar novas possibilidades e materiais é essencial para seu desenvolvimento a longo prazo, ação que você praticou na coleta de chips!',
-        next: 'Não há duas sem três, né?',
-        keyword: 'CURIOSIDADE',
-        head: 'vpnegociocab'
-      },
-      {
-        vp: 'VP de Estratégia',
-        prompt: 'COLABORAÇÃO',
-        success: 'Exato! O que mais poderia elevar seu repertório a não ser ajudar outros colaboradores em suas tarefas? Atitude tomada com primor por sua parte.',
-        next: 'Não se esqueça dela!',
-        keyword: 'COLABORAÇÃO',
-        head: 'vpestrategiacab'
-      },
-      {
-        vp: 'VP de Tecnologia',
-        prompt: 'PRODUTIVIDADE',
-        success: 'Mas é claro! Ter disposição para lidar com prazos de maneira eficiente, buscando sempre a inovação e qualidade na funcionalidade dos produtos é indispensável, e nem preciso dizer que você demonstrou essa virtude com excelência na resolução de desafios!',
-        next: '-Com isso, finalizamos nossa reunião de hoje, e junto do aprendizado que você adquiriu, gostaríamos de expressar nossa gratidão por seus esforços e grande expectativa no que irá construir de agora em diante! Conte conosco para qualquer dúvida durante sua trilha.',
-        keyword: 'PRODUTIVIDADE',
-        head: 'vptechcab'
-      }
-    ];
+  // Verifica a resposta do jogador
+  checkKeywordAnswer() {
+    if (!this.inputActive || this.keywordText.text.length === 0) return;
 
+    const resposta = this.keywordText.text.trim();
+    const etapa = this.keywordSteps[this.currentStep];
+
+    if (resposta === etapa.keyword) {
+      this.inputActive = false;
+      this.keywordText.text = '';
+      this.placeholderText.setVisible(false);
+      this.inputBackground.setVisible(false);
+      this.keywordLabel.setVisible(false);
+
+      this.dialogText.setText(etapa.success);
+      this.onNext = () => {
+        this.dialogText.setText(etapa.next);
+        this.onNext = () => {
+          this.currentStep++;
+          if (this.currentStep < this.keywordSteps.length) {
+            this.showKeywordStep();
+          } else {
+            if (!this.finalDialogPlayed) {
+              this.onNext = () => {
+                this.finalDialogPlayed = true;
+                this.resetPlayerToInitialState();
+              };
+            } else {
+              this.resetPlayerToInitialState();
+            }
+          }
+        };
+      };
+    } else {
+      this.dialogText.setText('Tente de novo!');
+      this.keywordText.text = '';
+      this.placeholderText.setVisible(true);
+    }
+  }
+
+  // Inicia o desafio de palavras-chave
+  startKeywordChallenge() {
     this.currentStep = 0;
     this.showKeywordStep();
   }
 
+  // Mostra a etapa atual do desafio de palavras-chave
   showKeywordStep() {
-    // Mostra uma etapa do desafio de palavras-chave
     const step = this.keywordSteps[this.currentStep];
     this.dialogText.setText(`${step.vp}: O que acha?`);
-    this.keywordLabel.setText(`${step.prompt}`);
-    this.keywordLabel.setVisible(true);
+    this.keywordLabel.setText(step.prompt);
     this.updateSpeaker(step.head);
     
     this.inputActive = true;
-    this.inputElement.style.display = 'block';
-    this.inputElement.value = '';
-    this.inputElement.focus();
-    this.updateInputPosition();
+    this.inputBackground.setVisible(true);
+    this.placeholderText.setVisible(true);
+    this.keywordText.setVisible(true);
+    this.keywordLabel.setVisible(true);
+    this.keywordText.text = '';
   }
 
+  // Cria animações do jogador
   createPlayerAnimations() {
-    // Cria as animações do jogador
     this.anims.create({
       key: "walk_right",
       frames: this.anims.generateFrameNumbers("player", { start: 112, end: 117 }),
@@ -637,8 +640,8 @@ class VpRelacoesScene extends Phaser.Scene {
     });
   }
 
+  // Cria barreiras e áreas de colisão
   createBarriers() {
-    // Crea as barreiras e áreas de colisão
     const width = this.scale.width;
     const height = this.scale.height;
 
@@ -646,8 +649,8 @@ class VpRelacoesScene extends Phaser.Scene {
     this.physics.add.existing(this.proximityrela, true);
   }
 
+  // Manipula colisão com a tecla ENTER
   onEnterCollision() {
-    // Handler para colisão com a área de interação
     this.keyENTERSeat.setVisible(true);
   }
 }

@@ -3,6 +3,9 @@
  * Estende Phaser.Scene para criar uma cena personalizada para a seleção de skins.
  */
 class PlayerSkinSelection extends Phaser.Scene {
+
+    // Mapeamento de skins para atributos (ex.: gênero)
+
     /**
      * Construtor da cena PlayerSkinSelection.
      * Inicializa a cena com uma chave única e configura propriedades iniciais.
@@ -128,7 +131,7 @@ class PlayerSkinSelection extends Phaser.Scene {
                 player.setScale(0.8);
             }
         });
-
+        
         // Define a skin selecionada quando o sprite é clicado.
         player.on('pointerdown', () => this.selectPlayer(index));
 
