@@ -25,7 +25,7 @@ class VpTecnologiaScene extends Phaser.Scene {
     this.load.image("word2", "../assets/upskillingBotão2.png");
     this.load.image("word3", "../assets/upskillingBotão3.png");
     this.load.image("word4", "../assets/upskillingBotão4.png");
-    this.load.spritesheet("npc", "../assets/personagens/npc7.png", { frameWidth: 16, frameHeight: 32, });
+    this.load.spritesheet("npcTech", "../assets/personagens/npc7.png", { frameWidth: 16, frameHeight: 32, });
     this.load.spritesheet("indicator", "../assets/exclamaçãoRoxa.png", { frameWidth: 254, frameHeight: 305 });
     this.load.image('keyE', '../assets/teclaE.png');
     this.load.image('keyEnter', '../assets/keyEnter.png');
@@ -327,7 +327,7 @@ class VpTecnologiaScene extends Phaser.Scene {
   }
 
   createNPCWithBalloon() {
-    const npc = this.physics.add.sprite(900, 173, "npc");
+    const npc = this.physics.add.sprite(900, 173, "npcTech");
     npc.setScale(2.5);
     npc.setImmovable(true);
 
