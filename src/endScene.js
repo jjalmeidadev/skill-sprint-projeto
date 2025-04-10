@@ -16,6 +16,8 @@ class EndScene extends Phaser.Scene {
         this.load.image("bg05", "../assets/assetsBackground/5.png"); // Carrega a imagem de fundo da camada 5
         this.load.image("bg06", "../assets/assetsBackground/6.png"); // Carrega a imagem de fundo da camada 6
         this.load.spritesheet('player', `../assets/personagens/skinsPlayer/players/${this.selectedSpriteSheet}.png`, {frameWidth: 16,frameHeight: 32,}); // Carrega o spritesheet do player
+        this.load.image('thanksForPlaying', '../assets/thanksForPlaying.png'); // Carrega a imagem de agradecimento
+        this.load.image('buttonPlayAgain', '../assets/buttonPlayAgain.png'); // Carrega o botão de jogar novamente
     }
 
     create() {
@@ -29,6 +31,8 @@ class EndScene extends Phaser.Scene {
         this.createPlayerAnimation(); // Cria a animação do jogador
         this.createPlayer(); // Cria o player
         
+        this.add.image(width / 2, height / 2 - 200, 'thanksForPlaying'); // Adiciona a imagem de agradecimento ao centro da tela
+        this.createButtonBack()
     }
 
     update() {
@@ -50,5 +54,13 @@ class EndScene extends Phaser.Scene {
             frameRate: 5, // Taxa de quadros mais lenta para animação de parado
             repeat: -1, // Repetição infinita
         }); 
+    }
+
+    createButtonBack() {
+        const buttonPlayAgain = this.add.image(width / 2, height - 100, 'buttonPlayAgain').setInteractive(); // Cria o botão de jogar novamente
+        buttonPlayAgain.setScale(0.5); // Ajusta o tamanho do botão
+        buttonPlayAgain.on('pointerup', () => { // Adiciona evento de clique no botão
+            window.location.reload(); // Recarrega a página
+        });
     }
 }
