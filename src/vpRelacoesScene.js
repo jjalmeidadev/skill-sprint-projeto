@@ -242,9 +242,9 @@ class VpRelacoesScene extends Phaser.Scene {
     this.indicatorrela.setActive(false).setVisible(false);
 
     // Mostra o fundo correto baseado no personagem selecionado
-    if (this.playerSelected === 2) { // Personagem feminino (player2I)
+    if (this.selectedSpriteSheet.includes("player2") || this.selectedSpriteSheet.includes("player3")) { // Personagem feminino
       this.bgwom.setVisible(true);
-    } else if (this.playerSelected === 4) { // Personagem masculino (player4I)
+    } else if (this.selectedSpriteSheet.includes("player1") || this.selectedSpriteSheet.includes("player4")) { // Personagem masculino
       this.bgman.setVisible(true);
     } else {
       // Padrão para outros personagens
