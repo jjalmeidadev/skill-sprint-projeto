@@ -292,7 +292,9 @@ class VpEstrategiaScene extends Phaser.Scene {
           this.interactedWith.mug = true;
           this.eKeyInteractions++;
           this.checkCompletionDialogue();
+          this.keyEMug.destroy(); // Esconde a tecla E após a interação
           this.exclamationIdle2.setVisible(true);
+          
           const overlay = this.add.rectangle(
             0, 0,
             this.cameras.main.width * 2,
@@ -362,7 +364,9 @@ class VpEstrategiaScene extends Phaser.Scene {
           this.interactedWith.mobile = true;
           this.eKeyInteractions++;
           this.checkCompletionDialogue();
-          this.exclamationIdle3.setVisible(true);
+          this.keyEMobile.setVisible(false);
+          this.keyEMobile.destroy(); // <- DESTRUIÇÃO DA TECLA E
+          this.exclamationIdle3.setVisible(true); // <- ATIVA EXCLAMAÇÃO DA MARIANA
           const overlay = this.add.rectangle(
             0, 0,
             this.cameras.main.width * 2,
@@ -434,6 +438,8 @@ class VpEstrategiaScene extends Phaser.Scene {
           this.interactedWith.sheet = true;
           this.eKeyInteractions++;
           this.checkCompletionDialogue();
+          this.keyESheet.setVisible(false);
+          this.keyESheet.destroy(); // remove a tecla E após interação
           const overlay = this.add.rectangle(
             0, 0,
             this.cameras.main.width * 2,
@@ -599,7 +605,15 @@ class VpEstrategiaScene extends Phaser.Scene {
         this.player.x, this.player.y,
         this.mobileContainer.x, this.mobileContainer.y
       );
-      this.keyEMobile.setVisible(distanceMobile < 100);
+    
+      if (distanceMobile < 100 && this.mobileExclamation.visible) {
+        this.mobileExclamation.setVisible(false);
+        this.keyEMobile.setVisible(true);
+      }
+    
+      if (distanceMobile >= 100) {
+        this.keyEMobile.setVisible(false);
+      }
     }
 
     // Verifica distância para a folha e mostra/esconde tecla E
@@ -608,7 +622,15 @@ class VpEstrategiaScene extends Phaser.Scene {
         this.player.x, this.player.y,
         this.sheetContainer.x, this.sheetContainer.y
       );
-      this.keyESheet.setVisible(distanceSheet < 100);
+    
+      if (distanceSheet < 100 && this.sheetExclamation.visible) {
+        this.sheetExclamation.setVisible(false);
+        this.keyESheet.setVisible(true);
+      }
+    
+      if (distanceSheet >= 100) {
+        this.keyESheet.setVisible(false);
+      }
     }
     this.updateArrowToNearestIndicator();
 
@@ -659,6 +681,24 @@ class VpEstrategiaScene extends Phaser.Scene {
       };
     
       this.input.keyboard.on('keydown-ENTER', removeDialogue);
+    }
+
+    // Verifica distância para a caneca e controla exibição
+    if (
+      this.mugSprite.visible &&
+      this.mugExclamation &&
+      this.mugExclamation.active &&
+      !this.interactedWith.mug
+    ) {
+      const distanceMug = Phaser.Math.Distance.Between(
+        this.player.x, this.player.y,
+        this.mugContainer.x, this.mugContainer.y
+      );
+    
+      if (distanceMug < 100) {
+        this.mugExclamation.destroy(); // Remove o indicador
+        this.keyEMug.setVisible(true); // Mostra a tecla E (que será destruída depois)
+      }
     }
   }
 
@@ -732,18 +772,21 @@ class VpEstrategiaScene extends Phaser.Scene {
         } else {
           if (npc === this.npcIdle) {
             // Mostra caneca e sua exclamação
+            this.mugContainer.setPosition(this.player.x, this.player.y);
             this.mugSprite.setVisible(true);
             this.mugExclamation.setVisible(true);
             this.mugExclamation.play("exclaiming");
             this.scene.switch('minigameEstrategiaCarlos');
           } else if (npc === this.npcIdle2) {
-            // Mostra celular e sua exclamação
+            // Posiciona o mobile na posição do player
+            this.mobileContainer.setPosition(this.player.x, this.player.y);
             this.mobileSprite.setVisible(true);
             this.mobileExclamation.setVisible(true);
             this.mobileExclamation.play("exclaiming");
             this.scene.switch('minigameEstrategiaAna');
-          } else if (npc === this.npcIdle3) {
-            // Mostra folha e sua exclamação
+           } else if (npc === this.npcIdle3) {
+            // Posiciona a folha na posição atual do player
+            this.sheetContainer.setPosition(this.player.x, this.player.y);
             this.sheetSprite.setVisible(true);
             this.sheetExclamation.setVisible(true);
             this.sheetExclamation.play("exclaiming");
