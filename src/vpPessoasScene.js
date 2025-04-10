@@ -895,6 +895,8 @@ class VpPessoasScene extends Phaser.Scene {
         this.scene.stop("vpPessoasScene");
         this.scene.resume("elevadorScene");
       }, null, this);
+      this.activeIndicators.push(exclamation);
+
     }
 
     resume() {

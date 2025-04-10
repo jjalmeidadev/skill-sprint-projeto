@@ -326,15 +326,15 @@ class VpNegociosScene extends Phaser.Scene {
   }
 
   createButtonBack(width, height) {
-    // Cria o sprite da exclamação (ou mantenha o nome buttonBack se preferir)
     const exclamation = this.physics.add.sprite(width - 670, height - 680, "indicator");
-    exclamation.play("exclaiming"); // Reproduz a animação de exclamação
+    exclamation.play("exclaiming");
     exclamation.setScale(0.2);
-    exclamation.setImmovable(true); // Evita que o objeto se mova com colisões
+    exclamation.setImmovable(true);
   
-    // Adiciona o overlap entre player e exclamation
+    // ADICIONA AQUI: coloca o indicador no array da bússola
+    this.activeIndicators.push(exclamation);
+  
     this.physics.add.overlap(this.player, exclamation, () => {
-      // Lógica de troca de cena
       this.sound.stopAll();
   
       this.registry.set('vpBusinessConcluida', true);
@@ -345,6 +345,7 @@ class VpNegociosScene extends Phaser.Scene {
       this.scene.resume("elevadorScene");
     }, null, this);
   }
+  
 
   createPlayerAnimations() {
   this.anims.create({
