@@ -38,7 +38,7 @@ class PlayerSkinSelection extends Phaser.Scene {
         this.load.image(`bg0${i}`, `../assets/backgrounds/bg0${i}.png`); 
         }
 
-        this.load.image('buttonStart', '../assets/assets_botoes/botaoStart.png');
+        this.load.image('buttonStart', '../assets/assets_botoes/botaoJogar.png');
         this.load.image('ttSkin', '../assets/assets_objetos/escolhaSeuPersonagem.png');
     }
     
@@ -198,7 +198,7 @@ class PlayerSkinSelection extends Phaser.Scene {
     createButtonStart(width, height) {
     const buttonStart = this.add.image(width / 2, height / 2 + 250, "buttonStart"); // Adiciona a imagem do botão "Jogar" na posição especificada
     buttonStart.setInteractive(); // Torna o botão interativo
-    buttonStart.setScale(1); // Define o tamanho do botão
+    buttonStart.setScale(0.7); // Define o tamanho do botão
     // Inicialmente desativa a interatividade do botão
     buttonStart.disableInteractive();
     // Armazena o botão para ativá-lo posteriormente
