@@ -195,7 +195,7 @@ class PlayerSkinSelection extends Phaser.Scene {
         this.buttonSound(); // Toca o som de clique do botão
         this.shutdown(); // Para a música inicial
         this.scene.stop("PlayerSkin"); // Para a cena inicial
-        this.scene.start("vpTecnologiaScene", {selectedSpriteSheet: this.selectedSpriteSheet,}); // Inicia a cena "cutScene"
+        this.scene.start("cutScene", {selectedSpriteSheet: this.selectedSpriteSheet,}); // Inicia a cena "cutScene"
     });
     }
 
