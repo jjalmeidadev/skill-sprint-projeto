@@ -15,6 +15,9 @@ class VpTecnologiaScene extends Phaser.Scene {
 
     this.load.audio("bgMusic", "../assets/sounds/Funk-Modulator-RoccoW-_-Chiptune-_No-Copyright-Music_.mp3");
     this.load.audio('walkSound', '../assets/sounds/753292__vrymaa__footsteps-high-heels-hardwood-walk-run (mp3cut.net).wav');
+    this.load.audio('correctSound', '../assets/sounds/476178__unadamlar__correct-choice.wav');
+    this.load.audio('wrongSound', '../assets/sounds/700641__producing_raylite__incorrect-buzzer.wav');
+    this.load.audio('keySound', '../assets/sounds/computer-keyboard-typing-290582 (mp3cut.net).mp3');
 
     this.load.image("computer", "../assets/computador.png");
     this.load.image("box", "../assets/upskilling.png");
@@ -128,9 +131,7 @@ class VpTecnologiaScene extends Phaser.Scene {
 
     // Create remaining elements
     this.createComputer(width, height);
-    this.createButtonBack(width, height);
     this.createNPCWithBalloon();
-    this.createComputerIndicator();
 
     this.keys = this.input.keyboard.addKeys({
       up: Phaser.Input.Keyboard.KeyCodes.W,
@@ -141,10 +142,17 @@ class VpTecnologiaScene extends Phaser.Scene {
       ENTER: Phaser.Input.Keyboard.KeyCodes.ENTER
     });
 
+    this.computerIndicatorDestroyed = false;
+
     this.walkSound = this.sound.add('walkSound', { loop: false, volume: 2 });
 
     this.cursorCoordinatesText = this.add.text(10, 10, '', { fontSize: '16px', fill: '#000000', fontFamily: 'font' });
     this.cursorCoordinatesText.setDepth(1000);
+
+    this.barrierDoor = this.add.rectangle(width - 520, height - 720, 20, 20, 0x2F052F).setOrigin(0); // Adiciona um retângulo como barreira
+    this.physics.add.existing(this.barrierDoor, true); // Ativa a física do retângulo
+    this.physics.add.collider(this.player, this.barrierDoor); // Adiciona colisão entre o jogador e a barreira
+    this.barrierDoor.setVisible(false); // Torna o retângulo invisível
 
     this.showTitle();
   }
@@ -158,17 +166,34 @@ class VpTecnologiaScene extends Phaser.Scene {
     // Interação com o computador
     if (this.keyEComputer) {
       const distance = Phaser.Math.Distance.Between(this.player.x, this.player.y, 985, 381);
+    
       if (distance < 100 && !this.miniGameActive) {
         this.keyEComputer.setVisible(true);
+    
+        // Destrói o indicador se ainda não foi destruído
+        if (this.computerIndicator && !this.computerIndicatorDestroyed) {
+          this.computerIndicator.destroy();
+          this.computerIndicator = null;
+          this.computerIndicatorDestroyed = true;
+        }
+    
         if (Phaser.Input.Keyboard.JustDown(this.keys.interagir)) {
           this.miniGameActive = true;
-          this.keyEComputer.setVisible(false);
+          if (this.keyEComputer) {
+            this.keyEComputer.destroy();
+            this.keyEComputer = null;
+          }
           this.startMiniGame();
         }
-      } else {
+      } else if (this.keyEComputer && this.keyEComputer.active) {
         this.keyEComputer.setVisible(false);
       }
     }
+  }
+
+  keySound() {
+    this.keySoundPlay = this.sound.add('keySound', { loop: false, volume: 10 }); // Adiciona o som de digitação no teclado com volume alto
+    this.keySoundPlay.play(); // Reproduz o som de digitação no teclado
   }
 
   showTitle() {
@@ -343,6 +368,7 @@ class VpTecnologiaScene extends Phaser.Scene {
 
     const showDialogue = () => {
       if (currentDialogueIndex < dialogues.length) {
+        this.keySound();
         isDialogueActive = true;
         indicator.setVisible(false);
         keyE.setVisible(false);
@@ -351,6 +377,8 @@ class VpTecnologiaScene extends Phaser.Scene {
         text.setText(dialogues[currentDialogueIndex]).setVisible(true);
         currentDialogueIndex++;
       } else {
+        this.createComputerIndicator();
+        this.keySound();
         balloonText.setVisible(false);
         text.setVisible(false);
         keyEnter.setVisible(false);
@@ -385,7 +413,7 @@ class VpTecnologiaScene extends Phaser.Scene {
   }
 
   createComputer(width, height) {
-    this.add.image(985, 381, "computer").setScale(0.1); // Apenas adiciona o computador sem mensagem
+    this.add.image(985, 381, "computer").setScale(0.1).setFlipX(true); // Apenas adiciona o computador sem mensagem
   }
 
   createComputerIndicator(visible = true) {
@@ -399,10 +427,9 @@ class VpTecnologiaScene extends Phaser.Scene {
     }
 
     // Apenas a keyE que ficará invisível inicialmente
-    const keyE = this.add.image(985, 301, 'keyE')
-      .setScale(0.08)
-      .setVisible(false)
-      .setDepth(1);
+    const keyE = this.add.image(985, 301, 'keyE').setScale(0.08).setVisible(false).setDepth(1);
+
+    this.computerIndicatorDestroyed = false;
 
     // Verificar distância no overlap para mostrar tecla E
     this.physics.add.overlap(this.player, indicator, () => {
@@ -422,6 +449,7 @@ class VpTecnologiaScene extends Phaser.Scene {
       const distance = Phaser.Math.Distance.Between(this.player.x, this.player.y, 985, 381);
       if (distance < 100 && !this.miniGameActive) {
         this.miniGameActive = true;
+        this.keySound();
         keyE.setVisible(false);
         this.startMiniGame();
       }
@@ -471,35 +499,36 @@ class VpTecnologiaScene extends Phaser.Scene {
 
     // MINIGAME MELHORADO: Criar caixas alvo
     const targetBoxes = [
-      { x: 751, y: 210, word: "word1" },
-      { x: 870, y: 300, word: "word2" },
-      { x: 1004, y: 350, word: "word3" },
-      { x: 693, y: 510, word: "word4" },
+      { x: width - 760, y: height - 544, word: "word1" },
+      { x: width - 654, y: height - 459, word: "word2" },
+      { x: width - 515, y: height - 418, word: "word3" },
+      { x: width - 822, y: height - 247, word: "word4" },
     ];
 
     // Criar caixas de destino visualmente distintas
     targetBoxes.forEach(box => {
       // Criar um retângulo como caixa alvo
-      const target = this.add.rectangle(box.x, box.y, 100, 40, 0x800080);
+      const target = this.add.rectangle(box.x, box.y, 100, 33, 0x800080);
       box.target = target;
+      this.miniGameContainer.add(target);
     });
 
     // Criar palavras arrastáveis - todas disponíveis desde o início
     const words = [
-      this.add.image(390, 200, "word1").setScale(0.5).setInteractive({ draggable: true }),
-      this.add.image(390, 300, "word2").setScale(0.5).setInteractive({ draggable: true }),
-      this.add.image(390, 400, "word3").setScale(0.5).setInteractive({ draggable: true }),
-      this.add.image(390, 500, "word4").setScale(0.5).setInteractive({ draggable: true }),
+      this.add.image(width - 1210, height - 350, "word1").setScale(0.5).setInteractive({ draggable: true }),
+      this.add.image(width - 1210, height - 550, "word2").setScale(0.5).setInteractive({ draggable: true }),
+      this.add.image(width - 1210, height - 250, "word3").setScale(0.5).setInteractive({ draggable: true }),
+      this.add.image(width - 1210, height - 450, "word4").setScale(0.5).setInteractive({ draggable: true }),
     ];
 
     this.miniGameContainer.add(words);
 
     // Guardar posições iniciais para retorno em caso de erro
     const initialPositions = [
-      { x: 390, y: 200 },
-      { x: 390, y: 300 },
-      { x: 390, y: 400 },
-      { x: 390, y: 500 },
+      { x: width - 1210, y: height - 350 },
+      { x: width - 1210, y: height - 550 },
+      { x: width - 1210, y: height - 250 },
+      { x: width - 1210, y: height - 450 },
     ];
 
     // Título do minigame
@@ -575,9 +604,11 @@ class VpTecnologiaScene extends Phaser.Scene {
 
           gameObject.setPosition(box.x, box.y);
           gameObject.input.enabled = false; // Desabilitar futuros drags
-          box.target.setFillStyle(0x00FFFFFF, 0.5); // Verde para indicar acerto
+          box.target.setFillStyle(0x00FF00, 0.5); // Verde para indicar acerto
 
           showFeedback("Correto!", "#00FF00");
+          this.correct = this.sound.add('correctSound', { loop: false, volume: 10 });
+          this.correct.play();
 
           // Se todas as palavras estiverem corretas
           if (completeCount === 4) {
@@ -598,11 +629,13 @@ class VpTecnologiaScene extends Phaser.Scene {
           this.time.delayedCall(500, () => {
             if (!placedCorrectly.some((placed, idx) =>
               placed && words[idx].texture.key === wrongTarget.word)) {
-              wrongTarget.target.setFillStyle(0x800080, 0.5);
+              wrongTarget.target.setFillStyle(0x800080);
             }
           });
 
           showFeedback("Incorreto! Tente novamente.", "#8B0000");
+          this.wrong = this.sound.add('wrongSound', { loop: false, volume: 10 });
+          this.wrong.play();
         }
 
         // Retornar à posição inicial
@@ -738,27 +771,28 @@ class VpTecnologiaScene extends Phaser.Scene {
     if (this.computerIndicator) {
       this.computerIndicator.setVisible(true);
     }
-
+    this.createButtonBack();
 
   }
 
-  createButtonBack(width, height) {
-    const backButton = this.add.image(50, 50, 'closeButton')
-      .setScale(0.1)
-      .setInteractive()
-      .setScrollFactor(0)
-      .setDepth(1000);
-
-    backButton.on('pointerover', () => {
-      backButton.setScale(0.12);
-    });
-
-    backButton.on('pointerout', () => {
-      backButton.setScale(0.1);
-    });
-
-    backButton.on('pointerup', () => {
-      this.scene.start('levelSelectionScene', { selectedSpriteSheet: this.selectedSpriteSheet });
-    });
+  createButtonBack() {
+    // Cria o sprite da exclamação (ou mantenha o nome buttonBack se preferir)
+    const exclamation = this.physics.add.sprite(width - 520, height - 680, "indicator");
+    exclamation.play("exclaiming"); // Reproduz a animação de exclamação
+    exclamation.setScale(0.2);
+    exclamation.setImmovable(true); // Evita que o objeto se mova com colisões
+  
+    // Adiciona o overlap entre player e exclamation
+    this.physics.add.overlap(this.player, exclamation, () => {
+      // Lógica de troca de cena
+      this.sound.stopAll();
+  
+      this.registry.set('vpTecnologiaConcluida', true);
+      const elevadorScene = this.scene.get("elevadorScene");
+      elevadorScene.resumeFromTech = true;
+  
+      this.scene.stop("vpTecnologiaScene");
+      this.scene.resume("elevadorScene");
+    }, null, this);
   }
 }
