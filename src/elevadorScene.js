@@ -274,11 +274,11 @@ class ElevadorScene extends Phaser.Scene {
       this.registry.get('vpRelacoesConcluida');
 
     if (allCompleted && !this.endingTriggered) {
-      this.endingTriggered = true; // Evita múltiplas chamadas
-      this.time.delayedCall(1000, () => {
-        this.sound.stopAll(); // Para o som do elevador
-        this.scene.start('endScene');
-      });
+    this.endingTriggered = true; // evita múltiplas chamadas
+    this.time.delayedCall(1000, () => {
+    this.sound.stopAll(); // para o som do elevador
+    this.scene.start('endScene', { selectedSpriteSheet: this.selectedSpriteSheet });
+    });
     }
   }
 

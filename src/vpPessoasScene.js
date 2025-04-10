@@ -5,6 +5,7 @@ class VpPessoasScene extends Phaser.Scene {
       this.minigameComplete = false;
       this.npcMobileFixedCreated = false;
       this.elevatorTarget = null;
+      this.trashInteracted = false;
      
       this.arrowOffset = Phaser.Math.DegToRad(-180);
       this.activeIndicators = [];
@@ -124,7 +125,7 @@ class VpPessoasScene extends Phaser.Scene {
 
     this.buttonClick = this.sound.add('buttonSound', { loop: false, volume: 10 }); // Som de clique de botão
    
-    this.walkSound = this.sound.add('walkSound', { loop: false, volume: 10 }); // Som de passos
+    this.walkSound = this.sound.add('walkSound', { loop: false, volume: 2 }); // Som de passos
 
     this.rafaelaInteracted = false; // Flag para verificar se Rafaela foi interagida
     this.keyEnterRafaela = null; // Inicializa a tecla ENTER para Rafaela como nula
@@ -338,8 +339,15 @@ class VpPessoasScene extends Phaser.Scene {
           this.player.x, this.player.y,
           this.trash.x, this.trash.y
         );
-        this.canInteractWithTrash = distTrash < 50;
-        if (distTrash >= 50 && this.keyETrash) {
+        this.canInteractWithTrash = distTrash < 50 && !this.trashInteracted;
+      
+        // Mostrar tecla E só se estiver próximo e ainda não interagiu
+        if (this.canInteractWithTrash && !this.keyETrash) {
+          this.keyETrash = this.add.image(this.trash.x, this.trash.y - 40, 'keyE').setScale(0.07);
+        }
+      
+        // Destruir tecla E se saiu da área ou já interagiu
+        if ((!this.canInteractWithTrash || this.trashInteracted) && this.keyETrash) {
           this.keyETrash.destroy();
           this.keyETrash = null;
         }
@@ -392,12 +400,19 @@ class VpPessoasScene extends Phaser.Scene {
       }
     
       // INTERAÇÃO COM O LIXO
-      if (this.canInteractWithTrash && Phaser.Input.Keyboard.JustDown(this.keys.interagir)) {
+      if (this.canInteractWithTrash && Phaser.Input.Keyboard.JustDown(this.keys.interagir) && !this.trashInteracted) {
+        this.trashInteracted = true;
+      
         this.buttonClick = this.sound.add('buttonSound', { loop: false, volume: 10 });
         this.buttonClick.play();
         this.scene.pause();
         this.scene.launch('minigameTrashScene');
         this.minigameComplete = true;
+      
+        if (this.keyETrash) {
+          this.keyETrash.destroy();
+          this.keyETrash = null;
+        }
       }
     
       // INTERAÇÃO COM O LIVRO
