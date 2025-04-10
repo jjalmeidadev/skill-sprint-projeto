@@ -482,6 +482,7 @@ class VpTecnologiaScene extends Phaser.Scene {
       // Criar um retângulo como caixa alvo
       const target = this.add.rectangle(box.x, box.y, 100, 33, 0x800080);
       box.target = target;
+      this.miniGameContainer.add(target);
     });
 
     // Criar palavras arrastáveis - todas disponíveis desde o início
@@ -575,7 +576,7 @@ class VpTecnologiaScene extends Phaser.Scene {
 
           gameObject.setPosition(box.x, box.y);
           gameObject.input.enabled = false; // Desabilitar futuros drags
-          box.target.setFillStyle(0x00FFFFFF, 0.5); // Verde para indicar acerto
+          box.target.setFillStyle(0x00FF00, 0.5); // Verde para indicar acerto
 
           showFeedback("Correto!", "#00FF00");
 
@@ -598,7 +599,7 @@ class VpTecnologiaScene extends Phaser.Scene {
           this.time.delayedCall(500, () => {
             if (!placedCorrectly.some((placed, idx) =>
               placed && words[idx].texture.key === wrongTarget.word)) {
-              wrongTarget.target.setFillStyle(0x800080, 0.5);
+              wrongTarget.target.setFillStyle(0x800080);
             }
           });
 
