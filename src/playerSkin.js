@@ -39,7 +39,7 @@ class PlayerSkinSelection extends Phaser.Scene {
         }
 
         this.load.image('buttonStart', '../assets/assets_botoes/botaoStart.png');
-        this.load.image('ttSkin', '../assets/assets_objetos/escolhaSeuPersonagem.png')
+        this.load.image('ttSkin', '../assets/assets_objetos/escolhaSeuPersonagem.png');
     }
     
 
@@ -52,7 +52,7 @@ class PlayerSkinSelection extends Phaser.Scene {
         const height = this.cameras.main.height;
 
         const selectedPlayerKey = `player${this.selectedSpriteSheet}`;
-        this.playerSprite = this.add.sprite(100, 100, selectedPlayerKey); // Exemplo de uso
+        //this.playerSprite = this.add.sprite(100, 100, selectedPlayerKey); // Exemplo de uso
 
         // Adiciona a imagem ao centro da tela, ajustando a posição vertical
         this.add.image(width / 2, height / 2 - 250, 'ttSkin');
