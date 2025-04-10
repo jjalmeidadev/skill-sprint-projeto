@@ -1036,6 +1036,22 @@ Com os avanços alcançados no desenvolvimento do jogo, esta seção dedicada à
   <sup>Fonte: elaborado pelos autores.</sup>
 </div>
 
+
+
+<div align="center">
+  <sub>Atualização na HUD.</sub><br>
+  <img src="https://github.com/user-attachments/assets/efba89c1-dfda-4edc-b48f-66765a2818c2" width="900px" 
+  alt="Título"><br>
+  <sup>Fonte: elaborado pelos autores.</sup>
+</div>
+
+<div align="center">
+  <sub>Layout para escolha de personagem.</sub><br>
+  <img src="https://github.com/user-attachments/assets/d7c122a2-e13f-43e2-bb0a-284eb52439fc" width="900px" 
+  alt="Título"><br>
+  <sup>Fonte: elaborado pelos autores.</sup>
+</div>
+
 # <a name="c5"></a>5. Testes
 
 ## 5.1. Casos de Teste (sprints 2 a 4)
