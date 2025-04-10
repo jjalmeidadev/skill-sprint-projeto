@@ -1048,8 +1048,31 @@ Com base nos resultados obtidos durante a fase de testes e a partir do feedback 
 Buscando tornar a transmissão de informações complexas mais acessível e envolvente,, decidimos incorporar minigames no estilo puzzle em quase todas as fases do nosso serious game. Essa estratégia visa não apenas estimular o engajamento do jogador com o conteúdo, mas também transformar a aprendizagem em uma experiência lúdica, leve e de fácil assimilação, evitando que o processo se torne cansativo ou desmotivador. Para embasar essa decisão, realizamos uma pesquisa de campo que revelou que a faixa etária predominante do nosso público gira em torno dos 38 anos. Com base nesse dado, consideramos que parte dos usuários pode não ter familiaridade prévia com jogos eletrônicos. Por isso, priorizamos o desenvolvimento de minigames com mecânicas simples e intuitivas, garantindo que qualquer jogador, independentemente de sua experiência prévia, consiga interagir com as atividades propostas de forma fluida e satisfatória.
 
 <div align="center">
-  <sub>Layout para escolha de personagem.</sub><br>
+  <sub>Minigame Vp negócios.</sub><br>
   <img src="https://github.com/user-attachments/assets/d7c122a2-e13f-43e2-bb0a-284eb52439fc" width="900px" 
+  alt="Título"><br>
+  <sup>Fonte: elaborado pelos autores.</sup>
+</div>
+
+<div align="center">
+  <sub>Minigame Vp pessoas.</sub><br>
+  <img src="https://github.com/user-attachments/assets/4f7a9d8f-5f93-4811-b4af-fed431f2dc5e" width="900px" 
+  alt="Título"><br>
+  <sup>Fonte: elaborado pelos autores.</sup>
+</div>
+
+Após conquistar o engajamento inicial do jogador com a proposta do jogo, avançamos para a introdução dos minigames subsequentes dentro da mesma fase, os quais têm como objetivo aprofundar o conteúdo proposto. Nesta etapa, planejamos integrar informações mais extensas e complexas — especificamente orientações relacionadas às possibilidades de crescimento, progressão e mudança de carreira ou função dentro da empresa VIVO — utilizando abordagens inspiradas em estratégias consagradas de jogos educacionais. Para facilitar a assimilação dessas informações, adotamos mecânicas variadas como a organização lógica de sequências, jogos de palavras, quizzes e atividades correlatas, que permitem transformar o conteúdo denso em desafios interativos e estimulantes. Essa combinação visa manter o interesse do jogador, ao mesmo tempo em que promove uma aprendizagem significativa sobre as oportunidades profissionais disponíveis na organização.
+
+<div align="center">
+  <sub>Minigame Vp tecnologia.</sub><br>
+  <img src="https://github.com/user-attachments/assets/770d884f-6702-4240-ac1f-a1820d7d5e2a" width="900px" 
+  alt="Título"><br>
+  <sup>Fonte: elaborado pelos autores.</sup>
+</div>
+
+<div align="center">
+  <sub>Minigame Vp estratégia.</sub><br>
+  <img src="https://github.com/user-attachments/assets/4f7a9d8f-5f93-4811-b4af-fed431f2dc5e" width="900px" 
   alt="Título"><br>
   <sup>Fonte: elaborado pelos autores.</sup>
 </div>
