@@ -1056,7 +1056,7 @@ Buscando tornar a transmissão de informações complexas mais acessível e envo
 
 <div align="center">
   <sub>Minigame Vp pessoas.</sub><br>
-  <img src="https://github.com/user-attachments/assets/4f7a9d8f-5f93-4811-b4af-fed431f2dc5e" width="900px" 
+  <img src="https://github.com/user-attachments/assets/39cb8dba-29ff-4704-9840-773d3e263e58" width="900px" 
   alt="Título"><br>
   <sup>Fonte: elaborado pelos autores.</sup>
 </div>
