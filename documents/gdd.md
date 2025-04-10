@@ -1036,7 +1036,7 @@ Com os avanços alcançados no desenvolvimento do jogo, esta seção dedicada à
   <sup>Fonte: elaborado pelos autores.</sup>
 </div>
 
-
+Com base nos resultados obtidos durante a fase de testes e a partir do feedback detalhado fornecido pelos participantes, realizamos uma série de ajustes no nosso serious game com o objetivo de aprimorar a experiência do usuário. Uma das mudanças mais significativas foi a reformulação da HUD de direcionamento. Inicialmente, havíamos implementado um som agudo de exclamação para sinalizar ao jogador a necessidade de se deslocar até um determinado ponto de interesse. No entanto, de acordo com os relatos dos testers, esse recurso acabou se tornando repetitivo e incômodo, comprometendo a fluidez da jogabilidade. Além disso, em determinadas cenas, a ausência da imagem visual da exclamação na interface dificultava a orientação, fazendo com que o jogador se sentisse desorientado. Como solução, desenvolvemos um novo sistema de navegação: uma seta direcional fixa foi posicionada acima do personagem, indicando constantemente o caminho que deve ser seguido, substituindo parcialmente o alerta sonoro. Essa abordagem visa tornar a experiência mais intuitiva e confortável, reduzindo distrações auditivas e melhorando a clareza das instruções durante o jogo.
 
 <div align="center">
   <sub>Atualização na HUD.</sub><br>
@@ -1044,6 +1044,8 @@ Com os avanços alcançados no desenvolvimento do jogo, esta seção dedicada à
   alt="Título"><br>
   <sup>Fonte: elaborado pelos autores.</sup>
 </div>
+
+Com o objetivo de transmitir informações complexas de forma gamificada e acessível, decidimos incorporar minigames no estilo puzzle em quase todas as fases do nosso serious game. Essa estratégia visa não apenas estimular o engajamento do jogador com o conteúdo, mas também transformar a aprendizagem em uma experiência lúdica, leve e de fácil assimilação, evitando que o processo se torne cansativo ou desmotivador. Para embasar essa decisão, realizamos uma pesquisa de campo que revelou que a faixa etária predominante do nosso público gira em torno dos 38 anos. Com base nesse dado, consideramos que parte dos usuários pode não ter familiaridade prévia com jogos eletrônicos. Por isso, priorizamos o desenvolvimento de minigames com mecânicas simples e intuitivas, garantindo que qualquer jogador, independentemente de sua experiência prévia, consiga interagir com as atividades propostas de forma fluida e satisfatória.
 
 <div align="center">
   <sub>Layout para escolha de personagem.</sub><br>
