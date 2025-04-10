@@ -1027,6 +1027,15 @@ Na próxima sprint, planejamos corrigir bugs da implementação dos sons no jogo
 
 *Descreva e ilustre aqui o desenvolvimento dos refinamentos e revisões da versão final do jogo, explicando brevemente o que foi entregue em termos de MVP. Utilize prints de tela para ilustrar.*
 
+Com os avanços alcançados no desenvolvimento do jogo, esta seção dedicada à revisão do MVP (mínimo produto viável) busca reunir as implementações já realizadas e incorporar novos elementos que tornem a experiência do jogador ainda mais envolvente. Atendendo à solicitação da VIVO, nosso cliente, implementamos a possibilidade de escolha do personagem com foco na representatividade. Foram desenvolvidas quatro skins distintas, pensadas para refletir diferentes características de gênero, raça e estilo, promovendo maior inclusão e identificação entre os colaboradores. Essa novidade amplia a imersão do jogador, tornando a experiência mais personalizada e conectada à diversidade do público.
+
+<div align="center">
+  <sub>Layout para escolha de personagem.</sub><br>
+  <img src="![LayoutPlayer](https://github.com/user-attachments/assets/2542cbaa-cbf7-4bc1-b2ee-33c584cb779a)" width="900px" 
+  alt="Título"><br>
+  <sup>Fonte: elaborado pelos autores.</sup>
+</div>
+
 # <a name="c5"></a>5. Testes
 
 ## 5.1. Casos de Teste (sprints 2 a 4)
