@@ -593,48 +593,61 @@ class OfficeScene extends Phaser.Scene {
   }
   
   createNpcAnimations() { 
-    this.anims.create({ // Cria a animação "Idle" para a NPC 7
-      key: "Idle", // Nome da animação
-      frames: this.anims.generateFrameNumbers('npc7', { start: 18, end: 23 }), // Define os quadros da animação
-      frameRate: 4, // Velocidade da animação (quadros por segundo)
-      repeat: -1, // Faz a animação repetir indefinidamente
-    });
+    if (!this.anims.exists("Idle")) { // Verifica se a animação "Idle" já existe
+      this.anims.create({ // Cria a animação "Idle" para a NPC 7
+        key: "Idle", // Nome da animação
+        frames: this.anims.generateFrameNumbers('npc7', { start: 18, end: 23 }), // Define os quadros da animação
+        frameRate: 4, // Velocidade da animação (quadros por segundo)
+        repeat: -1, // Faz a animação repetir indefinidamente
+      });
+    }
 
-    this.anims.create({ // Cria a animação "npc3" para a NPC 3
-      key: "npc3", // Nome da animação
-      frames: this.anims.generateFrameNumbers('npc3', { start: 6, end: 11 }), // Define os quadros da animação
-      frameRate: 4, // Velocidade da animação (quadros por segundo)
-      repeat: -1, // Faz a animação repetir indefinidamente
-    });
+    if (!this.anims.exists("npc3")) { // Verifica se a animação "npc3" já existe
+      this.anims.create({ // Cria a animação "npc3" para a NPC 3
+        key: "npc3", // Nome da animação
+        frames: this.anims.generateFrameNumbers('npc3', { start: 6, end: 11 }), // Define os quadros da animação
+        frameRate: 4, // Velocidade da animação (quadros por segundo)
+        repeat: -1, // Faz a animação repetir indefinidamente
+      });
+    }
 
-    this.anims.create({ // Cria a animação "npc4" para a NPC 4
-      key: "npc4", // Nome da animação
-      frames: this.anims.generateFrameNumbers('npc4', { start: 6, end: 11 }), // Define os quadros da animação
-      frameRate: 4, // Velocidade da animação (quadros por segundo)
-      repeat: -1, // Faz a animação repetir indefinidamente
-    });
+    if (!this.anims.exists("npc4")) { // Verifica se a animação "npc4" já existe
+      this.anims.create({ // Cria a animação "npc4" para a NPC 4
+        key: "npc4", // Nome da animação
+        frames: this.anims.generateFrameNumbers('npc4', { start: 6, end: 11 }), // Define os quadros da animação
+        frameRate: 4, // Velocidade da animação (quadros por segundo)
+        repeat: -1, // Faz a animação repetir indefinidamente
+      });
+    }
 
-    this.anims.create({ // Cria a animação "npc2" para a NPC 2
-      key: "npc2", // Nome da animação
-      frames: this.anims.generateFrameNumbers('npc2', { start: 6, end: 11 }), // Define os quadros da animação
-      frameRate: 4, // Velocidade da animação (quadros por segundo)
-      repeat: -1, // Faz a animação repetir indefinidamente
-    });
+    if (!this.anims.exists("npc2")) { // Verifica se a animação "npc2" já existe
+      this.anims.create({ // Cria a animação "npc2" para a NPC 2
+        key: "npc2", // Nome da animação
+        frames: this.anims.generateFrameNumbers('npc2', { start: 6, end: 11 }), // Define os quadros da animação
+        frameRate: 4, // Velocidade da animação (quadros por segundo)
+        repeat: -1, // Faz a animação repetir indefinidamente
+      });
+    }
 
-    this.anims.create({ // Cria a animação "npc6" para a NPC 6
-      key: "npc6", // Nome da animação
-      frames: this.anims.generateFrameNumbers('npc6', { start: 6, end: 11 }), // Define os quadros da animação
-      frameRate: 4, // Velocidade da animação (quadros por segundo)
-      repeat: -1, // Faz a animação repetir indefinidamente
-    });
+    if (!this.anims.exists("npc6")) { // Verifica se a animação "npc6" já existe
+      this.anims.create({ // Cria a animação "npc6" para a NPC 6
+        key: "npc6", // Nome da animação
+        frames: this.anims.generateFrameNumbers('npc6', { start: 6, end: 11 }), // Define os quadros da animação
+        frameRate: 4, // Velocidade da animação (quadros por segundo)
+        repeat: -1, // Faz a animação repetir indefinidamente
+      });
+    }
 
-    this.anims.create({ // Cria a animação "npc10" para a NPC 10
-      key: "npc10", // Nome da animação
-      frames: this.anims.generateFrameNumbers('npc10', { start: 42, end: 55 }), // Define os quadros da animação
-      frameRate: 6, // Velocidade da animação (quadros por segundo)
-      repeat: -1, // Faz a animação repetir indefinidamente
-    });
+    if (!this.anims.exists("npc10")) { // Verifica se a animação "npc10" já existe
+      this.anims.create({ // Cria a animação "npc10" para a NPC 10
+        key: "npc10", // Nome da animação
+        frames: this.anims.generateFrameNumbers('npc10', { start: 42, end: 55 }), // Define os quadros da animação
+        frameRate: 6, // Velocidade da animação (quadros por segundo)
+        repeat: -1, // Faz a animação repetir indefinidamente
+      });
+    }
   }
+
 
   vivitaAnimations() {
     this.anims.create({ // Cria a animação para a Vivita

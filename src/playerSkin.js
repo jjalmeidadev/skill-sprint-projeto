@@ -30,7 +30,7 @@ class PlayerSkinSelection extends Phaser.Scene {
             this.load.image(`player${i}Select`, `../assets/personagens/playerSkins/player${i}Select.png`); 
             // Carrega outra imagem com o identificador `person${i}Select` (ex.: person1Select, person2Select, etc.) 
             // e especifica o caminho do arquivo correspondente na pasta de assets.
-            this.load.spritesheet('player', `../assets/personagens/skinsPlayer/players/${this.selectedSpriteSheet}.png`, {frameWidth: 16,frameHeight: 32,});
+            this.load.spritesheet(`player${i}`, `../assets/personagens/skinsPlayer/players/player${i}.png`, {frameWidth: 16,frameHeight: 32,});
         }
 
         // Certifique-se de carregar os fundos também
@@ -50,6 +50,9 @@ class PlayerSkinSelection extends Phaser.Scene {
     create() {
         const width = this.cameras.main.width;
         const height = this.cameras.main.height;
+
+        const selectedPlayerKey = `player${this.selectedSpriteSheet}`;
+        this.playerSprite = this.add.sprite(100, 100, selectedPlayerKey); // Exemplo de uso
 
         // Adiciona a imagem ao centro da tela, ajustando a posição vertical
         this.add.image(width / 2, height / 2 - 250, 'ttSkin');

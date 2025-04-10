@@ -102,7 +102,7 @@ class InitialScene extends Phaser.Scene {
 
     this.anims.create({
       key: "fly", // Nome da animação
-      frames: this.anims.generateFrameNumbers("birdEaster", { start: 0, end: 7 }), // Define os frames da animação
+      frames: this.anims.generateFrameNumbers("birdEaster", { start: 0, end: 3 }), // Define os frames da animação
       frameRate: 10, // Taxa de quadros por segundo
       repeat: -1, // Repetição infinita
     });
@@ -111,7 +111,7 @@ class InitialScene extends Phaser.Scene {
 
     this.anims.create({
       key: "fall", // Nome da animação
-      frames: this.anims.generateFrameNumbers("meteor", { start: 0, end: 7 }), // Define os frames da animação
+      frames: this.anims.generateFrameNumbers("meteor", { start: 0, end: 3 }), // Define os frames da animação
       frameRate: 10, // Taxa de quadros por segundo
       repeat: -1, // Repetição infinita
     });
@@ -120,7 +120,7 @@ class InitialScene extends Phaser.Scene {
 
     this.anims.create({
       key: "explosion", // Nome da animação
-      frames: this.anims.generateFrameNumbers("explosion", { start: 0, end: 7 }), // Define os frames da animação
+      frames: this.anims.generateFrameNumbers("explosion", { start: 0, end: 3 }), // Define os frames da animação
       frameRate: 10, // Taxa de quadros por segundo
       repeat: 0, // Não repete
     });

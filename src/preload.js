@@ -11,10 +11,10 @@ class PreloadSist extends Phaser.Scene {
 
     preload () {
     //PLAYERS
-    this.load.spritesheet('person1', '../assets/personagens/skinsPlayer/players/person1.png');
-    this.load.spritesheet('person2', '../assets/personagens/skinsPlayer/players/person2.png');
-    this.load.spritesheet('person3', '../assets/personagens/skinsPlayer/players/person3.png');
-    this.load.spritesheet('person4', '../assets/personagens/skinsPlayer/players/person4.png');
+    this.load.spritesheet('player1', '../assets/personagens/skinsPlayer/players/player1.png');
+    this.load.spritesheet('player2', '../assets/personagens/skinsPlayer/players/player2.png');
+    this.load.spritesheet('player3', '../assets/personagens/skinsPlayer/players/player3.png');
+    this.load.spritesheet('player4', '../assets/personagens/skinsPlayer/players/player4.png');
     //CARREGA A IMAGEM DOS PLAYERS NA PLAYERSKIN
     this.load.image('person1I', '../assets/personagens/playerSkins/person1I.png');
     this.load.image('person2I', '../assets/personagens/playerSkins/person2I.png');
