@@ -24,6 +24,7 @@ class EndScene extends Phaser.Scene {
         this.load.image('marcela', '../assets/names/marcela.png'); // Carrega a imagem de Marcela
         this.load.image('mike', '../assets/names/mike.png'); // Carrega a imagem de Mike
         this.load.image('sophia', '../assets/names/sophia.png'); // Carrega a imagem de Sophia
+        this.load.audio("initialMusic", "../assets/Kevin MacLeod - Pixelland ♫ NO COPYRIGHT 8-bit Music.mp3"); // Carrega o áudio da música inicial em loop
     }
 
     create() {
@@ -60,6 +61,9 @@ class EndScene extends Phaser.Scene {
             callbackScope: this,
             loop: true
         });
+
+        this.initialMusic = this.sound.add("initialMusic", { loop: true, volume: 0.5 }); // Adiciona a música inicial com loop
+        this.initialMusic.play(); // Toca a música inicial
     }
 
     update() {
