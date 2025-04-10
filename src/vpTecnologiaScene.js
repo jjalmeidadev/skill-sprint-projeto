@@ -15,6 +15,9 @@ class VpTecnologiaScene extends Phaser.Scene {
 
     this.load.audio("bgMusic", "../assets/sounds/Funk-Modulator-RoccoW-_-Chiptune-_No-Copyright-Music_.mp3");
     this.load.audio('walkSound', '../assets/sounds/753292__vrymaa__footsteps-high-heels-hardwood-walk-run (mp3cut.net).wav');
+    this.load.audio('correctSound', '../assets/sounds/476178__unadamlar__correct-choice.wav');
+    this.load.audio('wrongSound', '../assets/sounds/700641__producing_raylite__incorrect-buzzer.wav');
+    this.load.audio('keySound', '../assets/sounds/computer-keyboard-typing-290582 (mp3cut.net).mp3');
 
     this.load.image("computer", "../assets/computador.png");
     this.load.image("box", "../assets/upskilling.png");
@@ -162,6 +165,7 @@ class VpTecnologiaScene extends Phaser.Scene {
         this.keyEComputer.setVisible(true);
         if (Phaser.Input.Keyboard.JustDown(this.keys.interagir)) {
           this.miniGameActive = true;
+          this.keySound();
           this.keyEComputer.setVisible(false);
           this.startMiniGame();
         }
@@ -169,6 +173,11 @@ class VpTecnologiaScene extends Phaser.Scene {
         this.keyEComputer.setVisible(false);
       }
     }
+  }
+
+  keySound() {
+    this.keySoundPlay = this.sound.add('keySound', { loop: false, volume: 10 }); // Adiciona o som de digitação no teclado com volume alto
+    this.keySoundPlay.play(); // Reproduz o som de digitação no teclado
   }
 
   showTitle() {
@@ -343,6 +352,7 @@ class VpTecnologiaScene extends Phaser.Scene {
 
     const showDialogue = () => {
       if (currentDialogueIndex < dialogues.length) {
+        this.keySound();
         isDialogueActive = true;
         indicator.setVisible(false);
         keyE.setVisible(false);
@@ -351,6 +361,7 @@ class VpTecnologiaScene extends Phaser.Scene {
         text.setText(dialogues[currentDialogueIndex]).setVisible(true);
         currentDialogueIndex++;
       } else {
+        this.keySound();
         balloonText.setVisible(false);
         text.setVisible(false);
         keyEnter.setVisible(false);
@@ -422,6 +433,7 @@ class VpTecnologiaScene extends Phaser.Scene {
       const distance = Phaser.Math.Distance.Between(this.player.x, this.player.y, 985, 381);
       if (distance < 100 && !this.miniGameActive) {
         this.miniGameActive = true;
+        this.keySound();
         keyE.setVisible(false);
         this.startMiniGame();
       }
@@ -579,6 +591,8 @@ class VpTecnologiaScene extends Phaser.Scene {
           box.target.setFillStyle(0x00FF00, 0.5); // Verde para indicar acerto
 
           showFeedback("Correto!", "#00FF00");
+          this.correct = this.sound.add('correctSound', { loop: false, volume: 10 });
+          this.correct.play();
 
           // Se todas as palavras estiverem corretas
           if (completeCount === 4) {
@@ -604,6 +618,8 @@ class VpTecnologiaScene extends Phaser.Scene {
           });
 
           showFeedback("Incorreto! Tente novamente.", "#8B0000");
+          this.wrong = this.sound.add('wrongSound', { loop: false, volume: 10 });
+          this.wrong.play();
         }
 
         // Retornar à posição inicial
