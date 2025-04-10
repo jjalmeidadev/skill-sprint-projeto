@@ -206,6 +206,8 @@ class VpRelacoesScene extends Phaser.Scene {
 
     // Configura área de interação
     this.physics.add.overlap(this.player, this.proximityrela, this.handleProximityOverlap, null, this);
+
+    this.showTitle(); // Mostra o título da fase
   }
 
   // Manipula pressionamento da tecla ENTER

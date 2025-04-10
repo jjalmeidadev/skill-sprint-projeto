@@ -197,18 +197,8 @@ class VpTecnologiaScene extends Phaser.Scene {
   }
 
   showTitle() {
-    const titleImage = this.add.image(this.player.x, this.player.y - 150, 'levelTitleTech').setDepth(1000);
+    const titleImage = this.add.image(width - 500, height - 790, 'levelTitleTech').setDepth(1000);
     titleImage.setScale(0.3);
-
-    // Adiciona um fade out para o título após alguns segundos
-    this.time.delayedCall(3000, () => {
-      this.tweens.add({
-        targets: titleImage,
-        alpha: 0,
-        duration: 1000,
-        onComplete: () => titleImage.destroy()
-      });
-    });
   }
 
   createPlayer(width, height) {
@@ -773,6 +763,7 @@ class VpTecnologiaScene extends Phaser.Scene {
     }
     this.createButtonBack();
 
+    this.showTitle()
   }
 
   createButtonBack() {
