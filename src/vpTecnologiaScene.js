@@ -133,7 +133,6 @@ class VpTecnologiaScene extends Phaser.Scene {
     this.createComputer(width, height);
     this.createButtonBack(width, height);
     this.createNPCWithBalloon();
-    this.createComputerIndicator();
 
     this.keys = this.input.keyboard.addKeys({
       up: Phaser.Input.Keyboard.KeyCodes.W,
@@ -361,6 +360,7 @@ class VpTecnologiaScene extends Phaser.Scene {
         text.setText(dialogues[currentDialogueIndex]).setVisible(true);
         currentDialogueIndex++;
       } else {
+        this.createComputerIndicator();
         this.keySound();
         balloonText.setVisible(false);
         text.setVisible(false);
@@ -396,7 +396,7 @@ class VpTecnologiaScene extends Phaser.Scene {
   }
 
   createComputer(width, height) {
-    this.add.image(985, 381, "computer").setScale(0.1); // Apenas adiciona o computador sem mensagem
+    this.add.image(985, 381, "computer").setScale(0.1).setFlipX(true); // Apenas adiciona o computador sem mensagem
   }
 
   createComputerIndicator(visible = true) {
