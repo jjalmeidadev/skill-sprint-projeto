@@ -79,8 +79,8 @@ Para executar seu respectivo código, siga o passo a passo abaixo:
 
 ## 🗃 Histórico de lançamentos
 
-* 0.5.0 - 10/04/2025
-    * 
+* 0.5.0 - 10/04/2025: Foram criadas quatro skins representativas para promover inclusão (R08). A HUD foi reformulada: o som de alerta foi substituído por uma seta fixa sobre o personagem, tornando a navegação mais intuitiva. Também adicionamos minigames simples ao longo das novas fases (VP de Estratégia, Negócios, Relações Institucionais e Tecnologia - R19, R20, R21 e R22), facilitando o aprendizado de forma leve e acessível, especialmente para o público com média de 38 anos (visitamos a empresa Vivo e realizamos testes com os colaboradores, que forneceram feedback positivo).
+
 * 0.4.0 - 28/03/2025: Expandimos o jogo com 6 andares temáticos, cada um com minigames exclusivos (gestão de pessoas, negócios, estratégia, relações e tecnologia). Implementamos a tela inicial revisada e corrigimos bugs críticos. Próximos passos: polir transições, balancear minigames e corrigir feedbacks visuais/sonoros.
   
 * 0.3.0 - 14/03/2025: Durante o desenvolvimento intermediário, implementamos a tela de tutorial, finalizamos o minigame de criação do currículo (R06), desenvolvemos o design da sala do elevador e adicionamos a Vivita, a primeira NPC, ao mapa. Apesar de algumas cenas ainda não estarem totalmente conectadas, a interface evoluiu significativamente, e a primeira fase está mais próxima da visão final. 
