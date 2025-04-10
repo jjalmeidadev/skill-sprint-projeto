@@ -611,6 +611,55 @@ class VpEstrategiaScene extends Phaser.Scene {
       this.keyESheet.setVisible(distanceSheet < 100);
     }
     this.updateArrowToNearestIndicator();
+
+    if (this.finalExclamation && this.finalExclamation.active) {
+      const distanceFinal = Phaser.Math.Distance.Between(
+        this.player.x, this.player.y,
+        this.finalExclamation.x, this.finalExclamation.y
+      );
+    
+      if (distanceFinal < 100) {
+        this.finalExclamation.destroy(); // Remove o indicador
+        this.keyEFinal.setVisible(true); // Mostra a tecla E
+      }
+    }
+    
+    if (this.keyEFinal && this.keyEFinal.visible && this.keys.interagir.isDown && !this.activeDialogue) {
+      this.keyEFinal.destroy(); // Remove a tecla E
+    
+      // Cria o diálogo final
+      const balloonX = this.npc.x + 90;
+      const balloonY = this.npc.y - 100;
+      const textY = this.npc.y - 120;
+    
+      const balloonText = this.add.image(balloonX, balloonY, "balloonText")
+        .setOrigin(0.5)
+        .setScale(1);
+    
+      const text = this.add.text(balloonX, textY,
+        "Parabéns! Fase VP de Estratégia concluída!", {
+        fontSize: "16px",
+        fill: "#000000",
+        wordWrap: { width: balloonText.width - 20 },
+        align: "center"
+      }).setOrigin(0.5);
+    
+      const enterKey = this.add.image(
+        balloonX + balloonText.width / 2 - 207,
+        balloonY + 20,
+        'keyEnter'
+      ).setScale(0.1);
+    
+      const removeDialogue = () => {
+        balloonText.destroy();
+        text.destroy();
+        enterKey.destroy();
+        this.input.keyboard.off('keydown-ENTER', removeDialogue);
+        this.createButtonBack(width, height);
+      };
+    
+      this.input.keyboard.on('keydown-ENTER', removeDialogue);
+    }
   }
 
   showTitle() {
@@ -634,17 +683,17 @@ class VpEstrategiaScene extends Phaser.Scene {
 
     // Ajustes específicos para cada NPC
     if (npc === this.npcIdle) {
-      balloonX = npc.x + 150;
-      balloonY = npc.y - 80;
-      textY = npc.y - 100;
+      balloonX = npc.x + 80;
+      balloonY = npc.y - 90;
+      textY = npc.y - 110;
     } else if (npc === this.npcIdle2) {
-      balloonX = npc.x + 120;
-      balloonY = npc.y - 60;
-      textY = npc.y - 80;
+      balloonX = npc.x + 80;
+      balloonY = npc.y - 90;
+      textY = npc.y - 110;
     } else if (npc === this.npcIdle3) {
-      balloonX = npc.x + 120;
-      balloonY = npc.y - 60;
-      textY = npc.y - 80;
+      balloonX = npc.x + 80;
+      balloonY = npc.y - 90;
+      textY = npc.y - 110;
     }
 
     // Cria o balão de fala
@@ -891,47 +940,20 @@ class VpEstrategiaScene extends Phaser.Scene {
   checkCompletionDialogue() {
     console.log("Interações com a tecla E:", this.eKeyInteractions);
     console.log("Interagiu com:", this.interactedWith);
-
-    if (this.eKeyInteractions === 6) {
+  
+    if (this.eKeyInteractions === 6 && !this.finalInteractionComplete) {
+      this.finalInteractionComplete = true;
+  
       // Cria exclamação acima da NPC
-      const finalExclamation = this.physics.add.sprite(this.npc.x, this.npc.y - 80, "indicator")
+      this.finalExclamation = this.physics.add.sprite(this.npc.x, this.npc.y - 80, "indicator")
         .setScale(0.2);
-      finalExclamation.play("exclaiming");
-      finalExclamation.setImmovable(true);
-
-      // Cria diálogo com balão
-      const balloonX = this.npc.x + 90;
-      const balloonY = this.npc.y - 100;
-      const textY = this.npc.y - 120;
-
-      const balloonText = this.add.image(balloonX, balloonY, "balloonText")
-        .setOrigin(0.5)
-        .setScale(1);
-
-      const text = this.add.text(balloonX, textY,
-        "Parabéns! Fase VP de Estratégia concluída!", {
-        fontSize: "16px",
-        fill: "#000000",
-        wordWrap: { width: balloonText.width - 20 },
-        align: "center"
-      }).setOrigin(0.5);
-
-      const enterKey = this.add.image(
-        balloonX + balloonText.width / 2 - 207,
-        balloonY + 20,
-        'keyEnter'
-      ).setScale(0.1);
-
-      const removeDialogue = () => {
-        balloonText.destroy();
-        text.destroy();
-        enterKey.destroy();
-        finalExclamation.destroy();
-        this.input.keyboard.off('keydown-ENTER', removeDialogue);
-        this.createButtonBack(width, height); // Cria o botão de retorno para outra cena
-      };
-
-      this.input.keyboard.on('keydown-ENTER', removeDialogue);
+      this.finalExclamation.play("exclaiming");
+      this.finalExclamation.setImmovable(true);
+  
+      // Cria tecla E (oculta inicialmente)
+      this.keyEFinal = this.add.image(this.npc.x, this.npc.y - 50, 'keyE')
+        .setScale(0.05)
+        .setVisible(false);
     }
   }
 }
