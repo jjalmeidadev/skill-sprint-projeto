@@ -54,8 +54,6 @@ class OfficeScene extends Phaser.Scene {
 
   create() {
     this.cameras.main.fadeIn(1000); // Transição suave ao iniciar a cena
-    const width = this.sys.game.config.width;
-    const height = this.sys.game.config.height;
     
     this.events.on('stopWalkSound', () => { // Evento para parar o som de passos
       if (this.walkSound && this.walkSound.isPlaying) {
@@ -125,6 +123,11 @@ class OfficeScene extends Phaser.Scene {
         this.compassArrow.setRotation(angle + this.arrowOffset);
       }
     });
+
+    this.barrierDoor = this.add.rectangle(width - 1200, height - 500, 20, 20, 0x2F052F).setOrigin(0); // Adiciona um retângulo como barreira
+    this.physics.add.existing(this.barrierDoor, true); // Ativa a física do retângulo
+    this.physics.add.collider(this.player, this.barrierDoor); // Adiciona colisão entre o jogador e a barreira
+    this.barrierDoor.setVisible(false); // Torna o retângulo invisível
   }
 
   createCollisions() {

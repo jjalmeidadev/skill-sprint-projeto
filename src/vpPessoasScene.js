@@ -53,7 +53,7 @@ class VpPessoasScene extends Phaser.Scene {
       this.load.image("panelElev", "../assets/painelelevador.png"); // Carrega a imagem do painel do elevador
       this.load.image("buttonElevPesssoas", "../assets/botaocimaelevador.png"); // Carrega a imagem do botão do elevador
       this.load.image("arrow", "../assets/seta.png");
-     
+      this.load.image('levelTitle', '../assets/titulos/tituloVpPessoas.png') // Carrega os asssets do titulo da fase
     }
     
   create() {
@@ -145,6 +145,13 @@ class VpPessoasScene extends Phaser.Scene {
       .setDepth(1000)      // acima de todos os elementos
       .setScale(0.5)
       .setOrigin(0.5, 0.5);
+
+    this.barrierDoor = this.add.rectangle(width - 520, height - 720, 20, 20, 0x2F052F).setOrigin(0); // Adiciona um retângulo como barreira
+    this.physics.add.existing(this.barrierDoor, true); // Ativa a física do retângulo
+    this.physics.add.collider(this.player, this.barrierDoor); // Adiciona colisão entre o jogador e a barreira
+    this.barrierDoor.setVisible(false); // Torna o retângulo invisível
+
+    this.showTitle(); // Exibe o título na tela
   }
 
   createAnimsIndicator() {
@@ -411,6 +418,8 @@ class VpPessoasScene extends Phaser.Scene {
           if (!this.keyEnterNpcMobile) {
             this.keyEnterNpcMobile = this.add.image(this.npcMobile.x - 20, this.npcMobile.y - 50, 'keyENTER').setScale(0.1).setDepth(1000); 
           }
+          this.buttonClick = this.sound.add('buttonSound', { loop: false, volume: 10 });
+          this.buttonClick.play();
           this.npcMobileInteracted = true;
           this.canInteractWithNpcMobile = false;
           this.showNpcMobileInteraction();
@@ -448,7 +457,10 @@ class VpPessoasScene extends Phaser.Scene {
       }
     }
     
-   
+    showTitle() {
+      const titleImage = this.add.image(this.player.x, this.player.y - 130, 'levelTitle').setDepth(1000); // Adiciona a imagem de parabéns acima do jogador e define sua profundidade para garantir que fique acima de outros elementos
+      titleImage.setScale(0.3); // Ajusta o tamanho da imagem de parabéns
+    }
 
     movePlayer() {
       const speed = 150; // Define a velocidade do jogador
@@ -623,9 +635,13 @@ class VpPessoasScene extends Phaser.Scene {
         currentIndex++; // Avança para a próxima fala
         if (currentIndex < speech.length) { // Verifica se ainda há falas restantes
           text.setText(speech[currentIndex]); // Atualiza o texto com a próxima fala
+          this.buttonClick = this.sound.add('buttonSound', { loop: false, volume: 10 });
+          this.buttonClick.play();
         } else { // Se todas as falas foram exibidas
           text.setVisible(false); // Esconde o texto
           balloonText.setVisible(false); // Esconde o balão de fala
+          this.buttonClick = this.sound.add('buttonSound', { loop: false, volume: 10 });
+          this.buttonClick.play();
           this.input.keyboard.off("keydown-ENTER"); // Remove o evento da tecla "ENTER"
 
           if (this.keyEnterNpcMobile) { // Verifica se o ícone da tecla "ENTER" existe
@@ -731,6 +747,7 @@ class VpPessoasScene extends Phaser.Scene {
           text.setText(speechRafaela[currentSpeechIndex]); // Atualiza o texto com a próxima fala
           this.buttonClick.play(); // Toca o som de clique
         } else { // Se todas as falas foram exibidas
+          this.buttonClick.play(); // Toca o som de clique
           balloonText.setVisible(false); // Esconde o balão de fala
           text.setVisible(false); // Esconde o texto
           this.input.keyboard.off("keydown-ENTER"); // Remove o evento da tecla "ENTER"
@@ -842,34 +859,27 @@ class VpPessoasScene extends Phaser.Scene {
     
       this.indicatorBookActive = true;
     }
-    
-
-    
 
     createButtonBack() {
-      console.log("Adicionando botão de voltar"); // Loga no console que o botão de voltar está sendo adicionado
       if (this.botaoVoltar) return; // impede criar mais de uma vez
 
-      this.botaoVoltar = this.add.image(width - 508, height - 660, "keyE"); // Adiciona o botão de voltar na posição especificada
-      this.botaoVoltar.setScale(0.07); // Define o tamanho do botão de voltar
-      this.botaoVoltar.setDepth(1000); // Coloca o botão acima de outros objetos
+      const exclamation = this.physics.add.sprite(width - 508, height - 670, "indicator");
+      exclamation.play("exclaiming"); // Reproduz a animação de exclamação
+      exclamation.setScale(0.2);
+      exclamation.setImmovable(true); // Evita que o objeto se mova com colisões
 
-      this.input.keyboard.on("keydown-E", () => { // Adiciona evento para a tecla "E"
-        const distancia = Phaser.Math.Distance.Between(
-          this.player.x, this.player.y, // Posição do jogador
-          this.botaoVoltar.x, this.botaoVoltar.y // Posição do botão de voltar
-        );
-
-      if (distancia < 100) { // Verifica se o jogador está próximo do botão de voltar
-        // Pausa todos os sons da cena
+      // Adiciona o overlap entre player e exclamation
+      this.physics.add.overlap(this.player, exclamation, () => {
+        // Lógica de troca de cena
         this.sound.stopAll();
-
+    
+        this.registry.set('vpPessoasConcluida', true);
         const elevadorScene = this.scene.get("elevadorScene");
         elevadorScene.resumeFromPessoas = true;
+    
         this.scene.stop("vpPessoasScene");
         this.scene.resume("elevadorScene");
-        }
-      });
+      }, null, this);
     }
 
     resume() {

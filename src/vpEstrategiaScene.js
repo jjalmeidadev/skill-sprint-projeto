@@ -41,6 +41,8 @@ class VpEstrategiaScene extends Phaser.Scene {
     this.load.image('meme_estrategia', '../assets/meme_estrategia.jpg'); // Adiciona imagem do meme
     this.load.image('sheet', '../assets/sheet.png'); // Adiciona imagem da folha
     this.load.image('notes', '../assets/notes.png'); // Adiciona imagem das anotações
+    this.load.image('levelTitle', '../assets/titulos/tituloVpEstrategias.png') // Carrega os asssets do titulo da fase
+    this.load.image('arrow', '../assets/seta.png');
   }
 
   init(data) {
@@ -88,7 +90,6 @@ class VpEstrategiaScene extends Phaser.Scene {
     // Inicializa a variável de controle
     this.npcInteractionComplete = false;
 
-
     const startTime = VpEstrategiaScene.lastMusicTime || 0; // Recupera o tempo salvo da música ou inicia do início
     this.strategyMusic = this.sound.add("strategyMusic", { loop: true }); // Adiciona a música de fundo com loop
     this.strategyMusic.play({ seek: startTime }); // Toca a música a partir do tempo salvo
@@ -112,7 +113,6 @@ class VpEstrategiaScene extends Phaser.Scene {
 
     this.createPlayer(width, height); // Cria o jogador na cena
     this.createPlayerAnimations(); // Cria as animações do jogador
-    this.createButtonBack(width, height); // Cria o botão de retorno para outra cena
 
     this.physics.add.collider(this.player, layerParede); // Colisão do jogador com a camada de paredes
     this.physics.add.collider(this.player, layerDecoracaoComBarreiras); // Colisão do jogador com a camada de decoração com barreiras
@@ -148,7 +148,13 @@ class VpEstrategiaScene extends Phaser.Scene {
     this.exclamation = this.physics.add.sprite(this.npc.x, this.npc.y - 80, "indicator").setScale(0.3);
     this.exclamation.play("exclaiming"); // Reproduz a animação da exclamação
     this.exclamation.setImmovable(true); // Define que a exclamação não pode ser movida
-
+    this.arrow = this.add.image(this.cameras.main.width / 2, 335, "arrow")
+    .setScale(0.5)
+    .setOrigin(0.5, 0.5)
+    .setDepth(1000);
+    this.arrow.setScrollFactor(0); // Fixa a seta na tela
+  
+  
     this.physics.add.overlap(this.player, this.exclamation, () => {
       if (!this.activeDialogue) {
         this.keyEMain.setVisible(true);
@@ -536,6 +542,13 @@ class VpEstrategiaScene extends Phaser.Scene {
     // Dá zoom na tela do jogo e faz a câmera seguir o personagem
     this.cameras.main.startFollow(this.player); // Faz a câmera seguir o jogador
     this.cameras.main.setZoom(2); // Define o nível de zoom da câmera
+
+    this.barrierDoor = this.add.rectangle(width - 800, height - 720, 20, 20, 0x2F052F).setOrigin(0); // Adiciona um retângulo como barreira
+    this.physics.add.existing(this.barrierDoor, true); // Ativa a física do retângulo
+    this.physics.add.collider(this.player, this.barrierDoor); // Adiciona colisão entre o jogador e a barreira
+    this.barrierDoor.setVisible(false); // Torna o retângulo invisível
+
+    this.showTitle(); // Exibe o titulo da fase
   }
 
   update() {
@@ -592,6 +605,12 @@ class VpEstrategiaScene extends Phaser.Scene {
       );
       this.keyESheet.setVisible(distanceSheet < 100);
     }
+    this.updateArrowToNearestIndicator();
+  }
+
+  showTitle() {
+    const titleImage = this.add.image(this.player.x, this.player.y - 130, 'levelTitle').setDepth(1000); // Adiciona a imagem de parabéns acima do jogador e define sua profundidade para garantir que fique acima de outros elementos
+    titleImage.setScale(0.3); // Ajusta o tamanho da imagem de parabéns
   }
 
   startDialogue(speechNpc, npc) {
@@ -739,9 +758,49 @@ class VpEstrategiaScene extends Phaser.Scene {
       }
     }
   }
-
+  updateArrowToNearestIndicator() {
+    if (!this.arrow || !this.player) return;
+  
+    const indicators = [
+      this.exclamation,
+      this.exclamationIdle,
+      this.exclamationIdle2,
+      this.exclamationIdle3,
+      this.mugExclamation,
+      this.mobileExclamation,
+      this.sheetExclamation
+    ].filter(ind => ind && ind.visible && ind.active);
+  
+    if (indicators.length === 0) {
+      this.arrow.setVisible(false);
+      return;
+    }
+  
+    this.arrow.setVisible(true);
+  
+    const nearestIndicator = indicators.reduce((closest, current) => {
+      const distCurrent = Phaser.Math.Distance.Between(this.player.x, this.player.y, current.x, current.y);
+      const distClosest = Phaser.Math.Distance.Between(this.player.x, this.player.y, closest.x, closest.y);
+      return distCurrent < distClosest ? current : closest;
+    });
+  
+    let targetX = nearestIndicator.x;
+    let targetY = nearestIndicator.y;
+  
+    // Corrigir posição se estiver dentro de container
+    if (nearestIndicator.parentContainer) {
+      targetX += nearestIndicator.parentContainer.x;
+      targetY += nearestIndicator.parentContainer.y;
+    }
+  
+    const angle = Phaser.Math.Angle.Between(this.player.x, this.player.y, targetX, targetY);
+    this.arrow.setRotation(angle + Math.PI);
+  }
+  
+  
+  
   createPlayer(width, height) {
-    this.player = this.physics.add.sprite(width - 670, height - 660, 'player'); // Adiciona o sprite do jogador na posição especificada
+    this.player = this.physics.add.sprite(width - 790, height - 660, 'player'); // Adiciona o sprite do jogador na posição especificada
     this.player.setScale(2.5); // Ajusta o tamanho do jogador
   }
 
@@ -805,24 +864,23 @@ class VpEstrategiaScene extends Phaser.Scene {
   }
 
   createButtonBack(width, height) {
-    const buttonBack = this.add.image(width - 700, height - 680, "keyE"); // Adiciona a imagem do botão de retorno na posição especificada
-    buttonBack.setScale(0.1); // Alterado de 0.2 para 0.1
+    const exclamation = this.physics.add.sprite(width - 800, height - 700, "indicator");
+    exclamation.play("exclaiming"); // Reproduz a animação de exclamação
+    exclamation.setScale(0.2);
+    exclamation.setImmovable(true); // Evita que o objeto se mova com colisões
 
-    this.input.keyboard.on("keydown-E", () => { // Adiciona um evento para a tecla "E"
-      const distance = Phaser.Math.Distance.Between( // Calcula a distância entre o jogador e o botão de retorno
-        this.player.x, this.player.y, buttonBack.x, buttonBack.y // Coordenadas do jogador e do botão
-      );
-
-      if (distance < 100) { // Verifica se o jogador está próximo o suficiente do botão (raio de 100)
-        this.sound.stopAll();
-        
-        this.registry.set('vpEstrategiaConcluida', true);
-        const elevadorScene = this.scene.get("elevadorScene");
-        elevadorScene.resumeFromStrategies = true;
-        this.scene.stop("VpEstrategiaScene");
-        this.scene.resume("elevadorScene");
-      }
-    });
+    // Adiciona o overlap entre player e exclamation
+    this.physics.add.overlap(this.player, exclamation, () => {
+      // Lógica de troca de cena
+      this.sound.stopAll();
+  
+      this.registry.set('vpEstrategiaConcluida', true);
+      const elevadorScene = this.scene.get("elevadorScene");
+      elevadorScene.resumeFromStrategies = true;
+  
+      this.scene.stop("VpEstrategiaScene");
+      this.scene.resume("elevadorScene");
+    }, null, this);
   }
 
   checkCompletionDialogue() {
@@ -865,6 +923,7 @@ class VpEstrategiaScene extends Phaser.Scene {
         enterKey.destroy();
         finalExclamation.destroy();
         this.input.keyboard.off('keydown-ENTER', removeDialogue);
+        this.createButtonBack(width, height); // Cria o botão de retorno para outra cena
       };
 
       this.input.keyboard.on('keydown-ENTER', removeDialogue);

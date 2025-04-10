@@ -1086,18 +1086,65 @@ No futuro, planejamos expandir os casos de teste para cobrir novas funcionalidad
 
 ### 5.2.1 Registros de testes
 
-*Descreva nesta seção as sessões de teste/entrevista com diferentes jogadores. Registre cada teste conforme o template a seguir.*
 
-Nome | João Jonas (use nomes fictícios)
+Nome | Rebeca Maciel (analista de employer branding sênior)
 --- | ---
-Já possuía experiência prévia com games? | sim, é um jogador casual
-Conseguiu iniciar o jogo? | sim
-Entendeu as regras e mecânicas do jogo? | entendeu as regras, mas sobre as mecânicas, apenas as essenciais, não explorou os comandos complexos
-Conseguiu progredir no jogo? | sim, sem dificuldades  
-Apresentou dificuldades? | Não, conseguiu jogar com facilidade e afirmou ser fácil
-Que nota deu ao jogo? | 9.0
-O que gostou no jogo? | Gostou  de como o jogo vai ficando mais difícil ao longo do tempo sem deixar de ser divertido
-O que poderia melhorar no jogo? | A responsividade do personagem aos controles, disse que havia um pouco de atraso desde o momento do comando até a resposta do personagem
+Já possuía experiência prévia com games? | Sim
+Conseguiu iniciar o jogo? | Sim
+Entendeu as regras e mecânicas do jogo? | Entendeu as regras e mecânicas
+Conseguiu progredir no jogo? | Sim
+Apresentou dificuldades? | Não
+Que nota deu ao jogo? | 10.0
+O que gostou no jogo? | Gostou de todas as VPs e níveis
+O que poderia melhorar no jogo? | Disse que precisavamos embaralhar as respostas do quiz do currículo
+
+
+Nome | Aline Marinho (gerente de aceleração de talentos)
+--- | ---
+Já possuía experiência prévia com games? | Pouca
+Conseguiu iniciar o jogo? | Sim
+Entendeu as regras e mecânicas do jogo? | Entendeu as regras, mas sobre as mecânicas, apenas as essenciais, não explorou os comandos complexos
+Conseguiu progredir no jogo? | Sim, apenas com dificuldade em 1 mini-game
+Apresentou dificuldades? | Não, conseguiu jogar
+Que nota deu ao jogo? | 10.0
+O que gostou no jogo? | Gostou que o jogo é dinâmico e possui uma proposta super legal
+O que poderia melhorar no jogo? | Disse que gostaria da implementação de setas para o caminhar do jogador
+
+
+Nome | Leonardo Sakamoto (consultor - gestão de pessoas)
+--- | ---
+Já possuía experiência prévia com games? | Possuía 
+Conseguiu iniciar o jogo? | Sim
+Entendeu as regras e mecânicas do jogo? | Entendeu as regras e mecânicas
+Conseguiu progredir no jogo? | Sim, conseguiu passar por todas as fases
+Apresentou dificuldades? | Não
+Que nota deu ao jogo? | 10.0
+O que gostou no jogo? | Gostou da televisão com propagandas no elevador
+O que poderia melhorar no jogo? |Tirar o JOB ROTATION do tutorial 
+
+
+Nome | Fabrícia Bastos Mocci (gestão de pessoas e projetos em capacitação)
+--- | ---
+Já possuía experiência prévia com games? | Não
+Conseguiu iniciar o jogo? | Sim
+Entendeu as regras e mecânicas do jogo? | Entendeu as regras e mecânicas
+Conseguiu progredir no jogo? | Sim, porém com dificuldade
+Apresentou dificuldades? | Não
+Que nota deu ao jogo? | 10.0
+O que gostou no jogo? | Gostou do conteúdo do jogo
+O que poderia melhorar no jogo? |Achou que para maior acessibilidade, o jogador deveria se movimentar pelas setas
+
+
+Nome | Cristiane Cruz (analista de gestão pelno)
+--- | ---
+Já possuía experiência prévia com games? | Não
+Conseguiu iniciar o jogo? | Sim
+Entendeu as regras e mecânicas do jogo? | Entendeu as regras e mecânicas
+Conseguiu progredir no jogo? | Sim, porém com dificuldade
+Apresentou dificuldades? | Pouca
+Que nota deu ao jogo? | 10.0
+O que gostou no jogo? | Gostou do conteúdo do jogo
+O que poderia melhorar no jogo? |Gostaria que a fonte aumentasse e o personagem se movesse por setas
 
 ### 5.2.2 Melhorias
 
