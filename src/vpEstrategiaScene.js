@@ -865,7 +865,9 @@ class VpEstrategiaScene extends Phaser.Scene {
       this.exclamationIdle3,
       this.mugExclamation,
       this.mobileExclamation,
-      this.sheetExclamation
+      this.sheetExclamation,
+      this.finalExclamation,
+      this.elevatorExclamation
     ].filter(ind => ind && ind.visible && ind.active);
   
     if (indicators.length === 0) {
@@ -965,6 +967,7 @@ class VpEstrategiaScene extends Phaser.Scene {
     exclamation.play("exclaiming"); // Reproduz a animação de exclamação
     exclamation.setScale(0.2);
     exclamation.setImmovable(true); // Evita que o objeto se mova com colisões
+    this.elevatorExclamation = exclamation;
 
     // Adiciona o overlap entre player e exclamation
     this.physics.add.overlap(this.player, exclamation, () => {
