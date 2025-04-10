@@ -172,6 +172,11 @@ class PlayerSkinSelection extends Phaser.Scene {
         yoyo: true,
         ease: 'Sine.easeInOut'
     });
+
+    // Ativa o botão "Jogar" após a seleção de uma skin
+    if (this.buttonStart) {
+        this.buttonStart.setInteractive();
+    }
     }
 
     buttonSound() {
@@ -194,6 +199,10 @@ class PlayerSkinSelection extends Phaser.Scene {
     const buttonStart = this.add.image(width / 2, height / 2 + 250, "buttonStart"); // Adiciona a imagem do botão "Jogar" na posição especificada
     buttonStart.setInteractive(); // Torna o botão interativo
     buttonStart.setScale(1); // Define o tamanho do botão
+    // Inicialmente desativa a interatividade do botão
+    buttonStart.disableInteractive();
+    // Armazena o botão para ativá-lo posteriormente
+    this.buttonStart = buttonStart;
     buttonStart.on("pointerdown", () => {
         this.buttonSound(); // Toca o som de clique do botão
         this.shutdown(); // Para a música inicial
