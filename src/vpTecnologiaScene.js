@@ -471,35 +471,35 @@ class VpTecnologiaScene extends Phaser.Scene {
 
     // MINIGAME MELHORADO: Criar caixas alvo
     const targetBoxes = [
-      { x: 751, y: 210, word: "word1" },
-      { x: 870, y: 300, word: "word2" },
-      { x: 1004, y: 350, word: "word3" },
-      { x: 693, y: 510, word: "word4" },
+      { x: width - 760, y: height - 544, word: "word1" },
+      { x: width - 654, y: height - 459, word: "word2" },
+      { x: width - 515, y: height - 418, word: "word3" },
+      { x: width - 822, y: height - 247, word: "word4" },
     ];
 
     // Criar caixas de destino visualmente distintas
     targetBoxes.forEach(box => {
       // Criar um retângulo como caixa alvo
-      const target = this.add.rectangle(box.x, box.y, 100, 40, 0x800080);
+      const target = this.add.rectangle(box.x, box.y, 100, 33, 0x800080);
       box.target = target;
     });
 
     // Criar palavras arrastáveis - todas disponíveis desde o início
     const words = [
-      this.add.image(390, 200, "word1").setScale(0.5).setInteractive({ draggable: true }),
-      this.add.image(390, 300, "word2").setScale(0.5).setInteractive({ draggable: true }),
-      this.add.image(390, 400, "word3").setScale(0.5).setInteractive({ draggable: true }),
-      this.add.image(390, 500, "word4").setScale(0.5).setInteractive({ draggable: true }),
+      this.add.image(width - 1210, height - 350, "word1").setScale(0.5).setInteractive({ draggable: true }),
+      this.add.image(width - 1210, height - 550, "word2").setScale(0.5).setInteractive({ draggable: true }),
+      this.add.image(width - 1210, height - 250, "word3").setScale(0.5).setInteractive({ draggable: true }),
+      this.add.image(width - 1210, height - 450, "word4").setScale(0.5).setInteractive({ draggable: true }),
     ];
 
     this.miniGameContainer.add(words);
 
     // Guardar posições iniciais para retorno em caso de erro
     const initialPositions = [
-      { x: 390, y: 200 },
-      { x: 390, y: 300 },
-      { x: 390, y: 400 },
-      { x: 390, y: 500 },
+      { x: width - 1210, y: height - 350 },
+      { x: width - 1210, y: height - 550 },
+      { x: width - 1210, y: height - 250 },
+      { x: width - 1210, y: height - 450 },
     ];
 
     // Título do minigame
