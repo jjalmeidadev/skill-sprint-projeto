@@ -47,7 +47,7 @@ class VpNegociosScene extends Phaser.Scene {
       this.load.image("buttonElevNegocios", "../assets/botaocimaelevador.png"); // Carrega a imagem do botão do elevador
       this.load.image('screwDriver', '../assets/minigameVpNegocios/screwdriver.png') // Carrega a imagem da chave de fenda
       this.load.image('arrow', '../assets/seta.png'); // Carrega a imagem do chip
-      this.load.image('levelTitle', '../assets/titulos/tituloVpNegocios.png') // Carrega os asssets do titulo da fase
+      this.load.image('levelTitleNegocios', '../assets/titulos/tituloVpNegocios.png') // Carrega os asssets do titulo da fase
     }
 
   create() {
@@ -235,7 +235,7 @@ class VpNegociosScene extends Phaser.Scene {
   }
 
   showTitle() {
-    const titleImage = this.add.image(this.player.x, this.player.y - 130, 'levelTitle').setDepth(1000); // Adiciona a imagem de parabéns acima do jogador e define sua profundidade para garantir que fique acima de outros elementos
+    const titleImage = this.add.image(this.player.x, this.player.y - 130, 'levelTitleNegocios').setDepth(1000); // Adiciona a imagem de parabéns acima do jogador e define sua profundidade para garantir que fique acima de outros elementos
     titleImage.setScale(0.3); // Ajusta o tamanho da imagem de parabéns
   }
 

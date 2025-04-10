@@ -85,7 +85,7 @@ class VpRelacoesScene extends Phaser.Scene {
     this.load.image('vpestrategiacab', '../assets/cabecasrelainst/vpestrategiacab.png');
     this.load.image('vptechcab', '../assets/cabecasrelainst/vptechcab.png');
     this.load.image('vprelacoescab', '../assets/cabecasrelainst/vprelacoescab.png');
-    this.load.image('levelTitle', '../assets/titulos/tituloVpRelacoes.png') // Carrega os asssets do titulo da fase
+    this.load.image('levelTitleRelacoes', '../assets/titulos/tituloVpRelacoes.png') // Carrega os asssets do titulo da fase
   }
 
   create() {
@@ -374,7 +374,7 @@ class VpRelacoesScene extends Phaser.Scene {
   }
 
   showTitle() {
-    const titleImage = this.add.image(width / 2, height / 2, 'levelTitle').setDepth(1000); // Adiciona a imagem de parabéns acima do jogador e define sua profundidade para garantir que fique acima de outros elementos
+    const titleImage = this.add.image(width / 2, height / 2, 'levelTitleRelacoes').setDepth(1000); // Adiciona a imagem de parabéns acima do jogador e define sua profundidade para garantir que fique acima de outros elementos
     titleImage.setScale(0.6); // Ajusta o tamanho da imagem de parabéns
 
     // Remove a imagem de parabéns após 3 segundos

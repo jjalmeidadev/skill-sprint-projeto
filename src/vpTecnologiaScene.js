@@ -30,7 +30,7 @@ class VpTecnologiaScene extends Phaser.Scene {
     this.load.image('keyE', '../assets/teclaE.png');
     this.load.image('keyEnter', '../assets/keyEnter.png');
     this.load.image("balloonText", "../assets/balaoTexto.png");
-    this.load.image('levelTitle', '../assets/titulos/tituloVpTecnologia.png');
+    this.load.image('levelTitleTech', '../assets/titulos/tituloVpTecnologia.png');
   }
 
   create() {
@@ -197,7 +197,7 @@ class VpTecnologiaScene extends Phaser.Scene {
   }
 
   showTitle() {
-    const titleImage = this.add.image(this.player.x, this.player.y - 150, 'levelTitle').setDepth(1000);
+    const titleImage = this.add.image(this.player.x, this.player.y - 150, 'levelTitleTech').setDepth(1000);
     titleImage.setScale(0.3);
 
     // Adiciona um fade out para o título após alguns segundos

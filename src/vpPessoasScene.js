@@ -54,7 +54,7 @@ class VpPessoasScene extends Phaser.Scene {
       this.load.image("panelElev", "../assets/painelelevador.png"); // Carrega a imagem do painel do elevador
       this.load.image("buttonElevPesssoas", "../assets/botaocimaelevador.png"); // Carrega a imagem do botão do elevador
       this.load.image("arrow", "../assets/seta.png");
-      this.load.image('levelTitle', '../assets/titulos/tituloVpPessoas.png') // Carrega os asssets do titulo da fase
+      this.load.image('levelTitlePeople', '../assets/titulos/tituloVpPessoas.png') // Carrega os asssets do titulo da fase
     }
     
   create() {
@@ -473,7 +473,7 @@ class VpPessoasScene extends Phaser.Scene {
     }
     
     showTitle() {
-      const titleImage = this.add.image(this.player.x, this.player.y - 130, 'levelTitle').setDepth(1000); // Adiciona a imagem de parabéns acima do jogador e define sua profundidade para garantir que fique acima de outros elementos
+      const titleImage = this.add.image(this.player.x, this.player.y - 130, 'levelTitlePeople').setDepth(1000); // Adiciona a imagem de parabéns acima do jogador e define sua profundidade para garantir que fique acima de outros elementos
       titleImage.setScale(0.3); // Ajusta o tamanho da imagem de parabéns
     }
 

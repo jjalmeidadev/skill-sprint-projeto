@@ -42,7 +42,7 @@ class VpEstrategiaScene extends Phaser.Scene {
     this.load.image('meme_estrategia', '../assets/meme_estrategia.jpg'); // Adiciona imagem do meme
     this.load.image('sheet', '../assets/sheet.png'); // Adiciona imagem da folha
     this.load.image('notes', '../assets/notes.png'); // Adiciona imagem das anotações
-    this.load.image('levelTitle', '../assets/titulos/tituloVpEstrategias.png') // Carrega os asssets do titulo da fase
+    this.load.image('levelTitleStrategies', '../assets/titulos/tituloVpEstrategias.png') // Carrega os asssets do titulo da fase
     this.load.image('arrow', '../assets/seta.png');
   }
 
@@ -703,7 +703,7 @@ class VpEstrategiaScene extends Phaser.Scene {
   }
 
   showTitle() {
-    const titleImage = this.add.image(this.player.x, this.player.y - 130, 'levelTitle').setDepth(1000); // Adiciona a imagem de parabéns acima do jogador e define sua profundidade para garantir que fique acima de outros elementos
+    const titleImage = this.add.image(this.player.x, this.player.y - 130, 'levelTitleStrategies').setDepth(1000); // Adiciona a imagem de parabéns acima do jogador e define sua profundidade para garantir que fique acima de outros elementos
     titleImage.setScale(0.3); // Ajusta o tamanho da imagem de parabéns
   }
 

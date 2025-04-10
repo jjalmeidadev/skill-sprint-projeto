@@ -410,7 +410,7 @@ class CongratulationsMinigameScene extends Phaser.Scene {
     createButtonBack() {
         const buttonBack = this.add.image(width / 2, height - 80, 'buttonBack'); // Adiciona o botão de voltar na parte inferior da tela
         buttonBack.setInteractive(); // Torna o botão interativo
-        buttonBack.setScale(1.2); // Define a escala do botão como 0.7
+        buttonBack.setScale(0.7); // Define a escala do botão como 0.7
         buttonBack.on('pointerdown', () => { // Adiciona um evento de clique ao botão
             this.buttonSound(); // Reproduz o som do clique do botão
             this.scene.stop('congratulationsMinigameScene'); // Para a cena de parabéns
