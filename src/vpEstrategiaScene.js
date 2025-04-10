@@ -145,7 +145,7 @@ class VpEstrategiaScene extends Phaser.Scene {
     this.keyEnter = this.add.image(0, 0, 'keyEnter').setScale(0.1);
     this.keyEnter.setVisible(false); // Inicialmente oculta a imagem da tecla Enter
 
-    this.exclamation = this.physics.add.sprite(this.npc.x, this.npc.y - 80, "indicator").setScale(0.3);
+    this.exclamation = this.physics.add.sprite(this.npc.x, this.npc.y - 80, "indicator").setScale(0.2);
     this.exclamation.play("exclaiming"); // Reproduz a animação da exclamação
     this.exclamation.setImmovable(true); // Define que a exclamação não pode ser movida
     this.arrow = this.add.image(this.cameras.main.width / 2, 335, "arrow")
@@ -157,6 +157,7 @@ class VpEstrategiaScene extends Phaser.Scene {
   
     this.physics.add.overlap(this.player, this.exclamation, () => {
       if (!this.activeDialogue) {
+        this.exclamation.setVisible(false); // Torna a exclamação visível
         this.keyEMain.setVisible(true);
 
         if (this.keys.interagir.isDown) {
@@ -217,13 +218,13 @@ class VpEstrategiaScene extends Phaser.Scene {
       });
     }
 
-    this.keyEnterIdle = this.add.image(this.npcIdle.x + 50, this.npcIdle.y - 100, 'keyEnter').setScale(0.1);
+    this.keyEnterIdle = this.add.image(this.npcIdle.x - 50, this.npcIdle.y - 100, 'keyEnter').setScale(0.1);
     this.keyEnterIdle.setVisible(false); // Deixa a tecla Enter invisível inicialmente
 
-    this.keyEnterIdle2 = this.add.image(this.npcIdle2.x + 50, this.npcIdle2.y - 100, 'keyEnter').setScale(0.1);
+    this.keyEnterIdle2 = this.add.image(this.npcIdle2.x - 50, this.npcIdle2.y - 100, 'keyEnter').setScale(0.1);
     this.keyEnterIdle2.setVisible(false);
 
-    this.keyEnterIdle3 = this.add.image(this.npcIdle3.x + 50, this.npcIdle3.y - 100, 'keyEnter').setScale(0.1);
+    this.keyEnterIdle3 = this.add.image(this.npcIdle3.x - 50, this.npcIdle3.y - 100, 'keyEnter').setScale(0.1);
     this.keyEnterIdle3.setVisible(false);
 
     this.physics.add.collider(this.player, this.npcIdle); // Adiciona colisão entre o jogador e o NPC
