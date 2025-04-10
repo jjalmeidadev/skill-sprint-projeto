@@ -16,6 +16,7 @@ class VpEstrategiaScene extends Phaser.Scene {
       mobile: false,
       sheet: false
     };
+    this.vivianeInteracted = false;
   }
 
   preload() {
@@ -156,12 +157,13 @@ class VpEstrategiaScene extends Phaser.Scene {
   
   
     this.physics.add.overlap(this.player, this.exclamation, () => {
-      if (!this.activeDialogue) {
-        this.exclamation.setVisible(false); // Torna a exclamação visível
-        this.keyEMain.setVisible(true);
-
+      if (!this.activeDialogue && !this.vivianeInteracted) {
+        this.exclamation.setVisible(false); // Remove a exclamação
+        this.keyEMain.setVisible(true);     // Mostra a tecla E
+    
         if (this.keys.interagir.isDown) {
-          this.keyEMain.setVisible(false);
+          this.keyEMain.setVisible(false); // Esconde a tecla E após interação
+          this.vivianeInteracted = true;   // Marca que já interagiu
           this.startDialogue([
             "Olá! Que bom que você chegou!",
             "Bem-vindo à sala da VP de Estratégia!",
@@ -560,7 +562,7 @@ class VpEstrategiaScene extends Phaser.Scene {
       this.player.x, this.player.y,
       this.npc.x, this.npc.y
     );
-    this.keyEMain.setVisible(distanceMain < 100);
+    this.keyEMain.setVisible(distanceMain < 100 && !this.vivianeInteracted);
 
     const distanceIdle = Phaser.Math.Distance.Between(
       this.player.x, this.player.y,
@@ -650,8 +652,8 @@ class VpEstrategiaScene extends Phaser.Scene {
 
     // Adiciona tecla ENTER ao lado direito do balão
     const enterKey = this.add.image(
-      balloonX + balloonText.width / 2 + 20,
-      balloonY,
+      balloonX + balloonText.width / 2 - 207,
+      balloonY + 20,
       'keyEnter'
     ).setScale(0.1);
 
