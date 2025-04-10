@@ -131,7 +131,6 @@ class VpTecnologiaScene extends Phaser.Scene {
 
     // Create remaining elements
     this.createComputer(width, height);
-    this.createButtonBack(width, height);
     this.createNPCWithBalloon();
 
     this.keys = this.input.keyboard.addKeys({
@@ -143,10 +142,17 @@ class VpTecnologiaScene extends Phaser.Scene {
       ENTER: Phaser.Input.Keyboard.KeyCodes.ENTER
     });
 
+    this.computerIndicatorDestroyed = false;
+
     this.walkSound = this.sound.add('walkSound', { loop: false, volume: 2 });
 
     this.cursorCoordinatesText = this.add.text(10, 10, '', { fontSize: '16px', fill: '#000000', fontFamily: 'font' });
     this.cursorCoordinatesText.setDepth(1000);
+
+    this.barrierDoor = this.add.rectangle(width - 520, height - 720, 20, 20, 0x2F052F).setOrigin(0); // Adiciona um retângulo como barreira
+    this.physics.add.existing(this.barrierDoor, true); // Ativa a física do retângulo
+    this.physics.add.collider(this.player, this.barrierDoor); // Adiciona colisão entre o jogador e a barreira
+    this.barrierDoor.setVisible(false); // Torna o retângulo invisível
 
     this.showTitle();
   }
@@ -160,15 +166,26 @@ class VpTecnologiaScene extends Phaser.Scene {
     // Interação com o computador
     if (this.keyEComputer) {
       const distance = Phaser.Math.Distance.Between(this.player.x, this.player.y, 985, 381);
+    
       if (distance < 100 && !this.miniGameActive) {
         this.keyEComputer.setVisible(true);
+    
+        // Destrói o indicador se ainda não foi destruído
+        if (this.computerIndicator && !this.computerIndicatorDestroyed) {
+          this.computerIndicator.destroy();
+          this.computerIndicator = null;
+          this.computerIndicatorDestroyed = true;
+        }
+    
         if (Phaser.Input.Keyboard.JustDown(this.keys.interagir)) {
           this.miniGameActive = true;
-          this.keySound();
-          this.keyEComputer.setVisible(false);
+          if (this.keyEComputer) {
+            this.keyEComputer.destroy();
+            this.keyEComputer = null;
+          }
           this.startMiniGame();
         }
-      } else {
+      } else if (this.keyEComputer && this.keyEComputer.active) {
         this.keyEComputer.setVisible(false);
       }
     }
@@ -410,10 +427,9 @@ class VpTecnologiaScene extends Phaser.Scene {
     }
 
     // Apenas a keyE que ficará invisível inicialmente
-    const keyE = this.add.image(985, 301, 'keyE')
-      .setScale(0.08)
-      .setVisible(false)
-      .setDepth(1);
+    const keyE = this.add.image(985, 301, 'keyE').setScale(0.08).setVisible(false).setDepth(1);
+
+    this.computerIndicatorDestroyed = false;
 
     // Verificar distância no overlap para mostrar tecla E
     this.physics.add.overlap(this.player, indicator, () => {
@@ -755,27 +771,28 @@ class VpTecnologiaScene extends Phaser.Scene {
     if (this.computerIndicator) {
       this.computerIndicator.setVisible(true);
     }
-
+    this.createButtonBack();
 
   }
 
-  createButtonBack(width, height) {
-    const backButton = this.add.image(50, 50, 'closeButton')
-      .setScale(0.1)
-      .setInteractive()
-      .setScrollFactor(0)
-      .setDepth(1000);
-
-    backButton.on('pointerover', () => {
-      backButton.setScale(0.12);
-    });
-
-    backButton.on('pointerout', () => {
-      backButton.setScale(0.1);
-    });
-
-    backButton.on('pointerup', () => {
-      this.scene.start('levelSelectionScene', { selectedSpriteSheet: this.selectedSpriteSheet });
-    });
+  createButtonBack() {
+    // Cria o sprite da exclamação (ou mantenha o nome buttonBack se preferir)
+    const exclamation = this.physics.add.sprite(width - 520, height - 680, "indicator");
+    exclamation.play("exclaiming"); // Reproduz a animação de exclamação
+    exclamation.setScale(0.2);
+    exclamation.setImmovable(true); // Evita que o objeto se mova com colisões
+  
+    // Adiciona o overlap entre player e exclamation
+    this.physics.add.overlap(this.player, exclamation, () => {
+      // Lógica de troca de cena
+      this.sound.stopAll();
+  
+      this.registry.set('vpTecnologiaConcluida', true);
+      const elevadorScene = this.scene.get("elevadorScene");
+      elevadorScene.resumeFromTech = true;
+  
+      this.scene.stop("vpTecnologiaScene");
+      this.scene.resume("elevadorScene");
+    }, null, this);
   }
 }
