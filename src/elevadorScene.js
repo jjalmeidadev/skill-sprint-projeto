@@ -16,7 +16,7 @@ class ElevadorScene extends Phaser.Scene {
     this.load.image("backgroundElev2", "../assets/bgelevadorvar2.jpg"); // Carrega a imagem de fundo do elevador
     this.load.image("backgroundElev3", "../assets/bgelevadorvar3.jpg"); // Carrega a imagem de fundo do elevador
     
-    this.load.image("panelElev", "../assets/painelinelev.png"); // Carrega a imagem do painel do elevador
+    this.load.image("panelElevator", "../assets/painelinelev.png"); // Carrega a imagem do painel do elevador
     this.load.image("buttonStrategies", "../assets/botaoestrategias.png"); // Carrega a imagem do botão de estratégias
     this.load.image("buttonOffice", "../assets/botaooffice.png"); // Carrega a imagem do botão de escritório
     this.load.image("buttonBusiness", "../assets/botaonegocios.png"); // Carrega a imagem do botão de negócios
@@ -474,7 +474,7 @@ class ElevadorScene extends Phaser.Scene {
   }
 
   createButtonOffice(width, height) {
-    this.panelElev = this.add.image(0, 0, "panelElev").setOrigin(0, 0); // Cria a imagem do painel do elevador
+    this.panelElev = this.add.image(0, 0, "panelElevator").setOrigin(0, 0); // Cria a imagem do painel do elevador
     this.panelElev.setDisplaySize(width, height); // Ajusta o tamanho do painel para caber na tela
     this.panelElev.setVisible(false); // Inicialmente esconde o painel
 
