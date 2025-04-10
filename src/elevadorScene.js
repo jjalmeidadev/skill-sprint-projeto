@@ -3,7 +3,7 @@ class ElevadorScene extends Phaser.Scene {
     super({ key: "elevadorScene" });
     this.canMove = true; // Controla se o jogador pode se mover
     this.panelElevShown = false; // Controla se o painel do elevador foi mostrado
-    this.ready = false; // <- flag de prontidão
+    this.ready = false; // Flag de prontidão
   }
 
   init(data) {
@@ -15,7 +15,7 @@ class ElevadorScene extends Phaser.Scene {
     this.load.image("backgroundElev", "../assets/bgelevadorvar1.png"); // Carrega a imagem de fundo do elevador
     this.load.image("backgroundElev2", "../assets/bgelevadorvar2.jpg"); // Carrega a imagem de fundo do elevador
     this.load.image("backgroundElev3", "../assets/bgelevadorvar3.jpg"); // Carrega a imagem de fundo do elevador
-    
+
     this.load.image("panelElevator", "../assets/painelinelev.png"); // Carrega a imagem do painel do elevador
     this.load.image("buttonStrategies", "../assets/botaoestrategias.png"); // Carrega a imagem do botão de estratégias
     this.load.image("buttonOffice", "../assets/botaooffice.png"); // Carrega a imagem do botão de escritório
@@ -28,12 +28,12 @@ class ElevadorScene extends Phaser.Scene {
     this.load.video("videoElev1", "../assets/videoelev1.mp4"); // Carrega o vídeo do elevador
     this.load.video("videoElev2", "../assets/videoelev2.mp4"); // Carrega o vídeo do elevador
     this.load.video("videoElev3", "../assets/videoelev3.mp4"); // Carrega o vídeo do elevador
-    
+
     this.load.spritesheet("indicator", "../assets/exclamaçãoRoxa.png", { frameWidth: 254, frameHeight: 291 }); // Carrega a sprite do indicador
-    this.load.spritesheet('player', `../assets/personagens/skinsPlayer/players/${this.selectedSpriteSheet}.png`, {frameWidth: 16,frameHeight: 32,});
-    
+    this.load.spritesheet('player', `../assets/personagens/skinsPlayer/players/${this.selectedSpriteSheet}.png`, { frameWidth: 16, frameHeight: 32, });
+
     this.load.audio('elevatorAudio', '../assets/Local Forecast - Elevator [ ezmp3.co ].mp3'); // Carrega o áudio do elevador
-   
+
     this.load.audio('buttonSound', '../assets/sounds/687107__aphom000__mouse-2-button-fast-click.wav'); // Carrega o áudio do botão
     this.load.audio('walkSound', '../assets/sounds/753292__vrymaa__footsteps-high-heels-hardwood-walk-run (mp3cut.net).wav'); // Carrega o áudio dos passos
 
@@ -43,7 +43,7 @@ class ElevadorScene extends Phaser.Scene {
     const width = this.scale.width; // Obtém a largura da tela
     const height = this.scale.height; // Obtém a altura da tela
 
-    
+
 
     this.events.on("shutdown", this.shutdown, this); // Evento para quando a cena for encerrada
     this.events.on("pause", this.shutdown, this); // Evento para quando a cena for pausada
@@ -110,10 +110,10 @@ class ElevadorScene extends Phaser.Scene {
     this.events.on("resume", () => {
       this.resetPlayerPosition(); // Reposiciona o jogador ao retornar
 
-        // Toca novamente a música do elevador
-        if (this.elevatorSound && !this.elevatorSound.isPlaying) {
-          this.elevatorSound.play();
-        }
+      // Toca novamente a música do elevador
+      if (this.elevatorSound && !this.elevatorSound.isPlaying) {
+        this.elevatorSound.play();
+      }
     });
 
     this.ready = true; // Define a cena como pronta para interação
@@ -133,11 +133,11 @@ class ElevadorScene extends Phaser.Scene {
 
     if (closeToButtons) { // Se o jogador estiver próximo dos botões
       if (!this.panelElevShown) { // Se o painel do elevador ainda não foi mostrado      
-      
+
         this.indicator.setVisible(false); // Esconde o indicador (apenas na primeira vez)
         this.panelElevShown = true; // Marca que o painel foi mostrado pelo menos uma vez
       }
-      
+
       this.panelElev.setVisible(true); // Exibe o painel quando o jogador está próximo
       this.buttonOfficeEl.setVisible(true); // Exibe o botão do escritório quando o jogador está próximo
       this.check.setVisible(true); // Exibe o botão de check quando o jogador está próximo
@@ -178,7 +178,7 @@ class ElevadorScene extends Phaser.Scene {
       if (this.checkPeople) {
         this.checkPeople.setVisible(false);
       }
-      
+
       this.buttonStrategies.setVisible(false); // Esconde o botão de estratégias quando o jogador está longe
       if (this.checkStrategies) {
         this.checkStrategies.setVisible(false);
@@ -208,77 +208,77 @@ class ElevadorScene extends Phaser.Scene {
 
     if (this.resumeFromPessoas && this.buttonPeople && this.checkPeople) {
       const concluida = this.registry.get('vpPessoasConcluida') === true;
-    
+
       if (concluida) {
         this.checkPeopleActive = true;
         this.buttonPeople.disableInteractive();
-        // check só aparece quando estiver perto, o update já cuida disso
+        // Check só aparece quando estiver perto, o update já cuida disso
       }
-    
-      this.resumeFromPessoas = false; // reseta a flag
+
+      this.resumeFromPessoas = false; // Reseta a flag de prontidão de prontidão
     }
 
     if (this.resumeFromStrategies && this.buttonStrategies && this.checkStrategies) {
       const concluida = this.registry.get('vpEstrategiaConcluida') === true;
-    
+
       if (concluida) {
         this.checkStrategiesActive = true;
         this.buttonStrategies.disableInteractive();
-        // check só aparece quando estiver perto, o update já cuida disso
+        // Check só aparece quando estiver perto, o update já cuida disso
       }
-    
-      this.resumeFromStrategies = false; // reseta a flag
+
+      this.resumeFromStrategies = false; // Reseta a flag de prontidão de prontidão de prontidão
     }
 
     if (this.resumeFromBusiness && this.buttonBusiness && this.checkBusiness) {
       const concluida = this.registry.get('vpBusinessConcluida') === true;
-    
+
       if (concluida) {
         this.checkBusinessActive = true;
         this.buttonBusiness.disableInteractive();
-        // check só aparece quando estiver perto, o update já cuida disso
+        // Check só aparece quando estiver perto, o update já cuida disso
       }
-    
-      this.resumeFromBusiness = false; // reseta a flag
+
+      this.resumeFromBusiness = false; // Reseta a flag de prontidão de prontidão
     }
 
     if (this.resumeFromTech && this.buttonTech && this.checkTech) {
       const concluida = this.registry.get('vpTecnologiaConcluida') === true;
-    
+
       if (concluida) {
         this.checkTechActive = true;
         this.buttonTech.disableInteractive();
-        // check só aparece quando estiver perto, o update já cuida disso
+        // Check só aparece quando estiver perto, o update já cuida disso
       }
-    
-      this.resumeFromTech = false; // reseta a flag
+
+      this.resumeFromTech = false; // Reseta a flag de prontidão de prontidão
     }
 
     if (this.resumeFromRelations && this.buttonRelations && this.checkRelations) {
       const concluida = this.registry.get('vpRelacoesConcluida') === true;
-    
+
       if (concluida) {
         this.checkRelationsActive = true;
         this.buttonRelations.disableInteractive();
         // check só aparece quando estiver perto, o update já cuida disso
       }
-    
-      this.resumeFromRelations = false; // reseta a flag
+
+      this.resumeFromRelations = false; // Reseta a flag de prontidão de prontidão
     }
 
     // Verifica se todas as fases foram concluídas
     const allCompleted = this.registry.get('vpPessoasConcluida') &&
-    this.registry.get('vpEstrategiaConcluida') &&
-    this.registry.get('vpBusinessConcluida') &&
-    this.registry.get('vpTecnologiaConcluida') &&
-    this.registry.get('vpRelacoesConcluida');
+      this.registry.get('vpEstrategiaConcluida') &&
+      this.registry.get('vpBusinessConcluida') &&
+      this.registry.get('vpTecnologiaConcluida') &&
+      this.registry.get('vpRelacoesConcluida');
 
     if (allCompleted && !this.endingTriggered) {
-    this.endingTriggered = true; // evita múltiplas chamadas
-    this.time.delayedCall(1000, () => {
-    this.sound.stopAll(); // para o som do elevador
-    this.scene.start('endScene');
-    });
+      this.endingTriggered = true; // Evita múltiplas chamadas
+      this.time.delayedCall(1000, () => {
+        this.sound.stopAll(); // Para o som do elevador
+        this.scene.start('endScene');
+      });
     }
   }
 
@@ -293,7 +293,7 @@ class ElevadorScene extends Phaser.Scene {
 
     const speed = 150; // Define a velocidade de movimento do jogador
     let moving = false; // Variável para verificar se o jogador está se movendo
-  
+
     if (this.keys.left.isDown) { // Verifica se a tecla "esquerda" está pressionada
       this.player.setVelocityX(-speed); // Move o jogador para a esquerda
       this.lastPosition = "left"; // Atualiza a última posição para "esquerda"
@@ -307,7 +307,7 @@ class ElevadorScene extends Phaser.Scene {
     } else {
       this.player.setVelocityX(0); // Para o movimento horizontal do jogador
     }
-  
+
     if (this.keys.up.isDown) { // Verifica se a tecla "cima" está pressionada
       this.player.setVelocityY(-speed); // Move o jogador para cima
       this.lastPosition = "up"; // Atualiza a última posição para "cima"
@@ -321,7 +321,7 @@ class ElevadorScene extends Phaser.Scene {
     } else {
       this.player.setVelocityY(0); // Para o movimento vertical do jogador
     }
-    
+
     if (!moving) { // Se o jogador não está se movendo, reproduz a animação de "parado" correspondente
       switch (this.lastPosition) { // Verifica a última posição do jogador
         case "left":
@@ -350,7 +350,7 @@ class ElevadorScene extends Phaser.Scene {
     this.barrier = this.add.rectangle(width - 760, height - 40, 620, 120, 0xff0000, 0); // Cria uma barreira horizontal na parte inferior da tela
     this.physics.add.existing(this.barrier, true); // Adiciona física à barreira, tornando-a estática
     this.physics.add.collider(this.player, this.barrier); // Adiciona colisão entre o jogador e a barreira
-    
+
     this.barrier1 = this.add.rectangle(width - 500, height - 20, 20, 1400, 0xff0000, 0); // Cria uma barreira vertical no lado direito da tela
     this.physics.add.existing(this.barrier1, true); // Adiciona física à barreira, tornando-a estática
     this.physics.add.collider(this.player, this.barrier1); // Adiciona colisão entre o jogador e a barreira
@@ -368,52 +368,52 @@ class ElevadorScene extends Phaser.Scene {
     this.player = this.physics.add.sprite(width / 2, height / 2, "player"); // Cria o sprite do jogador no centro da tela
     this.player.setScale(6); // Ajusta o tamanho do jogador
     this.player.setCollideWorldBounds(true); // Impede que o jogador saia dos limites do mundo
-    
+
     this.physics.world.setBounds(0, 0, width, height); // Define os limites do mundo do jogo para colisões
   }
 
   cleanupScene() {
-  // Remove event listeners
-  this.input.keyboard.off('keydown-ENTER');
-  this.input.off('pointerdown');
+    // Remover ouvintes de eventos
+    this.input.keyboard.off('keydown-ENTER');
+    this.input.off('pointerdown');
 
-  // Stop any ongoing sounds
-  if (this.elevatorSound && this.elevatorSound.isPlaying) {
-    this.elevatorSound.stop();
+    // Interrompa quaisquer sons contínuos
+    if (this.elevatorSound && this.elevatorSound.isPlaying) {
+      this.elevatorSound.stop();
+    }
+    if (this.indicatorSound && this.indicatorSound.isPlaying) {
+      this.indicatorSound.stop();
+    }
+    if (this.walkSound && this.walkSound.isPlaying) {
+      this.walkSound.stop();
+    }
+
+    // Parar animações
+    if (this.indicator) {
+      this.indicator.stop();
+      this.indicator.destroy();
+    }
+
+    // Destruir elementos UI
+    if (this.panelElev) this.panelElev.destroy();
+    if (this.buttonOfficeEl) this.buttonOfficeEl.destroy();
+    if (this.buttonPeople) this.buttonPeople.destroy();
+    if (this.buttonStrategies) this.buttonStrategies.destroy();
+    if (this.buttonBusiness) this.buttonBusiness.destroy();
+    if (this.buttonTech) this.buttonTech.destroy();
+    if (this.buttonRelations) this.buttonRelations.destroy();
+
+    // Destrói objetos de física
+    if (this.proximity) this.proximity.destroy();
+    if (this.barrier) this.barrier.destroy();
+    if (this.barrier1) this.barrier1.destroy();
+    if (this.barrier2) this.barrier2.destroy();
+    if (this.barrier3) this.barrier3.destroy();
+
+    // Reseta variáveis
+    this.panelElevShown = false;
+    this.indicatorActive = false;
   }
-  if (this.indicatorSound && this.indicatorSound.isPlaying) {
-    this.indicatorSound.stop();
-  }
-  if (this.walkSound && this.walkSound.isPlaying) {
-    this.walkSound.stop();
-  }
-
-  // Stop animations
-  if (this.indicator) {
-    this.indicator.stop();
-    this.indicator.destroy();
-  }
-
-  // Destroy UI elements
-  if (this.panelElev) this.panelElev.destroy();
-  if (this.buttonOfficeEl) this.buttonOfficeEl.destroy();
-  if (this.buttonPeople) this.buttonPeople.destroy();
-  if (this.buttonStrategies) this.buttonStrategies.destroy();
-  if (this.buttonBusiness) this.buttonBusiness.destroy();
-  if (this.buttonTech) this.buttonTech.destroy();
-  if (this.buttonRelations) this.buttonRelations.destroy();
-
-  // Destroy physics objects
-  if (this.proximity) this.proximity.destroy();
-  if (this.barrier) this.barrier.destroy();
-  if (this.barrier1) this.barrier1.destroy();
-  if (this.barrier2) this.barrier2.destroy();
-  if (this.barrier3) this.barrier3.destroy();
-
-  // Reset variables
-  this.panelElevShown = false;
-  this.indicatorActive = false;
-}
 
   createPlayerAnimations() {
     this.anims.create({ // Cria a animação de andar para baixo
@@ -481,7 +481,7 @@ class ElevadorScene extends Phaser.Scene {
     this.indicator = this.add.sprite(width - 955, height - 660, "indicator").setScale(0.3); // Posiciona e escala o indicador
     this.indicator.play("exclaiming"); // Inicia a animação do indicador
     this.indicatorActive = true; // Marca o indicador como ativo
-    
+
     this.buttonOfficeEl = this.add.image(width - 905, height - 160, "buttonOffice"); // Adiciona o botão interativo do escritório
     this.buttonOfficeEl.setInteractive(); // Torna o botão interativo
     this.buttonOfficeEl.setScale(1.2, 1.15); // Ajusta o tamanho do botão
@@ -491,7 +491,7 @@ class ElevadorScene extends Phaser.Scene {
     this.check.setInteractive(); // Torna o botão interativo
     this.check.setScale(0.6); // Ajusta o tamanho do botão
     this.check.setVisible(false); // Inicialmente esconde o botão
-    
+
     this.proximity = this.add.rectangle(width - 955, height - 650, 105, 70, 0xff0000, 0); // Adiciona um retângulo invisível para detectar proximidade
     this.physics.add.existing(this.proximity, true); // Adiciona física à área de proximidade
 
@@ -503,34 +503,34 @@ class ElevadorScene extends Phaser.Scene {
   }
 
   createButtonPeople(width, height) {
-  const returnedVpPessoas = this.fromScene === "vpPessoasScene";
-  const levelDone = this.registry.get('vpPessoasConcluida') === true;
+    const returnedVpPessoas = this.fromScene === "vpPessoasScene";
+    const levelDone = this.registry.get('vpPessoasConcluida') === true;
 
-  this.buttonPeople = this.add.image(width - 620, height - 160, "buttonPeople");
-  this.buttonPeople.setInteractive();
-  this.buttonPeople.setScale(1.2, 1.15);
-  this.buttonPeople.setVisible(false);
+    this.buttonPeople = this.add.image(width - 620, height - 160, "buttonPeople");
+    this.buttonPeople.setInteractive();
+    this.buttonPeople.setScale(1.2, 1.15);
+    this.buttonPeople.setVisible(false);
 
-  this.checkPeople = this.add.image(width - 620, height - 160, "checkButton");
-  this.checkPeople.setScale(0.6);
-  this.checkPeople.setVisible(false); // Por padrão, invisível
-  this.checkPeopleActive = (this.fromScene === "vpPessoasScene" && this.registry.get('vpPessoasConcluida'));
+    this.checkPeople = this.add.image(width - 620, height - 160, "checkButton");
+    this.checkPeople.setScale(0.6);
+    this.checkPeople.setVisible(false); // Por padrão, invisível
+    this.checkPeopleActive = (this.fromScene === "vpPessoasScene" && this.registry.get('vpPessoasConcluida'));
 
-  // Se voltou da VP Pessoas e ela está marcada como concluída, mostra o check
-  if (returnedVpPessoas && levelDone) {
-    this.checkPeople.setVisible(true);
-    this.buttonPeople.disableInteractive();
+    // Se voltou da VP Pessoas e ela está marcada como concluída, mostra o check
+    if (returnedVpPessoas && levelDone) {
+      this.checkPeople.setVisible(true);
+      this.buttonPeople.disableInteractive();
+    }
+
+    if (!levelDone) {
+      this.buttonPeople.on("pointerdown", () => {
+        this.buttonClick.play();
+        this.shutdown();
+        this.scene.pause("elevadorScene");
+        this.scene.launch("vpPessoasScene", { selectedSpriteSheet: this.selectedSpriteSheet });
+      });
+    }
   }
-
-  if (!levelDone) {
-    this.buttonPeople.on("pointerdown", () => {
-      this.buttonClick.play();
-      this.shutdown();
-      this.scene.pause("elevadorScene");
-      this.scene.launch("vpPessoasScene", { selectedSpriteSheet: this.selectedSpriteSheet });
-    });
-  }
-}
 
   createButtonStrategies(width, height) {
     const returnedVpStrategies = this.fromScene === "VpEstrategiaScene";
@@ -549,12 +549,12 @@ class ElevadorScene extends Phaser.Scene {
     this.checkStrategies.setVisible(false); // Por padrão, invisível
     this.checkStrategiesActive = (this.fromScene === "VpEstrategiaScene" && this.registry.get('vpEstrategiaConcluida'));
 
-    if (returnedVpStrategies && levelDone) {
-      this.checkStrategies.setVisible(true);
-      this.buttonStrategies.disableInteractive();
+    if (returnedVpStrategies && levelDone) { // Se voltou da VP Estratégias e ela está marcada como concluída, mostra o check
+      this.checkStrategies.setVisible(true); 
+      this.buttonStrategies.disableInteractive(); 
     }
 
-    if (!levelDone) {
+    if (!levelDone) { // Se não estiver concluída, adiciona o evento de clique
       this.buttonStrategies.on("pointerdown", () => {
         this.buttonClick.play();
         this.shutdown();
@@ -564,7 +564,8 @@ class ElevadorScene extends Phaser.Scene {
     }
   }
 
-  createButtonBusiness(width, height) {
+  createButtonBusiness(width, height) { // Cria o botão de Negócios
+    // Verifica se o jogador retornou da cena de Negócios e se a fase está concluída
     const returnedVpBusiness = this.fromScene === "vpNegociosScene";
     const levelDone = this.registry.get('vpBusinessConcluida') === true;
 
@@ -586,7 +587,7 @@ class ElevadorScene extends Phaser.Scene {
       this.buttonBusiness.disableInteractive();
     }
 
-    if (!levelDone) {
+    if (!levelDone) { // Se não estiver concluída, adiciona o evento de clique
       this.buttonBusiness.on("pointerdown", () => {
         this.buttonClick.play();
         this.shutdown();
@@ -596,7 +597,10 @@ class ElevadorScene extends Phaser.Scene {
     }
   }
 
-  createButtonTech(width, height) {
+  createButtonTech(width, height) { // Cria o botão de Tecnologia
+    // Verifica se o jogador retornou da cena de Tecnologia e se a fase está concluída
+    // Se o jogador retornou da cena de Tecnologia e a fase está concluída, mostra o check
+    // Caso contrário, adiciona o evento de clique ao botão
     const returnedVpTech = this.fromScene === "vpTecnologiaScene";
     const levelDone = this.registry.get('vpTecnologiaConcluida') === true;
 
@@ -613,12 +617,12 @@ class ElevadorScene extends Phaser.Scene {
     this.checkTech.setVisible(false); // Por padrão, invisível
     this.checkTechActive = (this.fromScene === "vpTecnologiaScene" && this.registry.get('vpTecnologiaConcluida'));
 
-    if (returnedVpTech && levelDone) {
+    if (returnedVpTech && levelDone) { // Se voltou da VP Tecnologia e ela está marcada como concluída, mostra o check
       this.checkTech.setVisible(true);
       this.buttonTech.disableInteractive();
     }
 
-    if (!levelDone) {
+    if (!levelDone) { // Se não estiver concluída, adiciona o evento de clique
       this.buttonTech.on("pointerdown", () => {
         this.buttonClick.play();
         this.shutdown();
@@ -628,7 +632,7 @@ class ElevadorScene extends Phaser.Scene {
     }
   }
 
-  createButtonRelations(width, height) {
+  createButtonRelations(width, height) { // Cria o botão de Relações
     const returnedVpRelations = this.fromScene === "VpRelacoesScene";
     const levelDone = this.registry.get('vpRelacoesConcluida') === true;
 
@@ -645,12 +649,12 @@ class ElevadorScene extends Phaser.Scene {
     this.checkRelations.setVisible(false); // Por padrão, invisível
     this.checkRelationsActive = (this.fromScene === "VpRelacoesScene" && this.registry.get('vpRelacoesConcluida'));
 
-    if (returnedVpRelations && levelDone) {
+    if (returnedVpRelations && levelDone) { // Se voltou da VP Relações e ela está marcada como concluída, mostra o check
       this.checkRelations.setVisible(true);
       this.buttonRelations.disableInteractive();
     }
 
-    if (!levelDone) {
+    if (!levelDone) { // Se não estiver concluída, adiciona o evento de clique
       this.buttonRelations.on("pointerdown", () => {
         this.buttonClick.play();
         this.shutdown();

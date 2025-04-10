@@ -311,7 +311,7 @@ class CurriculoScene extends Phaser.Scene {
 
     init(data) {
         this.selectedSpriteSheet = data.selectedSpriteSheet;
-       
+
     }
 
     preload() {
@@ -322,7 +322,7 @@ class CurriculoScene extends Phaser.Scene {
         this.load.image('button03', '../assets/botao_vp_negocios.png');
         this.load.image('button04', '../assets/botao_vp_relacoes.png');
         this.load.image('button05', '../assets/botao_vp_tecnologia.png');
-      
+
         // Carrega a fonte
         this.load.font('font', 'fonts/PixelifySans-VariableFont_wght.ttf');
 
@@ -373,7 +373,7 @@ class CurriculoScene extends Phaser.Scene {
                         this.clickSound = this.sound.add('clickSound', { loop: false, volume: 10 });
                         this.clickSound.play();
 
-                        this.scene.start('QuizVpPessoas', {selectedSpriteSheet: this.selectedSpriteSheet,});
+                        this.scene.start('QuizVpPessoas', { selectedSpriteSheet: this.selectedSpriteSheet, });
                     });
                 }
             });
@@ -403,7 +403,7 @@ class CurriculoScene extends Phaser.Scene {
                         this.clickSound = this.sound.add('clickSound', { loop: false, volume: 10 });
                         this.clickSound.play();
 
-                        this.scene.start('QuizVpEstrategia', {selectedSpriteSheet: this.selectedSpriteSheet,});
+                        this.scene.start('QuizVpEstrategia', { selectedSpriteSheet: this.selectedSpriteSheet, });
                     });
                 }
             });
@@ -433,7 +433,7 @@ class CurriculoScene extends Phaser.Scene {
                         this.clickSound = this.sound.add('clickSound', { loop: false, volume: 10 });
                         this.clickSound.play();
 
-                        this.scene.start('QuizVpNegocios', {selectedSpriteSheet: this.selectedSpriteSheet,});
+                        this.scene.start('QuizVpNegocios', { selectedSpriteSheet: this.selectedSpriteSheet, });
                     });
                 }
             });
@@ -463,7 +463,7 @@ class CurriculoScene extends Phaser.Scene {
                         this.clickSound = this.sound.add('clickSound', { loop: false, volume: 10 });
                         this.clickSound.play();
 
-                        this.scene.start('QuizVpRelacoes', {selectedSpriteSheet: this.selectedSpriteSheet,});
+                        this.scene.start('QuizVpRelacoes', { selectedSpriteSheet: this.selectedSpriteSheet, });
                     });
                 }
             });
@@ -493,7 +493,7 @@ class CurriculoScene extends Phaser.Scene {
                         this.clickSound = this.sound.add('clickSound', { loop: false, volume: 10 });
                         this.clickSound.play();
 
-                        this.scene.start('QuizVpTecnologia', {selectedSpriteSheet: this.selectedSpriteSheet,});
+                        this.scene.start('QuizVpTecnologia', { selectedSpriteSheet: this.selectedSpriteSheet, });
                     });
                 }
             });
@@ -645,7 +645,7 @@ class QuizVpPessoas extends Phaser.Scene {
             const containerHeight = 70;
             const padding = 20;
 
-            // Container da alternativa (retângulo) with increased height
+            // Container da alternativa (retângulo) 
             const buttonContainer = this.add.rectangle(
                 this.sys.game.config.width / 2,
                 startY + (index * (containerHeight + 10)), // Ajusto de espaçamento
@@ -696,7 +696,7 @@ class QuizVpPessoas extends Phaser.Scene {
             button.disableInteractive();
         });
 
-        const question = peopleQuestions[currentQuestion]; 
+        const question = peopleQuestions[currentQuestion];
 
         if (answer === question.correct) {
             // Resposta correta
@@ -723,7 +723,7 @@ class QuizVpPessoas extends Phaser.Scene {
                     });
                 } else {
                     // Quiz completo
-                    this.scene.start('CongratulationsSceneCurriculoVpPessoas', { score: score }, {selectedSpriteSheet: this.selectedSpriteSheet,});
+                    this.scene.start('CongratulationsSceneCurriculoVpPessoas', { score: score }, { selectedSpriteSheet: this.selectedSpriteSheet, });
                 }
             });
         } else {
@@ -737,10 +737,10 @@ class QuizVpPessoas extends Phaser.Scene {
             // Posição do texto de feedback
             const feedbackText = this.add.text(
                 this.sys.game.config.width / 2,
-                this.sys.game.config.height - 100, 
+                this.sys.game.config.height - 100,
                 question.feedback,
                 {
-                    fontSize: '23px', 
+                    fontSize: '23px',
                     fill: '#FF888',
                     fontFamily: 'font',
                     wordWrap: { width: this.sys.game.config.width - 100 },
@@ -823,7 +823,7 @@ class CongratulationsSceneCurriculoVpPessoas extends Phaser.Scene {
                         this.clickSound.play();
 
                         this.scene.stop('CongratulationsSceneCurriculoVpPessoas');
-                        this.scene.resume('officeScene', {selectedSpriteSheet: this.selectedSpriteSheet,});
+                        this.scene.resume('officeScene', { selectedSpriteSheet: this.selectedSpriteSheet, });
 
                     });
                 }
@@ -990,7 +990,7 @@ class QuizVpEstrategia extends Phaser.Scene {
             const containerHeight = 70;
             const padding = 20;
 
-            // Container da alternativa (retângulo) with increased height
+            // Container da alternativa (retângulo) 
             const buttonContainer = this.add.rectangle(
                 this.sys.game.config.width / 2,
                 startY + (index * (containerHeight + 10)), // Espaçamento ajustado
@@ -1068,7 +1068,7 @@ class QuizVpEstrategia extends Phaser.Scene {
                     });
                 } else {
                     // Quiz completo
-                    this.scene.start('CongratulationsSceneCurriculoVpEstrategia', { score: score }, {selectedSpriteSheet: this.selectedSpriteSheet,});
+                    this.scene.start('CongratulationsSceneCurriculoVpEstrategia', { score: score }, { selectedSpriteSheet: this.selectedSpriteSheet, });
                 }
             });
         } else {
@@ -1082,10 +1082,10 @@ class QuizVpEstrategia extends Phaser.Scene {
             // Posição do texto de feedback do quiz
             const feedbackText = this.add.text(
                 this.sys.game.config.width / 2,
-                this.sys.game.config.height - 100, 
+                this.sys.game.config.height - 100,
                 question.feedback,
                 {
-                    fontSize: '23px', 
+                    fontSize: '23px',
                     fill: '#FF888',
                     fontFamily: 'font',
                     wordWrap: { width: this.sys.game.config.width - 100 },
@@ -1167,7 +1167,7 @@ class CongratulationsSceneCurriculoVpEstrategia extends Phaser.Scene {
                         this.clickSound.play();
 
                         this.scene.stop('CongratulationsSceneCurriculoVpEstrategia');
-                        this.scene.resume('officeScene', {selectedSpriteSheet: this.selectedSpriteSheet,});
+                        this.scene.resume('officeScene', { selectedSpriteSheet: this.selectedSpriteSheet, });
                     });
                 }
             });
@@ -1330,7 +1330,7 @@ class QuizVpNegocios extends Phaser.Scene {
             const containerHeight = 70;
             const padding = 20;
 
-            // Container da alternativa (retângulo) with increased height
+            // Container da alternativa (retângulo) 
             const buttonContainer = this.add.rectangle(
                 this.sys.game.config.width / 2,
                 startY + (index * (containerHeight + 10)), // Espaçamento ajustado
@@ -1408,7 +1408,7 @@ class QuizVpNegocios extends Phaser.Scene {
                     });
                 } else {
                     // Quiz completo
-                    this.scene.start('CongratulationsSceneCurriculoVpNegocios', { score: score }, {selectedSpriteSheet: this.selectedSpriteSheet,});
+                    this.scene.start('CongratulationsSceneCurriculoVpNegocios', { score: score }, { selectedSpriteSheet: this.selectedSpriteSheet, });
                 }
             });
         } else {
@@ -1442,7 +1442,7 @@ class QuizVpNegocios extends Phaser.Scene {
     }
 }
 
-// Class for the congratulations scene for Business
+// Cena da parabenização do quiz da VP de Negócios
 class CongratulationsSceneCurriculoVpNegocios extends Phaser.Scene {
     constructor() {
         super({ key: 'CongratulationsSceneCurriculoVpNegocios' });
@@ -1507,7 +1507,7 @@ class CongratulationsSceneCurriculoVpNegocios extends Phaser.Scene {
                         this.clickSound.play();
 
                         this.scene.stop('CongratulationsSceneCurriculoVpNegocios');
-                        this.scene.resume('officeScene', {selectedSpriteSheet: this.selectedSpriteSheet,});
+                        this.scene.resume('officeScene', { selectedSpriteSheet: this.selectedSpriteSheet, });
                     });
                 }
             });
@@ -1540,7 +1540,7 @@ class CongratulationsSceneCurriculoVpNegocios extends Phaser.Scene {
 
 }
 
-// Class for the Quiz scene for Relations
+// Cena do quiz da VP de Relações
 class QuizVpRelacoes extends Phaser.Scene {
     constructor() {
         super({ key: 'QuizVpRelacoes' });
@@ -1591,7 +1591,7 @@ class QuizVpRelacoes extends Phaser.Scene {
     }
 
     createProgressBar() {
-        // Container for the progress bar
+        // Container da barra de progresso
         const progressBarContainer = this.add.rectangle(100, 50, 300, 24, 0xDDDDDD)
             .setOrigin(0, 0.5)
             .setStrokeStyle(2, 0x000000);
@@ -1670,7 +1670,7 @@ class QuizVpRelacoes extends Phaser.Scene {
             const containerHeight = 70;
             const padding = 20;
 
-            // Container da alternativa (retângulo) with increased height
+            // Container da alternativa (retângulo)
             const buttonContainer = this.add.rectangle(
                 this.sys.game.config.width / 2,
                 startY + (index * (containerHeight + 10)), // Espaçamento ajustado
@@ -1748,7 +1748,7 @@ class QuizVpRelacoes extends Phaser.Scene {
                     });
                 } else {
                     // Quiz completo
-                    this.scene.start('CongratulationsSceneCurriculoVpRelacoes', { score: score }, {selectedSpriteSheet: this.selectedSpriteSheet,});
+                    this.scene.start('CongratulationsSceneCurriculoVpRelacoes', { score: score }, { selectedSpriteSheet: this.selectedSpriteSheet, });
                 }
             });
         } else {
@@ -1762,10 +1762,10 @@ class QuizVpRelacoes extends Phaser.Scene {
             // Mostrar feedback explanatório
             const feedbackText = this.add.text(
                 this.sys.game.config.width / 2,
-                this.sys.game.config.height - 100, // Changed from "height/2 + 50" to "height - 100"
+                this.sys.game.config.height - 100,
                 question.feedback, // Adiciona a propriedade feedback para o objeto question
                 {
-                    fontSize: '23px', // Changed from '20px' to '23px'
+                    fontSize: '23px',
                     fill: '#FF888',
                     fontFamily: 'font',
                     wordWrap: { width: this.sys.game.config.width - 100 },
@@ -1848,7 +1848,7 @@ class CongratulationsSceneCurriculoVpRelacoes extends Phaser.Scene {
                         this.clickSound.play();
 
                         this.scene.stop('CongratulationsSceneCurriculoVpRelacoes');
-                        this.scene.resume('officeScene', {selectedSpriteSheet: this.selectedSpriteSheet,});
+                        this.scene.resume('officeScene', { selectedSpriteSheet: this.selectedSpriteSheet, });
                     });
                 }
             });
@@ -1932,7 +1932,7 @@ class QuizVpTecnologia extends Phaser.Scene {
     }
 
     createProgressBar() {
-        // Container for the progress bar
+        // Container para a barra de progresso
         const progressBarContainer = this.add.rectangle(100, 50, 300, 24, 0xDDDDDD)
             .setOrigin(0, 0.5)
             .setStrokeStyle(2, 0x000000);
@@ -2011,7 +2011,7 @@ class QuizVpTecnologia extends Phaser.Scene {
             const containerHeight = 70;
             const padding = 20;
 
-            // Container da alternativa (retângulo) with increased height
+            // Container da alternativa (retângulo) 
             const buttonContainer = this.add.rectangle(
                 this.sys.game.config.width / 2,
                 startY + (index * (containerHeight + 10)), // Espaçamento ajustado
@@ -2089,12 +2089,12 @@ class QuizVpTecnologia extends Phaser.Scene {
                     });
                 } else {
                     // Quiz completo
-                    this.scene.start('CongratulationsSceneCurriculoVpTecnologia', { score: score }, {selectedSpriteSheet: this.selectedSpriteSheet,});
+                    this.scene.start('CongratulationsSceneCurriculoVpTecnologia', { score: score }, { selectedSpriteSheet: this.selectedSpriteSheet, });
                 }
             });
         } else {
             // Resposta errada
-            clickedButton.fillColor = 0xFF8888; // Light red
+            clickedButton.fillColor = 0xFF8888; // Vermelho claro
 
             //Efeito sonoro de errado
             this.wrong = this.sound.add('wrongSound', { loop: false, volume: 10 });
@@ -2103,10 +2103,10 @@ class QuizVpTecnologia extends Phaser.Scene {
             // Mostrar feedback explanatório
             const feedbackText = this.add.text(
                 this.sys.game.config.width / 2,
-                this.sys.game.config.height - 100, // Changed from "height/2 + 50" to "height - 100"
+                this.sys.game.config.height - 100,
                 question.feedback, // Adiciona a propriedade feedback para o objeto question
                 {
-                    fontSize: '23px', 
+                    fontSize: '23px',
                     fill: '#FF888',
                     fontFamily: 'font',
                     wordWrap: { width: this.sys.game.config.width - 100 },
@@ -2193,7 +2193,7 @@ class CongratulationsSceneCurriculoVpTecnologia extends Phaser.Scene {
                         this.clickSound.play();
 
                         this.scene.stop('CongratulationsSceneCurriculoVpTecnologia');
-                        this.scene.resume('officeScene', {selectedSpriteSheet: this.selectedSpriteSheet,});
+                        this.scene.resume('officeScene', { selectedSpriteSheet: this.selectedSpriteSheet, });
                         this.exclamationBubble.play();
 
                     });

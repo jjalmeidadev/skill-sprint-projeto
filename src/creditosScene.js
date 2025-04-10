@@ -1,11 +1,11 @@
 class CreditosScene extends Phaser.Scene {
     constructor() {
-        super({key: 'creditosScene' });
+        super({ key: 'creditosScene' });
     }
 
     init(data) {
         this.selectedSpriteSheet = data.selectedSpriteSheet;
-       
+
     }
 
     preload() {
@@ -14,7 +14,7 @@ class CreditosScene extends Phaser.Scene {
     }
 
     create() {
-        this.add.image(width/2, height/2, 'backgroundCreditos').setScale(0.7); // Adiciona a imagem de fundo
+        this.add.image(width / 2, height / 2, 'backgroundCreditos').setScale(0.7); // Adiciona a imagem de fundo
 
         this.createArrow(); // Chama a função que cria a seta
     }
@@ -25,7 +25,7 @@ class CreditosScene extends Phaser.Scene {
         arrow.setScale(1); // Ajusta o tamanho do botão
         arrow.on('pointerdown', () => { // Adiciona um evento de clique no botão
             this.scene.stop('creditosScene'); // Para a cena de créditos
-            this.scene.start('initialScene', {selectedSpriteSheet: this.selectedSpriteSheet,}); // Inicia a cena inicial
+            this.scene.start('initialScene', { selectedSpriteSheet: this.selectedSpriteSheet, }); // Inicia a cena inicial
         });
     }
 }

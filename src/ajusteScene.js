@@ -1,11 +1,11 @@
- class AjusteScene extends Phaser.Scene {
+class AjusteScene extends Phaser.Scene {
   constructor() {
     super({ key: 'ajusteScene' });
   }
 
   init(data) {
     this.selectedSpriteSheet = data.selectedSpriteSheet;
-}
+  }
 
   preload() {
     // Carrega os elementos do fundo
@@ -21,7 +21,7 @@
     this.load.image('buttonDown', '../assets/assets_botoes/botaoMenos.png'); // Carrega a imagem do botão de diminuir volume
     this.load.image('buttonBack', '../assets/assets_botoes/botoaX.png'); // Carrega a imagem do botão de voltar
     this.load.image('title', '../assets/assetsBackground/titulo.png '); // Carrega a imagem do título do jogo
-    
+
     this.load.audio('initialMusic', '../assets/Adventure Meme [ ezmp3.co ].mp3'); // Carrega a música da tela inicial
     this.load.audio('buttonSound', '../assets/sounds/687107__aphom000__mouse-2-button-fast-click.wav'); // Carrega o som do botão
   }
@@ -68,7 +68,7 @@
       this.buttonSound(); // Reproduz o som do clique do botão
       this.shutdown(); // Interrompe a música da cena
       this.scene.stop('ajusteScene'); // Para a cena atual
-      this.scene.start('initialScene', {selectedSpriteSheet: this.selectedSpriteSheet,}); // Inicia a cena inicial
+      this.scene.start('initialScene', { selectedSpriteSheet: this.selectedSpriteSheet, }); // Inicia a cena inicial
     });
   }
 

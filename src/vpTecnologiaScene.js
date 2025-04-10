@@ -535,7 +535,7 @@ class VpTecnologiaScene extends Phaser.Scene {
     const gameTitle = this.add.text(
       this.cameras.main.width / 2,
       12,
-      'Arraste cada conceito para sua posição correta! Comece de baixo para cima! Leia atentamente.',
+      'Arraste cada conceito para sua posição correta! Leia atentamente.',
       {
         fontSize: '25px',
         fill: '#000000',

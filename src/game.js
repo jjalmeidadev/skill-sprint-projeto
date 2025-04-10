@@ -44,23 +44,23 @@ const config = { // Configuração do jogo Phaser
 
     buttonElevatorScene, // Cena do botão do elevador
     ElevadorScene, // Cena do elevador
-    VpRelacoesScene, // Cena do VP de Relações
+    VpRelacoesScene, // Cena da VP de Relações
 
-    VpPessoasScene, // Cena do VP de Pessoas
+    VpPessoasScene, // Cena da VP de Pessoas
     MinigameTrashScene, // Cena de minigame relacionado a lixo
     GameOverMinigameTrashScene, // Cena de game over do minigame de lixo
     CongratulationsMinigameScene, // Cena de parabéns após completar o minigame
     bookScene, // Cena relacionada a um livro
     
-    VpNegociosScene, // Cena do VP de Negócios
+    VpNegociosScene, // Cena da VP de Negócios
     MinigameWires, // Cena do minigame de fios
 
-    VpEstrategiaScene,
-    minigameEstrategiaCarlos, // Cena do VP de Estratégia
-    minigameEstrategiaMariana,
-    minigameEstrategiaAna,
+    VpEstrategiaScene, // Cena da VP de Estratégia
+    minigameEstrategiaCarlos, // Cena do minigame1 da VP de Estratégia
+    minigameEstrategiaMariana, // Cena do minigame2 da VP de Estratégia
+    minigameEstrategiaAna,// Cena do minigame1 da VP de Estratégia
 
-    VpTecnologiaScene, // Cena do VP de Tecnologia
+    VpTecnologiaScene, // Cena da VP de Tecnologia
     EndScene // Cena de finalização do jogo
   ], 
 };
