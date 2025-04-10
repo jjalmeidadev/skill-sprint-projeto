@@ -4,7 +4,7 @@ class CreditosScene extends Phaser.Scene {
     }
 
     preload() {
-        this.load.image('backgroundCreditos', '../assets/créditos.png'); // Carrega a imagem de fundo
+        this.load.image('backgroundCreditos', '../assets/créditosScene.png'); // Carrega a imagem de fundo
         this.load.image('arrow', '../assets/seta.png'); // Carrega a imagem da seta
     }
 
