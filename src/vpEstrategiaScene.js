@@ -236,17 +236,17 @@ class VpEstrategiaScene extends Phaser.Scene {
     this.activeDialogue = false; // Define o estado inicial do diálogo como inativo
 
     // Adiciona a exclamação e tecla Enter ao npcIdle
-    this.exclamationIdle = this.physics.add.sprite(this.npcIdle.x, this.npcIdle.y - 80, "indicator").setScale(0.3);
+    this.exclamationIdle = this.physics.add.sprite(this.npcIdle.x, this.npcIdle.y - 80, "indicator").setScale(0.2);
     this.exclamationIdle.play("exclaiming");
     this.exclamationIdle.setImmovable(true);
     this.exclamationIdle.setVisible(false); // Deixa a exclamação invisível inicialmente
 
-    this.exclamationIdle2 = this.physics.add.sprite(this.npcIdle2.x, this.npcIdle2.y - 80, "indicator").setScale(0.3);
+    this.exclamationIdle2 = this.physics.add.sprite(this.npcIdle2.x, this.npcIdle2.y - 80, "indicator").setScale(0.2);
     this.exclamationIdle2.play("exclaiming");
     this.exclamationIdle2.setImmovable(true);
     this.exclamationIdle2.setVisible(false);
 
-    this.exclamationIdle3 = this.physics.add.sprite(this.npcIdle3.x, this.npcIdle3.y - 80, "indicator").setScale(0.3);
+    this.exclamationIdle3 = this.physics.add.sprite(this.npcIdle3.x, this.npcIdle3.y - 80, "indicator").setScale(0.2);
     this.exclamationIdle3.play("exclaiming");
     this.exclamationIdle3.setImmovable(true);
     this.exclamationIdle3.setVisible(false);
@@ -464,75 +464,77 @@ class VpEstrategiaScene extends Phaser.Scene {
 
     // Interação com o npcIdle
     this.physics.add.overlap(this.player, this.exclamationIdle, () => {
-      if (!this.npcInteractionComplete) {
-        return; // Bloqueia a interação se o jogador não tiver interagido com a NPC principal
-      }
-
+      if (!this.npcInteractionComplete || this.activeDialogue || this.interactedWith.npcIdle) return;
+    
+      // Quando o jogador se aproxima, remove a exclamação e mostra a tecla E
+      this.exclamationIdle.setVisible(false);
       this.keyEIdle.setVisible(true);
-
-      if (this.keys.interagir.isDown && !this.activeDialogue && !this.interactedWith.npcIdle) {
-        this.keyEIdle.setVisible(false);
+    
+      if (this.keys.interagir.isDown) {
+        this.keyEIdle.destroy(); // Destrói a tecla E
         this.interactedWith.npcIdle = true;
         this.eKeyInteractions++;
         this.checkCompletionDialogue();
+    
         this.startDialogue([
           `E aí, ${playerName}!`,
           'Sou o Carlos do time comercial.',
           'Tenho vontade de virar gestor, mas não sei qual o caminho certo aqui na Vivo.',
           'Você entende como funciona Carreira em Y? Pode me dar uma força?'
-        ], this.npcIdle); // Passa o npcIdle como referência
-
-        this.exclamationIdle.destroy(); // Remove a exclamação do npcIdle
+        ], this.npcIdle);
+    
+        this.exclamationIdle.destroy(); // Remove a exclamação após a interação
       }
     });
 
     // Interação com o npcIdle2
     this.physics.add.overlap(this.player, this.exclamationIdle2, () => {
-      if (!this.npcInteractionComplete) {
-        return; // Bloqueia a interação se o jogador não tiver interagido com a NPC principal
-      }
-
+      if (!this.npcInteractionComplete || this.activeDialogue || this.interactedWith.npcIdle2) return;
+    
+      // Quando o jogador se aproxima, remove a exclamação e mostra a tecla E
+      this.exclamationIdle2.setVisible(false);
       this.keyEIdle2.setVisible(true);
-
-      if (this.keys.interagir.isDown && !this.activeDialogue && !this.interactedWith.npcIdle2) {
-        this.keyEIdle2.setVisible(false);
+    
+      if (this.keys.interagir.isDown) {
+        this.keyEIdle2.destroy(); // Remove a tecla E
         this.interactedWith.npcIdle2 = true;
         this.eKeyInteractions++;
         this.checkCompletionDialogue();
+    
         this.startDialogue([
           'Oi! Eu sou a Ana.',
           'Trabalho com desenvolvimento aqui na Vivo.',
           'Adoro programar, mas estou meio perdida...',
           'Será que você pode me ajudar a entender como crescer na área técnica?',
           'Quero virar especialista, mas não sei por onde começar!'
-        ], this.npcIdle2); // Passa o npcIdle2 como referência
-
-        this.exclamationIdle2.destroy(); // Remove a exclamação do npcIdle2
+        ], this.npcIdle2);
+    
+        this.exclamationIdle2.destroy(); // Remove a exclamação
       }
     });
 
     // Interação com o npcIdle3
     this.physics.add.overlap(this.player, this.exclamationIdle3, () => {
-      if (!this.npcInteractionComplete) {
-        return; // Bloqueia a interação se o jogador não tiver interagido com a NPC principal
-      }
-
-      this.keyEIdle3.setVisible(true);
-
-      if (this.keys.interagir.isDown && !this.activeDialogue && !this.interactedWith.npcIdle3) {
-        this.keyEIdle3.setVisible(false);
+      if (!this.npcInteractionComplete || this.activeDialogue || this.interactedWith.npcIdle3) return;
+    
+      this.exclamationIdle3.setVisible(false); // Some com o indicador ao chegar perto
+      this.keyEIdle3.setVisible(true); // Mostra a tecla E
+    
+      if (this.keys.interagir.isDown) {
+        this.keyEIdle3.destroy(); // Remove a tecla E
         this.interactedWith.npcIdle3 = true;
         this.eKeyInteractions++;
         this.checkCompletionDialogue();
+    
         this.startDialogue([
           `Oi, ${playerName}! Eu sou a Mariana, trabalho no SAC.`,
           'Estou em dúvida sobre minha próxima certificação.',
           'Aqui na Vivo dá pra crescer e ganhar benefícios melhores,',
           'mas eu não entendo direito como funciona.',
           'Você pode me mostrar a ordem das coisas?'
-        ], this.npcIdle3); // Passa o npcIdle3 como referência
-
-        this.exclamationIdle3.destroy(); // Remove a exclamação do npcIdle3
+        ], this.npcIdle3);
+    
+        this.exclamationIdle3.destroy(); // Remove a exclamação
       }
     });
 
@@ -893,7 +895,7 @@ class VpEstrategiaScene extends Phaser.Scene {
     if (this.eKeyInteractions === 6) {
       // Cria exclamação acima da NPC
       const finalExclamation = this.physics.add.sprite(this.npc.x, this.npc.y - 80, "indicator")
-        .setScale(0.3);
+        .setScale(0.2);
       finalExclamation.play("exclaiming");
       finalExclamation.setImmovable(true);
 
@@ -915,8 +917,8 @@ class VpEstrategiaScene extends Phaser.Scene {
       }).setOrigin(0.5);
 
       const enterKey = this.add.image(
-        balloonX + balloonText.width / 2 + 20,
-        balloonY,
+        balloonX + balloonText.width / 2 - 207,
+        balloonY + 20,
         'keyEnter'
       ).setScale(0.1);
 
