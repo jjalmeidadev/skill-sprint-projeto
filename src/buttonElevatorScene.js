@@ -1,3 +1,14 @@
+/**
+ * Represents the buttonElevatorScene in a Phaser game.
+ * This scene handles the display and interaction with an elevator button.
+ * 
+ * @class buttonElevatorScene
+ * @extends {Phaser.Scene}
+ */
+/**
+ * Representa a buttonElevatorScene, uma Phaser.Scene que lida com a interação do botão do elevador.
+ * Esta cena exibe uma interface de elevador com um botão e realiza a transição para outra cena ao interagir.
+ */
 class buttonElevatorScene extends Phaser.Scene {
     constructor() {
         super({ key: 'buttonElevatorScene' });

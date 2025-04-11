@@ -296,6 +296,27 @@ this.arrowOffset = Phaser.Math.DegToRad(-180);
     this.player.setScale(2.5);
   }
 
+  /**
+   * Creates player animations for a game character.
+   * This method defines various animations for the player sprite, including walking and stopping in different directions.
+   * Each animation is created using a specific range of frames, a frame rate, and a repeat behavior.
+   *
+   * Animations:
+   * - "walk_down": Walking animation when the player moves downward.
+   * - "walk_right": Walking animation when the player moves to the right.
+   * - "walk_up": Walking animation when the player moves upward.
+   * - "walk_left": Walking animation when the player moves to the left.
+   * - "stop_down": Idle animation when the player is facing downward.
+   * - "stop_right": Idle animation when the player is facing to the right.
+   * - "stop_up": Idle animation when the player is facing upward.
+   * - "stop_left": Idle animation when the player is facing to the left.
+   *
+   * Each animation is created using the following parameters:
+   * - `key`: A unique identifier for the animation.
+   * - `frames`: The range of frames used for the animation, generated from the "player" sprite sheet.
+   * - `frameRate`: The speed of the animation in frames per second.
+   * - `repeat`: Determines if the animation should loop indefinitely (`-1` for infinite looping).
+   */
   createPlayerAnimations() {
     this.anims.create({
       key: "walk_down",
@@ -521,40 +542,45 @@ this.updateArrowToNearestIndicator();
 
     // Verificar distância no overlap para mostrar tecla E
     this.physics.add.overlap(this.player, indicator, () => {
-      if (!indicator.visible) return;
+      if (!indicator.visible) return; // Se o indicador não estiver visível, não faz nada
 
-      const distance = Phaser.Math.Distance.Between(this.player.x, this.player.y, 985, 381);
-      if (distance < 100 && !this.miniGameActive) {
-        keyE.setVisible(true);
+      const distance = Phaser.Math.Distance.Between(this.player.x, this.player.y, 985, 381); // Calcula a distância entre o jogador e o computador
+      if (distance < 100 && !this.miniGameActive) { // Se o jogador estiver próximo e o minigame não estiver ativo
+      keyE.setVisible(true); // Mostra a tecla "E"
       } else {
-        keyE.setVisible(false);
+      keyE.setVisible(false); // Esconde a tecla "E" caso contrário
       }
     });
 
+    // Evento para iniciar o minigame ao pressionar a tecla "E"
     this.input.keyboard.on("keydown-E", () => {
-      if (!indicator.visible) return;
+      if (!indicator.visible) return; // Se o indicador não estiver visível, não faz nada
 
-      const distance = Phaser.Math.Distance.Between(this.player.x, this.player.y, 985, 381);
-      if (distance < 100 && !this.miniGameActive) {
-        this.miniGameActive = true;
-        this.keySound();
-        keyE.setVisible(false);
-        this.startMiniGame();
+      const distance = Phaser.Math.Distance.Between(this.player.x, this.player.y, 985, 381); // Calcula a distância entre o jogador e o computador
+      if (distance < 100 && !this.miniGameActive) { // Se o jogador estiver próximo e o minigame não estiver ativo
+      this.miniGameActive = true; // Define o minigame como ativo
+      this.keySound(); // Toca o som de tecla
+      keyE.setVisible(false); // Esconde a tecla "E"
+      this.startMiniGame(); // Inicia o minigame
       }
     });
 
+    // Armazena o indicador do computador e a tecla "E" para referência futura
     this.computerIndicator = indicator;
     this.keyEComputer = keyE;
+
+    // Adiciona o indicador à lista de indicadores ativos
     this.activeIndicators.push(indicator);
 
-  }
-
-  activateComputerIndicator() {
-    if (this.computerIndicator && !this.computerIndicator.visible) {
-      this.computerIndicator.setVisible(true);
-      this.computerIndicator.play("exclaiming");
     }
-  }
+
+    // Função para ativar o indicador do computador
+    activateComputerIndicator() {
+    if (this.computerIndicator && !this.computerIndicator.visible) { // Se o indicador existir e não estiver visível
+      this.computerIndicator.setVisible(true); // Torna o indicador visível
+      this.computerIndicator.play("exclaiming"); // Reproduz a animação de exclamação
+    }
+    }
 
   startMiniGame() {
     // Pausar o movimento do jogador durante o minigame

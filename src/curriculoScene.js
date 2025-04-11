@@ -1,3 +1,197 @@
+/**
+ * @file curriculoScene.js
+ * @description Este arquivo contém a implementação de várias cenas do jogo utilizando Phaser, incluindo quizzes para diferentes VPs (Vice-Presidências) e cenas de parabéns. 
+ * Cada cena é responsável por gerenciar a lógica de exibição de perguntas, progresso, pontuação e feedback para o jogador.
+ */
+
+/**
+ * @constant {Array<Object>} peopleQuestions
+ * @description Contém as perguntas, opções, respostas corretas e feedback para o quiz da VP de Pessoas.
+ */
+
+/**
+ * @constant {Array<Object>} strategyQuestions
+ * @description Contém as perguntas, opções, respostas corretas e feedback para o quiz da VP de Estratégia.
+ */
+
+/**
+ * @constant {Array<Object>} businessQuestions
+ * @description Contém as perguntas, opções, respostas corretas e feedback para o quiz da VP de Negócios.
+ */
+
+/**
+ * @constant {Array<Object>} relationsQuestions
+ * @description Contém as perguntas, opções, respostas corretas e feedback para o quiz da VP de Relações Institucionais.
+ */
+
+/**
+ * @constant {Array<Object>} technologyQuestions
+ * @description Contém as perguntas, opções, respostas corretas e feedback para o quiz da VP de Tecnologia.
+ */
+
+/**
+ * @constant {number} TIME_PER_QUESTION
+ * @description Define o tempo limite (em segundos) para responder cada pergunta.
+ */
+
+/**
+ * @class CurriculoScene
+ * @extends Phaser.Scene
+ * @description Cena inicial que exibe os botões para acessar os quizzes de cada VP.
+ * @param {Object} data - Dados recebidos ao iniciar a cena, como o sprite selecionado.
+ */
+
+/**
+ * @method CurriculoScene#init
+ * @description Inicializa a cena com os dados recebidos.
+ * @param {Object} data - Dados recebidos ao iniciar a cena.
+ */
+
+/**
+ * @method CurriculoScene#preload
+ * @description Carrega os recursos necessários para a cena, como imagens, fontes e sons.
+ */
+
+/**
+ * @method CurriculoScene#create
+ * @description Cria os elementos visuais e interativos da cena, como botões para acessar os quizzes.
+ */
+
+/**
+ * @method CurriculoScene#scaleBackgroundImage
+ * @description Ajusta a escala da imagem de fundo para cobrir a tela mantendo a proporção.
+ * @param {Phaser.GameObjects.Image} image - Imagem de fundo a ser escalada.
+ */
+
+/**
+ * @class QuizVpPessoas
+ * @extends Phaser.Scene
+ * @description Cena do quiz da VP de Pessoas, gerencia perguntas, progresso e feedback.
+ */
+
+/**
+ * @method QuizVpPessoas#preload
+ * @description Carrega os recursos necessários para o quiz, como fontes e imagens.
+ */
+
+/**
+ * @method QuizVpPessoas#create
+ * @description Cria os elementos visuais e interativos do quiz, como perguntas e alternativas.
+ */
+
+/**
+ * @method QuizVpPessoas#scaleBackgroundImage
+ * @description Ajusta a escala da imagem de fundo para cobrir a tela mantendo a proporção.
+ * @param {Phaser.GameObjects.Image} image - Imagem de fundo a ser escalada.
+ */
+
+/**
+ * @method QuizVpPessoas#createQuestionCounter
+ * @description Exibe o número da pergunta atual e o total de perguntas.
+ */
+
+/**
+ * @method QuizVpPessoas#createProgressBar
+ * @description Cria a barra de progresso do quiz.
+ */
+
+/**
+ * @method QuizVpPessoas#updateProgressBar
+ * @description Atualiza a barra de progresso com base no progresso atual.
+ */
+
+/**
+ * @method QuizVpPessoas#clearElements
+ * @description Remove os elementos visuais da pergunta anterior.
+ */
+
+/**
+ * @method QuizVpPessoas#showQuestion
+ * @description Exibe a pergunta atual e as alternativas.
+ */
+
+/**
+ * @method QuizVpPessoas#checkAnswer
+ * @description Verifica se a resposta selecionada está correta e exibe o feedback.
+ * @param {number} answer - Índice da resposta selecionada.
+ * @param {Phaser.GameObjects.Rectangle} clickedButton - Botão clicado pelo jogador.
+ */
+
+/**
+ * @class CongratulationsSceneCurriculoVpPessoas
+ * @extends Phaser.Scene
+ * @description Cena de parabéns exibida após completar o quiz da VP de Pessoas.
+ */
+
+/**
+ * @method CongratulationsSceneCurriculoVpPessoas#init
+ * @description Inicializa a cena com a pontuação final.
+ * @param {Object} data - Dados recebidos ao iniciar a cena, como a pontuação final.
+ */
+
+/**
+ * @method CongratulationsSceneCurriculoVpPessoas#preload
+ * @description Carrega os recursos necessários para a cena de parabéns.
+ */
+
+/**
+ * @method CongratulationsSceneCurriculoVpPessoas#create
+ * @description Cria os elementos visuais e interativos da cena de parabéns.
+ */
+
+/**
+ * @method CongratulationsSceneCurriculoVpPessoas#scaleBackgroundImage
+ * @description Ajusta a escala da imagem de fundo para cobrir a tela mantendo a proporção.
+ * @param {Phaser.GameObjects.Image} image - Imagem de fundo a ser escalada.
+ */
+
+/**
+ * @class QuizVpEstrategia
+ * @extends Phaser.Scene
+ * @description Cena do quiz da VP de Estratégia, gerencia perguntas, progresso e feedback.
+ */
+
+/**
+ * @class CongratulationsSceneCurriculoVpEstrategia
+ * @extends Phaser.Scene
+ * @description Cena de parabéns exibida após completar o quiz da VP de Estratégia.
+ */
+
+/**
+ * @class QuizVpNegocios
+ * @extends Phaser.Scene
+ * @description Cena do quiz da VP de Negócios, gerencia perguntas, progresso e feedback.
+ */
+
+/**
+ * @class CongratulationsSceneCurriculoVpNegocios
+ * @extends Phaser.Scene
+ * @description Cena de parabéns exibida após completar o quiz da VP de Negócios.
+ */
+
+/**
+ * @class QuizVpRelacoes
+ * @extends Phaser.Scene
+ * @description Cena do quiz da VP de Relações Institucionais, gerencia perguntas, progresso e feedback.
+ */
+
+/**
+ * @class CongratulationsSceneCurriculoVpRelacoes
+ * @extends Phaser.Scene
+ * @description Cena de parabéns exibida após completar o quiz da VP de Relações Institucionais.
+ */
+
+/**
+ * @class QuizVpTecnologia
+ * @extends Phaser.Scene
+ * @description Cena do quiz da VP de Tecnologia, gerencia perguntas, progresso e feedback.
+ */
+
+/**
+ * @class CongratulationsSceneCurriculoVpTecnologia
+ * @extends Phaser.Scene
+ * @description Cena de parabéns exibida após completar o quiz da VP de Tecnologia.
+ */
 // Dados do Quiz VP Pessoas
 const peopleQuestions = [
     {
