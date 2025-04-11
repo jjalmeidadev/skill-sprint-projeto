@@ -1016,8 +1016,8 @@ class minigameEstrategiaCarlos extends Phaser.Scene {
         name: 'Carlos',
         elements: [
           { text: 'Entrar como Analista Comercial', color: 0x000000 },
-          { text: 'Virar Coordenador de Vendas', color: 0x000000 },
           { text: 'Fazer treinamento de liderança', color: 0x000000 },
+          { text: 'Virar Coordenador de Vendas', color: 0x000000 },
           { text: 'Virar Gerente (Carreira em Y)', color: 0x000000 }
         ],
         feedback: 'Certíssimo! Este é o caminho do líder na Vivo: Analista → Coordenador → Gerente. Você ganha bônus por resultados (PLR) e acesso a treinamentos exclusivos para crescer na empresa. Carlos está muito agradecido! Por isso, ele disse que quer te pagar um café. COLETE O CAFÉ OFERECIDO POR SEU AMIGO CARLOS! Parabéns por ajudá-lo no seu planejamento de carreira!'
