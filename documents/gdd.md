@@ -1362,6 +1362,16 @@ Os testes de jogabilidade (*playtests*) representaram uma etapa crucial no desen
 
 Esses testes proporcionaram *insights* valiosos sobre a interação dos jogadores com cada elemento do *serious game*, destacando tanto os pontos fortes quanto as oportunidades de melhoria.
 
+### Metodologia:
+
+- 5 *testers* internos da Vivo (perfil alinhado ao público-alvo: colaboradores de 25–45 anos, variando experiência com games).
+
+- Contexto: Testes presenciais, realizados em desktops com Chrome, duração média de 30 minutos por sessão.
+
+- Avaliação: Usabilidade, clareza das mecânicas, engajamento com o conteúdo educativo.
+
+Resultados Consolidados nos testes realizados no prédio da Vivo (Sede Eco Berrini) no dia 8 de abril de 2025:
+
 Nome | Rebeca Maciel (analista de *employer branding* sênior na Vivo)
 --- | ---
 Já possuía experiência prévia com games? | Sim
@@ -1421,15 +1431,19 @@ Que nota deu ao jogo? | 10.0
 O que gostou no jogo? | Gostou do conteúdo do jogo
 O que poderia melhorar no jogo? |Gostaria que a fonte da letra aumentasse e o personagem se movesse por setas, além das teclas WASD
 
-Os resultados dos *playtests* demonstraram o sucesso do Skill Sprint em seu propósito principal: oferecer uma ferramenta acessível e engajadora para o desenvolvimento profissional. Apesar das excelentes avaliações (nota 10 de todos os testers), os feedbacks apontaram melhorias importantes como a implementação de controles alternativos (setas), ajustes no sistema de quizzes e maior acessibilidade visual - itens que já estão sendo incorporados no roadmap de evolução do jogo. 
+Os resultados dos *playtests* demonstraram o sucesso do *Skill Sprint* em seu propósito principal: oferecer uma ferramenta acessível e engajadora para o desenvolvimento profissional. Apesar das excelentes avaliações (nota 10 de todos os testers), os *feedbacks* apontaram melhorias importantes como a implementação de controles alternativos (setas), ajustes no sistema de *quizzes* e maior acessibilidade visual - itens que já estão sendo incorporados no *roadmap* de evolução do jogo. 
 
-Além dos testes com o público-alvo do jogo, realizamos testes de guerrilha onde de 17 *testers*, acima de 80% apontaram terem adquirido aprendizado com o jogo. 
+Além dos testes com o público-alvo, realizamos testes de guerrilha onde de 17 *testers*, acima de 80% apontaram terem adquirido aprendizado com o jogo.
+
+O teste de guerrilha foi realizado presencialmente no Inteli (Instituto de Tecnologia e Liderança) no dia 1 de abril de 2025. 
+
+
 
 <div align="center">
   <sub>GIF - Teste de Guerrilha com aprovação acima de 80%.</sub><br>
   <img src="../assets//testers.gif" width="60%"
   alt="Teste de Guerrilha"><br>
-  <sup>Fonte: elaborado pelos autores.</sup>
+  <sup>Fonte: elaborado pelos autores. Imagem autorizada.</sup>
 </div>
 
 A diversidade de perfis testados comprovou a eficácia da abordagem gamificada para diferentes níveis de familiaridade com jogos, mantendo sempre o foco nos objetivos educacionais. Esses testes não apenas validaram o MVP atual, mas também traçaram um caminho claro para as próximas iterações do projeto.
