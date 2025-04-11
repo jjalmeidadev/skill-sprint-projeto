@@ -208,23 +208,23 @@ const peopleQuestions = [
     {
         question: "Qual a importância de destacar soft skills no currículo?",
         options: [
-            "São irrelevantes, apenas habilidades técnicas importam.",
             "Demonstram como o candidato se adapta e interage no ambiente de trabalho.",
+            "São irrelevantes, apenas habilidades técnicas importam.",
             "Devem ser listadas de forma genérica, sem exemplos práticos.",
             "Devem substituir as experiências profissionais."
         ],
-        correct: 1,
+        correct: 0,
         feedback: "Reflita! Soft skills mostram como você se relaciona e se adapta no trabalho. Qual alternativa destaca isso de forma mais eficaz?"
     },
     {
         question: "Como adaptar o currículo para ser aprovado por um sistema ATS (Applicant Tracking System)?",
         options: [
-            "Usando palavras-chave da descrição da vaga.",
+            "Evitando títulos claros para as seções.",
             "Criando um design altamente visual e colorido.",
             "Usando apenas tópicos genéricos sobre experiências.",
-            "Evitando títulos claros para as seções."
+            "Usando palavras-chave da descrição da vaga."
         ],
-        correct: 0,
+        correct: 3,
         feedback: "Pense melhor! Sistemas ATS buscam palavras-chave específicas. Qual alternativa reflete essa necessidade?"
     },
     {
@@ -256,12 +256,12 @@ const strategyQuestions = [
     {
         question: "A inteligência artificial é usada por sistemas de recrutamento (ATS) para filtrar currículos. Qual das seguintes abordagens ajuda seu currículo a ser bem classificado nesses sistemas?",
         options: [
-            "Inserir palavras-chave relevantes da vaga na seção de habilidades e experiência.",
+            "Enviar o currículo no corpo do e-mail ao invés de um arquivo estruturado.",
             "Utilizar fontes decorativas e imagens para destacar sua personalidade.",
             "Escrever um currículo genérico sem adaptação para cada vaga.",
-            "Enviar o currículo no corpo do e-mail ao invés de um arquivo estruturado."
+            "Inserir palavras-chave relevantes da vaga na seção de habilidades e experiência."
         ],
-        correct: 0,
+        correct: 3,
         feedback: "Reflita! Sistemas ATS priorizam palavras-chave relevantes. Qual alternativa melhor atende a essa necessidade?"
     },
     {
@@ -289,12 +289,12 @@ const strategyQuestions = [
     {
         question: "Qual habilidade é essencial para atuar em novos negócios e IA?",
         options: [
-            "Capacidade de adaptação e pensamento estratégico.",
             "Apenas habilidades operacionais sem visão de longo prazo.",
+            "Capacidade de adaptação e pensamento estratégico.",
             "Criatividade sem aplicação prática.",
             "Exclusivamente experiência acadêmica sem prática no mercado."
         ],
-        correct: 0,
+        correct: 1,
         feedback: "Pense melhor! Adaptação e pensamento estratégico são cruciais. Qual alternativa reflete isso?"
     },
     {
@@ -315,12 +315,12 @@ const businessQuestions = [
     {
         question: "Você deseja atuar na VP de Negócios da Vivo e percebe que a vaga enfatiza habilidades analíticas e gestão de projetos. Como você pode personalizar seu currículo para aumentar suas chances?",
         options: [
-            "Destacar experiências passadas que demonstram suas habilidades analíticas e projetos liderados.",
+            "Escrever experiências apenas com as funções desempenhadas, sem resultados obtidos.",
             "Manter um currículo genérico para que sirva para qualquer vaga.",
             "Adicionar certificações e cursos, mesmo que não tenham relação com a vaga.",
-            "Escrever experiências apenas com as funções desempenhadas, sem resultados obtidos."
+            "Destacar experiências passadas que demonstram suas habilidades analíticas e projetos liderados."
         ],
-        correct: 0,
+        correct: 3,
         feedback: "Reflita! Destacar habilidades analíticas e projetos liderados é essencial. Qual alternativa reflete isso?"
     },
     {
@@ -337,12 +337,12 @@ const businessQuestions = [
     {
         question: "Como descrever a experiência em negociação e vendas no currículo?",
         options: [
-            "Demonstrando crescimento de receita e estratégias aplicadas.",
             "Apenas mencionando que trabalhou com vendas.",
+            "Demonstrando crescimento de receita e estratégias aplicadas.",
             "Excluindo informações sobre indicadores de performance.",
             "Utilizando frases genéricas sem exemplos concretos."
         ],
-        correct: 0,
+        correct: 1,
         feedback: "Reflita! Crescimento de receita e estratégias aplicadas são essenciais. Qual alternativa reflete isso?"
     },
     {
@@ -359,12 +359,12 @@ const businessQuestions = [
     {
         question: "Qual é um diferencial para um currículo na área de negócios?",
         options: [
-            "Experiência em estratégias de crescimento e desenvolvimento de mercado.",
-            "Listar apenas habilidades técnicas.",
             "Ignorar a importância de soft skills.",
+            "Listar apenas habilidades técnicas.",
+            "Experiência em estratégias de crescimento e desenvolvimento de mercado.",
             "Criar um currículo genérico sem adaptações para a vaga."
         ],
-        correct: 0,
+        correct: 2,
         feedback: "Reflita! Estratégias de crescimento e desenvolvimento de mercado são diferenciais. Qual alternativa reflete isso?"
     }
 ];
@@ -396,23 +396,23 @@ const relationsQuestions = [
     {
         question: "Como destacar experiência com relações institucionais no currículo?",
         options: [
-            "Mencionando atuação com stakeholders e projetos de impacto.",
+            "Omitindo participação em políticas públicas e regulamentações.",
             "Apenas listando cargos sem descrição das atividades.",
             "Evitando detalhar parcerias estratégicas.",
-            "Omitindo participação em políticas públicas e regulamentações."
+            "Mencionando atuação com stakeholders e projetos de impacto."
         ],
-        correct: 0,
+        correct: 3,
         feedback: "Reflita! Atuação com stakeholders e projetos de impacto são essenciais. Qual alternativa reflete isso?"
     },
     {
         question: "Qual das seguintes ações melhora um currículo para a área de sustentabilidade?",
         options: [
-            "Incluir certificações e especializações relevantes.",
-            "Usar um layout poluído e desorganizado.",
             "Ignorar experiências de voluntariado e impacto social.",
+            "Usar um layout poluído e desorganizado.",
+            "Incluir certificações e especializações relevantes.",
             "Excluir informações sobre engajamento com ONGs."
         ],
-        correct: 0,
+        correct: 2,
         feedback: "Pense novamente! Certificações e especializações relevantes são diferenciais. Qual alternativa reflete isso?"
     },
     {
@@ -455,12 +455,12 @@ const technologyQuestions = [
     {
         question: "Como um profissional de TI pode demonstrar experiência prática no currículo?",
         options: [
-            "Destacando projetos, certificações e metodologias utilizadas.",
+            "Evitando links para portfólios ou GitHub.",
             "Apenas mencionando que tem habilidades técnicas.",
             "Omitindo informações sobre ferramentas e tecnologias.",
-            "Evitando links para portfólios ou GitHub."
+            "Destacando projetos, certificações e metodologias utilizadas."
         ],
-        correct: 0,
+        correct: 3,
         feedback: "Pense novamente! Projetos, certificações e metodologias são fundamentais. Qual alternativa reflete isso?"
     },
     {
@@ -477,12 +477,12 @@ const technologyQuestions = [
     {
         question: "Qual erro deve ser evitado ao criar um currículo para a área de TI?",
         options: [
-            "Listar todas as tecnologias já utilizadas sem organização.",
             "Incluir certificações e cursos relevantes.",
+            "Listar todas as tecnologias já utilizadas sem organização.",
             "Organizar a experiência de forma cronológica e clara.",
             "Excluir informações sobre impacto dos projetos."
         ],
-        correct: 0,
+        correct: 1,
         feedback: "Pense novamente! Listar tecnologias sem organização torna o currículo confuso. Qual alternativa reflete isso?"
     }
 ];
@@ -754,7 +754,7 @@ class QuizVpPessoas extends Phaser.Scene {
         this.questionCounterText = this.add.text(
             this.sys.game.config.width - 150,
             50,
-            `Question ${currentQuestion + 1}/${peopleQuestions.length}`,
+            `Questão ${currentQuestion + 1}/${peopleQuestions.length}`,
             { fontSize: '30px', fill: '#000', fontFamily: 'font' }
         ).setOrigin(0.5);
     }
@@ -809,7 +809,7 @@ class QuizVpPessoas extends Phaser.Scene {
         this.clearElements();
 
         // Atualiza o contador de perguntas
-        this.questionCounterText.setText(`Question ${currentQuestion + 1}/${peopleQuestions.length}`);
+        this.questionCounterText.setText(`Questão ${currentQuestion + 1}/${peopleQuestions.length}`);
 
         const question = peopleQuestions[currentQuestion];
 
@@ -1099,7 +1099,7 @@ class QuizVpEstrategia extends Phaser.Scene {
         this.questionCounterText = this.add.text(
             this.sys.game.config.width - 150,
             50,
-            `Question ${currentQuestion + 1}/${strategyQuestions.length}`,
+            `Questão ${currentQuestion + 1}/${strategyQuestions.length}`,
             { fontSize: '30px', fill: '#000', fontFamily: 'font' }
         ).setOrigin(0.5);
     }
@@ -1154,7 +1154,7 @@ class QuizVpEstrategia extends Phaser.Scene {
         this.clearElements();
 
         // Atualiza o contador de perguntas
-        this.questionCounterText.setText(`Question ${currentQuestion + 1}/${strategyQuestions.length}`);
+        this.questionCounterText.setText(`Questão ${currentQuestion + 1}/${strategyQuestions.length}`);
 
         const question = strategyQuestions[currentQuestion];
 
@@ -1439,7 +1439,7 @@ class QuizVpNegocios extends Phaser.Scene {
         this.questionCounterText = this.add.text(
             this.sys.game.config.width - 150,
             50,
-            `Question ${currentQuestion + 1}/${businessQuestions.length}`,
+            `Questão ${currentQuestion + 1}/${businessQuestions.length}`,
             { fontSize: '30px', fill: '#000', fontFamily: 'font' }
         ).setOrigin(0.5);
     }
@@ -1494,7 +1494,7 @@ class QuizVpNegocios extends Phaser.Scene {
         this.clearElements();
 
         // Atualiza o contador de perguntas
-        this.questionCounterText.setText(`Question ${currentQuestion + 1}/${businessQuestions.length}`);
+        this.questionCounterText.setText(`Questão ${currentQuestion + 1}/${businessQuestions.length}`);
 
         const question = businessQuestions[currentQuestion];
 
@@ -1779,7 +1779,7 @@ class QuizVpRelacoes extends Phaser.Scene {
         this.questionCounterText = this.add.text(
             this.sys.game.config.width - 150,
             50,
-            `Question ${currentQuestion + 1}/${relationsQuestions.length}`,
+            `Questão ${currentQuestion + 1}/${relationsQuestions.length}`,
             { fontSize: '30px', fill: '#000', fontFamily: 'font' }
         ).setOrigin(0.5);
     }
@@ -1834,7 +1834,7 @@ class QuizVpRelacoes extends Phaser.Scene {
         this.clearElements();
 
         // Atualiza o contador de questões
-        this.questionCounterText.setText(`Question ${currentQuestion + 1}/${relationsQuestions.length}`);
+        this.questionCounterText.setText(`Questão ${currentQuestion + 1}/${relationsQuestions.length}`);
 
         const question = relationsQuestions[currentQuestion];
 
@@ -2120,7 +2120,7 @@ class QuizVpTecnologia extends Phaser.Scene {
         this.questionCounterText = this.add.text(
             this.sys.game.config.width - 150,
             50,
-            `Question ${currentQuestion + 1}/${technologyQuestions.length}`,
+            `Questão ${currentQuestion + 1}/${technologyQuestions.length}`,
             { fontSize: '30px', fill: '#000', fontFamily: 'font' }
         ).setOrigin(0.5);
     }
@@ -2175,7 +2175,7 @@ class QuizVpTecnologia extends Phaser.Scene {
         this.clearElements();
 
         // Atualiza o contador de questões
-        this.questionCounterText.setText(`Question ${currentQuestion + 1}/${technologyQuestions.length}`);
+        this.questionCounterText.setText(`Questão ${currentQuestion + 1}/${technologyQuestions.length}`);
 
         const question = technologyQuestions[currentQuestion];
 

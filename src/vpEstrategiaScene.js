@@ -1026,8 +1026,6 @@ class minigameEstrategiaCarlos extends Phaser.Scene {
   }
 
   preload() {
-    this.load.audio('success', '../assets/sounds/success.mp3');
-    this.load.audio('error', '../assets/sounds/error.mp3');
     this.load.image('background', '../assets/background_vpestrategia_minigame.png');
     this.load.image('arrow', '../assets/arrow.png');
   }
@@ -1412,8 +1410,6 @@ class minigameEstrategiaAna extends Phaser.Scene {
   }
 
   preload() {
-    this.load.audio('success', '../assets/sounds/success.mp3');
-    this.load.audio('error', '../assets/sounds/error.mp3');
     this.load.image('background', '../assets/background_vpestrategia_minigame.png'); // Caminho fixo
     this.load.image('arrow', '../assets/arrow.png');
   }
@@ -1799,8 +1795,6 @@ class minigameEstrategiaMariana extends Phaser.Scene {
   }
 
   preload() {
-    this.load.audio('success', '../assets/sounds/success.mp3');
-    this.load.audio('error', '../assets/sounds/error.mp3');
     this.load.image('background', '../assets/background_vpestrategia_minigame.png'); // Caminho fixado
     this.load.image('arrow', '../assets/arrow.png');
   }
