@@ -116,7 +116,6 @@ class AjusteScene extends Phaser.Scene {
    * @param {number} height - Altura da tela.
    */
   createButtonVolumeDown(width, height) {
-    // Adiciona o botão para diminuir o volume
     const buttonDown = this.add.image((width / 2) - 80, (height / 2) + 194.3, 'buttonDown');
     buttonDown.setInteractive(); // Torna o botão interativo
     buttonDown.setScale(1.3); // Ajusta o tamanho do botão
@@ -136,6 +135,9 @@ class AjusteScene extends Phaser.Scene {
     }
   }
 
+  /**
+   * Reproduz o som do clique do botão.
+   */
   buttonSound() {
     // Reproduz o som do clique do botão
     this.buttonClick = this.sound.add('buttonSound', { loop: false, volume: 10 }); // Adiciona o som do botão com volume definido
@@ -147,9 +149,8 @@ class AjusteScene extends Phaser.Scene {
    * Atualiza a posição dos planos de fundo para criar o efeito de paralaxe.
    */
   update() {
-    // Atualiza a posição dos planos de fundo para criar o efeito de paralaxe
     this.bgs.forEach(layer => {
-      layer.sprite.tilePositionX += layer.speed; // Move cada camada de fundo com base na sua velocidade
+      layer.sprite.tilePositionX += layer.speed; // Move cada camada de fundo com base na sua velocidade.
     });
   }
 }
