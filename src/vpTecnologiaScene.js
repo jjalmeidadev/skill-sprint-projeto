@@ -161,9 +161,6 @@ this.arrowOffset = Phaser.Math.DegToRad(-180);
 
     this.walkSound = this.sound.add('walkSound', { loop: false, volume: 2 });
 
-    this.cursorCoordinatesText = this.add.text(10, 10, '', { fontSize: '16px', fill: '#000000', fontFamily: 'font' });
-    this.cursorCoordinatesText.setDepth(1000);
-
     this.barrierDoor = this.add.rectangle(width - 520, height - 720, 20, 20, 0x2F052F).setOrigin(0); // Adiciona um retângulo como barreira
     this.physics.add.existing(this.barrierDoor, true); // Ativa a física do retângulo
     this.physics.add.collider(this.player, this.barrierDoor); // Adiciona colisão entre o jogador e a barreira
@@ -178,8 +175,6 @@ this.arrowOffset = Phaser.Math.DegToRad(-180);
 
   update() {
     this.movePlayer();
-    const pointer = this.input.activePointer;
-    this.cursorCoordinatesText.setText(`X: ${pointer.worldX.toFixed(0)} Y: ${pointer.worldY.toFixed(0)}`);
   
     if (this.compassArrow) {
       // Atualiza a lista de indicadores ativos
@@ -759,28 +754,6 @@ this.updateArrowToNearestIndicator();
       }
     });
 
-    // Adicionar botão de fechar/voltar
-    const closeButton = this.add.image(
-      this.cameras.main.width - 40,
-      40,
-      'keyE'
-    ).setScale(0.15).setInteractive();
-
-    closeButton.on('pointerup', () => {
-      this.closeMiniGame();
-    });
-
-    this.miniGameContainer.add(closeButton);
-
-    // Adicionar texto explicativo ao botão
-    const closeText = this.add.text(
-      this.cameras.main.width - 40,
-      70,
-      'Fechar',
-      { fontSize: '14px', fill: '#000000', fontFamily: 'font' }
-    ).setOrigin(0.5);
-
-    this.miniGameContainer.add(closeText);
   }
 
   showMiniGameSuccess() {
