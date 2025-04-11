@@ -300,7 +300,7 @@ Os objetivos de cada fase do jogo são:
 - **Desafios (objetivo do jogador):** Resolver desafio e ler sobre o processo de entrevista na Vivo.
 
 <div align="center">
-  <sub>Uma das interações da fase de Pessoas relacionada ao desenvolvimento de habilidades para entrevistas.</sub><br>
+  <sub>GIF - Uma das interações da fase de Pessoas relacionada ao desenvolvimento de habilidades para entrevistas.</sub><br>
   <img src="../assets/minigame_pessoas.gif" width="100%"
   alt="Serious Game VP de Pessoas"><br>
   <sup>Fonte: elaborado pelos autores.</sup>
@@ -706,18 +706,19 @@ Abaixo está a lista das músicas utilizadas em cada parte do jogo, além dos ef
 | Cena                | Descrição da Trilha                                                | Fonte / Link                                                                 | Autor e Licença                                     |
 |---------------------|---------------------------------------------------------------------|------------------------------------------------------------------------------|------------------------------------------------------|
 | Tela Inicial        | Trilha leve e acolhedora para recepcionar o jogador.               | https://www.youtube.com/watch?v=Z-bi29z4Z1k                                  | Kevin MacLeod [Official] - Pixelland - incompetech.com |
-| Cena 1 - Escritório | Música tranquila e suave, ideal para um ambiente de trabalho.      | [YouTube - Calm Office Música para Trabalhar no Escritório](https://www.youtube.com/watch?v=QZbuj3RJcjI) | STUDIO LUZES DE PARÍS - "Carefree"                   |
+| Cena do Escritório e Sala do Líder| Música tranquila e suave, ideal para um ambiente de trabalho.      | [YouTube - Calm Office Música para Trabalhar no Escritório](https://www.youtube.com/watch?v=QZbuj3RJcjI) | STUDIO LUZES DE PARÍS - "Carefree"                   |
 | Cena do Elevador    | Clássica música de elevador, divertida e temática.                 | [YouTube - Elevator Local Forecast - Elevator](https://www.youtube.com/watch?v=VnQ1j6gG3LU) | Kevin MacLeod - "Elevator"                          |
-| Vice-Presidência de Pessoas    | Música ambiente da fase de VP de Pessoas, que cria uma atmosfera animada e desafiadora ao mesmo tempo.                 | <https://freesound.org/people/DominikBraun/sounds/483502/> | DominikBraun - Freesound                          |
+| Vice-Presidência de Pessoas  e Vice-Presidência de Negócios   | Cria uma atmosfera animada e desafiadora ao mesmo tempo.                 | <https://freesound.org/people/DominikBraun/sounds/483502/> | DominikBraun - Freesound                          |
 | Vice-Presidência de Estratégia    | Música animada e que motiva a socialização (objetivo do minigame desta fase).                | <https://www.youtube.com/watch?v=DzFXGsRvSwA&list=PLwJjxqYuirCLkq42mGw4XKGQlpZSfxsYd&index=15> | Kevin MacLeod   |
+| Vice-Presidência de Tecnologia    | Música animada e com estilo tecnológico.                | <https://www.youtube.com/watch?v=ZTbBqWaLv-E> | RoccoW   |
+| Vice-Presidência de Relações Institucionais    | Música calma e propícia para um jantar com gestores.               | <https://www.youtube.com/watch?v=uj-fZfscY9Y> | Melody Note 멜로디노트 |
 | Efeito: personagem andando   |  O áudio apresenta a movimentação básica do personagem, com a finalidade de sinalizar seus passos em meio às fases situadas no prédio da Vivo para o jogador.              | <https://freesound.org/people/Vrymaa/sounds/753292/> | Vrymaa - Freesound                          |
 | Efeito: botão   |  Representa o click padronizado de todos os botões presentes no jogo, como o de “Jogar” na tela inicial, por exemplo. Tem a finalidade de tornar a navegação no jogo um processo dinâmico.                | <https://freesound.org/people/aphom000/sounds/687107/> | aphom000 - Freesound                          |
 | Efeito: escolha correta no quiz  |    Representa os acertos no minigame/quiz de formulação de currículo na fase do escritório. Tem como principal objetivo fornecer *feedback* sonoro do desempenho do jogador.            | <https://freesound.org/people/unadamlar/sounds/476178/ > | unadamlar - Freesound                         |
 | Efeito: escolha incorreta no quiz  | Representa as escolhas das respostas erradas no minigame/quiz do currículo. Assim como o som de acertos, esse efeito sonoro tem como finalidade fornecer um *feedback* ao jogador.                | <https://freesound.org/people/Producing_RayLite/sounds/700641/> | Producing_RayLite - Freesound                        |
-| Efeito: HUD exclamação  | Utilizado para o alerta à storyline/progressão do jogo, de maneira a identificar o caminho que o player deve percorrer inicialmente para o entendimento de como o mesmo funciona.                 | <https://freesound.org/people/Abacagi/sounds/497198/> |  Abacagi - Freesound                         |
 
 
-## 3.4. Inventário e Bestiário (sprint 3)
+## 3.4. Inventário e Bestiário 
 
 ### 3.4.1. Inventário
 
@@ -745,15 +746,49 @@ Não se aplica ao jogo. O jogo não inclui sistemas de inventário (como coleta 
 
 Não se aplica ao jogo. O jogo não inclui inimigos, criaturas ou qualquer tipo de antagonista que precise ser catalogado em um bestiário. A experiência do jogador é focada em completar os *minigames* em cada fase das Vice-Presidências da Vivo através da interação com *NPCs* do jogo. A presença de inimigos não é necessária para alcançar os objetivos de design propostos. O jogo foi projetado para oferecer uma experiência imersiva e educativa, sem a necessidade de combate ou interação com inimigos. A ausência de um bestiário permite que o jogador se concentre em resolver *puzzles*, explorar o ambiente e interagir com a história.
 
-## 3.5. Gameflow (Diagrama de cenas) (sprint 2)
+## 3.5. Gameflow (Diagrama de cenas) 
 
-Com base na nossa *Concept Art*, criamos o diagrama de cenas para visualizar e demonstrar como as fases do jogo funcionarão. O jogo inicia em uma tela inicial com o botão "Jogar" e leva o personagem para o primeiro mapa (a recepção), depois disso, a próxima tela é a da criação do currículo e, ao finalizar essa tarefa, ele retorna para o escritório. Assim, a sala da líder é liberada e, nessa fase, ocorre a entrega do currículo. 
+Com base na nossa *Concept Art*, criamos o diagrama de cenas para visualizar e demonstrar como as fases do jogo funcionam. O jogo inicia em uma tela inicial com o botão "Jogar" e leva o personagem para o primeiro mapa (a recepção), depois disso, a próxima tela é a da criação do currículo e, ao finalizar essa tarefa, ele retorna para o escritório. Assim, a sala da líder é liberada e, nessa fase, ocorre a entrega do currículo. 
 
-O próximo passo vai ser utilizar o elevador para ir para os próximos níveis. Cada andar do elevador remete a um nível e o usuário é obrigado a efetuar apenas a primeira fase. Após completar o envio do currículo, é possível navegar entre as fases do jogo e escolher o conteúdo que o jogador quer explorar. Em cada fase terá um case/mini game voltado para aquela Vice-Presidência (diretorias da Vivo). Algumas das condições de game over ocorrem nos *minigames*, ao falhar no teste e, caso isso aconteça, o jogo reinicia até passar de fase. No último andar, ao realizar a última tarefa, a jornada do usuário se encerra, finalizando o jogo. 
+O próximo passo é utilizar o elevador para ir para os próximos níveis. Cada andar do elevador remete a um nível e o usuário é obrigado a efetuar apenas a primeira fase. Após completar o envio do currículo, é possível navegar entre as fases do jogo e escolher o conteúdo que o jogador quer explorar. 
 
-O Gameflow de Skill Print pode ser observado a seguir:
+Em cada fase existe um *case/mini game* voltado para aquela Vice-Presidência (diretorias da Vivo). Algumas das condições de *game over* ocorrem nos *minigames*, ao falhar na missão e, caso isso aconteça, a fase reinicia até que aconteça sua conclusão com sucesso.
 
-![Image](https://github.com/user-attachments/assets/36dbf211-b7fc-42a2-8ceb-5cad738647f4)
+Exemplo:
+
+<div align="center">
+  <sub><i>Game over - minigame</i> VP de Pessoas.</sub><br>
+  <img src="../assets/minigame_gameover.png" width="100%"
+  alt="Game Over - VP Pessoas"><br>
+  <sup>Fonte: elaborado pelos autores.</sup>
+</div>
+
+*Minigame* da VP de Pessoas reinicia em caso de coletar algo que não seja o Vivinho ou o rosto feliz.
+
+Segundo exemplo:
+
+<div align="center">
+  <sub><i>Feedback</i> ao errar o quiz do Escritório.</sub><br>
+  <img src="../assets/quiz_erro.png" width="100%"
+  alt="Errando o quiz da fase do escritório"><br>
+  <sup>Fonte: elaborado pelos autores.</sup>
+</div>
+
+Neste caso em específico, ao errar o quiz do escritório, o quiz não reinicia. Entretando, ele apresenta um *feedback* ao erro de forma a ajudar o jogador a acertar.
+
+
+
+
+No último andar, ao realizar a última tarefa, a jornada do usuário se encerra, finalizando o jogo. 
+
+O *Gameflow* de *Skill Sprint* pode ser observado a seguir:
+
+<div align="center">
+  <sub>Diagrama de Fases.</sub><br>
+  <img src="https://github.com/user-attachments/assets/36dbf211-b7fc-42a2-8ceb-5cad738647f4" width="100%"
+  alt="Título"><br>
+  <sup>Fonte: elaborado pelos autores.</sup>
+</div>
 
 Link de acesso:  <https://github.com/user-attachments/assets/e5c2d30d-10b0-4523-8660-6ef98265b399>
 
@@ -762,7 +797,7 @@ Além do *Gameflow* desenvolvido no Canva, o rascunho do diagrama de cenas foi d
 
 Inicialmente, o diagrama mostrava uma sequência linear, onde o jogador começava na tela inicial, passava por uma *cutscene* introdutória e era direcionado diretamente para o escritório, onde realizava a criação do currículo. No entanto, durante o desenvolvimento, percebemos que essa estrutura poderia ser aprimorada para oferecer uma experiência mais fluida e envolvente. Algumas alterações foram feitas, como a inclusão de uma interação inicial com a recepcionista (Vivita) antes de acessar o computador, para contextualizar melhor a missão e guiar o jogador de forma mais clara.
 
-Além disso, o rascunho inicial não incluía a sala da líder como um espaço separado, mas, após testes e **feedback*s*, decidimos adicionar essa etapa para dar mais peso à entrega do currículo e proporcionar um momento de **feedback** imediato ao jogador. Essas mudanças foram essenciais para garantir que a primeira fase fosse intuitiva, educativa e alinhada com os objetivos do jogo.
+Além disso, o rascunho inicial não incluía a sala da líder como um espaço separado, mas, após testes e *feedbacks*, decidimos adicionar essa etapa para dar mais peso à entrega do currículo e proporcionar um momento de *feedback* imediato ao jogador. Essas mudanças foram essenciais para garantir que a primeira fase fosse intuitiva, educativa e alinhada com os objetivos do jogo.
 
 <div align="center">
   <sub>Rascunho do esquema inicial do Diagrama de Fases do jogo</sub><br>
@@ -773,7 +808,7 @@ Além disso, o rascunho inicial não incluía a sala da líder como um espaço s
 
 O diagrama de cenas, portanto, evoluiu de uma estrutura simples para uma mais detalhada e interativa, refletindo as necessidades identificadas durante o processo de desenvolvimento. Ele serviu como um guia visual para a equipe, ajudando a alinhar expectativas e garantir que todas as mecânicas e narrativas estivessem integradas de forma coesa.
 
-## 3.6. Regras do Jogo (Sprint 3)
+## 3.6. Regras do Jogo
 
 Neste segmento, serão apresentadas as diretrizes que o personagem precisará seguir para avançar nas etapas do jogo, comumente chamadas de *"primary quests"* ou missões principais. Essas normas são essenciais para garantir que o jogador compreenda os desafios propostos e consiga progredir de maneira estruturada dentro da narrativa.
 
@@ -781,22 +816,21 @@ A proposta central do jogo é retratar diferentes cenários dentro do amplo ecos
 
 **A jornada do jogador seguirá os seguintes passos:**
 
-1. **Chegada à empresa** – Após a cena introdutória (cutscene), o jogador inicia sua experiência na recepção;
+1. **Chegada à empresa** – Após a cena introdutória (*cut scene*), o jogador inicia sua experiência na recepção;
 2. **Escolha do nome** – Antes de avançar, ele deverá definir o nome pelo qual será identificado ao longo do jogo;
-3. **Missões e desafios** – O progresso ocorrerá por meio do cumprimento das tarefas, que envolvem a realização de minijogos;
+3. **Missões e desafios** – O progresso ocorrerá por meio do cumprimento das tarefas, que envolvem a realização de mini jogos;
 4. **Aquisição de conhecimento** – Cada missão completada permitirá ao jogador obter informações essenciais para avançar;
-5. **Desbloqueio de novas fases** – O sucesso nos minijogos do **andar** em que se encontra desbloqueia a próxima fase, ampliando a experiência e incentivando a evolução dentro do jogo;
-6. **Movimentação entre as fases** – O jogador usará o elevador da empresa para se deslocar entre as fases e deverá interagir com *NPCs* para progredir em suas missões.
+5. **Movimentação entre as fases** – O jogador usará o elevador da empresa para se deslocar entre as fases e deverá interagir com *NPCs* para progredir em suas missões.
 
 Essa estrutura proporciona uma experiência imersiva e educativa, garantindo que o jogador compreenda e explore os diferentes papéis dentro da empresa de forma dinâmica e interativa.
 
-## 3.7. Mecânicas do jogo (sprint 3)
+## 3.7. Mecânicas do jogo
 
-As mecânicas do jogo são os elementos que permitem ao jogador interagir com o mundo virtual, realizar ações e progredir na narrativa. No *Skill Sprint*, as mecânicas foram projetadas para serem intuitivas e acessíveis, garantindo uma experiência fluida e envolvente. Os comandos disponíveis ao jogador, levando em conta que habita um ambiente 2D para a web, são:
+As mecânicas do jogo são os elementos que permitem ao jogador interagir com o mundo virtual, realizar ações e progredir na narrativa. No *Skill Sprint*, as mecânicas foram projetadas para serem intuitivas e acessíveis, garantindo uma experiência fluida e envolvente. Os comandos disponíveis ao jogador, levando em conta que habita um ambiente 2D para a *web*, são:
 
 \# | Mecânicas
 --- | ---
-01 | Click de mouse ou touchpad para entrar no jogo, acessar créditos e configurações, além de pular a cutscene e selecionar botões.
+01 | *Click* de *mouse* ou *touchpad* para entrar no jogo, acessar créditos e configurações, além de pular a *cut scene* e selecionar botões.
 02 | Movimentação básica entre os eixos X e Y através das teclas WASD, que podem ser combinadas para movimentos diagonais.
 03 | Tecla ENTER para a interação com diálogos.
 04 | Tecla E para interação com objetos (computador onde se produz o currículo, por exemplo).
@@ -811,7 +845,7 @@ As mecânicas foram projetadas para serem simples, mas eficazes, garantindo que 
 
 Essas mecânicas são a base da jogabilidade do *Skill Sprint*, garantindo que o jogador tenha controle total sobre suas ações enquanto explora o mundo do jogo e avança em sua jornada de desenvolvimento profissional. Por exemplo, o jogador pode optar por mudar de sala e níveis em qualquer momento de jogo, de forma que nenhum dos níveis possuem uma ordem fixa de jogabilidade. Ou seja, o jogador tem total liberdade para escolher que nível e quais *minigames* deseja jogar.
 
-## 3.8. Implementação Matemática de Animação/Movimento (sprint 4)
+## 3.8. Implementação Matemática de Animação/Movimento 
 
 Em *Skill Sprint*, a movimentação de elementos é essencial para garantir uma experiência de jogo dinâmica e desafiadora. A seção 3.8 deste documento detalha a implementação do sistema de movimento bidimensional, que combina Movimento Uniforme (MU) e Movimento Uniformemente Variado (MUV) para criar uma trajetória fluida. 
 
@@ -971,9 +1005,9 @@ Em conclusão, a implementação do movimento eleva a qualidade da *gameplay*, p
 
 Essa seção detalha o planejamento e a execução das sprints no desenvolvimento do *Serious Game* para a Vivo. O projeto segue uma abordagem iterativa e incremental (Scrum), garantindo entregas contínuas e alinhadas às necessidades do parceiro. Esse processo garante engajamento da equipe e um melhor controle da execução dos requisitos, além de garantir entrega de valor tanto para a Vivo quanto para os colaboradores que utilizarão a solução.
 
-## 4.1. Desenvolvimento preliminar do jogo (sprint 1)
+## 4.1. Desenvolvimento preliminar do jogo
 
-Para a primeira versão do jogo (MVP) elaboramos uma tela inicial com um botão interativo "Jogar" (R02), permitindo que o jogador inicie a experiência ao clicar no botão.
+Para a primeira versão do jogo (MVP - *sprint* 1) elaboramos uma tela inicial com um botão interativo "Jogar" (R02), permitindo que o jogador inicie a experiência ao clicar no botão.
 
 <div align="center">
   <sub>Tela inicial</sub><br>
@@ -1006,9 +1040,9 @@ Os próximos passos incluem a criação de novas fases e o desenvolvimento de di
 
 Por fim, com a descrição fornecida e os elementos visuais indicados, é possível compreender a fase preliminar de desenvolvimento do jogo.
 
-## 4.2. Desenvolvimento básico do jogo (sprint 2)
+## 4.2. Desenvolvimento básico do jogo 
 
-Durante o desenvolvimento básico do jogo, elaboramos a interação com o computador na sala do escritório para que pudéssemos iniciar o *minigame* da criação do currículo (R06). Além disso, desenvolvemos o cenário da sala da líder, elaboramos as perguntas condicionais do mini game da primeira fase e aprimoramos os designs gráficos do nosso jogo através do rascunho de concept arts de todos os níveis, além de desenharmos os personagens principais. Também idealizamos o jogo de forma integral, portanto, nessa fase do desenvolvimento temos uma ideia clara do que esperamos desenvolver nas próximas sprints.
+Durante o desenvolvimento básico do jogo (*sprint* 2), elaboramos a interação com o computador na sala do escritório para que pudéssemos iniciar o *minigame* da criação do currículo (R06). Além disso, desenvolvemos o cenário da sala da líder, elaboramos as perguntas condicionais do mini game da primeira fase e aprimoramos os designs gráficos do nosso jogo através do rascunho de concept arts de todos os níveis, além de desenharmos os personagens principais. Também idealizamos o jogo de forma integral, portanto, nessa fase do desenvolvimento temos uma ideia clara do que esperamos desenvolver nas próximas sprints.
 
 As interações com *NPCs* e a execução de tarefas orientadas pelo jogo (R04) serão aprofundadas nas próximas etapas do desenvolvimento. Na sprint 2, decidimos alterar as teclas de movimentação de personagem para WASD (R01), tendo em vista a utilização da tecla E para interação com elementos no mapa, o que garante uma melhor usabilidade. Personalizamos nosso personagem principal e temos como objetivo finalizar o design de seu sprite sheet, para que ele possa ser implementado de forma dinâmica no jogo.
 
@@ -1018,10 +1052,10 @@ Os próximos passos incluem o desenvolvimento técnico das próximas fases e fin
 
 Por fim, com a descrição fornecida e os elementos visuais indicados, é possível compreender a fase básica de desenvolvimento do jogo.
 
-## 4.3. Desenvolvimento intermediário do jogo (sprint 3)
+## 4.3. Desenvolvimento intermediário do jogo
 
 
-Durante a sprint 3, enfrentamos desafios significativos devido ao curto prazo de desenvolvimento (apenas 7 dias úteis). No entanto, conseguimos progredir de forma consistente e alcançar resultados que aproximam a primeira fase do jogo do nosso objetivo final. Apesar das limitações de tempo, priorizamos tarefas essenciais para garantir que o jogo estivesse mais alinhado com a visão que queremos transmitir ao jogador.
+Durante a *sprint* 3, enfrentamos desafios significativos devido ao curto prazo de desenvolvimento (apenas 7 dias úteis). No entanto, conseguimos progredir de forma consistente e alcançar resultados que aproximam a primeira fase do jogo do nosso objetivo final. Apesar das limitações de tempo, priorizamos tarefas essenciais para garantir que o jogo estivesse mais alinhado com a visão que queremos transmitir ao jogador.
 
 Na sprint planning, definimos uma série de metas para esta etapa, das quais destacamos:
 
@@ -1097,9 +1131,9 @@ Abaixo, estão as principais telas desenvolvidas nesta sprint:
 
 Esses avanços representam um passo importante em direção ao MVP final, e estamos confiantes de que as próximas sprints trarão ainda mais melhorias e refinamentos para o *Skill Sprint*.
 
-## 4.4. Desenvolvimento final do MVP (sprint 4)
+## 4.4. Desenvolvimento final do MVP 
 
-Durante a quarta sprint do nosso projeto, trabalhamos na implementação de novos mini games, na expansão dos mapas, na criação da tela inicial e na resolução de bugs que estavam comprometendo a execução do código. O objetivo principal foi entregar uma versão funcional e engajante do jogo, garantindo que todas as mecânicas essenciais estivessem implementadas.
+Durante a quarta *sprint* do nosso projeto, trabalhamos na implementação de novos mini games, na expansão dos mapas, na criação da tela inicial e na resolução de bugs que estavam comprometendo a execução do código. O objetivo principal foi entregar uma versão funcional e engajante do jogo, garantindo que todas as mecânicas essenciais estivessem implementadas.
 
 Recaptulamos planos anteriores de desenvolvimento e avançamos em diversos planejamentos. Durante um *brainstorming*, decidimos que o ambiente principal do jogo seria um prédio com seis andares, cada um representando uma Vice-Presidência (VP), com desafios e mini games exclusivos.
 
@@ -1179,7 +1213,7 @@ Abaixo, estão algumas capturas de tela para ilustrar o desenvolvimento do MVP (
 Nessa sprint, também mudamos o comportamento da câmera no jogo, que agora acompanha o jogador:
 
 <div align="center">
-  <sub>Mudança no comportamento da câmera: desenvolvida na Sprint 4.</sub><br>
+  <sub>GIF - Mudança no comportamento da câmera: desenvolvida na Sprint 4.</sub><br>
   <img src="../assets/gif_camera.gif" width="700px" 
   alt="Título"><br>
   <sup>Fonte: elaborado pelos autores.</sup>
@@ -1190,11 +1224,11 @@ Nessa sprint, também mudamos o comportamento da câmera no jogo, que agora acom
 Na próxima sprint, planejamos corrigir bugs da implementação dos sons no jogo e finalizar os minigames da VP de Negócios, Estratégia, Relações e Tecnologia. 
 
 
-## 4.5. Revisão do MVP (sprint 5)
+## 4.5. Revisão do MVP
 
-*Descreva e ilustre aqui o desenvolvimento dos refinamentos e revisões da versão final do jogo, explicando brevemente o que foi entregue em termos de MVP. Utilize prints de tela para ilustrar.*
+<!-- *Descreva e ilustre aqui o desenvolvimento dos refinamentos e revisões da versão final do jogo, explicando brevemente o que foi entregue em termos de MVP. Utilize prints de tela para ilustrar.* -->
 
-Com os avanços alcançados no desenvolvimento do jogo, esta seção dedicada à revisão do MVP (mínimo produto viável) busca reunir as implementações já realizadas e incorporar novos elementos que tornem a experiência do jogador ainda mais envolvente. Atendendo à solicitação da VIVO, nosso cliente, implementamos a possibilidade de escolha do personagem com foco na representatividade. Foram desenvolvidas quatro skins distintas, pensadas para refletir diferentes características de gênero, raça e estilo, promovendo maior inclusão e identificação entre os colaboradores. Essa novidade amplia a imersão do jogador, tornando a experiência mais personalizada e conectada à diversidade do público.
+Com os avanços alcançados no desenvolvimento do jogo (final da *sprint* 5), esta seção dedicada à revisão do MVP (mínimo produto viável) busca reunir as implementações já realizadas e incorporar novos elementos que tornem a experiência do jogador ainda mais envolvente. Atendendo à solicitação da VIVO, nosso cliente, implementamos a possibilidade de escolha do personagem com foco na representatividade. Foram desenvolvidas quatro skins distintas, pensadas para refletir diferentes características de gênero, raça e estilo, promovendo maior inclusão e identificação entre os colaboradores. Essa novidade amplia a imersão do jogador, tornando a experiência mais personalizada e conectada à diversidade do público.
 
 <div align="center">
   <sub>Layout para escolha de personagem.</sub><br>
@@ -1246,7 +1280,7 @@ Após conquistar o engajamento inicial do jogador com a proposta do jogo, avanç
 
 # <a name="c5"></a>5. Testes
 
-## 5.1. Casos de Teste (sprints 2 a 4)
+## 5.1. Casos de Teste 
 
 
 Os casos de teste descritos a seguir foram elaborados para avaliar os diferentes aspectos do jogo, desde a mecânica até a interação do jogador com os elementos do cenário. O objetivo é garantir que todas as funcionalidades implementadas no *Skill Sprint* estejam funcionando corretamente e integradas de forma eficaz.
@@ -1297,9 +1331,9 @@ Os casos de teste descritos a seguir foram elaborados para avaliar os diferentes
 
 Através desses testes, é possível identificar pontos de melhoria, ajustar comportamentos inesperados e assegurar que a experiência do jogador seja fluida e intuitiva.
 
-No futuro, planejamos expandir os casos de teste para cobrir novas funcionalidades, melhorar o design do nosso jogo (padronizar de acordo com a paleta de cores) e realizar a refatoração do código (reutilizar elementos e torná-lo mais oganizado e inteligente). Dessa forma, garantiremos que o *Skill Sprint* continue evoluindo e oferecendo uma experiência cada vez mais envolvente e alinhada com os objetivos de aprendizado e desenvolvimento profissional propostos.
+No futuro, planejamos expandir os casos de teste para cobrir novas funcionalidades, melhorar o *design* do nosso jogo (padronizar de acordo com a paleta de cores) e realizar a refatoração do código (reutilizar elementos e torná-lo mais oganizado e inteligente). Dessa forma, garantiremos que o *Skill Sprint* continue evoluindo e oferecendo uma experiência cada vez mais envolvente e alinhada com os objetivos de aprendizado e desenvolvimento profissional propostos.
 
-## 5.2. Testes de jogabilidade (playtests) (sprint 4)
+## 5.2. Testes de jogabilidade (playtests) 
 
 ### 5.2.1 Registros de testes
 
@@ -1367,7 +1401,7 @@ O que poderia melhorar no jogo? |Gostaria que a fonte aumentasse e o personagem 
 
 Entre as melhorias que estamos planejando, estão o aumento do tamanho da fonte, a adição de setas direcionais além do uso do WASD, ajustes nos sons, adaptação do jogo para a versão mobile, opções de customização e mini games mais complexos para ampliar a experiência do jogador.
 
-# <a name="c6"></a>6. Conclusões e trabalhos futuros (sprint 5)
+# <a name="c6"></a>6. Conclusões e trabalhos futuros
 
 A partir da imersão no desenvolvimento, o grupo foi capaz de potencializar o alcance do jogo ao mesmo nível proposto inicialmente, sendo capaz de ter criado, de forma organizada e documentada, 5 fases de VPs que abordam os setores de Negócios, Pessoas, Relações Institucionais, Tecnologia e Estratégia, com cada uma contendo um minigame e assets correspondentes. Elevamos as metas de testes iniciais de 5 testes para mais de 20, fato que contribuiu exponencialmente para uma maior compreensão do impacto do jogo sobre alunos e colaboradores da Vivo (incluindo aprendizado e diversão com dinâmicas). Não só isso, como fomos capazes de corrigir bugs e identificar todos os recursos essenciais ainda não implementados no jogo até certo momento, incluindo o posicionamento adequado de barreiras, noção de progresso de fases e padronização de atividades, com hotfixes sendo realizados sempre que o necessário.
 
@@ -1375,9 +1409,9 @@ Como pontos negativos, é possível afirmar que não fomos capazes de explorar o
 
 Portanto, melhorias evidentes para um plano de ações futuro seriam a inclusão do jogo em mobile, com falas audíveis, maior representatividade de condições de saúde e características físicas, um maior número de minigames em cada fase (cerca de +2 em cada) e maior acessibilidade por parte de botões de ajustes durante a trilha do jogo.
 
-# <a name="c7"></a>7. Referências (sprint 5)
+# <a name="c7"></a>7. Referências
 
-_Incluir as principais referências de seu projeto, para que seu parceiro possa consultar caso ele se interessar em aprofundar. Um exemplo de referência de livro e de site:_<br>
+<!-- _Incluir as principais referências de seu projeto, para que seu parceiro possa consultar caso ele se interessar em aprofundar. Um exemplo de referência de livro e de site:_<br> -->
 
 [1] Para a Vivo, o desafio atual é manter os investimentos no setor. Disponível em: <https://www.telesintese.com.br/para-a-vivo-o-desafio-atual-e-manter-os-investimentos-no-setor/>. Acesso em: 27 fev. 2025.
 
@@ -1441,12 +1475,13 @@ _Incluir as principais referências de seu projeto, para que seu parceiro possa 
 
 [31] Indicadores sociais das mulheres no Brasil. Disponível em: <https://educa.ibge.gov.br/jovens/materias-especiais/21241-indicadores-sociais-das-mulheres-no-brasil.html>. Acesso em: 21 fev. 2025.
 
-LUCK, Heloisa. Liderança em gestão escolar. 4. ed. Petrópolis: Vozes, 2010. <br>
+<!-- LUCK, Heloisa. Liderança em gestão escolar. 4. ed. Petrópolis: Vozes, 2010. <br>
 SOBRENOME, Nome. Título do livro: subtítulo do livro. Edição. Cidade de publicação: Nome da editora, Ano de publicação. <br>
 
 INTELI. Adalove. Disponível em: https://adalove.inteli.edu.br/feed. Acesso em: 1 out. 2023 <br>
-SOBRENOME, Nome. Título do site. Disponível em: link do site. Acesso em: Dia Mês Ano
+SOBRENOME, Nome. Título do site. Disponível em: link do site. Acesso em: Dia Mês Ano -->
 
 # <a name="c8"></a>Anexos
 
-*Inclua aqui quaisquer complementos para seu projeto, como diagramas, imagens, tabelas etc. Organize em sub-tópicos utilizando headings menores (use ## ou ### para isso)*
+Não se aplica.
+<!-- *Inclua aqui quaisquer complementos para seu projeto, como diagramas, imagens, tabelas etc. Organize em sub-tópicos utilizando headings menores (use ## ou ### para isso)* -->
