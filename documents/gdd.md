@@ -1228,7 +1228,9 @@ Na próxima sprint, planejamos corrigir bugs da implementação dos sons no jogo
 
 <!-- *Descreva e ilustre aqui o desenvolvimento dos refinamentos e revisões da versão final do jogo, explicando brevemente o que foi entregue em termos de MVP. Utilize prints de tela para ilustrar.* -->
 
-Com os avanços alcançados no desenvolvimento do jogo (final da *sprint* 5), esta seção dedicada à revisão do MVP (mínimo produto viável) busca reunir as implementações já realizadas e incorporar novos elementos que tornem a experiência do jogador ainda mais envolvente. Atendendo à solicitação da VIVO, nosso cliente, implementamos a possibilidade de escolha do personagem com foco na representatividade. Foram desenvolvidas quatro skins distintas, pensadas para refletir diferentes características de gênero, raça e estilo, promovendo maior inclusão e identificação entre os colaboradores. Essa novidade amplia a imersão do jogador, tornando a experiência mais personalizada e conectada à diversidade do público.
+Com os avanços alcançados no desenvolvimento do jogo (final da *sprint* 5), esta seção é dedicada à descrição da revisão do MVP (Mínimo Produto Viável) e busca reunir as implementações já realizadas, além de incorporar novos elementos que tornem a experiência do jogador ainda mais envolvente. 
+
+Atendendo à solicitação da empresa parceira (Vivo), nosso cliente, implementamos a possibilidade de escolha do personagem com foco na representatividade. Foram implementadas quatro *skins* distintas, pensadas para refletir diferentes características de gênero, raça e estilo, promovendo maior inclusão e identificação entre os colaboradores. Essa novidade amplia a imersão do jogador, tornando a experiência mais personalizada e conectada à diversidade do público. (R09)
 
 <div align="center">
   <sub>Layout para escolha de personagem.</sub><br>
@@ -1237,46 +1239,65 @@ Com os avanços alcançados no desenvolvimento do jogo (final da *sprint* 5), es
   <sup>Fonte: elaborado pelos autores.</sup>
 </div>
 
-Com base nos resultados obtidos durante a fase de testes e a partir do *feedback* detalhado fornecido pelos participantes, realizamos uma série de ajustes no nosso serious game com o objetivo de aprimorar a experiência do usuário. Uma das mudanças mais significativas foi a reformulação da HUD de direcionamento. Inicialmente, havíamos implementado um som agudo de exclamação para sinalizar ao jogador a necessidade de se deslocar até um determinado ponto de interesse. No entanto, de acordo com os relatos dos testers, esse recurso acabou se tornando repetitivo e incômodo, comprometendo a fluidez da jogabilidade. Além disso, em determinadas cenas, a ausência da imagem visual da exclamação na interface dificultava a orientação, fazendo com que o jogador se sentisse desorientado. Como solução, desenvolvemos um novo sistema de navegação: uma seta direcional fixa foi posicionada acima do personagem, indicando constantemente o caminho que deve ser seguido, substituindo parcialmente o alerta sonoro. Essa abordagem visa tornar a experiência mais intuitiva e confortável, reduzindo distrações auditivas e melhorando a clareza das instruções durante o jogo.
+Com base nos resultados obtidos durante a fase de testes e a partir do *feedback* detalhado fornecido pelos participantes, realizamos uma série de ajustes no nosso *serious game* com o objetivo de aprimorar a experiência do usuário. Uma das mudanças mais significativas foi a reformulação da HUD de direcionamento. Inicialmente, havíamos implementado um som agudo de exclamação para sinalizar ao jogador a necessidade de se deslocar até um determinado ponto de interesse. No entanto, de acordo com os relatos dos *testers*, esse recurso acabou se tornando repetitivo e incômodo, comprometendo a fluidez da jogabilidade. Além disso, em determinadas cenas, a ausência da imagem visual da exclamação na interface dificultava a orientação, fazendo com que o jogador se sentisse desorientado. Como solução, desenvolvemos um novo sistema de navegação: uma seta direcional fixa foi posicionada acima do personagem, indicando constantemente o caminho que deve ser seguido, substituindo parcialmente o alerta sonoro. Essa abordagem visa tornar a experiência mais intuitiva e confortável, reduzindo distrações auditivas e melhorando a clareza das instruções durante o jogo.
 
 <div align="center">
-  <sub>Atualização na HUD.</sub><br>
+  <sub>GIF - Atualização de HUD.</sub><br>
   <img src="https://github.com/user-attachments/assets/efba89c1-dfda-4edc-b48f-66765a2818c2" width="900px" 
   alt="Título"><br>
   <sup>Fonte: elaborado pelos autores.</sup>
 </div>
 
-Buscando tornar a transmissão de informações complexas mais acessível e envolvente,, decidimos incorporar minigames no estilo puzzle em quase todas as fases do nosso serious game. Essa estratégia visa não apenas estimular o engajamento do jogador com o conteúdo, mas também transformar a aprendizagem em uma experiência lúdica, leve e de fácil assimilação, evitando que o processo se torne cansativo ou desmotivador. Para embasar essa decisão, realizamos uma pesquisa de campo que revelou que a faixa etária predominante do nosso público gira em torno dos 38 anos. Com base nesse dado, consideramos que parte dos usuários pode não ter familiaridade prévia com jogos eletrônicos. Por isso, priorizamos o desenvolvimento de minigames com mecânicas simples e intuitivas, garantindo que qualquer jogador, independentemente de sua experiência prévia, consiga interagir com as atividades propostas de forma fluida e satisfatória.
+Buscando tornar a transmissão de informações complexas mais acessível e envolvente, decidimos incorporar *mini games* no estilo *puzzle* em quase todas as fases do nosso *serious game*. Essa estratégia visa não apenas estimular o engajamento do jogador com o conteúdo, mas também transformar a aprendizagem em uma experiência lúdica, leve e de fácil assimilação, evitando que o processo se torne cansativo ou desmotivador. 
+
+Para embasar essa decisão, realizamos uma pesquisa de campo que revelou que a faixa etária predominante do nosso público gira em torno dos 38 anos de idade. Com base nesse dado, consideramos que parte dos usuários pode não ter familiaridade prévia com jogos eletrônicos. Por isso, priorizamos o desenvolvimento de *mini games* com mecânicas simples e intuitivas, garantindo que qualquer jogador, independentemente de sua experiência prévia, consiga interagir com as atividades propostas de forma fluida e satisfatória.
 
 <div align="center">
-  <sub>Minigame Vp negócios.</sub><br>
+  <sub>GIF - Mini game VP Negócios.</sub><br>
   <img src="https://github.com/user-attachments/assets/d7c122a2-e13f-43e2-bb0a-284eb52439fc" width="900px" 
   alt="Título"><br>
   <sup>Fonte: elaborado pelos autores.</sup>
 </div>
 
 <div align="center">
-  <sub>Minigame Vp pessoas.</sub><br>
+  <sub>GIF - Mini game VP Pessoas.</sub><br>
   <img src="https://github.com/user-attachments/assets/39cb8dba-29ff-4704-9840-773d3e263e58" width="900px" 
   alt="Título"><br>
   <sup>Fonte: elaborado pelos autores.</sup>
 </div>
 
-Após conquistar o engajamento inicial do jogador com a proposta do jogo, avançamos para a introdução dos minigames subsequentes dentro da mesma fase, os quais têm como objetivo aprofundar o conteúdo proposto. Nesta etapa, planejamos integrar informações mais extensas e complexas — especificamente orientações relacionadas às possibilidades de crescimento, progressão e mudança de carreira ou função dentro da empresa VIVO — utilizando abordagens inspiradas em estratégias consagradas de jogos educacionais. Para facilitar a assimilação dessas informações, adotamos mecânicas variadas como a organização lógica de sequências, jogos de palavras, quizzes e atividades correlatas, que permitem transformar o conteúdo denso em desafios interativos e estimulantes. Essa combinação visa manter o interesse do jogador, ao mesmo tempo em que promove uma aprendizagem significativa sobre as oportunidades profissionais disponíveis na organização.
+Após conquistar o engajamento inicial do jogador com a proposta do jogo, avançamos para a introdução dos *mini games* subsequentes dentro da mesma fase, os quais têm como objetivo aprofundar o conteúdo proposto (R19, R20, R21, R22). Nesta etapa, planejamos integrar informações mais extensas e complexas — especificamente orientações relacionadas às possibilidades de crescimento, progressão e mudança de carreira ou função dentro da empresa Vivo — utilizando abordagens inspiradas em estratégias consagradas de jogos educacionais. 
+
+Para facilitar a assimilação dessas informações, adotamos mecânicas variadas como a organização lógica de sequências, jogos de palavras, *quizzes* e atividades correlatas, que permitem transformar o conteúdo denso em desafios interativos e estimulantes.
+
+Essa combinação visa manter o interesse do jogador, ao mesmo tempo em que promove uma aprendizagem significativa sobre as oportunidades profissionais disponíveis na organização.
 
 <div align="center">
-  <sub>Minigame Vp tecnologia.</sub><br>
+  <sub>GIF - Minigame VP Tecnologia.</sub><br>
   <img src="https://github.com/user-attachments/assets/770d884f-6702-4240-ac1f-a1820d7d5e2a" width="900px" 
   alt="Título"><br>
   <sup>Fonte: elaborado pelos autores.</sup>
 </div>
 
 <div align="center">
-  <sub>Minigame Vp estratégia.</sub><br>
+  <sub>GIF - Minigame VP Estratégia.</sub><br>
   <img src="https://github.com/user-attachments/assets/4f7a9d8f-5f93-4811-b4af-fed431f2dc5e" width="900px" 
   alt="Título"><br>
   <sup>Fonte: elaborado pelos autores.</sup>
 </div>
+
+<div align="center">
+  <sub>GIF - Tela de Encerramento do jogo.</sub><br>
+  <img src="assets\tela-agradecimentos.gif" width="900px" 
+  alt="Título"><br>
+  <sup>Fonte: elaborado pelos autores.</sup>
+</div>
+
+A equipe superou as expectativas ao cumprir integralmente todas as metas SMART estabelecidas para o projeto durante a *sprint* 4. Na prática, desenvolvemos com sucesso as 5 fases completas do jogo (incluindo os 5 minigames funcionais planejados), integramos os *assets* previstos e resolvemos todos os bugs críticos identificados.
+
+Os testes de usabilidade, realizados com 2 grupos distintos de usuários (um teste de guerrilha e outro com colaboradores da Vivo), geraram relatórios detalhados que validaram não apenas a qualidade técnica, mas também o engajamento dos colaboradores com a proposta educativa. 
+
+Os resultados demonstram não apenas o cumprimento dos requisitos técnicos, mas também a criação de uma ferramenta inovadora que reflete os valores da Vivo, preparando o terreno para futuras expansões que possam ampliar ainda mais o impacto do jogo no desenvolvimento dos colaboradores. 
 
 # <a name="c5"></a>5. Testes
 
@@ -1337,8 +1358,11 @@ No futuro, planejamos expandir os casos de teste para cobrir novas funcionalidad
 
 ### 5.2.1 Registros de testes
 
+Os testes de jogabilidade (*playtests*) representaram uma etapa crucial no desenvolvimento do *Skill Sprint*, permitindo validar a eficácia da experiência proposta junto ao público-alvo real. Realizamos sessões estruturadas com cinco perfis distintos de colaboradores da Vivo - desde profissionais experientes em games até usuários iniciantes - para avaliar aspectos como usabilidade, clareza das mecânicas, progressão no jogo e impacto do conteúdo educativo.
 
-Nome | Rebeca Maciel (analista de employer branding sênior)
+Esses testes proporcionaram *insights* valiosos sobre a interação dos jogadores com cada elemento do *serious game*, destacando tanto os pontos fortes quanto as oportunidades de melhoria.
+
+Nome | Rebeca Maciel (analista de *employer branding* sênior na Vivo)
 --- | ---
 Já possuía experiência prévia com games? | Sim
 Conseguiu iniciar o jogo? | Sim
@@ -1347,22 +1371,22 @@ Conseguiu progredir no jogo? | Sim
 Apresentou dificuldades? | Não
 Que nota deu ao jogo? | 10.0
 O que gostou no jogo? | Gostou de todas as VPs e níveis
-O que poderia melhorar no jogo? | Disse que precisavamos embaralhar as respostas do quiz do currículo
+O que poderia melhorar no jogo? | Disse que precisávamos embaralhar as respostas do quiz do currículo e alterar a ordem de resposta correta de um *minigame* de planejamento de carreira.
 
 
-Nome | Aline Marinho (gerente de aceleração de talentos)
+Nome | Aline Marinho (gerente de aceleração de talentos na Vivo)
 --- | ---
 Já possuía experiência prévia com games? | Pouca
 Conseguiu iniciar o jogo? | Sim
-Entendeu as regras e mecânicas do jogo? | Entendeu as regras, mas sobre as mecânicas, apenas as essenciais, não explorou os comandos complexos
-Conseguiu progredir no jogo? | Sim, apenas com dificuldade em 1 mini-game
+Entendeu as regras e mecânicas do jogo? | Entendeu as regras, mas não explorou comandos complexos
+Conseguiu progredir no jogo? | Sim, apenas com dificuldade em 1 *mini-game*
 Apresentou dificuldades? | Não, conseguiu jogar
 Que nota deu ao jogo? | 10.0
-O que gostou no jogo? | Gostou que o jogo é dinâmico e possui uma proposta super legal
-O que poderia melhorar no jogo? | Disse que gostaria da implementação de setas para o caminhar do jogador
+O que gostou no jogo? | Gostou que o jogo é dinâmico e possui uma proposta legal
+O que poderia melhorar no jogo? | Disse que gostaria da implementação de setas para o caminhar do jogador, além das teclas WASD
 
 
-Nome | Leonardo Sakamoto (consultor - gestão de pessoas)
+Nome | Leonardo Sakamoto (consultor - gestão de pessoas na Vivo)
 --- | ---
 Já possuía experiência prévia com games? | Possuía 
 Conseguiu iniciar o jogo? | Sim
@@ -1371,10 +1395,10 @@ Conseguiu progredir no jogo? | Sim, conseguiu passar por todas as fases
 Apresentou dificuldades? | Não
 Que nota deu ao jogo? | 10.0
 O que gostou no jogo? | Gostou da televisão com propagandas no elevador
-O que poderia melhorar no jogo? |Tirar o JOB ROTATION do tutorial 
+O que poderia melhorar no jogo? |Tirar o termo *job rotation* do roteiro 
 
 
-Nome | Fabrícia Bastos Mocci (gestão de pessoas e projetos em capacitação)
+Nome | Fabrícia Bastos Mocci (gestão de pessoas e projetos em capacitação na Vivo)
 --- | ---
 Já possuía experiência prévia com games? | Não
 Conseguiu iniciar o jogo? | Sim
@@ -1383,10 +1407,10 @@ Conseguiu progredir no jogo? | Sim, porém com dificuldade
 Apresentou dificuldades? | Não
 Que nota deu ao jogo? | 10.0
 O que gostou no jogo? | Gostou do conteúdo do jogo
-O que poderia melhorar no jogo? |Achou que para maior acessibilidade, o jogador deveria se movimentar pelas setas
+O que poderia melhorar no jogo? | Achou que para maior acessibilidade, o jogador deveria se movimentar pelas setas e não apenas por WASD
 
 
-Nome | Cristiane Cruz (analista de gestão pelno)
+Nome | Cristiane Cruz (analista de gestão pleno na Vivo)
 --- | ---
 Já possuía experiência prévia com games? | Não
 Conseguiu iniciar o jogo? | Sim
@@ -1395,19 +1419,34 @@ Conseguiu progredir no jogo? | Sim, porém com dificuldade
 Apresentou dificuldades? | Pouca
 Que nota deu ao jogo? | 10.0
 O que gostou no jogo? | Gostou do conteúdo do jogo
-O que poderia melhorar no jogo? |Gostaria que a fonte aumentasse e o personagem se movesse por setas
+O que poderia melhorar no jogo? |Gostaria que a fonte da letra aumentasse e o personagem se movesse por setas, além das teclas WASD
+
+Os resultados dos *playtests* demonstraram o sucesso do Skill Sprint em seu propósito principal: oferecer uma ferramenta acessível e engajadora para o desenvolvimento profissional. Apesar das excelentes avaliações (nota 10 de todos os testers), os feedbacks apontaram melhorias importantes como a implementação de controles alternativos (setas), ajustes no sistema de quizzes e maior acessibilidade visual - itens que já estão sendo incorporados no roadmap de evolução do jogo. 
+
+Além dos testes com o público-alvo do jogo, realizamos testes de guerrilha onde de 17 *testers*, acima de 80% apontaram terem adquirido aprendizado com o jogo. 
+
+<div align="center">
+  <sub>GIF - Teste de Guerrilha com aprovação acima de 80%.</sub><br>
+  <img src="../assets//testers.gif" width="60%"
+  alt="Teste de Guerrilha"><br>
+  <sup>Fonte: elaborado pelos autores.</sup>
+</div>
+
+A diversidade de perfis testados comprovou a eficácia da abordagem gamificada para diferentes níveis de familiaridade com jogos, mantendo sempre o foco nos objetivos educacionais. Esses testes não apenas validaram o MVP atual, mas também traçaram um caminho claro para as próximas iterações do projeto.
 
 ### 5.2.2 Melhorias
 
-Entre as melhorias que estamos planejando, estão o aumento do tamanho da fonte, a adição de setas direcionais além do uso do WASD, ajustes nos sons, adaptação do jogo para a versão mobile, opções de customização e mini games mais complexos para ampliar a experiência do jogador.
+Com base nos *feedbacks* dos testes de usabilidade, estamos implementando um *roadmap* de melhorias prioritárias para elevar ainda mais a qualidade da experiência do jogador. Já concretizamos ajustes imediatos como: (1) aumento no tamanho das fontes em todas as cenas principais para melhor legibilidade; (2) refinamento do sistema de áudio com balanceamento de volumes e substituição de efeitos sonoros repetitivos. Para as próximas iterações, planejamos: (a) implementação de controles alternativos (setas direcionais) visando maior acessibilidade; (b) desenvolvimento da versão mobile responsiva; (c) expansão do sistema de customização com novos avatares e itens pessoais; e (d) evolução dos *mini games* com mecânicas progressivamente mais complexas, mantendo sempre a curva de aprendizado acessível. Essas melhorias serão priorizadas conforme análise de impacto, garantindo que cada atualização agregue valor tangível tanto à experiência lúdica quanto aos objetivos educacionais do projeto.
 
 # <a name="c6"></a>6. Conclusões e trabalhos futuros
 
-A partir da imersão no desenvolvimento, o grupo foi capaz de potencializar o alcance do jogo ao mesmo nível proposto inicialmente, sendo capaz de ter criado, de forma organizada e documentada, 5 fases de VPs que abordam os setores de Negócios, Pessoas, Relações Institucionais, Tecnologia e Estratégia, com cada uma contendo um minigame e assets correspondentes. Elevamos as metas de testes iniciais de 5 testes para mais de 20, fato que contribuiu exponencialmente para uma maior compreensão do impacto do jogo sobre alunos e colaboradores da Vivo (incluindo aprendizado e diversão com dinâmicas). Não só isso, como fomos capazes de corrigir bugs e identificar todos os recursos essenciais ainda não implementados no jogo até certo momento, incluindo o posicionamento adequado de barreiras, noção de progresso de fases e padronização de atividades, com hotfixes sendo realizados sempre que o necessário.
+A partir da imersão no desenvolvimento, o grupo foi capaz de potencializar o alcance do jogo ao mesmo nível proposto inicialmente, sendo capaz de ter criado, de forma organizada e documentada, 5 fases de VPs que abordam os setores de Negócios, Pessoas, Relações Institucionais, Tecnologia e Estratégia, com cada uma contendo um *minigame* e *assets* correspondentes. 
 
-Como pontos negativos, é possível afirmar que não fomos capazes de explorar o tema de diversidade como planejado, a partir do momento que optamos por uma mecânica de customização limitada à personagens pré-definidos, e não uma customização livre ao usuário, não aplicamos a movimentação através das teclas de setas, acessibilidade pensada por meio de comandos de voz e pelo filtro de daltonismo não foi aplicada, o botão de ajustes não é disponível durante todo o jogo, e não comportamos a quantidade de informações da empresa e minigames inicialmente planejados, por mais que as fases em si puderam ser todas produzidas com designs únicos.
+Elevamos as metas de testes iniciais de 5 testes para, no total, mais de 20, fato que contribuiu exponencialmente para uma maior compreensão do impacto do jogo sobre alunos e colaboradores da Vivo (incluindo aprendizado e diversão com dinâmicas). Não só isso, como fomos capazes de corrigir *bugs* e identificar todos os recursos essenciais ainda não implementados no jogo até certo momento, incluindo o posicionamento adequado de barreiras, noção de progresso de fases e padronização de atividades, com *hotfixes* sendo realizados sempre que necessário.
 
-Portanto, melhorias evidentes para um plano de ações futuro seriam a inclusão do jogo em mobile, com falas audíveis, maior representatividade de condições de saúde e características físicas, um maior número de minigames em cada fase (cerca de +2 em cada) e maior acessibilidade por parte de botões de ajustes durante a trilha do jogo.
+Como pontos negativos, é possível afirmar que não fomos capazes de explorar o tema de diversidade como planejado, a partir do momento que optamos por uma mecânica de customização limitada à personagens pré-definidos, e não uma customização livre ao usuário. Não aplicamos a movimentação através das teclas de setas, acessibilidade pensada por meio de comandos de voz e pelo filtro de daltonismo. O botão de ajustes não é disponível durante todo o jogo, e não comportamos a quantidade de informações da empresa inicialmente planejadas, por mais que as fases em si puderam ser todas produzidas com *designs* únicos.
+
+Portanto, melhorias evidentes para um plano de ações futuro serão a inclusão do jogo em *mobile*, falas audíveis (acessibilidade para cegos, por exemplo), maior representatividade de condições de saúde e características físicas nos avatares, um maior número de *minigames* em cada fase e maior acessibilidade por parte de botões de ajustes durante a trilha do jogo.
 
 # <a name="c7"></a>7. Referências
 
