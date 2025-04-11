@@ -429,7 +429,7 @@ Em média, os jogadores que seguem o fluxo principal completam o jogo em 15 a 17
 
 Nesta seção do *Game Design Document* (GDD), exploraremos os pilares fundamentais que definem a jogabilidade, a mecânica, a progressão e a interação do jogador com o mundo que estamos construindo. Aqui, detalharemos as escolhas de design que orientam a experiência do usuário, desde os conceitos básicos até os sistemas complexos que sustentam o jogo. Nosso objetivo é garantir que cada elemento esteja alinhado com a visão criativa do projeto, ao mesmo tempo em que oferece diversão, desafio e imersão para o público-alvo. 
 
-## 3.1. Enredo do Jogo (sprints 2 e 3)
+## 3.1. Enredo do Jogo
 
 O jogador assume o papel de um(a) colaborador(a) da Vivo com dois anos de empresa, cuja jornada de desenvolvimento profissional serve como fio condutor da narrativa. Para promover identificação e representatividade, o jogo oferece um sistema de customização onde o jogador pode escolher entre diferentes aparências para seu avatar, incluindo opções como uma mulher branca, um homem negro e outras variações que refletem a diversidade do quadro de funcionários da Vivo. Essa personalização inicial permite que cada jogador se sinta verdadeiramente representado na experiência, reforçando a conexão emocional com a jornada de crescimento profissional proposta pelo jogo.
 
@@ -579,7 +579,7 @@ No momento inicial de desenvolvimento do jogo, planejamos implementar um só per
 
 Esta meta inclui representar populações numerosas e minorizadas de origens afro-descendentes (55,5% dos brasileiros) [30], amarelas (0,4%) e indígenas (0,8%), além de diferentes faixas etárias, gêneros (mulheres compõem 51,5%) [31] e condições de saúde (surdez, cegos, membros amputados e formas de paralisia, por exemplo). 
 
-A representação da diversidade já está sendo realizada na customização de players e na composição de *NPCs* que fazem parte das interações ao longo da jornada do colaborador nas fases.
+A representação da diversidade já está sendo realizada na customização de *players* e na composição de *NPCs* que fazem parte das interações ao longo da jornada do colaborador nas fases.
 
 Este plano se alinha com o foco da Vivo em formar um coletivo de colaboradores diversos, de maneira à fornecer oportunidades aos mais variados grupos em aspectos como desenvolvimento corporativo e atuação na sociedade através de seus amplos setores. Portanto, configura um fator essencial a ser trabalhado a fim de retratar a composição da empresa em um jogo.
 
@@ -594,9 +594,9 @@ O impacto proveniente de tal atenção ao *design* será o de possibilitar o sen
 
 ## 3.3. Mundo do jogo
 
-Nesta seção, exploraremos os cenários que compõem o universo do *Skill Sprint*, detalhando como cada elemento foi cuidadosamente projetado para refletir a jornada de desenvolvimento profissional dentro da Vivo. Desde a recepção da empresa até os diferentes andares que representam as Vice-Presidências, cada espaço foi pensado para transmitir a essência do ambiente corporativo e proporcionar uma experiência autêntica e significativa. Aqui, descreveremos as locações principais, a navegação pelo mundo e como o concept art ajudou a dar vida a esse universo. Vamos explorar como o mundo do jogo foi construído para apoiar a narrativa, a jogabilidade e os objetivos de aprendizado do jogador.
+Nesta seção, exploraremos os cenários que compõem o universo do *Skill Sprint*, detalhando como cada elemento foi cuidadosamente projetado para refletir a jornada de desenvolvimento profissional dentro da Vivo. Desde a recepção da empresa até os diferentes andares que representam as Vice-Presidências, cada espaço foi pensado para transmitir a essência do ambiente corporativo e proporcionar uma experiência autêntica e significativa. Aqui, descreveremos as locações principais, a navegação pelo mundo e como a *concept art* ajudou a dar vida a esse universo. Vamos explorar como o mundo do jogo foi construído para apoiar a narrativa, a jogabilidade e os objetivos de aprendizado do jogador.
 
-### 3.3.1. Locações Principais e/ou Mapas (sprints 2 e 3)
+### 3.3.1. Locações Principais e/ou Mapas 
 
 O jogo conta com 6 fases. Cada fase ensina sobre uma etapa de candidatura em processos seletivos internos na Vivo. Além disso, a tela de "níveis" é um elevador, pois cada andar do prédio empresarial (cenário do jogo) representa uma fase diferente.
 
@@ -604,7 +604,7 @@ O jogo conta com 6 fases. Cada fase ensina sobre uma etapa de candidatura em pro
  - 1° Nível: Recepção. Fase inicial que contém uma recepcionista (Vivita), uma sala de computadores em que o usuário irá realizar a criação do currículo. Na sala da líder, o coladorador vai entregar o currículo criado. Assim, ele será encaminhado para o elevador onde terá acesso às outras fases.
 
 <div align="center">
-  <sub>Recepção - Fase 1 do jogo</sub><br>
+  <sub>Recepção - Fase 1 do jogo (Versão da sprint 1)</sub><br>
   <img src="https://github.com/user-attachments/assets/9313ccf8-1659-4512-9d6f-0786efb2f97f" width="900px" 
   alt="Recepção"><br>
   <sup>Fonte: elaborado pelos autores.</sup>
@@ -620,37 +620,38 @@ O jogo conta com 6 fases. Cada fase ensina sobre uma etapa de candidatura em pro
 
  - 6° Nível: VP de Tecnologia. Um mapa com a temática da VP de Tecnologia que tem como objetivo ensinar a diferença entre *upskilling* e *reskilling* dentro da Vivo, incentivando o colaborador ao aprendizado contínuo.
 
-### 3.3.2. Navegação pelo mundo (sprints 2 e 3)
+ É possível acessar imagens dos mapas na [Seção 4 (Desenvolvimento do jogo)](#c4) do presente documento.
 
-O personagem irá navegar pelo mundo começando pela recepção. Nela, ele irá interagir com a Vivita que o guiará para a criação do currículo. Para realizar essa tarefa, o usuário deverá apertar a tecla E perto do computador e jogar um *minigame* para criar um currículo. Após isso, irá se dirigir para a sala do Líder onde acontecerá a entrega do currículo. Logo em seguida, o jogador deve se locomover para o elevador selecionando e selecionar o primeiro nível (andar 1) que irá direcioná-lo para o escritório da Vice-Presidência de Pessoas. Nessa VP, o usuário realiza uma entrevista e em seguida retorna ao elevador para avançar de fase. No 2° andar, temos a VP de Négocios, onde o colaborador irá resolver um case. Seguindo adiante, ele retorna ao elevador para subir mais um andar que será a VP de Estratégia. Nesse mapa, o colaborador irá fazer o seu planejamento de carreira dentro da Vivo através de um *minigame*. Ao retornar para o elevador, avaçamos para o 4° andar, que é a VP de Relações, onde acontecerá um jantar com todos os gerentes da Vivo para fornecer o *feedback* do colaborador durante a jornada. Por último, ao entrar no elevador para a VP de Tecnologia (5° andar), o usuário irá se deparar com um cenário onde aprenderá a diferença entre *upskilling* e *reskilling* (aprimoramento de habilidades). 
+### 3.3.2. Navegação pelo mundo 
 
-### 3.3.3. Condições climáticas e temporais (sprints 2 e 3)
+O personagem irá navegar pelo mundo começando pela recepção. Nela, ele irá interagir com a Vivita que o guiará para a criação do currículo. Para realizar essa tarefa, o usuário deverá pressionar a tecla E perto do computador e jogar um *minigame* para criação de currículo. Após isso, irá se dirigir para a sala do Líder onde acontecerá a entrega do currículo. 
 
-Não se aplica. O jogo não inclui mecânicas ou sistemas relacionados a mudanças climáticas (como chuva, neve, tempestades) ou variações temporais (como ciclos de dia e noite). O foco do design está em ser um *serious game* de ensino sobre *desenvolvimento de carreira interno* na Vivo e em gerar a facilitação de entendimento sobre o processo seletivo da empresa. A adição de elementos climáticos ou temporais não contribuiria para a experiência central que buscamos oferecer ao jogador.
+Logo em seguida, o jogador deve se locomover para o elevador e selecionar o primeiro nível (andar 1) que irá direcioná-lo para o escritório da Vice-Presidência de Pessoas. Nessa VP, o usuário realiza *minigames* relacionados ao processo de entrevista e, em seguida, retorna ao elevador para avançar de fase. No 2° andar, temos a VP de Négocios, onde o colaborador irá resolver um desafio. Seguindo adiante, ele retorna ao elevador para subir mais um andar que será a VP de Estratégia. Nesse mapa, o colaborador irá fazer o seu planejamento de carreira dentro da Vivo através de um *minigame*. 
 
-### 3.3.4. Concept Art (sprint 2)
+Ao retornar para o elevador, avançamos para o 4° andar (VP de Relações), onde acontecerá um jantar com todos os gerentes da Vivo para fornecer o *feedback* do colaborador durante a jornada. Por último, ao entrar no elevador para a VP de Tecnologia (5° andar), o usuário irá se deparar com um cenário onde aprenderá a diferença entre *upskilling* e *reskilling* (aprimoramento de habilidades). 
 
-Concept art é uma ilustração usada para visualizar ideias, cenários, personagens e objetos. Ela serve para ajudar a a produção final do que está sendo desenvolvido. Na produção do nosso jogo,  utilizamos a concept art para esboçarmos as cenas do *Skill Sprint* como uma ideia inicial, podendo ser aprimorada ao longo do desenvolvimento.  
-Pensamos em customizar as fases de acordo com elementos que remetam às Vice-Presidências da Vivo, pensando em fazer um ambiente que envolva o colaborador e ele possa se sentir imerso no jogo. De forma que, ao entrar no nível, por meio do *environmental storytelling*, ele possa compreender em que diretoria se encontra. Com isso, desenhamos os nossos mapas voltados para o desafio que o usuário vai ter que realizar em cada etapa para poder desenvolver as habilidades propostas no jogo, que vão ajudá-lo e incentivá-lo a realizar o *desenvolvimento de carreira interno* dentro da Vivo.
+Um dos diferenciais do *Skill Sprint* é a flexibilidade oferecida ao jogador em sua jornada. Embora o jogo proponha uma sequência lógica de fases, o colaborador tem total liberdade para navegar entre os andares do prédio da Vivo a qualquer momento, revisitando fases ou explorando conteúdos de seu interesse específico. Essa mobilidade não linear permite que cada jogador personalize sua experiência de aprendizado, focando nas áreas que mais se alinham com suas necessidades de desenvolvimento profissional. 
+
+O elevador funciona como um *hub* central, onde é possível selecionar livremente qualquer Vice-Presidência, garantindo que o conteúdo educativo esteja acessível de forma intuitiva e adaptável aos diferentes ritmos de aprendizagem. 
+
+Essa abordagem reforça o propósito do jogo como uma ferramenta dinâmica de capacitação, que respeita a individualidade de cada colaborador em seu processo de crescimento dentro da empresa.
+
+### 3.3.3. Condições climáticas e temporais 
+
+Não se aplica. O jogo não inclui mecânicas ou sistemas relacionados a mudanças climáticas (como chuva, neve, tempestades) ou variações temporais (como ciclos de dia e noite). O foco do design está em ser um *serious game* de ensino sobre desenvolvimento de carreira interno na Vivo e em gerar a facilitação de entendimento sobre o processo seletivo da empresa. A adição de elementos climáticos ou temporais não contribuiria para a experiência central que buscamos oferecer ao jogador.
+
+### 3.3.4. Concept Art 
+
+*Concept art* é uma ilustração usada para visualizar ideias, cenários, personagens e objetos. Ela serve para ajudar a a produção final do que está sendo desenvolvido. Na produção do nosso jogo,  utilizamos a concept art para esboçarmos as cenas do *Skill Sprint* como uma ideia inicial, podendo ser aprimorada ao longo do desenvolvimento.  
+
+Pensamos em customizar as fases de acordo com elementos que remetam às Vice-Presidências da Vivo, pensando em fazer um ambiente que envolva o colaborador para que ele possa se sentir imerso no jogo. De forma que, ao entrar no nível, por meio do *environmental storytelling*, ele possa compreender em que diretoria se encontra. 
+
+Com isso, desenhamos os nossos mapas voltados para o desafio que o usuário vai ter que realizar em cada etapa para poder desenvolver as habilidades propostas no jogo, que vão ajudá-lo e incentivá-lo a realizar o desenvolvimento de carreira interno da Vivo.
 
 <div align="center">
   <sub>Concept Art da Recepção, onde o usuário nasce, conversa com a Vivita, cria o currículo e fala com a líder</sub><br>
   <img src="https://github.com/user-attachments/assets/16844f63-7d26-41a3-8559-4d1e53c3bb60" width="900px" 
   alt="Concept Art Recepção"><br>
-  <sup>Fonte: produzido pelos autores.</sup>
-</div>
-
-<div align="center">
-  <sub>Tela onde o usuário criará o currículo após falar com a Vivita.</sub><br>
-  <img src="https://github.com/user-attachments/assets/8f9eea0b-78f7-47fa-b4e2-a06ef6b64347" width="900px" 
-  alt="Tela onde o usuário criará o currículo após falar com a Vivita."><br>
-  <sup>Fonte: produzido pelos autores.</sup>
-</div>
-
-<div align="center">
-  <sub>Mapa da sala da líder, onde o usuário poderá entrar após fazer seu currículo</sub><br>
-  <img src="https://github.com/user-attachments/assets/ccfba3a5-06d7-4712-88c4-4e5c17bbcf96" width="900px" 
-  alt="Tela onde o usuário entregará o currículo."><br>
   <sup>Fonte: produzido pelos autores.</sup>
 </div>
 
@@ -696,7 +697,7 @@ Pensamos em customizar as fases de acordo com elementos que remetam às Vice-Pre
   <sup>Fonte: produzido pelos autores.</sup>
 </div> 
 
-### 3.3.5. Trilha sonora (sprint 4)
+### 3.3.5. Trilha sonora
 
 A trilha sonora do jogo foi cuidadosamente escolhida para acompanhar a ambientação de cada cena, contribuindo para a imersão do jogador. As músicas variam conforme o ambiente e a atmosfera desejada, indo desde tons mais leves e relaxantes até sons temáticos específicos como, por exemplo, a música do elevador.
 
