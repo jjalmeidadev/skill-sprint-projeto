@@ -1,3 +1,32 @@
+/**
+ * Classe SalaLider
+ * 
+ * Esta classe representa a cena "SalaLider" em um jogo Phaser. Ela gerencia o carregamento de recursos,
+ * criação de objetos do jogo, animações e interações dentro da cena. Abaixo está uma explicação detalhada
+ * do propósito de cada seção do código:
+ * 
+ * - **Construtor**: Inicializa a cena com uma chave única.
+ * - **init(data)**: Recebe dados da cena anterior, como a folha de sprites selecionada para o jogador.
+ * - **preload()**: Carrega todos os recursos necessários para a cena, incluindo spritesheets, imagens, áudio e dados do tilemap.
+ * - **create()**: Configura a cena, incluindo:
+ *   - Parar todos os sons e aplicar um fade-in na câmera.
+ *   - Tocar música de fundo e inicializar efeitos sonoros.
+ *   - Criar animações para vários objetos do jogo.
+ *   - Configurar controles de teclado e lógica de interação.
+ *   - Definir os limites do mundo e adicionar camadas de colisão.
+ *   - Adicionar o personagem líder e suas animações.
+ *   - Criar o personagem jogador e suas animações.
+ *   - Gerenciar a lógica de interação com o líder e outros objetos.
+ * - **update()**: Atualiza o movimento do jogador e a lógica de interação a cada frame.
+ * - **movePlayer()**: Gerencia o movimento e a animação do jogador com base na entrada do teclado.
+ * - **createPlayer()**: Cria o sprite do jogador e define sua posição inicial e escala.
+ * - **createPlayerAnimations()**: Define animações para o movimento e estados de inatividade do jogador.
+ * - **createLeaderAnimations()**: Define animações para o personagem líder.
+ * - **addLeader()**: Adiciona o personagem líder à cena, define suas propriedades e gerencia a lógica de interação.
+ * - **showLeaderInteraction()**: Exibe um diálogo de interação com o líder e gerencia a progressão do diálogo.
+ * - **showIndicatorToReturn()**: Exibe um indicador para o jogador retornar à cena anterior.
+ * - **backToOffice()**: Gerencia a lógica para transição de volta à cena do escritório.
+ */
 class SalaLider extends Phaser.Scene {
   constructor() {
     super({ key: "salaLiderScene" });

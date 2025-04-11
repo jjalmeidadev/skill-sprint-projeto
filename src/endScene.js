@@ -1,3 +1,52 @@
+/**
+ * Representa a cena final do jogo, exibindo uma mensagem de agradecimento,
+ * o sprite do jogador, animações de fundo e um botão para reiniciar o jogo.
+ * Esta cena também destaca os nomes dos contribuidores em um loop.
+ * 
+ * @class EndScene
+ * @extends {Phaser.Scene}
+ * 
+ * @constructor
+ * - Inicializa a cena com uma chave única "endScene".
+ * 
+ * @method init
+ * - Recebe dados da cena anterior, incluindo o spritesheet selecionado do jogador.
+ * 
+ * @method preload
+ * - Carrega todos os recursos necessários para a cena, incluindo camadas de fundo,
+ *   spritesheet do jogador, imagem de agradecimento, imagem do botão, nomes dos
+ *   contribuidores e música de fundo.
+ * 
+ * @method create
+ * - Configura a cena:
+ *   - Cria camadas de fundo com efeito de paralaxe e velocidades diferentes.
+ *   - Adiciona o sprite do jogador e sua animação.
+ *   - Exibe uma mensagem de agradecimento no centro da tela.
+ *   - Cria um botão para reiniciar o jogo.
+ *   - Exibe os nomes dos contribuidores e inicia um loop para destacá-los
+ *     sequencialmente.
+ *   - Reproduz a música de fundo em loop.
+ * 
+ * @method update
+ * - Atualiza a posição das camadas de fundo para criar o efeito de rolagem paralaxe.
+ * 
+ * @method highlightNextName
+ * - Destaca o próximo nome do contribuidor na lista, aumentando sua escala.
+ * - Redefine a escala de todos os outros nomes para o tamanho normal.
+ * - Percorre os nomes sequencialmente em loop.
+ * 
+ * @method createPlayer
+ * - Cria o sprite do jogador em uma posição fixa na tela.
+ * - Define sua escala e reproduz a animação de inatividade.
+ * 
+ * @method createPlayerAnimation
+ * - Define a animação de inatividade para o sprite do jogador, usando frames
+ *   específicos do spritesheet.
+ * 
+ * @method createButtonBack
+ * - Cria um botão interativo para reiniciar o jogo.
+ * - Recarrega a página quando o botão é clicado.
+ */
 class EndScene extends Phaser.Scene {
     constructor() {
         super({key: "endScene"}); // Define a chave única para a cena.

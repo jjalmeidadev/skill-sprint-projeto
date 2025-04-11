@@ -1,14 +1,29 @@
+/**
+ * Classe AjusteScene representa a cena de ajustes do jogo, onde o jogador pode alterar configurações como volume e retornar à cena inicial.
+ * Esta classe utiliza o framework Phaser para criar e gerenciar a cena.
+ */
 class AjusteScene extends Phaser.Scene {
+  /**
+   * Construtor da classe AjusteScene.
+   * Define a chave da cena como 'ajusteScene'.
+   */
   constructor() {
     super({ key: 'ajusteScene' });
   }
 
+  /**
+   * Método init é chamado antes da cena ser carregada.
+   * @param {Object} data - Dados passados para a cena, incluindo o sprite selecionado.
+   */
   init(data) {
-    this.selectedSpriteSheet = data.selectedSpriteSheet;
+    this.selectedSpriteSheet = data.selectedSpriteSheet; // Armazena o sprite selecionado para uso posterior.
   }
 
+  /**
+   * Método preload carrega todos os recursos necessários para a cena, como imagens, sons e músicas.
+   */
   preload() {
-    // Carrega os elementos do fundo
+    // Carrega imagens de fundo, layout, botões e título.
     this.load.image('bg01', '../assets/assetsBackground/1.png');
     this.load.image('bg02', '../assets/assetsBackground/2.png');
     this.load.image('bg03', '../assets/assetsBackground/3.png');
@@ -26,10 +41,13 @@ class AjusteScene extends Phaser.Scene {
     this.load.audio('buttonSound', '../assets/sounds/687107__aphom000__mouse-2-button-fast-click.wav'); // Carrega o som do botão
   }
 
+  /**
+   * Método create é chamado após o preload e configura os elementos visuais e interativos da cena.
+   */
   create() {
-    const width = this.scale.width; // Obtém a largura da tela
-    const height = this.scale.height; // Obtém a altura da tela
-    this.cameras.main.fadeIn(1000); // Aplica um efeito de fade-in na câmera principal ao iniciar a cena
+    const width = this.scale.width; // Obtém a largura da tela.
+    const height = this.scale.height; // Obtém a altura da tela.
+    this.cameras.main.fadeIn(1000); // Aplica um efeito de fade-in na câmera principal.
 
     this.bgs = []; // Cria um array para armazenar os planos de fundo
     const speeds = [0.005, 0.05, 0.07, 0.08, 0.09, 0.1]; // Define as velocidades de movimento para cada camada de fundo
@@ -59,8 +77,12 @@ class AjusteScene extends Phaser.Scene {
     this.createButtonBack(width, height); // Cria o botão para voltar à cena inicial
   }
 
+  /**
+   * Cria o botão de retorno à cena inicial.
+   * @param {number} width - Largura da tela.
+   * @param {number} height - Altura da tela.
+   */
   createButtonBack(width, height) {
-    // Adiciona o botão de retorno à cena
     const buttonBack = this.add.image((width / 2) + 215, height - 350, 'buttonBack');
     buttonBack.setInteractive(); // Torna o botão interativo
     buttonBack.setScale(1.5); // Ajusta o tamanho do botão
@@ -72,6 +94,11 @@ class AjusteScene extends Phaser.Scene {
     });
   }
 
+  /**
+   * Cria o botão para aumentar o volume.
+   * @param {number} width - Largura da tela.
+   * @param {number} height - Altura da tela.
+   */
   createButtonVolumeUp(width, height) {
     // Adiciona o botão para aumentar o volume
     const buttonUp = this.add.image((width / 2) + 77, (height / 2) + 194.3, 'buttonUp');
@@ -83,8 +110,12 @@ class AjusteScene extends Phaser.Scene {
     });
   }
 
+  /**
+   * Cria o botão para diminuir o volume.
+   * @param {number} width - Largura da tela.
+   * @param {number} height - Altura da tela.
+   */
   createButtonVolumeDown(width, height) {
-    // Adiciona o botão para diminuir o volume
     const buttonDown = this.add.image((width / 2) - 80, (height / 2) + 194.3, 'buttonDown');
     buttonDown.setInteractive(); // Torna o botão interativo
     buttonDown.setScale(1.3); // Ajusta o tamanho do botão
@@ -94,6 +125,9 @@ class AjusteScene extends Phaser.Scene {
     });
   }
 
+  /**
+   * Método shutdown é chamado para interromper a música ao encerrar ou pausar a cena.
+   */
   shutdown() {
     // Interrompe a música ao encerrar ou pausar a cena
     if (this.initialMusic && this.initialMusic.isPlaying) { // Verifica se a música está tocando
@@ -101,16 +135,22 @@ class AjusteScene extends Phaser.Scene {
     }
   }
 
+  /**
+   * Reproduz o som do clique do botão.
+   */
   buttonSound() {
     // Reproduz o som do clique do botão
     this.buttonClick = this.sound.add('buttonSound', { loop: false, volume: 10 }); // Adiciona o som do botão com volume definido
     this.buttonClick.play(); // Reproduz o som do botão
   }
 
+  /**
+   * Método update é chamado a cada frame para atualizar os elementos da cena.
+   * Atualiza a posição dos planos de fundo para criar o efeito de paralaxe.
+   */
   update() {
-    // Atualiza a posição dos planos de fundo para criar o efeito de paralaxe
     this.bgs.forEach(layer => {
-      layer.sprite.tilePositionX += layer.speed; // Move cada camada de fundo com base na sua velocidade
+      layer.sprite.tilePositionX += layer.speed; // Move cada camada de fundo com base na sua velocidade.
     });
   }
 }

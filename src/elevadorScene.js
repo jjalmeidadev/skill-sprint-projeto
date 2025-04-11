@@ -1,3 +1,74 @@
+/**
+ * @class ElevadorScene
+ * @extends Phaser.Scene
+ * 
+ * Esta classe representa a cena do elevador no jogo, onde o jogador pode interagir com botões para acessar diferentes áreas.
+ * 
+ * @constructor
+ * - Define variáveis de controle como `canMove`, `panelElevShown` e `ready`.
+ * 
+ * @method init
+ * - Inicializa dados recebidos de outras cenas, como a folha de sprites do jogador e a cena de origem.
+ * 
+ * @method preload
+ * - Carrega todos os recursos necessários, incluindo imagens, vídeos, spritesheets e sons.
+ * 
+ * @method create
+ * - Configura a cena, incluindo o fundo, vídeos, jogador, botões interativos e barreiras.
+ * - Define animações e eventos de teclado.
+ * - Configura eventos para pausa, retomada e encerramento da cena.
+ * 
+ * @method update
+ * - Atualiza a lógica da cena a cada frame.
+ * - Gerencia o movimento do jogador, proximidade com botões e transições entre cenas.
+ * - Verifica se todas as fases foram concluídas para iniciar a cena final.
+ * 
+ * @method shutdown
+ * - Para o som do elevador quando a cena é encerrada ou pausada.
+ * 
+ * @method movePlayer
+ * - Gerencia o movimento do jogador com base nas teclas pressionadas.
+ * - Reproduz animações e sons de movimento.
+ * 
+ * @method createBarriers
+ * - Cria barreiras invisíveis para limitar o movimento do jogador dentro da cena.
+ * 
+ * @method createPlayer
+ * - Cria o sprite do jogador e define suas propriedades físicas.
+ * 
+ * @method cleanupScene
+ * - Remove ouvintes de eventos, sons e elementos visuais ao sair da cena.
+ * 
+ * @method createPlayerAnimations
+ * - Define as animações do jogador para diferentes direções e estados (andando/parado).
+ * 
+ * @method createButtonOffice
+ * - Cria o botão interativo para acessar a cena do escritório.
+ * 
+ * @method createButtonPeople
+ * - Cria o botão interativo para acessar a cena de "Pessoas".
+ * - Verifica se a fase foi concluída para exibir um check.
+ * 
+ * @method createButtonStrategies
+ * - Cria o botão interativo para acessar a cena de "Estratégias".
+ * - Verifica se a fase foi concluída para exibir um check.
+ * 
+ * @method createButtonBusiness
+ * - Cria o botão interativo para acessar a cena de "Negócios".
+ * - Verifica se a fase foi concluída para exibir um check.
+ * 
+ * @method createButtonTech
+ * - Cria o botão interativo para acessar a cena de "Tecnologia".
+ * - Verifica se a fase foi concluída para exibir um check.
+ * 
+ * @method createButtonRelations
+ * - Cria o botão interativo para acessar a cena de "Relações".
+ * - Verifica se a fase foi concluída para exibir um check.
+ * 
+ * @method resetPlayerPosition
+ * - Reposiciona o jogador no centro da cena ao retornar de outra cena.
+ * - Reaplica colisões com barreiras.
+ */
 class ElevadorScene extends Phaser.Scene {
   constructor() {
     super({ key: "elevadorScene" });
