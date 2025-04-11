@@ -3,7 +3,7 @@
 
 # GDD - Game Design Document - Módulo 1 - Inteli
 
-## *SkillSprint Game* 
+## *Skill Sprint Game* 
 ## *SkillMakers*
 #### Nomes dos integrantes do grupo
 - <a href="https://www.linkedin.com/in/mike-buchsenspaner-445a2934b/">Mike Buchsenspaner
