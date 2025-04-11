@@ -51,10 +51,10 @@ class CutScene extends Phaser.Scene {
             this.scene.start('gameplayTutorialScene', { selectedSpriteSheet: this.selectedSpriteSheet }); // Transita para a cena 'gameplayTutorialScene'.
         });
 
-        this.input.on('pointerdown', () => { // Escuta o evento de clique (mouse ou toque) na tela.
-            this.scene.stop('cutScene'); // Para a cutscene atual.
-            this.scene.start('gameplayTutorialScene', { selectedSpriteSheet: this.selectedSpriteSheet }); // Transita para a cena 'gameplayTutorialScene'.
-        });
+        // this.input.on('pointerdown', () => { // Escuta o evento de clique (mouse ou toque) na tela.
+        //     this.scene.stop('cutScene'); // Para a cutscene atual.
+        //     this.scene.start('gameplayTutorialScene', { selectedSpriteSheet: this.selectedSpriteSheet }); // Transita para a cena 'gameplayTutorialScene'.
+        // });
     }
 }
 

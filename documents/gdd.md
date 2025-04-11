@@ -1288,7 +1288,7 @@ Essa combinação visa manter o interesse do jogador, ao mesmo tempo em que prom
 
 <div align="center">
   <sub>GIF - Tela de Encerramento do jogo.</sub><br>
-  <img src="assets\tela-agradecimentos.gif" width="900px" 
+  <img src="../assets/tela-agradecimentos.gif" width="900px" 
   alt="Título"><br>
   <sup>Fonte: elaborado pelos autores.</sup>
 </div>
