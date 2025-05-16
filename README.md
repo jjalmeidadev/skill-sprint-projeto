@@ -91,7 +91,18 @@ Para executar seu respectivo código, siga o passo a passo abaixo:
 
 ## 📋 Licença/License
 
-<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"><p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><a property="dct:title" rel="cc:attributionURL" href="https://github.com/Intelihub/Template_M1">SkillSprint</a> by <a href="https://www.linkedin.com/in/mike-buchsenspaner-445a2934b/">Mike Buchsenspaner, <a href="https://www.linkedin.com/in/sophia-hochman-b821a4346/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app">Sophia Hochman, <a href="https://www.linkedin.com/in/jaime-andrade-de-almeida-0777ba2a5/">Jaime Andrade de Almeida, <a href="https://www.linkedin.com/in/anneestherlf?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app">Anne Esther Lins Figueirôa, <a href="https://www.linkedin.com/in/marcela-costa-844b42338/)"> Marcela Amorim da Costa, <a href="https://www.linkedin.com/in/arthur-marques-5b1080346?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app)">Arthur Marques, <a href="https://www.linkedin.com/in/victorbarq/">Lucas Carvalho dos Ramos </a> is licensed under <a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">Attribution 4.0 International</a>.</p>
 
-
->>>>>>> bcaee4855c78d65ee94a42c6b57ba49b4e9d22e0
+<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1">
+<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1">
+<p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/">
+  <a property="dct:title" rel="cc:attributionURL" href="https://github.com/Intelihub/Template_M1">SkillSprint</a> by 
+  <a href="https://www.linkedin.com/in/mike-buchsenspaner-445a2934b/">Mike Buchsenspaner</a>, 
+  <a href="https://www.linkedin.com/in/sophia-hochman-b821a4346/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app">Sophia Hochman</a>, 
+  <a href="https://www.linkedin.com/in/jaime-andrade-de-almeida-0777ba2a5/">Jaime Andrade de Almeida</a>, 
+  <a href="https://www.linkedin.com/in/anneestherlf?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app">Anne Esther Lins Figueirôa</a>, 
+  <a href="https://www.linkedin.com/in/marcela-costa-844b42338/">Marcela Amorim da Costa</a>, 
+  <a href="https://www.linkedin.com/in/arthur-marques-5b1080346?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app">Arthur Marques</a>, 
+  <a href="https://www.linkedin.com/in/victorbarq/">Lucas Carvalho dos Ramos</a> 
+  is licensed under 
+  <a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">Attribution 4.0 International</a>.
+</p>
