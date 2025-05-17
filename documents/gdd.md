@@ -1261,7 +1261,7 @@ Para embasar essa decisão, realizamos uma pesquisa de campo que revelou que a f
 
 <div align="center">
   <sub>GIF - Mini game VP Pessoas.</sub><br>
-  <img src="../assets/mini game vp pessoas gif.gif width="900px" 
+  <img src="../assets/mini game vp pessoas gif.gif" width="900px" 
   alt="Título"><br>
   <sup>Fonte: elaborado pelos autores.</sup>
 </div>
