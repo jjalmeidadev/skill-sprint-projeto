@@ -78,7 +78,7 @@ A análise pode ser observada na imagem a seguir:
 
 <div align="center">
   <sub>Gráfico 5 forças de Porter</sub><br>
-  <img src="https://github.com/user-attachments/assets/336a1a10-0e58-4e68-a42a-e48d542db44b" width="900px" 
+  <img src="../assets/forças-de-porter.png" width="900px" 
   alt="Gráfico 5 forças de Porter"><br>
   <sup>Fonte: produzido pelo autor.</sup>
 </div>
@@ -91,8 +91,8 @@ A análise SWOT [12] é uma ferramenta estratégica usada para avaliar os pontos
 A Vivo, líder de mercado no Brasil, destaca-se pela forte presença em telefonia móvel, internet fixa (fibra óptica) e inovação com 5G. Sua dependência de grandes investimentos em infraestrutura e a intensa concorrência de operadoras como Claro e TIM representam fraquezas. Entretanto, as oportunidades incluem a expansão do 5G, IoT e a integração com *fintechs*, além de soluções digitais para empresas. As ameaças vêm da saturação do mercado móvel e de mudanças regulatórias. A Vivo precisa manter sua liderança diante de uma concorrência crescente e exigente, como é apresentado no esquema abaixo.
 
 <div align="center">
-  <sub>Gráfico 5 forças de Porter</sub><br>
-  <img src="https://github.com/user-attachments/assets/5d960390-b6ab-4ffc-a930-d2a29dda43d2" width="900px" 
+  <sub>Gráfico SWOT</sub><br>
+  <img src="../assets/swot.png" width="900px" 
   alt="Gráfico Análise SWOT"><br>
   <sup>Fonte: produzido pelo autor.</sup>
 </div>
@@ -133,7 +133,7 @@ O Value Proposition Canvas [14] é uma ferramenta poderosa de planejamento estre
 
 <div align="center">
   <sub>Canvas Proposta de Valor</sub><br>
-  <img src="https://github.com/user-attachments/assets/e3d2265f-7577-46cf-81dc-b10dcd84a82d" width="900px" 
+  <img src="../assets/value-proposition.png" width="900px" 
   alt="Canvas Proposta de Valor"><br>
   <sup>Fonte: produzido pelo autor.</sup>
 </div>
@@ -166,7 +166,7 @@ A matriz de risco [15] é uma ferramenta essencial para a gestão de riscos, per
 
 <div align="center">
   <sub>Matriz de Risco</sub><br>
-  <img src="https://github.com/user-attachments/assets/7f8b53b2-27f3-4e46-984e-d9aea9dbd6e7" width="900px" 
+  <img src="../assets/matriz-de-risco.png" width="900px" 
   alt="Matriz de Risco"><br>
   <sup>Fonte: produzido pelo autor.</sup>
 </div>
@@ -491,7 +491,7 @@ O primeiro *NPC* é o Vivinho, que é um personagem com o objetivo de guiar o us
 
 <div align="center">
   <sub>Vivinho</sub><br>
-  <img src="https://github.com/user-attachments/assets/50594d55-2807-4a2d-8dd0-89d618be81c5" width="450px" 
+  <img src="../assets/vivinho.png" width="450px" 
   alt="Vivinho"><br>
   <sup>Fonte: Vivo.</sup>
 </div>
@@ -585,7 +585,7 @@ Este plano se alinha com o foco da Vivo em formar um coletivo de colaboradores d
 
 <div align="center">
   <sub>Dados de diversidade na Vivo</sub><br>
-  <img src="https://github.com/user-attachments/assets/027ffa1e-1ea7-4f6b-a7d4-dafd86bf7e82" width="900px" 
+  <img src="../assets/diversidade-vivo.png" width="900px" 
   alt="Dados de diversidade na Vivo"><br>
   <sup>Fonte: Material Onboarding Executivo - Vivo, Inteli (fev/2025).</sup>
 </div>
@@ -605,7 +605,7 @@ O jogo conta com 6 fases. Cada fase ensina sobre uma etapa de candidatura em pro
 
 <div align="center">
   <sub>Recepção - Fase 1 do jogo (Versão da sprint 1)</sub><br>
-  <img src="https://github.com/user-attachments/assets/9313ccf8-1659-4512-9d6f-0786efb2f97f" width="900px" 
+  <img src="../assets/Fase 1 do jogo (Versão da sprint 1).jpeg" width="900px" 
   alt="Recepção"><br>
   <sup>Fonte: elaborado pelos autores.</sup>
 </div>
@@ -650,49 +650,49 @@ Com isso, desenhamos os nossos mapas voltados para o desafio que o usuário vai 
 
 <div align="center">
   <sub>Concept Art da Recepção, onde o usuário nasce, conversa com a Vivita, cria o currículo e fala com a líder</sub><br>
-  <img src="https://github.com/user-attachments/assets/16844f63-7d26-41a3-8559-4d1e53c3bb60" width="900px" 
+  <img src="../assets/concept art da recepcao.png" width="900px" 
   alt="Concept Art Recepção"><br>
   <sup>Fonte: produzido pelos autores.</sup>
 </div>
 
 <div align="center">
   <sub>Concept Art do mapa do elevador, onde o usuário utilizará para navegar entre os níveis do jogo</sub><br>
-  <img src="https://github.com/user-attachments/assets/bbef2db1-d93e-46b4-b963-df6272c6f82a" width="900px" 
+  <img src="../assets/concept art elevador.png" width="900px" 
   alt="Tela onde o usuário navegará pelos níveis do jogo"><br>
   <sup>Fonte: produzido pelos autores.</sup>
 </div>
 
 <div align="center">
   <sub>Concept Art da fase da VP de Pessoas, onde o colaborador experienciará a simulação de uma entrevista (minigame)</sub><br>
-  <img src="https://github.com/user-attachments/assets/8ee23ad0-2aef-4434-afaf-9556e5ce62e1" width="900px" 
+  <img src="../assets/vp de pessoas.png" width="900px" 
   alt="VP Pessoas"><br>
   <sup>Fonte: produzido pelos autores.</sup>
 </div>
 
 <div align="center">
   <sub>Concept Art da fase da VP de Negócios, personalizada nos temas B2B e B2C com um case em cada área</sub><br>
-  <img src="https://github.com/user-attachments/assets/374019be-4ad6-47bf-8925-9645e638995e" width="900px" 
+  <img src= "../assets/vp de negocios concept.jpg" width="900px" 
   alt="VP Negócios"><br>
   <sup>Fonte: produzido pelos autores.</sup>
 </div>
 
 <div align="center">
   <sub>Concept Art da fase da VP de Estratégia com um minigame sobre planejamento de carreira</sub><br>
-  <img src="https://github.com/user-attachments/assets/80a7b560-411e-4ce1-91ba-c7be7e025af0" width="900px" 
+  <img src="../assets/vp de extrategia concept.jpg0" width="900px" 
   alt="VP Estratégia"><br>
   <sup>Fonte: produzido pelos autores.</sup>
 </div>
 
 <div align="center">
   <sub>Concept Art da fase da VP de Relações, onde acontecerá um jantar com todos os gerentes da Vivo, voltado para resolver dialetos de desempenho (*feedback*)</sub><br>
-  <img src="https://github.com/user-attachments/assets/d2312978-bfa4-4aec-9647-24f86fb7b6d3" width="900px" 
+  <img src="../assets/vp de relacoes concep art.jpg" width="900px" 
   alt="VP Relações"><br>
   <sup>Fonte: produzido pelos autores.</sup>
 </div>
 
 <div align="center">
   <sub>Concept Art da fase da VP de Tecnologia, onde o usuário irá aprender sobre upskilling e reskilling (aprimoramento de habilidades)</sub><br>
-  <img src="https://github.com/user-attachments/assets/8b9b8a4f-b446-4103-98f2-fd6ff500a6e5" width="900px" 
+  <img src="../assets/vp de tecnologia concept.jpg" width="900px" 
   alt="VP Tecnologia"><br>
   <sup>Fonte: produzido pelos autores.</sup>
 </div> 
@@ -785,8 +785,8 @@ O *Gameflow* de *Skill Sprint* pode ser observado a seguir:
 
 <div align="center">
   <sub>Diagrama de Fases.</sub><br>
-  <img src="https://github.com/user-attachments/assets/36dbf211-b7fc-42a2-8ceb-5cad738647f4" width="100%"
-  alt="Título"><br>
+  <img src="../assets/diagrama de cenas.png" width="100%"
+  alt="Diagrama de fases"><br>
   <sup>Fonte: elaborado pelos autores.</sup>
 </div>
 
@@ -1011,7 +1011,7 @@ Para a primeira versão do jogo (MVP - *sprint* 1) elaboramos uma tela inicial c
 
 <div align="center">
   <sub>Tela inicial</sub><br>
-  <img src="https://github.com/user-attachments/assets/0996cf85-6f8d-4d1c-b206-5c5c2080b520" width="900px" 
+  <img src="../assets/tela inicial sprint 1.jpeg" width="900px" 
   alt="Tela inicial"><br>
   <sup>Fonte: produzido pelos autores. </sup>
 </div> 
@@ -1020,7 +1020,7 @@ Além disso, desenvolvemos uma *cutscene* em *Pixel Art* para apresentar o conte
 
 <div align="center">
   <sub>Cutscene</sub><br>
-  <img src="https://github.com/user-attachments/assets/ad075642-151c-46b8-87cb-915dba6b7849" width="900px" 
+  <img src="../assets/vivo cutscene.jpeg" width="900px" 
   alt="Cutscene"><br>
   <sup>Fonte: produzido pelos autores. </sup>
 </div> 
@@ -1029,7 +1029,7 @@ A primeira fase foi estruturada com um cenário de escritório (R05), onde o jog
 
 <div align="center">
   <sub>Mapa da primeira fase do jogo (recepção)</sub><br>
-  <img src="https://github.com/user-attachments/assets/9313ccf8-1659-4512-9d6f-0786efb2f97f" width="900px" 
+  <img src="../assets/mapa da primeira fase.jpeg" width="900px" 
   alt="Recepção"><br>
   <sup>Fonte: produzido pelos autores. </sup>
 </div> 
@@ -1156,35 +1156,35 @@ Abaixo, estão algumas capturas de tela para ilustrar o desenvolvimento do MVP (
 
 <div align="center">
   <sub>Tela de ajustes: desenvolvida na Sprint 4.</sub><br>
-  <img src="https://github.com/user-attachments/assets/ecddd8be-65dd-4509-ad8d-1c480695a2bb" width="900px" 
+  <img src="../assets/tela de ajustes.png" width="900px" 
   alt="Título"><br>
   <sup>Fonte: elaborado pelos autores.</sup>
 </div>
 
 <div align="center">
   <sub>Mapa da VP de Tecnologia: desenvolvido na Sprint 4.</sub><br>
-  <img src="https://github.com/user-attachments/assets/de05d189-a0e8-421c-96a2-585aaaaebeb2" width="900px" 
+  <img src="../assets/mapa vp de tech.png" width="900px" 
   alt="Título"><br>
   <sup>Fonte: elaborado pelos autores.</sup>
 </div>
 
 <div align="center">
   <sub>Mapa da VP de Negócios: desenvolvido na Sprint 4.</sub><br>
-  <img src="https://github.com/user-attachments/assets/98231934-8026-4e9e-b34f-43b395ccee74" width="900px" 
+  <img src="../assets/vp de negócios.png" width="900px" 
   alt="Título"><br>
   <sup>Fonte: elaborado pelos autores.</sup>
 </div>
 
 <div align="center">
   <sub>Mapa da VP de Estratégia: desenvolvido na Sprint 4.</sub><br>
-  <img src="https://github.com/user-attachments/assets/1db8b05c-9e23-49bb-99fb-adef43f1ed09" width="900px" 
+  <img src="../assets/vp de estratégia.png" width="900px" 
   alt="Título"><br>
   <sup>Fonte: elaborado pelos autores.</sup>
 </div>
 
 <div align="center">
   <sub>Tela Inicial melhorada: desenvolvida na Sprint 4.</sub><br>
-  <img src="https://github.com/user-attachments/assets/f1051e60-12d0-4288-b7ff-51d1fa580495" width="900px" 
+  <img src="../assets/tela inicial sprint 4.png" width="900px" 
   alt="Título"><br>
   <sup>Fonte: elaborado pelos autores.</sup>
 </div>
@@ -1234,7 +1234,7 @@ Atendendo à solicitação da empresa parceira (Vivo), nosso cliente, implementa
 
 <div align="center">
   <sub>Layout para escolha de personagem.</sub><br>
-  <img src="https://github.com/user-attachments/assets/2542cbaa-cbf7-4bc1-b2ee-33c584cb779a" width="900px" 
+  <img src="../assets/layout para escolha de personagem.jpg" width="900px" 
   alt="Título"><br>
   <sup>Fonte: elaborado pelos autores.</sup>
 </div>
@@ -1243,7 +1243,7 @@ Com base nos resultados obtidos durante a fase de testes e a partir do *feedback
 
 <div align="center">
   <sub>GIF - Atualização de HUD.</sub><br>
-  <img src="https://github.com/user-attachments/assets/efba89c1-dfda-4edc-b48f-66765a2818c2" width="900px" 
+  <img src="../assets/atualização de hud.gif" width="900px" 
   alt="Título"><br>
   <sup>Fonte: elaborado pelos autores.</sup>
 </div>
@@ -1254,14 +1254,14 @@ Para embasar essa decisão, realizamos uma pesquisa de campo que revelou que a f
 
 <div align="center">
   <sub>GIF - Mini game VP Negócios.</sub><br>
-  <img src="https://github.com/user-attachments/assets/d7c122a2-e13f-43e2-bb0a-284eb52439fc" width="900px" 
+  <img src="../assets/mini game vp negocios gif.gif" width="900px" 
   alt="Título"><br>
   <sup>Fonte: elaborado pelos autores.</sup>
 </div>
 
 <div align="center">
   <sub>GIF - Mini game VP Pessoas.</sub><br>
-  <img src="https://github.com/user-attachments/assets/39cb8dba-29ff-4704-9840-773d3e263e58" width="900px" 
+  <img src="../assets/mini game vp pessoas gif.gif width="900px" 
   alt="Título"><br>
   <sup>Fonte: elaborado pelos autores.</sup>
 </div>
@@ -1274,14 +1274,14 @@ Essa combinação visa manter o interesse do jogador, ao mesmo tempo em que prom
 
 <div align="center">
   <sub>GIF - Minigame VP Tecnologia.</sub><br>
-  <img src="https://github.com/user-attachments/assets/770d884f-6702-4240-ac1f-a1820d7d5e2a" width="900px" 
+  <img src="../assets/minigame vp de tecnologia.gif" width="900px" 
   alt="Título"><br>
   <sup>Fonte: elaborado pelos autores.</sup>
 </div>
 
 <div align="center">
   <sub>GIF - Minigame VP Estratégia.</sub><br>
-  <img src="https://github.com/user-attachments/assets/4f7a9d8f-5f93-4811-b4af-fed431f2dc5e" width="900px" 
+  <img src="../assets/minigame vp estrategia.gif" width="900px" 
   alt="Título"><br>
   <sup>Fonte: elaborado pelos autores.</sup>
 </div>
